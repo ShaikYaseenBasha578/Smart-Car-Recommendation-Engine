@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Used Car Listings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <h1>CarRec</h1>
+        </div>
+        <div class="nav-elements">
+          <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/#about">ABOUT</a></li>
+            <li><a href="/used">USED CARS</a></li>
+            <li><a href="#">SELL</a></li>
+            <li><a href="/#contact">CONTACT US</a></li>
+          </ul>
+        </div>
+        <div class="ICONS">
+          <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Icon">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="recommend">
+    <div class="box">
+      <h1 class="text">Find the Right <span style="color: #ff6600;">Used Car</span> for You</h1>
+      <div class="hp-used">
+        <input type="text" id="usedQuery" placeholder="e.g. SUV under 15 lakhs in Hyderabad">
+        <button class="search-btn" onclick="sendUsedQuery()">🔍</button>
+      </div>      
+      <div id="loading" style="display:none; font-size: 20px; text-align:center;">🔄 Loading results...</div>
+
+      <div id="used-results" class="lists">
+        <!-- Injected car cards go here -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    async function sendUsedQuery() {
+      const userInput = document.getElementById("usedQuery").value;
+
+      const response = await fetch("/used-cars", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ query: userInput })
+      });
+
+      const data = await response.json();
+      const resultBox = document.getElementById("used-results");
+      resultBox.innerHTML = "";
+
+      if (data.recommendations && data.recommendations.length > 0) {
+        data.recommendations.forEach(car => {
+          const item = document.createElement("div");
+          item.classList.add("elements");
+
+          item.innerHTML = `
+            <img src="${car.image_url}" alt="${car.title}" loading="lazy">
+            <div class="t">
+              <h1>${car.title}</h1>
+              <div class="p">
+                <p>${car.price || 'Price not listed'}</p>
+                <p>${car.km || 'KM unknown'} | ${car.fuel || ''} | ${car.transmission || ''}</p>
+                <p>${car.owner ? 'Owner: ' + car.owner : ''}</p>
+                <p>${car.location}</p>
+              </div>
+              <div class="links">
+                <a href="${car.listing_url}" target="_blank">View on Cars24</a>
+              </div>
+            </div>
+          `;
+          resultBox.appendChild(item);
+        });
+      } else {
+        resultBox.innerHTML = `<p>No used cars found for your query.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>

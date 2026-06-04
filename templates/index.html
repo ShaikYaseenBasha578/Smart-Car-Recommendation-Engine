@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <h1>CarRec</h1>
+                </div>
+                <div class="nav-elements">
+                    <ul>
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="/used">USED CARS</a></li>
+                        <li><a href="">SELL</a></li>
+                        <li><a href="#contact">CONTACT US</a></li>
+                    </ul>
+                    
+                </div>
+                <div class="ICONS">
+                    <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Icon">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="home-card">
+            <h1>Find Your Perfect Car <div>with AI Powered search</div>
+            </h1>
+            <div class="hp">
+
+                <input type="search">
+
+                <a class="search-btn" href="{{ url_for('recommend_page') }}"
+
+                    onclick="localStorage.setItem('userQuery', document.querySelector('input[type=search]').value)">🔍</a>
+
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <h1>How CarRec Works</h1>
+        <p>We use advanced AI models to help you find the perfect car - from all brand-new models. We analyze your needs
+            and filter listings from multiple sources in a single search.</p>
+        <div class="list">
+            <div class="element">
+                <img src="{{ url_for('static', filename='Jeep Wrangler.png') }}" alt="">
+                <h1>Just the Cars You Want</h1>
+                <p>Use powerful filters - fuel type, body style, budget, and more - to find exactly what you're looking for.</p>
+            </div>
+            <div class="element">
+                <img src="{{ url_for('static', filename='Brain.png') }}" alt="">
+                <h1>Smart Results</h1>
+                <p>We recommend cars that match your preferences using intelligent KNN-based algorithms.</p></div>
+            <div class="element">
+                <img src="{{ url_for('static', filename='iPhone 16 Pro.png') }}" alt="">
+                <h1>Search on Any Device</h1>
+                <p>Whether you're on your phone, tablet, or laptop, our app works seamlessly on any screen size.</p></div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="mains">
+            <div class="first">
+                <div class="greet">
+
+                    <h1>Get in Touch</h1>
+                    <p>Enim tempor eget pharetra facilisis sed maecenas adipiscing. Eu leo molestie vel, ornare non id
+                        blandit netus.</p>
+                    <form action="">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Phone Number">
+                        <input type="text" placeholder="Type Your Message">
+                        <button>send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="second"><iframe
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3806.6512284679675!2d78.44062837540407!3d17.42851753346568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smjcet!5e0!3m2!1sen!2sin!4v1750502747902!5m2!1sen!2sin"
+                    width="501" height="643" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        </div>
+    </section>
+    <section class="e"></section>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+
+</html>

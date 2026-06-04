@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <h1>CarRec</h1>
+                </div>
+                <div class="nav-elements">
+                    <ul>
+                        <li><a href="./#home">HOME</a></li>
+                        <li><a href="./#about">ABOUT</a></li>
+                        <li><a href="">SELL</a></li>
+                        <li><a href="./#contact">CONTACT US</a></li>
+                    </ul>
+                </div>
+                <div class="ICONS">
+                    <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="recommend">
+        <div class="box">
+            <h1 class="text">Recommend Cars According To Search</h1>
+            <div id="result-box" class="lists">
+                <!-- Cards will be injected here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        window.onload = function () {
+            const userQuery = localStorage.getItem("userQuery");
+
+            console.log("USER QUERY:", userQuery); // For debugging
+
+            fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ query: userQuery })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const resultBox = document.getElementById("result-box");
+                resultBox.innerHTML = "";
+
+                const recommendations = [...new Map(data.recommendations.map(item => [item.Model, item])).values()].slice(0, 4);
+
+                recommendations.forEach(car => {
+                    const item = document.createElement("div");
+                    item.classList.add("elements");
+
+                    item.innerHTML = `
+                        <img src="${car.carImage}" alt="${car.Make} ${car.Model}">
+                        <div class="t">
+                            <h1>${car.Make} ${car.Model} ${car.Variant}</h1> <!-- ✅ Variant retained -->
+                            <div class="p">
+                                <p>₹${Math.round(car["Ex-Showroom_Price"]).toLocaleString()}</p>
+                                <p>Mileage: ${car.ARAI_Certified_Mileage} kmpl</p>
+                                <p>Transmission: ${car.Transmission}</p>
+                                <p>Fuel: ${car.Fuel_Type}</p>
+                            </div>
+                            <div class="links">
+                                <a href="${car.carDekhoLink}" target="_blank">CarDekho</a>
+                                <a href="${car.carWaleLink}" target="_blank">CarWale</a>
+                            </div>
+                        </div>
+                    `;
+                    resultBox.appendChild(item);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
