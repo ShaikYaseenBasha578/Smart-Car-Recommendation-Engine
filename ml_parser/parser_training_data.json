@@ -1,0 +1,5122 @@
+[
+  {
+    "query": "Looking for an automatic suv under 12 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol automatic sedan with airbags",
+    "body_type": "sedan",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a mpv under 8 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for highway with good mileage under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a manual car for family",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for family under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for family with good mileage under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for city",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for budget under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for highway use under 15 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with cruise control under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a diesel car with sunroof under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a suv with abs",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a sedan with apple carplay",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Best muv for budget use under 40 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a mpv under 12 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a mpv for commute",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for budget under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng hatchback below 8 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 18 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric hatchback below 10 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a suv for student",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a mpv with airbags",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for family use under 6 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric mpv below 40 lakh",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for student use under 12 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for premium use under 6 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a sedan under 30 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for highway use under 12 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a manual car for parents",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a mpv for premium",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel manual muv with abs",
+    "body_type": "muv",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for family use under 8 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a mpv under 50 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a petrol automatic car for family",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a cng manual car for highway",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng muv below 20 lakh",
+    "body_type": "muv",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a sedan with abs",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for city with good mileage under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual hatchback under 25 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel automatic car for commute",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for parents with good mileage under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a petrol automatic car for highway",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for highway under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for family with good mileage under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng mpv below 25 lakh",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a muv for enthusiast",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for commute",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a sedan under 15 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with android auto under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a mpv for highway",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for city",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a suv for city",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for premium with good mileage under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for family use under 12 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic suv under 15 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual mpv under 40 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for parents with good mileage under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for enthusiast use under 25 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a muv with abs",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for parents under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for budget with good mileage under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel manual car for parents",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for city with good mileage under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a mpv for budget",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a petrol car with abs under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for budget use under 10 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric suv below 15 lakh",
+    "body_type": "suv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for parents under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a hatchback with android auto",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with abs under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for premium use under 12 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a hatchback with abs",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng mpv below 50 lakh",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for family use under 18 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for city use under 30 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with apple carplay under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Need a car for commute with good mileage under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for enthusiast use under 50 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic hatchback with airbags",
+    "body_type": "hatchback",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with apple carplay under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "I want a petrol car with sunroof under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for budget use under 40 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for enthusiast",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng manual suv with android auto",
+    "body_type": "suv",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with android auto under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with airbags under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric sedan below 15 lakh",
+    "body_type": "sedan",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric automatic suv with abs",
+    "body_type": "suv",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual muv under 15 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric automatic suv with android auto",
+    "body_type": "suv",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic mpv with airbags",
+    "body_type": "mpv",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric automatic car for premium",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel automatic car for budget",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "budget",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic mpv under 25 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng automatic mpv with sunroof",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a cng automatic car for family",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a suv under 25 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a sedan under 25 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with abs under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a suv under 30 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for student with good mileage under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for commute under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic hatchback with apple carplay",
+    "body_type": "hatchback",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Need a car for city with good mileage under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric automatic car for parents",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel muv below 18 lakh",
+    "body_type": "muv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic muv under 6 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for parents use under 8 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a hatchback for parents",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a muv under 40 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for city use under 50 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for student under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric automatic muv with airbags",
+    "body_type": "muv",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol automatic sedan with cruise control",
+    "body_type": "sedan",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with apple carplay under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "I want a cng car with abs under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with cruise control under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for budget use under 12 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng automatic mpv with airbags",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a petrol car with abs under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for highway under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a manual car for commute",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric mpv below 10 lakh",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric manual car for student",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with cruise control under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric manual mpv with android auto",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual suv under 18 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for parents",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a mpv with apple carplay",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Suggest a petrol manual suv with airbags",
+    "body_type": "suv",
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with android auto under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel mpv below 8 lakh",
+    "body_type": "mpv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for family under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel hatchback below 50 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a mpv under 20 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic sedan with airbags",
+    "body_type": "sedan",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual muv under 20 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a petrol automatic car for student",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric manual car for family",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for premium",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for parents with good mileage under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel suv below 20 lakh",
+    "body_type": "suv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel muv below 10 lakh",
+    "body_type": "muv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a suv under 20 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a petrol car with abs under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng automatic suv with android auto",
+    "body_type": "suv",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for highway use under 18 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for city under 18 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric muv below 8 lakh",
+    "body_type": "muv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel suv below 12 lakh",
+    "body_type": "suv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for family use under 30 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for enthusiast under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a muv for city",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a hatchback for student",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a cng automatic car for student",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for highway use under 10 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a muv for parents",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel manual car for highway",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a muv under 6 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic sedan with android auto",
+    "body_type": "sedan",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for enthusiast with good mileage under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng automatic muv with airbags",
+    "body_type": "muv",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for premium use under 10 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for premium with good mileage under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a suv with airbags",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic muv under 10 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for city use under 12 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a suv for parents",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a suv with apple carplay",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "I want a safe car for commute under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a suv for budget",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a sedan with sunroof",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual suv under 50 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic muv under 15 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a mpv for city",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel manual car for family",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for parents",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "parents",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best suv for family use under 25 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric suv below 6 lakh",
+    "body_type": "suv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for student",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for commute",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for student under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with apple carplay under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Need a car for budget with good mileage under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng mpv below 30 lakh",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a muv for family",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel hatchback below 30 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a hatchback for highway",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a muv with airbags",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for premium",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a cng manual car for student",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with abs under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for commute under 10 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a mpv with cruise control",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol manual suv with android auto",
+    "body_type": "suv",
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for highway",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric automatic car for highway",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a petrol car with sunroof under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a petrol manual car for commute",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a suv under 15 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for student with good mileage under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng manual sedan with apple carplay",
+    "body_type": "sedan",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Suggest a electric mpv below 50 lakh",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol hatchback below 40 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a sedan under 6 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng manual hatchback with airbags",
+    "body_type": "hatchback",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a diesel car with apple carplay under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "I want a safe car for parents under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for city with good mileage under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for family use under 18 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a cng manual mpv with abs",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a hatchback under 30 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for highway with good mileage under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel muv below 6 lakh",
+    "body_type": "muv",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for family use under 18 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a hatchback for enthusiast",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for highway use under 50 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a petrol manual car for family",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric hatchback below 12 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for budget use under 12 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a sedan with cruise control",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for family",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "family",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for family use under 15 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with sunroof under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a diesel car with cruise control under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for family use under 50 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for enthusiast with good mileage under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol sedan below 25 lakh",
+    "body_type": "sedan",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual mpv under 20 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic suv under 20 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for parents use under 10 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with apple carplay under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Need a petrol automatic car for premium",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol automatic muv with sunroof",
+    "body_type": "muv",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a hatchback for commute",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric hatchback below 18 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for student use under 6 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for highway under 50 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a muv with sunroof",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a mpv under 25 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for enthusiast",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a petrol car with apple carplay under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "petrol",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Need a manual car for enthusiast",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for premium use under 40 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for student",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a muv with cruise control",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol automatic muv with apple carplay",
+    "body_type": "muv",
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Suggest a electric automatic mpv with apple carplay",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "Suggest a cng automatic mpv with android auto",
+    "body_type": "mpv",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric automatic car for budget",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "budget",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual mpv under 6 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric manual hatchback with airbags",
+    "body_type": "hatchback",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a hatchback with airbags",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for family use under 30 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a manual car for student",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for premium under 40 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a muv for student",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for commute under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric muv below 10 lakh",
+    "body_type": "muv",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual suv under 20 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a diesel automatic car for highway",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for premium use under 12 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "premium",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic suv under 6 lakh",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a cng automatic car for enthusiast",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "automatic",
+    "use_case": "enthusiast",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a manual car for city",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for parents with good mileage under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a sedan under 50 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with sunroof under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a muv with android auto",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for student use under 8 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a electric automatic mpv with android auto",
+    "body_type": "mpv",
+    "fuel_type": "electric",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric manual car for premium",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "premium",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a sedan for budget",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for a suv for highway",
+    "body_type": "suv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for budget use under 30 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an automatic sedan under 10 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": 1000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for commute under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a electric manual car for city",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "manual",
+    "use_case": "city",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a safe car for highway under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "highway",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for city use under 18 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "city",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a petrol manual hatchback with cruise control",
+    "body_type": "hatchback",
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel manual mpv with abs",
+    "body_type": "mpv",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best sedan for enthusiast use under 18 lakh",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "enthusiast",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best muv for commute use under 6 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "commute",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with airbags under 12 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1200000,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with abs under 6 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 600000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": true,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a hatchback under 15 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a car for parents with good mileage under 20 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "parents",
+    "price_max": 2000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual muv under 18 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual hatchback under 18 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a sedan with android auto",
+    "body_type": "sedan",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": true,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a mpv with sunroof",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": true,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best mpv for family use under 18 lakh",
+    "body_type": "mpv",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "family",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Looking for an manual muv under 50 lakh",
+    "body_type": "muv",
+    "fuel_type": "unknown",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": 5000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a electric car with airbags under 8 lakh",
+    "body_type": "unknown",
+    "fuel_type": "electric",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 800000,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a diesel car with airbags under 30 lakh",
+    "body_type": "unknown",
+    "fuel_type": "diesel",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 3000000,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel manual suv with airbags",
+    "body_type": "suv",
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": true,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a hatchback under 40 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 4000000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Recommend a hatchback with apple carplay",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  },
+  {
+    "query": "I want a safe car for student under 15 lakh",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "student",
+    "price_max": 1500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Best hatchback for budget use under 18 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "budget",
+    "price_max": 1800000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I need a hatchback under 25 lakh",
+    "body_type": "hatchback",
+    "fuel_type": "unknown",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Need a automatic car for highway",
+    "body_type": "unknown",
+    "fuel_type": "unknown",
+    "transmission": "automatic",
+    "use_case": "highway",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "Suggest a diesel automatic muv with cruise control",
+    "body_type": "muv",
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "use_case": "general",
+    "price_max": null,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": true,
+      "android_auto": false,
+      "apple_carplay": false
+    }
+  },
+  {
+    "query": "I want a cng car with apple carplay under 25 lakh",
+    "body_type": "unknown",
+    "fuel_type": "cng",
+    "transmission": "unknown",
+    "use_case": "general",
+    "price_max": 2500000,
+    "features": {
+      "sunroof": false,
+      "airbags": false,
+      "abs": false,
+      "cruise_control": false,
+      "android_auto": false,
+      "apple_carplay": true
+    }
+  }
+]

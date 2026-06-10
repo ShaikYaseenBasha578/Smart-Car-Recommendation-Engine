@@ -1,0 +1,3766 @@
+{
+  "regex_accuracy": 0.6197183098591549,
+  "ml_accuracy": 0.971830985915493,
+  "details": [
+    {
+      "query": "Need a automatic car for budget",
+      "expected": {
+        "transmission": "automatic",
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "transmission": "automatic",
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for a hatchback for budget",
+      "expected": {
+        "body_type": "hatchback",
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "body_type": "hatchback"
+      },
+      "ml_prediction": {
+        "body_type": "hatchback",
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a petrol car with android auto under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "fuel_type": "petrol",
+        "android_auto": true
+      },
+      "regex_prediction": {
+        "price_max": 1000000
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "fuel_type": "petrol",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": null,
+          "correct": false
+        },
+        "android_auto": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": "petrol",
+          "correct": true
+        },
+        "android_auto": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Need a electric manual car for commute",
+      "expected": {
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "commute"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "commute"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": "commute",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a diesel automatic car for family",
+      "expected": {
+        "fuel_type": "diesel",
+        "transmission": "automatic",
+        "use_case": "family"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "fuel_type": "diesel",
+        "transmission": "automatic",
+        "use_case": "family"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": "family",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for commute with good mileage under 40 lakh",
+      "expected": {
+        "price_max": 4000000,
+        "use_case": "commute"
+      },
+      "regex_prediction": {
+        "price_max": 4000000
+      },
+      "ml_prediction": {
+        "price_max": 4000000,
+        "use_case": "commute"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": "commute",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for a suv for enthusiast",
+      "expected": {
+        "body_type": "suv",
+        "use_case": "enthusiast"
+      },
+      "regex_prediction": {
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "use_case": "enthusiast"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "enthusiast",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "enthusiast",
+          "predicted": "enthusiast",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for highway with good mileage under 12 lakh",
+      "expected": {
+        "price_max": 1200000,
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "price_max": 1200000
+      },
+      "ml_prediction": {
+        "price_max": 1200000,
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a electric automatic hatchback with airbags",
+      "expected": {
+        "body_type": "hatchback",
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "airbags": true
+      },
+      "regex_prediction": {
+        "body_type": "hatchback",
+        "transmission": "automatic",
+        "airbags": true
+      },
+      "ml_prediction": {
+        "body_type": "hatchback",
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "use_case": "general",
+        "airbags": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel muv below 25 lakh",
+      "expected": {
+        "price_max": 2500000,
+        "body_type": "muv",
+        "fuel_type": "diesel"
+      },
+      "regex_prediction": {
+        "price_max": 2500000,
+        "body_type": "muv"
+      },
+      "ml_prediction": {
+        "price_max": 2500000,
+        "body_type": "muv",
+        "fuel_type": "diesel",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a cng automatic car for parents",
+      "expected": {
+        "fuel_type": "cng",
+        "transmission": "automatic",
+        "use_case": "parents"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "fuel_type": "cng",
+        "transmission": "automatic",
+        "use_case": "parents"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": "cng",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": "parents",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a manual car for premium",
+      "expected": {
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel manual hatchback with abs",
+      "expected": {
+        "body_type": "hatchback",
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "abs": true
+      },
+      "regex_prediction": {
+        "body_type": "hatchback",
+        "transmission": "manual",
+        "abs": true
+      },
+      "ml_prediction": {
+        "body_type": "hatchback",
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "use_case": "general",
+        "abs": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for premium with good mileage under 50 lakh",
+      "expected": {
+        "price_max": 5000000,
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "price_max": 5000000
+      },
+      "ml_prediction": {
+        "price_max": 5000000,
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for parents under 20 lakh",
+      "expected": {
+        "price_max": 2000000,
+        "use_case": "parents"
+      },
+      "regex_prediction": {
+        "price_max": 2000000
+      },
+      "ml_prediction": {
+        "price_max": 2000000,
+        "use_case": "parents"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": "parents",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Best suv for commute use under 25 lakh",
+      "expected": {
+        "price_max": 2500000,
+        "body_type": "suv",
+        "use_case": "commute"
+      },
+      "regex_prediction": {
+        "price_max": 2500000,
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "price_max": 2500000,
+        "body_type": "suv",
+        "use_case": "commute"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": "commute",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an manual sedan under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "body_type": "sedan",
+        "transmission": "manual"
+      },
+      "regex_prediction": {
+        "price_max": 1000000,
+        "body_type": "sedan",
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "body_type": "sedan",
+        "transmission": "manual",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for highway with good mileage under 18 lakh",
+      "expected": {
+        "price_max": 1800000,
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "price_max": 1800000
+      },
+      "ml_prediction": {
+        "price_max": 1800000,
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for parents with good mileage under 18 lakh",
+      "expected": {
+        "price_max": 1800000,
+        "use_case": "parents"
+      },
+      "regex_prediction": {
+        "price_max": 1800000
+      },
+      "ml_prediction": {
+        "price_max": 1800000,
+        "use_case": "parents"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": "parents",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for family with good mileage under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "family"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "family"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": "family",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for family under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "family"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "family"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": "family",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a petrol manual car for highway",
+      "expected": {
+        "fuel_type": "petrol",
+        "transmission": "manual",
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "fuel_type": "petrol",
+        "transmission": "manual",
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": "petrol",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for budget with good mileage under 30 lakh",
+      "expected": {
+        "price_max": 3000000,
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "price_max": 3000000
+      },
+      "ml_prediction": {
+        "price_max": 3000000,
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 3000000,
+          "predicted": 3000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 3000000,
+          "predicted": 3000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a electric car with airbags under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "fuel_type": "electric",
+        "airbags": true
+      },
+      "regex_prediction": {
+        "price_max": 1000000,
+        "airbags": true
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "fuel_type": "electric",
+        "use_case": "general",
+        "airbags": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for budget with good mileage under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for highway under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel manual hatchback with sunroof",
+      "expected": {
+        "body_type": "hatchback",
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "sunroof": true
+      },
+      "regex_prediction": {
+        "body_type": "hatchback",
+        "transmission": "manual",
+        "sunroof": true
+      },
+      "ml_prediction": {
+        "body_type": "hatchback",
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "use_case": "general",
+        "sunroof": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a petrol automatic suv with airbags",
+      "expected": {
+        "body_type": "suv",
+        "fuel_type": "petrol",
+        "transmission": "automatic",
+        "airbags": true
+      },
+      "regex_prediction": {
+        "body_type": "suv",
+        "transmission": "automatic",
+        "airbags": true
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "fuel_type": "petrol",
+        "transmission": "automatic",
+        "use_case": "general",
+        "airbags": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": "petrol",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I need a suv under 6 lakh",
+      "expected": {
+        "price_max": 600000,
+        "body_type": "suv"
+      },
+      "regex_prediction": {
+        "price_max": 600000,
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "price_max": 600000,
+        "body_type": "suv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 600000,
+          "predicted": 600000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 600000,
+          "predicted": 600000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a petrol manual car for premium",
+      "expected": {
+        "fuel_type": "petrol",
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "fuel_type": "petrol",
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": "petrol",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a diesel car with abs under 20 lakh",
+      "expected": {
+        "price_max": 2000000,
+        "fuel_type": "diesel",
+        "abs": true
+      },
+      "regex_prediction": {
+        "price_max": 2000000,
+        "abs": true
+      },
+      "ml_prediction": {
+        "price_max": 2000000,
+        "fuel_type": "diesel",
+        "use_case": "general",
+        "abs": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a electric automatic mpv with cruise control",
+      "expected": {
+        "body_type": "mpv",
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "cruise_control": true
+      },
+      "regex_prediction": {
+        "body_type": "mpv",
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "body_type": "mpv",
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "cruise_control": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "cruise_control": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Best sedan for premium use under 25 lakh",
+      "expected": {
+        "price_max": 2500000,
+        "body_type": "sedan",
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "price_max": 2500000,
+        "body_type": "sedan"
+      },
+      "ml_prediction": {
+        "price_max": 2500000,
+        "body_type": "sedan",
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Recommend a muv with apple carplay",
+      "expected": {
+        "body_type": "muv",
+        "apple_carplay": true
+      },
+      "regex_prediction": {
+        "body_type": "muv"
+      },
+      "ml_prediction": {
+        "body_type": "muv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "apple_carplay": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "apple_carplay": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Recommend a suv with android auto",
+      "expected": {
+        "body_type": "suv",
+        "android_auto": true
+      },
+      "regex_prediction": {
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "android_auto": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "android_auto": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Best sedan for budget use under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "body_type": "sedan",
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "price_max": 1000000,
+        "body_type": "sedan"
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "body_type": "sedan",
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a petrol mpv below 18 lakh",
+      "expected": {
+        "price_max": 1800000,
+        "body_type": "mpv",
+        "fuel_type": "petrol"
+      },
+      "regex_prediction": {
+        "price_max": 1800000,
+        "body_type": "mpv"
+      },
+      "ml_prediction": {
+        "price_max": 1800000,
+        "body_type": "mpv",
+        "fuel_type": "petrol",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "petrol",
+          "predicted": "petrol",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Best hatchback for highway use under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "body_type": "hatchback",
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "price_max": 1500000,
+        "body_type": "hatchback"
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "body_type": "hatchback",
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I need a muv under 8 lakh",
+      "expected": {
+        "price_max": 800000,
+        "body_type": "muv"
+      },
+      "regex_prediction": {
+        "price_max": 800000,
+        "body_type": "muv"
+      },
+      "ml_prediction": {
+        "price_max": 800000,
+        "body_type": "muv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel sedan below 8 lakh",
+      "expected": {
+        "price_max": 800000,
+        "body_type": "sedan",
+        "fuel_type": "diesel"
+      },
+      "regex_prediction": {
+        "price_max": 800000,
+        "body_type": "sedan"
+      },
+      "ml_prediction": {
+        "price_max": 800000,
+        "body_type": "sedan",
+        "fuel_type": "diesel",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a cng muv below 12 lakh",
+      "expected": {
+        "price_max": 1200000,
+        "body_type": "muv",
+        "fuel_type": "cng"
+      },
+      "regex_prediction": {
+        "price_max": 1200000,
+        "body_type": "muv"
+      },
+      "ml_prediction": {
+        "price_max": 1200000,
+        "body_type": "muv",
+        "fuel_type": "cng",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": "cng",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a diesel car with sunroof under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "fuel_type": "diesel",
+        "sunroof": true
+      },
+      "regex_prediction": {
+        "price_max": 1500000,
+        "sunroof": true
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "fuel_type": "diesel",
+        "use_case": "general",
+        "sunroof": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an automatic sedan under 50 lakh",
+      "expected": {
+        "price_max": 5000000,
+        "body_type": "sedan",
+        "transmission": "automatic"
+      },
+      "regex_prediction": {
+        "price_max": 5000000,
+        "body_type": "sedan",
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "price_max": 5000000,
+        "body_type": "sedan",
+        "transmission": "automatic",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an manual muv under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "body_type": "muv",
+        "transmission": "manual"
+      },
+      "regex_prediction": {
+        "price_max": 1000000,
+        "body_type": "muv",
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "body_type": "muv",
+        "transmission": "manual",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a electric manual mpv with airbags",
+      "expected": {
+        "body_type": "mpv",
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "airbags": true
+      },
+      "regex_prediction": {
+        "body_type": "mpv",
+        "transmission": "manual",
+        "airbags": true
+      },
+      "ml_prediction": {
+        "body_type": "mpv",
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "general",
+        "airbags": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a electric automatic car for family",
+      "expected": {
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "use_case": "family"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "fuel_type": "electric",
+        "transmission": "automatic",
+        "use_case": "family"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": "family",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for a hatchback for city",
+      "expected": {
+        "body_type": "hatchback",
+        "use_case": "city"
+      },
+      "regex_prediction": {
+        "body_type": "hatchback"
+      },
+      "ml_prediction": {
+        "body_type": "hatchback",
+        "use_case": "city"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": "city",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for a suv for premium",
+      "expected": {
+        "body_type": "suv",
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for commute with good mileage under 25 lakh",
+      "expected": {
+        "price_max": 2500000,
+        "use_case": "commute"
+      },
+      "regex_prediction": {
+        "price_max": 2500000
+      },
+      "ml_prediction": {
+        "price_max": 2500000,
+        "use_case": "commute"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": "commute",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an automatic suv under 8 lakh",
+      "expected": {
+        "price_max": 800000,
+        "body_type": "suv",
+        "transmission": "automatic"
+      },
+      "regex_prediction": {
+        "price_max": 800000,
+        "body_type": "suv",
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "price_max": 800000,
+        "body_type": "suv",
+        "transmission": "automatic",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Best mpv for student use under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "body_type": "mpv",
+        "use_case": "student"
+      },
+      "regex_prediction": {
+        "price_max": 1500000,
+        "body_type": "mpv"
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "body_type": "mpv",
+        "use_case": "student"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "student",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "student",
+          "predicted": "student",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an automatic mpv under 20 lakh",
+      "expected": {
+        "price_max": 2000000,
+        "body_type": "mpv",
+        "transmission": "automatic"
+      },
+      "regex_prediction": {
+        "price_max": 2000000,
+        "body_type": "mpv",
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "price_max": 2000000,
+        "body_type": "mpv",
+        "transmission": "automatic",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a diesel automatic car for enthusiast",
+      "expected": {
+        "fuel_type": "diesel",
+        "transmission": "automatic",
+        "use_case": "enthusiast"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "fuel_type": "diesel",
+        "transmission": "automatic",
+        "use_case": "enthusiast"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "enthusiast",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "enthusiast",
+          "predicted": "enthusiast",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a diesel manual car for premium",
+      "expected": {
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "fuel_type": "diesel",
+        "transmission": "manual",
+        "use_case": "premium"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "premium",
+          "predicted": "premium",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a electric manual muv with airbags",
+      "expected": {
+        "body_type": "muv",
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "airbags": true
+      },
+      "regex_prediction": {
+        "body_type": "muv",
+        "transmission": "manual",
+        "airbags": true
+      },
+      "ml_prediction": {
+        "body_type": "muv",
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "general",
+        "airbags": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "airbags": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I need a mpv under 40 lakh",
+      "expected": {
+        "price_max": 4000000,
+        "body_type": "mpv"
+      },
+      "regex_prediction": {
+        "price_max": 4000000,
+        "body_type": "mpv"
+      },
+      "ml_prediction": {
+        "price_max": 4000000,
+        "body_type": "mpv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a cng car with abs under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "fuel_type": "cng",
+        "abs": true
+      },
+      "regex_prediction": {
+        "price_max": 1000000,
+        "abs": true
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "fuel_type": "cng",
+        "use_case": "general",
+        "abs": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": null,
+          "correct": false
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": "cng",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Recommend a mpv with abs",
+      "expected": {
+        "body_type": "mpv",
+        "abs": true
+      },
+      "regex_prediction": {
+        "body_type": "mpv",
+        "abs": true
+      },
+      "ml_prediction": {
+        "body_type": "mpv",
+        "use_case": "general",
+        "abs": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for city with good mileage under 18 lakh",
+      "expected": {
+        "price_max": 1800000,
+        "use_case": "city"
+      },
+      "regex_prediction": {
+        "price_max": 1800000
+      },
+      "ml_prediction": {
+        "price_max": 1800000,
+        "use_case": "city"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": "city",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a manual car for budget",
+      "expected": {
+        "transmission": "manual",
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "transmission": "manual",
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a manual car for highway",
+      "expected": {
+        "transmission": "manual",
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "transmission": "manual",
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a diesel car with abs under 8 lakh",
+      "expected": {
+        "price_max": 800000,
+        "fuel_type": "diesel",
+        "abs": true
+      },
+      "regex_prediction": {
+        "price_max": 800000,
+        "abs": true
+      },
+      "ml_prediction": {
+        "price_max": 800000,
+        "fuel_type": "diesel",
+        "use_case": "general",
+        "abs": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "abs": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a diesel car with sunroof under 8 lakh",
+      "expected": {
+        "price_max": 800000,
+        "fuel_type": "diesel",
+        "sunroof": true
+      },
+      "regex_prediction": {
+        "price_max": 800000,
+        "sunroof": true
+      },
+      "ml_prediction": {
+        "price_max": 800000,
+        "fuel_type": "diesel",
+        "use_case": "general",
+        "sunroof": true
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 800000,
+          "predicted": 800000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Recommend a suv with cruise control",
+      "expected": {
+        "body_type": "suv",
+        "cruise_control": true
+      },
+      "regex_prediction": {
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "cruise_control": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "cruise_control": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Best suv for commute use under 20 lakh",
+      "expected": {
+        "price_max": 2000000,
+        "body_type": "suv",
+        "use_case": "commute"
+      },
+      "regex_prediction": {
+        "price_max": 2000000,
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "price_max": 2000000,
+        "body_type": "suv",
+        "use_case": "commute"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "commute",
+          "predicted": "commute",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for parents under 18 lakh",
+      "expected": {
+        "price_max": 1800000,
+        "use_case": "parents"
+      },
+      "regex_prediction": {
+        "price_max": 1800000
+      },
+      "ml_prediction": {
+        "price_max": 1800000,
+        "use_case": "parents"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1800000,
+          "predicted": 1800000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": "parents",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a cng automatic car for highway",
+      "expected": {
+        "fuel_type": "cng",
+        "transmission": "automatic",
+        "use_case": "highway"
+      },
+      "regex_prediction": {
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "fuel_type": "cng",
+        "transmission": "automatic",
+        "use_case": "highway"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": "cng",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "highway",
+          "predicted": "highway",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a electric car with apple carplay under 10 lakh",
+      "expected": {
+        "price_max": 1000000,
+        "fuel_type": "electric",
+        "apple_carplay": true
+      },
+      "regex_prediction": {
+        "price_max": 1000000
+      },
+      "ml_prediction": {
+        "price_max": 1000000,
+        "fuel_type": "electric",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "apple_carplay": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1000000,
+          "predicted": 1000000,
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "apple_carplay": {
+          "expected": true,
+          "predicted": null,
+          "correct": false
+        }
+      }
+    },
+    {
+      "query": "Recommend a suv with sunroof",
+      "expected": {
+        "body_type": "suv",
+        "sunroof": true
+      },
+      "regex_prediction": {
+        "body_type": "suv",
+        "sunroof": true
+      },
+      "ml_prediction": {
+        "body_type": "suv",
+        "use_case": "general",
+        "sunroof": true
+      },
+      "regex_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "sunroof": {
+          "expected": true,
+          "predicted": true,
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for budget with good mileage under 40 lakh",
+      "expected": {
+        "price_max": 4000000,
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "price_max": 4000000
+      },
+      "ml_prediction": {
+        "price_max": 4000000,
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 4000000,
+          "predicted": 4000000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an automatic sedan under 6 lakh",
+      "expected": {
+        "price_max": 600000,
+        "body_type": "sedan",
+        "transmission": "automatic"
+      },
+      "regex_prediction": {
+        "price_max": 600000,
+        "body_type": "sedan",
+        "transmission": "automatic"
+      },
+      "ml_prediction": {
+        "price_max": 600000,
+        "body_type": "sedan",
+        "transmission": "automatic",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 600000,
+          "predicted": 600000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 600000,
+          "predicted": 600000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "sedan",
+          "predicted": "sedan",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "automatic",
+          "predicted": "automatic",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a car for family with good mileage under 12 lakh",
+      "expected": {
+        "price_max": 1200000,
+        "use_case": "family"
+      },
+      "regex_prediction": {
+        "price_max": 1200000
+      },
+      "ml_prediction": {
+        "price_max": 1200000,
+        "use_case": "family"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "family",
+          "predicted": "family",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel mpv below 20 lakh",
+      "expected": {
+        "price_max": 2000000,
+        "body_type": "mpv",
+        "fuel_type": "diesel"
+      },
+      "regex_prediction": {
+        "price_max": 2000000,
+        "body_type": "mpv"
+      },
+      "ml_prediction": {
+        "price_max": 2000000,
+        "body_type": "mpv",
+        "fuel_type": "diesel",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2000000,
+          "predicted": 2000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "mpv",
+          "predicted": "mpv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for city under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "city"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "city"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "city",
+          "predicted": "city",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "I want a safe car for parents under 15 lakh",
+      "expected": {
+        "price_max": 1500000,
+        "use_case": "parents"
+      },
+      "regex_prediction": {
+        "price_max": 1500000
+      },
+      "ml_prediction": {
+        "price_max": 1500000,
+        "use_case": "parents"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1500000,
+          "predicted": 1500000,
+          "correct": true
+        },
+        "use_case": {
+          "expected": "parents",
+          "predicted": "parents",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a cng suv below 12 lakh",
+      "expected": {
+        "price_max": 1200000,
+        "body_type": "suv",
+        "fuel_type": "cng"
+      },
+      "regex_prediction": {
+        "price_max": 1200000,
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "price_max": 1200000,
+        "body_type": "suv",
+        "fuel_type": "cng",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "cng",
+          "predicted": "cng",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a diesel suv below 50 lakh",
+      "expected": {
+        "price_max": 5000000,
+        "body_type": "suv",
+        "fuel_type": "diesel"
+      },
+      "regex_prediction": {
+        "price_max": 5000000,
+        "body_type": "suv"
+      },
+      "ml_prediction": {
+        "price_max": 5000000,
+        "body_type": "suv",
+        "fuel_type": "diesel",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 5000000,
+          "predicted": 5000000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "suv",
+          "predicted": "suv",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "diesel",
+          "predicted": "diesel",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Suggest a electric hatchback below 25 lakh",
+      "expected": {
+        "price_max": 2500000,
+        "body_type": "hatchback",
+        "fuel_type": "electric"
+      },
+      "regex_prediction": {
+        "price_max": 2500000,
+        "body_type": "hatchback"
+      },
+      "ml_prediction": {
+        "price_max": 2500000,
+        "body_type": "hatchback",
+        "fuel_type": "electric",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 2500000,
+          "predicted": 2500000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "hatchback",
+          "predicted": "hatchback",
+          "correct": true
+        },
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Need a electric manual car for budget",
+      "expected": {
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "budget"
+      },
+      "regex_prediction": {
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "fuel_type": "electric",
+        "transmission": "manual",
+        "use_case": "budget"
+      },
+      "regex_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": null,
+          "correct": false
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": null,
+          "correct": false
+        }
+      },
+      "ml_field_scores": {
+        "fuel_type": {
+          "expected": "electric",
+          "predicted": "electric",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        },
+        "use_case": {
+          "expected": "budget",
+          "predicted": "budget",
+          "correct": true
+        }
+      }
+    },
+    {
+      "query": "Looking for an manual muv under 12 lakh",
+      "expected": {
+        "price_max": 1200000,
+        "body_type": "muv",
+        "transmission": "manual"
+      },
+      "regex_prediction": {
+        "price_max": 1200000,
+        "body_type": "muv",
+        "transmission": "manual"
+      },
+      "ml_prediction": {
+        "price_max": 1200000,
+        "body_type": "muv",
+        "transmission": "manual",
+        "use_case": "general"
+      },
+      "regex_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      },
+      "ml_field_scores": {
+        "price_max": {
+          "expected": 1200000,
+          "predicted": 1200000,
+          "correct": true
+        },
+        "body_type": {
+          "expected": "muv",
+          "predicted": "muv",
+          "correct": true
+        },
+        "transmission": {
+          "expected": "manual",
+          "predicted": "manual",
+          "correct": true
+        }
+      }
+    }
+  ]
+}

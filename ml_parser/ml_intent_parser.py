@@ -1,0 +1,272 @@
+import os
+import re
+import joblib
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, "saved_models")
+
+
+BODY_TYPE_TO_COLUMN = {
+    "suv": "Body_Type_SUV",
+    "sedan": "Body_Type_Sedan",
+    "hatchback": "Body_Type_Hatchback",
+    "mpv": "Body_Type_MPV",
+    "muv": "Body_Type_MUV",
+    "coupe": "Body_Type_Coupe",
+    "convertible": "Body_Type_Convertible",
+    "pickup": "Body_Type_Pick-up",
+    "wagon": "Body_Type_Wagon",
+    "crossover": "Body_Type_Crossover",
+    "sports": "Body_Type_Sports"
+}
+
+
+MAKE_NORMALIZATION = {
+    "tata": "Tata",
+    "datsun": "Datsun",
+    "renault": "Renault",
+    "maruti": "Maruti Suzuki",
+    "suzuki": "Maruti Suzuki",
+    "maruti suzuki": "Maruti Suzuki",
+    "hyundai": "Hyundai",
+    "toyota": "Toyota",
+    "nissan": "Nissan",
+    "volkswagen": "Volkswagen",
+    "ford": "Ford",
+    "mahindra": "Mahindra",
+    "fiat": "Fiat",
+    "honda": "Honda",
+    "skoda": "Skoda",
+    "jeep": "Jeep",
+    "mg": "Mg",
+    "kia": "Kia",
+    "volvo": "Volvo",
+    "bmw": "Bmw",
+    "audi": "Audi",
+    "land rover": "Land Rover",
+    "lexus": "Lexus",
+    "jaguar": "Jaguar",
+    "porsche": "Porsche",
+    "maserati": "Maserati",
+    "lamborghini": "Lamborghini",
+    "bentley": "Bentley",
+    "ferrari": "Ferrari",
+    "aston martin": "Aston Martin",
+    "isuzu": "Isuzu"
+}
+
+
+def load_model(name):
+    path = os.path.join(MODEL_DIR, f"{name}_model.pkl")
+    if not os.path.exists(path):
+        raise FileNotFoundError(
+            f"Missing model: {path}. Run python ml_parser/train_parser.py first."
+        )
+    return joblib.load(path)
+
+
+class MLIntentParser:
+    def __init__(self):
+        self.body_type_model = load_model("body_type")
+        self.fuel_type_model = load_model("fuel_type")
+        self.transmission_model = load_model("transmission")
+        self.use_case_model = load_model("use_case")
+
+    def extract_price(self, query):
+        query = query.lower()
+
+        range_match = re.search(r"(\d+)\s*to\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        if range_match:
+            min_val = int(range_match.group(1))
+            max_val = int(range_match.group(2))
+            unit = range_match.group(3) or "lakh"
+
+            multiplier = 10000000 if unit in ["cr", "crore"] else 100000
+
+            return {
+                "price_min": min_val * multiplier,
+                "price_max": max_val * multiplier
+            }
+
+        under_match = re.search(r"(under|below|less than|max|maximum|upto|up to)\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        if under_match:
+            val = int(under_match.group(2))
+            unit = under_match.group(3) or "lakh"
+
+            multiplier = 10000000 if unit in ["cr", "crore"] else 100000
+
+            return {
+                "price_min": None,
+                "price_max": val * multiplier
+            }
+
+        above_match = re.search(r"(above|over|more than|min|minimum)\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        if above_match:
+            val = int(above_match.group(2))
+            unit = above_match.group(3) or "lakh"
+
+            multiplier = 10000000 if unit in ["cr", "crore"] else 100000
+
+            return {
+                "price_min": val * multiplier,
+                "price_max": None
+            }
+
+        return {
+            "price_min": None,
+            "price_max": None
+        }
+
+    def extract_seating_capacity(self, query):
+        match = re.search(r"(\d+)[- ]?seater", query.lower())
+        if match:
+            return int(match.group(1))
+
+        if "large family" in query.lower() or "big family" in query.lower():
+            return 7
+
+        return None
+
+    def extract_mileage(self, query):
+        query = query.lower()
+
+        range_match = re.search(r"(\d+)\s*to\s*(\d+)\s*kmpl", query)
+        if range_match:
+            return [int(range_match.group(1)), int(range_match.group(2))]
+
+        min_match = re.search(r"(above|more than|at least|min|minimum)\s*(\d+)\s*kmpl", query)
+        if min_match:
+            return [int(min_match.group(2)), float("inf")]
+
+        max_match = re.search(r"(under|below|less than|max|maximum)\s*(\d+)\s*kmpl", query)
+        if max_match:
+            return [0, int(max_match.group(2))]
+
+        if "good mileage" in query or "fuel efficient" in query or "high mileage" in query:
+            return [18, float("inf")]
+
+        return None
+
+    def extract_features(self, query):
+        q = query.lower()
+
+        return {
+            "Sunroof": int("sunroof" in q or "panoramic roof" in q),
+            "Airbags": int("airbag" in q or "airbags" in q),
+            "ABS_(Anti-lock_Braking_System)": int("abs" in q or "anti-lock" in q),
+            "Cruise_Control": int("cruise control" in q),
+            "Android_Auto": int("android auto" in q),
+            "Apple_CarPlay": int("apple carplay" in q or "carplay" in q)
+        }
+
+    def extract_makes(self, query):
+        q = query.lower()
+        found = []
+
+        for raw_make, normalized_make in MAKE_NORMALIZATION.items():
+            pattern = r"\b" + re.escape(raw_make) + r"\b"
+            if re.search(pattern, q):
+                found.append(normalized_make)
+
+        return list(dict.fromkeys(found))
+
+    def predict_label(self, model, query):
+        prediction = model.predict([query])[0]
+        return prediction
+
+    def parse_to_intent(self, query):
+        body_type = self.predict_label(self.body_type_model, query)
+        fuel_type = self.predict_label(self.fuel_type_model, query)
+        transmission = self.predict_label(self.transmission_model, query)
+        use_case = self.predict_label(self.use_case_model, query)
+
+        price = self.extract_price(query)
+        seating_capacity = self.extract_seating_capacity(query)
+        mileage = self.extract_mileage(query)
+        features = self.extract_features(query)
+        makes = self.extract_makes(query)
+
+        intent = {
+            "price_min": price["price_min"],
+            "price_max": price["price_max"],
+            "makes": makes,
+            "body_type": body_type,
+            "fuel_type": fuel_type,
+            "transmission": transmission,
+            "seating_capacity": seating_capacity,
+            "mileage": mileage,
+            "features": features,
+            "use_case": use_case
+        }
+
+        return intent
+
+    def intent_to_filters(self, intent):
+        filters = {}
+
+        price_min = intent.get("price_min")
+        price_max = intent.get("price_max")
+
+        if price_min is not None and price_max is not None:
+            filters["Ex-Showroom_Price"] = [price_min, price_max]
+        elif price_max is not None:
+            filters["Ex-Showroom_Price"] = price_max
+        elif price_min is not None:
+            # Your current filter_cars does not properly support lower-only price.
+            # We keep this for future hybrid ranking.
+            filters["price_min_only"] = price_min
+
+        if intent.get("makes"):
+            filters["Make"] = intent["makes"]
+
+        body_type = intent.get("body_type")
+        if body_type and body_type != "unknown":
+            if body_type in BODY_TYPE_TO_COLUMN:
+                filters["Body_Type"] = BODY_TYPE_TO_COLUMN[body_type]
+
+        transmission = intent.get("transmission")
+        if transmission == "automatic":
+            filters["Transmission_Automatic"] = 1
+        elif transmission == "manual":
+            filters["Transmission_Manual"] = 1
+
+        seating_capacity = intent.get("seating_capacity")
+        if seating_capacity is not None:
+            filters["Seating_Capacity"] = seating_capacity
+
+        mileage = intent.get("mileage")
+        if mileage is not None:
+            filters["ARAI_Certified_Mileage"] = mileage
+
+        fuel_type = intent.get("fuel_type")
+        if fuel_type and fuel_type != "unknown":
+            filters[f"Fuel_Type_{fuel_type.title()}"] = 1
+
+        for feature_name, value in intent.get("features", {}).items():
+            if value == 1:
+                filters[feature_name] = 1
+
+        return filters
+
+    def parse(self, query):
+        intent = self.parse_to_intent(query)
+        filters = self.intent_to_filters(intent)
+
+        return {
+            "parser_used": "self_made_ml_parser",
+            "intent": intent,
+            "filters": filters
+        }
+
+
+_parser_instance = None
+
+
+def preprocess_user_input_ml(query):
+    global _parser_instance
+
+    if _parser_instance is None:
+        _parser_instance = MLIntentParser()
+
+    return _parser_instance.parse(query)

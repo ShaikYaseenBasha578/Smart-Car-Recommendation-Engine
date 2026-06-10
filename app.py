@@ -1,78 +1,210 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
+
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import NearestNeighbors
+import os
+import traceback
+
 from utils import preprocess_user_input, filter_cars
-from utils_used import preprocess_user_input_used, scrape_cars24_selenium, scrape_cartrade_with_selenium  
-import os  # ✅ Import for checking image file existence
+from ml_parser.ml_intent_parser import preprocess_user_input_ml
+from ranking_engine import rank_cars
+
+from utils_used import (
+    preprocess_user_input_used,
+    scrape_cars24_selenium,
+    scrape_cartrade_with_selenium,
+    generate_cartrade_filtered_url
+)
+
 
 app = Flask(__name__)
 CORS(app)
 
-# Load assets
-with open('car_recommendation_assets/label_encoders.pkl', 'rb') as f:
+
+# =========================
+# Load Assets
+# =========================
+
+with open("car_recommendation_assets/label_encoders.pkl", "rb") as f:
     label_encoders = pickle.load(f)
 
-with open('car_recommendation_assets/categorical_mappings.pkl', 'rb') as f:
+with open("car_recommendation_assets/categorical_mappings.pkl", "rb") as f:
     categorical_mappings = pickle.load(f)
 
 df = pd.read_csv("car_recommendation_assets/processed_dataset.csv")
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 
-@app.route('/recommend')
+# =========================
+# Helper Functions
+# =========================
+
+def safe_slug(value):
+    if value is None:
+        return "unknown"
+
+    try:
+        if pd.isna(value):
+            return "unknown"
+    except Exception:
+        pass
+
+    return str(value).lower().replace(" ", "-")
+
+
+def format_cardekho_url(make, model):
+    return f"https://www.cardekho.com/{safe_slug(make)}/{safe_slug(model)}"
+
+
+def format_carwale_url(make, model):
+    return f"https://www.carwale.com/{safe_slug(make)}-cars/{safe_slug(model)}"
+
+
+def make_json_safe(value):
+    """
+    Converts NumPy/Pandas values into JSON-safe Python values.
+    """
+    if isinstance(value, list):
+        return [make_json_safe(v) for v in value]
+
+    if isinstance(value, tuple):
+        return [make_json_safe(v) for v in value]
+
+    if isinstance(value, dict):
+        return {k: make_json_safe(v) for k, v in value.items()}
+
+    if isinstance(value, (np.integer,)):
+        return int(value)
+
+    if isinstance(value, (np.floating,)):
+        if np.isnan(value) or np.isinf(value):
+            return None
+        return float(value)
+
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+
+    try:
+        if pd.isna(value):
+            return None
+    except Exception:
+        pass
+
+    return value
+
+
+# =========================
+# Page Routes
+# =========================
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/recommend")
 def recommend_page():
-    return render_template('recommend.html')
+    return render_template("recommend.html")
+
 
 @app.route("/used")
 def used_page():
     return render_template("used.html")
 
+
+# =========================
+# Used Cars Route
+# =========================
+
 @app.route("/used-cars", methods=["POST"])
 def get_used_cars():
-    query = request.get_json()["query"]
-    
-    print("🔎 Received query:", query)
+    try:
+        query = request.get_json().get("query")
 
-    # This function should return a properly structured filters dict
-    filters = preprocess_user_input_used(query)  # ✅ this returns a dictionary!
+        if not query:
+            return jsonify({"error": "No query provided"}), 400
 
-    print("🧠 Parsed filters:", filters)
+        print("🔎 Received used-car query:", query)
 
-    results = []
+        filters = preprocess_user_input_used(query)
 
-    cars24_results = scrape_cars24_selenium(filters)
-    if cars24_results:
-        results.extend(cars24_results)
+        print("🧠 Used-car parsed filters:", filters)
 
-    cartrade_results = scrape_cartrade_with_selenium(filters)
-    if cartrade_results:
-        results.extend(cartrade_results)
+        results = []
 
-    return jsonify({"recommendations": results})
+        cars24_results = scrape_cars24_selenium(filters)
+        if cars24_results:
+            results.extend(cars24_results)
+
+        cartrade_url = generate_cartrade_filtered_url(filters)
+        print("🔗 CarTrade URL:", cartrade_url)
+
+        cartrade_results = scrape_cartrade_with_selenium(cartrade_url)
+        if cartrade_results:
+            results.extend(cartrade_results)
+
+        return jsonify({
+            "filters": make_json_safe(filters),
+            "recommendations": make_json_safe(results)
+        }), 200
+
+    except Exception as e:
+        traceback.print_exc()
+        print("❌ Used-car error:", e)
+        return jsonify({"error": str(e)}), 500
 
 
+# =========================
+# New Car Recommendation Route
+# =========================
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
     try:
-        user_query = request.json.get('query')
+        user_query = request.json.get("query")
+
         if not user_query:
             return jsonify({"error": "No query provided"}), 400
 
-        filters = preprocess_user_input(user_query)
+        print("🔎 Received new-car query:", user_query)
 
-        make_mapping = categorical_mappings['make_mapping']
-        model_mapping = categorical_mappings['model_mapping']
-        variant_mapping = categorical_mappings['variant_mapping']
-        reverse_make_mapping = categorical_mappings['reverse_make_mapping']
-        reverse_model_mapping = categorical_mappings['reverse_model_mapping']
-        reverse_variant_mapping = categorical_mappings['reverse_variant_mapping']
+        # =========================
+        # Parser: ML first, regex fallback
+        # =========================
+
+        try:
+            parser_result = preprocess_user_input_ml(user_query)
+            filters = parser_result["filters"]
+
+            print("🧠 Parser used:", parser_result["parser_used"])
+            print("🧾 ML intent:", parser_result["intent"])
+            print("🔎 Final filters:", filters)
+
+        except Exception as e:
+            print("⚠️ ML parser failed, using regex fallback:", e)
+
+            filters = preprocess_user_input(user_query)
+
+            parser_result = {
+                "parser_used": "regex_fallback",
+                "intent": None
+            }
+
+            print("🔎 Regex fallback filters:", filters)
+
+        # =========================
+        # Mappings
+        # =========================
+
+        make_mapping = categorical_mappings["make_mapping"]
+        reverse_make_mapping = categorical_mappings["reverse_make_mapping"]
+        reverse_model_mapping = categorical_mappings["reverse_model_mapping"]
+        reverse_variant_mapping = categorical_mappings["reverse_variant_mapping"]
+
+        # =========================
+        # Filter Dataset
+        # =========================
 
         filtered_df = filter_cars(
             df,
@@ -84,100 +216,152 @@ def predict():
         )
 
         if filtered_df.empty:
-            return jsonify({"message": "No cars found matching your query."}), 200
+            return jsonify({
+                "parser_used": parser_result["parser_used"],
+                "intent": make_json_safe(parser_result["intent"]),
+                "filters": make_json_safe(filters),
+                "message": "No cars found matching your query."
+            }), 200
 
-        numerical_cols = ['Ex-Showroom_Price', 'Displacement', 'Power', 'ARAI_Certified_Mileage']
-        scaler = StandardScaler()
-        filtered_df[numerical_cols] = scaler.fit_transform(filtered_df[numerical_cols])
+        filtered_df = filtered_df.copy()
 
-        encoded_cats = filtered_df.filter(like='_').values
-        final_features = np.hstack((filtered_df[numerical_cols], encoded_cats))
+        # =========================
+        # Ranking Engine
+        # =========================
 
-        knn_model = NearestNeighbors(n_neighbors=min(10, len(filtered_df)), metric='euclidean')
-        knn_model.fit(final_features)
-
-        query_vector = np.zeros(len(numerical_cols))
-        query_categorical = np.zeros(encoded_cats.shape[1])
-        one_hot_columns = list(df.filter(like='_').columns)
-
-        for col in filters:
-            if col in numerical_cols:
-                query_vector[numerical_cols.index(col)] = np.mean(filters[col]) if isinstance(filters[col], list) else filters[col]
-            elif col in df.columns:
-                cat_column_name = col + "_" + str(filters[col])
-                if cat_column_name in one_hot_columns:
-                    cat_index = one_hot_columns.index(cat_column_name)
-                    query_categorical[cat_index] = 1
-
-        full_query_vector = np.hstack((query_vector, query_categorical))
-        distances, indices = knn_model.kneighbors(full_query_vector.reshape(1, -1))
+        ranked_df = rank_cars(
+            filtered_df=filtered_df,
+            filters=filters,
+            intent=parser_result.get("intent"),
+            top_n=20
+        )
 
         selected_cars = []
         make_count = {}
-        total_printed = 0
+
         max_recommendations = 10
         max_per_make = 2
+        total_printed = 0
 
-        for index in indices[0]:
+        for _, car in ranked_df.iterrows():
             if total_printed >= max_recommendations:
                 break
-            car = filtered_df.iloc[index]
-            make_name = car['Make']
+
+            make_name = car["Make"]
+
             if make_count.get(make_name, 0) >= max_per_make:
                 continue
+
             make_count[make_name] = make_count.get(make_name, 0) + 1
+
             selected_cars.append(car.to_dict())
             total_printed += 1
 
-        def format_cardekho_url(make, model):
-            make_slug = make.lower().replace(" ", "-")
-            model_slug = model.lower().replace(" ", "-")
-            return f"https://www.cardekho.com/{make_slug}/{model_slug}"
+        # =========================
+        # Format Output Cars
+        # =========================
 
-        def format_carwale_url(make, model):
-            make_slug = make.lower().replace(" ", "-")
-            model_slug = model.lower().replace(" ", "-")
-            return f"https://www.carwale.com/{make_slug}-cars/{model_slug}"
-        
         for car in selected_cars:
-            car['Ex-Showroom_Price'] = car['Ex-Showroom_Price'] * scaler.scale_[0] + scaler.mean_[0]
-            car['Displacement'] = car['Displacement'] * scaler.scale_[1] + scaler.mean_[1]
-            car['Power'] = car['Power'] * scaler.scale_[2] + scaler.mean_[2]
-            car['ARAI_Certified_Mileage'] = car['ARAI_Certified_Mileage'] * scaler.scale_[3] + scaler.mean_[3]
+            car["Transmission"] = "Not specified"
 
-            car['Transmission'] = 'Not specified'
             for key in car:
-                if key.startswith('Transmission_') and car[key] == 1:
-                    car['Transmission'] = key.replace('Transmission_', '').replace('_', ' ').title()
+                if key.startswith("Transmission_") and car[key] == 1:
+                    car["Transmission"] = (
+                        key.replace("Transmission_", "")
+                        .replace("_", " ")
+                        .title()
+                    )
 
-            car['Fuel_Type'] = 'Not specified'
+            car["Fuel_Type"] = "Not specified"
+
             for key in car:
-                if key.startswith('Fuel_Type_') and car[key] == 1:
-                    car['Fuel_Type'] = key.replace('Fuel_Type_', '').replace('_', ' ').title()
+                if key.startswith("Fuel_Type_") and car[key] == 1:
+                    car["Fuel_Type"] = (
+                        key.replace("Fuel_Type_", "")
+                        .replace("_", " ")
+                        .title()
+                    )
 
-            car['carDekhoLink'] = format_cardekho_url(car['Make'], car['Model'])
-            car['carWaleLink'] = format_carwale_url(car['Make'], car['Model'])
+            car["carDekhoLink"] = format_cardekho_url(
+                car.get("Make"),
+                car.get("Model")
+            )
 
-            # ✅ Image Handling: check if image exists else use default
-            image_filename = f"{car['Make'].lower().replace(' ', '_')}_{car['Model'].lower().replace(' ', '_')}.jpg"
-            image_path = os.path.join(app.root_path, 'static', 'car_images', image_filename)
+            car["carWaleLink"] = format_carwale_url(
+                car.get("Make"),
+                car.get("Model")
+            )
+
+            image_filename = (
+                f"{str(car.get('Make')).lower().replace(' ', '_')}_"
+                f"{str(car.get('Model')).lower().replace(' ', '_')}.jpg"
+            )
+
+            image_path = os.path.join(
+                app.root_path,
+                "static",
+                "car_images",
+                image_filename
+            )
 
             if os.path.exists(image_path):
-                car['carImage'] = f"/static/car_images/{image_filename}"
+                car["carImage"] = f"/static/car_images/{image_filename}"
             else:
-                car['carImage'] = "/static/car_images/pic1.avif"  # Default fallback
+                car["carImage"] = "/static/car_images/pic1.avif"
 
+        # =========================
+        # Remove Duplicate Models + Clean Frontend Response
+        # =========================
 
-        # ✅ Remove duplicate models and return top 4
         unique_models = {}
-        for car in selected_cars:
-            if car['Model'] not in unique_models:
-                unique_models[car['Model']] = car
 
-        return jsonify({"recommendations": list(unique_models.values())[:4]}), 200
+        for car in selected_cars:
+            model_name = car.get("Model")
+
+            if model_name not in unique_models:
+                clean_car = {
+                    "Make": make_json_safe(car.get("Make")),
+                    "Model": make_json_safe(car.get("Model")),
+                    "Variant": make_json_safe(car.get("Variant")),
+                    "Ex-Showroom_Price": make_json_safe(car.get("Ex-Showroom_Price")),
+                    "Displacement": make_json_safe(car.get("Displacement")),
+                    "Power": make_json_safe(car.get("Power")),
+                    "ARAI_Certified_Mileage": make_json_safe(car.get("ARAI_Certified_Mileage")),
+                    "Transmission": make_json_safe(car.get("Transmission")),
+                    "Fuel_Type": make_json_safe(car.get("Fuel_Type")),
+                    "carImage": make_json_safe(car.get("carImage")),
+                    "carDekhoLink": make_json_safe(car.get("carDekhoLink")),
+                    "carWaleLink": make_json_safe(car.get("carWaleLink")),
+                    "ranking_score": make_json_safe(car.get("ranking_score")),
+                    "match_reasons": make_json_safe(car.get("match_reasons")),
+                }
+
+                unique_models[model_name] = clean_car
+
+        recommendations = list(unique_models.values())[:4]
+
+        print("✅ Returning recommendations:", len(recommendations))
+
+        for rec in recommendations:
+            print(
+                rec.get("Make"),
+                rec.get("Model"),
+                rec.get("Variant"),
+                rec.get("ranking_score")
+            )
+
+        return jsonify({
+            "parser_used": parser_result["parser_used"],
+            "intent": make_json_safe(parser_result["intent"]),
+            "filters": make_json_safe(filters),
+            "recommendations": recommendations
+        }), 200
 
     except Exception as e:
+        traceback.print_exc()
+        print("❌ Prediction error:", e)
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True, port=5001)
