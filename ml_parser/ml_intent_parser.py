@@ -59,10 +59,12 @@ MAKE_NORMALIZATION = {
 
 def load_model(name):
     path = os.path.join(MODEL_DIR, f"{name}_model.pkl")
+
     if not os.path.exists(path):
         raise FileNotFoundError(
             f"Missing model: {path}. Run python ml_parser/train_parser.py first."
         )
+
     return joblib.load(path)
 
 
@@ -73,10 +75,78 @@ class MLIntentParser:
         self.transmission_model = load_model("transmission")
         self.use_case_model = load_model("use_case")
 
+    # =========================
+    # Rule-Based Exact Extractors
+    # =========================
+
+    def extract_exact_body_type(self, query):
+        q = query.lower()
+
+        body_keywords = {
+            "suv": ["suv", "compact suv"],
+            "sedan": ["sedan"],
+            "hatchback": ["hatchback"],
+            "mpv": ["mpv"],
+            "muv": ["muv"],
+            "coupe": ["coupe"],
+            "convertible": ["convertible"],
+            "pickup": ["pickup", "pick-up"],
+            "wagon": ["wagon"],
+            "crossover": ["crossover"],
+            "sports": ["sports car", "sporty car"]
+        }
+
+        for body_type, keywords in body_keywords.items():
+            for keyword in keywords:
+                if re.search(r"\b" + re.escape(keyword) + r"\b", q):
+                    return body_type
+
+        return None
+
+    def extract_exact_fuel_type(self, query):
+        q = query.lower()
+
+        fuel_keywords = {
+            "diesel": ["diesel"],
+            "petrol": ["petrol", "gasoline"],
+            "cng": ["cng"],
+            "electric": ["electric", "ev"],
+            "hybrid": ["hybrid"]
+        }
+
+        for fuel_type, keywords in fuel_keywords.items():
+            for keyword in keywords:
+                if re.search(r"\b" + re.escape(keyword) + r"\b", q):
+                    return fuel_type
+
+        return None
+
+    def extract_exact_transmission(self, query):
+        q = query.lower()
+
+        has_automatic = re.search(r"\b(automatic|amt|cvt|dct|auto)\b", q)
+        has_manual = re.search(r"\bmanual\b", q)
+
+        if has_automatic and not has_manual:
+            return "automatic"
+
+        if has_manual and not has_automatic:
+            return "manual"
+
+        return None
+
+    # =========================
+    # Rule-Based Numeric Extractors
+    # =========================
+
     def extract_price(self, query):
         query = query.lower()
 
-        range_match = re.search(r"(\d+)\s*to\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        range_match = re.search(
+            r"(\d+)\s*to\s*(\d+)\s*(lakh|lakhs|cr|crore)?",
+            query
+        )
+
         if range_match:
             min_val = int(range_match.group(1))
             max_val = int(range_match.group(2))
@@ -89,7 +159,11 @@ class MLIntentParser:
                 "price_max": max_val * multiplier
             }
 
-        under_match = re.search(r"(under|below|less than|max|maximum|upto|up to)\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        under_match = re.search(
+            r"(under|below|less than|max|maximum|upto|up to)\s*(\d+)\s*(lakh|lakhs|cr|crore)?",
+            query
+        )
+
         if under_match:
             val = int(under_match.group(2))
             unit = under_match.group(3) or "lakh"
@@ -101,7 +175,11 @@ class MLIntentParser:
                 "price_max": val * multiplier
             }
 
-        above_match = re.search(r"(above|over|more than|min|minimum)\s*(\d+)\s*(lakh|lakhs|cr|crore)?", query)
+        above_match = re.search(
+            r"(above|over|more than|min|minimum)\s*(\d+)\s*(lakh|lakhs|cr|crore)?",
+            query
+        )
+
         if above_match:
             val = int(above_match.group(2))
             unit = above_match.group(3) or "lakh"
@@ -119,11 +197,14 @@ class MLIntentParser:
         }
 
     def extract_seating_capacity(self, query):
-        match = re.search(r"(\d+)[- ]?seater", query.lower())
+        q = query.lower()
+
+        match = re.search(r"(\d+)[- ]?seater", q)
+
         if match:
             return int(match.group(1))
 
-        if "large family" in query.lower() or "big family" in query.lower():
+        if "large family" in q or "big family" in q:
             return 7
 
         return None
@@ -132,18 +213,31 @@ class MLIntentParser:
         query = query.lower()
 
         range_match = re.search(r"(\d+)\s*to\s*(\d+)\s*kmpl", query)
+
         if range_match:
             return [int(range_match.group(1)), int(range_match.group(2))]
 
-        min_match = re.search(r"(above|more than|at least|min|minimum)\s*(\d+)\s*kmpl", query)
+        min_match = re.search(
+            r"(above|more than|at least|min|minimum)\s*(\d+)\s*kmpl",
+            query
+        )
+
         if min_match:
             return [int(min_match.group(2)), float("inf")]
 
-        max_match = re.search(r"(under|below|less than|max|maximum)\s*(\d+)\s*kmpl", query)
+        max_match = re.search(
+            r"(under|below|less than|max|maximum)\s*(\d+)\s*kmpl",
+            query
+        )
+
         if max_match:
             return [0, int(max_match.group(2))]
 
-        if "good mileage" in query or "fuel efficient" in query or "high mileage" in query:
+        if (
+            "good mileage" in query
+            or "fuel efficient" in query
+            or "high mileage" in query
+        ):
             return [18, float("inf")]
 
         return None
@@ -166,20 +260,40 @@ class MLIntentParser:
 
         for raw_make, normalized_make in MAKE_NORMALIZATION.items():
             pattern = r"\b" + re.escape(raw_make) + r"\b"
+
             if re.search(pattern, q):
                 found.append(normalized_make)
 
         return list(dict.fromkeys(found))
+
+    # =========================
+    # ML Prediction + Hybrid Intent
+    # =========================
 
     def predict_label(self, model, query):
         prediction = model.predict([query])[0]
         return prediction
 
     def parse_to_intent(self, query):
+        # ML predictions
         body_type = self.predict_label(self.body_type_model, query)
         fuel_type = self.predict_label(self.fuel_type_model, query)
         transmission = self.predict_label(self.transmission_model, query)
         use_case = self.predict_label(self.use_case_model, query)
+
+        # Exact rule-based overrides
+        exact_body_type = self.extract_exact_body_type(query)
+        exact_fuel_type = self.extract_exact_fuel_type(query)
+        exact_transmission = self.extract_exact_transmission(query)
+
+        if exact_body_type is not None:
+            body_type = exact_body_type
+
+        if exact_fuel_type is not None:
+            fuel_type = exact_fuel_type
+
+        if exact_transmission is not None:
+            transmission = exact_transmission
 
         price = self.extract_price(query)
         seating_capacity = self.extract_seating_capacity(query)
@@ -210,36 +324,42 @@ class MLIntentParser:
 
         if price_min is not None and price_max is not None:
             filters["Ex-Showroom_Price"] = [price_min, price_max]
+
         elif price_max is not None:
             filters["Ex-Showroom_Price"] = price_max
+
         elif price_min is not None:
-            # Your current filter_cars does not properly support lower-only price.
-            # We keep this for future hybrid ranking.
             filters["price_min_only"] = price_min
 
         if intent.get("makes"):
             filters["Make"] = intent["makes"]
 
         body_type = intent.get("body_type")
+
         if body_type and body_type != "unknown":
             if body_type in BODY_TYPE_TO_COLUMN:
                 filters["Body_Type"] = BODY_TYPE_TO_COLUMN[body_type]
 
         transmission = intent.get("transmission")
+
         if transmission == "automatic":
             filters["Transmission_Automatic"] = 1
+
         elif transmission == "manual":
             filters["Transmission_Manual"] = 1
 
         seating_capacity = intent.get("seating_capacity")
+
         if seating_capacity is not None:
             filters["Seating_Capacity"] = seating_capacity
 
         mileage = intent.get("mileage")
+
         if mileage is not None:
             filters["ARAI_Certified_Mileage"] = mileage
 
         fuel_type = intent.get("fuel_type")
+
         if fuel_type and fuel_type != "unknown":
             filters[f"Fuel_Type_{fuel_type.title()}"] = 1
 

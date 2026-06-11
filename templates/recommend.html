@@ -34,27 +34,35 @@
     </header>
 
     <section class="recommend">
-        <div class="box">
-            <h1 class="text">Recommend Cars According To Search</h1>
-            <div id="result-box" class="lists">
-                <!-- Cards will be injected here dynamically -->
-            </div>
+    <div class="box">
+        <h1 class="text">Recommend Cars According To Search</h1>
+
+        <div class="search-again-box">
+            <input 
+                type="text" 
+                id="recommendQuery" 
+                placeholder="Ask another query, e.g. automatic SUV under 15 lakh"
+            >
+            <button type="button" onclick="searchAgain()">Search</button>
+        </div>
+
+        <div id="current-query"></div>
+
+        <div id="result-box" class="lists">
+            <!-- Cards will be injected here dynamically -->
+        </div>
         </div>
     </section>
 
    <script>
-    window.onload = async function () {
-        const userQuery = localStorage.getItem("userQuery");
+    async function fetchRecommendations(query) {
         const resultBox = document.getElementById("result-box");
-
-        console.log("USER QUERY:", userQuery);
+        const currentQueryBox = document.getElementById("current-query");
+        const inputBox = document.getElementById("recommendQuery");
 
         resultBox.innerHTML = "<p>Loading recommendations...</p>";
-
-        if (!userQuery) {
-            resultBox.innerHTML = "<p>No search query found. Please go back and search again.</p>";
-            return;
-        }
+        currentQueryBox.innerHTML = `<p><strong>Query:</strong> ${query}</p>`;
+        inputBox.value = query;
 
         try {
             const response = await fetch("/predict", {
@@ -62,13 +70,12 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ query: userQuery })
+                body: JSON.stringify({ query: query })
             });
 
             const data = await response.json();
 
             console.log("FULL BACKEND RESPONSE:", data);
-            console.log("RECOMMENDATIONS:", data.recommendations);
 
             resultBox.innerHTML = "";
 
@@ -134,9 +141,45 @@
 
         } catch (error) {
             console.error("FRONTEND ERROR:", error);
-            resultBox.innerHTML = "<p>Frontend error. Open browser console for details.</p>";
+            resultBox.innerHTML = `
+                <p>Frontend error:</p>
+                <pre style="white-space: pre-wrap; color: red;">${error.message}</pre>
+            `;
         }
+    }
+
+    function searchAgain() {
+        const query = document.getElementById("recommendQuery").value.trim();
+
+        if (!query) {
+            alert("Please enter a query.");
+            return;
+        }
+
+        localStorage.setItem("userQuery", query);
+        fetchRecommendations(query);
+    }
+
+    window.onload = function () {
+        const userQuery = localStorage.getItem("userQuery");
+
+        if (!userQuery) {
+            document.getElementById("result-box").innerHTML =
+                "<p>No search query found. Please go back and search again.</p>";
+            return;
+        }
+
+        fetchRecommendations(userQuery);
     };
+    document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        const activeElement = document.activeElement;
+
+        if (activeElement && activeElement.id === "recommendQuery") {
+            searchAgain();
+        }
+    }
+});
 </script>
 </body>
 </html>

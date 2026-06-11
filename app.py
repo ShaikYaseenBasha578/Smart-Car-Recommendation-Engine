@@ -63,27 +63,29 @@ def format_carwale_url(make, model):
 
 def make_json_safe(value):
     """
-    Converts NumPy/Pandas values into JSON-safe Python values.
+    Converts NumPy/Pandas/Python values into valid JSON-safe values.
+    Handles NaN and Infinity properly.
     """
+
+    if isinstance(value, dict):
+        return {k: make_json_safe(v) for k, v in value.items()}
+
     if isinstance(value, list):
         return [make_json_safe(v) for v in value]
 
     if isinstance(value, tuple):
         return [make_json_safe(v) for v in value]
 
-    if isinstance(value, dict):
-        return {k: make_json_safe(v) for k, v in value.items()}
+    if isinstance(value, np.ndarray):
+        return [make_json_safe(v) for v in value.tolist()]
 
-    if isinstance(value, (np.integer,)):
+    if isinstance(value, (np.integer, int)) and not isinstance(value, bool):
         return int(value)
 
-    if isinstance(value, (np.floating,)):
+    if isinstance(value, (np.floating, float)):
         if np.isnan(value) or np.isinf(value):
             return None
         return float(value)
-
-    if isinstance(value, np.ndarray):
-        return value.tolist()
 
     try:
         if pd.isna(value):
