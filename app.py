@@ -96,6 +96,99 @@ def make_json_safe(value):
     return value
 
 
+def normalize_column_name(value):
+    return (
+        str(value)
+        .lower()
+        .replace("_", "")
+        .replace("-", "")
+        .replace(" ", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("/", "")
+    )
+
+
+def apply_hard_feature_filters(filtered_df, filters):
+    """
+    Applies strict filters for explicitly requested hard features.
+    If the dataset does not contain a reliable column for the requested feature,
+    we return it as unsupported instead of pretending.
+    """
+
+    unsupported_features = []
+
+    hard_feature_keywords = {
+        "Sunroof": [
+            "sunroof",
+            "sunroofs",
+            "sun_roof",
+            "panoramicroof",
+            "panoramic_roof",
+            "panoramic roof",
+            "moonroof",
+            "moon_roof"
+        ],
+        "Ventilated_Seats": [
+            "ventilatedseats",
+            "ventilatedseat",
+            "ventilated_seats",
+            "ventilated_seat",
+            "seatventilation",
+            "seat_ventilation",
+            "cooledseats",
+            "cooled_seats",
+            "coolingseats",
+            "cooling_seats"
+        ],
+        "Airbags": [
+            "airbag",
+            "airbags",
+            "numberofairbags"
+        ],
+        "ABS_(Anti-lock_Braking_System)": [
+            "abs",
+            "antilock",
+            "antilockbrakingsystem"
+        ]
+    }
+
+    for filter_name, keywords in hard_feature_keywords.items():
+        if filters.get(filter_name) == 1:
+            matching_cols = []
+
+            for col in filtered_df.columns:
+                normalized_col = normalize_column_name(col)
+
+                if any(normalize_column_name(keyword) in normalized_col for keyword in keywords):
+                    matching_cols.append(col)
+
+            print(f"🔒 Hard filter requested: {filter_name}")
+            print(f"🔎 Matching columns found for {filter_name}:", matching_cols)
+
+            if matching_cols:
+                before_shape = filtered_df.shape
+
+                feature_values = (
+                    filtered_df[matching_cols]
+                    .apply(pd.to_numeric, errors="coerce")
+                    .fillna(0)
+                )
+
+                filtered_df = filtered_df[
+                    (feature_values > 0).any(axis=1)
+                ]
+
+                print(f"🔒 {filter_name} filter before:", before_shape)
+                print(f"🔒 {filter_name} filter after:", filtered_df.shape)
+
+            else:
+                print(f"⚠️ Requested feature not available in dataset: {filter_name}")
+                unsupported_features.append(filter_name)
+
+    return filtered_df, unsupported_features
+
+
 # =========================
 # Page Routes
 # =========================
@@ -217,11 +310,35 @@ def predict():
             reverse_variant_mapping=reverse_variant_mapping
         )
 
+        # =========================
+        # Hard Feature Filters
+        # =========================
+
+        filtered_df, unsupported_features = apply_hard_feature_filters(
+            filtered_df,
+            filters
+        )
+
+        if unsupported_features:
+            return jsonify({
+                "parser_used": parser_result["parser_used"],
+                "intent": make_json_safe(parser_result["intent"]),
+                "filters": make_json_safe(filters),
+                "recommendations": [],
+                "message": (
+                    "Your query requested "
+                    + ", ".join(unsupported_features)
+                    + ", but this dataset does not contain reliable information for that feature. "
+                    + "Please remove that feature or update the dataset with this column."
+                )
+            }), 200
+
         if filtered_df.empty:
             return jsonify({
                 "parser_used": parser_result["parser_used"],
                 "intent": make_json_safe(parser_result["intent"]),
                 "filters": make_json_safe(filters),
+                "recommendations": [],
                 "message": "No cars found matching your query."
             }), 200
 

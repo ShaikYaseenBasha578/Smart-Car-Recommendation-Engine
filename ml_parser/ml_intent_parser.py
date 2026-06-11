@@ -135,6 +135,35 @@ class MLIntentParser:
 
         return None
 
+    def extract_exact_use_case(self, query):
+        q = query.lower()
+
+        if any(word in q for word in ["premium", "luxury", "luxurious"]):
+            return "premium"
+
+        if any(word in q for word in ["family", "families", "large family", "big family"]):
+            return "family"
+
+        if any(word in q for word in ["parents", "elderly", "senior"]):
+            return "parents"
+
+        if any(word in q for word in ["highway", "long drive", "long drives", "road trip", "touring"]):
+            return "highway"
+
+        if any(word in q for word in ["student", "college"]):
+            return "student"
+
+        if any(word in q for word in ["budget", "cheap", "affordable", "low cost"]):
+            return "budget"
+
+        if any(word in q for word in ["city", "traffic", "commute", "daily use", "daily city"]):
+            return "city"
+
+        if any(word in q for word in ["enthusiast", "performance", "sporty", "fun to drive"]):
+            return "enthusiast"
+
+        return None
+
     # =========================
     # Rule-Based Numeric Extractors
     # =========================
@@ -245,14 +274,64 @@ class MLIntentParser:
     def extract_features(self, query):
         q = query.lower()
 
-        return {
-            "Sunroof": int("sunroof" in q or "panoramic roof" in q),
-            "Airbags": int("airbag" in q or "airbags" in q),
-            "ABS_(Anti-lock_Braking_System)": int("abs" in q or "anti-lock" in q),
-            "Cruise_Control": int("cruise control" in q),
-            "Android_Auto": int("android auto" in q),
-            "Apple_CarPlay": int("apple carplay" in q or "carplay" in q)
+        feature_keywords = {
+            "Sunroof": [
+                "sunroof",
+                "sun roof",
+                "panoramic roof",
+                "moonroof",
+                "moon roof"
+            ],
+            "Ventilated_Seats": [
+                "ventilated seats",
+                "ventilated seat",
+                "ventilated front seats",
+                "seat ventilation",
+                "cooled seats",
+                "cooled seat",
+                "cooling seats"
+            ],
+            "Airbags": [
+                "airbag",
+                "airbags",
+                "safety airbags"
+            ],
+            "ABS_(Anti-lock_Braking_System)": [
+                "abs",
+                "anti-lock",
+                "anti lock",
+                "anti-lock braking system",
+                "anti lock braking system"
+            ],
+            "Cruise_Control": [
+                "cruise control"
+            ],
+            "Android_Auto": [
+                "android auto"
+            ],
+            "Apple_CarPlay": [
+                "apple carplay",
+                "carplay"
+            ]
         }
+
+        features = {
+            "Sunroof": 0,
+            "Ventilated_Seats": 0,
+            "Airbags": 0,
+            "ABS_(Anti-lock_Braking_System)": 0,
+            "Cruise_Control": 0,
+            "Android_Auto": 0,
+            "Apple_CarPlay": 0
+        }
+
+        for feature_name, keywords in feature_keywords.items():
+            for keyword in keywords:
+                if re.search(r"\b" + re.escape(keyword) + r"\b", q):
+                    features[feature_name] = 1
+                    break
+
+        return features
 
     def extract_makes(self, query):
         q = query.lower()
@@ -285,6 +364,7 @@ class MLIntentParser:
         exact_body_type = self.extract_exact_body_type(query)
         exact_fuel_type = self.extract_exact_fuel_type(query)
         exact_transmission = self.extract_exact_transmission(query)
+        exact_use_case = self.extract_exact_use_case(query)
 
         if exact_body_type is not None:
             body_type = exact_body_type
@@ -294,6 +374,9 @@ class MLIntentParser:
 
         if exact_transmission is not None:
             transmission = exact_transmission
+
+        if exact_use_case is not None:
+            use_case = exact_use_case
 
         price = self.extract_price(query)
         seating_capacity = self.extract_seating_capacity(query)

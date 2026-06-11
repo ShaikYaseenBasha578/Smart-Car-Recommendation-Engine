@@ -43,6 +43,19 @@ def safe_num(value, default=0.0):
         return default
 
 
+def normalize_text(value):
+    return (
+        str(value)
+        .lower()
+        .replace("_", "")
+        .replace("-", "")
+        .replace(" ", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("/", "")
+    )
+
+
 def has_column_value(row, col):
     if col not in row.index:
         return False
@@ -86,7 +99,9 @@ def has_airbags(row):
         return safe_num(row["Airbags"], 0) > 0
 
     for col in row.index:
-        if "airbag" in col.lower() and safe_num(row[col], 0) > 0:
+        lowered = col.lower()
+
+        if "airbag" in lowered and safe_num(row[col], 0) > 0:
             return True
 
     return False
@@ -115,11 +130,43 @@ def has_feature(row, feature_name):
     if feature_name in row.index:
         return safe_num(row[feature_name], 0) > 0
 
-    lowered_feature = feature_name.lower()
+    normalized_feature = normalize_text(feature_name)
+
+    feature_aliases = {
+        "sunroof": [
+            "sunroof",
+            "sunroofs",
+            "sunroofmoonroof",
+            "panoramicroof",
+            "moonroof"
+        ],
+        "ventilatedseats": [
+            "ventilatedseats",
+            "ventilatedseat",
+            "seatventilation",
+            "cooledseats",
+            "coolingseats"
+        ],
+        "cruisecontrol": [
+            "cruisecontrol"
+        ],
+        "androidauto": [
+            "androidauto"
+        ],
+        "applecarplay": [
+            "applecarplay",
+            "carplay"
+        ]
+    }
+
+    patterns = feature_aliases.get(normalized_feature, [normalized_feature])
 
     for col in row.index:
-        if lowered_feature in col.lower() and safe_num(row[col], 0) > 0:
-            return True
+        normalized_col = normalize_text(col)
+
+        if any(pattern in normalized_col for pattern in patterns):
+            if safe_num(row[col], 0) > 0:
+                return True
 
     return False
 
@@ -158,11 +205,11 @@ def price_score(row, filters, use_case):
     if use_case in ["budget", "student"]:
         target_price = price_max * 0.55
 
-    elif use_case in ["premium", "enthusiast"]:
-        target_price = price_max * 0.85
+    elif use_case == "premium":
+        target_price = price_max * 0.92
 
-    elif use_case in ["highway", "premium", "enthusiast"]:
-        target_price = price_max * 0.85
+    elif use_case in ["highway", "enthusiast"]:
+        target_price = price_max * 0.88
 
     elif use_case in ["family", "parents"]:
         target_price = price_max * 0.78
@@ -171,18 +218,32 @@ def price_score(row, filters, use_case):
         target_price = price_max * 0.70
 
     closeness = 1 - abs(price - target_price) / max(price_max, 1)
-    score = max(0, closeness) * 18
+    score = max(0, closeness) * 40
 
     reasons.append("within budget")
 
     budget_utilization = price / price_max
 
-    if use_case in ["highway", "premium", "family"] and 0.70 <= budget_utilization <= 0.98:
-        score += 6
-        reasons.append("uses budget well for this use-case")
+    if use_case == "premium":
+        if 0.75 <= budget_utilization <= 0.98:
+            score += 18
+            reasons.append("uses premium budget well")
 
-    # Avoid recommending ultra-cheap/basic cars for serious use-cases
-    if use_case in ["family", "parents", "highway"] and price < price_max * 0.40:
+        elif budget_utilization < 0.60:
+            score -= 22
+            reasons.append("penalized for underusing premium budget")
+
+    elif use_case in ["highway", "enthusiast"]:
+        if 0.70 <= budget_utilization <= 0.98:
+            score += 12
+            reasons.append("uses budget well for performance use")
+
+    elif use_case in ["family", "parents"]:
+        if 0.60 <= budget_utilization <= 0.95:
+            score += 6
+            reasons.append("uses budget well for practical use")
+
+    if use_case in ["family", "parents", "highway", "premium"] and price < price_max * 0.40:
         score -= 12
         reasons.append("penalized for being too basic for this use-case")
 
@@ -197,7 +258,6 @@ def mileage_score(row, filters, use_case):
     if mileage <= 0:
         return 0, reasons
 
-    # Normalize roughly between 10 and 25 kmpl
     score = np.clip((mileage - 10) / 15, 0, 1) * 12
 
     if mileage >= 18:
@@ -219,6 +279,7 @@ def feature_match_score(row, filters):
 
     feature_map = {
         "Sunroof": "sunroof",
+        "Ventilated_Seats": "ventilated seats",
         "Cruise_Control": "cruise control",
         "Android_Auto": "Android Auto",
         "Apple_CarPlay": "Apple CarPlay",
@@ -239,11 +300,19 @@ def feature_match_score(row, filters):
                 present = has_feature(row, filter_col)
 
             if present:
-                score += 8
+                if filter_col in ["Sunroof", "Ventilated_Seats"]:
+                    score += 15
+                else:
+                    score += 8
+
                 reasons.append(f"has {label}")
 
             else:
-                score -= 4
+                if filter_col in ["Sunroof", "Ventilated_Seats"]:
+                    score -= 50
+                else:
+                    score -= 10
+
                 reasons.append(f"missing requested {label}")
 
     return score, reasons
@@ -277,6 +346,9 @@ def body_type_match_score(row, filters):
     if requested_body_col in row.index and has_column_value(row, requested_body_col):
         score += 12
         reasons.append("matches requested body type")
+    else:
+        score -= 8
+        reasons.append("does not match requested body type")
 
     return score, reasons
 
@@ -291,6 +363,7 @@ def transmission_match_score(row, filters):
             reasons.append("matches automatic preference")
         else:
             score -= 8
+            reasons.append("does not match automatic preference")
 
     if filters.get("Transmission_Manual") == 1:
         if has_column_value(row, "Transmission_Manual"):
@@ -298,6 +371,7 @@ def transmission_match_score(row, filters):
             reasons.append("matches manual preference")
         else:
             score -= 6
+            reasons.append("does not match manual preference")
 
     return score, reasons
 
@@ -316,7 +390,6 @@ def use_case_score(row, use_case):
     torque = safe_num(row.get("Torque"), 0)
     seats = safe_num(row.get("Seating_Capacity"), 0)
 
-    make_name = str(row.get("Make", "")).lower()
     model_name = str(row.get("Model", "")).lower()
 
     # =========================
@@ -362,7 +435,8 @@ def use_case_score(row, use_case):
             "redi go",
             "alto 800",
             "eon",
-            "kwid"
+            "kwid",
+            "qute"
         ]
 
         if any(bad_model in model_name for bad_model in bad_family_models):
@@ -399,7 +473,9 @@ def use_case_score(row, use_case):
             "redi-go",
             "redi go",
             "kwid",
-            "eon"
+            "eon",
+            "re60",
+            "qute"
         ]
 
         if any(bad_model in model_name for bad_model in bad_parent_models):
@@ -521,8 +597,12 @@ def use_case_score(row, use_case):
 
     elif use_case == "premium":
         if has_feature(row, "Sunroof"):
-            score += 6
+            score += 8
             reasons.append("sunroof adds premium feel")
+
+        if has_feature(row, "Ventilated_Seats"):
+            score += 10
+            reasons.append("ventilated seats add premium comfort")
 
         if has_feature(row, "Android_Auto"):
             score += 4
@@ -536,9 +616,13 @@ def use_case_score(row, use_case):
             score += 5
             reasons.append("has cruise control")
 
-        if body_type in ["suv", "sedan"]:
-            score += 7
-            reasons.append("premium body type")
+        if body_type in ["suv", "muv"]:
+            score += 10
+            reasons.append("premium SUV-like body type")
+
+        elif body_type == "sedan":
+            score += 8
+            reasons.append("premium sedan body type")
 
         if power >= 120:
             score += 5
@@ -574,7 +658,8 @@ def model_quality_adjustment(row, use_case):
     bad_makes = [
         "unknown",
         "premier",
-        "fiat"
+        "fiat",
+        "bajaj"
     ]
 
     outdated_or_basic_models = [
@@ -584,7 +669,9 @@ def model_quality_adjustment(row, use_case):
         "redi go",
         "eon",
         "punto",
-        "punto evo"
+        "punto evo",
+        "qute",
+        "re60"
     ]
 
     if make_name in bad_makes:
@@ -592,7 +679,7 @@ def model_quality_adjustment(row, use_case):
         reasons.append("penalized low-confidence/older make")
 
     if any(bad_model in model_name for bad_model in outdated_or_basic_models):
-        score -= 15
+        score -= 18
         reasons.append("penalized outdated/basic model")
 
     family_friendly_models = [
@@ -622,7 +709,8 @@ def model_quality_adjustment(row, use_case):
         "brezza",
         "scorpio",
         "xuv500",
-        "harrier"
+        "harrier",
+        "compass"
     ]
 
     parents_friendly_models = [
@@ -636,6 +724,37 @@ def model_quality_adjustment(row, use_case):
         "tiago",
         "venue",
         "nexon"
+    ]
+
+    premium_strong_models = [
+        "compass",
+        "hector",
+        "harrier",
+        "seltos",
+        "creta",
+        "xuv500",
+        "xuv700",
+        "tucson",
+        "kodiaq",
+        "zs ev",
+        "hexa",
+        "octavia",
+        "passat",
+        "a3",
+        "civic"
+    ]
+
+    premium_weak_models = [
+        "brezza",
+        "wr-v",
+        "terrano",
+        "duster",
+        "ecosport",
+        "kwid",
+        "alto",
+        "s-presso",
+        "redi-go",
+        "redi go"
     ]
 
     if use_case == "family":
@@ -652,6 +771,15 @@ def model_quality_adjustment(row, use_case):
         if any(good_model in model_name for good_model in parents_friendly_models):
             score += 10
             reasons.append("strong parents-friendly model match")
+
+    elif use_case == "premium":
+        if any(model in model_name for model in premium_strong_models):
+            score += 18
+            reasons.append("strong premium model match")
+
+        if any(model in model_name for model in premium_weak_models):
+            score -= 14
+            reasons.append("penalized as less premium for this query")
 
     return score, reasons
 
