@@ -118,29 +118,12 @@ def apply_hard_feature_filters(filtered_df, filters):
 
     unsupported_features = []
 
-    hard_feature_keywords = {
-        "Sunroof": [
-            "sunroof",
-            "sunroofs",
-            "sun_roof",
-            "panoramicroof",
-            "panoramic_roof",
-            "panoramic roof",
-            "moonroof",
-            "moon_roof"
-        ],
-        "Ventilated_Seats": [
-            "ventilatedseats",
-            "ventilatedseat",
-            "ventilated_seats",
-            "ventilated_seat",
-            "seatventilation",
-            "seat_ventilation",
-            "cooledseats",
-            "cooled_seats",
-            "coolingseats",
-            "cooling_seats"
-        ],
+    unsupported_hard_features = {
+        "Sunroof",
+        "Ventilated_Seats"
+    }
+
+    supported_hard_feature_keywords = {
         "Airbags": [
             "airbag",
             "airbags",
@@ -150,10 +133,25 @@ def apply_hard_feature_filters(filtered_df, filters):
             "abs",
             "antilock",
             "antilockbrakingsystem"
+        ],
+        "Cruise_Control": [
+            "cruisecontrol"
+        ],
+        "Android_Auto": [
+            "androidauto"
+        ],
+        "Apple_CarPlay": [
+            "applecarplay",
+            "carplay"
         ]
     }
 
-    for filter_name, keywords in hard_feature_keywords.items():
+    for filter_name in unsupported_hard_features:
+        if filters.get(filter_name) == 1:
+            print(f"⚠️ Requested feature not available in dataset: {filter_name}")
+            unsupported_features.append(filter_name)
+
+    for filter_name, keywords in supported_hard_feature_keywords.items():
         if filters.get(filter_name) == 1:
             matching_cols = []
 
