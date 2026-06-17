@@ -26,6 +26,23 @@ FUEL_TYPE_COLUMNS = {
 }
 
 
+REASON_LABELS = {
+    "Transmission_Automatic": "automatic transmission",
+    "Transmission_Manual": "manual transmission",
+    "Body_Type_SUV": "SUV body type",
+    "Body_Type_Sedan": "sedan body type",
+    "Body_Type_Hatchback": "hatchback body type",
+    "ARAI_Certified_Mileage": "good mileage",
+    "Ex-Showroom_Price": "within budget",
+    "Fuel_Type_Diesel": "diesel fuel preference",
+    "Fuel_Type_Petrol": "petrol fuel preference",
+    "ABS_(Anti-lock_Braking_System)": "ABS safety feature",
+    "Android_Auto": "Android Auto",
+    "Apple_CarPlay": "Apple CarPlay",
+    "Cruise_Control": "cruise control",
+}
+
+
 # =========================
 # Safe Helpers
 # =========================
@@ -181,6 +198,60 @@ def get_requested_budget(filters):
         return price_filter[0], price_filter[1]
 
     return None, price_filter
+
+
+def get_reason_label(column_name):
+    if column_name in REASON_LABELS:
+        return REASON_LABELS[column_name]
+
+    if column_name in BODY_TYPE_COLUMNS.values():
+        body_type = column_name.replace("Body_Type_", "").lower()
+        return f"{body_type} body type"
+
+    if column_name in FUEL_TYPE_COLUMNS.values():
+        fuel_type = column_name.replace("Fuel_Type_", "").lower()
+        return f"{fuel_type} fuel preference"
+
+    return str(column_name).replace("_", " ").strip()
+
+
+def clean_match_reasons(reasons, filters):
+    cleaned_reasons = []
+    seen = set()
+
+    requested_body_col = filters.get("Body_Type")
+
+    for reason in reasons:
+        if reason is None:
+            continue
+
+        cleaned = str(reason).strip()
+        if not cleaned:
+            continue
+
+        if cleaned == "matches requested body type":
+            cleaned = get_reason_label(requested_body_col) if requested_body_col else "requested body type"
+        elif cleaned == "matches automatic preference":
+            cleaned = "automatic transmission"
+        elif cleaned == "matches manual preference":
+            cleaned = "manual transmission"
+        elif cleaned == "matches mileage preference":
+            cleaned = "good mileage"
+        elif cleaned.startswith("matches requested ") and cleaned.endswith(" fuel"):
+            fuel_type = cleaned.replace("matches requested ", "", 1).replace(" fuel", "", 1)
+            cleaned = f"{fuel_type} fuel preference"
+        elif cleaned.startswith("matches "):
+            column_name = cleaned.replace("matches ", "", 1)
+            cleaned = get_reason_label(column_name)
+
+        duplicate_key = cleaned.lower()
+        if duplicate_key in seen:
+            continue
+
+        cleaned_reasons.append(cleaned)
+        seen.add(duplicate_key)
+
+    return cleaned_reasons
 
 
 # =========================
@@ -867,7 +938,7 @@ def rank_cars(filtered_df, filters, intent=None, top_n=20):
     for _, row in ranked_df.iterrows():
         score, reasons = rank_single_car(row, filters, intent)
         scores.append(score)
-        reasons_list.append(reasons[:5])
+        reasons_list.append(clean_match_reasons(reasons, filters)[:5])
 
     ranked_df["ranking_score"] = scores
     ranked_df["match_reasons"] = reasons_list

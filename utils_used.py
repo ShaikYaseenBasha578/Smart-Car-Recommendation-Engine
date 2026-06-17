@@ -11,6 +11,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+def normalize_used_car_result(car, source):
+    return {
+        "title": car.get("title", "") or "",
+        "price": car.get("price", "") or "",
+        "km": car.get("km", "") or "",
+        "fuel": car.get("fuel", "") or "",
+        "transmission": car.get("transmission", "") or "",
+        "owner": car.get("owner", "") or "",
+        "location": car.get("location", "") or "",
+        "image_url": car.get("image_url", "") or "",
+        "listing_url": car.get("listing_url", "") or "",
+        "source": source
+    }
+
 def preprocess_user_input_used(user_query):
     filters = {}
 
@@ -164,13 +178,13 @@ def scrape_cars24_selenium(filters):
             location = card.find_element(By.CSS_SELECTOR, "p.lmmumg").text.strip()
             img_url = card.find_element(By.TAG_NAME, "img").get_attribute("src")
 
-            listings.append({
+            listings.append(normalize_used_car_result({
                 "title": title,
                 "price": price,
                 "location": location,
                 "image_url": img_url,
                 "listing_url": url  # fallback to filtered page URL
-            })
+            }, "Cars24"))
 
         except Exception as e:
             print("⚠️ Error parsing card:", e)
@@ -265,6 +279,335 @@ def generate_cartrade_filtered_url(filters):
     full_url = f"{base_url.format(city=city)}#{query_str}"
     return full_url
 
+def generate_olx_filtered_url(filters):
+    city = filters.get("city", "hyderabad").lower()
+    city_category_urls = {
+        "hyderabad": "https://www.olx.in/hyderabad_g4058526/cars_c84"
+    }
+
+    url = city_category_urls.get(city, city_category_urls["hyderabad"])
+    price_min = filters.get("price_min")
+    price_max = filters.get("price_max")
+    filter_parts = []
+
+    if price_min and price_max:
+        filter_parts.append(f"price_between_{price_min}_to_{price_max}")
+    elif price_max:
+        filter_parts.append(f"price_max_{price_max}")
+    elif price_min:
+        filter_parts.append(f"price_min_{price_min}")
+
+    transmission = filters.get("transmission")
+    if transmission:
+        transmission_map = {
+            "automatic": "transmission_eq_1",
+            "manual": "transmission_eq_2"
+        }
+        transmission_filter = transmission_map.get(str(transmission).lower())
+
+        if transmission_filter:
+            filter_parts.append(transmission_filter)
+
+    if filter_parts:
+        url += "?filter=" + "%2C".join(filter_parts)
+
+    print(f"🔗 OLX generated URL: {url}")
+    return url
+
+def infer_olx_body_type_from_title(title):
+    normalized_title = f" {str(title).lower()} "
+
+    body_type_models = {
+        "hatchback": [
+            "alto",
+            "alto 800",
+            "wagon r",
+            "swift",
+            "baleno",
+            "i20",
+            "grand i10",
+            "santro",
+            "tiago",
+            "polo",
+            "brio",
+            "kwid",
+            "celerio",
+            "ignis",
+            "figo"
+        ],
+        "sedan": [
+            "dzire",
+            "amaze",
+            "city",
+            "verna",
+            "vento",
+            "rapid",
+            "ciaz",
+            "corolla",
+            "altis",
+            "civic",
+            "elantra",
+            "sunny",
+            "aspire",
+            "etios",
+            "slavia",
+            "virtus"
+        ],
+        "suv": [
+            "brezza",
+            "nexon",
+            "creta",
+            "seltos",
+            "venue",
+            "ecosport",
+            "xuv",
+            "harrier",
+            "safari",
+            "hector",
+            "compass",
+            "fortuner",
+            "thar",
+            "scorpio",
+            "duster",
+            "kushaq",
+            "taigun",
+            "sonet",
+            "kiger",
+            "magnite"
+        ],
+        "muv": [
+            "ertiga",
+            "innova",
+            "carens",
+            "marazzo",
+            "triber",
+            "lodgy"
+        ]
+    }
+
+    for body_type, model_names in body_type_models.items():
+        for model_name in model_names:
+            if f" {model_name} " in normalized_title:
+                return body_type
+
+    return ""
+
+def is_valid_olx_image_url(image_url):
+    normalized_url = str(image_url or "").strip()
+    lowered_url = normalized_url.lower()
+
+    if not normalized_url:
+        return False
+
+    if not lowered_url.startswith("http"):
+        return False
+
+    if lowered_url.startswith("data:") or "base64" in lowered_url:
+        return False
+
+    if "placeholder" in lowered_url:
+        return False
+
+    return True
+
+def scrape_olx_selenium(filters):
+    url = generate_olx_filtered_url(filters)
+
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--window-size=1366,900")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("user-agent=Mozilla/5.0")
+
+    driver = webdriver.Chrome(options=options)
+    listings = []
+
+    try:
+        driver.get(url)
+
+        card_selector = (
+            "li[data-aut-id='itemBox'], "
+            "div[data-aut-id='itemBox'], "
+            "a[href*='/item/'], "
+            "a[href*='olx.in/item']"
+        )
+
+        try:
+            WebDriverWait(driver, 12).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, card_selector))
+            )
+        except Exception:
+            print("Timed out waiting for OLX listings to load.")
+            return []
+
+        cards = driver.find_elements(By.CSS_SELECTOR, card_selector)
+        print("🔎 OLX cards found:", len(cards))
+
+        for card in cards:
+            try:
+                def get_text(selectors):
+                    for selector in selectors:
+                        try:
+                            value = card.find_element(By.CSS_SELECTOR, selector).text.strip()
+                            if value:
+                                return value
+                        except Exception:
+                            continue
+                    return ""
+
+                title = get_text([
+                    "[data-aut-id='itemTitle']",
+                    "[data-aut-id='title']",
+                    "[title]",
+                    "span",
+                    "h2",
+                    "h3"
+                ])
+
+                price = get_text([
+                    "[data-aut-id='itemPrice']",
+                    "[data-aut-id='price']",
+                    "[aria-label*='Price']",
+                    "span"
+                ])
+
+                location = get_text([
+                    "[data-aut-id='item-location']",
+                    "[data-aut-id='itemLocation']",
+                    "[data-aut-id='location']",
+                    "[aria-label*='Location']"
+                ])
+
+                listing_url = ""
+                try:
+                    link_tag = card if card.tag_name.lower() == "a" else card.find_element(By.CSS_SELECTOR, "a[href]")
+                    listing_url = link_tag.get_attribute("href") or ""
+                except Exception:
+                    pass
+
+                image_url = ""
+                try:
+                    image_tag = card.find_element(By.TAG_NAME, "img")
+                    srcset = image_tag.get_attribute("srcset") or ""
+
+                    if srcset:
+                        srcset_candidates = [
+                            candidate.strip().split(" ")[0]
+                            for candidate in srcset.split(",")
+                            if candidate.strip()
+                        ]
+                        for candidate in reversed(srcset_candidates):
+                            if is_valid_olx_image_url(candidate):
+                                image_url = candidate
+                                break
+
+                    if not image_url:
+                        data_src = image_tag.get_attribute("data-src") or ""
+                        if is_valid_olx_image_url(data_src):
+                            image_url = data_src
+
+                    if not image_url:
+                        data_original = image_tag.get_attribute("data-original") or ""
+                        if is_valid_olx_image_url(data_original):
+                            image_url = data_original
+
+                    if not image_url:
+                        src = image_tag.get_attribute("src") or ""
+                        if is_valid_olx_image_url(src):
+                            image_url = src
+                except Exception:
+                    pass
+
+                if not image_url:
+                    image_url = "/static/pic.avif"
+
+                if not title and not price and not listing_url:
+                    continue
+
+                listings.append(normalize_used_car_result({
+                    "title": title,
+                    "price": price,
+                    "location": location,
+                    "image_url": image_url,
+                    "listing_url": listing_url
+                }, "OLX"))
+
+            except Exception as e:
+                print("Error parsing an OLX card:", e)
+                continue
+
+        print("🔎 OLX raw listings parsed:", len(listings))
+        strong_matches = []
+        unknown_body_matches = []
+
+        make_filter = filters.get("make")
+        if isinstance(make_filter, list):
+            make_terms = [str(make).lower() for make in make_filter if make]
+        elif make_filter:
+            make_terms = [str(make_filter).lower()]
+        else:
+            make_terms = []
+
+        body_type = filters.get("body_type")
+        transmission = filters.get("transmission")
+        fuel_type = filters.get("fuel_type")
+
+        automatic_terms = ["automatic", "amt", "cvt", "dct", " at "]
+        manual_terms = ["manual", " mt "]
+        fuel_terms = ["petrol", "diesel", "cng", "electric"]
+
+        for listing in listings:
+            searchable_text = " ".join([
+                listing.get("title", ""),
+                listing.get("fuel", ""),
+                listing.get("transmission", ""),
+                listing.get("location", "")
+            ]).lower()
+
+            if make_terms and not any(make in searchable_text for make in make_terms):
+                continue
+
+            if transmission:
+                padded_text = f" {searchable_text} "
+                mentions_automatic = any(term in padded_text for term in automatic_terms)
+                mentions_manual = any(term in padded_text for term in manual_terms)
+
+                if str(transmission).lower() == "automatic" and mentions_manual:
+                    continue
+
+                if str(transmission).lower() == "manual" and mentions_automatic:
+                    continue
+
+            if fuel_type:
+                mentioned_fuels = [fuel for fuel in fuel_terms if fuel in searchable_text]
+                if mentioned_fuels and str(fuel_type).lower() not in mentioned_fuels:
+                    continue
+
+            inferred_body_type = infer_olx_body_type_from_title(listing.get("title", ""))
+
+            if body_type:
+                requested_body_type = str(body_type).lower()
+
+                if inferred_body_type == requested_body_type:
+                    strong_matches.append(listing)
+                elif not inferred_body_type:
+                    unknown_body_matches.append(listing)
+            else:
+                strong_matches.append(listing)
+
+        filtered_listings = strong_matches + unknown_body_matches
+        final_listings = filtered_listings if filtered_listings else listings
+        final_listings = final_listings[:10]
+
+        print("🔎 OLX listings after relevance filtering:", len(filtered_listings))
+        print("✅ OLX listings returned:", len(final_listings))
+        return final_listings
+
+    finally:
+        driver.quit()
+
 def scrape_cartrade_with_selenium(full_url, headless=True):
     # Setup Chrome options
     options = Options()
@@ -334,7 +677,7 @@ def scrape_cartrade_with_selenium(full_url, headless=True):
                         year = word
                         break
 
-            listings.append({
+            listings.append(normalize_used_car_result({
                 "title": title,
                 "price": price,
                 "location": location,
@@ -343,11 +686,10 @@ def scrape_cartrade_with_selenium(full_url, headless=True):
                 "year": year,
                 "image_url": image_url,
                 "listing_url": listing_url
-            })
+            }, "CarTrade"))
         except Exception as e:
             print("Error parsing a card:", e)
             continue
 
     driver.quit()
     return listings
-
