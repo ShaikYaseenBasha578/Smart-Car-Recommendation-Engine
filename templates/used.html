@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="site-page used-page">
   <header>
     <nav>
       <div class="navbar">
@@ -19,12 +19,10 @@
             <li><a href="/">HOME</a></li>
             <li><a href="/#about">ABOUT</a></li>
             <li><a href="/used">USED CARS</a></li>
-            <li><a href="#">SELL</a></li>
-            <li><a href="/#contact">CONTACT US</a></li>
           </ul>
         </div>
         <div class="ICONS">
-          <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Icon">
+          <img class="dark-toggle" src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Toggle dark mode" role="button" tabindex="0">
         </div>
       </div>
     </nav>
@@ -32,10 +30,10 @@
 
   <section class="recommend">
     <div class="box">
-      <h1 class="text">Find the Right <span style="color: #ff6600;">Used Car</span> for You</h1>
+      <h1 class="text">Find the Right <span>Used Car</span> for You</h1>
       <div class="hp-used">
         <input type="text" id="usedQuery" placeholder="e.g. SUV under 15 lakhs in Hyderabad">
-        <button class="search-btn" onclick="sendUsedQuery()">🔍</button>
+        <button class="search-btn" id="usedSearchButton" onclick="sendUsedQuery()">🔍</button>
       </div>      
       <div id="loading" style="display:none; font-size: 20px; text-align:center;">🔄 Loading results...</div>
 
@@ -46,45 +44,109 @@
   </section>
 
   <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      document.body.classList.toggle("dark-mode", savedTheme === "dark");
+
+      const toggle = document.querySelector(".dark-toggle");
+      if (!toggle) return;
+
+      function toggleTheme() {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+      }
+
+      toggle.addEventListener("click", toggleTheme);
+      toggle.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleTheme();
+        }
+      });
+    })();
+
     async function sendUsedQuery() {
       const userInput = document.getElementById("usedQuery").value;
-
-      const response = await fetch("/used-cars", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ query: userInput })
-      });
-
-      const data = await response.json();
       const resultBox = document.getElementById("used-results");
+      const loadingBox = document.getElementById("loading");
+      const searchButton = document.getElementById("usedSearchButton");
+      const originalButtonText = "🔍";
+
       resultBox.innerHTML = "";
+      loadingBox.textContent = "Searching CarTrade and OLX... This may take 20-40 seconds.";
+      loadingBox.style.display = "block";
+      searchButton.disabled = true;
+      searchButton.textContent = "Searching...";
 
-      if (data.recommendations && data.recommendations.length > 0) {
-        data.recommendations.forEach(car => {
-          const item = document.createElement("div");
-          item.classList.add("elements");
+      try {
+        const response = await fetch("/used-cars", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ query: userInput })
+        });
 
-          item.innerHTML = `
-            <img src="${car.image_url}" alt="${car.title}" loading="lazy">
-            <div class="t">
-              <h1>${car.title}</h1>
-              <div class="p">
-                <p>${car.price || 'Price not listed'}</p>
-                <p>${car.km || 'KM unknown'} | ${car.fuel || ''} | ${car.transmission || ''}</p>
-                <p>${car.owner ? 'Owner: ' + car.owner : ''}</p>
+        const data = await response.json();
+
+        if (data.source_errors && data.source_errors.length > 0) {
+          const warningBox = document.createElement("div");
+          warningBox.classList.add("source-warning");
+          warningBox.innerHTML = `
+            <p><strong>Some sources could not be searched.</strong></p>
+            <ul>
+              ${data.source_errors.map(item => `
+                <li>${item.source}: ${String(item.error).slice(0, 140)}</li>
+              `).join("")}
+            </ul>
+          `;
+          resultBox.appendChild(warningBox);
+        }
+
+        if (data.recommendations && data.recommendations.length > 0) {
+          data.recommendations.forEach(car => {
+            const item = document.createElement("div");
+            item.classList.add("elements");
+            const listingUrl = car.listing_url || "";
+            let sourceName = car.source;
+
+            if (!sourceName && listingUrl.includes("cartrade")) {
+              sourceName = "CarTrade";
+            } else if (!sourceName && listingUrl.includes("cars24")) {
+              sourceName = "Cars24";
+            } else if (!sourceName) {
+              sourceName = "Source";
+            }
+            const imageUrl = car.image_url || "/static/pic.avif";
+
+            item.innerHTML = `
+              <img src="${imageUrl}" alt="${car.title}" loading="lazy" onerror="this.onerror=null; this.src='/static/pic.avif';">
+              <div class="t">
+                <h1>${car.title}</h1>
+                <div class="p">
+                  <p>${car.price || 'Price not listed'}</p>
+                  <p>${car.km || 'KM unknown'} | ${car.fuel || ''} | ${car.transmission || ''}</p>
+                  <p>${car.owner ? 'Owner: ' + car.owner : ''}</p>
                 <p>${car.location}</p>
               </div>
               <div class="links">
-                <a href="${car.listing_url}" target="_blank">View on Cars24</a>
+                <a href="${listingUrl}" target="_blank">View on ${sourceName}</a>
               </div>
             </div>
           `;
-          resultBox.appendChild(item);
-        });
-      } else {
-        resultBox.innerHTML = `<p>No used cars found for your query.</p>`;
+            resultBox.appendChild(item);
+          });
+        } else {
+          const noResults = document.createElement("p");
+          noResults.textContent = "No used cars found right now. Try changing the budget, city, brand, or filters.";
+          resultBox.appendChild(noResults);
+        }
+      } catch (error) {
+        resultBox.innerHTML = `<p>Something went wrong while searching used cars. Please try again.</p>`;
+      } finally {
+        loadingBox.style.display = "none";
+        searchButton.disabled = false;
+        searchButton.textContent = originalButtonText;
       }
     }
   </script>

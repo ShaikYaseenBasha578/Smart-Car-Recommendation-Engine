@@ -11,7 +11,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="site-page recommend-page">
     <header>
         <nav>
             <div class="navbar">
@@ -20,49 +20,76 @@
                 </div>
                 <div class="nav-elements">
                     <ul>
-                        <li><a href="./#home">HOME</a></li>
-                        <li><a href="./#about">ABOUT</a></li>
-                        <li><a href="">SELL</a></li>
-                        <li><a href="./#contact">CONTACT US</a></li>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/#about">ABOUT</a></li>
+                        <li><a href="/used">USED CARS</a></li>
                     </ul>
                 </div>
                 <div class="ICONS">
-                    <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}">
+                    <img class="dark-toggle" src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Toggle dark mode" role="button" tabindex="0">
                 </div>
             </div>
         </nav>
     </header>
 
-    <section class="recommend">
-    <div class="box">
-        <h1 class="text">Recommend Cars According To Search</h1>
+    <section class="recommend chat-recommend">
+        <div class="box chat-box">
+            <h1 class="text">Recommend Cars According To Search</h1>
 
-        <div class="search-again-box">
-            <input 
-                type="text" 
-                id="recommendQuery" 
-                placeholder="Ask another query, e.g. automatic SUV under 15 lakh"
-            >
-            <button type="button" onclick="searchAgain()">Search</button>
-        </div>
+            <div id="chat-window" class="chat-window">
+                <!-- Query and recommendation blocks will be injected here dynamically -->
+            </div>
 
-        <div id="current-query"></div>
-
-        <div id="result-box" class="lists">
-            <!-- Cards will be injected here dynamically -->
-        </div>
+            <div class="search-again-box chat-input-box">
+                <input
+                    type="text"
+                    id="recommendQuery"
+                    placeholder="Ask another query, e.g. automatic SUV under 15 lakh"
+                >
+                <button type="button" onclick="searchAgain()">Search</button>
+            </div>
         </div>
     </section>
 
    <script>
-    async function fetchRecommendations(query) {
-        const resultBox = document.getElementById("result-box");
-        const currentQueryBox = document.getElementById("current-query");
-        const inputBox = document.getElementById("recommendQuery");
+    (function () {
+        const savedTheme = localStorage.getItem("theme");
+        document.body.classList.toggle("dark-mode", savedTheme === "dark");
 
+        const toggle = document.querySelector(".dark-toggle");
+        if (!toggle) return;
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        }
+
+        toggle.addEventListener("click", toggleTheme);
+        toggle.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggleTheme();
+            }
+        });
+    })();
+
+    async function fetchRecommendations(query) {
+        const chatWindow = document.getElementById("chat-window");
+        const chatBlock = document.createElement("div");
+        chatBlock.classList.add("chat-block");
+
+        const userBubble = document.createElement("div");
+        userBubble.classList.add("chat-bubble", "user-bubble");
+        userBubble.textContent = query;
+
+        const resultBox = document.createElement("div");
+        resultBox.classList.add("lists", "chat-results");
         resultBox.innerHTML = "<p>Loading recommendations...</p>";
-        currentQueryBox.innerHTML = `<p><strong>Query:</strong> ${query}</p>`;
-        inputBox.value = query;
+
+        chatBlock.appendChild(userBubble);
+        chatBlock.appendChild(resultBox);
+        chatWindow.appendChild(chatBlock);
+        chatBlock.scrollIntoView({ behavior: "smooth", block: "start" });
 
         try {
             const response = await fetch("/predict", {
@@ -84,7 +111,7 @@
                 return;
             }
 
-            if (data.message) {
+            if (data.message && (!data.recommendations || data.recommendations.length === 0)) {
                 resultBox.innerHTML = `<p>${data.message}</p>`;
                 return;
             }
@@ -149,7 +176,8 @@
     }
 
     function searchAgain() {
-        const query = document.getElementById("recommendQuery").value.trim();
+        const inputBox = document.getElementById("recommendQuery");
+        const query = inputBox.value.trim();
 
         if (!query) {
             alert("Please enter a query.");
@@ -157,6 +185,7 @@
         }
 
         localStorage.setItem("userQuery", query);
+        inputBox.value = "";
         fetchRecommendations(query);
     }
 
@@ -164,8 +193,11 @@
         const userQuery = localStorage.getItem("userQuery");
 
         if (!userQuery) {
-            document.getElementById("result-box").innerHTML =
-                "<p>No search query found. Please go back and search again.</p>";
+            const chatWindow = document.getElementById("chat-window");
+            const emptyState = document.createElement("div");
+            emptyState.classList.add("chat-empty");
+            emptyState.textContent = "No search query found. Please go back and search again.";
+            chatWindow.appendChild(emptyState);
             return;
         }
 

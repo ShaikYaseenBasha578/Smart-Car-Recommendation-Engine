@@ -13,7 +13,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="site-page">
     <header>
         <nav>
             <div class="navbar">
@@ -25,21 +25,20 @@
                         <li><a href="#home">HOME</a></li>
                         <li><a href="#about">ABOUT</a></li>
                         <li><a href="/used">USED CARS</a></li>
-                        <li><a href="">SELL</a></li>
-                        <li><a href="#contact">CONTACT US</a></li>
                     </ul>
                     
                 </div>
                 <div class="ICONS">
-                    <img src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Icon">
+                    <img class="dark-toggle" src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Toggle dark mode" role="button" tabindex="0">
                 </div>
             </div>
         </nav>
     </header>
     <section id="home">
         <div class="home-card">
-            <h1>Find Your Perfect Car <div>with AI Powered search</div>
+            <h1>Find Your Perfect Car <div>with AI-Powered Search</div>
             </h1>
+            <p class="hero-copy">Ask in natural language and get ranked new-car recommendations from structured data, plus a used-car multi-source search prototype.</p>
             <div class="hp">
 
                 <input type="search">
@@ -53,48 +52,46 @@
     </section>
     <section id="about">
         <h1>How CarRec Works</h1>
-        <p>We use advanced AI models to help you find the perfect car - from all brand-new models. We analyze your needs
-            and filter listings from multiple sources in a single search.</p>
+        <p>CarRec turns plain-English requests into filters, reads intent with an ML parser, and ranks matching cars based on the data available in the project dataset. Used-car search also aggregates listings from supported external sources as a prototype.</p>
         <div class="list">
             <div class="element">
                 <img src="{{ url_for('static', filename='Jeep Wrangler.png') }}" alt="">
-                <h1>Just the Cars You Want</h1>
-                <p>Use powerful filters - fuel type, body style, budget, and more - to find exactly what you're looking for.</p>
+                <h1>Natural Language Search</h1>
+                <p>Describe the car you want by budget, body style, fuel type, transmission, features, or use case.</p>
             </div>
             <div class="element">
                 <img src="{{ url_for('static', filename='Brain.png') }}" alt="">
-                <h1>Smart Results</h1>
-                <p>We recommend cars that match your preferences using intelligent KNN-based algorithms.</p></div>
+                <h1>Smart Filtering & Ranking</h1>
+                <p>The app parses your intent, applies filters, and ranks recommendations with match reasons where data supports them.</p></div>
             <div class="element">
                 <img src="{{ url_for('static', filename='iPhone 16 Pro.png') }}" alt="">
-                <h1>Search on Any Device</h1>
-                <p>Whether you're on your phone, tablet, or laptop, our app works seamlessly on any screen size.</p></div>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="mains">
-            <div class="first">
-                <div class="greet">
-
-                    <h1>Get in Touch</h1>
-                    <p>Enim tempor eget pharetra facilisis sed maecenas adipiscing. Eu leo molestie vel, ornare non id
-                        blandit netus.</p>
-                    <form action="">
-                        <input type="text" placeholder="Name">
-                        <input type="text" placeholder="Email">
-                        <input type="text" placeholder="Phone Number">
-                        <input type="text" placeholder="Type Your Message">
-                        <button>send</button>
-                    </form>
-                </div>
-            </div>
-            <div class="second"><iframe
-                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3806.6512284679675!2d78.44062837540407!3d17.42851753346568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smjcet!5e0!3m2!1sen!2sin!4v1750502747902!5m2!1sen!2sin"
-                    width="501" height="643" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                <h1>New + Used Car Search</h1>
+                <p>Explore new-car recommendations from the processed dataset and try used-car aggregation from supported sources.</p></div>
         </div>
     </section>
     <section class="e"></section>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme");
+            document.body.classList.toggle("dark-mode", savedTheme === "dark");
+
+            const toggle = document.querySelector(".dark-toggle");
+            if (!toggle) return;
+
+            function toggleTheme() {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+            }
+
+            toggle.addEventListener("click", toggleTheme);
+            toggle.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleTheme();
+                }
+            });
+        })();
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 
