@@ -1,0 +1,4034 @@
+{
+  "make": {
+    "field": "make",
+    "schema_group": "IDENTITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "model": {
+    "field": "model",
+    "schema_group": "IDENTITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "variant": {
+    "field": "variant",
+    "schema_group": "IDENTITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "full_name": {
+    "field": "full_name",
+    "schema_group": "IDENTITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "text",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "model_year": {
+    "field": "model_year",
+    "schema_group": "IDENTITY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "body_type": {
+    "field": "body_type",
+    "schema_group": "IDENTITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "segment": {
+    "field": "segment",
+    "schema_group": "IDENTITY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "generation": {
+    "field": "generation",
+    "schema_group": "IDENTITY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "facelift_status": {
+    "field": "facelift_status",
+    "schema_group": "IDENTITY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "discontinued": {
+    "field": "discontinued",
+    "schema_group": "IDENTITY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "price_ex_showroom": {
+    "field": "price_ex_showroom",
+    "schema_group": "PRICING",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "price_on_road": {
+    "field": "price_on_road",
+    "schema_group": "PRICING",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "price_city": {
+    "field": "price_city",
+    "schema_group": "PRICING",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "currency": {
+    "field": "currency",
+    "schema_group": "PRICING",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "fuel_type": {
+    "field": "fuel_type",
+    "schema_group": "POWERTRAIN",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "engine_cc": {
+    "field": "engine_cc",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "cylinders": {
+    "field": "cylinders",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "turbocharged": {
+    "field": "turbocharged",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "power_bhp": {
+    "field": "power_bhp",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "torque_nm": {
+    "field": "torque_nm",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "drivetrain": {
+    "field": "drivetrain",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "transmission": {
+    "field": "transmission",
+    "schema_group": "POWERTRAIN",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "gearbox_speeds": {
+    "field": "gearbox_speeds",
+    "schema_group": "POWERTRAIN",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence",
+        "manual and automatic transmission mismatch"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "acceleration_0_100_seconds": {
+    "field": "acceleration_0_100_seconds",
+    "schema_group": "POWERTRAIN",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "medium"
+  },
+  "top_speed_kmph": {
+    "field": "top_speed_kmph",
+    "schema_group": "POWERTRAIN",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "medium"
+  },
+  "mileage_arai_kmpl": {
+    "field": "mileage_arai_kmpl",
+    "schema_group": "EFFICIENCY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "medium"
+  },
+  "mileage_arai_km_per_kg": {
+    "field": "mileage_arai_km_per_kg",
+    "schema_group": "EFFICIENCY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "CNG"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "medium"
+  },
+  "mileage_real_world_kmpl": {
+    "field": "mileage_real_world_kmpl",
+    "schema_group": "EFFICIENCY",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "fuel_tank_capacity_litres": {
+    "field": "fuel_tank_capacity_litres",
+    "schema_group": "EFFICIENCY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "battery_capacity_kwh": {
+    "field": "battery_capacity_kwh",
+    "schema_group": "EFFICIENCY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Electric",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "claimed_ev_range_km": {
+    "field": "claimed_ev_range_km",
+    "schema_group": "EFFICIENCY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Electric",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "medium"
+  },
+  "charging_time_ac_hours": {
+    "field": "charging_time_ac_hours",
+    "schema_group": "EFFICIENCY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Electric",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "medium"
+  },
+  "charging_time_dc_minutes": {
+    "field": "charging_time_dc_minutes",
+    "schema_group": "EFFICIENCY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Electric",
+      "Hybrid"
+    ],
+    "preferred_source": "OEM brochure/spec sheet",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "CarWale structured state"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "medium"
+  },
+  "seating_capacity": {
+    "field": "seating_capacity",
+    "schema_group": "PRACTICALITY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "boot_space_litres": {
+    "field": "boot_space_litres",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "ground_clearance_mm": {
+    "field": "ground_clearance_mm",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "length_mm": {
+    "field": "length_mm",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "width_mm": {
+    "field": "width_mm",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "height_mm": {
+    "field": "height_mm",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "wheelbase_mm": {
+    "field": "wheelbase_mm",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "kerb_weight_kg": {
+    "field": "kerb_weight_kg",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "POWERTRAIN_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "POWERTRAIN_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "fuel type match",
+        "engine/powertrain identity match",
+        "transmission family match when applicable"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "medium"
+  },
+  "turning_radius_metres": {
+    "field": "turning_radius_metres",
+    "schema_group": "PRACTICALITY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarDekho exact variant page"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "airbags": {
+    "field": "airbags",
+    "schema_group": "SAFETY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "abs": {
+    "field": "abs",
+    "schema_group": "SAFETY",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "high"
+  },
+  "ebd": {
+    "field": "ebd",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "esc": {
+    "field": "esc",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "traction_control": {
+    "field": "traction_control",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "hill_assist": {
+    "field": "hill_assist",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "hill_descent_control": {
+    "field": "hill_descent_control",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "tyre_pressure_monitoring_system": {
+    "field": "tyre_pressure_monitoring_system",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "rear_parking_sensors": {
+    "field": "rear_parking_sensors",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "front_parking_sensors": {
+    "field": "front_parking_sensors",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "rear_camera": {
+    "field": "rear_camera",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "camera_360": {
+    "field": "camera_360",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "adas_available": {
+    "field": "adas_available",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "adaptive_cruise_control": {
+    "field": "adaptive_cruise_control",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "lane_keep_assist": {
+    "field": "lane_keep_assist",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "lane_departure_warning": {
+    "field": "lane_departure_warning",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "automatic_emergency_braking": {
+    "field": "automatic_emergency_braking",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "blind_spot_monitoring": {
+    "field": "blind_spot_monitoring",
+    "schema_group": "SAFETY",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "crash_test_rating": {
+    "field": "crash_test_rating",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "crash_test_agency": {
+    "field": "crash_test_agency",
+    "schema_group": "SAFETY",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "sunroof": {
+    "field": "sunroof",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "panoramic_sunroof": {
+    "field": "panoramic_sunroof",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "automatic_climate_control": {
+    "field": "automatic_climate_control",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "cruise_control": {
+    "field": "cruise_control",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "ventilated_front_seats": {
+    "field": "ventilated_front_seats",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "powered_driver_seat": {
+    "field": "powered_driver_seat",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "powered_front_seats": {
+    "field": "powered_front_seats",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "rear_ac_vents": {
+    "field": "rear_ac_vents",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "keyless_entry": {
+    "field": "keyless_entry",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "push_button_start": {
+    "field": "push_button_start",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "wireless_charging": {
+    "field": "wireless_charging",
+    "schema_group": "COMFORT",
+    "category": "SPECIALIST",
+    "recommendation_importance": 3,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "infotainment_screen_inches": {
+    "field": "infotainment_screen_inches",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "android_auto": {
+    "field": "android_auto",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "apple_carplay": {
+    "field": "apple_carplay",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "connected_car_features": {
+    "field": "connected_car_features",
+    "schema_group": "COMFORT",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "VARIANT_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarDekho exact variant page",
+    "fallback_sources": [
+      "OEM brochure/spec sheet",
+      "CarWale exact version endpoint"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": true
+    },
+    "validation": {
+      "type": "boolean",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "high"
+  },
+  "standard_warranty_years": {
+    "field": "standard_warranty_years",
+    "schema_group": "OWNERSHIP",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "standard_warranty_km": {
+    "field": "standard_warranty_km",
+    "schema_group": "OWNERSHIP",
+    "category": "HIGH_VALUE",
+    "recommendation_importance": 4,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "medium",
+    "manual_review_likelihood": "low"
+  },
+  "service_interval_km": {
+    "field": "service_interval_km",
+    "schema_group": "OWNERSHIP",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "service_interval_months": {
+    "field": "service_interval_months",
+    "schema_group": "OWNERSHIP",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "MODEL_LEVEL",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "CarWale structured state",
+    "fallback_sources": [
+      "CarDekho exact variant page",
+      "OEM brochure/spec sheet"
+    ],
+    "inheritance": {
+      "allowed": true,
+      "valid_source_scopes": [
+        "MODEL_LEVEL"
+      ],
+      "conditions": [
+        "exact make/model match",
+        "explicit model-level source evidence"
+      ],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "estimated_annual_service_cost": {
+    "field": "estimated_annual_service_cost",
+    "schema_group": "OWNERSHIP",
+    "category": "SUBJECTIVE_OR_DERIVED",
+    "recommendation_importance": 1,
+    "expected_scope": "DERIVED",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Derived from ownership dataset",
+    "fallback_sources": [
+      "OEM service schedules",
+      "Future ML feature store"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "reliability_score": {
+    "field": "reliability_score",
+    "schema_group": "OWNERSHIP",
+    "category": "SUBJECTIVE_OR_DERIVED",
+    "recommendation_importance": 1,
+    "expected_scope": "DERIVED",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Derived from ownership dataset",
+    "fallback_sources": [
+      "OEM service schedules",
+      "Future ML feature store"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "resale_value_score": {
+    "field": "resale_value_score",
+    "schema_group": "OWNERSHIP",
+    "category": "SUBJECTIVE_OR_DERIVED",
+    "recommendation_importance": 1,
+    "expected_scope": "DERIVED",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Derived from ownership dataset",
+    "fallback_sources": [
+      "OEM service schedules",
+      "Future ML feature store"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "service_network_score": {
+    "field": "service_network_score",
+    "schema_group": "OWNERSHIP",
+    "category": "SUBJECTIVE_OR_DERIVED",
+    "recommendation_importance": 1,
+    "expected_scope": "DERIVED",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Derived from ownership dataset",
+    "fallback_sources": [
+      "OEM service schedules",
+      "Future ML feature store"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  },
+  "source": {
+    "field": "source",
+    "schema_group": "PROVENANCE",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "PROVENANCE",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "categorical",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "source_url": {
+    "field": "source_url",
+    "schema_group": "PROVENANCE",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "PROVENANCE",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "text",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "source_last_updated": {
+    "field": "source_last_updated",
+    "schema_group": "PROVENANCE",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "PROVENANCE",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "text",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "scraped_at": {
+    "field": "scraped_at",
+    "schema_group": "PROVENANCE",
+    "category": "CORE_REQUIRED",
+    "recommendation_importance": 5,
+    "expected_scope": "PROVENANCE",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "text",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "low",
+    "manual_review_likelihood": "low"
+  },
+  "scrape_run_id": {
+    "field": "scrape_run_id",
+    "schema_group": "PROVENANCE",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "PROVENANCE",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "text",
+      "reject_raw_unit_strings": false,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "low"
+  },
+  "field_completeness_score": {
+    "field": "field_completeness_score",
+    "schema_group": "PROVENANCE",
+    "category": "DEFER_OR_REMOVE",
+    "recommendation_importance": 0,
+    "expected_scope": "DERIVED",
+    "applicable_vehicle_types": [
+      "new_car"
+    ],
+    "applicable_fuel_types": [
+      "Petrol",
+      "Diesel",
+      "CNG",
+      "Hybrid",
+      "Electric"
+    ],
+    "preferred_source": "Internal pipeline metadata",
+    "fallback_sources": [
+      "Canonical build reports"
+    ],
+    "inheritance": {
+      "allowed": false,
+      "valid_source_scopes": [],
+      "conditions": [],
+      "blocked_when": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ],
+      "min_confidence": "high",
+      "requires_provenance": true,
+      "unsafe_default_inheritance": false
+    },
+    "validation": {
+      "type": "numeric",
+      "reject_raw_unit_strings": true,
+      "null_reason_required_when_missing": true
+    },
+    "estimated_difficulty": "high",
+    "manual_review_likelihood": "high"
+  }
+}

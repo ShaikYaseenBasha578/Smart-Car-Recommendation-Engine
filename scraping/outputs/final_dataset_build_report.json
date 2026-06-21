@@ -1,0 +1,150 @@
+{
+  "input_root": "datasets/interim/cosmetic_variant_recovered",
+  "total_source_records": 143,
+  "approved_resolutions_applied": 2,
+  "field_value_resolutions_applied": 13,
+  "approved_record_decisions_applied": 2,
+  "engine_cc_resolutions_applied": 2,
+  "recommendation_ready_count": 125,
+  "nullable_usable_count": 4,
+  "quarantined_count": 12,
+  "rejected_count": 2,
+  "excluded_count": 14,
+  "unresolved_conflict_count": 2,
+  "conflict_policy": "canonical values kept; unresolved source conflict metadata attached; conflict-free mileage is not required by current strict active-app readiness",
+  "duplicate_count": 0,
+  "required_field_coverage": {
+    "make": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "model": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "variant": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "full_name": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "price_ex_showroom": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "fuel_type": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "transmission": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "source": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "source_url": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "scraped_at": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    }
+  },
+  "recommendation_critical_field_coverage": {
+    "price_ex_showroom": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "fuel_type": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "transmission": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "body_type": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "seating_capacity": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "power_bhp": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "torque_nm": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "fuel_specific_efficiency": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "airbags": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    },
+    "abs": {
+      "populated_count": 125,
+      "total": 125,
+      "percentage": 100.0
+    }
+  },
+  "validation": {
+    "passed": true,
+    "failures": [],
+    "duplicate_count": 0,
+    "duplicates": [],
+    "missing_required": [],
+    "unknown_columns": [],
+    "numeric_type_errors": [],
+    "boolean_type_errors": [],
+    "implausible_values": [],
+    "protected_field_changes": [],
+    "provenance_missing": [],
+    "quarantined_or_rejected_in_ready": [],
+    "unsafe_inherited_values": []
+  },
+  "expected_125_ready_records_produced": true,
+  "outputs": {
+    "recommendation_ready_json": "datasets/processed/carrec_canonical_recommendation_ready.json",
+    "nullable_usable_json": "datasets/processed/carrec_canonical_nullable_usable.json",
+    "excluded_json": "datasets/processed/carrec_canonical_excluded.json",
+    "recommendation_ready_csv": "datasets/processed/carrec_canonical_recommendation_ready.csv",
+    "nullable_usable_csv": "datasets/processed/carrec_canonical_nullable_usable.csv"
+  },
+  "supporting_inputs": {
+    "remaining_record_review": "scraping/outputs/remaining_record_review.json",
+    "quarantined_records": "scraping/outputs/quarantined_records.json",
+    "manual_review_required": "scraping/outputs/manual_review_required.json",
+    "mileage_conflict_review": "scraping/outputs/mileage_conflict_review.json",
+    "engine_cc_repair_report": "scraping/outputs/engine_cc_repair_report.json"
+  }
+}
