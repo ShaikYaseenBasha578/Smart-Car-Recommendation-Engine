@@ -216,3 +216,52 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python-generated files
+**/__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# Local archives
+archive/
+
+# Scraping caches and logs
+datasets/raw/
+datasets/raw/**/*.html
+datasets/raw/**/records/*.json
+scraping/logs/
+scraping/outputs/carwale_probe/
+scraping/outputs/carwale_browser_probe/
+
+# Generated intermediate pipeline data
+datasets/interim/
+
+# Generated reports and audit outputs
+scraping/outputs/*.csv
+scraping/outputs/*_candidate*.json
+scraping/outputs/*_disposition*.json
+scraping/outputs/*_overlap*.json
+scraping/outputs/*_audit*.json
+
+# Keep generated scraping outputs local by default; explicitly allow only the
+# latest concise reports that document the current trusted checkpoint.
+scraping/outputs/*
+!scraping/outputs/.gitkeep
+!scraping/outputs/final_dataset_build_report.json
+!scraping/outputs/final_dataset_build_report.md
+!scraping/outputs/shared_spec_enrichment_report.json
+!scraping/outputs/shared_spec_enrichment_report.md
+!scraping/outputs/variant_safety_enrichment_report.json
+!scraping/outputs/variant_safety_enrichment_report.md
+!scraping/outputs/variant_safety_recommendation_completeness_report.json
+!scraping/outputs/variant_safety_recommendation_completeness_report.md
+
+# Temporary files
+*.tmp
+*.log
+.ipynb_checkpoints/
+
+# Historical reproducibility archive
+archive/scraping_reproducibility/

@@ -1,0 +1,1496 @@
+{
+  "purpose": "Source acquisition strategy for canonical missing-field enrichment.",
+  "source_classes": {
+    "CarWale structured state": {
+      "best_for": [
+        "identity",
+        "price",
+        "powertrain summaries",
+        "dimensions when present"
+      ],
+      "mode": "cached/live controlled fetch"
+    },
+    "CarDekho exact variant page": {
+      "best_for": [
+        "airbags",
+        "ABS",
+        "infotainment booleans",
+        "ARAI mileage when exact variant match is high confidence"
+      ],
+      "mode": "cached/live controlled fetch"
+    },
+    "OEM brochure/spec sheet": {
+      "best_for": [
+        "official mileage",
+        "dimensions",
+        "safety packs",
+        "warranty",
+        "charging specs"
+      ],
+      "mode": "manual or future document adapter"
+    },
+    "Internal pipeline metadata": {
+      "best_for": [
+        "source tracking",
+        "scrape timestamps",
+        "field completeness"
+      ],
+      "mode": "build-time metadata"
+    },
+    "Derived from ownership dataset": {
+      "best_for": [
+        "reliability/resale/service network scores"
+      ],
+      "mode": "future derived dataset"
+    }
+  },
+  "field_strategies": {
+    "make": {
+      "category": "CORE_REQUIRED",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "model": {
+      "category": "CORE_REQUIRED",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "variant": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "full_name": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "model_year": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "body_type": {
+      "category": "CORE_REQUIRED",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "segment": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "generation": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "facelift_status": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "discontinued": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "price_ex_showroom": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "price_on_road": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "price_city": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "currency": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "fuel_type": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "engine_cc": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "cylinders": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "turbocharged": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "power_bhp": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "torque_nm": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "drivetrain": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "transmission": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "gearbox_speeds": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence",
+        "manual and automatic transmission mismatch"
+      ]
+    },
+    "acceleration_0_100_seconds": {
+      "category": "SPECIALIST",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "top_speed_kmph": {
+      "category": "SPECIALIST",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "mileage_arai_kmpl": {
+      "category": "CORE_REQUIRED",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "mileage_arai_km_per_kg": {
+      "category": "CORE_REQUIRED",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "mileage_real_world_kmpl": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "fuel_tank_capacity_litres": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "battery_capacity_kwh": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "claimed_ev_range_km": {
+      "category": "CORE_REQUIRED",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "charging_time_ac_hours": {
+      "category": "SPECIALIST",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "charging_time_dc_minutes": {
+      "category": "SPECIALIST",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "OEM brochure/spec sheet",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "CarWale structured state"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "seating_capacity": {
+      "category": "CORE_REQUIRED",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "boot_space_litres": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "ground_clearance_mm": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "length_mm": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "width_mm": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "height_mm": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "wheelbase_mm": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "kerb_weight_kg": {
+      "category": "HIGH_VALUE",
+      "scope": "POWERTRAIN_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "turning_radius_metres": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarDekho exact variant page"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "airbags": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "abs": {
+      "category": "CORE_REQUIRED",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "ebd": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "esc": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "traction_control": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "hill_assist": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "hill_descent_control": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "tyre_pressure_monitoring_system": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "rear_parking_sensors": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "front_parking_sensors": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "rear_camera": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "camera_360": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "adas_available": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "adaptive_cruise_control": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "lane_keep_assist": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "lane_departure_warning": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "automatic_emergency_braking": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "blind_spot_monitoring": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "crash_test_rating": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "crash_test_agency": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "sunroof": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "panoramic_sunroof": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "automatic_climate_control": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "cruise_control": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "ventilated_front_seats": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "powered_driver_seat": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "powered_front_seats": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "rear_ac_vents": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "keyless_entry": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "push_button_start": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "wireless_charging": {
+      "category": "SPECIALIST",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "infotainment_screen_inches": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "android_auto": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "apple_carplay": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "connected_car_features": {
+      "category": "HIGH_VALUE",
+      "scope": "VARIANT_LEVEL",
+      "primary_source": "CarDekho exact variant page",
+      "fallback_sources": [
+        "OEM brochure/spec sheet",
+        "CarWale exact version endpoint"
+      ],
+      "requires_exact_variant_match": true,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "standard_warranty_years": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "standard_warranty_km": {
+      "category": "HIGH_VALUE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "service_interval_km": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "service_interval_months": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "MODEL_LEVEL",
+      "primary_source": "CarWale structured state",
+      "fallback_sources": [
+        "CarDekho exact variant page",
+        "OEM brochure/spec sheet"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": true,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "estimated_annual_service_cost": {
+      "category": "SUBJECTIVE_OR_DERIVED",
+      "scope": "DERIVED",
+      "primary_source": "Derived from ownership dataset",
+      "fallback_sources": [
+        "OEM service schedules",
+        "Future ML feature store"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "reliability_score": {
+      "category": "SUBJECTIVE_OR_DERIVED",
+      "scope": "DERIVED",
+      "primary_source": "Derived from ownership dataset",
+      "fallback_sources": [
+        "OEM service schedules",
+        "Future ML feature store"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "resale_value_score": {
+      "category": "SUBJECTIVE_OR_DERIVED",
+      "scope": "DERIVED",
+      "primary_source": "Derived from ownership dataset",
+      "fallback_sources": [
+        "OEM service schedules",
+        "Future ML feature store"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "service_network_score": {
+      "category": "SUBJECTIVE_OR_DERIVED",
+      "scope": "DERIVED",
+      "primary_source": "Derived from ownership dataset",
+      "fallback_sources": [
+        "OEM service schedules",
+        "Future ML feature store"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "source": {
+      "category": "CORE_REQUIRED",
+      "scope": "PROVENANCE",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "source_url": {
+      "category": "CORE_REQUIRED",
+      "scope": "PROVENANCE",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "source_last_updated": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "PROVENANCE",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "scraped_at": {
+      "category": "CORE_REQUIRED",
+      "scope": "PROVENANCE",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "scrape_run_id": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "PROVENANCE",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    },
+    "field_completeness_score": {
+      "category": "DEFER_OR_REMOVE",
+      "scope": "DERIVED",
+      "primary_source": "Internal pipeline metadata",
+      "fallback_sources": [
+        "Canonical build reports"
+      ],
+      "requires_exact_variant_match": false,
+      "allows_inheritance": false,
+      "manual_review_trigger": [
+        "conflicting source values",
+        "unclear source label",
+        "low match confidence"
+      ]
+    }
+  }
+}

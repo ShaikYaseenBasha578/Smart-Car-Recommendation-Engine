@@ -1,0 +1,576 @@
+{
+  "records_inspected": 125,
+  "source_pages_documents_inspected": 15,
+  "exact_matches": 1390,
+  "high_confidence_matches": 0,
+  "ambiguous_matches": 0,
+  "mismatches": 0,
+  "raw_candidates": 1390,
+  "unique_record_field_candidate_groups": 1250,
+  "accepted_assignments": 1250,
+  "explicit_true_assignments": 808,
+  "explicit_false_assignments": 442,
+  "unresolved_null_assignments": 0,
+  "conflicts": 0,
+  "manual_review_cases": 0,
+  "disposition_counts": {
+    "ACCEPTED": 1250,
+    "SUPERSEDED_BY_HIGHER_PRIORITY_SOURCE": 140
+  },
+  "source_contribution": {
+    "Official OEM variant feature matrix": 1250
+  },
+  "source_overlap": {
+    "camera_360": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "ebd": {
+      "assignments": 125,
+      "multi_source_agreements": 125,
+      "official_source_wins": 125
+    },
+    "esc": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "front_parking_sensors": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "hill_assist": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "hill_descent_control": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "rear_camera": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "rear_parking_sensors": {
+      "assignments": 125,
+      "single_source_assignments": 110,
+      "official_source_wins": 125,
+      "multi_source_agreements": 15
+    },
+    "traction_control": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    },
+    "tyre_pressure_monitoring_system": {
+      "assignments": 125,
+      "single_source_assignments": 125,
+      "official_source_wins": 125
+    }
+  },
+  "coverage_before": {
+    "ebd": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "esc": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "traction_control": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "hill_assist": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "hill_descent_control": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "tyre_pressure_monitoring_system": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "rear_parking_sensors": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "front_parking_sensors": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "rear_camera": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "camera_360": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    }
+  },
+  "coverage_after": {
+    "ebd": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "esc": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "traction_control": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "hill_assist": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "hill_descent_control": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "tyre_pressure_monitoring_system": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "rear_parking_sensors": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "front_parking_sensors": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "rear_camera": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "camera_360": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    }
+  },
+  "coverage_by_model": {
+    "Creta": {
+      "ebd": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "esc": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "traction_control": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "hill_assist": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "hill_descent_control": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "tyre_pressure_monitoring_system": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "rear_parking_sensors": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "front_parking_sensors": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "rear_camera": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      },
+      "camera_360": {
+        "records": 31,
+        "populated": 31,
+        "populated_pct": 100.0
+      }
+    },
+    "Nexon": {
+      "ebd": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "esc": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "traction_control": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "hill_assist": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "hill_descent_control": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "tyre_pressure_monitoring_system": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "rear_parking_sensors": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "front_parking_sensors": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "rear_camera": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      },
+      "camera_360": {
+        "records": 53,
+        "populated": 53,
+        "populated_pct": 100.0
+      }
+    },
+    "Swift": {
+      "ebd": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "esc": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "traction_control": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "hill_assist": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "hill_descent_control": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "tyre_pressure_monitoring_system": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "rear_parking_sensors": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "front_parking_sensors": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "rear_camera": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      },
+      "camera_360": {
+        "records": 14,
+        "populated": 14,
+        "populated_pct": 100.0
+      }
+    },
+    "Windsor EV": {
+      "ebd": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "esc": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "traction_control": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "hill_assist": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "hill_descent_control": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "tyre_pressure_monitoring_system": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "rear_parking_sensors": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "front_parking_sensors": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "rear_camera": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      },
+      "camera_360": {
+        "records": 1,
+        "populated": 1,
+        "populated_pct": 100.0
+      }
+    },
+    "XUV 3XO": {
+      "ebd": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "esc": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "traction_control": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "hill_assist": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "hill_descent_control": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "tyre_pressure_monitoring_system": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "rear_parking_sensors": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "front_parking_sensors": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "rear_camera": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      },
+      "camera_360": {
+        "records": 26,
+        "populated": 26,
+        "populated_pct": 100.0
+      }
+    }
+  },
+  "weighted_recommendation_completeness_before": {
+    "average_weighted_recommendation_completeness": 60.37,
+    "by_model": {
+      "Creta": 58.41,
+      "Nexon": 63.24,
+      "Swift": 57.82,
+      "Windsor EV": 56.07,
+      "XUV 3XO": 58.37
+    }
+  },
+  "weighted_recommendation_completeness_after": {
+    "average_weighted_recommendation_completeness": 73.62,
+    "by_model": {
+      "Creta": 71.66,
+      "Nexon": 76.49,
+      "Swift": 71.07,
+      "Windsor EV": 69.63,
+      "XUV 3XO": 71.62
+    }
+  },
+  "fields_with_weakest_coverage": [
+    {
+      "field": "ebd",
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    {
+      "field": "esc",
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    {
+      "field": "traction_control",
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    {
+      "field": "hill_assist",
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    {
+      "field": "hill_descent_control",
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    }
+  ],
+  "models_with_weakest_feature_coverage": [
+    {
+      "model": "Creta",
+      "average_target_coverage": 100.0
+    },
+    {
+      "model": "Nexon",
+      "average_target_coverage": 100.0
+    },
+    {
+      "model": "Swift",
+      "average_target_coverage": 100.0
+    },
+    {
+      "model": "Windsor EV",
+      "average_target_coverage": 100.0
+    },
+    {
+      "model": "XUV 3XO",
+      "average_target_coverage": 100.0
+    }
+  ],
+  "suspicious_patterns": [
+    {
+      "field": "ebd",
+      "pattern": "every variant received the same value",
+      "value": true,
+      "resolution": "retained because candidates carry explicit exact-variant matrix evidence; review source matrix before production migration"
+    },
+    {
+      "field": "esc",
+      "pattern": "every variant received the same value",
+      "value": true,
+      "resolution": "retained because candidates carry explicit exact-variant matrix evidence; review source matrix before production migration"
+    },
+    {
+      "field": "hill_descent_control",
+      "pattern": "every variant received the same value",
+      "value": false,
+      "resolution": "retained because candidates carry explicit exact-variant matrix evidence; review source matrix before production migration"
+    },
+    {
+      "field": "rear_parking_sensors",
+      "pattern": "every variant received the same value",
+      "value": true,
+      "resolution": "retained because candidates carry explicit exact-variant matrix evidence; review source matrix before production migration"
+    },
+    {
+      "pattern": "all generated candidates had EXACT match status",
+      "resolution": "expected for curated exact-variant matrix adapter; guarded by fuel, transmission, and special-edition match tests"
+    }
+  ],
+  "validation": {
+    "zero_cross_variant_inheritance": true,
+    "all_candidates_accounted": true,
+    "shared_spec_fields_preserved": true
+  }
+}

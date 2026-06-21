@@ -1,0 +1,1761 @@
+{
+  "records_inspected": 125,
+  "target_fields": [
+    "boot_space_litres",
+    "ground_clearance_mm",
+    "kerb_weight_kg",
+    "turning_radius_metres",
+    "fuel_tank_capacity_litres",
+    "drivetrain",
+    "cylinders",
+    "turbocharged",
+    "gearbox_speeds",
+    "length_mm",
+    "width_mm",
+    "height_mm",
+    "wheelbase_mm"
+  ],
+  "candidates_extracted": 1422,
+  "values_accepted": 1134,
+  "values_withheld": 201,
+  "conflicts_found": 0,
+  "manual_review_cases": 201,
+  "coverage_before": {
+    "boot_space_litres": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "ground_clearance_mm": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "kerb_weight_kg": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "turning_radius_metres": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "fuel_tank_capacity_litres": {
+      "applicable_records": 124,
+      "populated_count": 0,
+      "missing_count": 124,
+      "populated_pct": 0.0
+    },
+    "drivetrain": {
+      "applicable_records": 125,
+      "populated_count": 6,
+      "missing_count": 119,
+      "populated_pct": 4.8
+    },
+    "cylinders": {
+      "applicable_records": 124,
+      "populated_count": 6,
+      "missing_count": 118,
+      "populated_pct": 4.84
+    },
+    "turbocharged": {
+      "applicable_records": 124,
+      "populated_count": 28,
+      "missing_count": 96,
+      "populated_pct": 22.58
+    },
+    "gearbox_speeds": {
+      "applicable_records": 125,
+      "populated_count": 35,
+      "missing_count": 90,
+      "populated_pct": 28.0
+    },
+    "length_mm": {
+      "applicable_records": 125,
+      "populated_count": 53,
+      "missing_count": 72,
+      "populated_pct": 42.4
+    },
+    "width_mm": {
+      "applicable_records": 125,
+      "populated_count": 53,
+      "missing_count": 72,
+      "populated_pct": 42.4
+    },
+    "height_mm": {
+      "applicable_records": 125,
+      "populated_count": 53,
+      "missing_count": 72,
+      "populated_pct": 42.4
+    },
+    "wheelbase_mm": {
+      "applicable_records": 125,
+      "populated_count": 53,
+      "missing_count": 72,
+      "populated_pct": 42.4
+    }
+  },
+  "coverage_after": {
+    "boot_space_litres": {
+      "applicable_records": 125,
+      "populated_count": 109,
+      "missing_count": 16,
+      "populated_pct": 87.2
+    },
+    "ground_clearance_mm": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "kerb_weight_kg": {
+      "applicable_records": 125,
+      "populated_count": 0,
+      "missing_count": 125,
+      "populated_pct": 0.0
+    },
+    "turning_radius_metres": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "fuel_tank_capacity_litres": {
+      "applicable_records": 124,
+      "populated_count": 108,
+      "missing_count": 16,
+      "populated_pct": 87.1
+    },
+    "drivetrain": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "cylinders": {
+      "applicable_records": 124,
+      "populated_count": 124,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "turbocharged": {
+      "applicable_records": 124,
+      "populated_count": 124,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "gearbox_speeds": {
+      "applicable_records": 125,
+      "populated_count": 81,
+      "missing_count": 44,
+      "populated_pct": 64.8
+    },
+    "length_mm": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "width_mm": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "height_mm": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    },
+    "wheelbase_mm": {
+      "applicable_records": 125,
+      "populated_count": 125,
+      "missing_count": 0,
+      "populated_pct": 100.0
+    }
+  },
+  "fields_with_coverage_gain": [
+    "boot_space_litres",
+    "ground_clearance_mm",
+    "turning_radius_metres",
+    "fuel_tank_capacity_litres",
+    "drivetrain",
+    "cylinders",
+    "turbocharged",
+    "gearbox_speeds",
+    "length_mm",
+    "width_mm",
+    "height_mm",
+    "wheelbase_mm"
+  ],
+  "completeness_before": {
+    "average_weighted_recommendation_completeness": 47.94,
+    "by_model": {
+      "Creta": {
+        "records": 31,
+        "average_weighted_recommendation_completeness": 42.51
+      },
+      "Nexon": {
+        "records": 53,
+        "average_weighted_recommendation_completeness": 55.28
+      },
+      "Swift": {
+        "records": 14,
+        "average_weighted_recommendation_completeness": 42.57
+      },
+      "Windsor EV": {
+        "records": 1,
+        "average_weighted_recommendation_completeness": 43.46
+      },
+      "XUV 3XO": {
+        "records": 26,
+        "average_weighted_recommendation_completeness": 42.52
+      }
+    }
+  },
+  "completeness_after": {
+    "average_weighted_recommendation_completeness": 60.37,
+    "by_model": {
+      "Creta": {
+        "records": 31,
+        "average_weighted_recommendation_completeness": 58.41
+      },
+      "Nexon": {
+        "records": 53,
+        "average_weighted_recommendation_completeness": 63.24
+      },
+      "Swift": {
+        "records": 14,
+        "average_weighted_recommendation_completeness": 57.82
+      },
+      "Windsor EV": {
+        "records": 1,
+        "average_weighted_recommendation_completeness": 56.07
+      },
+      "XUV 3XO": {
+        "records": 26,
+        "average_weighted_recommendation_completeness": 58.37
+      }
+    }
+  },
+  "model_level_inherited_values": 538,
+  "powertrain_level_inherited_values": 596,
+  "blocked_by_inheritance_policy": 0,
+  "source_contribution_breakdown": {
+    "Official OEM specifications": 1422
+  },
+  "accepted_source_breakdown": {
+    "Official OEM specifications": 1134
+  },
+  "low_confidence_cases": [],
+  "unresolved_fields": [
+    {
+      "field": "boot_space_litres",
+      "remaining_missing": 16
+    },
+    {
+      "field": "kerb_weight_kg",
+      "remaining_missing": 125
+    },
+    {
+      "field": "fuel_tank_capacity_litres",
+      "remaining_missing": 16
+    },
+    {
+      "field": "gearbox_speeds",
+      "remaining_missing": 44
+    }
+  ],
+  "affected_record_ids": {
+    "15587": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "gearbox_speeds"
+    ],
+    "15763": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "15765": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16005": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16007": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16009": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16029": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16033": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "16213": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17101": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "gearbox_speeds"
+    ],
+    "17103": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17105": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17109": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17111": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17131": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17133": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17135": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17137": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17139": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17141": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17143": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17145": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17151": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17153": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17155": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17157": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17159": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17161": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17163": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17165": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17167": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17223": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17225": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17321": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "17323": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17325": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17329": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17331": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "17333": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "18185": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "18193": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "18229": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "18231": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "18293": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "drivetrain",
+      "gearbox_speeds"
+    ],
+    "18307": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "19519": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "19521": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "19523": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19525": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19527": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19529": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "19531": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19535": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19541": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "19543": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19545": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19547": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19549": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19551": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19557": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19561": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19565": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19567": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19569": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19571": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19575": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19577": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19581": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19583": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19585": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19587": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19589": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19609": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19611": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19613": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19615": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19617": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19621": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19623": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19625": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19627": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19629": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19631": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "19633": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "19639": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "20041": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "20043": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "20045": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "20049": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "20928": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21200": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21202": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21204": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21206": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21813": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21815": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21817": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21819": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21821": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21823": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21903": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21907": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "21911": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "21913": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "22427": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "22433": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "22685": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres"
+    ],
+    "22687": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "22689": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "23750": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "23752": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "23754": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders"
+    ],
+    "24146": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24148": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24150": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24152": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24154": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24252": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "24254": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24256": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "24258": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "9371": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "gearbox_speeds"
+    ],
+    "9373": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ],
+    "9377": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged",
+      "gearbox_speeds"
+    ],
+    "9379": [
+      "ground_clearance_mm",
+      "turning_radius_metres",
+      "length_mm",
+      "width_mm",
+      "height_mm",
+      "wheelbase_mm",
+      "boot_space_litres",
+      "fuel_tank_capacity_litres",
+      "drivetrain",
+      "cylinders",
+      "turbocharged"
+    ]
+  },
+  "validation": {
+    "unsafe_cross_powertrain_inheritance": 0,
+    "ev_ice_contamination": 0,
+    "all_accepted_values_have_provenance": true,
+    "processed_dataset_unchanged": true
+  },
+  "accounting_reconciliation": {
+    "raw_candidates_extracted": 1422,
+    "unique_record_field_candidate_groups": 1421,
+    "accepted_record_field_assignments": 1134,
+    "existing_values_preserved": 287,
+    "duplicate_candidates": 1,
+    "superseded_candidates": 0,
+    "rejected_candidates": 0,
+    "unresolved_record_field_cells_no_candidate": 201,
+    "unresolved_conflicts": 0,
+    "candidate_terminal_status_totals": {
+      "ACCEPTED": 1134,
+      "EXISTING_VALUE_PRESERVED": 287,
+      "DUPLICATE_CANDIDATE": 1
+    },
+    "unresolved_cell_null_reason_totals": {
+      "FIELD_NOT_PUBLISHED": 125,
+      "SOURCE_UNAVAILABLE": 44,
+      "UNSAFE_TO_INHERIT": 32
+    }
+  },
+  "source_overlap_summary": {
+    "zero_conflict_interpretation": "Only one adapter/source supplied candidates for accepted assignments, so the zero-conflict result means competing candidates generally did not reach conflict detection in this batch.",
+    "summary_by_field": {
+      "boot_space_litres": {
+        "assignments": 109,
+        "single_source_assignments": 109,
+        "source_wins::Official OEM specifications": 109
+      },
+      "cylinders": {
+        "assignments": 118,
+        "single_source_assignments": 118,
+        "source_wins::Official OEM specifications": 118
+      },
+      "drivetrain": {
+        "assignments": 119,
+        "single_source_assignments": 119,
+        "source_wins::Official OEM specifications": 119
+      },
+      "fuel_tank_capacity_litres": {
+        "assignments": 108,
+        "single_source_assignments": 108,
+        "source_wins::Official OEM specifications": 108
+      },
+      "gearbox_speeds": {
+        "assignments": 46,
+        "single_source_assignments": 46,
+        "source_wins::Official OEM specifications": 46
+      },
+      "ground_clearance_mm": {
+        "assignments": 125,
+        "single_source_assignments": 125,
+        "source_wins::Official OEM specifications": 125
+      },
+      "height_mm": {
+        "assignments": 72,
+        "single_source_assignments": 72,
+        "source_wins::Official OEM specifications": 72
+      },
+      "length_mm": {
+        "assignments": 72,
+        "single_source_assignments": 72,
+        "source_wins::Official OEM specifications": 72
+      },
+      "turbocharged": {
+        "assignments": 96,
+        "single_source_assignments": 96,
+        "source_wins::Official OEM specifications": 96
+      },
+      "turning_radius_metres": {
+        "assignments": 125,
+        "single_source_assignments": 125,
+        "source_wins::Official OEM specifications": 125
+      },
+      "wheelbase_mm": {
+        "assignments": 72,
+        "single_source_assignments": 72,
+        "source_wins::Official OEM specifications": 72
+      },
+      "width_mm": {
+        "assignments": 72,
+        "single_source_assignments": 72,
+        "source_wins::Official OEM specifications": 72
+      }
+    }
+  },
+  "inheritance_policy_summary": {
+    "inherited_assignments_allowed": 1134,
+    "candidate_assignments_blocked": 0,
+    "candidate_assignments_never_generated_scope_or_source": 201,
+    "model_level_assignments": 538,
+    "powertrain_level_assignments": 596,
+    "direct_exact_record_assignments": 0
+  }
+}

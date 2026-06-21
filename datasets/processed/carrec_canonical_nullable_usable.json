@@ -1,0 +1,2486 @@
+[
+  {
+    "version_id": 18295,
+    "canonical_record": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "variant": "Exclusive 38.0 kWh",
+      "full_name": "MG Windsor EV Exclusive 38.0 kWh",
+      "model_year": null,
+      "body_type": "MUV",
+      "segment": null,
+      "generation": null,
+      "facelift_status": null,
+      "discontinued": null,
+      "price_ex_showroom": 1552900,
+      "price_on_road": null,
+      "price_city": null,
+      "currency": null,
+      "fuel_type": "Electric",
+      "engine_cc": null,
+      "cylinders": null,
+      "turbocharged": null,
+      "power_bhp": 134.0,
+      "torque_nm": 200.0,
+      "drivetrain": null,
+      "transmission": "Automatic",
+      "gearbox_speeds": null,
+      "acceleration_0_100_seconds": null,
+      "top_speed_kmph": null,
+      "mileage_arai_kmpl": null,
+      "mileage_real_world_kmpl": null,
+      "fuel_tank_capacity_litres": null,
+      "battery_capacity_kwh": 38.0,
+      "claimed_ev_range_km": null,
+      "charging_time_ac_hours": null,
+      "charging_time_dc_minutes": null,
+      "seating_capacity": 5,
+      "boot_space_litres": null,
+      "ground_clearance_mm": null,
+      "length_mm": null,
+      "width_mm": null,
+      "height_mm": null,
+      "wheelbase_mm": null,
+      "kerb_weight_kg": null,
+      "turning_radius_metres": null,
+      "airbags": 6,
+      "abs": true,
+      "ebd": null,
+      "esc": null,
+      "traction_control": null,
+      "hill_assist": null,
+      "hill_descent_control": null,
+      "tyre_pressure_monitoring_system": null,
+      "rear_parking_sensors": null,
+      "front_parking_sensors": null,
+      "rear_camera": null,
+      "camera_360": null,
+      "adas_available": null,
+      "adaptive_cruise_control": null,
+      "lane_keep_assist": null,
+      "lane_departure_warning": null,
+      "automatic_emergency_braking": null,
+      "blind_spot_monitoring": null,
+      "crash_test_rating": null,
+      "crash_test_agency": null,
+      "sunroof": null,
+      "panoramic_sunroof": null,
+      "automatic_climate_control": null,
+      "cruise_control": true,
+      "ventilated_front_seats": null,
+      "powered_driver_seat": null,
+      "powered_front_seats": null,
+      "rear_ac_vents": null,
+      "keyless_entry": null,
+      "push_button_start": null,
+      "wireless_charging": null,
+      "infotainment_screen_inches": null,
+      "android_auto": true,
+      "apple_carplay": true,
+      "connected_car_features": null,
+      "standard_warranty_years": null,
+      "standard_warranty_km": null,
+      "service_interval_km": null,
+      "service_interval_months": null,
+      "estimated_annual_service_cost": null,
+      "reliability_score": null,
+      "resale_value_score": null,
+      "service_network_score": null,
+      "source": "CarWale",
+      "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+      "source_last_updated": null,
+      "scraped_at": "2026-06-19T12:29:07.857994+00:00",
+      "scrape_run_id": "3fefe088-5f71-42ab-8087-95afd66fd538",
+      "field_completeness_score": 24.18,
+      "mileage_arai_km_per_kg": null
+    },
+    "field_provenance": {
+      "make": {
+        "field": "make",
+        "value": "MG",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "model": {
+        "field": "model",
+        "value": "Windsor EV",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "variant": {
+        "field": "variant",
+        "value": "Exclusive 38.0 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "full_name": {
+        "field": "full_name",
+        "value": "MG Windsor EV Exclusive 38.0 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "price_ex_showroom": {
+        "field": "price_ex_showroom",
+        "value": 1552900,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "fuel_type": {
+        "field": "fuel_type",
+        "value": "Electric",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "transmission": {
+        "field": "transmission",
+        "value": "Automatic",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "power_bhp": {
+        "field": "power_bhp",
+        "value": 134.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "torque_nm": {
+        "field": "torque_nm",
+        "value": 200.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "seating_capacity": {
+        "field": "seating_capacity",
+        "value": 5,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "battery_capacity_kwh": {
+        "field": "battery_capacity_kwh",
+        "value": 38.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "Battery Capacity='38' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "source": {
+        "field": "source",
+        "value": "CarWale",
+        "level": "model_shared",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "pilot source",
+        "confidence": "high"
+      },
+      "source_url": {
+        "field": "source_url",
+        "value": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "discovered variant URL",
+        "confidence": "high"
+      },
+      "scraped_at": {
+        "field": "scraped_at",
+        "value": "2026-06-19T12:29:07.857994+00:00",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "scrape_run_id": {
+        "field": "scrape_run_id",
+        "value": "3fefe088-5f71-42ab-8087-95afd66fd538",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "field_completeness_score": {
+        "field": "field_completeness_score",
+        "value": 16.67,
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+        "evidence": "schema calculation",
+        "confidence": "high"
+      }
+    },
+    "discovery_expected": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "trim_name": "Exclusive",
+      "variant_name": "Exclusive 38.0 kWh",
+      "fuel_type": "Electric",
+      "transmission": "Automatic",
+      "price_ex_showroom": 1552900,
+      "variant_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+      "model_id": 2825,
+      "version_id": 18295,
+      "trim_id": 3087,
+      "discovery_source_url": "https://www.carwale.com/mg-cars/windsor-ev/excite/"
+    },
+    "enrichment_provenance": {},
+    "coverage_enrichment_provenance": {
+      "body_type": {
+        "field": "body_type",
+        "value": "MUV",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/",
+        "path": "$.modelPage.modelDetails.bodyStyleId",
+        "raw_value": 9,
+        "normalized_value": "MUV",
+        "sharing_level": "model_shared",
+        "confidence": "high",
+        "evidence": "Structured CarWale bodyStyleId=9 mapped to MUV",
+        "source_file": "datasets/raw/carwale/html/mg_cars_windsor_ev_3262d4101f49.html"
+      }
+    },
+    "cardekho_critical_provenance": {
+      "airbags": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+        "raw_label": "No. of Airbags",
+        "raw_value": "6",
+        "normalized_value": 6,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[5]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "abs": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+        "raw_label": "Anti-lock Braking System (ABS)",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[0]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "cruise_control": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+        "raw_label": "Cruise Control",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[0].items[13]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "android_auto": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+        "raw_label": "Android Auto",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[6]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "apple_carplay": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+        "raw_label": "Apple CarPlay",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[7]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      }
+    },
+    "final_dataset_status": {
+      "subset": "nullable_usable",
+      "decision": {
+        "version_id": "18295",
+        "model_slug": "mg_windsor_ev",
+        "canonical_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "engine_cc": null,
+          "price_ex_showroom": 1552900,
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+        },
+        "missing_recommendation_critical_fields": [
+          "fuel_specific_efficiency"
+        ],
+        "previous_match_candidate": null,
+        "previous_rejection_reason": null,
+        "source_urls": {
+          "carwale": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+          "cardekho": null
+        },
+        "relevant_provenance": {
+          "field_provenance": {
+            "make": {
+              "field": "make",
+              "value": "MG",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "model": {
+              "field": "model",
+              "value": "Windsor EV",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "variant": {
+              "field": "variant",
+              "value": "Exclusive 38.0 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "full_name": {
+              "field": "full_name",
+              "value": "MG Windsor EV Exclusive 38.0 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "price_ex_showroom": {
+              "field": "price_ex_showroom",
+              "value": 1552900,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "fuel_type": {
+              "field": "fuel_type",
+              "value": "Electric",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "transmission": {
+              "field": "transmission",
+              "value": "Automatic",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "version_id=18295 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "power_bhp": {
+              "field": "power_bhp",
+              "value": 134.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "torque_nm": {
+              "field": "torque_nm",
+              "value": 200.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "seating_capacity": {
+              "field": "seating_capacity",
+              "value": 5,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "battery_capacity_kwh": {
+              "field": "battery_capacity_kwh",
+              "value": 38.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "Battery Capacity='38' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "source": {
+              "field": "source",
+              "value": "CarWale",
+              "level": "model_shared",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "pilot source",
+              "confidence": "high"
+            },
+            "source_url": {
+              "field": "source_url",
+              "value": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "discovered variant URL",
+              "confidence": "high"
+            },
+            "scraped_at": {
+              "field": "scraped_at",
+              "value": "2026-06-19T12:29:07.857994+00:00",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "scrape_run_id": {
+              "field": "scrape_run_id",
+              "value": "3fefe088-5f71-42ab-8087-95afd66fd538",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "field_completeness_score": {
+              "field": "field_completeness_score",
+              "value": 16.67,
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/",
+              "evidence": "schema calculation",
+              "confidence": "high"
+            }
+          },
+          "cardekho_critical_provenance": {
+            "airbags": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+              "raw_label": "No. of Airbags",
+              "raw_value": "6",
+              "normalized_value": 6,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[5]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "abs": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+              "raw_label": "Anti-lock Braking System (ABS)",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[0]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "cruise_control": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+              "raw_label": "Cruise Control",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[0].items[13]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "android_auto": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+              "raw_label": "Android Auto",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[6]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "apple_carplay": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive.htm",
+              "raw_label": "Apple CarPlay",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[7]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            }
+          },
+          "cosmetic_recovery_provenance": null,
+          "engine_cc_repair_provenance": null
+        },
+        "issue_group": "missing CarDekho exact match",
+        "decision": "accept_with_nullable_fields",
+        "confidence": "high",
+        "fields_safe_to_merge": [],
+        "fields_must_remain_null": [
+          "claimed_ev_range_km"
+        ],
+        "fields_requiring_manual_confirmation": [
+          "claimed_ev_range_km"
+        ],
+        "decision_evidence": "Identity and safety fields are already usable, but EV range is missing and must remain null until an exact source provides it.",
+        "special_edition_review": null
+      }
+    }
+  },
+  {
+    "version_id": 18297,
+    "canonical_record": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "variant": "Essence 38.0 kWh",
+      "full_name": "MG Windsor EV Essence 38.0 kWh",
+      "model_year": null,
+      "body_type": "MUV",
+      "segment": null,
+      "generation": null,
+      "facelift_status": null,
+      "discontinued": null,
+      "price_ex_showroom": 1652900,
+      "price_on_road": null,
+      "price_city": null,
+      "currency": null,
+      "fuel_type": "Electric",
+      "engine_cc": null,
+      "cylinders": null,
+      "turbocharged": null,
+      "power_bhp": 134.0,
+      "torque_nm": 200.0,
+      "drivetrain": null,
+      "transmission": "Automatic",
+      "gearbox_speeds": null,
+      "acceleration_0_100_seconds": null,
+      "top_speed_kmph": null,
+      "mileage_arai_kmpl": null,
+      "mileage_real_world_kmpl": null,
+      "fuel_tank_capacity_litres": null,
+      "battery_capacity_kwh": 38.0,
+      "claimed_ev_range_km": null,
+      "charging_time_ac_hours": null,
+      "charging_time_dc_minutes": null,
+      "seating_capacity": 5,
+      "boot_space_litres": null,
+      "ground_clearance_mm": null,
+      "length_mm": null,
+      "width_mm": null,
+      "height_mm": null,
+      "wheelbase_mm": null,
+      "kerb_weight_kg": null,
+      "turning_radius_metres": null,
+      "airbags": 6,
+      "abs": true,
+      "ebd": null,
+      "esc": null,
+      "traction_control": null,
+      "hill_assist": null,
+      "hill_descent_control": null,
+      "tyre_pressure_monitoring_system": null,
+      "rear_parking_sensors": null,
+      "front_parking_sensors": null,
+      "rear_camera": null,
+      "camera_360": null,
+      "adas_available": null,
+      "adaptive_cruise_control": null,
+      "lane_keep_assist": null,
+      "lane_departure_warning": null,
+      "automatic_emergency_braking": null,
+      "blind_spot_monitoring": null,
+      "crash_test_rating": null,
+      "crash_test_agency": null,
+      "sunroof": null,
+      "panoramic_sunroof": null,
+      "automatic_climate_control": null,
+      "cruise_control": true,
+      "ventilated_front_seats": null,
+      "powered_driver_seat": null,
+      "powered_front_seats": null,
+      "rear_ac_vents": null,
+      "keyless_entry": null,
+      "push_button_start": null,
+      "wireless_charging": null,
+      "infotainment_screen_inches": null,
+      "android_auto": true,
+      "apple_carplay": true,
+      "connected_car_features": null,
+      "standard_warranty_years": null,
+      "standard_warranty_km": null,
+      "service_interval_km": null,
+      "service_interval_months": null,
+      "estimated_annual_service_cost": null,
+      "reliability_score": null,
+      "resale_value_score": null,
+      "service_network_score": null,
+      "source": "CarWale",
+      "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+      "source_last_updated": null,
+      "scraped_at": "2026-06-19T12:29:07.858243+00:00",
+      "scrape_run_id": "2123b869-9c39-4753-b604-34860da31b64",
+      "field_completeness_score": 24.18,
+      "mileage_arai_km_per_kg": null
+    },
+    "field_provenance": {
+      "make": {
+        "field": "make",
+        "value": "MG",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "model": {
+        "field": "model",
+        "value": "Windsor EV",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "variant": {
+        "field": "variant",
+        "value": "Essence 38.0 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "full_name": {
+        "field": "full_name",
+        "value": "MG Windsor EV Essence 38.0 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "price_ex_showroom": {
+        "field": "price_ex_showroom",
+        "value": 1652900,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "fuel_type": {
+        "field": "fuel_type",
+        "value": "Electric",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "transmission": {
+        "field": "transmission",
+        "value": "Automatic",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "power_bhp": {
+        "field": "power_bhp",
+        "value": 134.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "torque_nm": {
+        "field": "torque_nm",
+        "value": 200.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "seating_capacity": {
+        "field": "seating_capacity",
+        "value": 5,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "battery_capacity_kwh": {
+        "field": "battery_capacity_kwh",
+        "value": 38.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "Battery Capacity='38' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "source": {
+        "field": "source",
+        "value": "CarWale",
+        "level": "model_shared",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "pilot source",
+        "confidence": "high"
+      },
+      "source_url": {
+        "field": "source_url",
+        "value": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "discovered variant URL",
+        "confidence": "high"
+      },
+      "scraped_at": {
+        "field": "scraped_at",
+        "value": "2026-06-19T12:29:07.858243+00:00",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "scrape_run_id": {
+        "field": "scrape_run_id",
+        "value": "2123b869-9c39-4753-b604-34860da31b64",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "field_completeness_score": {
+        "field": "field_completeness_score",
+        "value": 16.67,
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+        "evidence": "schema calculation",
+        "confidence": "high"
+      }
+    },
+    "discovery_expected": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "trim_name": "Essence",
+      "variant_name": "Essence 38.0 kWh",
+      "fuel_type": "Electric",
+      "transmission": "Automatic",
+      "price_ex_showroom": 1652900,
+      "variant_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+      "model_id": 2825,
+      "version_id": 18297,
+      "trim_id": 3089,
+      "discovery_source_url": "https://www.carwale.com/mg-cars/windsor-ev/excite/"
+    },
+    "enrichment_provenance": {},
+    "coverage_enrichment_provenance": {
+      "body_type": {
+        "field": "body_type",
+        "value": "MUV",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/",
+        "path": "$.modelPage.modelDetails.bodyStyleId",
+        "raw_value": 9,
+        "normalized_value": "MUV",
+        "sharing_level": "model_shared",
+        "confidence": "high",
+        "evidence": "Structured CarWale bodyStyleId=9 mapped to MUV",
+        "source_file": "datasets/raw/carwale/html/mg_cars_windsor_ev_3262d4101f49.html"
+      }
+    },
+    "cardekho_critical_provenance": {
+      "airbags": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+        "raw_label": "No. of Airbags",
+        "raw_value": "6",
+        "normalized_value": 6,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[5]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "abs": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+        "raw_label": "Anti-lock Braking System (ABS)",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[0]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "cruise_control": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+        "raw_label": "Cruise Control",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[0].items[13]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "android_auto": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+        "raw_label": "Android Auto",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[6]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "apple_carplay": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+        "raw_label": "Apple CarPlay",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[7]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      }
+    },
+    "final_dataset_status": {
+      "subset": "nullable_usable",
+      "decision": {
+        "version_id": "18297",
+        "model_slug": "mg_windsor_ev",
+        "canonical_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence 38.0 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "engine_cc": null,
+          "price_ex_showroom": 1652900,
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+        },
+        "missing_recommendation_critical_fields": [
+          "fuel_specific_efficiency"
+        ],
+        "previous_match_candidate": null,
+        "previous_rejection_reason": null,
+        "source_urls": {
+          "carwale": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+          "cardekho": null
+        },
+        "relevant_provenance": {
+          "field_provenance": {
+            "make": {
+              "field": "make",
+              "value": "MG",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "model": {
+              "field": "model",
+              "value": "Windsor EV",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "variant": {
+              "field": "variant",
+              "value": "Essence 38.0 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "full_name": {
+              "field": "full_name",
+              "value": "MG Windsor EV Essence 38.0 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "price_ex_showroom": {
+              "field": "price_ex_showroom",
+              "value": 1652900,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "fuel_type": {
+              "field": "fuel_type",
+              "value": "Electric",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "transmission": {
+              "field": "transmission",
+              "value": "Automatic",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "version_id=18297 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "power_bhp": {
+              "field": "power_bhp",
+              "value": 134.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "torque_nm": {
+              "field": "torque_nm",
+              "value": 200.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "seating_capacity": {
+              "field": "seating_capacity",
+              "value": 5,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "battery_capacity_kwh": {
+              "field": "battery_capacity_kwh",
+              "value": 38.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "Battery Capacity='38' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "source": {
+              "field": "source",
+              "value": "CarWale",
+              "level": "model_shared",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "pilot source",
+              "confidence": "high"
+            },
+            "source_url": {
+              "field": "source_url",
+              "value": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "discovered variant URL",
+              "confidence": "high"
+            },
+            "scraped_at": {
+              "field": "scraped_at",
+              "value": "2026-06-19T12:29:07.858243+00:00",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "scrape_run_id": {
+              "field": "scrape_run_id",
+              "value": "2123b869-9c39-4753-b604-34860da31b64",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "field_completeness_score": {
+              "field": "field_completeness_score",
+              "value": 16.67,
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/",
+              "evidence": "schema calculation",
+              "confidence": "high"
+            }
+          },
+          "cardekho_critical_provenance": {
+            "airbags": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+              "raw_label": "No. of Airbags",
+              "raw_value": "6",
+              "normalized_value": 6,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[5]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "abs": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+              "raw_label": "Anti-lock Braking System (ABS)",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[0]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "cruise_control": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+              "raw_label": "Cruise Control",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[0].items[13]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "android_auto": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+              "raw_label": "Android Auto",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[6]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "apple_carplay": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence 38.0 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-380-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm",
+              "raw_label": "Apple CarPlay",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[7]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            }
+          },
+          "cosmetic_recovery_provenance": null,
+          "engine_cc_repair_provenance": null
+        },
+        "issue_group": "missing CarDekho exact match",
+        "decision": "accept_with_nullable_fields",
+        "confidence": "high",
+        "fields_safe_to_merge": [],
+        "fields_must_remain_null": [
+          "claimed_ev_range_km"
+        ],
+        "fields_requiring_manual_confirmation": [
+          "claimed_ev_range_km"
+        ],
+        "decision_evidence": "Identity and safety fields are already usable, but EV range is missing and must remain null until an exact source provides it.",
+        "special_edition_review": null
+      }
+    }
+  },
+  {
+    "version_id": 20833,
+    "canonical_record": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "variant": "Exclusive Pro 52.9 kWh",
+      "full_name": "MG Windsor EV Exclusive Pro 52.9 kWh",
+      "model_year": null,
+      "body_type": "MUV",
+      "segment": null,
+      "generation": null,
+      "facelift_status": null,
+      "discontinued": null,
+      "price_ex_showroom": 1737900,
+      "price_on_road": null,
+      "price_city": null,
+      "currency": null,
+      "fuel_type": "Electric",
+      "engine_cc": null,
+      "cylinders": null,
+      "turbocharged": null,
+      "power_bhp": 134.0,
+      "torque_nm": 200.0,
+      "drivetrain": null,
+      "transmission": "Automatic",
+      "gearbox_speeds": null,
+      "acceleration_0_100_seconds": null,
+      "top_speed_kmph": null,
+      "mileage_arai_kmpl": null,
+      "mileage_real_world_kmpl": null,
+      "fuel_tank_capacity_litres": null,
+      "battery_capacity_kwh": 52.9,
+      "claimed_ev_range_km": null,
+      "charging_time_ac_hours": null,
+      "charging_time_dc_minutes": null,
+      "seating_capacity": 5,
+      "boot_space_litres": null,
+      "ground_clearance_mm": null,
+      "length_mm": null,
+      "width_mm": null,
+      "height_mm": null,
+      "wheelbase_mm": null,
+      "kerb_weight_kg": null,
+      "turning_radius_metres": null,
+      "airbags": 6,
+      "abs": true,
+      "ebd": null,
+      "esc": null,
+      "traction_control": null,
+      "hill_assist": null,
+      "hill_descent_control": null,
+      "tyre_pressure_monitoring_system": null,
+      "rear_parking_sensors": null,
+      "front_parking_sensors": null,
+      "rear_camera": null,
+      "camera_360": null,
+      "adas_available": null,
+      "adaptive_cruise_control": null,
+      "lane_keep_assist": null,
+      "lane_departure_warning": null,
+      "automatic_emergency_braking": null,
+      "blind_spot_monitoring": null,
+      "crash_test_rating": null,
+      "crash_test_agency": null,
+      "sunroof": null,
+      "panoramic_sunroof": null,
+      "automatic_climate_control": null,
+      "cruise_control": true,
+      "ventilated_front_seats": null,
+      "powered_driver_seat": null,
+      "powered_front_seats": null,
+      "rear_ac_vents": null,
+      "keyless_entry": null,
+      "push_button_start": null,
+      "wireless_charging": null,
+      "infotainment_screen_inches": null,
+      "android_auto": true,
+      "apple_carplay": true,
+      "connected_car_features": null,
+      "standard_warranty_years": null,
+      "standard_warranty_km": null,
+      "service_interval_km": null,
+      "service_interval_months": null,
+      "estimated_annual_service_cost": null,
+      "reliability_score": null,
+      "resale_value_score": null,
+      "service_network_score": null,
+      "source": "CarWale",
+      "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+      "source_last_updated": null,
+      "scraped_at": "2026-06-19T12:29:07.858734+00:00",
+      "scrape_run_id": "1a78ed48-b16f-4012-8eb3-c44347998bd8",
+      "field_completeness_score": 24.18,
+      "mileage_arai_km_per_kg": null
+    },
+    "field_provenance": {
+      "make": {
+        "field": "make",
+        "value": "MG",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "model": {
+        "field": "model",
+        "value": "Windsor EV",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "variant": {
+        "field": "variant",
+        "value": "Exclusive Pro 52.9 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "full_name": {
+        "field": "full_name",
+        "value": "MG Windsor EV Exclusive Pro 52.9 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "price_ex_showroom": {
+        "field": "price_ex_showroom",
+        "value": 1737900,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "fuel_type": {
+        "field": "fuel_type",
+        "value": "Electric",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "transmission": {
+        "field": "transmission",
+        "value": "Automatic",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "power_bhp": {
+        "field": "power_bhp",
+        "value": 134.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "torque_nm": {
+        "field": "torque_nm",
+        "value": 200.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "seating_capacity": {
+        "field": "seating_capacity",
+        "value": 5,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "battery_capacity_kwh": {
+        "field": "battery_capacity_kwh",
+        "value": 52.9,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "Battery Capacity='52.9' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "source": {
+        "field": "source",
+        "value": "CarWale",
+        "level": "model_shared",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "pilot source",
+        "confidence": "high"
+      },
+      "source_url": {
+        "field": "source_url",
+        "value": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "discovered variant URL",
+        "confidence": "high"
+      },
+      "scraped_at": {
+        "field": "scraped_at",
+        "value": "2026-06-19T12:29:07.858734+00:00",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "scrape_run_id": {
+        "field": "scrape_run_id",
+        "value": "1a78ed48-b16f-4012-8eb3-c44347998bd8",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "field_completeness_score": {
+        "field": "field_completeness_score",
+        "value": 16.67,
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+        "evidence": "schema calculation",
+        "confidence": "high"
+      }
+    },
+    "discovery_expected": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "trim_name": "Exclusive Pro",
+      "variant_name": "Exclusive Pro 52.9 kWh",
+      "fuel_type": "Electric",
+      "transmission": "Automatic",
+      "price_ex_showroom": 1737900,
+      "variant_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+      "model_id": 2825,
+      "version_id": 20833,
+      "trim_id": 19509,
+      "discovery_source_url": "https://www.carwale.com/mg-cars/windsor-ev/excite/"
+    },
+    "enrichment_provenance": {},
+    "coverage_enrichment_provenance": {
+      "body_type": {
+        "field": "body_type",
+        "value": "MUV",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/",
+        "path": "$.modelPage.modelDetails.bodyStyleId",
+        "raw_value": 9,
+        "normalized_value": "MUV",
+        "sharing_level": "model_shared",
+        "confidence": "high",
+        "evidence": "Structured CarWale bodyStyleId=9 mapped to MUV",
+        "source_file": "datasets/raw/carwale/html/mg_cars_windsor_ev_3262d4101f49.html"
+      }
+    },
+    "cardekho_critical_provenance": {
+      "airbags": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+        "raw_label": "No. of Airbags",
+        "raw_value": "6",
+        "normalized_value": 6,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[5]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "abs": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+        "raw_label": "Anti-lock Braking System (ABS)",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[0]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "cruise_control": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+        "raw_label": "Cruise Control",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[0].items[13]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "android_auto": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+        "raw_label": "Android Auto",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[6]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "apple_carplay": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+        "raw_label": "Apple CarPlay",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[7]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      }
+    },
+    "final_dataset_status": {
+      "subset": "nullable_usable",
+      "decision": {
+        "version_id": "20833",
+        "model_slug": "mg_windsor_ev",
+        "canonical_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Exclusive Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "engine_cc": null,
+          "price_ex_showroom": 1737900,
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+        },
+        "missing_recommendation_critical_fields": [
+          "fuel_specific_efficiency"
+        ],
+        "previous_match_candidate": null,
+        "previous_rejection_reason": null,
+        "source_urls": {
+          "carwale": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+          "cardekho": null
+        },
+        "relevant_provenance": {
+          "field_provenance": {
+            "make": {
+              "field": "make",
+              "value": "MG",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "model": {
+              "field": "model",
+              "value": "Windsor EV",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "variant": {
+              "field": "variant",
+              "value": "Exclusive Pro 52.9 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "full_name": {
+              "field": "full_name",
+              "value": "MG Windsor EV Exclusive Pro 52.9 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "price_ex_showroom": {
+              "field": "price_ex_showroom",
+              "value": 1737900,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "fuel_type": {
+              "field": "fuel_type",
+              "value": "Electric",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "transmission": {
+              "field": "transmission",
+              "value": "Automatic",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "version_id=20833 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "power_bhp": {
+              "field": "power_bhp",
+              "value": 134.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "torque_nm": {
+              "field": "torque_nm",
+              "value": 200.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "seating_capacity": {
+              "field": "seating_capacity",
+              "value": 5,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "battery_capacity_kwh": {
+              "field": "battery_capacity_kwh",
+              "value": 52.9,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "Battery Capacity='52.9' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "source": {
+              "field": "source",
+              "value": "CarWale",
+              "level": "model_shared",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "pilot source",
+              "confidence": "high"
+            },
+            "source_url": {
+              "field": "source_url",
+              "value": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "discovered variant URL",
+              "confidence": "high"
+            },
+            "scraped_at": {
+              "field": "scraped_at",
+              "value": "2026-06-19T12:29:07.858734+00:00",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "scrape_run_id": {
+              "field": "scrape_run_id",
+              "value": "1a78ed48-b16f-4012-8eb3-c44347998bd8",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "field_completeness_score": {
+              "field": "field_completeness_score",
+              "value": 16.67,
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/",
+              "evidence": "schema calculation",
+              "confidence": "high"
+            }
+          },
+          "cardekho_critical_provenance": {
+            "airbags": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+              "raw_label": "No. of Airbags",
+              "raw_value": "6",
+              "normalized_value": 6,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[5]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "abs": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+              "raw_label": "Anti-lock Braking System (ABS)",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[0]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "cruise_control": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+              "raw_label": "Cruise Control",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[0].items[13]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "android_auto": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+              "raw_label": "Android Auto",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[6]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "apple_carplay": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Exclusive Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/exclusive-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Exclusive_Pro.htm",
+              "raw_label": "Apple CarPlay",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[7]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            }
+          },
+          "cosmetic_recovery_provenance": null,
+          "engine_cc_repair_provenance": null
+        },
+        "issue_group": "missing CarDekho exact match",
+        "decision": "accept_with_nullable_fields",
+        "confidence": "high",
+        "fields_safe_to_merge": [],
+        "fields_must_remain_null": [
+          "claimed_ev_range_km"
+        ],
+        "fields_requiring_manual_confirmation": [
+          "claimed_ev_range_km"
+        ],
+        "decision_evidence": "Identity and safety fields are already usable, but EV range is missing and must remain null until an exact source provides it.",
+        "special_edition_review": null
+      }
+    }
+  },
+  {
+    "version_id": 20591,
+    "canonical_record": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "variant": "Essence Pro 52.9 kWh",
+      "full_name": "MG Windsor EV Essence Pro 52.9 kWh",
+      "model_year": null,
+      "body_type": "MUV",
+      "segment": null,
+      "generation": null,
+      "facelift_status": null,
+      "discontinued": null,
+      "price_ex_showroom": 1859900,
+      "price_on_road": null,
+      "price_city": null,
+      "currency": null,
+      "fuel_type": "Electric",
+      "engine_cc": null,
+      "cylinders": null,
+      "turbocharged": null,
+      "power_bhp": 134.0,
+      "torque_nm": 200.0,
+      "drivetrain": null,
+      "transmission": "Automatic",
+      "gearbox_speeds": null,
+      "acceleration_0_100_seconds": null,
+      "top_speed_kmph": null,
+      "mileage_arai_kmpl": null,
+      "mileage_real_world_kmpl": null,
+      "fuel_tank_capacity_litres": null,
+      "battery_capacity_kwh": 52.9,
+      "claimed_ev_range_km": null,
+      "charging_time_ac_hours": null,
+      "charging_time_dc_minutes": null,
+      "seating_capacity": 5,
+      "boot_space_litres": null,
+      "ground_clearance_mm": null,
+      "length_mm": null,
+      "width_mm": null,
+      "height_mm": null,
+      "wheelbase_mm": null,
+      "kerb_weight_kg": null,
+      "turning_radius_metres": null,
+      "airbags": 6,
+      "abs": true,
+      "ebd": null,
+      "esc": null,
+      "traction_control": null,
+      "hill_assist": null,
+      "hill_descent_control": null,
+      "tyre_pressure_monitoring_system": null,
+      "rear_parking_sensors": null,
+      "front_parking_sensors": null,
+      "rear_camera": null,
+      "camera_360": null,
+      "adas_available": null,
+      "adaptive_cruise_control": null,
+      "lane_keep_assist": null,
+      "lane_departure_warning": null,
+      "automatic_emergency_braking": null,
+      "blind_spot_monitoring": null,
+      "crash_test_rating": null,
+      "crash_test_agency": null,
+      "sunroof": null,
+      "panoramic_sunroof": null,
+      "automatic_climate_control": null,
+      "cruise_control": true,
+      "ventilated_front_seats": null,
+      "powered_driver_seat": null,
+      "powered_front_seats": null,
+      "rear_ac_vents": null,
+      "keyless_entry": null,
+      "push_button_start": null,
+      "wireless_charging": null,
+      "infotainment_screen_inches": null,
+      "android_auto": true,
+      "apple_carplay": true,
+      "connected_car_features": null,
+      "standard_warranty_years": null,
+      "standard_warranty_km": null,
+      "service_interval_km": null,
+      "service_interval_months": null,
+      "estimated_annual_service_cost": null,
+      "reliability_score": null,
+      "resale_value_score": null,
+      "service_network_score": null,
+      "source": "CarWale",
+      "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+      "source_last_updated": null,
+      "scraped_at": "2026-06-19T12:29:07.858992+00:00",
+      "scrape_run_id": "74c38875-b31e-4b8c-90b9-3e15cab5326d",
+      "field_completeness_score": 24.18,
+      "mileage_arai_km_per_kg": null
+    },
+    "field_provenance": {
+      "make": {
+        "field": "make",
+        "value": "MG",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "model": {
+        "field": "model",
+        "value": "Windsor EV",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "variant": {
+        "field": "variant",
+        "value": "Essence Pro 52.9 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "full_name": {
+        "field": "full_name",
+        "value": "MG Windsor EV Essence Pro 52.9 kWh",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "price_ex_showroom": {
+        "field": "price_ex_showroom",
+        "value": 1859900,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "fuel_type": {
+        "field": "fuel_type",
+        "value": "Electric",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "transmission": {
+        "field": "transmission",
+        "value": "Automatic",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "power_bhp": {
+        "field": "power_bhp",
+        "value": 134.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "torque_nm": {
+        "field": "torque_nm",
+        "value": 200.0,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "seating_capacity": {
+        "field": "seating_capacity",
+        "value": 5,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "battery_capacity_kwh": {
+        "field": "battery_capacity_kwh",
+        "value": 52.9,
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "Battery Capacity='52.9' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+        "confidence": "high"
+      },
+      "source": {
+        "field": "source",
+        "value": "CarWale",
+        "level": "model_shared",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "pilot source",
+        "confidence": "high"
+      },
+      "source_url": {
+        "field": "source_url",
+        "value": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "level": "version_specific",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "discovered variant URL",
+        "confidence": "high"
+      },
+      "scraped_at": {
+        "field": "scraped_at",
+        "value": "2026-06-19T12:29:07.858992+00:00",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "scrape_run_id": {
+        "field": "scrape_run_id",
+        "value": "74c38875-b31e-4b8c-90b9-3e15cab5326d",
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "runtime",
+        "confidence": "high"
+      },
+      "field_completeness_score": {
+        "field": "field_completeness_score",
+        "value": 16.67,
+        "level": "runtime",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+        "evidence": "schema calculation",
+        "confidence": "high"
+      }
+    },
+    "discovery_expected": {
+      "make": "MG",
+      "model": "Windsor EV",
+      "trim_name": "Essence Pro",
+      "variant_name": "Essence Pro 52.9 kWh",
+      "fuel_type": "Electric",
+      "transmission": "Automatic",
+      "price_ex_showroom": 1859900,
+      "variant_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+      "model_id": 2825,
+      "version_id": 20591,
+      "trim_id": 19457,
+      "discovery_source_url": "https://www.carwale.com/mg-cars/windsor-ev/excite/"
+    },
+    "enrichment_provenance": {},
+    "coverage_enrichment_provenance": {
+      "body_type": {
+        "field": "body_type",
+        "value": "MUV",
+        "source_url": "https://www.carwale.com/mg-cars/windsor-ev/",
+        "path": "$.modelPage.modelDetails.bodyStyleId",
+        "raw_value": 9,
+        "normalized_value": "MUV",
+        "sharing_level": "model_shared",
+        "confidence": "high",
+        "evidence": "Structured CarWale bodyStyleId=9 mapped to MUV",
+        "source_file": "datasets/raw/carwale/html/mg_cars_windsor_ev_3262d4101f49.html"
+      }
+    },
+    "cardekho_critical_provenance": {
+      "airbags": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+        "raw_label": "No. of Airbags",
+        "raw_value": "6",
+        "normalized_value": 6,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[5]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "abs": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+        "raw_label": "Anti-lock Braking System (ABS)",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[3].items[0]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "cruise_control": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+        "raw_label": "Cruise Control",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[0].items[13]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "android_auto": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+        "raw_label": "Android Auto",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[6]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      },
+      "apple_carplay": {
+        "original_carwale_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+        "raw_label": "Apple CarPlay",
+        "raw_value": "Yes",
+        "normalized_value": true,
+        "match_confidence": "high",
+        "extraction_path": "$.data.specs.featured[4].items[7]",
+        "fetched_at": null,
+        "source": "CarDekho",
+        "merge_status": "applied"
+      }
+    },
+    "final_dataset_status": {
+      "subset": "nullable_usable",
+      "decision": {
+        "version_id": "20591",
+        "model_slug": "mg_windsor_ev",
+        "canonical_identity": {
+          "make": "MG",
+          "model": "Windsor EV",
+          "variant": "Essence Pro 52.9 kWh",
+          "fuel_type": "Electric",
+          "transmission": "Automatic",
+          "engine_cc": null,
+          "price_ex_showroom": 1859900,
+          "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+        },
+        "missing_recommendation_critical_fields": [
+          "fuel_specific_efficiency"
+        ],
+        "previous_match_candidate": null,
+        "previous_rejection_reason": null,
+        "source_urls": {
+          "carwale": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+          "cardekho": null
+        },
+        "relevant_provenance": {
+          "field_provenance": {
+            "make": {
+              "field": "make",
+              "value": "MG",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "model": {
+              "field": "model",
+              "value": "Windsor EV",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "variant": {
+              "field": "variant",
+              "value": "Essence Pro 52.9 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "full_name": {
+              "field": "full_name",
+              "value": "MG Windsor EV Essence Pro 52.9 kWh",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "price_ex_showroom": {
+              "field": "price_ex_showroom",
+              "value": 1859900,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "fuel_type": {
+              "field": "fuel_type",
+              "value": "Electric",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "transmission": {
+              "field": "transmission",
+              "value": "Automatic",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "version_id=20591 from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "power_bhp": {
+              "field": "power_bhp",
+              "value": 134.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "Max Power='134' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "torque_nm": {
+              "field": "torque_nm",
+              "value": 200.0,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "Max Torque='200' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "seating_capacity": {
+              "field": "seating_capacity",
+              "value": 5,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "Seating Capacity='5' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "battery_capacity_kwh": {
+              "field": "battery_capacity_kwh",
+              "value": 52.9,
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "Battery Capacity='52.9' from datasets/raw/carwale/html/mg_cars_windsor_ev_excite_6fd0b1d65b2d.html",
+              "confidence": "high"
+            },
+            "source": {
+              "field": "source",
+              "value": "CarWale",
+              "level": "model_shared",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "pilot source",
+              "confidence": "high"
+            },
+            "source_url": {
+              "field": "source_url",
+              "value": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "level": "version_specific",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "discovered variant URL",
+              "confidence": "high"
+            },
+            "scraped_at": {
+              "field": "scraped_at",
+              "value": "2026-06-19T12:29:07.858992+00:00",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "scrape_run_id": {
+              "field": "scrape_run_id",
+              "value": "74c38875-b31e-4b8c-90b9-3e15cab5326d",
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "runtime",
+              "confidence": "high"
+            },
+            "field_completeness_score": {
+              "field": "field_completeness_score",
+              "value": 16.67,
+              "level": "runtime",
+              "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/",
+              "evidence": "schema calculation",
+              "confidence": "high"
+            }
+          },
+          "cardekho_critical_provenance": {
+            "airbags": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+              "raw_label": "No. of Airbags",
+              "raw_value": "6",
+              "normalized_value": 6,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[5]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "abs": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+              "raw_label": "Anti-lock Braking System (ABS)",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[3].items[0]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "cruise_control": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+              "raw_label": "Cruise Control",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[0].items[13]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "android_auto": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+              "raw_label": "Android Auto",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[6]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            },
+            "apple_carplay": {
+              "original_carwale_identity": {
+                "make": "MG",
+                "model": "Windsor EV",
+                "variant": "Essence Pro 52.9 kWh",
+                "fuel_type": "Electric",
+                "transmission": "Automatic",
+                "source_url": "https://www.carwale.com/mg-cars/windsor-ev/essence-pro-529-kwh/"
+              },
+              "cardekho_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm",
+              "raw_label": "Apple CarPlay",
+              "raw_value": "Yes",
+              "normalized_value": true,
+              "match_confidence": "high",
+              "extraction_path": "$.data.specs.featured[4].items[7]",
+              "fetched_at": null,
+              "source": "CarDekho",
+              "merge_status": "applied"
+            }
+          },
+          "cosmetic_recovery_provenance": null,
+          "engine_cc_repair_provenance": null
+        },
+        "issue_group": "missing CarDekho exact match",
+        "decision": "accept_with_nullable_fields",
+        "confidence": "high",
+        "fields_safe_to_merge": [],
+        "fields_must_remain_null": [
+          "claimed_ev_range_km"
+        ],
+        "fields_requiring_manual_confirmation": [
+          "claimed_ev_range_km"
+        ],
+        "decision_evidence": "Identity and safety fields are already usable, but EV range is missing and must remain null until an exact source provides it.",
+        "special_edition_review": null
+      }
+    }
+  }
+]
