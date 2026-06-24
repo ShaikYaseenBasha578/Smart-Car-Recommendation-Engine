@@ -1,0 +1,573 @@
+{
+  "schema_name": "carrec_recommendation_dataset",
+  "owner": "Yaseen",
+  "version": "phase_1a_schema_cleanup_2026-06-23",
+  "field_count": 36,
+  "column_order": [
+    "make",
+    "model",
+    "variant",
+    "full_name",
+    "body_type",
+    "price_ex_showroom",
+    "fuel_type",
+    "transmission",
+    "engine_cc",
+    "power_bhp",
+    "torque_nm",
+    "drivetrain",
+    "mileage_arai_kmpl",
+    "mileage_arai_km_per_kg",
+    "claimed_ev_range_km",
+    "seating_capacity",
+    "boot_space_litres",
+    "ground_clearance_mm",
+    "airbags",
+    "abs",
+    "esc",
+    "hill_assist",
+    "tyre_pressure_monitoring_system",
+    "rear_parking_sensors",
+    "rear_camera",
+    "camera_360",
+    "automatic_climate_control",
+    "rear_ac_vents",
+    "android_auto",
+    "apple_carplay",
+    "sunroof",
+    "ventilated_front_seats",
+    "connected_car_features",
+    "adas_available",
+    "source",
+    "source_last_updated"
+  ],
+  "fields": [
+    {
+      "name": "make",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "identity",
+      "allowed_values": [
+        "Honda",
+        "Hyundai",
+        "Kia",
+        "MG",
+        "Mahindra",
+        "Maruti Suzuki",
+        "Renault",
+        "Tata",
+        "Toyota"
+      ],
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Manufacturer brand shown to users and used for identity matching."
+    },
+    {
+      "name": "model",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "identity",
+      "allowed_values": [
+        "Altroz",
+        "Amaze",
+        "Aura",
+        "Baleno",
+        "Bolero",
+        "Brezza",
+        "City",
+        "Creta",
+        "Dzire",
+        "Eeco",
+        "Ertiga",
+        "Fortuner",
+        "Grand i10 Nios",
+        "Harrier",
+        "Hector",
+        "Innova Crysta",
+        "Nexon",
+        "Nexon EV",
+        "Scorpio-N / Scorpio Classic",
+        "Seltos",
+        "Swift",
+        "Tiago",
+        "Tigor",
+        "Triber",
+        "Venue",
+        "Verna",
+        "WagonR",
+        "Windsor EV",
+        "XL6",
+        "XUV 3XO",
+        "XUV 7XO"
+      ],
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Model family shown to users; protected families remain separate where applicable."
+    },
+    {
+      "name": "variant",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "identity",
+      "allowed_values": null,
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Current-market variant or trim/powertrain identity."
+    },
+    {
+      "name": "full_name",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "identity",
+      "allowed_values": null,
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Display identity composed from make, model and variant."
+    },
+    {
+      "name": "body_type",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "core_filter",
+      "allowed_values": [
+        "Hatchback",
+        "MPV",
+        "SUV",
+        "Sedan",
+        "Van"
+      ],
+      "ranking_role": "filter",
+      "ml_role": "categorical_input",
+      "applicability": "All rows",
+      "description": "Primary body-style filter used by the recommendation app."
+    },
+    {
+      "name": "price_ex_showroom",
+      "dtype": "number",
+      "nullable": false,
+      "schema_group": "core_filter",
+      "allowed_values": null,
+      "ranking_role": "filter",
+      "ml_role": "numeric_input",
+      "applicability": "All rows",
+      "description": "Ex-showroom price in INR; required positive numeric filter and ranking input."
+    },
+    {
+      "name": "fuel_type",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "core_filter",
+      "allowed_values": [
+        "CNG",
+        "Diesel",
+        "Diesel Mild Hybrid",
+        "Electric",
+        "Flex Fuel",
+        "Petrol",
+        "Petrol Hybrid"
+      ],
+      "ranking_role": "filter",
+      "ml_role": "categorical_input",
+      "applicability": "All rows",
+      "description": "Canonical powertrain fuel category."
+    },
+    {
+      "name": "transmission",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "core_filter",
+      "allowed_values": [
+        "Automatic",
+        "Automatic (AMT)",
+        "Automatic (CVT)",
+        "Automatic (DCT)",
+        "Automatic (TC)",
+        "Automatic (e-CVT)",
+        "Clutchless Manual (iMT)",
+        "Manual"
+      ],
+      "ranking_role": "filter",
+      "ml_role": "categorical_input",
+      "applicability": "All rows",
+      "description": "Canonical transmission label; generic Automatic is preserved where evidence is not specific."
+    },
+    {
+      "name": "engine_cc",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "numeric_input",
+      "applicability": "Combustion vehicles; null is valid for Electric rows.",
+      "description": "Engine displacement; applicable to combustion vehicles and null for Electric rows."
+    },
+    {
+      "name": "power_bhp",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Peak power; retained physically but conditional/excluded from first ML feature set until coverage improves."
+    },
+    {
+      "name": "torque_nm",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Peak torque; retained physically but conditional/excluded from first ML feature set until coverage improves."
+    },
+    {
+      "name": "drivetrain",
+      "dtype": "string",
+      "nullable": true,
+      "schema_group": "core_filter",
+      "allowed_values": [
+        "FWD",
+        "RWD",
+        "AWD",
+        "4WD",
+        null
+      ],
+      "ranking_role": "filter",
+      "ml_role": "categorical_input",
+      "applicability": "Nullable; do not infer missing drivetrain values.",
+      "description": "Canonical drivetrain; nullable and limited to FWD, RWD, AWD and 4WD."
+    },
+    {
+      "name": "mileage_arai_kmpl",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "numeric_input",
+      "applicability": "Petrol, Diesel and compatible Hybrid rows where verified.",
+      "description": "ARAI mileage in kmpl, primarily for Petrol, Diesel and compatible Hybrid rows."
+    },
+    {
+      "name": "mileage_arai_km_per_kg",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "numeric_input",
+      "applicability": "CNG rows where verified.",
+      "description": "ARAI mileage in km/kg, applicable to CNG rows."
+    },
+    {
+      "name": "claimed_ev_range_km",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "numeric_input",
+      "applicability": "Electric rows only; non-Electric rows should be null.",
+      "description": "Claimed electric driving range, applicable to Electric rows only."
+    },
+    {
+      "name": "seating_capacity",
+      "dtype": "number",
+      "nullable": false,
+      "schema_group": "core_filter",
+      "allowed_values": null,
+      "ranking_role": "filter",
+      "ml_role": "numeric_input",
+      "applicability": "All rows",
+      "description": "Seat count used for filtering and family-size ranking."
+    },
+    {
+      "name": "boot_space_litres",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "exclude_initial",
+      "applicability": "Nullable; do not infer across fuel or seating layouts.",
+      "description": "Boot volume in litres; nullable and conditional for ML because coverage varies by body and fuel layout."
+    },
+    {
+      "name": "ground_clearance_mm",
+      "dtype": "number",
+      "nullable": true,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "exclude_initial",
+      "applicability": "Nullable; use only current-generation verified values.",
+      "description": "Ground clearance in millimetres; nullable and conditional for ML because coverage is limited."
+    },
+    {
+      "name": "airbags",
+      "dtype": "number",
+      "nullable": false,
+      "schema_group": "numeric_ranking",
+      "allowed_values": null,
+      "ranking_role": "ranking_feature",
+      "ml_role": "numeric_input",
+      "applicability": "All rows",
+      "description": "Numeric airbag count used as a safety ranking feature."
+    },
+    {
+      "name": "abs",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "audit_only",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "audit_only",
+      "ml_role": "exclude_initial",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Anti-lock braking system availability; retained as audit-only because currently constant."
+    },
+    {
+      "name": "esc",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Electronic stability control availability."
+    },
+    {
+      "name": "hill_assist",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Hill-assist availability."
+    },
+    {
+      "name": "tyre_pressure_monitoring_system",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Tyre-pressure monitoring availability."
+    },
+    {
+      "name": "rear_parking_sensors",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "audit_only",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "audit_only",
+      "ml_role": "exclude_initial",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Rear parking sensor availability; retained as audit-only because currently constant."
+    },
+    {
+      "name": "rear_camera",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Rear camera availability."
+    },
+    {
+      "name": "camera_360",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "360-degree camera availability."
+    },
+    {
+      "name": "automatic_climate_control",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Automatic climate-control availability."
+    },
+    {
+      "name": "rear_ac_vents",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Rear AC vent availability."
+    },
+    {
+      "name": "android_auto",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Android Auto availability."
+    },
+    {
+      "name": "apple_carplay",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Apple CarPlay availability."
+    },
+    {
+      "name": "sunroof",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Sunroof availability."
+    },
+    {
+      "name": "ventilated_front_seats",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Ventilated front seat availability."
+    },
+    {
+      "name": "connected_car_features",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "Connected-car feature availability."
+    },
+    {
+      "name": "adas_available",
+      "dtype": "boolean",
+      "nullable": true,
+      "schema_group": "boolean_ranking",
+      "allowed_values": [
+        true,
+        false,
+        null
+      ],
+      "ranking_role": "ranking_feature",
+      "ml_role": "boolean_input",
+      "applicability": "Variant-level boolean; null means unknown or not sufficiently verified.",
+      "description": "ADAS availability."
+    },
+    {
+      "name": "source",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "provenance",
+      "allowed_values": null,
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Row-level source label for audit and refresh provenance."
+    },
+    {
+      "name": "source_last_updated",
+      "dtype": "string",
+      "nullable": false,
+      "schema_group": "provenance",
+      "allowed_values": null,
+      "ranking_role": "exclude",
+      "ml_role": "exclude_initial",
+      "applicability": "All rows",
+      "description": "Date or timestamp associated with the row source."
+    }
+  ]
+}

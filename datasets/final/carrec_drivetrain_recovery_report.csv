@@ -1,0 +1,237 @@
+make,model,variant,fuel_type,transmission,engine_cc,current_drivetrain,legacy_make,legacy_model,legacy_variant,legacy_drivetrain,match_method,match_confidence,recovery_status,reason
+Hyundai,Creta,E Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,EX Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,E Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,EX (O) Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,EX Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Knight Petrol 1.5L Manual Knight Edition,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,EX (O) Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,EX (O) Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Petrol 1.5L Manual Dual Tone,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Knight Diesel 1.5L Turbo Manual Knight Edition,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Petrol 1.5L Manual Dual Tone,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Petrol 1.5L Manual,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,S (O) Diesel 1.5L Turbo Automatic (TC),Diesel,Automatic (TC),1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Petrol 1.5L Manual Dual Tone,Petrol,Manual,1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone,Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,SX Premium Diesel 1.5L Turbo Manual Dual Tone,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),1497,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Manual,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Manual Dual Tone,Diesel,Manual,1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Automatic (TC),Diesel,Automatic (TC),1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Petrol 1.5L Automatic (DCT),Petrol,Automatic (DCT),1482,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone,Diesel,Automatic (TC),1493,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Creta,King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone,Petrol,Automatic (DCT),1482,,Hyundai,Creta,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Mahindra,XUV 3XO,MX1 Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,REVX M Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,REVX M (O) Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX2 Pro Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX2 Diesel 1.5L Turbo Manual,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Pro Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX2 Pro Diesel 1.5L Turbo Manual,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX2 Pro Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5 Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Diesel 1.5L Turbo Manual,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Pro Diesel 1.5L Turbo Manual,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Pro Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,MX3 Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,REVX A Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5 Diesel 1.5L Turbo Manual,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5 Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5L Petrol 1.2L Turbo Manual,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5 Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX7 Petrol 1.2L Turbo Manual Dual Tone,Petrol,Manual,1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,REVX A Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX7 Diesel 1.5L Turbo Manual Dual Tone,Diesel,Manual,1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX5L Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone,Petrol,Automatic (TC),1197,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Mahindra,XUV 3XO,AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),1498,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Swift,LXi Petrol Manual,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi Petrol Manual,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi (O) Petrol Manual,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi Petrol Automatic,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi (O) Petrol Automatic,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi CNG Manual,CNG,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Petrol Manual,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,VXi (O) CNG Manual,CNG,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Petrol Automatic,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Plus Petrol Manual,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Plus Petrol Manual Dual Tone,Petrol,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi CNG Manual,CNG,Manual,1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Plus Petrol Automatic,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Swift,ZXi Plus Petrol Automatic Dual Tone,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Swift,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+MG,Windsor EV,Excite,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon,Smart CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus Petrol 1.2L Turbo 6 Speed Manual,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone,Petrol,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone,Petrol,Automatic (DCT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition,CNG,Manual,1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Petrol,Automatic (DCT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,Diesel,Manual,1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT),Petrol,Automatic (DCT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Petrol,Automatic (DCT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition,Petrol,Automatic (DCT),1199,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,Diesel,Automatic (AMT),1497,,Tata,Nexon,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Tata,Nexon EV,Fearless MR,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+MG,Windsor EV,Exclusive,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+MG,Windsor EV,Essence,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+MG,Windsor EV,Exclusive Pro,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+MG,Windsor EV,Essence Pro,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Creative+ MR,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Creative 45,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Fearless 45,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Empowered 45,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Empowered+ A 45,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Empowered+ A 45 Dark,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Tata,Nexon EV,Empowered+ A 45 Red Dark,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Brezza,LXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,LXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi+ MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi+ AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX2 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX2 1.0 Turbo Petrol MT,Petrol,Manual,998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX4 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5 1.0 Turbo Petrol MT,Petrol,Manual,998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX2 1.5 Diesel MT,Diesel,Manual,1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5+ 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX6 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX6T 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5 1.5 Diesel MT,Diesel,Manual,1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX5 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX8 1.0 Turbo Petrol MT,Petrol,Manual,998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX6 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX7 1.5 Diesel MT,Diesel,Manual,1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX8 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX8 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX10 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Hyundai,Venue,HX10 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE(O) 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE(O) 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX(A) 1.5 Petrol MT,Petrol,Manual,1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),1497,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE(O) 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),1482,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE(O) 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTE(O) 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTK(O) 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX(A) 1.5 Diesel MT,Diesel,Manual,1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,HTX(A) 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,GTX(A) 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Kia,Seltos,X-Line(A) 1.5 Diesel AT,Diesel,Automatic (TC),1493,,Kia,Seltos,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,LXi MT,Petrol,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,VXi MT,Petrol,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,VXi CNG,CNG,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,ZXi MT,Petrol,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,ZXi+ MT,Petrol,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Ertiga,ZXi CNG,CNG,Manual,1462,,Maruti Suzuki,Ertiga,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,XL6,Zeta CNG,CNG,Manual,1462,,Maruti Suzuki,Xl6,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,LXi MT,Petrol,Manual,998,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,VXi MT,Petrol,Manual,998,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,ZXi MT,Petrol,Manual,1197,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,ZXi AGS,Petrol,Automatic (AMT),1197,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,VXi CNG,CNG,Manual,998,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,ZXi+ MT,Petrol,Manual,1197,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,ZXi+ AGS,Petrol,Automatic (AMT),1197,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,WagonR,ZXi+ MT Flex Fuel,Flex Fuel,Manual,1197,,Maruti Suzuki,WagonR,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,LXi MT,Petrol,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,VXi MT,Petrol,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,VXi CNG,CNG,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,ZXi MT,Petrol,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,ZXi AMT,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,ZXi+ MT,Petrol,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,ZXi CNG,CNG,Manual,1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Dzire,ZXi+ AMT,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Dzire,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Eeco,5 Seater Standard,Petrol,Manual,1197,,,,,RWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Eeco,6 Seater Standard,Petrol,Manual,1197,,,,,RWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Eeco,5 Seater AC,Petrol,Manual,1197,,,,,RWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Eeco,5 Seater AC CNG,CNG,Manual,1197,,,,,RWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
+Maruti Suzuki,Baleno,Sigma MT,Petrol,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Delta MT,Petrol,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Delta AGS,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Zeta MT,Petrol,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Delta CNG,CNG,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Zeta AGS,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Alpha MT,Petrol,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Zeta CNG,CNG,Manual,1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Baleno,Alpha AGS,Petrol,Automatic (AMT),1197,,Maruti Suzuki,Baleno,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
