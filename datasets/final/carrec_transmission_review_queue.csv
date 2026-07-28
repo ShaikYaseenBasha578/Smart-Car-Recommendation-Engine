@@ -1,0 +1,380 @@
+make,model,variant,fuel_type,old_transmission,candidate_transmission,evidence,status,reason
+Hyundai,Creta,EX (O) Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,S (O) Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,S (O) Diesel 1.5L Turbo Automatic (TC),Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Edition Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT),Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Automatic (TC),Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Edition Petrol 1.5L Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Creta,King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,MX2 Pro Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,MX3 Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,MX3 Pro Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,MX3 Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,AX5 Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,AX5 Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,REVX A Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,AX5L Petrol 1.2L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 3XO,AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Swift,VXi Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Swift,VXi (O) Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Swift,ZXi Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Swift,ZXi Plus Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Swift,ZXi Plus Petrol Automatic Dual Tone,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+MG,Windsor EV,Excite,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon,Smart Plus Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Pure Plus Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Pure Plus Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT),Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT),Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,Diesel,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Nexon EV,Fearless MR,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+MG,Windsor EV,Exclusive,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+MG,Windsor EV,Essence,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+MG,Windsor EV,Exclusive Pro,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+MG,Windsor EV,Essence Pro,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Creative+ MR,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Creative 45,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Fearless 45,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Empowered 45,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Empowered+ A 45,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Empowered+ A 45 Dark,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Nexon EV,Empowered+ A 45 Red Dark,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Maruti Suzuki,Brezza,VXi AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Brezza,ZXi AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Brezza,ZXi+ AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX5 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX5 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX6 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX8 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX8 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX10 1.0 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Venue,HX10 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTE(O) 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK(O) 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line(A) 1.5 Petrol IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTE(O) 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK(O) 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK(O) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line(A) 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTE(O) 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTK(O) 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,HTX(A) 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,GTX(A) 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Kia,Seltos,X-Line(A) 1.5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Ertiga,VXi AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Ertiga,ZXi AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Ertiga,ZXi+ AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,XL6,Zeta AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,XL6,Alpha AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,XL6,Alpha+ AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,WagonR,VXi AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,WagonR,ZXi AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,WagonR,ZXi+ AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Dzire,VXi AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Dzire,ZXi AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Dzire,ZXi+ AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Baleno,Delta AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Baleno,Zeta AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Baleno,Alpha AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Grand i10 Nios,Magna AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Grand i10 Nios,Corporate AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Grand i10 Nios,Sportz AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Grand i10 Nios,Sportz (O) AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Grand i10 Nios,Asta AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Aura,SX+ AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX6 1.5 MPi IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX6+ 1.5 MPi IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX8 1.5 MPi IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX10 1.5 MPi IVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX8 1.5 Turbo DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Verna,HX10 1.5 Turbo DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Amaze,V CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Amaze,VX CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Amaze,ZX CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,City,V CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,City,ZX CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,City,ZX+ CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,City,ZX+ e:HEV,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,Fortuner 2.7 Petrol 4x2 AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,Fortuner 2.8 Diesel 4x2 AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,Legender 2.8 Diesel 4x2 AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,Fortuner Neo Drive 48V 4x4 AT,Diesel Mild Hybrid,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,Legender Neo Drive 48V 4x4 AT,Diesel Mild Hybrid,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Fortuner,GR-S 2.8 Diesel 4x4 AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Pure AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Pure S AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Creative AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Pure AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Creative S AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Pure S AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Creative S DCA,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Creative AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Creative S AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Accomplished S DCA,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Accomplished+ S DCA,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Altroz,Accomplished S AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure+ AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure CNG AMT,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure+ A AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Creative AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure+ CNG AMT,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Creative+ AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Pure+ A CNG AMT,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago,Creative CNG AMT,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tigor,XTA AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tigor,XZA AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tigor,XZA+ AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tigor,XZA AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tigor,XZA+ AMT CNG,CNG,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z4 Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z4 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z6 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8 Select Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8 Select Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8T Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8T Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8L Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8L Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8T Diesel 4WD AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Scorpio-N / Scorpio Classic,Scorpio-N Z8L Diesel 4WD AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX3 Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX3 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX5 Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX5 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7 Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7 Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7T Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7T 6 Seater Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7T Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7T 6 Seater Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7T Diesel AWD AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7L Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7L 6 Seater Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7L Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7L 6 Seater Diesel AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,XUV 7XO,AX7L Diesel AWD AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Petrol Adventure X AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Petrol Fearless X AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Petrol Fearless X Plus AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Petrol Fearless Ultra AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Pure X AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Adventure X AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Adventure X Plus AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Fearless X AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Fearless X Plus AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Tata,Harrier,Diesel Fearless Ultra AT,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+MG,Hector,Smart Pro 5Str CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+MG,Hector,Sharp Pro 5Str CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+MG,Hector,Savvy Pro 5Str CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Renault,Triber,Emotion AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Glanza,S Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Glanza,G Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Glanza,V Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Taisor,S Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Taisor,S+ Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Taisor,G 1.0L Turbo AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Taisor,V 1.0L Turbo AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Fronx,Delta 1.2 Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Fronx,Delta+ 1.2 Petrol AMT,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Fronx,Zeta 1.0 Turbo AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Fronx,Alpha 1.0 Turbo AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,S-Presso,VXi (O) AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,S-Presso,VXi+ (O) AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Alto K10,VXi (O) AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Alto K10,VXi+ (O) AGS,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,S NeoDrive AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,S Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,G (O) NeoDrive AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,G (O) Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,V NeoDrive AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,V NeoDrive All-Wheel Drive AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Urban Cruiser Hyryder,V Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Delta Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Zeta Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Zeta (O) Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Alpha Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Alpha (O) Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Alpha (O) ALLGRIP Petrol AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Delta+ Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Zeta+ Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Zeta+ (O) Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Alpha+ Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Grand Vitara,Alpha+ (O) Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,VXI AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI (O) AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,VXI Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ AT ADAS,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ (O) AT ADAS,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI (O) Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ AT ALLGRIP ADAS,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ (O) AT ALLGRIP ADAS,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Victoris,ZXI+ (O) Strong Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,GX 7 Seater Petrol CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,GX 8 Seater Petrol CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,GX (O) 7 Seater Petrol CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,GX (O) 8 Seater Petrol CVT,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,VX 7 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,VX 8 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,VX (O) 7 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,VX (O) 8 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,ZX 7 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Innova Hycross,ZX (O) 7 Seater Hybrid e-CVT,Petrol Hybrid,Automatic (e-CVT),e-CVT,Existing project-specific transmission label 'Automatic (e-CVT)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Hilux,High AT 4WD,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Rumion,S AT NeoDrive,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Rumion,G AT NeoDrive,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Toyota,Rumion,V AT NeoDrive,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Jimny,Zeta PRO AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,Jimny,Alpha PRO AT,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Maruti Suzuki,e VITARA,Delta 49 kWh,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Maruti Suzuki,e VITARA,Zeta 61 kWh,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Maruti Suzuki,e VITARA,Alpha 61 kWh,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Skoda,Kushaq,Classic Plus Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Monte Carlo Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Monte Carlo Petrol 1.5L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Prestige Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Prestige Petrol 1.5L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Signature Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kushaq,Sportline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Monte Carlo Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Monte Carlo Petrol 1.5L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Prestige Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Prestige Petrol 1.5L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Signature Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Slavia,Sportline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Taigun,GT Line Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Taigun,GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT),Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Taigun,Highline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Taigun,Highline Plus Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Taigun,Topline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Virtus,GT Line Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Virtus,GT Plus Petrol 1.5L Turbo Automatic (DCT) Chrome,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Virtus,Highline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Virtus,Highline Plus Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Volkswagen,Virtus,Topline Petrol 1.0L Turbo Automatic (TC),Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Honda,Elevate,V Petrol Automatic,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Elevate,VX Petrol Automatic,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Elevate,ZX Petrol Automatic,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Honda,Elevate,ZX Petrol Automatic ADV Edition,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Exter,HX 10 Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Exter,HX 3 Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Exter,HX 4 Plus Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Exter,HX 6 Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Hyundai,Exter,HX 8 Petrol Automatic,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kylaq,Classic Plus Petrol Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kylaq,Prestige Petrol Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kylaq,Prestige Plus Petrol Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kylaq,Signature Petrol Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Skoda,Kylaq,Signature Plus Petrol Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar,LXT 2WD Petrol 2.0L Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar,LXT 4WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar,LXT 4WD Petrol 2.0L Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,AX5 L 2WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,AX5 L 4WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,AX7 L 2WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,AX7 L 2WD Petrol 2.0L Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,AX7 L 4WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,MX3 2WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,MX3 2WD Petrol 2.0L Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,MX5 2WD Diesel 2.2L Turbo Automatic,Diesel,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Mahindra,Thar Roxx,MX5 2WD Petrol 2.0L Turbo Automatic,Petrol,Automatic (TC),Torque Converter,Existing project-specific transmission label 'Automatic (TC)'.,RESOLVED,Canonical spelling normalization.
+Renault,Duster,Evolution TCe 160 DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Renault,Duster,Iconic TCe 160 DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Renault,Duster,Techno TCe 160 DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Renault,Duster,Techno+ TCe 160 DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,EZ-SHIFT ACENTA,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,EZ-SHIFT N-CONNECTA,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,EZ-SHIFT TEKNA,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,EZ-SHIFT TEKNA+,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,EZ-SHIFT VISIA,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,Turbo X-TRONIC CVT ACENTA,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,Turbo X-TRONIC CVT N-CONNECTA,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,Turbo X-TRONIC CVT TEKNA,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Magnite,Turbo X-TRONIC CVT TEKNA+,Petrol,Automatic (CVT),CVT,Existing project-specific transmission label 'Automatic (CVT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Gravite,N-Connecta EZ Shift,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Nissan,Gravite,Tekna EZ Shift,Petrol,Automatic (AMT),AMT,Existing project-specific transmission label 'Automatic (AMT)'.,RESOLVED,Canonical spelling normalization.
+Tata,Tiago EV,Smart 19,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Tiago EV,Pure+ 19,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Tiago EV,Pure+ 24,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Tiago EV,Creative+ 24,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Smart 30,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Smart+ 30,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Smart+ 40,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Adventure 40,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Empowered 40,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Tata,Punch EV,Empowered+ S 40,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Syros,HTK+ Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Syros,HTK+ Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1131, KIA SYROS D1.5 CRDI VGT 6AT HTK PLUS; project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Syros,HTK+(O) Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Syros,HTK+(O) Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1133, KIA SYROS D1.5 CRDI VGT 6AT HTK PLUS(O); project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Syros,HTX Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Syros,HTX Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1188, KIA SYROS D1.5 CRDI VGT 6AT HTX; project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Syros,HTX(O) Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Syros,HTX(O) Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1189, KIA SYROS D1.5 CRDI VGT 6AT HTX(O); project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Carens Clavis,HTK+ 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTK+ 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTK+(O) 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTK+(O) 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX(O) 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX(O) 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,GTX 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,GTX 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX(O) A 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX(O) A 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX+ 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX+ 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,GTX+ 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,GTX+ 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,X-Line 6 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,X-Line 7 Seater 1.5 Turbo Petrol DCT,Petrol,Automatic (DCT),DCT,Existing project-specific transmission label 'Automatic (DCT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX 7 Seater 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX+ 6 Seater 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTX+ 7 Seater 1.5 Turbo Petrol iMT,Petrol,Clutchless Manual (iMT),iMT,Existing project-specific transmission label 'Clutchless Manual (iMT)'.,RESOLVED,Canonical spelling normalization.
+Kia,Carens Clavis,HTK+ 6 Seater 1.5 Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1184, Kia Carens Clavis D1.5 CRDI VGT 6AT HTK Plus 6; project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Carens Clavis,HTK+ 7 Seater 1.5 Diesel Automatic,Diesel,Torque Converter,Torque Converter,"datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1172, Kia Carens Clavis D1.5 CRDI VGT 6AT HTK Plus 7; project canonicalizes comparable Kia diesel AT as Torque Converter.",RESOLVED,Exact repository evidence supports canonical transmission type.
+Kia,Carens Clavis EV,HTK+ 7,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,HTX (E) 7,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,HTX 7,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,HTX (E) ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,HTX ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,GTX ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,HTX+ ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,GTX+ ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.
+Kia,Carens Clavis EV,X-Line ER,Electric,Automatic,,Existing data only says Automatic.,UNRESOLVED,Exact gearbox type is not established by existing repository evidence.

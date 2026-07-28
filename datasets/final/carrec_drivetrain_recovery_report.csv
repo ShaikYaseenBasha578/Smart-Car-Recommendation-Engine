@@ -130,16 +130,16 @@ Tata,Nexon EV,Empowered 45,Electric,Automatic,,,,,,FWD,explicit_override,verifie
 Tata,Nexon EV,Empowered+ A 45,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
 Tata,Nexon EV,Empowered+ A 45 Dark,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
 Tata,Nexon EV,Empowered+ A 45 Red Dark,Electric,Automatic,,,,,,FWD,explicit_override,verified,EXPLICIT_VERIFIED_OVERRIDE,explicit_verified_override
-Maruti Suzuki,Brezza,LXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,LXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,VXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,VXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,ZXi MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,VXi AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,ZXi CNG,CNG,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,ZXi+ MT,Petrol,Manual,,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,ZXi AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
-Maruti Suzuki,Brezza,ZXi+ AT,Petrol,Automatic (TC),,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,LXi MT,Petrol,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,LXi CNG,CNG,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi MT,Petrol,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi CNG,CNG,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi MT,Petrol,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,VXi AT,Petrol,Automatic (TC),1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi CNG,CNG,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi+ MT,Petrol,Manual,1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi AT,Petrol,Automatic (TC),1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
+Maruti Suzuki,Brezza,ZXi+ AT,Petrol,Automatic (TC),1462,,Maruti Suzuki,Brezza,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
 Hyundai,Venue,HX2 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
 Hyundai,Venue,HX2 1.0 Turbo Petrol MT,Petrol,Manual,998,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain
 Hyundai,Venue,HX4 1.2 Petrol MT,Petrol,Manual,1197,,Hyundai,Venue,,FWD,model_uniform,high,AUTO_ACCEPT_MODEL_UNIFORM,legacy_model_family_uniform_valid_drivetrain

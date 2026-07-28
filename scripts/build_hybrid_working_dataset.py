@@ -30,12 +30,17 @@ RECOMMENDATION_JSON_PATH = ROOT / "datasets/final/carrec_recommendation_dataset.
 VALIDATION_PATH = ROOT / "datasets/final/carrec_recommendation_validation.csv"
 SCHEMA_PATH = ROOT / "scraping/schemas/carrec_recommendation_schema.json"
 DRIVETRAIN_RECOVERY_REPORT_PATH = ROOT / "datasets/final/carrec_drivetrain_recovery_report.csv"
+TRANSMISSION_REVIEW_PATH = ROOT / "datasets/final/carrec_transmission_review_queue.csv"
+ADAS_MIGRATION_REVIEW_PATH = ROOT / "datasets/final/carrec_adas_migration_review.csv"
 DRIVETRAIN_RECOVERY_SOURCE = "legacy_2021_drivetrain_recovery"
 DRIVETRAIN_RECOVERY_DATE = "2026-06-23"
 VERIFIED_DRIVETRAIN_SOURCE = "verified_user_drivetrain_correction"
 VERIFIED_DRIVETRAIN_DATE = "2026-06-24"
 VERIFIED_GROUND_CLEARANCE_SOURCE = "verified_user_ground_clearance"
 VERIFIED_GROUND_CLEARANCE_DATE = "2026-06-24"
+EXPECTED_DATASET_ROWS = 812
+EXPECTED_MODEL_COUNT = 61
+EXPECTED_MANUFACTURER_COUNT = 12
 
 COMPACT_COLUMNS = [
     "make",
@@ -72,6 +77,7 @@ COMPACT_COLUMNS = [
     "ventilated_front_seats",
     "connected_car_features",
     "adas_available",
+    "adas_tier",
     "source",
     "source_last_updated",
 ]
@@ -111,6 +117,7 @@ NUMERIC_COLUMNS = [
     "boot_space_litres",
     "ground_clearance_mm",
     "airbags",
+    "adas_tier",
 ]
 
 AUDITED_MODELS = {
@@ -138,6 +145,54 @@ BOOLEAN_FEATURE_COLUMNS = (
     "connected_car_features",
     "adas_available",
 )
+
+CANONICAL_TRANSMISSION_VALUES = {
+    "Manual",
+    "iMT",
+    "AMT",
+    "CVT",
+    "DCT",
+    "Torque Converter",
+    "e-CVT",
+    "Single-Speed Automatic",
+    "Automatic",
+}
+
+TRANSMISSION_CANONICALIZATION = {
+    "Automatic (AMT)": "AMT",
+    "Automatic (CVT)": "CVT",
+    "Automatic (DCT)": "DCT",
+    "Automatic (TC)": "Torque Converter",
+    "Automatic (e-CVT)": "e-CVT",
+    "Clutchless Manual (iMT)": "iMT",
+}
+
+TRANSMISSION_AUDIT_EVIDENCE = {
+    ("kia", "syros", "htk diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1131, KIA SYROS D1.5 CRDI VGT 6AT HTK PLUS; project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+    ("kia", "syros", "htk o diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1133, KIA SYROS D1.5 CRDI VGT 6AT HTK PLUS(O); project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+    ("kia", "syros", "htx diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1188, KIA SYROS D1.5 CRDI VGT 6AT HTX; project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+    ("kia", "syros", "htx o diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1189, KIA SYROS D1.5 CRDI VGT 6AT HTX(O); project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+    ("kia", "carens clavis", "htk 6 seater 1 5 diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1184, Kia Carens Clavis D1.5 CRDI VGT 6AT HTK Plus 6; project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+    ("kia", "carens clavis", "htk 7 seater 1 5 diesel automatic"): {
+        "value": "Torque Converter",
+        "evidence": "datasets/research/batch_4_kia_exact_price_matrix.csv: official Kia configurator API variant 1172, Kia Carens Clavis D1.5 CRDI VGT 6AT HTK Plus 7; project canonicalizes comparable Kia diesel AT as Torque Converter.",
+    },
+}
 
 LEGACY_TO_AUDITED = {
     ("hyundai", "creta"),
@@ -349,9 +404,9 @@ def normalize_transmission_from_processed(row: pd.Series) -> str | None:
     if bool(row.get("Transmission_Manual", False)):
         return "Manual"
     if bool(row.get("Transmission_CVT", False)):
-        return "Automatic (CVT)"
+        return "CVT"
     if bool(row.get("Transmission_DCT", False)):
-        return "Automatic (DCT)"
+        return "DCT"
     if bool(row.get("Transmission_Automatic", False)):
         return "Automatic"
     return None
@@ -930,14 +985,15 @@ def sync_drivetrain_recovery_overrides(report: pd.DataFrame) -> dict[str, int]:
     }
 
 
-def normalize_allowed_values(working: pd.DataFrame) -> pd.DataFrame:
+def normalize_allowed_values(working: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, dict[str, int]]]:
     normalized = working.copy()
     normalized["drivetrain"] = normalized["drivetrain"].map(
         lambda value: canonical_drivetrain(value) if pd.notna(value) else pd.NA
     )
-    for column in BOOLEAN_FEATURE_COLUMNS:
-        normalized[column] = normalized[column].astype("boolean")
-    return normalized
+    normalized, boolean_summary = normalize_boolean_features(normalized)
+    normalized, transmission_review = normalize_transmissions(normalized)
+    normalized, adas_review = migrate_adas_tier(normalized)
+    return normalized, transmission_review, adas_review, boolean_summary
 
 
 def load_schema_contract() -> dict[str, object]:
@@ -977,12 +1033,248 @@ def dataframe_parity(left: pd.DataFrame, right: pd.DataFrame) -> bool:
     return left_json == right_json
 
 
+def json_ready_records(frame: pd.DataFrame) -> list[dict[str, object]]:
+    records: list[dict[str, object]] = []
+    for row in frame.to_dict(orient="records"):
+        rendered: dict[str, object] = {}
+        for key, value in row.items():
+            if scalar_is_null(value):
+                rendered[key] = None
+            elif key in BOOLEAN_FEATURE_COLUMNS:
+                rendered[key] = bool(value)
+            elif key == "adas_tier":
+                rendered[key] = int(value)
+            elif isinstance(value, float) and math.isnan(value):
+                rendered[key] = None
+            else:
+                rendered[key] = value
+        records.append(rendered)
+    return records
+
+
 def value_counts_string(series: pd.Series) -> str:
     values = series.value_counts(dropna=False).to_dict()
     rendered = {}
     for key, value in values.items():
         rendered["null" if pd.isna(key) else str(key)] = int(value)
     return json.dumps(rendered, sort_keys=True)
+
+
+def scalar_is_null(value: object) -> bool:
+    if value is None:
+        return True
+    try:
+        if pd.isna(value):
+            return True
+    except (TypeError, ValueError):
+        return False
+    if isinstance(value, str) and value.strip() == "":
+        return True
+    return False
+
+
+def coerce_nullable_boolean(value: object) -> bool | pd._libs.missing.NAType:
+    if scalar_is_null(value):
+        return pd.NA
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized == "true":
+            return True
+        if normalized == "false":
+            return False
+        if normalized in {"", "null", "none", "nan", "<na>"}:
+            return pd.NA
+    raise ValueError(f"Unsupported nullable boolean value: {value!r}")
+
+
+def normalize_boolean_features(working: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, dict[str, int]]]:
+    normalized = working.copy()
+    conversion_summary: dict[str, dict[str, int]] = {}
+    for column in BOOLEAN_FEATURE_COLUMNS:
+        counts: dict[str, int] = {}
+        coerced = []
+        for value in normalized[column].tolist():
+            result = coerce_nullable_boolean(value)
+            source_label = "null" if scalar_is_null(value) else f"{type(value).__name__}:{value}"
+            result_label = "null" if pd.isna(result) else str(bool(result))
+            key = f"{source_label}->{result_label}"
+            counts[key] = counts.get(key, 0) + 1
+            coerced.append(result)
+        normalized[column] = pd.Series(coerced, index=normalized.index, dtype="boolean")
+        conversion_summary[column] = counts
+    return normalized, conversion_summary
+
+
+def normalize_transmission_value(row: pd.Series) -> tuple[str, dict[str, object] | None]:
+    old_value = row.get("transmission")
+    if scalar_is_null(old_value):
+        raise ValueError(
+            f"Missing transmission for {row.get('make')} {row.get('model')} {row.get('variant')}"
+        )
+    old = str(old_value).strip()
+    base_review = {
+        "make": row.get("make"),
+        "model": row.get("model"),
+        "variant": row.get("variant"),
+        "fuel_type": row.get("fuel_type"),
+        "old_transmission": old,
+    }
+
+    if old in TRANSMISSION_CANONICALIZATION:
+        new_value = TRANSMISSION_CANONICALIZATION[old]
+        return new_value, {
+            **base_review,
+            "candidate_transmission": new_value,
+            "evidence": f"Existing project-specific transmission label {old!r}.",
+            "status": "RESOLVED",
+            "reason": "Canonical spelling normalization.",
+        }
+
+    evidence_key = (norm_text(row.get("make")), norm_text(row.get("model")), norm_text(row.get("variant")))
+    if evidence_key in TRANSMISSION_AUDIT_EVIDENCE:
+        evidence = TRANSMISSION_AUDIT_EVIDENCE[evidence_key]
+        new_value = evidence["value"]
+        if old != new_value:
+            raise ValueError(
+                f"Transmission audit override mismatch for {row.get('make')} {row.get('model')} {row.get('variant')}: {old!r} != {new_value!r}"
+            )
+        return new_value, {
+            **base_review,
+            "candidate_transmission": new_value,
+            "evidence": evidence["evidence"],
+            "status": "RESOLVED",
+            "reason": "Exact repository evidence supports canonical transmission type.",
+        }
+
+    if old in CANONICAL_TRANSMISSION_VALUES:
+        if old == "Automatic":
+            return old, {
+                **base_review,
+                "candidate_transmission": "",
+                "evidence": "Existing data only says Automatic.",
+                "status": "UNRESOLVED",
+                "reason": "Exact gearbox type is not established by existing repository evidence.",
+            }
+        return old, None
+
+    variant = str(row.get("variant") or "")
+    token_patterns = [
+        (r"\bDCT\b", "DCT"),
+        (r"\bCVT\b|\bIVT\b", "CVT"),
+        (r"\bAMT\b", "AMT"),
+        (r"\biMT\b", "iMT"),
+        (r"\be-CVT\b", "e-CVT"),
+        (r"\(TC\)|Torque Converter", "Torque Converter"),
+    ]
+    for pattern, candidate in token_patterns:
+        if re.search(pattern, variant, flags=re.IGNORECASE):
+            return candidate, {
+                **base_review,
+                "candidate_transmission": candidate,
+                "evidence": f"Exact variant name contains transmission token matching {pattern!r}.",
+                "status": "RESOLVED",
+                "reason": "Variant identity establishes canonical gearbox type.",
+            }
+
+    if old.lower() in {"auto", "at"}:
+        return "Automatic", {
+            **base_review,
+            "candidate_transmission": "",
+            "evidence": f"Generic automatic label {old!r}.",
+            "status": "UNRESOLVED",
+            "reason": "Generic automatic label lacks exact gearbox evidence.",
+        }
+
+    raise ValueError(
+        f"Unsupported transmission value {old!r} for {row.get('make')} {row.get('model')} {row.get('variant')}"
+    )
+
+
+def normalize_transmissions(working: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    normalized = working.copy()
+    review_rows: list[dict[str, object]] = []
+    transmissions = []
+    for _, row in normalized.iterrows():
+        transmission, review_row = normalize_transmission_value(row)
+        transmissions.append(transmission)
+        if review_row is not None:
+            review_rows.append(review_row)
+    normalized["transmission"] = transmissions
+    review = pd.DataFrame(
+        review_rows,
+        columns=[
+            "make",
+            "model",
+            "variant",
+            "fuel_type",
+            "old_transmission",
+            "candidate_transmission",
+            "evidence",
+            "status",
+            "reason",
+        ],
+    )
+    return normalized, review
+
+
+def assign_adas_tier(row: pd.Series) -> tuple[object, dict[str, object]]:
+    old_value = row.get("adas_available")
+    base_review = {
+        "make": row.get("make"),
+        "model": row.get("model"),
+        "variant": row.get("variant"),
+        "old_adas_available": "" if pd.isna(old_value) else bool(old_value),
+    }
+    if pd.isna(old_value):
+        return pd.NA, {
+            **base_review,
+            "new_adas_tier": "",
+            "evidence": "adas_available is null in the current dataset.",
+            "migration_status": "UNRESOLVED",
+            "notes": "Insufficient evidence to assign a CarRec ADAS tier.",
+        }
+    if bool(old_value):
+        return 1, {
+            **base_review,
+            "new_adas_tier": 1,
+            "evidence": "adas_available=True in existing project data.",
+            "migration_status": "PARTIAL",
+            "notes": "Some ADAS is verified; no existing repository evidence explicitly establishes Level 2/comprehensive suite.",
+        }
+    return 0, {
+        **base_review,
+        "new_adas_tier": 0,
+        "evidence": "adas_available=False in existing project data.",
+        "migration_status": "EXACT",
+        "notes": "Verified no ADAS functionality in the dataset scope.",
+    }
+
+
+def migrate_adas_tier(working: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    migrated = working.copy()
+    tiers = []
+    review_rows = []
+    for _, row in migrated.iterrows():
+        tier, review_row = assign_adas_tier(row)
+        tiers.append(tier)
+        review_rows.append(review_row)
+    migrated["adas_tier"] = pd.Series(tiers, index=migrated.index, dtype="Int64")
+    review = pd.DataFrame(
+        review_rows,
+        columns=[
+            "make",
+            "model",
+            "variant",
+            "old_adas_available",
+            "new_adas_tier",
+            "evidence",
+            "migration_status",
+            "notes",
+        ],
+    )
+    return migrated, review
 
 
 def add_validation_row(
@@ -1004,16 +1296,24 @@ def add_validation_row(
     )
 
 
-def validate_and_export_outputs(working: pd.DataFrame, review: pd.DataFrame) -> pd.DataFrame:
+def validate_and_export_outputs(
+    working: pd.DataFrame,
+    review: pd.DataFrame,
+    transmission_review: pd.DataFrame,
+    adas_review: pd.DataFrame,
+    boolean_summary: dict[str, dict[str, int]],
+) -> pd.DataFrame:
     schema = load_schema_contract()
     schema_fields = schema["fields"]
     field_map = {field["name"]: field for field in schema_fields}
 
     working.to_csv(OUTPUT_PATH, index=False)
     working.to_csv(RECOMMENDATION_PATH, index=False)
-    records = json.loads(working.where(pd.notna(working), None).to_json(orient="records"))
+    records = json_ready_records(working)
     RECOMMENDATION_JSON_PATH.write_text(json.dumps(records, indent=2), encoding="utf-8")
     review.to_csv(REVIEW_PATH, index=False)
+    transmission_review.to_csv(TRANSMISSION_REVIEW_PATH, index=False)
+    adas_review.to_csv(ADAS_MIGRATION_REVIEW_PATH, index=False)
 
     recommendation = pd.read_csv(RECOMMENDATION_PATH)
     working_read = pd.read_csv(OUTPUT_PATH)
@@ -1030,10 +1330,25 @@ def validate_and_export_outputs(working: pd.DataFrame, review: pd.DataFrame) -> 
 
     checked("schema_column_names", list(working.columns) == COMPACT_COLUMNS, json.dumps(list(working.columns)), json.dumps(COMPACT_COLUMNS))
     checked("schema_column_order", list(working.columns) == [field["name"] for field in schema_fields], "matches" if list(working.columns) == [field["name"] for field in schema_fields] else "mismatch", "schema contract order")
-    checked("dataset_row_count", len(working) == 475, len(working), 475)
-    checked("dataset_column_count", working.shape[1] == 36, working.shape[1], 36)
-    checked("manufacturer_count", working["make"].nunique(dropna=True) == 9, working["make"].nunique(dropna=True), 9)
-    checked("model_count", working[["make", "model"]].drop_duplicates().shape[0] == 31, working[["make", "model"]].drop_duplicates().shape[0], 31)
+    checked(
+        "dataset_row_count",
+        len(working) == EXPECTED_DATASET_ROWS,
+        len(working),
+        EXPECTED_DATASET_ROWS,
+    )
+    checked("dataset_column_count", working.shape[1] == 37, working.shape[1], 37)
+    checked(
+        "manufacturer_count",
+        working["make"].nunique(dropna=True) == EXPECTED_MANUFACTURER_COUNT,
+        working["make"].nunique(dropna=True),
+        EXPECTED_MANUFACTURER_COUNT,
+    )
+    checked(
+        "model_count",
+        working[["make", "model"]].drop_duplicates().shape[0] == EXPECTED_MODEL_COUNT,
+        working[["make", "model"]].drop_duplicates().shape[0],
+        EXPECTED_MODEL_COUNT,
+    )
 
     identity_duplicates = int(working.duplicated(subset=["make", "model", "variant"]).sum())
     normalized_duplicates = int(normalized_identity_series(working).duplicated().sum())
@@ -1075,6 +1390,32 @@ def validate_and_export_outputs(working: pd.DataFrame, review: pd.DataFrame) -> 
         invalid = sorted({str(value) for value in non_null.unique() if value not in {True, False}})
         checked(f"boolean_values:{column}", not invalid, json.dumps(invalid), "True/False/null only")
 
+    for column in BOOLEAN_FEATURE_COLUMNS:
+        json_invalid = []
+        for index, record in enumerate(json_records):
+            value = record.get(column)
+            if value is not None and not isinstance(value, bool):
+                json_invalid.append({"row": index, "value": repr(value)})
+        checked(f"json_boolean_type:{column}", not json_invalid, json.dumps(json_invalid[:10]), "bool/null only")
+
+    invalid_transmissions = sorted(
+        {
+            str(value)
+            for value in working["transmission"].dropna().unique()
+            if value not in CANONICAL_TRANSMISSION_VALUES
+        }
+    )
+    checked("canonical_transmission_values", not invalid_transmissions, json.dumps(invalid_transmissions), "canonical or unresolved Automatic only")
+
+    adas_values = sorted({int(value) for value in working["adas_tier"].dropna().unique()})
+    invalid_adas_values = [value for value in adas_values if value not in {0, 1, 2}]
+    checked("adas_tier_values", not invalid_adas_values, json.dumps(invalid_adas_values), "0/1/2/null only")
+
+    adas_inconsistent_true = int(working.loc[working["adas_tier"].isin([1, 2]), "adas_available"].ne(True).sum())
+    adas_inconsistent_false = int(working.loc[working["adas_tier"].eq(0), "adas_available"].ne(False).sum())
+    checked("adas_tier_positive_implies_binary_true", adas_inconsistent_true == 0, adas_inconsistent_true, 0)
+    checked("adas_tier_zero_implies_binary_false", adas_inconsistent_false == 0, adas_inconsistent_false, 0)
+
     conflict_count = int(
         working.assign(_key=normalized_identity_series(working))
         .groupby("_key")[["fuel_type", "transmission"]]
@@ -1095,8 +1436,18 @@ def validate_and_export_outputs(working: pd.DataFrame, review: pd.DataFrame) -> 
         "reported",
         "CSV round trips may normalize nullable scalar dtypes.",
     )
-    checked("no_model_loss", working[["make", "model"]].drop_duplicates().shape[0] == 31, working[["make", "model"]].drop_duplicates().shape[0], 31)
-    checked("no_variant_loss", len(working[["make", "model", "variant"]].drop_duplicates()) == 475, len(working[["make", "model", "variant"]].drop_duplicates()), 475)
+    checked(
+        "no_model_loss",
+        working[["make", "model"]].drop_duplicates().shape[0] == EXPECTED_MODEL_COUNT,
+        working[["make", "model"]].drop_duplicates().shape[0],
+        EXPECTED_MODEL_COUNT,
+    )
+    checked(
+        "no_variant_loss",
+        len(working[["make", "model", "variant"]].drop_duplicates()) == EXPECTED_DATASET_ROWS,
+        len(working[["make", "model", "variant"]].drop_duplicates()),
+        EXPECTED_DATASET_ROWS,
+    )
 
     for column in COMPACT_COLUMNS:
         null_count = int(working[column].isna().sum())
@@ -1114,6 +1465,17 @@ def validate_and_export_outputs(working: pd.DataFrame, review: pd.DataFrame) -> 
             json.dumps({"true": true_count, "false": false_count, "null": null_count}, sort_keys=True),
             "reported",
         )
+        add_validation_row(
+            rows,
+            f"boolean_conversion_summary:{column}",
+            "INFO",
+            json.dumps(boolean_summary.get(column, {}), sort_keys=True),
+            "reported",
+        )
+
+    add_validation_row(rows, "adas_tier_distribution", "INFO", value_counts_string(working["adas_tier"]), "reported")
+    add_validation_row(rows, "adas_migration_status_distribution", "INFO", value_counts_string(adas_review["migration_status"]), "reported")
+    add_validation_row(rows, "transmission_review_status_distribution", "INFO", value_counts_string(transmission_review["status"]), "reported")
 
     constant_columns = [column for column in COMPACT_COLUMNS if working[column].nunique(dropna=False) == 1]
     near_constant_columns = []
@@ -1416,7 +1778,9 @@ def main() -> None:
             }
         )
 
-    working = normalize_allowed_values(working_internal[COMPACT_COLUMNS].copy())
+    working, transmission_review, adas_review, boolean_summary = normalize_allowed_values(
+        working_internal[COMPACT_COLUMNS].copy()
+    )
 
     review = pd.DataFrame(review_rows).drop_duplicates()
     if not review.empty:
@@ -1431,7 +1795,7 @@ def main() -> None:
     if review.empty:
         review = pd.DataFrame(columns=["record_origin", "legacy_row_index", "make", "model", "variant", "issues"])
 
-    validation = validate_and_export_outputs(working, review)
+    validation = validate_and_export_outputs(working, review, transmission_review, adas_review, boolean_summary)
 
     selected_model_count = working[["make", "model"]].drop_duplicates().shape[0]
     manufacturer_count = working["make"].dropna().nunique()
