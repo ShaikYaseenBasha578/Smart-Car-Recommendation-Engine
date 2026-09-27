@@ -1,0 +1,5 @@
+table,id,detail
+safety_test,27,"(27, 'TATA – HARRIER.EV', 'TATA – HARRIER.EV – EMP 75 & EMP 75 AWD', 'RESOLVED', 'Matched manufacturer and model systematically.', 3747, 5, 5)"
+safety_test_applicability,14,"(14, 27, 10, 30, 50, None, 'MODEL_LEVEL', 'Matched manufacturer and model systematically.')"
+source_observation,3747,"(3747, 'RESOLVED', None)"
+model,30,"[('Diesel', 14), ('Petrol', 12)]"

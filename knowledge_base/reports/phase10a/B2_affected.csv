@@ -1,0 +1,186 @@
+table,id,variant_id,field,decision,decision_reason,value,source_observation_id,raw_name,tier_effect_if_oem_tier1,canonical_now,other_live_support
+source_observation,3669,289,,,resolved,,3669,V O O,,,
+source_observation,3670,290,,,resolved,,3670,VX O O,,,
+source_observation,3671,295,,,resolved,,3671,SV - - -,,,
+source_observation,3672,296,,,resolved,,3672,V O O O,,,
+source_observation,3673,298,,,resolved,,3673,ZX O O O,,,
+source_observation,3674,268,,,resolved,,3674,E,,,
+source_observation,3675,270,,,resolved,,3675,S,,,
+source_observation,3676,271,,,resolved,,3676,SX,,,
+source_observation,3677,274,,,resolved,,3677,SX(O),,,
+source_observation,3678,5,,,resolved,,3678,EX,,,
+source_observation,3679,9,,,resolved,,3679,EX(O),,,
+source_observation,3680,13,,,resolved,,3680,S(O),,,
+source_observation,3681,21,,,resolved,,3681,Premium,,,
+source_observation,3682,26,,,resolved,,3682,King,,,
+source_observation,3683,255,,,resolved,,3683,Era,,,
+source_observation,3684,256,,,resolved,,3684,Magna,,,
+source_observation,3685,257,,,resolved,,3685,Corporate,,,
+source_observation,3686,264,,,resolved,,3686,Asta,,,
+source_observation,3687,263,,,resolved,,3687,Sportz,,,
+source_observation,3688,72,,,resolved,,3688,EXCITE √ √ √,,,
+source_observation,3689,246,,,resolved,,3689,Sigma,,,
+source_observation,3690,247,,,resolved,,3690,Delta,,,
+source_observation,3691,249,,,resolved,,3691,Zeta,,,
+source_observation,3692,252,,,resolved,,3692,Alpha,,,
+source_observation,3693,252,,,resolved,,3693,Alpha (O),,,
+source_observation,3694,138,,,resolved,,3694,LXi,,,
+source_observation,3695,140,,,resolved,,3695,VXi,,,
+source_observation,3696,142,,,resolved,,3696,ZXi,,,
+source_observation,3697,145,,,resolved,,3697,ZXi+,,,
+source_observation,3698,233,,,resolved,,3698,FEATURES LIST LXI MT √ √ √ √,,,
+source_observation,3699,241,,,resolved,,3699,ZXI+ MT/AMT √ √ √ √,,,
+source_observation,3700,500,,,resolved,,3700,Delta+,,,
+source_observation,3701,597,,,resolved,,3701,Zeta (MT/AT) - Steel ✔,,,
+source_observation,3702,597,,,resolved,,3702,Zeta (MT/AT) - - -,,,
+source_observation,3703,60,,,resolved,,3703,VXi (O),,,
+source_observation,3704,555,,,resolved,,3704,Lxi,,,
+source_observation,3705,557,,,resolved,,3705,Vxi,,,
+source_observation,3706,560,,,resolved,,3706,Zxi,,,
+source_observation,3707,564,,,resolved,,3707,Zxi+,,,
+source_observation,3708,220,,,resolved,,3708,Alpha+,,,
+source_observation,3709,669,,,resolved,,3709,Classic,,,
+source_observation,3710,671,,,resolved,,3710,Classic+,,,
+source_observation,3711,677,,,resolved,,3711,Signature,,,
+source_observation,3712,679,,,resolved,,3712,Signature+,,,
+source_observation,3713,673,,,resolved,,3713,Prestige,,,
+source_observation,3714,675,,,resolved,,3714,Prestige+,,,
+source_observation,3715,630,,,resolved,,3715,Highline,,,
+source_observation,3716,634,,,resolved,,3716,Topline,,,
+source_observation,3717,627,,,resolved,,3717,GT,,,
+source_observation,3718,642,,,resolved,,3718,Highline Plus,,,
+source_observation,3719,638,,,resolved,,3719,GT Plus Chrome,,,
+source_observation,3720,637,,,resolved,,3720,GT Line,,,
+field_provenance,37187,289,automatic_climate_control,confirmed,agrees_with_canonical,0,3669,,unchanged (agrees),0,
+field_provenance,37188,295,adas_available,confirmed,agrees_with_canonical,0,3671,,unchanged (agrees),0,91wheels:confirmed:0;carwale:confirmed:0
+field_provenance,37189,295,cruise_control,confirmed,agrees_with_canonical,0,3671,,unchanged (agrees),0,carwale:confirmed:0
+field_provenance,37190,295,paddle_shifters,confirmed,agrees_with_canonical,0,3671,,unchanged (agrees),0,
+field_provenance,37191,296,paddle_shifters,confirmed,agrees_with_canonical,0,3672,,unchanged (agrees),0,
+field_provenance,37192,298,paddle_shifters,confirmed,agrees_with_canonical,0,3673,,unchanged (agrees),0,
+field_provenance,37193,268,esc,confirmed,agrees_with_canonical,0,3674,,unchanged (agrees),0,
+field_provenance,37194,268,hill_assist,confirmed,agrees_with_canonical,0,3674,,unchanged (agrees),0,
+field_provenance,37195,268,abs,confirmed,agrees_with_canonical,1,3674,,unchanged (agrees),1,
+field_provenance,37196,268,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,0,3674,,unchanged (agrees),0,91wheels:confirmed:0
+field_provenance,37197,268,rear_parking_sensors,confirmed,agrees_with_canonical,1,3674,,unchanged (agrees),1,
+field_provenance,37198,270,esc,confirmed,agrees_with_canonical,0,3675,,unchanged (agrees),0,
+field_provenance,37199,270,hill_assist,confirmed,agrees_with_canonical,0,3675,,unchanged (agrees),0,
+field_provenance,37200,270,abs,confirmed,agrees_with_canonical,1,3675,,unchanged (agrees),1,
+field_provenance,37201,270,tyre_pressure_monitoring_system,rejected,conflict_field_tier_5_vs_best_5,1,3675,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,91wheels:rejected:1
+field_provenance,37202,270,rear_parking_sensors,confirmed,agrees_with_canonical,1,3675,,unchanged (agrees),1,
+field_provenance,37203,271,esc,confirmed,agrees_with_canonical,1,3676,,unchanged (agrees),1,
+field_provenance,37204,271,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3676,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37205,271,abs,confirmed,agrees_with_canonical,1,3676,,unchanged (agrees),1,
+field_provenance,37206,271,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3676,,unchanged (agrees),1,91wheels:confirmed:1;91wheels:confirmed:1
+field_provenance,37207,271,rear_parking_sensors,confirmed,agrees_with_canonical,1,3676,,unchanged (agrees),1,
+field_provenance,37208,274,esc,confirmed,agrees_with_canonical,1,3677,,unchanged (agrees),1,
+field_provenance,37209,274,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3677,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37210,274,abs,confirmed,agrees_with_canonical,1,3677,,unchanged (agrees),1,
+field_provenance,37211,274,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3677,,unchanged (agrees),1,
+field_provenance,37212,274,rear_parking_sensors,confirmed,agrees_with_canonical,1,3677,,unchanged (agrees),1,
+field_provenance,37213,5,abs,confirmed,agrees_with_canonical,1,3678,,unchanged (agrees),1,
+field_provenance,37214,5,esc,confirmed,agrees_with_canonical,1,3678,,unchanged (agrees),1,
+field_provenance,37215,5,hill_assist,confirmed,agrees_with_canonical,1,3678,,unchanged (agrees),1,
+field_provenance,37216,5,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3678,,unchanged (agrees),1,91wheels:confirmed:1;v3cars:confirmed:1;carwale:confirmed:1
+field_provenance,37217,5,rear_parking_sensors,confirmed,agrees_with_canonical,1,3678,,unchanged (agrees),1,
+field_provenance,37218,9,abs,confirmed,agrees_with_canonical,1,3679,,unchanged (agrees),1,
+field_provenance,37219,9,esc,confirmed,agrees_with_canonical,1,3679,,unchanged (agrees),1,
+field_provenance,37220,9,hill_assist,confirmed,agrees_with_canonical,1,3679,,unchanged (agrees),1,
+field_provenance,37221,9,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3679,,unchanged (agrees),1,91wheels:confirmed:1;v3cars:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37222,9,rear_parking_sensors,confirmed,agrees_with_canonical,1,3679,,unchanged (agrees),1,
+field_provenance,37223,13,abs,confirmed,agrees_with_canonical,1,3680,,unchanged (agrees),1,
+field_provenance,37224,13,esc,confirmed,agrees_with_canonical,1,3680,,unchanged (agrees),1,
+field_provenance,37225,13,hill_assist,confirmed,agrees_with_canonical,1,3680,,unchanged (agrees),1,
+field_provenance,37226,13,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3680,,unchanged (agrees),1,91wheels:confirmed:1;v3cars:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37227,13,rear_parking_sensors,confirmed,agrees_with_canonical,1,3680,,unchanged (agrees),1,
+field_provenance,37228,21,abs,confirmed,agrees_with_canonical,1,3681,,unchanged (agrees),1,
+field_provenance,37229,21,esc,confirmed,agrees_with_canonical,1,3681,,unchanged (agrees),1,
+field_provenance,37230,21,hill_assist,confirmed,agrees_with_canonical,1,3681,,unchanged (agrees),1,
+field_provenance,37231,21,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3681,,unchanged (agrees),1,91wheels:confirmed:1;91wheels:confirmed:1;91wheels:confirmed:1;v3cars:confirmed:1;v3cars:confirmed:1
+field_provenance,37232,21,rear_parking_sensors,confirmed,agrees_with_canonical,1,3681,,unchanged (agrees),1,
+field_provenance,37233,26,abs,confirmed,agrees_with_canonical,1,3682,,unchanged (agrees),1,
+field_provenance,37234,26,esc,confirmed,agrees_with_canonical,1,3682,,unchanged (agrees),1,
+field_provenance,37235,26,hill_assist,confirmed,agrees_with_canonical,1,3682,,unchanged (agrees),1,
+field_provenance,37236,26,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,1,3682,,unchanged (agrees),1,91wheels:confirmed:1;91wheels:confirmed:1;v3cars:confirmed:1;v3cars:rejected:0;v3cars:rejected:0;carwale:confirmed:1
+field_provenance,37237,26,rear_parking_sensors,confirmed,agrees_with_canonical,1,3682,,unchanged (agrees),1,
+field_provenance,37238,247,rear_ac_vents,rejected,conflict_field_tier_5_vs_best_5,1,3690,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37239,249,connected_car_features,confirmed,agrees_with_canonical,1,3691,,unchanged (agrees),1,
+field_provenance,37240,249,rear_ac_vents,confirmed,agrees_with_canonical,1,3691,,unchanged (agrees),1,
+field_provenance,37241,252,heads_up_display,confirmed,agrees_with_canonical,1,3692,,unchanged (agrees),1,91wheels:confirmed:1;carwale:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37242,252,cruise_control,confirmed,agrees_with_canonical,1,3692,,unchanged (agrees),1,91wheels:confirmed:1;carwale:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37243,252,connected_car_features,confirmed,agrees_with_canonical,1,3692,,unchanged (agrees),1,
+field_provenance,37244,252,rear_ac_vents,confirmed,agrees_with_canonical,1,3692,,unchanged (agrees),1,
+field_provenance,37245,252,heads_up_display,confirmed,agrees_with_canonical,1,3693,,unchanged (agrees),1,91wheels:confirmed:1;carwale:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37246,252,connected_car_features,confirmed,agrees_with_canonical,1,3693,,unchanged (agrees),1,
+field_provenance,37247,252,rear_ac_vents,confirmed,agrees_with_canonical,1,3693,,unchanged (agrees),1,
+field_provenance,37248,138,rear_camera,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,
+field_provenance,37249,138,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3694,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37250,138,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,91wheels:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37251,138,connected_car_features,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,
+field_provenance,37252,138,sunroof,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),False,91wheels:rejected:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37253,138,heads_up_display,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,91wheels:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37254,138,cruise_control,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,91wheels:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37255,138,ventilated_front_seats,confirmed,agrees_with_canonical,0,3694,,unchanged (agrees),0,91wheels:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37256,138,rear_ac_vents,confirmed,agrees_with_canonical,1,3694,,unchanged (agrees),1,
+field_provenance,37257,140,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3695,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37258,140,tyre_pressure_monitoring_system,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37259,140,connected_car_features,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),0,
+field_provenance,37260,140,sunroof,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),False,carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37261,140,heads_up_display,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37262,140,cruise_control,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37263,140,ventilated_front_seats,confirmed,agrees_with_canonical,0,3695,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37264,140,rear_ac_vents,confirmed,agrees_with_canonical,1,3695,,unchanged (agrees),1,
+field_provenance,37265,140,automatic_climate_control,confirmed,agrees_with_canonical,1,3695,,unchanged (agrees),1,
+field_provenance,37266,142,rear_camera,confirmed,agrees_with_canonical,1,3696,,unchanged (agrees),1,
+field_provenance,37267,142,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3696,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37268,142,connected_car_features,rejected,conflict_field_tier_5_vs_best_5,0,3696,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37269,142,sunroof,rejected,conflict_field_tier_5_vs_best_5,Standard,3696,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),True,carwale:confirmed:1;carwale:confirmed:1;carwale:confirmed:1
+field_provenance,37270,142,heads_up_display,confirmed,agrees_with_canonical,0,3696,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0;carwale:rejected:1
+field_provenance,37271,142,ventilated_front_seats,confirmed,agrees_with_canonical,0,3696,,unchanged (agrees),0,carwale:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37272,142,rear_ac_vents,confirmed,agrees_with_canonical,1,3696,,unchanged (agrees),1,
+field_provenance,37273,142,automatic_climate_control,confirmed,agrees_with_canonical,1,3696,,unchanged (agrees),1,
+field_provenance,37274,145,rear_camera,confirmed,agrees_with_canonical,1,3697,,unchanged (agrees),1,
+field_provenance,37275,145,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37276,145,tyre_pressure_monitoring_system,rejected,conflict_field_tier_5_vs_best_5,1,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37277,145,connected_car_features,confirmed,agrees_with_canonical,1,3697,,unchanged (agrees),1,
+field_provenance,37278,145,sunroof,rejected,conflict_field_tier_5_vs_best_5,Standard,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),True,
+field_provenance,37279,145,heads_up_display,rejected,conflict_field_tier_5_vs_best_5,1,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37280,145,cruise_control,rejected,conflict_field_tier_5_vs_best_5,1,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37281,145,ventilated_front_seats,rejected,conflict_field_tier_5_vs_best_5,1,3697,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37282,145,rear_ac_vents,confirmed,agrees_with_canonical,1,3697,,unchanged (agrees),1,
+field_provenance,37283,145,automatic_climate_control,confirmed,agrees_with_canonical,1,3697,,unchanged (agrees),1,
+field_provenance,37284,500,automatic_climate_control,confirmed,agrees_with_canonical,1,3700,,unchanged (agrees),1,
+field_provenance,37285,60,abs,confirmed,agrees_with_canonical,1,3703,,unchanged (agrees),1,
+field_provenance,37286,60,esc,confirmed,agrees_with_canonical,1,3703,,unchanged (agrees),1,
+field_provenance,37287,60,hill_assist,rejected,conflict_field_tier_5_vs_best_5,1,3703,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),0,
+field_provenance,37288,60,rear_parking_sensors,confirmed,agrees_with_canonical,1,3703,,unchanged (agrees),1,
+field_provenance,37289,60,rear_camera,confirmed,agrees_with_canonical,0,3703,,unchanged (agrees),0,
+field_provenance,37290,60,cruise_control,confirmed,agrees_with_canonical,0,3703,,unchanged (agrees),0,91wheels:confirmed:0;v3cars:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37291,60,wireless_charging,confirmed,agrees_with_canonical,0,3703,,unchanged (agrees),0,91wheels:confirmed:0;v3cars:confirmed:0
+field_provenance,37292,60,rear_ac_vents,confirmed,agrees_with_canonical,0,3703,,unchanged (agrees),0,
+field_provenance,37293,669,tyre_pressure_monitoring_system,rejected,conflict_field_tier_5_vs_best_5,0,3709,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,91wheels:rejected:0;v3cars:rejected:0;carwale:rejected:0
+field_provenance,37294,669,cruise_control,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,91wheels:accepted:0;v3cars:confirmed:0;carwale:confirmed:0
+field_provenance,37295,669,hill_assist,rejected,conflict_field_tier_5_vs_best_5,0,3709,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37296,669,paddle_shifters,accepted,new_field,0,3709,,unchanged (already accepted; sole support),0,
+field_provenance,37297,669,ventilated_front_seats,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,91wheels:confirmed:0;v3cars:confirmed:0;carwale:confirmed:0
+field_provenance,37298,669,android_auto,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,
+field_provenance,37299,669,apple_carplay,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,
+field_provenance,37300,669,wireless_charging,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,91wheels:accepted:0;v3cars:confirmed:0
+field_provenance,37301,669,rear_ac_vents,confirmed,agrees_with_canonical,0,3709,,unchanged (agrees),0,
+field_provenance,37302,671,tyre_pressure_monitoring_system,rejected,conflict_field_tier_5_vs_best_5,0,3710,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,91wheels:rejected:0;v3cars:rejected:0;carwale:rejected:0
+field_provenance,37303,671,hill_assist,rejected,conflict_field_tier_5_vs_best_5,0,3710,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37304,671,paddle_shifters,confirmed,agrees_with_canonical,0,3710,,unchanged (agrees),0,
+field_provenance,37305,671,ventilated_front_seats,confirmed,agrees_with_canonical,0,3710,,unchanged (agrees),0,91wheels:confirmed:0;v3cars:confirmed:0;carwale:confirmed:0
+field_provenance,37306,671,android_auto,rejected,conflict_field_tier_5_vs_best_5,0,3710,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37307,671,apple_carplay,rejected,conflict_field_tier_5_vs_best_5,0,3710,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37308,671,wireless_charging,confirmed,agrees_with_canonical,0,3710,,unchanged (agrees),0,91wheels:confirmed:0;v3cars:confirmed:0
+field_provenance,37309,671,rear_ac_vents,confirmed,agrees_with_canonical,0,3710,,unchanged (agrees),0,
+field_provenance,37310,677,hill_assist,rejected,conflict_field_tier_5_vs_best_5,0,3711,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37311,677,ventilated_front_seats,confirmed,agrees_with_canonical,0,3711,,unchanged (agrees),0,v3cars:confirmed:0;carwale:confirmed:0
+field_provenance,37312,677,android_auto,rejected,conflict_field_tier_5_vs_best_5,0,3711,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37313,677,apple_carplay,rejected,conflict_field_tier_5_vs_best_5,0,3711,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),1,
+field_provenance,37314,677,wireless_charging,confirmed,agrees_with_canonical,0,3711,,unchanged (agrees),0,v3cars:confirmed:0
+field_provenance,37315,679,ventilated_front_seats,confirmed,agrees_with_canonical,0,3712,,unchanged (agrees),0,v3cars:confirmed:0;carwale:confirmed:0;carwale:confirmed:0
+field_provenance,37316,679,wireless_charging,confirmed,agrees_with_canonical,0,3712,,unchanged (agrees),0,v3cars:confirmed:0
+field_provenance,37317,642,sunroof,rejected,conflict_field_tier_5_vs_best_3,[Vector:Curve],3718,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),False,v3cars:confirmed:0
+field_provenance,37318,638,sunroof,rejected,conflict_field_tier_5_vs_best_3,[Vector:Curve],3719,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),True,v3cars:confirmed:1;v3cars:confirmed:1;v3cars:confirmed:1
+field_provenance,37319,637,sunroof,rejected,conflict_field_tier_5_vs_best_5,[Vector:Curve],3720,,WOULD_FLIP_TO_ACCEPTED (tier1 < best existing),True,v3cars:rejected:0

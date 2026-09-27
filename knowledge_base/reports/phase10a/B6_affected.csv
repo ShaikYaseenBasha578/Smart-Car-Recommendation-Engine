@@ -1,0 +1,4 @@
+table,id,source_observation.resolution_status,safety_test.id,safety_test.resolution_status,applicability_id
+source_observation,3729,UNRESOLVED,9,RESOLVED,21
+source_observation,3736,UNRESOLVED,16,RESOLVED,22
+source_observation,3737,UNRESOLVED,17,RESOLVED,23

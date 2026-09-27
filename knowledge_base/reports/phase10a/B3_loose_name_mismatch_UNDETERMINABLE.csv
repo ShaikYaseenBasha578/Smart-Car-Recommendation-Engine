@@ -1,0 +1,265 @@
+source_observation_id,raw_name,variant_id,variant_name
+2816,ZX Petrol Manual,298,ZX MT
+2817,ZX Plus Petrol Manual,298,ZX MT
+2818,SV Petrol Manual,647,V Petrol Manual
+2821,VX Petrol Manual,647,V Petrol Manual
+2823,ZX Petrol Manual,649,VX Petrol Manual
+2825,ZX Petrol Manual IVORY,652,ZX Petrol Manual
+2826,ZX Petrol Manual Signature Black Edition,814,ZX Petrol Manual Black Edition
+2827,ZX Petrol Manual ADV Edition,814,ZX Petrol Manual Black Edition
+2828,ZX Petrol Manual Dual Tone ADV Edition,814,ZX Petrol Manual Black Edition
+2840,SX Petrol Manual,271,SX MT
+2841,SX (O) Petrol Manual,271,SX MT
+2845,EX (O) Petrol 1.5L Manual,6,S (O) Petrol 1.5L Manual
+2847,S (O) Petrol 1.5L Manual,4,EX (O) Petrol 1.5L Manual
+2850,EX (O) Diesel 1.5L Turbo Manual,13,S (O) Diesel 1.5L Turbo Manual
+2851,SX Petrol 1.5L Manual,2,EX Petrol 1.5L Manual
+2852,SX Petrol 1.5L Manual Dual Tone,16,SX Premium Petrol 1.5L Manual Dual Tone
+2854,S (O) Diesel 1.5L Turbo Manual,9,EX (O) Diesel 1.5L Turbo Manual
+2857,SX Premium Petrol 1.5L Manual,16,SX Premium Petrol 1.5L Manual Dual Tone
+2859,King Edition Petrol 1.5L Manual,19,King Edition Petrol 1.5L Manual Dual Tone
+2863,SX Premium Diesel 1.5L Turbo Manual,23,SX Premium Diesel 1.5L Turbo Manual Dual Tone
+2868,King Edition Diesel 1.5L Turbo Manual,27,King Edition Diesel 1.5L Turbo Manual Dual Tone
+2875,HX 2 Petrol Manual,659,HX 3 Petrol Manual
+2876,HX 3 Petrol Manual,656,HX 2 Petrol Manual
+2877,HX 3 Petrol Manual Matte,656,HX 2 Petrol Manual
+2880,HX 4 Petrol Manual,656,HX 2 Petrol Manual
+2881,HX 4 Petrol Manual Matte,656,HX 2 Petrol Manual
+2882,HX 6 Petrol Manual,656,HX 2 Petrol Manual
+2883,HX 4 Plus Petrol Automatic,658,HX 3 Petrol Automatic
+2884,HX 6 Petrol Manual Knight,665,HX 6 Petrol Manual
+2885,HX 6 Petrol Manual Matte,656,HX 2 Petrol Manual
+2888,HX 8 Petrol Manual,656,HX 2 Petrol Manual
+2889,HX 8 Petrol Manual Matte,656,HX 2 Petrol Manual
+2896,HX 10 Petrol Automatic,658,HX 3 Petrol Automatic
+2898,HX 10 Petrol Automatic Matte,658,HX 3 Petrol Automatic
+2902,Corporate Petrol Manual,257,Corporate MT
+2903,Sportz Petrol Manual,259,Sportz MT
+2904,Sportz Vibe Petrol Manual,259,Sportz MT
+2905,Sportz (O) Petrol Manual,259,Sportz MT
+2912,HX 2 Petrol 1.2L 5 Speed Manual,148,HX2 1.2 Petrol MT
+2914,HX 4 Petrol 1.2L 5 Speed Manual,148,HX2 1.2 Petrol MT
+2915,HX 5 Petrol 1.2L 5 Speed Manual,148,HX2 1.2 Petrol MT
+2969,HX 8 Petrol 1.5L Turbo Manual Matte,817,HX 8 Petrol 1.5L Turbo Manual Dual Tone
+2970,HX 10 Petrol 1.5L Automatic (CVT),286,HX10 1.5 MPi IVT
+2972,HX 10 Petrol 1.5L Automatic (CVT) Matte,286,HX10 1.5 MPi IVT
+2978,HX 10 Petrol 1.5L Turbo Automatic (DCT) Matte,818,HX 10 Petrol 1.5L Turbo Automatic (DCT) Dual Tone
+3012,HTX E 42.0 kWh 7 STR,804,HTX 7
+3013,HTX 42.0 kWh 7 STR,804,HTX 7
+3015,HTX E ER 51.4 kWh 7 STR,804,HTX 7
+3016,HTX E ER 51.4 kWh 6 STR,806,HTX ER
+3017,HTX ER 51.4 kWh 7 STR,804,HTX 7
+3018,HTX ER 51.4 kWh 6 STR,806,HTX ER
+3019,GTX ER 51.4 kWh 6 STR,807,GTX ER
+3020,GTX ER 51.4 kWh 7 STR,807,GTX ER
+3021,HTX Plus ER 51.4 kWh 7 STR,806,HTX ER
+3022,HTX Plus ER 51.4 kWh 6 STR,806,HTX ER
+3023,X-Line ER 51.4 kWh 7 STR,810,X-Line ER
+3024,GTX Plus ER 51.4 kWh 7 STR,807,GTX ER
+3025,GTX Plus ER 51.4 kWh 6 STR,807,GTX ER
+3026,X-Line ER 51.4 kWh 6 STR,810,X-Line ER
+3027,HTE Petrol 1.5L Manual,167,HTE 1.5 Petrol MT
+3031,HTK Petrol 1.5L Manual,170,HTK 1.5 Petrol MT
+3041,HTX Petrol 1.5L Manual,174,HTX 1.5 Petrol MT
+3053,GTX Petrol 1.5L Automatic (CVT),178,GTX 1.5 Petrol IVT
+3058,X-Line Petrol 1.5L Turbo Automatic (DCT),190,X-Line 1.5 Turbo Petrol DCT
+3060,GTX (A) Petrol 1.5L Automatic (CVT),178,GTX 1.5 Petrol IVT
+3066,X-Line (A) Petrol 1.5L Turbo Automatic (DCT),819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3067,GTX (A) Petrol 1.5L Turbo Automatic (DCT),819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3069,GTX (A) Petrol 1.5L Turbo Automatic (DCT) Dual Tone,819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3073,GTX (O) Petrol 1.5L Turbo Automatic (DCT),819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3074,X-Line (O) Petrol 1.5L Turbo Automatic (DCT),819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3075,GTX (O) Petrol 1.5L Turbo Automatic (DCT) Dual Tone,819,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone
+3079,HTE Petrol 1.0L Turbo Manual,750,HTE Petrol Manual
+3080,HTE (O) Petrol 1.0L Turbo Manual,750,HTE Petrol Manual
+3092,HTX Petrol 1.0L Turbo Automatic (DCT),763,HTX Petrol DCT
+3093,HTX Diesel 1.5L Turbo Automatic (TC),764,HTX Diesel Automatic
+3094,HTX (O) Petrol 1.0L Turbo Automatic (DCT),763,HTX Petrol DCT
+3095,HTX (O) Diesel 1.5L Turbo Automatic (TC),764,HTX Diesel Automatic
+3098,Smart Pro Petrol Turbo Manual,466,Smart Pro 5Str MT
+3100,Sharp Pro Petrol Turbo Manual,468,Sharp Pro 5Str MT
+3105,Exclusive 38.0 kWh,127,Exclusive
+3106,Essence 38.0 kWh,128,Essence
+3107,Exclusive Pro 52.9 kWh,127,Exclusive
+3108,Essence Pro 52.9 kWh,128,Essence
+3110,B6 Diesel Turbo Manual,381,B6 Diesel
+3111,B6 (O) Diesel Turbo Manual,381,B6 Diesel
+3121,MX1 2WD Diesel 2.2L Turbo Manual,698,MX3 2WD Diesel 2.2L Turbo Manual
+3123,MX3 2WD Diesel 2.2L Turbo Manual,695,MX1 2WD Diesel 2.2L Turbo Manual
+3125,MX5 2WD Diesel 2.2L Turbo Manual,698,MX3 2WD Diesel 2.2L Turbo Manual
+3126,AX3 L 2WD Diesel 2.2L Turbo Manual,691,AX7 L 2WD Diesel 2.2L Turbo Manual
+3127,Star Edition 2WD Diesel 2.2L Turbo Manual,687,AX3 L 2WD Diesel 2.2L Turbo Manual
+3134,MX5 4WD Diesel 2.2L Turbo Manual,701,MX5 2WD Diesel 2.2L Turbo Manual
+3135,MX5 4WD Diesel 2.2L Turbo Manual Mocha Intrs,701,MX5 2WD Diesel 2.2L Turbo Manual
+3136,AX7 L 2WD Diesel 2.2L Turbo Manual,687,AX3 L 2WD Diesel 2.2L Turbo Manual
+3137,AX7 L 2WD Diesel 2.2L Turbo Manual Mocha Intrs,687,AX3 L 2WD Diesel 2.2L Turbo Manual
+3144,AX7 L 4WD Diesel 2.2L Turbo Manual Mocha Intrs,694,AX7 L 4WD Diesel 2.2L Turbo Manual
+3148,MX1 Petrol 1.2L Turbo Manual,36,MX3 Petrol 1.2L Turbo Manual
+3149,REVX M Petrol 1.2L Turbo Manual,47,REVX A Petrol 1.2L Turbo Manual
+3150,MX2 Pro Petrol 1.2L Turbo Manual,38,MX3 Pro Petrol 1.2L Turbo Manual
+3153,MX2 Diesel 1.5L Turbo Manual,42,MX3 Diesel 1.5L Turbo Manual
+3154,MX3 Pro Petrol 1.2L Turbo Manual,35,MX2 Pro Petrol 1.2L Turbo Manual
+3157,AX5 Petrol 1.2L Turbo Manual,50,AX5L Petrol 1.2L Turbo Manual
+3158,MX3 Diesel 1.5L Turbo Manual,37,MX2 Diesel 1.5L Turbo Manual
+3164,AX5 Diesel 1.5L Turbo Manual,37,MX2 Diesel 1.5L Turbo Manual
+3166,AX5L Petrol 1.2L Turbo Manual,41,AX5 Petrol 1.2L Turbo Manual
+3172,AX7L Petrol 1.2L Turbo Manual Dual Tone,52,AX7 Petrol 1.2L Turbo Manual Dual Tone
+3175,AX7L Diesel 1.5L Turbo Manual Dual Tone,54,AX7 Diesel 1.5L Turbo Manual Dual Tone
+3189,AX7 2WD Diesel 2.2L Turbo Manual 7 STR,422,AX7 Diesel MT
+3197,AX7 T 2WD Diesel 2.2L Turbo Manual 7 STR,422,AX7 Diesel MT
+3198,AX7 T 2WD Diesel 2.2L Turbo Manual 6 STR,422,AX7 Diesel MT
+3223,VXi (O) Petrol Manual 5 STR,517,VXi (O) MT
+3225,VXi Plus (O) Petrol Manual 5 STR,517,VXi (O) MT
+3227,Delta Petrol Manual,247,Delta MT
+3229,Zeta Petrol Manual,249,Zeta MT
+3231,Alpha (O) MT,252,Alpha MT
+3234,Alpha Petrol Manual,252,Alpha MT
+3236,Lxi Petrol 1.0L Turbo Manual,138,LXi MT
+3237,Lxi Petrol 1.5L Manual,138,LXi MT
+3238,Vxi Petrol 1.0L Turbo Manual,140,VXi MT
+3239,Vxi Petrol 1.5L Manual,140,VXi MT
+3240,Zxi Petrol 1.0L Turbo Manual,142,ZXi MT
+3242,Zxi Petrol 1.5L Manual,142,ZXi MT
+3244,Zxi Petrol 1.5L Manual Dual Tone,821,Zxi Petrol 1.0L Turbo Manual Dual Tone
+3245,Zxi Plus Petrol 1.0L Turbo Manual,142,ZXi MT
+3246,Zxi Plus Petrol 1.0L Turbo Manual Dual Tone,821,Zxi Petrol 1.0L Turbo Manual Dual Tone
+3254,ZXi Petrol Manual,237,ZXi MT
+3256,ZXi Plus Petrol Manual,237,ZXi MT
+3259,ZXi Petrol Manual Smart Hybrid,210,ZXi MT
+3261,ZXi Plus Petrol Manual Smart Hybrid,210,ZXi MT
+3263,Delta Petrol 1.2L Manual,497,Delta 1.2 Petrol MT
+3264,Delta Plus Petrol 1.2L Manual,497,Delta 1.2 Petrol MT
+3275,Delta 2WD Petrol 1.5L Manual,537,Delta Petrol MT
+3277,Zeta 2WD Petrol 1.5L Manual,539,Zeta Petrol MT
+3278,Zeta (O) 2WD Petrol 1.5L Manual,539,Zeta Petrol MT
+3280,Zeta (O) 2WD Petrol 1.5L Manual Dual Tone,823,Zeta 2WD Petrol 1.5L Manual Dual Tone
+3283,Alpha 2WD Petrol 1.5L Manual,543,Alpha Petrol MT
+3285,Alpha (O) 2WD Petrol 1.5L Manual,543,Alpha Petrol MT
+3286,Alpha 2WD Petrol 1.5L Manual Dual Tone,823,Zeta 2WD Petrol 1.5L Manual Dual Tone
+3288,Alpha (O) 2WD Petrol 1.5L Manual Dual Tone,823,Zeta 2WD Petrol 1.5L Manual Dual Tone
+3302,Zeta Petrol Manual,597,Zeta PRO MT
+3308,LXi Petrol Manual,59,VXi Petrol Manual
+3309,VXi Petrol Manual,58,LXi Petrol Manual
+3313,ZXi Petrol Manual,58,LXi Petrol Manual
+3315,ZXi Plus Petrol Manual,58,LXi Petrol Manual
+3322,ZXi 2WD Petrol 1.5L Manual,560,ZXI MT
+3323,ZXi (O) 2WD Petrol 1.5L Manual,560,ZXI MT
+3325,ZXi (O) 2WD Petrol 1.5L Manual Dual Tone,825,ZXi 2WD Petrol 1.5L Manual Dual Tone
+3327,ZXi Plus 2WD Petrol 1.5L Manual,560,ZXI MT
+3330,ZXi Plus 2WD Petrol 1.5L Manual Dual Tone,825,ZXi 2WD Petrol 1.5L Manual Dual Tone
+3332,ZXi Plus (O) 2WD Petrol 1.5L Manual,560,ZXI MT
+3333,ZXi Plus (O) 2WD Petrol 1.5L Manual Dual Tone,825,ZXi 2WD Petrol 1.5L Manual Dual Tone
+3351,Alpha Petrol Manual Smart Hybrid,218,Alpha MT
+3353,Alpha Plus Petrol Manual Smart Hybrid,218,Alpha MT
+3364,N-Connecta Petrol 1.0L Manual,736,N-Connecta MT
+3366,Tekna Petrol 1.0L Manual,738,Tekna MT
+3367,Tekna LE Petrol 1.0L Manual,738,Tekna MT
+3368,Visia Petrol Manual,725,MT VISIA
+3369,Visia Plus Petrol Manual,725,MT VISIA
+3375,Kuro Edition Petrol Manual B4D,828,N-Connecta Petrol Manual Dual Tone
+3379,Tekna Petrol Manual,723,MT TEKNA
+3380,Tekna Petrol Manual Dual Tone,828,N-Connecta Petrol Manual Dual Tone
+3381,Tekna Plus Petrol Manual,723,MT TEKNA
+3382,N-Connecta Petrol Manual HRAO,828,N-Connecta Petrol Manual Dual Tone
+3383,Tekna Plus Petrol Manual Dual Tone,828,N-Connecta Petrol Manual Dual Tone
+3384,N-Connecta Petrol Manual Dual Tone HRAO,828,N-Connecta Petrol Manual Dual Tone
+3387,Kuro Edition Petrol Turbo Manual HRAO,828,N-Connecta Petrol Manual Dual Tone
+3391,Tekna Petrol Turbo Manual,723,MT TEKNA
+3393,Tekna Petrol Turbo Manual Dual Tone,828,N-Connecta Petrol Manual Dual Tone
+3395,Tekna Plus Petrol Turbo Manual,723,MT TEKNA
+3397,Tekna Plus Petrol Turbo Manual Dual Tone,828,N-Connecta Petrol Manual Dual Tone
+3403,Evolution Petrol 1.0L Turbo Manual,706,Evolution TCe 100 MT
+3404,Evolution Petrol 1.3L Turbo Manual,706,Evolution TCe 100 MT
+3418,Techno Petrol Manual,473,Techno MT
+3419,Emotion Petrol Manual,474,Emotion MT
+3423,Techno Petrol Turbo Manual,473,Techno MT
+3426,Emotion Petrol Turbo Manual,474,Emotion MT
+3431,Signature  Petrol 1.0L Turbo Manual,609,Prestige Petrol 1.0L Turbo Manual
+3432,Sportline  Petrol 1.0L Turbo Manual,609,Prestige Petrol 1.0L Turbo Manual
+3435,Prestige  Petrol 1.0L Turbo Manual,614,Sportline Petrol 1.0L Turbo Manual
+3441,Classic Plus Petrol Turbo Manual,679,Signature Plus Petrol Turbo Manual
+3443,Signature Petrol Turbo Manual,673,Prestige Petrol Turbo Manual
+3445,Signature Plus Petrol Turbo Manual,675,Prestige Plus Petrol Turbo Manual
+3446,Sportline Petrol Turbo Manual,673,Prestige Petrol Turbo Manual
+3447,Prestige Petrol Turbo Manual,677,Signature Petrol Turbo Manual
+3449,Prestige Plus Petrol Turbo Manual,679,Signature Plus Petrol Turbo Manual
+3454,Signature Petrol 1.0L Turbo Manual,619,Prestige Petrol 1.0L Turbo Manual
+3455,Sportline Petrol 1.0L Turbo Manual,619,Prestige Petrol 1.0L Turbo Manual
+3458,Prestige Petrol 1.0L Turbo Manual,624,Sportline Petrol 1.0L Turbo Manual
+3462,Pure Petrol 1.2L Manual,320,Pure
+3463,Pure S Petrol 1.2L Manual,320,Pure
+3466,Creative Petrol 1.2L Manual,325,Creative
+3468,Creative S Petrol 1.2L Manual,325,Creative
+3471,Accomplished S Petrol 1.2L Manual,335,Accomplished S
+3481,Adventure X Petrol 1.5L Turbo Manual,442,Petrol Adventure X MT
+3483,Adventure X Plus  Petrol 1.5L Turbo Manual,442,Petrol Adventure X MT
+3484,Adventure X Dark Edition Petrol 1.5L Turbo Manual,830,Pure X Petrol 1.5L Turbo Manual Dark Edition
+3486,Adventure X Plus  Dark Edition Petrol 1.5L Turbo Manual,830,Pure X Petrol 1.5L Turbo Manual Dark Edition
+3489,Adventure X Diesel 2.0L Turbo Manual,453,Diesel Adventure X MT
+3491,Adventure X Plus  Diesel 2.0L Turbo Manual,453,Diesel Adventure X MT
+3500,Fearless X Petrol 1.5L Turbo Manual,445,Petrol Fearless X MT
+3502,Fearless X Dark Edition Petrol 1.5L Turbo Manual,830,Pure X Petrol 1.5L Turbo Manual Dark Edition
+3507,Fearless X Plus  Petrol 1.5L Turbo Manual,445,Petrol Fearless X MT
+3509,Fearless X Plus  Petrol 1.5L Turbo Manual Dark Edition,830,Pure X Petrol 1.5L Turbo Manual Dark Edition
+3510,Fearless Ultra Petrol 1.5L Turbo Manual,448,Petrol Fearless Ultra MT
+3512,Fearless Ultra Petrol 1.5L Turbo Manual Dark Edition,830,Pure X Petrol 1.5L Turbo Manual Dark Edition
+3513,Fearless X Plus  Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3514,Adventure X Plus  Dark Edition Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3515,Fearless Ultra Red Dark Petrol 1.5L Turbo Manual,448,Petrol Fearless Ultra MT
+3519,Fearless X Plus  Dark Edition Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3520,Fearless Ultra Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3524,Fearless Ultra Red Dark Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3525,Stealth Edition Diesel 2.0L Turbo Manual,831,Fearless X Dark Edition Diesel 2.0L Turbo Manual
+3535,Smart Petrol 1.2L Turbo 5 Speed Manual,74,Smart Plus Petrol 1.2L Turbo 5 Speed Manual
+3536,Smart Plus Petrol 1.2L Turbo 5 Speed Manual,76,Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual
+3539,Pure Plus Petrol 1.2L Turbo 6 Speed Manual,81,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual
+3540,Smart Plus Diesel 1.5L Turbo 6 Speed Manual,82,Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3541,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual,84,Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual
+3543,Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,81,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual
+3546,Pure Plus Diesel 1.5L Turbo 6 Speed Manual,92,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3547,Creative Petrol 1.2L Turbo 6 Speed Manual Camo,93,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual
+3548,Creative Petrol 1.2L Turbo 6 Speed Manual,93,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual
+3551,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual,95,Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual
+3552,Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual,92,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3553,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual Camo,93,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual
+3556,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual Dark Edition,102,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone
+3560,Creative Diesel 1.5L Turbo 6 Speed Manual,104,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3565,Creative Diesel 1.5L Turbo 6 Speed Manual Camo,104,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3568,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone Camo,102,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone
+3569,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone Dark Edition,102,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone
+3570,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual Camo,104,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual
+3572,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,111,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone
+3580,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Camo,109,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual
+3584,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone Dark Edition,111,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone
+3592,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone Red Dark Edition,120,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition
+3594,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Camo,121,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)
+3600,Creative Plus 30.0 kWh,132,Creative 45
+3602,Creative 45.0 kWh,132,Creative 45
+3607,Empowered Plus A  45.0 kWh Red Dark Edition,832,Empowered Plus A  45.0 kWh Dark Edition
+3608,Smart 30.0 kWh,744,Smart 30
+3609,Smart Plus 30.0 kWh,744,Smart 30
+3615,Pure Petrol Manual,347,Pure
+3617,Pure Plus Petrol Manual,347,Pure
+3618,Pure Plus A Petrol Manual,347,Pure
+3622,Creative Plus Petrol Manual,354,Creative
+3630,XT Petrol Manual,367,XT
+3632,XZ Petrol Manual,369,XZ
+3633,XZ Plus Petrol Manual,369,XZ
+3635,XZ Plus Petrol Manual LUX,369,XZ
+3638,S Petrol Manual,477,S Petrol MT
+3640,G Petrol Manual,480,G Petrol MT
+3642,V Petrol Manual,483,V Petrol MT
+3644,GX Petrol Automatic (CVT) 7 STR,576,GX 7 Seater Petrol CVT
+3645,GX Petrol Automatic (CVT) 8 STR,576,GX 7 Seater Petrol CVT
+3646,Comfortline Petrol 1.0L Turbo Manual,630,Highline Petrol 1.0L Turbo Manual
+3647,Highline Petrol 1.0L Turbo Manual,627,GT Line Petrol 1.0L Turbo Manual
+3649,Highline Plus Petrol 1.0L Turbo Manual,627,GT Line Petrol 1.0L Turbo Manual
+3650,GT Line Petrol 1.0L Turbo Manual,634,Topline Petrol 1.0L Turbo Manual
+3653,Topline Petrol 1.0L Turbo Manual,627,GT Line Petrol 1.0L Turbo Manual
+3656,GT Plus Sport Petrol 1.5L Turbo Automatic (DCT),628,GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT)
+3657,Comfortline Petrol 1.0L Turbo Manual,640,Highline Petrol 1.0L Turbo Manual
+3658,Highline Petrol 1.0L Turbo Manual,637,GT Line Petrol 1.0L Turbo Manual
+3659,Highline Plus Petrol 1.0L Turbo Manual,637,GT Line Petrol 1.0L Turbo Manual
+3660,GT Line Petrol 1.0L Turbo Manual,644,Topline Petrol 1.0L Turbo Manual
+3663,Topline Petrol 1.0L Turbo Manual,637,GT Line Petrol 1.0L Turbo Manual
+3667,GT Plus Petrol 1.5L Turbo Automatic (DCT) Sport,638,GT Plus Petrol 1.5L Turbo Automatic (DCT) Chrome
