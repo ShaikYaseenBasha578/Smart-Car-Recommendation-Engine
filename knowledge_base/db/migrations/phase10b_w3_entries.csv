@@ -1,0 +1,7 @@
+action,target_table,target_id,column_or_field,expected_old,new_value,reason_code,note
+update,safety_test,27,resolution_status,RESOLVED,NO_MATCH,B5_EV_TEST_ON_ICE_MODEL,Harrier.EV BNCAP test; CarRec model 30 Harrier has only Diesel/Petrol variants
+update,source_observation,3747,resolution_status,RESOLVED,NO_MATCH,B5_EV_TEST_ON_ICE_MODEL,observation of safety_test 27; synced to test status
+quarantine,safety_test_applicability,14,,,,B5_EV_TEST_ON_ICE_MODEL,test 27 -> model 30 MODEL_LEVEL; kept (not deleted) and masked by quarantine
+update,source_observation,3729,resolution_status,UNRESOLVED,RESOLVED,B6_STATUS_SYNC_AFTER_9B,observation of safety_test 9 (Thar Roxx) resolved in Phase 9B
+update,source_observation,3736,resolution_status,UNRESOLVED,RESOLVED,B6_STATUS_SYNC_AFTER_9B,observation of safety_test 16 (Brezza) resolved in Phase 9B
+update,source_observation,3737,resolution_status,UNRESOLVED,RESOLVED,B6_STATUS_SYNC_AFTER_9B,observation of safety_test 17 (Dzire) resolved in Phase 9B

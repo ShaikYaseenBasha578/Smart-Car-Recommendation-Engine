@@ -39,6 +39,6 @@ Tag claims [VERIFIED] (query/file:line/hash) · [REPORTED-ONLY] · [CONTRADICTED
 
 ## Where things live
 - Reports: `knowledge_base/reports/` (phase reports PHASE3…PHASE9B; latest audit `CLAUDE_CODE_FULL_PROJECT_AUDIT.md`, `CLAUDE_CODE_SCRIPT_SAFETY_MAP.md`, notes in `audit_notes/`).
-- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0, pre_phase10b_w1_20260927T015904Z = pre-W1, pre_phase10b_w2_20260927T075058Z = pre-W2; copies in Google Drive My Drive/CarRec_backups/). Current prod SHA-1: `f26db30f4b3eb47fd0c0e21eb3ee4829abf38c81` (2026-09-27, after Phase 10B W2) — update after every authorised controlled write.
+- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0, pre_phase10b_w1_20260927T015904Z = pre-W1, pre_phase10b_w2_20260927T075058Z = pre-W2, pre_phase10b_w3_20260927T080046Z = pre-W3; copies in Google Drive My Drive/CarRec_backups/). Current prod SHA-1: `516c50651d3e97871c2f7566ce1db712566a63b4` (2026-09-27, after Phase 10B W3) — update after every authorised controlled write.
 - Schema: live `sqlite_master` is authoritative; `KB_SCHEMA.sql` is stale.
 - Scratch: `/tmp/carrec_audit/` for DB copies and query output.
