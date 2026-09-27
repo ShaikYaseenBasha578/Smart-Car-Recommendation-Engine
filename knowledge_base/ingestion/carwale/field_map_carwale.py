@@ -28,6 +28,28 @@ def extract_transmission(val):
     if 'automatic' in v: return 'Automatic'
     return None
 
+def parse_version_name(name):
+    """(fuel, transmission) from a CarWale version name, or None for any part not stated.
+    Fuel: CNG / Hybrid (strong, 'Electric + Petrol' or e-CVT) / Electric / Diesel / Petrol ('Smart Hybrid' is a
+    petrol mild hybrid). Transmission: AT / AMT / CVT / DCT / TC / MT. EVs name no gearbox; every EV in the KB is
+    single-speed 'Automatic', so Electric implies AT."""
+    v = ' ' + (name or '').lower() + ' '
+    if 'cng' in v: fuel = 'CNG'
+    elif 'electric + petrol' in v or 'strong hybrid' in v or 'e-cvt' in v: fuel = 'Hybrid'
+    elif 'kwh' in v or 'electric' in v: fuel = 'Electric'
+    elif 'diesel' in v: fuel = 'Diesel'
+    elif 'petrol' in v: fuel = 'Petrol'
+    else: fuel = None
+    if 'amt' in v or re.search(r'\bags\b', v): trans = 'AMT'
+    elif 'cvt' in v or 'ivt' in v: trans = 'CVT'
+    elif 'dct' in v or 'dsg' in v: trans = 'DCT'
+    elif '(tc)' in v or 'torque converter' in v: trans = 'TC'
+    elif 'imt' in v or 'manual' in v or re.search(r'\bmt\b', v): trans = 'MT'
+    elif 'automatic' in v or re.search(r'\bat\b', v): trans = 'AT'
+    elif fuel == 'Electric': trans = 'AT'
+    else: trans = None
+    return fuel, trans
+
 def map_carwale_features(features):
     return {
         'transmission': extract_transmission(features.get('Transmission', '')),

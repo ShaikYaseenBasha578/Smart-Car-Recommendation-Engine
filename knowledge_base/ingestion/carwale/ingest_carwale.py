@@ -3,7 +3,7 @@ import json
 import os
 import time
 from knowledge_base.ingestion.carwale.extractor_carwale import fetch_carwale_state, extract_variant
-from knowledge_base.ingestion.carwale.field_map_carwale import map_carwale_features, map_resolver_fields
+from knowledge_base.ingestion.carwale.field_map_carwale import map_carwale_features, parse_version_name
 from knowledge_base.ingestion.common.resolver import resolve_variant
 from knowledge_base.ingestion.common.updater import update_canonical
 
@@ -19,6 +19,16 @@ def ensure_source_registered(conn):
             VALUES (?, 'CarWale', 2, 'https://www.carwale.com')
         """, (CARWALE_SOURCE_ID,))
         conn.commit()
+
+def resolve_carwale_version(conn, make_slug, model_slug, v_name, v_slug, price=None):
+    """Resolve one CarWale version. Fuel and transmission are parsed from the version name and must both be
+    known; every candidate is then checked against them by validate_structured. Aliases come from CarWale's own
+    alias table only (never the 91wheels default). Returns (variant_id, status, base_variant_id)."""
+    fuel, trans = parse_version_name(v_name)
+    if not fuel or not trans:
+        return None, 'unresolved', None
+    return resolve_variant(conn, make_slug, model_slug, v_name, v_slug,
+                           fuel=fuel, trans=trans, cc=None, price=price, source_name='carwale')
 
 def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug):
     conn = sqlite3.connect(DB_PATH)
@@ -78,16 +88,9 @@ def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug):
         normalized = {k: v for k, v in mapped_feats.items() if v is not None}
         if price: normalized['price'] = price
         
-        # Resolution uses basic details from specsSummary
-        ss = obs_data.get('specs_summary', {})
-        # Wait, my extract_variant currently only returns features. 
-        # Let's just pass None to fuel/cc/trans and let resolve_variant use name/price/trans
-        fuel, cc, trans = map_resolver_fields(ss)
-        if not trans: trans = normalized.get('transmission')
-        
-        # Attempt Identity Resolution
-        target_variant_id, match_status, base_variant_id = resolve_variant(
-            conn, make_slug, canonical_model_slug, v_name, v_slug, fuel=fuel, trans=trans, cc=cc, price=price
+        # Attempt Identity Resolution (fail-closed on fuel/transmission parsed from the version name)
+        target_variant_id, match_status, base_variant_id = resolve_carwale_version(
+            conn, make_slug, canonical_model_slug, v_name, v_slug, price
         )
         
         payload_dump = json.dumps(obs_data)

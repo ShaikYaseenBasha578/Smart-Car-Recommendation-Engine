@@ -1,0 +1,754 @@
+observation_id,group,raw_name,old_variant_id,new_variant_id,new_status,edition_base_variant_id,outcome,parsed_fuel,parsed_transmission,old_contradicts,new_contradicts
+2809,UNFLAGGED,V Petrol Manual,289,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2810,UNFLAGGED,VX Petrol Manual,290,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2812,UNFLAGGED,ZX Petrol Manual,293,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2813,UNFLAGGED,SV Petrol Manual,295,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2814,UNFLAGGED,V Petrol Manual,296,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2816,UNFLAGGED,ZX Petrol Manual,298,300,resolved,,DIFFERENT,Petrol,MT,0,0
+2817,UNFLAGGED,ZX Plus Petrol Manual,298,300,resolved,,DIFFERENT,Petrol,MT,0,0
+2818,UNFLAGGED,SV Petrol Manual,647,645,resolved,,DIFFERENT,Petrol,MT,0,0
+2819,UNFLAGGED,V Petrol Manual,645,647,resolved,,DIFFERENT,Petrol,MT,0,0
+2820,FLAGGED,V Petrol Automatic,647,646,resolved,,DIFFERENT,Petrol,AT,1,0
+2821,UNFLAGGED,VX Petrol Manual,647,649,resolved,,DIFFERENT,Petrol,MT,0,0
+2822,FLAGGED,VX Petrol Automatic,649,648,resolved,,DIFFERENT,Petrol,AT,1,0
+2823,UNFLAGGED,ZX Petrol Manual,649,652,resolved,,DIFFERENT,Petrol,MT,0,0
+2824,UNFLAGGED,ZX Petrol Manual Black Edition,814,814,resolved,,SAME,Petrol,MT,0,0
+2825,UNFLAGGED,ZX Petrol Manual IVORY,652,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2826,UNFLAGGED,ZX Petrol Manual Signature Black Edition,814,814,resolved,,SAME,Petrol,MT,0,0
+2827,UNFLAGGED,ZX Petrol Manual ADV Edition,814,653,resolved,,DIFFERENT,Petrol,MT,0,0
+2828,UNFLAGGED,ZX Petrol Manual Dual Tone ADV Edition,814,814,resolved,,SAME,Petrol,MT,0,0
+2829,FLAGGED,ZX Petrol Automatic Black Edition,814,,edition_candidate,650,EDITION_CANDIDATE,Petrol,AT,1,0
+2830,FLAGGED,ZX Petrol Automatic IVORY,652,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+2831,FLAGGED,ZX Petrol Automatic,652,650,resolved,,DIFFERENT,Petrol,AT,1,0
+2832,FLAGGED,ZX Petrol Automatic Dual Tone,814,,edition_candidate,650,EDITION_CANDIDATE,Petrol,AT,1,0
+2833,FLAGGED,ZX Petrol Automatic Dual Tone IVORY,814,,edition_candidate,651,EDITION_CANDIDATE,Petrol,AT,1,0
+2834,FLAGGED,ZX Petrol Automatic Signature Black Edition,814,,edition_candidate,650,EDITION_CANDIDATE,Petrol,AT,1,0
+2835,FLAGGED,ZX Petrol Automatic ADV Edition,653,651,resolved,,DIFFERENT,Petrol,AT,1,0
+2836,FLAGGED,ZX Petrol Automatic Dual Tone ADV Edition,814,,edition_candidate,651,EDITION_CANDIDATE,Petrol,AT,1,0
+2837,UNFLAGGED,E Petrol Manual,268,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2838,UNFLAGGED,Corporate Petrol Manual,269,269,resolved,,SAME,Petrol,MT,0,0
+2839,UNFLAGGED,S Petrol Manual,270,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2840,UNFLAGGED,SX Petrol Manual,271,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2841,UNFLAGGED,SX (O) Petrol Manual,271,274,resolved,,DIFFERENT,Petrol,MT,0,0
+2842,UNFLAGGED,E Petrol 1.5L Manual,2,1,resolved,,DIFFERENT,Petrol,MT,0,0
+2843,UNFLAGGED,EX Petrol 1.5L Manual,1,2,resolved,,DIFFERENT,Petrol,MT,0,0
+2844,UNFLAGGED,E Diesel 1.5L Turbo Manual,5,3,resolved,,DIFFERENT,Diesel,MT,0,0
+2845,UNFLAGGED,EX (O) Petrol 1.5L Manual,6,4,resolved,,DIFFERENT,Petrol,MT,0,0
+2846,UNFLAGGED,EX Diesel 1.5L Turbo Manual,3,5,resolved,,DIFFERENT,Diesel,MT,0,0
+2847,UNFLAGGED,S (O) Petrol 1.5L Manual,4,6,resolved,,DIFFERENT,Petrol,MT,0,0
+2848,UNFLAGGED,S (O) Knight Petrol 1.5L Manual Knight Edition,7,7,resolved,,SAME,Petrol,MT,0,0
+2849,FLAGGED,EX (O) Petrol 1.5L CVT Speed Automatic (CVT),4,8,resolved,,DIFFERENT,Petrol,CVT,1,0
+2850,UNFLAGGED,EX (O) Diesel 1.5L Turbo Manual,13,9,resolved,,DIFFERENT,Diesel,MT,0,0
+2851,UNFLAGGED,SX Petrol 1.5L Manual,2,10,resolved,,DIFFERENT,Petrol,MT,0,0
+2852,UNFLAGGED,SX Petrol 1.5L Manual Dual Tone,16,11,resolved,,DIFFERENT,Petrol,MT,0,0
+2853,FLAGGED,S (O) Petrol 1.5L CVT Speed Automatic (CVT),6,12,resolved,,DIFFERENT,Petrol,CVT,1,0
+2854,UNFLAGGED,S (O) Diesel 1.5L Turbo Manual,9,13,resolved,,DIFFERENT,Diesel,MT,0,0
+2855,UNFLAGGED,S (O) Knight Diesel 1.5L Turbo Manual Knight Edition,14,14,resolved,,SAME,Diesel,MT,0,0
+2856,FLAGGED,EX (O) Diesel 1.5L Turbo Automatic (TC),9,18,resolved,,DIFFERENT,Diesel,TC,1,0
+2857,UNFLAGGED,SX Premium Petrol 1.5L Manual,16,15,resolved,,DIFFERENT,Petrol,MT,0,0
+2858,FLAGGED,SX Premium Petrol 1.5L Manual Dual Tone,23,16,resolved,,DIFFERENT,Petrol,MT,1,0
+2859,UNFLAGGED,King Edition Petrol 1.5L Manual,19,17,resolved,,DIFFERENT,Petrol,MT,0,0
+2860,FLAGGED,S (O) Diesel 1.5L Turbo Automatic (TC),13,18,resolved,,DIFFERENT,Diesel,TC,1,0
+2861,FLAGGED,King Edition Petrol 1.5L Manual Dual Tone,27,19,resolved,,DIFFERENT,Petrol,MT,1,0
+2862,FLAGGED,SX Premium Petrol 1.5L CVT Speed Automatic (CVT),15,20,resolved,,DIFFERENT,Petrol,CVT,1,0
+2863,UNFLAGGED,SX Premium Diesel 1.5L Turbo Manual,23,21,resolved,,DIFFERENT,Diesel,MT,0,0
+2864,FLAGGED,SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone,16,22,resolved,,DIFFERENT,Petrol,CVT,1,0
+2865,FLAGGED,SX Premium Diesel 1.5L Turbo Manual Dual Tone,16,23,resolved,,DIFFERENT,Diesel,MT,1,0
+2866,FLAGGED,King Edition Petrol 1.5L CVT Speed Automatic (CVT),17,24,resolved,,DIFFERENT,Petrol,CVT,1,0
+2867,UNFLAGGED,King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT),25,25,resolved,,SAME,Petrol,CVT,0,0
+2868,UNFLAGGED,King Edition Diesel 1.5L Turbo Manual,27,26,resolved,,DIFFERENT,Diesel,MT,0,0
+2869,FLAGGED,King Edition Diesel 1.5L Turbo Manual Dual Tone,19,27,resolved,,DIFFERENT,Diesel,MT,1,0
+2870,FLAGGED,King Edition Diesel 1.5L Turbo Automatic (TC),26,28,resolved,,DIFFERENT,Diesel,TC,1,0
+2871,FLAGGED,King Edition Petrol 1.5L Automatic (DCT),17,29,resolved,,DIFFERENT,Petrol,DCT,1,0
+2872,FLAGGED,King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone,27,30,resolved,,DIFFERENT,Diesel,TC,1,0
+2873,FLAGGED,King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone,19,31,resolved,,DIFFERENT,Petrol,DCT,1,0
+2874,UNFLAGGED,King Knight Edition Diesel 1.5L Turbo Automatic (TC),30,30,resolved,,SAME,Diesel,TC,0,0
+2875,UNFLAGGED,HX 2 Petrol Manual,659,656,resolved,,DIFFERENT,Petrol,MT,0,0
+2876,UNFLAGGED,HX 3 Petrol Manual,656,659,resolved,,DIFFERENT,Petrol,MT,0,0
+2877,UNFLAGGED,HX 3 Petrol Manual Matte,656,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2878,FLAGGED,HX 3 Petrol Automatic,659,658,resolved,,DIFFERENT,Petrol,AT,1,0
+2879,FLAGGED,HX 3 Petrol Automatic Matte,659,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+2880,UNFLAGGED,HX 4 Petrol Manual,656,661,resolved,,DIFFERENT,Petrol,MT,0,0
+2881,UNFLAGGED,HX 4 Petrol Manual Matte,656,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2882,UNFLAGGED,HX 6 Petrol Manual,656,665,resolved,,DIFFERENT,Petrol,MT,0,0
+2883,UNFLAGGED,HX 4 Plus Petrol Automatic,658,662,resolved,,DIFFERENT,Petrol,AT,0,0
+2884,UNFLAGGED,HX 6 Petrol Manual Knight,665,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2885,UNFLAGGED,HX 6 Petrol Manual Matte,656,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2886,UNFLAGGED,HX 6 Petrol Manual Dual Tone,815,815,resolved,,SAME,Petrol,MT,0,0
+2887,UNFLAGGED,HX 4 Plus Petrol Automatic Matte,662,,unresolved,,UNRESOLVED,Petrol,AT,0,0
+2888,UNFLAGGED,HX 8 Petrol Manual,656,668,resolved,,DIFFERENT,Petrol,MT,0,0
+2889,UNFLAGGED,HX 8 Petrol Manual Matte,656,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2890,FLAGGED,HX 6 Petrol Automatic,665,664,resolved,,DIFFERENT,Petrol,AT,1,0
+2891,FLAGGED,HX 6 Petrol Automatic Knight,665,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+2892,FLAGGED,HX 6 Petrol Automatic Dual Tone,815,816,resolved,,DIFFERENT,Petrol,AT,1,0
+2893,FLAGGED,HX 6 Petrol Automatic Matte,665,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+2894,FLAGGED,HX 8 Petrol Automatic,668,667,resolved,,DIFFERENT,Petrol,AT,1,0
+2895,FLAGGED,HX 8 Petrol Automatic Matte,668,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+2896,UNFLAGGED,HX 10 Petrol Automatic,658,654,resolved,,DIFFERENT,Petrol,AT,0,0
+2897,UNFLAGGED,HX 10 Petrol Automatic Knight,654,,unresolved,,UNRESOLVED,Petrol,AT,0,0
+2898,UNFLAGGED,HX 10 Petrol Automatic Matte,658,,unresolved,,UNRESOLVED,Petrol,AT,0,0
+2899,UNFLAGGED,HX 10 Petrol Automatic Dual Tone,816,816,resolved,,SAME,Petrol,AT,0,0
+2900,UNFLAGGED,Era Petrol Manual,255,255,resolved,,SAME,Petrol,MT,0,0
+2901,UNFLAGGED,Magna Petrol Manual,256,256,resolved,,SAME,Petrol,MT,0,0
+2902,UNFLAGGED,Corporate Petrol Manual,257,257,resolved,,SAME,Petrol,MT,0,0
+2903,UNFLAGGED,Sportz Petrol Manual,259,259,resolved,,SAME,Petrol,MT,0,0
+2904,UNFLAGGED,Sportz Vibe Petrol Manual,259,259,resolved,,SAME,Petrol,MT,0,0
+2905,UNFLAGGED,Sportz (O) Petrol Manual,259,260,resolved,,DIFFERENT,Petrol,MT,0,0
+2906,FLAGGED,Corporate Petrol Automatic,257,261,resolved,,DIFFERENT,Petrol,AT,1,0
+2908,UNFLAGGED,Asta Petrol Manual,264,264,resolved,,SAME,Petrol,MT,0,0
+2910,FLAGGED,Sportz (O) Petrol Automatic,260,265,resolved,,DIFFERENT,Petrol,AT,1,0
+2911,UNFLAGGED,Sportz (O) Vibe Petrol Automatic,265,265,resolved,,SAME,Petrol,AT,0,0
+2912,UNFLAGGED,HX 2 Petrol 1.2L 5 Speed Manual,148,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2914,UNFLAGGED,HX 4 Petrol 1.2L 5 Speed Manual,148,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2915,UNFLAGGED,HX 5 Petrol 1.2L 5 Speed Manual,148,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2918,FLAGGED,HX 2 Diesel 1.5L Turbo 6 Speed Manual,149,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+2921,UNFLAGGED,HX 6T Petrol 1.2L 5 Speed Manual,156,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2923,FLAGGED,HX 5 Diesel 1.5L Turbo 6 Speed Manual,152,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+2928,FLAGGED,HX 5 Diesel 1.5L Turbo Automatic (TC),152,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+2933,FLAGGED,HX 7 Diesel 1.5L Turbo 6 Speed Manual,152,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+2937,FLAGGED,HX 8 Diesel 1.5L Turbo Automatic (TC),160,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+2941,UNFLAGGED,HX 10 Petrol 1.0L Turbo Automatic (DCT),161,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+2945,FLAGGED,HX 10 Diesel 1.5L Turbo Automatic (TC),165,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+2948,UNFLAGGED,HX 4 Petrol 1.5L Manual Matte,278,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2950,UNFLAGGED,HX 6 Petrol 1.5L Manual Matte,279,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2960,UNFLAGGED,HX 8 Petrol 1.5L Manual Matte,282,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+2967,UNFLAGGED,HX 8 Petrol 1.5L Turbo Manual,285,285,resolved,,SAME,Petrol,MT,0,0
+2968,UNFLAGGED,HX 8 Petrol 1.5L Turbo Manual Dual Tone,817,817,resolved,,SAME,Petrol,MT,0,0
+2969,UNFLAGGED,HX 8 Petrol 1.5L Turbo Manual Matte,817,285,resolved,,DIFFERENT,Petrol,MT,0,0
+2970,UNFLAGGED,HX 10 Petrol 1.5L Automatic (CVT),286,,unresolved,,UNRESOLVED,Petrol,CVT,0,0
+2972,UNFLAGGED,HX 10 Petrol 1.5L Automatic (CVT) Matte,286,,unresolved,,UNRESOLVED,Petrol,CVT,0,0
+2973,FLAGGED,HX 8 Petrol 1.5L Turbo Automatic (DCT),817,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+2974,FLAGGED,HX 8 Petrol 1.5L Turbo Automatic (DCT) Dual Tone,817,818,resolved,,DIFFERENT,Petrol,DCT,1,0
+2975,FLAGGED,HX 8 Petrol 1.5L Turbo Automatic (DCT) Matte,817,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+2976,UNFLAGGED,HX 10 Petrol 1.5L Turbo Automatic (DCT),288,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+2977,UNFLAGGED,HX 10 Petrol 1.5L Turbo Automatic (DCT) Dual Tone,818,818,resolved,,SAME,Petrol,DCT,0,0
+2978,UNFLAGGED,HX 10 Petrol 1.5L Turbo Automatic (DCT) Matte,818,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+2979,FLAGGED,HTE Petrol 1.5L Manual 7 STR,796,791,resolved,,DIFFERENT,Petrol,MT,1,0
+2980,FLAGGED,HTE (O) Petrol 1.5L Manual 7 STR,797,792,resolved,,DIFFERENT,Petrol,MT,1,0
+2981,FLAGGED,HTE EX Petrol 1.5L Manual 7 STR,798,791,resolved,,DIFFERENT,Petrol,MT,1,0
+2982,FLAGGED,HTE (O) Petrol 1.5L Turbo Manual 7 STR,797,786,resolved,,DIFFERENT,Petrol,MT,1,0
+2983,FLAGGED,HTE Diesel 1.5L Turbo Manual 7 STR,786,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+2984,FLAGGED,HTE EX Petrol 1.5L Turbo Manual 7 STR,798,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+2985,FLAGGED,HTE (O) Diesel 1.5L Turbo Manual 7 STR,786,797,resolved,,DIFFERENT,Diesel,MT,1,0
+2986,FLAGGED,HTE EX Diesel 1.5L Turbo Manual 7 STR,787,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+2987,FLAGGED,HTK Plus Petrol 1.5L Turbo Manual 7 STR,799,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+2988,FLAGGED,HTK Plus (O) Petrol 1.5L Turbo Manual 7 STR,800,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+2989,FLAGGED,HTK Plus Diesel 1.5L Turbo Manual 7 STR,788,799,resolved,,DIFFERENT,Diesel,MT,1,0
+2992,FLAGGED,HTK Plus (O) Diesel 1.5L Turbo Manual 7 STR,789,800,resolved,,DIFFERENT,Diesel,MT,1,0
+2993,FLAGGED,HTK Plus Diesel 1.5L Turbo Automatic (TC) 7 STR,788,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+2994,FLAGGED,HTK Plus Diesel 1.5L Turbo Automatic (TC) 6 STR,788,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+2997,FLAGGED,HTX Petrol 1.5L Turbo Manual 7 STR,801,790,resolved,,DIFFERENT,Petrol,MT,1,0
+2998,FLAGGED,HTX Petrol 1.5L Turbo Clutchless Manual (IMT) 7 STR,801,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+2999,FLAGGED,HTX Diesel 1.5L Turbo Manual 7 STR,790,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3000,FLAGGED,HTX Plus Petrol 1.5L Turbo Manual 7 STR,801,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+3001,FLAGGED,HTX Plus Petrol 1.5L Turbo Manual 6 STR,801,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+3002,FLAGGED,HTX Plus Petrol 1.5L Turbo Clutchless Manual (IMT) 7 STR,801,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+3003,FLAGGED,HTX Plus Petrol 1.5L Turbo Clutchless Manual (IMT) 6 STR,801,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+3004,FLAGGED,HTX (O) Petrol 1.5L Turbo Automatic (DCT) 7 STR,794,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3005,FLAGGED,HTX (O) Petrol 1.5L Turbo Automatic (DCT) 6 STR,794,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3006,FLAGGED,GTX Petrol 1.5L Turbo Automatic (DCT) 6 STR,794,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3007,FLAGGED,GTX Petrol 1.5L Turbo Automatic (DCT) 7 STR,794,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3008,FLAGGED,HTX (O) A Petrol 1.5L Turbo Automatic (DCT) 6 STR,794,775,resolved,,DIFFERENT,Petrol,DCT,1,0
+3009,FLAGGED,HTX (O) A Petrol 1.5L Turbo Automatic (DCT) 7 STR,794,776,resolved,,DIFFERENT,Petrol,DCT,1,0
+3012,UNFLAGGED,HTX E 42.0 kWh 7 STR,804,804,resolved,,SAME,Electric,AT,0,0
+3013,UNFLAGGED,HTX 42.0 kWh 7 STR,804,804,resolved,,SAME,Electric,AT,0,0
+3015,UNFLAGGED,HTX E ER 51.4 kWh 7 STR,804,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3016,UNFLAGGED,HTX E ER 51.4 kWh 6 STR,806,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3017,UNFLAGGED,HTX ER 51.4 kWh 7 STR,804,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3018,UNFLAGGED,HTX ER 51.4 kWh 6 STR,806,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3019,UNFLAGGED,GTX ER 51.4 kWh 6 STR,807,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3020,UNFLAGGED,GTX ER 51.4 kWh 7 STR,807,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3021,UNFLAGGED,HTX Plus ER 51.4 kWh 7 STR,806,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3022,UNFLAGGED,HTX Plus ER 51.4 kWh 6 STR,806,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3023,UNFLAGGED,X-Line ER 51.4 kWh 7 STR,810,810,resolved,,SAME,Electric,AT,0,0
+3024,UNFLAGGED,GTX Plus ER 51.4 kWh 7 STR,807,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3025,UNFLAGGED,GTX Plus ER 51.4 kWh 6 STR,807,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3026,UNFLAGGED,X-Line ER 51.4 kWh 6 STR,810,810,resolved,,SAME,Electric,AT,0,0
+3027,UNFLAGGED,HTE Petrol 1.5L Manual,167,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3028,UNFLAGGED,HTE (O) Petrol 1.5L Manual,168,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3029,UNFLAGGED,HTE Diesel 1.5L Turbo Manual,192,192,resolved,,SAME,Diesel,MT,0,0
+3031,UNFLAGGED,HTK Petrol 1.5L Manual,170,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3032,FLAGGED,HTE (O) Petrol 1.5L Automatic (CVT),167,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3033,FLAGGED,HTE (O) Diesel 1.5L Turbo Manual,182,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3035,UNFLAGGED,HTK (O) Petrol 1.5L Manual,172,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3036,FLAGGED,HTK Petrol 1.5L Automatic (CVT),170,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3037,UNFLAGGED,HTK Diesel 1.5L Turbo Manual,195,195,resolved,,SAME,Diesel,MT,0,0
+3039,FLAGGED,HTE (O) Diesel 1.5L Turbo Automatic (TC),182,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3040,FLAGGED,HTK (O) Petrol 1.5L Automatic (CVT),170,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3041,UNFLAGGED,HTX Petrol 1.5L Manual,174,174,resolved,,SAME,Petrol,MT,0,0
+3042,FLAGGED,HTK (O) Diesel 1.5L Turbo Manual,184,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3043,FLAGGED,HTK Diesel 1.5L Turbo Automatic (TC),183,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3045,UNFLAGGED,HTX (A) Petrol 1.5L Manual,176,174,resolved,,DIFFERENT,Petrol,MT,0,0
+3046,FLAGGED,HTX Petrol 1.5L Automatic (CVT),174,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3047,FLAGGED,HTK (O) Diesel 1.5L Turbo Automatic (TC),184,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3048,UNFLAGGED,HTX Diesel 1.5L Turbo Manual,199,199,resolved,,SAME,Diesel,MT,0,0
+3050,FLAGGED,HTX (A) Petrol 1.5L Automatic (CVT),174,186,resolved,,DIFFERENT,Petrol,CVT,1,0
+3051,UNFLAGGED,HTX (A) Diesel 1.5L Turbo Manual,201,199,resolved,,DIFFERENT,Diesel,MT,0,0
+3052,UNFLAGGED,X-Line Petrol 1.5L Automatic (CVT),180,180,resolved,,SAME,Petrol,CVT,0,0
+3053,UNFLAGGED,GTX Petrol 1.5L Automatic (CVT),178,,unresolved,,UNRESOLVED,Petrol,CVT,0,0
+3058,UNFLAGGED,X-Line Petrol 1.5L Turbo Automatic (DCT),190,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3060,UNFLAGGED,GTX (A) Petrol 1.5L Automatic (CVT),178,188,resolved,,DIFFERENT,Petrol,CVT,0,0
+3061,UNFLAGGED,X-Line (A) Petrol 1.5L Automatic (CVT),181,180,resolved,,DIFFERENT,Petrol,CVT,0,0
+3063,UNFLAGGED,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone,819,819,resolved,,SAME,Petrol,CVT,0,0
+3064,FLAGGED,X-Line Diesel 1.5L Turbo Automatic (TC),190,205,resolved,,DIFFERENT,Diesel,TC,1,0
+3065,FLAGGED,GTX Diesel 1.5L Turbo Automatic (TC),819,203,resolved,,DIFFERENT,Diesel,TC,1,0
+3066,UNFLAGGED,X-Line (A) Petrol 1.5L Turbo Automatic (DCT),819,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3067,UNFLAGGED,GTX (A) Petrol 1.5L Turbo Automatic (DCT),819,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3068,FLAGGED,GTX Diesel 1.5L Turbo Automatic (TC) Dual Tone,819,,edition_candidate,203,EDITION_CANDIDATE,Diesel,TC,1,0
+3069,UNFLAGGED,GTX (A) Petrol 1.5L Turbo Automatic (DCT) Dual Tone,819,819,resolved,,SAME,Petrol,DCT,0,0
+3070,FLAGGED,GTX (A) Diesel 1.5L Turbo Automatic (TC),819,203,resolved,,DIFFERENT,Diesel,TC,1,0
+3071,FLAGGED,X-Line (A) Diesel 1.5L Turbo Automatic (TC),191,205,resolved,,DIFFERENT,Diesel,TC,1,0
+3072,FLAGGED,GTX (A) Diesel 1.5L Turbo Automatic (TC) Dual Tone,819,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3073,UNFLAGGED,GTX (O) Petrol 1.5L Turbo Automatic (DCT),819,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3074,UNFLAGGED,X-Line (O) Petrol 1.5L Turbo Automatic (DCT),819,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3075,UNFLAGGED,GTX (O) Petrol 1.5L Turbo Automatic (DCT) Dual Tone,819,819,resolved,,SAME,Petrol,DCT,0,0
+3076,FLAGGED,GTX (O) Diesel 1.5L Turbo Automatic (TC),819,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3077,FLAGGED,X-Line (O) Diesel 1.5L Turbo Automatic (TC),191,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3078,FLAGGED,GTX (O) Diesel 1.5L Turbo Automatic (TC) Dual Tone,819,,edition_candidate,194,EDITION_CANDIDATE,Diesel,TC,1,0
+3079,UNFLAGGED,HTE Petrol 1.0L Turbo Manual,750,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3080,UNFLAGGED,HTE (O) Petrol 1.0L Turbo Manual,750,759,resolved,,DIFFERENT,Petrol,MT,0,0
+3081,UNFLAGGED,HTK EX Petrol 1.0L Turbo Manual,753,755,resolved,,DIFFERENT,Petrol,MT,0,0
+3082,UNFLAGGED,HTE (O) Diesel 1.5L Turbo Manual,752,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3083,UNFLAGGED,HTK EX Diesel 1.5L Turbo Manual,754,757,resolved,,DIFFERENT,Diesel,MT,0,0
+3084,UNFLAGGED,HTK Plus Petrol 1.0L Turbo Manual,755,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3085,UNFLAGGED,HTK Plus Diesel 1.5L Turbo Manual,757,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3087,UNFLAGGED,HTK Plus (O) Petrol 1.0L Turbo Manual,759,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3089,UNFLAGGED,HTK Plus (O) Diesel 1.5L Turbo Manual,761,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3092,UNFLAGGED,HTX Petrol 1.0L Turbo Automatic (DCT),763,763,resolved,,SAME,Petrol,DCT,0,0
+3093,UNFLAGGED,HTX Diesel 1.5L Turbo Automatic (TC),764,766,resolved,,DIFFERENT,Diesel,TC,0,0
+3094,UNFLAGGED,HTX (O) Petrol 1.0L Turbo Automatic (DCT),763,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3095,UNFLAGGED,HTX (O) Diesel 1.5L Turbo Automatic (TC),764,,unresolved,,UNRESOLVED,Diesel,TC,0,0
+3096,UNFLAGGED,Style Petrol Turbo Manual,464,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3097,UNFLAGGED,Select Pro Petrol Turbo Manual,465,465,resolved,,SAME,Petrol,MT,0,0
+3098,UNFLAGGED,Smart Pro Petrol Turbo Manual,466,466,resolved,,SAME,Petrol,MT,0,0
+3099,FLAGGED,Smart Pro Petrol Turbo Automatic,466,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3100,UNFLAGGED,Sharp Pro Petrol Turbo Manual,468,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3101,FLAGGED,Sharp Pro Petrol Turbo Automatic,468,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3102,UNFLAGGED,Savvy Pro Petrol Turbo Automatic,470,,unresolved,,UNRESOLVED,Petrol,AT,0,0
+3103,UNFLAGGED,Excite 38.0 kWh,72,72,resolved,,SAME,Electric,AT,0,0
+3105,UNFLAGGED,Exclusive 38.0 kWh,127,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3106,UNFLAGGED,Essence 38.0 kWh,128,128,resolved,,SAME,Electric,AT,0,0
+3107,UNFLAGGED,Exclusive Pro 52.9 kWh,127,129,resolved,,DIFFERENT,Electric,AT,0,0
+3108,UNFLAGGED,Essence Pro 52.9 kWh,128,130,resolved,,DIFFERENT,Electric,AT,0,0
+3109,UNFLAGGED,B4 Diesel Turbo Manual,380,380,resolved,,SAME,Diesel,MT,0,0
+3110,UNFLAGGED,B6 Diesel Turbo Manual,381,381,resolved,,SAME,Diesel,MT,0,0
+3111,UNFLAGGED,B6 (O) Diesel Turbo Manual,381,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3112,UNFLAGGED,B8 Diesel Turbo Manual,383,383,resolved,,SAME,Diesel,MT,0,0
+3113,UNFLAGGED,AXT 2WD Diesel 1.5L Turbo Manual,681,680,resolved,,DIFFERENT,Diesel,MT,0,0
+3114,UNFLAGGED,LXT 2WD Diesel 1.5L Turbo Manual,680,681,resolved,,DIFFERENT,Diesel,MT,0,0
+3115,FLAGGED,LXT 2WD Petrol 2.0L Turbo Automatic,686,682,resolved,,DIFFERENT,Petrol,AT,1,0
+3116,FLAGGED,LXT 4WD Petrol 2.0L Turbo Manual,684,686,resolved,,DIFFERENT,Petrol,MT,1,0
+3117,FLAGGED,LXT 4WD Diesel 2.2L Turbo Manual,686,684,resolved,,DIFFERENT,Diesel,MT,1,0
+3118,FLAGGED,LXT 4WD Petrol 2.0L Turbo Automatic,686,685,resolved,,DIFFERENT,Petrol,AT,1,0
+3119,FLAGGED,LXT 4WD Diesel 2.2L Turbo Automatic,684,683,resolved,,DIFFERENT,Diesel,AT,1,0
+3120,FLAGGED,MX1 2WD Petrol 2.0L Turbo Manual,695,696,resolved,,DIFFERENT,Petrol,MT,1,0
+3121,UNFLAGGED,MX1 2WD Diesel 2.2L Turbo Manual,698,695,resolved,,DIFFERENT,Diesel,MT,0,0
+3122,FLAGGED,MX3 2WD Petrol 2.0L Turbo Automatic,696,699,resolved,,DIFFERENT,Petrol,AT,1,0
+3123,UNFLAGGED,MX3 2WD Diesel 2.2L Turbo Manual,695,698,resolved,,DIFFERENT,Diesel,MT,0,0
+3124,FLAGGED,MX5 2WD Petrol 2.0L Turbo Manual,701,703,resolved,,DIFFERENT,Petrol,MT,1,0
+3125,UNFLAGGED,MX5 2WD Diesel 2.2L Turbo Manual,698,701,resolved,,DIFFERENT,Diesel,MT,0,0
+3126,UNFLAGGED,AX3 L 2WD Diesel 2.2L Turbo Manual,691,687,resolved,,DIFFERENT,Diesel,MT,0,0
+3127,UNFLAGGED,Star Edition 2WD Diesel 2.2L Turbo Manual,687,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3128,FLAGGED,MX3 2WD Diesel 2.2L Turbo Automatic,698,697,resolved,,DIFFERENT,Diesel,AT,1,0
+3129,FLAGGED,MX5 2WD Petrol 2.0L Turbo Automatic,703,702,resolved,,DIFFERENT,Petrol,AT,1,0
+3130,FLAGGED,MX5 2WD Diesel 2.2L Turbo Automatic,701,700,resolved,,DIFFERENT,Diesel,AT,1,0
+3131,FLAGGED,Star Edition 2WD Petrol 2.0L Turbo Automatic,703,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3132,FLAGGED,AX5 L 2WD Diesel 2.2L Turbo Automatic,687,688,resolved,,DIFFERENT,Diesel,AT,1,0
+3133,FLAGGED,Star Edition 2WD Diesel 2.2L Turbo Automatic,687,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3134,UNFLAGGED,MX5 4WD Diesel 2.2L Turbo Manual,701,704,resolved,,DIFFERENT,Diesel,MT,0,0
+3135,UNFLAGGED,MX5 4WD Diesel 2.2L Turbo Manual Mocha Intrs,701,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3136,UNFLAGGED,AX7 L 2WD Diesel 2.2L Turbo Manual,687,691,resolved,,DIFFERENT,Diesel,MT,0,0
+3137,UNFLAGGED,AX7 L 2WD Diesel 2.2L Turbo Manual Mocha Intrs,687,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3138,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic Mocha Intrs,691,692,resolved,,DIFFERENT,Petrol,AT,1,0
+3139,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic,691,692,resolved,,DIFFERENT,Petrol,AT,1,0
+3140,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic,691,690,resolved,,DIFFERENT,Diesel,AT,1,0
+3141,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic Mocha Intrs,691,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3142,FLAGGED,AX5 L 4WD Diesel 2.2L Turbo Automatic Mocha Intrs,694,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3143,FLAGGED,AX5 L 4WD Diesel 2.2L Turbo Automatic,694,689,resolved,,DIFFERENT,Diesel,AT,1,0
+3144,UNFLAGGED,AX7 L 4WD Diesel 2.2L Turbo Manual Mocha Intrs,694,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3145,UNFLAGGED,AX7 L 4WD Diesel 2.2L Turbo Manual,694,694,resolved,,SAME,Diesel,MT,0,0
+3146,FLAGGED,AX7 L 4WD Diesel 2.2L Turbo Automatic Mocha Intrs,694,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3147,FLAGGED,AX7 L 4WD Diesel 2.2L Turbo Automatic,694,693,resolved,,DIFFERENT,Diesel,AT,1,0
+3148,UNFLAGGED,MX1 Petrol 1.2L Turbo Manual,36,32,resolved,,DIFFERENT,Petrol,MT,0,0
+3149,UNFLAGGED,REVX M Petrol 1.2L Turbo Manual,47,33,resolved,,DIFFERENT,Petrol,MT,0,0
+3150,UNFLAGGED,MX2 Pro Petrol 1.2L Turbo Manual,38,35,resolved,,DIFFERENT,Petrol,MT,0,0
+3151,UNFLAGGED,REVX M (O) Petrol 1.2L Turbo Manual,34,34,resolved,,SAME,Petrol,MT,0,0
+3152,UNFLAGGED,MX3 Petrol 1.2L Turbo Manual,32,36,resolved,,DIFFERENT,Petrol,MT,0,0
+3153,UNFLAGGED,MX2 Diesel 1.5L Turbo Manual,42,37,resolved,,DIFFERENT,Diesel,MT,0,0
+3154,UNFLAGGED,MX3 Pro Petrol 1.2L Turbo Manual,35,38,resolved,,DIFFERENT,Petrol,MT,0,0
+3155,FLAGGED,MX2 Pro Petrol 1.2L Turbo Automatic (TC),35,40,resolved,,DIFFERENT,Petrol,TC,1,0
+3156,UNFLAGGED,MX2 Pro Diesel 1.5L Turbo Manual,43,39,resolved,,DIFFERENT,Diesel,MT,0,0
+3157,UNFLAGGED,AX5 Petrol 1.2L Turbo Manual,50,41,resolved,,DIFFERENT,Petrol,MT,0,0
+3158,UNFLAGGED,MX3 Diesel 1.5L Turbo Manual,37,42,resolved,,DIFFERENT,Diesel,MT,0,0
+3159,FLAGGED,MX3 Petrol 1.2L Turbo Automatic (TC),36,44,resolved,,DIFFERENT,Petrol,TC,1,0
+3160,UNFLAGGED,MX3 Pro Diesel 1.5L Turbo Manual,39,43,resolved,,DIFFERENT,Diesel,MT,0,0
+3161,FLAGGED,MX3 Pro Petrol 1.2L Turbo Automatic (TC),38,45,resolved,,DIFFERENT,Petrol,TC,1,0
+3162,FLAGGED,MX3 Diesel 1.5L Turbo Automatic (AMT),42,46,resolved,,DIFFERENT,Diesel,AMT,1,0
+3163,UNFLAGGED,REVX A Petrol 1.2L Turbo Manual,33,47,resolved,,DIFFERENT,Petrol,MT,0,0
+3164,UNFLAGGED,AX5 Diesel 1.5L Turbo Manual,37,48,resolved,,DIFFERENT,Diesel,MT,0,0
+3165,FLAGGED,AX5 Petrol 1.2L Turbo Automatic (TC),41,49,resolved,,DIFFERENT,Petrol,TC,1,0
+3166,UNFLAGGED,AX5L Petrol 1.2L Turbo Manual,41,50,resolved,,DIFFERENT,Petrol,MT,0,0
+3167,FLAGGED,AX7 Petrol 1.2L Turbo Manual Dual Tone,54,52,resolved,,DIFFERENT,Petrol,MT,1,0
+3168,FLAGGED,AX5 Diesel 1.5L Turbo Automatic (AMT),48,51,resolved,,DIFFERENT,Diesel,AMT,1,0
+3169,FLAGGED,REVX A Petrol 1.2L Turbo Automatic (TC),47,53,resolved,,DIFFERENT,Petrol,TC,1,0
+3170,FLAGGED,AX7 Diesel 1.5L Turbo Manual Dual Tone,52,54,resolved,,DIFFERENT,Diesel,MT,1,0
+3171,FLAGGED,AX5L Petrol 1.2L Turbo Automatic (TC),50,55,resolved,,DIFFERENT,Petrol,TC,1,0
+3172,UNFLAGGED,AX7L Petrol 1.2L Turbo Manual Dual Tone,52,52,resolved,,SAME,Petrol,MT,0,0
+3173,FLAGGED,AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone,52,56,resolved,,DIFFERENT,Petrol,TC,1,0
+3174,FLAGGED,AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone,54,57,resolved,,DIFFERENT,Diesel,AMT,1,0
+3175,UNFLAGGED,AX7L Diesel 1.5L Turbo Manual Dual Tone,54,54,resolved,,SAME,Diesel,MT,0,0
+3176,FLAGGED,AX7L Petrol 1.2L Turbo Automatic (TC) Dual Tone,52,56,resolved,,DIFFERENT,Petrol,TC,1,0
+3177,UNFLAGGED,AX 2WD Petrol 2.0L Turbo Manual 7 STR,413,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3178,UNFLAGGED,AX 2WD Diesel 2.2L Turbo Manual 7 STR,414,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3179,UNFLAGGED,AX3 2WD Petrol 2.0L Turbo Manual 7 STR,415,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3180,UNFLAGGED,AX3 2WD Diesel 2.2L Turbo Manual 7 STR,416,416,resolved,,SAME,Diesel,MT,0,0
+3182,UNFLAGGED,AX5 2WD Petrol 2.0L Turbo Manual 7 STR,418,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3184,UNFLAGGED,AX5 2WD Diesel 2.2L Turbo Manual 7 STR,420,420,resolved,,SAME,Diesel,MT,0,0
+3185,FLAGGED,AX7 2WD Petrol 2.0L Turbo Manual 7 STR Dual Tone,820,820,resolved,,SAME,Petrol,MT,0,0
+3186,FLAGGED,AX7 2WD Diesel 2.2L Turbo Manual 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3187,FLAGGED,AX7 2WD Petrol 2.0L Turbo Manual 7 STR,820,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3188,FLAGGED,AX5 2WD Petrol 2.0L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3189,UNFLAGGED,AX7 2WD Diesel 2.2L Turbo Manual 7 STR,422,422,resolved,,SAME,Diesel,MT,0,0
+3190,FLAGGED,AX5 2WD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3191,FLAGGED,AX7 2WD Petrol 2.0L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3192,FLAGGED,AX7 2WD Diesel 2.2L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3193,FLAGGED,AX7 2WD Petrol 2.0L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3194,FLAGGED,AX7 2WD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3195,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Manual 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3196,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Manual 6 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3197,UNFLAGGED,AX7 T 2WD Diesel 2.2L Turbo Manual 7 STR,422,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3198,UNFLAGGED,AX7 T 2WD Diesel 2.2L Turbo Manual 6 STR,422,428,resolved,,DIFFERENT,Diesel,MT,0,0
+3199,FLAGGED,AX7 T 2WD Petrol 2.0L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3200,FLAGGED,AX7 T 2WD Petrol 2.0L Turbo Automatic 6 STR Dual Tone,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3201,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3202,FLAGGED,AX7 T 2WD Petrol 2.0L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3203,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Manual 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3204,FLAGGED,AX7 T 2WD Petrol 2.0L Turbo Automatic 6 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3205,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Automatic 6 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3206,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3207,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Manual 7 STR,820,,unresolved,,UNRESOLVED,Diesel,MT,1,0
+3208,FLAGGED,AX7 T 2WD Diesel 2.2L Turbo Automatic 6 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3209,FLAGGED,AX7 T AWD Diesel 2.2L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3210,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3211,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic 6 STR Dual Tone,820,,edition_candidate,436,EDITION_CANDIDATE,Petrol,AT,1,0
+3212,FLAGGED,AX7 T AWD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3213,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3214,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic 6 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3215,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3216,FLAGGED,AX7 L 2WD Petrol 2.0L Turbo Automatic 6 STR,820,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3217,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3218,FLAGGED,AX7 L 2WD Diesel 2.2L Turbo Automatic 6 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3219,FLAGGED,AX7 L AWD Diesel 2.2L Turbo Automatic 7 STR Dual Tone,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3220,FLAGGED,AX7 L AWD Diesel 2.2L Turbo Automatic 7 STR,820,,unresolved,,UNRESOLVED,Diesel,AT,1,0
+3221,UNFLAGGED,STD (O) Petrol Manual 5 STR,515,515,resolved,,SAME,Petrol,MT,0,0
+3222,UNFLAGGED,LXi (O) Petrol Manual 5 STR,516,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3223,UNFLAGGED,VXi (O) Petrol Manual 5 STR,517,520,resolved,,DIFFERENT,Petrol,MT,0,0
+3225,UNFLAGGED,VXi Plus (O) Petrol Manual 5 STR,517,520,resolved,,DIFFERENT,Petrol,MT,0,0
+3226,UNFLAGGED,Sigma Petrol Manual,246,246,resolved,,SAME,Petrol,MT,0,0
+3227,UNFLAGGED,Delta Petrol Manual,247,247,resolved,,SAME,Petrol,MT,0,0
+3229,UNFLAGGED,Zeta Petrol Manual,249,249,resolved,,SAME,Petrol,MT,0,0
+3230,FLAGGED,Delta CNG Manual,247,250,resolved,,DIFFERENT,CNG,MT,1,0
+3231,UNFLAGGED,Alpha (O) MT,252,,unresolved,,UNRESOLVED,,MT,0,0
+3233,FLAGGED,Zeta CNG Manual,249,253,resolved,,DIFFERENT,CNG,MT,1,0
+3234,UNFLAGGED,Alpha Petrol Manual,252,252,resolved,,SAME,Petrol,MT,0,0
+3235,FLAGGED,Alpha (O) AMT,252,,unresolved,,UNRESOLVED,,AMT,1,0
+3236,UNFLAGGED,Lxi Petrol 1.0L Turbo Manual,138,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3237,UNFLAGGED,Lxi Petrol 1.5L Manual,138,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3238,UNFLAGGED,Vxi Petrol 1.0L Turbo Manual,140,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3239,UNFLAGGED,Vxi Petrol 1.5L Manual,140,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3240,UNFLAGGED,Zxi Petrol 1.0L Turbo Manual,142,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3241,UNFLAGGED,Zxi Petrol 1.0L Turbo Manual Dual Tone,821,821,resolved,,SAME,Petrol,MT,0,0
+3242,UNFLAGGED,Zxi Petrol 1.5L Manual,142,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3243,FLAGGED,Vxi Petrol 1.5L Automatic,821,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3244,UNFLAGGED,Zxi Petrol 1.5L Manual Dual Tone,821,821,resolved,,SAME,Petrol,MT,0,0
+3245,UNFLAGGED,Zxi Plus Petrol 1.0L Turbo Manual,142,145,resolved,,DIFFERENT,Petrol,MT,0,0
+3246,UNFLAGGED,Zxi Plus Petrol 1.0L Turbo Manual Dual Tone,821,821,resolved,,SAME,Petrol,MT,0,0
+3247,FLAGGED,Zxi Petrol 1.5L Automatic,821,147,resolved,,DIFFERENT,Petrol,AT,1,0
+3248,FLAGGED,Zxi Petrol 1.5L Automatic Dual Tone,821,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3249,FLAGGED,Zxi Plus Petrol 1.5L Automatic,821,147,resolved,,DIFFERENT,Petrol,AT,1,0
+3250,FLAGGED,Zxi Plus Petrol 1.5L Automatic Dual Tone,821,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3251,UNFLAGGED,LXi Petrol Manual,233,233,resolved,,SAME,Petrol,MT,0,0
+3252,UNFLAGGED,VXi Petrol Manual,234,234,resolved,,SAME,Petrol,MT,0,0
+3254,UNFLAGGED,ZXi Petrol Manual,237,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3256,UNFLAGGED,ZXi Plus Petrol Manual,237,239,resolved,,DIFFERENT,Petrol,MT,0,0
+3257,UNFLAGGED,Lxi Petrol Manual Smart Hybrid,207,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3258,UNFLAGGED,VXi Petrol Manual Smart Hybrid,208,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3259,UNFLAGGED,ZXi Petrol Manual Smart Hybrid,210,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3261,UNFLAGGED,ZXi Plus Petrol Manual Smart Hybrid,210,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3262,UNFLAGGED,Sigma Petrol 1.2L Manual,495,495,resolved,,SAME,Petrol,MT,0,0
+3263,UNFLAGGED,Delta Petrol 1.2L Manual,497,497,resolved,,SAME,Petrol,MT,0,0
+3264,UNFLAGGED,Delta Plus Petrol 1.2L Manual,497,500,resolved,,DIFFERENT,Petrol,MT,0,0
+3265,FLAGGED,Delta Petrol 1.2L Automatic (AMT),497,498,resolved,,DIFFERENT,Petrol,AMT,1,0
+3266,FLAGGED,Delta Plus Petrol 1.2L Automatic (AMT),497,501,resolved,,DIFFERENT,Petrol,AMT,1,0
+3267,UNFLAGGED,Delta Plus Petrol 1.0L Turbo Manual,502,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3268,UNFLAGGED,Zeta Petrol 1.0L Turbo Manual,503,503,resolved,,SAME,Petrol,MT,0,0
+3269,UNFLAGGED,Alpha Petrol 1.0L Turbo Manual,505,505,resolved,,SAME,Petrol,MT,0,0
+3270,UNFLAGGED,Alpha Petrol 1.0L Turbo Manual Dual Tone,822,822,resolved,,SAME,Petrol,MT,0,0
+3271,FLAGGED,Zeta Petrol 1.0L Turbo Automatic (TC),822,504,resolved,,DIFFERENT,Petrol,TC,1,0
+3272,FLAGGED,Alpha Petrol 1.0L Turbo Automatic (TC),822,506,resolved,,DIFFERENT,Petrol,TC,1,0
+3273,FLAGGED,Alpha Petrol 1.0L Turbo Automatic (TC) Dual Tone,822,,edition_candidate,506,EDITION_CANDIDATE,Petrol,TC,1,0
+3274,UNFLAGGED,Sigma 2WD Petrol 1.5L Manual,536,536,resolved,,SAME,Petrol,MT,0,0
+3275,UNFLAGGED,Delta 2WD Petrol 1.5L Manual,537,537,resolved,,SAME,Petrol,MT,0,0
+3276,FLAGGED,Delta 2WD Petrol 1.5L Automatic (TC),537,538,resolved,,DIFFERENT,Petrol,TC,1,0
+3277,UNFLAGGED,Zeta 2WD Petrol 1.5L Manual,539,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3278,UNFLAGGED,Zeta (O) 2WD Petrol 1.5L Manual,539,541,resolved,,DIFFERENT,Petrol,MT,0,0
+3279,UNFLAGGED,Zeta 2WD Petrol 1.5L Manual Dual Tone,823,823,resolved,,SAME,Petrol,MT,0,0
+3280,UNFLAGGED,Zeta (O) 2WD Petrol 1.5L Manual Dual Tone,823,823,resolved,,SAME,Petrol,MT,0,0
+3281,FLAGGED,Zeta 2WD Petrol 1.5L Automatic (TC),823,540,resolved,,DIFFERENT,Petrol,TC,1,0
+3282,FLAGGED,Zeta (O) 2WD Petrol 1.5L Automatic (TC),823,542,resolved,,DIFFERENT,Petrol,TC,1,0
+3283,UNFLAGGED,Alpha 2WD Petrol 1.5L Manual,543,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3284,FLAGGED,Zeta 2WD Petrol 1.5L Automatic (TC) Dual Tone,823,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3285,UNFLAGGED,Alpha (O) 2WD Petrol 1.5L Manual,543,545,resolved,,DIFFERENT,Petrol,MT,0,0
+3286,UNFLAGGED,Alpha 2WD Petrol 1.5L Manual Dual Tone,823,823,resolved,,SAME,Petrol,MT,0,0
+3287,FLAGGED,Zeta (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone,823,,edition_candidate,542,EDITION_CANDIDATE,Petrol,TC,1,0
+3288,UNFLAGGED,Alpha (O) 2WD Petrol 1.5L Manual Dual Tone,823,823,resolved,,SAME,Petrol,MT,0,0
+3289,FLAGGED,Alpha 2WD Petrol 1.5L Automatic (TC),823,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3291,FLAGGED,Alpha (O) 2WD Petrol 1.5L Automatic (TC),545,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3292,FLAGGED,Alpha 2WD Petrol 1.5L Automatic (TC) Dual Tone,823,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3293,FLAGGED,Alpha (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone,823,,edition_candidate,546,EDITION_CANDIDATE,Petrol,TC,1,0
+3294,FLAGGED,Zeta Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT),540,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3295,FLAGGED,Alpha AWD Petrol 1.5L Automatic (TC),543,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3297,FLAGGED,Alpha AWD Petrol 1.5L Automatic (TC) Dual Tone,823,,edition_candidate,546,EDITION_CANDIDATE,Petrol,TC,1,0
+3299,FLAGGED,Alpha (O) AWD Petrol 1.5L Automatic (TC),545,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3301,FLAGGED,Alpha (O) AWD Petrol 1.5L Automatic (TC) Dual Tone,823,,edition_candidate,546,EDITION_CANDIDATE,Petrol,TC,1,0
+3302,UNFLAGGED,Zeta Petrol Manual,597,597,resolved,,SAME,Petrol,MT,0,0
+3303,UNFLAGGED,Alpha Petrol Manual,599,599,resolved,,SAME,Petrol,MT,0,0
+3304,FLAGGED,Zeta Petrol Automatic,597,598,resolved,,DIFFERENT,Petrol,AT,1,0
+3305,UNFLAGGED,Alpha Petrol Manual Dual Tone,824,824,resolved,,SAME,Petrol,MT,0,0
+3306,FLAGGED,Alpha Petrol Automatic,824,600,resolved,,DIFFERENT,Petrol,AT,1,0
+3307,FLAGGED,Alpha Petrol Automatic Dual Tone,824,,edition_candidate,600,EDITION_CANDIDATE,Petrol,AT,1,0
+3308,UNFLAGGED,LXi Petrol Manual,59,58,resolved,,DIFFERENT,Petrol,MT,0,0
+3309,UNFLAGGED,VXi Petrol Manual,58,59,resolved,,DIFFERENT,Petrol,MT,0,0
+3310,UNFLAGGED,VXi (O) Petrol Manual,60,60,resolved,,SAME,Petrol,MT,0,0
+3311,FLAGGED,VXi Petrol Automatic,59,61,resolved,,DIFFERENT,Petrol,AT,1,0
+3312,FLAGGED,VXi (O) Petrol Automatic,60,62,resolved,,DIFFERENT,Petrol,AT,1,0
+3313,UNFLAGGED,ZXi Petrol Manual,58,64,resolved,,DIFFERENT,Petrol,MT,0,0
+3314,FLAGGED,ZXi Petrol Automatic,64,66,resolved,,DIFFERENT,Petrol,AT,1,0
+3315,UNFLAGGED,ZXi Plus Petrol Manual,58,67,resolved,,DIFFERENT,Petrol,MT,0,0
+3316,UNFLAGGED,ZXi Plus Petrol Manual Dual Tone,68,68,resolved,,SAME,Petrol,MT,0,0
+3317,FLAGGED,ZXi Plus Petrol Automatic,67,70,resolved,,DIFFERENT,Petrol,AT,1,0
+3318,FLAGGED,ZXi Plus Petrol Automatic Dual Tone,68,71,resolved,,DIFFERENT,Petrol,AT,1,0
+3319,UNFLAGGED,LXi 2WD Petrol 1.5L Manual,555,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3320,UNFLAGGED,VXi 2WD Petrol 1.5L Manual,557,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3322,UNFLAGGED,ZXi 2WD Petrol 1.5L Manual,560,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3323,UNFLAGGED,ZXi (O) 2WD Petrol 1.5L Manual,560,566,resolved,,DIFFERENT,Petrol,MT,0,0
+3324,UNFLAGGED,ZXi 2WD Petrol 1.5L Manual Dual Tone,825,825,resolved,,SAME,Petrol,MT,0,0
+3325,UNFLAGGED,ZXi (O) 2WD Petrol 1.5L Manual Dual Tone,825,825,resolved,,SAME,Petrol,MT,0,0
+3326,FLAGGED,ZXi 2WD Petrol 1.5L Automatic (TC),825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3327,UNFLAGGED,ZXi Plus 2WD Petrol 1.5L Manual,560,564,resolved,,DIFFERENT,Petrol,MT,0,0
+3328,FLAGGED,ZXi (O) 2WD Petrol 1.5L Automatic (TC),825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3329,FLAGGED,ZXi 2WD Petrol 1.5L Automatic (TC) Dual Tone,825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3330,UNFLAGGED,ZXi Plus 2WD Petrol 1.5L Manual Dual Tone,825,825,resolved,,SAME,Petrol,MT,0,0
+3331,FLAGGED,ZXi (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone,825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3332,UNFLAGGED,ZXi Plus (O) 2WD Petrol 1.5L Manual,560,566,resolved,,DIFFERENT,Petrol,MT,0,0
+3333,UNFLAGGED,ZXi Plus (O) 2WD Petrol 1.5L Manual Dual Tone,825,825,resolved,,SAME,Petrol,MT,0,0
+3334,FLAGGED,VXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT),825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3335,FLAGGED,ZXi Plus 2WD Petrol 1.5L Automatic (TC),825,569,resolved,,DIFFERENT,Petrol,TC,1,0
+3336,FLAGGED,ZXi Plus 2WD Petrol 1.5L Automatic (TC) Dual Tone,825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3337,FLAGGED,ZXi Plus (O) 2WD Petrol 1.5L Automatic (TC),825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3338,FLAGGED,ZXi Plus (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone,825,,edition_candidate,569,EDITION_CANDIDATE,Petrol,TC,1,0
+3339,FLAGGED,ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT),825,575,resolved,,DIFFERENT,Hybrid,CVT,1,1
+3340,FLAGGED,ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone,825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3341,FLAGGED,ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT),825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3342,FLAGGED,ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone,825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3343,FLAGGED,ZXi Plus AWD Petrol 1.5L Automatic (TC),825,569,resolved,,DIFFERENT,Petrol,TC,1,0
+3344,FLAGGED,ZXi Plus AWD Petrol 1.5L Automatic (TC) Dual Tone,825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3345,FLAGGED,ZXi Plus (O) AWD Petrol 1.5L Automatic (TC),825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3346,FLAGGED,ZXi Plus (O) AWD Petrol 1.5L Automatic (TC) Dual Tone,825,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3347,FLAGGED,ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT),825,575,resolved,,DIFFERENT,Hybrid,CVT,1,1
+3348,FLAGGED,ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone,825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3349,FLAGGED,ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone,825,,unresolved,,UNRESOLVED,Hybrid,CVT,1,0
+3350,UNFLAGGED,Zeta Petrol Manual Smart Hybrid,216,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3351,UNFLAGGED,Alpha Petrol Manual Smart Hybrid,218,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3353,UNFLAGGED,Alpha Plus Petrol Manual Smart Hybrid,218,220,resolved,,DIFFERENT,Petrol,MT,0,0
+3354,UNFLAGGED,Alpha Plus Petrol Manual Dual Tone Smart Hybrid,826,826,resolved,,SAME,Petrol,MT,0,0
+3355,FLAGGED,Alpha Petrol Automatic Smart Hybrid,826,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3356,FLAGGED,Alpha Plus Petrol Automatic Smart Hybrid,826,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3357,FLAGGED,Alpha Plus Petrol Automatic Dual Tone Smart Hybrid,826,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3358,UNFLAGGED,Delta 49.0 kWh,601,601,resolved,,SAME,Electric,AT,0,0
+3359,UNFLAGGED,Zeta 61.0 kWh,602,602,resolved,,SAME,Electric,AT,0,0
+3360,UNFLAGGED,Alpha 61.0 kWh,603,603,resolved,,SAME,Electric,AT,0,0
+3361,UNFLAGGED,Alpha 61.0 kWh Dual Tone,827,827,resolved,,SAME,Electric,AT,0,0
+3362,UNFLAGGED,Visia Petrol 1.0L Manual,739,739,resolved,,SAME,Petrol,MT,0,0
+3363,UNFLAGGED,Acenta Petrol 1.0L Manual,734,734,resolved,,SAME,Petrol,MT,0,0
+3364,UNFLAGGED,N-Connecta Petrol 1.0L Manual,736,736,resolved,,SAME,Petrol,MT,0,0
+3365,FLAGGED,N-Connecta Petrol 1.0L Automatic,736,735,resolved,,DIFFERENT,Petrol,AT,1,0
+3366,UNFLAGGED,Tekna Petrol 1.0L Manual,738,738,resolved,,SAME,Petrol,MT,0,0
+3367,UNFLAGGED,Tekna LE Petrol 1.0L Manual,738,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3368,UNFLAGGED,Visia Petrol Manual,725,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3369,UNFLAGGED,Visia Plus Petrol Manual,725,726,resolved,,DIFFERENT,Petrol,MT,0,0
+3371,UNFLAGGED,Acenta Petrol Manual,721,721,resolved,,SAME,Petrol,MT,0,0
+3373,UNFLAGGED,N-Connecta Petrol Manual,722,727,resolved,,DIFFERENT,Petrol,MT,0,0
+3374,UNFLAGGED,N-Connecta Petrol Manual Dual Tone,828,828,resolved,,SAME,Petrol,MT,0,0
+3375,UNFLAGGED,Kuro Edition Petrol Manual B4D,828,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3376,FLAGGED,N-Connecta Petrol Automatic (AMT),828,731,resolved,,DIFFERENT,Petrol,AMT,1,0
+3377,FLAGGED,N-Connecta Petrol Automatic (AMT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,AMT,1,0
+3379,UNFLAGGED,Tekna Petrol Manual,723,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3380,UNFLAGGED,Tekna Petrol Manual Dual Tone,828,828,resolved,,SAME,Petrol,MT,0,0
+3381,UNFLAGGED,Tekna Plus Petrol Manual,723,724,resolved,,DIFFERENT,Petrol,MT,0,0
+3382,UNFLAGGED,N-Connecta Petrol Manual HRAO,828,727,resolved,,DIFFERENT,Petrol,MT,0,0
+3383,UNFLAGGED,Tekna Plus Petrol Manual Dual Tone,828,828,resolved,,SAME,Petrol,MT,0,0
+3384,UNFLAGGED,N-Connecta Petrol Manual Dual Tone HRAO,828,828,resolved,,SAME,Petrol,MT,0,0
+3386,FLAGGED,Tekna Petrol Automatic (AMT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,AMT,1,0
+3387,UNFLAGGED,Kuro Edition Petrol Turbo Manual HRAO,828,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3388,FLAGGED,Acenta Petrol Turbo Automatic (CVT),828,730,resolved,,DIFFERENT,Petrol,CVT,1,0
+3390,FLAGGED,Tekna Plus Petrol Automatic (AMT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,AMT,1,0
+3391,UNFLAGGED,Tekna Petrol Turbo Manual,723,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3392,FLAGGED,N-Connecta Petrol Turbo Automatic (CVT),828,731,resolved,,DIFFERENT,Petrol,CVT,1,0
+3393,UNFLAGGED,Tekna Petrol Turbo Manual Dual Tone,828,828,resolved,,SAME,Petrol,MT,0,0
+3394,FLAGGED,N-Connecta Petrol Turbo Automatic (CVT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3395,UNFLAGGED,Tekna Plus Petrol Turbo Manual,723,729,resolved,,DIFFERENT,Petrol,MT,0,0
+3397,UNFLAGGED,Tekna Plus Petrol Turbo Manual Dual Tone,828,828,resolved,,SAME,Petrol,MT,0,0
+3399,FLAGGED,Tekna Petrol Turbo Automatic (CVT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3401,FLAGGED,Tekna Plus Petrol Turbo Automatic (CVT) Dual Tone,828,,unresolved,,UNRESOLVED,Petrol,CVT,1,0
+3402,UNFLAGGED,Authentic Petrol 1.0L Turbo Manual,705,705,resolved,,SAME,Petrol,MT,0,0
+3403,UNFLAGGED,Evolution Petrol 1.0L Turbo Manual,706,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3404,UNFLAGGED,Evolution Petrol 1.3L Turbo Manual,706,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3415,UNFLAGGED,Iconic Petrol 1.3L Turbo Manual,710,710,resolved,,SAME,Petrol,MT,0,0
+3416,UNFLAGGED,Authentic Petrol Manual,471,471,resolved,,SAME,Petrol,MT,0,0
+3417,UNFLAGGED,Evolution Petrol Manual,472,472,resolved,,SAME,Petrol,MT,0,0
+3418,UNFLAGGED,Techno Petrol Manual,473,473,resolved,,SAME,Petrol,MT,0,0
+3419,UNFLAGGED,Emotion Petrol Manual,474,474,resolved,,SAME,Petrol,MT,0,0
+3420,UNFLAGGED,Emotion Petrol Manual Dual Tone,829,829,resolved,,SAME,Petrol,MT,0,0
+3421,FLAGGED,Emotion Petrol Automatic,829,475,resolved,,DIFFERENT,Petrol,AT,1,0
+3422,FLAGGED,Emotion Petrol Automatic Dual Tone,829,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3423,UNFLAGGED,Techno Petrol Turbo Manual,473,473,resolved,,SAME,Petrol,MT,0,0
+3424,FLAGGED,Techno Turbo CNG Manual,473,,unresolved,,UNRESOLVED,CNG,MT,1,0
+3426,UNFLAGGED,Emotion Petrol Turbo Manual,474,474,resolved,,SAME,Petrol,MT,0,0
+3427,FLAGGED,Emotion Turbo CNG Manual,474,,unresolved,,UNRESOLVED,CNG,MT,1,0
+3428,FLAGGED,Emotion Petrol Turbo CVT,829,475,resolved,,DIFFERENT,Petrol,CVT,1,0
+3429,UNFLAGGED,Classic Plus Petrol 1.0L Turbo Manual,605,605,resolved,,SAME,Petrol,MT,0,0
+3430,FLAGGED,Classic Plus Petrol 1.0L Turbo Automatic (TC),605,604,resolved,,DIFFERENT,Petrol,TC,1,0
+3431,UNFLAGGED,Signature  Petrol 1.0L Turbo Manual,609,612,resolved,,DIFFERENT,Petrol,MT,0,0
+3432,UNFLAGGED,Sportline  Petrol 1.0L Turbo Manual,609,614,resolved,,DIFFERENT,Petrol,MT,0,0
+3433,FLAGGED,Signature  Petrol 1.0L Turbo Automatic (TC),612,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3434,FLAGGED,Sportline  Petrol 1.0L Turbo Automatic (TC),614,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3435,UNFLAGGED,Prestige  Petrol 1.0L Turbo Manual,614,609,resolved,,DIFFERENT,Petrol,MT,0,0
+3436,FLAGGED,Prestige  Petrol 1.0L Turbo Automatic (TC),609,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3437,UNFLAGGED,Monte Carlo Petrol 1.0L Turbo Automatic (TC),606,606,resolved,,SAME,Petrol,TC,0,0
+3438,FLAGGED,Prestige  Petrol 1.5L Turbo Automatic (DCT),609,608,resolved,,DIFFERENT,Petrol,DCT,1,0
+3439,UNFLAGGED,Monte Carlo Petrol 1.5L Turbo Automatic (DCT),607,607,resolved,,SAME,Petrol,DCT,0,0
+3440,UNFLAGGED,Classic Petrol Turbo Manual,669,669,resolved,,SAME,Petrol,MT,0,0
+3441,UNFLAGGED,Classic Plus Petrol Turbo Manual,679,671,resolved,,DIFFERENT,Petrol,MT,0,0
+3442,FLAGGED,Classic Plus Petrol Turbo Automatic (TC),671,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3443,UNFLAGGED,Signature Petrol Turbo Manual,673,677,resolved,,DIFFERENT,Petrol,MT,0,0
+3444,FLAGGED,Signature Petrol Turbo Automatic (TC),677,678,resolved,,DIFFERENT,Petrol,TC,1,0
+3445,UNFLAGGED,Signature Plus Petrol Turbo Manual,675,679,resolved,,DIFFERENT,Petrol,MT,0,0
+3446,UNFLAGGED,Sportline Petrol Turbo Manual,673,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3447,UNFLAGGED,Prestige Petrol Turbo Manual,677,673,resolved,,DIFFERENT,Petrol,MT,0,0
+3448,FLAGGED,Signature Plus Petrol Turbo Automatic (TC),679,674,resolved,,DIFFERENT,Petrol,TC,1,0
+3449,UNFLAGGED,Prestige Plus Petrol Turbo Manual,679,675,resolved,,DIFFERENT,Petrol,MT,0,0
+3450,FLAGGED,Sportline Petrol Turbo Automatic (TC),673,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3451,FLAGGED,Prestige Petrol Turbo Automatic (TC),673,674,resolved,,DIFFERENT,Petrol,TC,1,0
+3452,FLAGGED,Prestige Plus Petrol Turbo Automatic (TC),675,678,resolved,,DIFFERENT,Petrol,TC,1,0
+3453,UNFLAGGED,Classic Petrol 1.0L Turbo Manual,615,615,resolved,,SAME,Petrol,MT,0,0
+3454,UNFLAGGED,Signature Petrol 1.0L Turbo Manual,619,622,resolved,,DIFFERENT,Petrol,MT,0,0
+3455,UNFLAGGED,Sportline Petrol 1.0L Turbo Manual,619,624,resolved,,DIFFERENT,Petrol,MT,0,0
+3456,FLAGGED,Signature Petrol 1.0L Turbo Automatic (TC),622,621,resolved,,DIFFERENT,Petrol,TC,1,0
+3457,FLAGGED,Sportline Petrol 1.0L Turbo Automatic (TC),624,623,resolved,,DIFFERENT,Petrol,TC,1,0
+3458,UNFLAGGED,Prestige Petrol 1.0L Turbo Manual,624,619,resolved,,DIFFERENT,Petrol,MT,0,0
+3459,FLAGGED,Prestige Petrol 1.0L Turbo Automatic (TC),619,618,resolved,,DIFFERENT,Petrol,TC,1,0
+3460,FLAGGED,Monte Carlo Petrol 1.0L Turbo Automatic (TC),619,616,resolved,,DIFFERENT,Petrol,TC,1,0
+3461,UNFLAGGED,Smart Petrol 1.2L Manual,319,319,resolved,,SAME,Petrol,MT,0,0
+3462,UNFLAGGED,Pure Petrol 1.2L Manual,320,320,resolved,,SAME,Petrol,MT,0,0
+3463,UNFLAGGED,Pure S Petrol 1.2L Manual,320,322,resolved,,DIFFERENT,Petrol,MT,0,0
+3464,FLAGGED,Pure Petrol 1.2L Automatic (AMT),320,323,resolved,,DIFFERENT,Petrol,AMT,1,0
+3465,FLAGGED,Pure S Petrol 1.2L Automatic (AMT),320,324,resolved,,DIFFERENT,Petrol,AMT,1,0
+3466,UNFLAGGED,Creative Petrol 1.2L Manual,325,325,resolved,,SAME,Petrol,MT,0,0
+3467,FLAGGED,Pure Diesel 1.5L Turbo Manual,320,327,resolved,,DIFFERENT,Diesel,MT,1,0
+3468,UNFLAGGED,Creative S Petrol 1.2L Manual,325,328,resolved,,DIFFERENT,Petrol,MT,0,0
+3469,FLAGGED,Creative Petrol 1.2L Automatic (AMT),325,330,resolved,,DIFFERENT,Petrol,AMT,1,0
+3470,FLAGGED,Creative S Petrol 1.2L Automatic (AMT),325,332,resolved,,DIFFERENT,Petrol,AMT,1,0
+3471,UNFLAGGED,Accomplished S Petrol 1.2L Manual,335,335,resolved,,SAME,Petrol,MT,0,0
+3472,FLAGGED,Creative S Diesel 1.5L Turbo Manual,325,337,resolved,,DIFFERENT,Diesel,MT,1,0
+3473,FLAGGED,Creative S Petrol 1.2L Automatic (DCT),325,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3474,FLAGGED,Accomplished S Diesel 1.5L Turbo Manual,335,342,resolved,,DIFFERENT,Diesel,MT,1,0
+3475,FLAGGED,Accomplished S Petrol 1.2L Automatic (DCT),335,,unresolved,,UNRESOLVED,Petrol,DCT,1,0
+3476,UNFLAGGED,Accomplished Plus S Petrol 1.2L Automatic (DCT),343,344,resolved,,DIFFERENT,Petrol,DCT,0,0
+3477,UNFLAGGED,Smart Petrol 1.5L Turbo Manual,440,440,resolved,,SAME,Petrol,MT,0,0
+3478,UNFLAGGED,Smart Diesel 2.0L Turbo Manual,451,451,resolved,,SAME,Diesel,MT,0,0
+3479,UNFLAGGED,Pure X Petrol 1.5L Turbo Manual,441,441,resolved,,SAME,Petrol,MT,0,0
+3480,UNFLAGGED,Pure X Petrol 1.5L Turbo Manual Dark Edition,830,830,resolved,,SAME,Petrol,MT,0,0
+3481,UNFLAGGED,Adventure X Petrol 1.5L Turbo Manual,442,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3482,UNFLAGGED,Pure X Diesel 2.0L Turbo Manual,452,452,resolved,,SAME,Diesel,MT,0,0
+3483,UNFLAGGED,Adventure X Plus  Petrol 1.5L Turbo Manual,442,443,resolved,,DIFFERENT,Petrol,MT,0,0
+3484,UNFLAGGED,Adventure X Dark Edition Petrol 1.5L Turbo Manual,830,830,resolved,,SAME,Petrol,MT,0,0
+3485,FLAGGED,Pure X Petrol 1.5L Turbo Automatic (TC),830,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3486,UNFLAGGED,Adventure X Plus  Dark Edition Petrol 1.5L Turbo Manual,830,830,resolved,,SAME,Petrol,MT,0,0
+3487,FLAGGED,Pure X Dark Edition Diesel 2.0L Turbo Manual,830,831,resolved,,DIFFERENT,Diesel,MT,1,0
+3488,FLAGGED,Pure X Dark Edition Petrol 1.5L Turbo Automatic (TC),830,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3489,UNFLAGGED,Adventure X Diesel 2.0L Turbo Manual,453,453,resolved,,SAME,Diesel,MT,0,0
+3490,FLAGGED,Adventure X Petrol 1.5L Turbo Automatic (TC),830,444,resolved,,DIFFERENT,Petrol,TC,1,0
+3491,UNFLAGGED,Adventure X Plus  Diesel 2.0L Turbo Manual,453,454,resolved,,DIFFERENT,Diesel,MT,0,0
+3492,FLAGGED,Pure X Diesel 2.0L Turbo Automatic (TC),830,455,resolved,,DIFFERENT,Diesel,TC,1,0
+3493,FLAGGED,Adventure X Dark Edition Diesel 2.0L Turbo Manual,830,831,resolved,,DIFFERENT,Diesel,MT,1,0
+3494,FLAGGED,Adventure X Plus  Petrol 1.5L Turbo Automatic (TC),830,444,resolved,,DIFFERENT,Petrol,TC,1,0
+3495,FLAGGED,Adventure X Dark Edition Petrol 1.5L Turbo Automatic (TC),830,,edition_candidate,444,EDITION_CANDIDATE,Petrol,TC,1,0
+3497,FLAGGED,Adventure X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC),830,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3500,UNFLAGGED,Fearless X Petrol 1.5L Turbo Manual,445,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3502,UNFLAGGED,Fearless X Dark Edition Petrol 1.5L Turbo Manual,830,830,resolved,,SAME,Petrol,MT,0,0
+3504,UNFLAGGED,Fearless X Diesel 2.0L Turbo Manual,458,458,resolved,,SAME,Diesel,MT,0,0
+3505,UNFLAGGED,Fearless X Dark Edition Diesel 2.0L Turbo Manual,831,831,resolved,,SAME,Diesel,MT,0,0
+3506,FLAGGED,Fearless X Petrol 1.5L Turbo Automatic (TC),830,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3507,UNFLAGGED,Fearless X Plus  Petrol 1.5L Turbo Manual,445,447,resolved,,DIFFERENT,Petrol,MT,0,0
+3508,FLAGGED,Fearless X Dark Edition Petrol 1.5L Turbo Automatic (TC),831,,edition_candidate,449,EDITION_CANDIDATE,Petrol,TC,1,0
+3509,UNFLAGGED,Fearless X Plus  Petrol 1.5L Turbo Manual Dark Edition,830,830,resolved,,SAME,Petrol,MT,0,0
+3510,UNFLAGGED,Fearless Ultra Petrol 1.5L Turbo Manual,448,448,resolved,,SAME,Petrol,MT,0,0
+3511,FLAGGED,Fearless X Diesel 2.0L Turbo Automatic (TC),831,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3512,UNFLAGGED,Fearless Ultra Petrol 1.5L Turbo Manual Dark Edition,830,830,resolved,,SAME,Petrol,MT,0,0
+3513,UNFLAGGED,Fearless X Plus  Diesel 2.0L Turbo Manual,831,460,resolved,,DIFFERENT,Diesel,MT,0,0
+3514,UNFLAGGED,Adventure X Plus  Dark Edition Diesel 2.0L Turbo Manual,831,831,resolved,,SAME,Diesel,MT,0,0
+3515,UNFLAGGED,Fearless Ultra Red Dark Petrol 1.5L Turbo Manual,448,448,resolved,,SAME,Petrol,MT,0,0
+3516,FLAGGED,Fearless X Dark Edition Diesel 2.0L Turbo Automatic (TC),831,,edition_candidate,462,EDITION_CANDIDATE,Diesel,TC,1,0
+3517,FLAGGED,Stealth Edition Petrol 1.5L Turbo Manual,831,,unresolved,,UNRESOLVED,Petrol,MT,1,0
+3518,FLAGGED,Fearless X Plus  Petrol 1.5L Turbo Automatic (TC),830,449,resolved,,DIFFERENT,Petrol,TC,1,0
+3519,UNFLAGGED,Fearless X Plus  Dark Edition Diesel 2.0L Turbo Manual,831,831,resolved,,SAME,Diesel,MT,0,0
+3520,UNFLAGGED,Fearless Ultra Diesel 2.0L Turbo Manual,831,461,resolved,,DIFFERENT,Diesel,MT,0,0
+3521,FLAGGED,Fearless X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC),831,,edition_candidate,449,EDITION_CANDIDATE,Petrol,TC,1,0
+3522,FLAGGED,Fearless Ultra Petrol 1.5L Turbo Automatic (TC),830,450,resolved,,DIFFERENT,Petrol,TC,1,0
+3523,FLAGGED,Fearless Ultra Diesel 2.0L Turbo Manual Dark Edition,830,831,resolved,,DIFFERENT,Diesel,MT,1,0
+3524,UNFLAGGED,Fearless Ultra Red Dark Diesel 2.0L Turbo Manual,831,461,resolved,,DIFFERENT,Diesel,MT,0,0
+3525,UNFLAGGED,Stealth Edition Diesel 2.0L Turbo Manual,831,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3526,FLAGGED,Fearless Ultra Petrol 1.5L Turbo Automatic (TC) Dark Edition,830,,edition_candidate,450,EDITION_CANDIDATE,Petrol,TC,1,0
+3527,FLAGGED,Fearless X Plus  Diesel 2.0L Turbo Automatic (TC),831,462,resolved,,DIFFERENT,Diesel,TC,1,0
+3528,FLAGGED,Fearless Ultra Red Dark Petrol 1.5L Turbo Automatic (TC),831,450,resolved,,DIFFERENT,Petrol,TC,1,0
+3529,FLAGGED,Stealth Edition Petrol 1.5L Turbo Automatic (TC),830,,unresolved,,UNRESOLVED,Petrol,TC,1,0
+3530,FLAGGED,Fearless X Plus  Dark Edition Diesel 2.0L Turbo Automatic (TC),831,,edition_candidate,462,EDITION_CANDIDATE,Diesel,TC,1,0
+3531,FLAGGED,Fearless Ultra Diesel 2.0L Turbo Automatic (TC),831,463,resolved,,DIFFERENT,Diesel,TC,1,0
+3532,FLAGGED,Fearless Ultra Diesel 2.0L Turbo Automatic (TC) Dark Edition,831,,edition_candidate,463,EDITION_CANDIDATE,Diesel,TC,1,0
+3533,FLAGGED,Fearless Ultra Red Dark Diesel 2.0L Turbo Automatic (TC),831,463,resolved,,DIFFERENT,Diesel,TC,1,0
+3534,FLAGGED,Stealth Edition Diesel 2.0L Turbo Automatic (TC),831,,unresolved,,UNRESOLVED,Diesel,TC,1,0
+3535,UNFLAGGED,Smart Petrol 1.2L Turbo 5 Speed Manual,74,73,resolved,,DIFFERENT,Petrol,MT,0,0
+3536,UNFLAGGED,Smart Plus Petrol 1.2L Turbo 5 Speed Manual,76,74,resolved,,DIFFERENT,Petrol,MT,0,0
+3537,UNFLAGGED,Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual,76,76,resolved,,SAME,Petrol,MT,0,0
+3538,FLAGGED,Smart Plus Petrol 1.2L Turbo Automatic (AMT),74,77,resolved,,DIFFERENT,Petrol,AMT,1,0
+3539,UNFLAGGED,Pure Plus Petrol 1.2L Turbo 6 Speed Manual,81,78,resolved,,DIFFERENT,Petrol,MT,0,0
+3540,UNFLAGGED,Smart Plus Diesel 1.5L Turbo 6 Speed Manual,82,79,resolved,,DIFFERENT,Diesel,MT,0,0
+3541,UNFLAGGED,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual,84,81,resolved,,DIFFERENT,Petrol,MT,0,0
+3542,UNFLAGGED,Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual,82,82,resolved,,SAME,Diesel,MT,0,0
+3543,UNFLAGGED,Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,81,84,resolved,,DIFFERENT,Petrol,MT,0,0
+3544,FLAGGED,Pure Plus Petrol 1.2L Turbo Automatic (AMT),78,85,resolved,,DIFFERENT,Petrol,AMT,1,0
+3545,FLAGGED,Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT),81,87,resolved,,DIFFERENT,Petrol,AMT,1,0
+3546,UNFLAGGED,Pure Plus Diesel 1.5L Turbo 6 Speed Manual,92,90,resolved,,DIFFERENT,Diesel,MT,0,0
+3547,UNFLAGGED,Creative Petrol 1.2L Turbo 6 Speed Manual Camo,93,88,resolved,,DIFFERENT,Petrol,MT,0,0
+3548,UNFLAGGED,Creative Petrol 1.2L Turbo 6 Speed Manual,93,88,resolved,,DIFFERENT,Petrol,MT,0,0
+3549,FLAGGED,Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT),84,91,resolved,,DIFFERENT,Petrol,AMT,1,0
+3550,UNFLAGGED,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual,93,93,resolved,,SAME,Petrol,MT,0,0
+3551,UNFLAGGED,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual,95,92,resolved,,DIFFERENT,Diesel,MT,0,0
+3552,UNFLAGGED,Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual,92,95,resolved,,DIFFERENT,Diesel,MT,0,0
+3553,UNFLAGGED,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual Camo,93,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3554,FLAGGED,Pure Plus Diesel 1.5L Turbo Automatic (AMT),90,96,resolved,,DIFFERENT,Diesel,AMT,1,0
+3555,FLAGGED,Creative Petrol 1.2L Turbo Automatic (AMT),88,97,resolved,,DIFFERENT,Petrol,AMT,1,0
+3556,UNFLAGGED,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual Dark Edition,102,,edition_candidate,93,EDITION_CANDIDATE,Petrol,MT,0,0
+3557,FLAGGED,Creative Petrol 1.2L Turbo Automatic (AMT) Camo,88,,unresolved,,UNRESOLVED,Petrol,AMT,1,0
+3558,FLAGGED,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT),93,99,resolved,,DIFFERENT,Petrol,AMT,1,0
+3559,FLAGGED,Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT),95,100,resolved,,DIFFERENT,Diesel,AMT,1,0
+3560,UNFLAGGED,Creative Diesel 1.5L Turbo 6 Speed Manual,104,101,resolved,,DIFFERENT,Diesel,MT,0,0
+3561,FLAGGED,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT) Camo,93,,unresolved,,UNRESOLVED,Petrol,AMT,1,0
+3562,FLAGGED,Creative Petrol 1.2L Turbo Automatic (DCT),88,97,resolved,,DIFFERENT,Petrol,DCT,1,0
+3563,UNFLAGGED,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone,102,102,resolved,,SAME,Petrol,MT,0,0
+3564,UNFLAGGED,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual,104,104,resolved,,SAME,Diesel,MT,0,0
+3565,UNFLAGGED,Creative Diesel 1.5L Turbo 6 Speed Manual Camo,104,101,resolved,,DIFFERENT,Diesel,MT,0,0
+3566,FLAGGED,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT) Dark Edition,112,,edition_candidate,99,EDITION_CANDIDATE,Petrol,AMT,1,0
+3567,FLAGGED,Creative Petrol 1.2L Turbo Automatic (DCT) Camo,88,97,resolved,,DIFFERENT,Petrol,DCT,1,0
+3568,UNFLAGGED,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone Camo,102,102,resolved,,SAME,Petrol,MT,0,0
+3569,UNFLAGGED,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone Dark Edition,102,,edition_candidate,93,EDITION_CANDIDATE,Petrol,MT,0,0
+3570,UNFLAGGED,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual Camo,104,,unresolved,,UNRESOLVED,Diesel,MT,0,0
+3571,FLAGGED,Creative Diesel 1.5L Turbo Automatic (AMT),101,105,resolved,,DIFFERENT,Diesel,AMT,1,0
+3572,UNFLAGGED,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,111,,edition_candidate,104,EDITION_CANDIDATE,Diesel,MT,0,0
+3573,FLAGGED,Creative Diesel 1.5L Turbo Automatic (AMT) Camo,101,,unresolved,,UNRESOLVED,Diesel,AMT,1,0
+3574,FLAGGED,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT),104,106,resolved,,DIFFERENT,Diesel,AMT,1,0
+3575,UNFLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,109,109,resolved,,SAME,Petrol,MT,0,0
+3576,FLAGGED,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT) Camo,104,,unresolved,,UNRESOLVED,Diesel,AMT,1,0
+3577,UNFLAGGED,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,111,111,resolved,,SAME,Diesel,MT,0,0
+3578,UNFLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition,112,112,resolved,,SAME,Petrol,MT,0,0
+3579,FLAGGED,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone,102,110,resolved,,DIFFERENT,Petrol,DCT,1,0
+3580,UNFLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Camo,109,,unresolved,,UNRESOLVED,Petrol,MT,0,0
+3581,UNFLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition,113,113,resolved,,SAME,Petrol,MT,0,0
+3582,FLAGGED,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,120,,edition_candidate,106,EDITION_CANDIDATE,Diesel,AMT,1,0
+3583,FLAGGED,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone Camo,102,,edition_candidate,99,EDITION_CANDIDATE,Petrol,DCT,1,0
+3584,UNFLAGGED,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone Dark Edition,111,,edition_candidate,104,EDITION_CANDIDATE,Diesel,MT,0,0
+3585,FLAGGED,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone Dark Edition,113,,edition_candidate,99,EDITION_CANDIDATE,Petrol,DCT,1,0
+3586,FLAGGED,Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,111,114,resolved,,DIFFERENT,Diesel,AMT,1,0
+3587,FLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,113,119,resolved,,DIFFERENT,Petrol,DCT,1,0
+3588,UNFLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,116,116,resolved,,SAME,Diesel,MT,0,0
+3589,FLAGGED,Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone Dark Edition,111,,edition_candidate,106,EDITION_CANDIDATE,Diesel,AMT,1,0
+3590,UNFLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,120,120,resolved,,SAME,Diesel,MT,0,0
+3591,UNFLAGGED,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT),121,121,resolved,,SAME,Petrol,DCT,0,0
+3592,UNFLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone Red Dark Edition,120,,edition_candidate,95,EDITION_CANDIDATE,Diesel,MT,0,0
+3593,UNFLAGGED,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,122,122,resolved,,SAME,Petrol,DCT,0,0
+3594,UNFLAGGED,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Camo,121,,unresolved,,UNRESOLVED,Petrol,DCT,0,0
+3595,UNFLAGGED,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition,123,123,resolved,,SAME,Petrol,DCT,0,0
+3596,FLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,116,124,resolved,,DIFFERENT,Diesel,AMT,1,0
+3597,FLAGGED,Fearless Plus (PS) Petrol 1.2L Turbo Automatic (AMT) Red Dark Edition,113,,edition_candidate,121,EDITION_CANDIDATE,Petrol,AMT,1,0
+3598,FLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,120,125,resolved,,DIFFERENT,Diesel,AMT,1,0
+3599,FLAGGED,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Red Dark Edition,120,,edition_candidate,100,EDITION_CANDIDATE,Diesel,AMT,1,0
+3600,UNFLAGGED,Creative Plus 30.0 kWh,132,131,resolved,,DIFFERENT,Electric,AT,0,0
+3601,UNFLAGGED,Fearless 30.0 kWh,126,,unresolved,,UNRESOLVED,Electric,AT,0,0
+3602,UNFLAGGED,Creative 45.0 kWh,132,132,resolved,,SAME,Electric,AT,0,0
+3603,UNFLAGGED,Fearless 45.0 kWh,133,133,resolved,,SAME,Electric,AT,0,0
+3604,UNFLAGGED,Empowered 45.0 kWh,134,134,resolved,,SAME,Electric,AT,0,0
+3605,UNFLAGGED,Empowered Plus A  45.0 kWh,136,135,resolved,,DIFFERENT,Electric,AT,0,0
+3606,UNFLAGGED,Empowered Plus A  45.0 kWh Dark Edition,832,832,resolved,,SAME,Electric,AT,0,0
+3607,UNFLAGGED,Empowered Plus A  45.0 kWh Red Dark Edition,832,832,resolved,,SAME,Electric,AT,0,0
+3608,UNFLAGGED,Smart 30.0 kWh,744,744,resolved,,SAME,Electric,AT,0,0
+3609,UNFLAGGED,Smart Plus 30.0 kWh,744,745,resolved,,DIFFERENT,Electric,AT,0,0
+3610,UNFLAGGED,Smart Plus 40.0 kWh,746,746,resolved,,SAME,Electric,AT,0,0
+3611,UNFLAGGED,Adventure 40.0 kWh,747,747,resolved,,SAME,Electric,AT,0,0
+3612,UNFLAGGED,Empowered  40.0 kWh,748,748,resolved,,SAME,Electric,AT,0,0
+3613,UNFLAGGED,Empowered Plus S 40.0 kWh,749,749,resolved,,SAME,Electric,AT,0,0
+3614,UNFLAGGED,Smart Petrol Manual,346,346,resolved,,SAME,Petrol,MT,0,0
+3615,UNFLAGGED,Pure Petrol Manual,347,347,resolved,,SAME,Petrol,MT,0,0
+3616,FLAGGED,Pure Petrol Automatic,347,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3617,UNFLAGGED,Pure Plus Petrol Manual,347,350,resolved,,DIFFERENT,Petrol,MT,0,0
+3618,UNFLAGGED,Pure Plus A Petrol Manual,347,352,resolved,,DIFFERENT,Petrol,MT,0,0
+3619,FLAGGED,Pure Plus Petrol Automatic,347,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3620,UNFLAGGED,Creative Petrol Automatic,365,362,resolved,,DIFFERENT,Petrol,AT,0,0
+3621,FLAGGED,Pure Plus A Petrol Automatic,347,357,resolved,,DIFFERENT,Petrol,AT,1,0
+3622,UNFLAGGED,Creative Plus Petrol Manual,354,358,resolved,,DIFFERENT,Petrol,MT,0,0
+3623,FLAGGED,Creative Petrol Manual,360,354,resolved,,DIFFERENT,Petrol,MT,1,0
+3624,FLAGGED,Creative Plus Petrol Automatic,354,362,resolved,,DIFFERENT,Petrol,AT,1,0
+3625,UNFLAGGED,Smart 19.2 kWh,740,740,resolved,,SAME,Electric,AT,0,0
+3626,UNFLAGGED,Pure Plus 19.2 kWh,741,741,resolved,,SAME,Electric,AT,0,0
+3627,UNFLAGGED,Pure Plus 24.0 kWh,742,742,resolved,,SAME,Electric,AT,0,0
+3628,UNFLAGGED,Creative Plus 24.0 kWh,743,743,resolved,,SAME,Electric,AT,0,0
+3629,UNFLAGGED,XM Petrol Manual,366,366,resolved,,SAME,Petrol,MT,0,0
+3630,UNFLAGGED,XT Petrol Manual,367,367,resolved,,SAME,Petrol,MT,0,0
+3631,FLAGGED,XT Petrol Automatic,367,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3632,UNFLAGGED,XZ Petrol Manual,369,369,resolved,,SAME,Petrol,MT,0,0
+3633,UNFLAGGED,XZ Plus Petrol Manual,369,372,resolved,,DIFFERENT,Petrol,MT,0,0
+3634,FLAGGED,XZ Petrol Automatic,369,,unresolved,,UNRESOLVED,Petrol,AT,1,0
+3635,UNFLAGGED,XZ Plus Petrol Manual LUX,369,374,resolved,,DIFFERENT,Petrol,MT,0,0
+3636,FLAGGED,XZ Plus Petrol Automatic,369,375,resolved,,DIFFERENT,Petrol,AT,1,0
+3637,UNFLAGGED,E Petrol Manual,476,476,resolved,,SAME,Petrol,MT,0,0
+3638,UNFLAGGED,S Petrol Manual,477,477,resolved,,SAME,Petrol,MT,0,0
+3639,FLAGGED,S Petrol Automatic,477,478,resolved,,DIFFERENT,Petrol,AT,1,0
+3640,UNFLAGGED,G Petrol Manual,480,480,resolved,,SAME,Petrol,MT,0,0
+3641,FLAGGED,G Petrol Automatic,480,481,resolved,,DIFFERENT,Petrol,AT,1,0
+3642,UNFLAGGED,V Petrol Manual,483,483,resolved,,SAME,Petrol,MT,0,0
+3643,FLAGGED,V Petrol Automatic,483,484,resolved,,DIFFERENT,Petrol,AT,1,0
+3644,UNFLAGGED,GX Petrol Automatic (CVT) 7 STR,576,,unresolved,,UNRESOLVED,Petrol,CVT,0,0
+3645,UNFLAGGED,GX Petrol Automatic (CVT) 8 STR,576,,unresolved,,UNRESOLVED,Petrol,CVT,0,0
+3646,UNFLAGGED,Comfortline Petrol 1.0L Turbo Manual,630,625,resolved,,DIFFERENT,Petrol,MT,0,0
+3647,UNFLAGGED,Highline Petrol 1.0L Turbo Manual,627,630,resolved,,DIFFERENT,Petrol,MT,0,0
+3648,FLAGGED,Highline Petrol 1.0L Turbo Automatic (TC),630,629,resolved,,DIFFERENT,Petrol,TC,1,0
+3649,UNFLAGGED,Highline Plus Petrol 1.0L Turbo Manual,627,632,resolved,,DIFFERENT,Petrol,MT,0,0
+3650,UNFLAGGED,GT Line Petrol 1.0L Turbo Manual,634,627,resolved,,DIFFERENT,Petrol,MT,0,0
+3651,FLAGGED,Highline Plus Petrol 1.0L Turbo Automatic (TC),632,631,resolved,,DIFFERENT,Petrol,TC,1,0
+3652,FLAGGED,GT Line Petrol 1.0L Turbo Automatic (TC),627,626,resolved,,DIFFERENT,Petrol,TC,1,0
+3653,UNFLAGGED,Topline Petrol 1.0L Turbo Manual,627,634,resolved,,DIFFERENT,Petrol,MT,0,0
+3654,FLAGGED,Topline Petrol 1.0L Turbo Automatic (TC),634,633,resolved,,DIFFERENT,Petrol,TC,1,0
+3655,UNFLAGGED,GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT),628,628,resolved,,SAME,Petrol,DCT,0,0
+3656,UNFLAGGED,GT Plus Sport Petrol 1.5L Turbo Automatic (DCT),628,628,resolved,,SAME,Petrol,DCT,0,0
+3657,UNFLAGGED,Comfortline Petrol 1.0L Turbo Manual,640,635,resolved,,DIFFERENT,Petrol,MT,0,0
+3658,UNFLAGGED,Highline Petrol 1.0L Turbo Manual,637,640,resolved,,DIFFERENT,Petrol,MT,0,0
+3659,UNFLAGGED,Highline Plus Petrol 1.0L Turbo Manual,637,642,resolved,,DIFFERENT,Petrol,MT,0,0
+3660,UNFLAGGED,GT Line Petrol 1.0L Turbo Manual,644,637,resolved,,DIFFERENT,Petrol,MT,0,0
+3661,FLAGGED,Highline Petrol 1.0L Turbo Automatic (TC),640,639,resolved,,DIFFERENT,Petrol,TC,1,0
+3662,FLAGGED,Highline Plus Petrol 1.0L Turbo Automatic (TC),642,641,resolved,,DIFFERENT,Petrol,TC,1,0
+3663,UNFLAGGED,Topline Petrol 1.0L Turbo Manual,637,644,resolved,,DIFFERENT,Petrol,MT,0,0
+3664,FLAGGED,GT Line Petrol 1.0L Turbo Automatic (TC),637,636,resolved,,DIFFERENT,Petrol,TC,1,0
+3665,FLAGGED,Topline Petrol 1.0L Turbo Automatic (TC),644,643,resolved,,DIFFERENT,Petrol,TC,1,0
+3666,UNFLAGGED,GT Plus Petrol 1.5L Turbo Automatic (DCT) Chrome,638,638,resolved,,SAME,Petrol,DCT,0,0
+3667,UNFLAGGED,GT Plus Petrol 1.5L Turbo Automatic (DCT) Sport,638,638,resolved,,SAME,Petrol,DCT,0,0
+3668,UNFLAGGED,Anniversary Edition Petrol 1.5L Turbo Automatic (DCT),833,833,resolved,,SAME,Petrol,DCT,0,0

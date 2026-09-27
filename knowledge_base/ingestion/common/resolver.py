@@ -56,16 +56,19 @@ def compute_similarity(s1, s2):
     str2 = ' '.join(sorted(list(tokens2)))
     return SequenceMatcher(None, str1, str2).ratio()
 
+AUTO_TRANSMISSIONS = {'automatic', 'at', 'amt', 'cvt', 'dct', 'dsg', 'dca', 'tc', 'ivt', 'torque converter', 'e-cvt'}
+# Source fuel -> canonical powertrain.fuel_type values it is compatible with (beyond an exact match).
+FUEL_FAMILIES = {'cng': {'cng'}, 'hybrid': {'petrol hybrid'}, 'diesel': {'diesel mild hybrid'}}
+
 def validate_structured(c, fuel, trans, cc, price):
     warnings = []
     if fuel and c['fuel_type']:
         f1, f2 = fuel.lower(), c['fuel_type'].lower()
-        if f1 != f2:
-            if not (f1 == 'cng' and 'cng' in f2):
-                warnings.append('fuel_mismatch')
+        if f1 != f2 and f2 not in FUEL_FAMILIES.get(f1, ()):
+            warnings.append('fuel_mismatch')
     if trans and c['transmission']:
-        t1 = 'auto' if trans.lower() in ['automatic', 'amt', 'cvt', 'dct', 'tc', 'ivt', 'dca', 'torque converter', 'e-cvt'] else 'manual'
-        t2 = 'auto' if c['transmission'].lower() in ['automatic', 'amt', 'cvt', 'dct', 'tc', 'ivt', 'torque converter', 'e-cvt'] else 'manual'
+        t1 = 'auto' if trans.lower() in AUTO_TRANSMISSIONS else 'manual'
+        t2 = 'auto' if c['transmission'].lower() in AUTO_TRANSMISSIONS else 'manual'
         if t1 != t2:
             warnings.append('transmission_mismatch')
     if cc and c['engine_cc'] and abs(cc - c['engine_cc']) > 50:
