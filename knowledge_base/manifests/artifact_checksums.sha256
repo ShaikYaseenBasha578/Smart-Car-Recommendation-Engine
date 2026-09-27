@@ -1,6 +1,6 @@
 # CarRec artifact checksums (SHA-256). Verify from repo root: shasum -a 256 -c knowledge_base/manifests/artifact_checksums.sha256
 # Generated: 2026-09-27T00:31:36Z
-# Production knowledge_base/carrec_kb.db SHA-1: 1e3eb6795452860276eca24e7dd1f52e85e67a93 (not listed below: it changes on every authorised controlled write)
+# Production knowledge_base/carrec_kb.db SHA-1: 2c04286ac891f85db549cfe73125bd639e06f16c (post Phase 10B W0, header updated 2026-09-27T01:58:23Z; not listed below: it changes on every authorised controlled write)
 # Artifacts are NOT tracked in git (checksum-manifest-only decision, Phase 10-0). -wal/-shm side files are excluded (volatile).
 # --- BNCAP factsheet PDFs (pinned in safety_test.artifact_checksum)
 2125b0618e960e6c8b56b0dc8faa47ce7c8bb712f9b330993de184e9a224b9f5  scratch/bncap_pdfs/citroen-basalt.pdf
