@@ -1,0 +1,38 @@
+tested_vehicle,test_date,aop_score,cop_score,resolution_status,source,source_document,manufacturer,model,applicability_scope,variants_mapped
+citroen-basalt,,,,NO_MATCH,https://www.bncap.in,,,,,0
+citroen-c3-aircross-5-seater,,,,UNRESOLVED,https://www.bncap.in,,,,,0
+honda-amaze-3rd-gen,,,,RESOLVED,https://www.bncap.in,,Honda,Amaze,MODEL_LEVEL,6
+hyundai-tucson-gasoline,,,,RESOLVED,https://www.bncap.in,,Kia,Dzire,MODEL_LEVEL,9
+hyundai-venue,,,,RESOLVED,https://www.bncap.in,,Hyundai,Venue,MODEL_LEVEL,19
+kia-seltos,,,,RESOLVED,https://www.bncap.in,,Kia,Seltos,MODEL_LEVEL,41
+kia-syros,,,,RESOLVED,https://www.bncap.in,,Kia,Syros,MODEL_LEVEL,17
+mahindra-be-6,,,,UNRESOLVED,https://www.bncap.in,,,,,0
+mahindra-thar-roxx,,,,RESOLVED,https://www.bncap.in,,Mahindra,Thar,MODEL_LEVEL,7
+mahindra-xev-9e,,,,NO_MATCH,https://www.bncap.in,,,,,0
+mahindra-xuv-3xo,,,,RESOLVED,https://www.bncap.in,,Mahindra,XUV 3XO,MODEL_LEVEL,26
+mahindra-xuv-400-ev,,,,UNRESOLVED,https://www.bncap.in,,,,,0
+mahindra-xuv-7xo,,,,RESOLVED,https://www.bncap.in,,Mahindra,XUV 7XO,MODEL_LEVEL,28
+maruti-baleno-gasoline-2-airbags,,,,RESOLVED,https://www.bncap.in,,Nissan,Hector,MODEL_LEVEL,7
+maruti-baleno-gasoline-6-airbags,,,,RESOLVED,https://www.bncap.in,,Nissan,Hector,MODEL_LEVEL,7
+maruti-brezza,,,,RESOLVED,https://www.bncap.in,,Nissan,Triber,MODEL_LEVEL,6
+maruti-dzire-gasoline,,,,RESOLVED,https://www.bncap.in,,Nissan,Glanza,MODEL_LEVEL,9
+maruti-suzuki-e-vitara,,,,RESOLVED,https://www.bncap.in,,Maruti Suzuki,e VITARA,MODEL_LEVEL,4
+maruti-suzuki-invicto,,,,NO_MATCH,https://www.bncap.in,,,,,0
+maruti-suzuki-victoris,,,,RESOLVED,https://www.bncap.in,,Maruti Suzuki,Victoris,MODEL_LEVEL,22
+NISSAN – TEKTON,July 2026 - Onwards,30.49,45.0,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/07/FACT-SHEET_Tekton.pdf,,,,0
+RENAULT – DUSTER,April 2026 - Onwards,30.49,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/04/FACT-SHEET_Duster.pdf,Renault,Duster,MODEL_LEVEL,11
+SKODA – KYLAQ,January 2025 - Onwards,30.88,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2025/01/12.-FACT-SHEET_Kylaq.pdf,Skoda,Kylaq,MODEL_LEVEL,11
+TATA ALTROZ,September 2025- Onwards,29.65,44.9,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2025/09/FACT-SHEET_Altroz_Rev2_June-2026.pdf,Tata,Altroz,MODEL_LEVEL,27
+TATA CURVV EV,October 2024- Onwards,30.81,44.83,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Curvv_EV_Rev3_June-2026-1.pdf,,,,0
+TATA CURVV,October 2024- Onwards,29.5,43.66,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Curvv_ICE_Rev4_Sept_2026.pdf,,,,0
+TATA – HARRIER.EV,June 2025 - Onwards,32.0,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_HARRIER.EV_.pdf,Tata,Harrier,MODEL_LEVEL,26
+TATA NEXON.EV,May 2024- Onwards,29.86,44.95,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/06/Fact-Sheet_NexonEV_Revision-Sept-2025-1.pdf,Tata,Nexon,MODEL_LEVEL,53
+TATA NEXON,October 2024- Onwards,29.41,43.83,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Nexon_Rev2_Aug-2026.pdf,Tata,Nexon,MODEL_LEVEL,53
+TATA – Punch.ev 2026,July 2026- Onwards,31.09,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/07/FACT-SHEET_Punch.ev-2026.pdf,Tata,Punch EV,MODEL_LEVEL,6
+TATA PUNCH.EV,,31.46,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/06/FACT-SHEET_Punch.EV_2024.pdf,Tata,Punch EV,MODEL_LEVEL,6
+TATA – PUNCH,January 2026- Onwards,30.58,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_PUNCH_ICE_Rev-1-Feb-2026.pdf,Volkswagen,Duster,MODEL_LEVEL,11
+TATA SAFARI/ HARRIER,Dec 2023 - Onwards,30.08,44.54,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2024/03/FACT-SHEET_Safari-Harrier_Revision-3-Dec-2025.pdf,Tata,Harrier,MODEL_LEVEL,26
+TATA – SIERRA,March 2026- Onwards,31.14,44.73,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/03/FACT-SHEET_Sierra_Rev2_July-2026.pdf,,,,0
+TOYOTA – INNOVA HYCROSS,June  2025 - Onwards,30.47,45.0,RESOLVED,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_INNOVA-HYCROSS.pdf,Toyota,Innova Hycross,MODEL_LEVEL,10
+VINFAST – VF6,January 2026 - Onwards,27.13,44.41,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_VF6.pdf,,,,0
+VINFAST – VF7,January 2026 - Onwards,28.54,45.25,NO_MATCH,https://www.bncap.in,https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_VF7.pdf,,,,0

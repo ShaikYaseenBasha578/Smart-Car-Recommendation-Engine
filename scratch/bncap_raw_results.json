@@ -1,0 +1,2679 @@
+[
+  {
+    "url": "https://www.bncap.in/vehicle/citroen-basalt/",
+    "tested_vehicle_name": "CITROEN-BASALT",
+    "tested_variant_config": "CITROEN \u2013 BASALT",
+    "body_type": "SUV Coupe (2 rows)",
+    "crash_test_weight_kg": "1490 kg",
+    "year_of_publication": 2024,
+    "test_period": "October 2024- Onwards",
+    "aop_score": 26.19,
+    "aop_stars": 4,
+    "cop_score": 35.9,
+    "cop_stars": 4,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Basalt_Rev_1_Sept-2025.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); There is no gallery selected or the gallery was deleted.",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "1.2P YOU",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO PLUS",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO AT PLUS",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P PLUS",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO MAX",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO AT MAX",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/citroen-basalt.pdf",
+    "artifact_checksum": "2125b0618e960e6c8b56b0dc8faa47ce7c8bb712f9b330993de184e9a224b9f5"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/citroen-c3-aircross-5-seater/",
+    "tested_vehicle_name": "CITROEN \u2013 C3 AIRCROSS (5-SEATER)",
+    "tested_variant_config": "CITROEN \u2013 C3 AIRCROSS (5 \u2013 SEATER) \u2013 1.2P TURBO AT MAX 5S",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1583 kg",
+    "year_of_publication": 2025,
+    "test_period": "September 2025- Onwards",
+    "aop_score": 27.05,
+    "aop_stars": 5,
+    "cop_score": 40.0,
+    "cop_stars": 4,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/09/FACT-SHEET_C3-Aircross.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); C3 AIRCROSS_FRONTAL IMPACT_ DURING TEST; C3 AIRCROSS_FRONTAL IMPACT_ POST TEST; C3 AIRCROSS_SIDE IMPACT_DURING TEST.; C3 AIRCROSS_SIDE IMPACT_POST TEST; C3 AIRCROSS_SIDE POLE IMPACT_DURING TEST; C3 AIRCROSS_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "1.2P YOU 5S",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO PLUS 5S",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO AT PLUS 5S",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P PLUS 5S",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO MAX 5S",
+        "flag": "YES"
+      },
+      {
+        "name": "1.2P TURBO AT MAX 5S",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/citroen-c3-aircross-5-seater.pdf",
+    "artifact_checksum": "2da8bc9dfbff574958d8364352ab22bb6457482daceb5825ec6f367d7d1af531"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/honda-amaze-3rd-gen/",
+    "tested_vehicle_name": "HONDA \u2013 AMAZE 3RD GEN",
+    "tested_variant_config": "HONDA \u2013 AMAZE 3RD GEN \u2013 V CVT, VX CVT & ZX MT",
+    "body_type": "Sedan (2 rows)",
+    "crash_test_weight_kg": "1241 kg",
+    "year_of_publication": 2025,
+    "test_period": "November 2025- Onwards",
+    "aop_score": 28.33,
+    "aop_stars": 5,
+    "cop_score": 40.81,
+    "cop_stars": 4,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/11/FACT-SHEET_AMAZE-3RD-GEN-1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); AMAZE_FRONTAL IMPACT_ DURING TEST; AMAZE_FRONTAL IMPACT_ POST TEST; AMAZE_SIDE IMPACT_DURING TEST.; AMAZE_SIDE IMPACT_POST TEST; AMAZE_SIDE POLE IMPACT_DURING TEST_; AMAZE_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "V",
+        "flag": "YES"
+      },
+      {
+        "name": "VX",
+        "flag": "YES"
+      },
+      {
+        "name": "ZX",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/honda-amaze-3rd-gen.pdf",
+    "artifact_checksum": "25d6817503c1a6e171da17273d429ef2d5bd605a390f7ce5a5ae6d1c51ae51db"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/hyundai-tucson-gasoline/",
+    "tested_vehicle_name": "HYUNDAI-TUCSON",
+    "tested_variant_config": "HYUNDAI \u2013 TUCSON \u2013 GASOLINE \u2013 2.0 PL AT SIGNATURE",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1828 kg",
+    "year_of_publication": 2024,
+    "test_period": "November 2024- September 2025",
+    "aop_score": 30.84,
+    "aop_stars": 5,
+    "cop_score": 41.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/11/9.-FACT-SHEET_Tucson.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); TUCSON_FRONTAL IMPACT_DURING TEST; TUCSON_FRONTAL IMPACT_POST TEST; TUCSON_SIDE IMPACT_DURING TEST; TUCSON_SIDE POLE IMPACT_DURING TEST; TUCSON_SIDE POLE IMPACT_POST TEST; TUCSON_SIDE_IMPACT_POST_TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Platinum",
+        "flag": "YES"
+      },
+      {
+        "name": "Signature",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/hyundai-tucson-gasoline.pdf",
+    "artifact_checksum": "821124fb098c2f6e1eb57e114a39da682732774dd1dfb00571978aa12c007437"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/hyundai-venue/",
+    "tested_vehicle_name": "HYUNDAI \u2013 VENUE",
+    "tested_variant_config": "HYUNDAI \u2013 VENUE \u2013 HX2 (CRDI MT) & HX10 (CRDI AT)",
+    "body_type": "Station Wagon (2 rows)",
+    "crash_test_weight_kg": "1610 kg",
+    "year_of_publication": 2026,
+    "test_period": "March 2026 - Onwards",
+    "aop_score": 31.15,
+    "aop_stars": 5,
+    "cop_score": 44.46,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/03/FACT-SHEET_Venue.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); VENUE_FRONTAL IMPACT_ DURING TEST; VENUE_FRONTAL IMPACT_ POST TEST; VENUE_SIDE IMPACT_DURING TEST.; VENUE_SIDE IMPACT_POST TEST; VENUE_SIDE POLE IMPACT_DURING TEST_; VENUE_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "HX 2",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 5",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 4",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 6",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 10",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 8",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 7",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 5+",
+        "flag": "YES"
+      },
+      {
+        "name": "N Line N6",
+        "flag": "YES"
+      },
+      {
+        "name": "HX 6T",
+        "flag": "YES"
+      },
+      {
+        "name": "N Line N10",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/hyundai-venue.pdf",
+    "artifact_checksum": "d2032d0e796b9021aa930083bc76554b1b83840f90dca21520b7dd3de1ef89f0"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/kia-seltos/",
+    "tested_vehicle_name": "KIA \u2013 SELTOS",
+    "tested_variant_config": "KIA \u2013 SELTOS \u2013 HTE (O) & GTX [D1.5 CRDi VGT 6AT]",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1771 kg",
+    "year_of_publication": 2026,
+    "test_period": "March 2026 - Onwards",
+    "aop_score": 31.7,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/03/FACT-SHEET_Seltos-1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); SELTOS_FRONTAL IMPACT_ DURING TEST; SELTOS_FRONTAL IMPACT_ POST TEST; SELTOS_SIDE IMPACT_DURING TEST.; SELTOS_SIDE IMPACT_POST TEST; SELTOS_SIDE POLE IMPACT_DURING TEST; SELTOS_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "HTE",
+        "flag": "YES"
+      },
+      {
+        "name": "HTE(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX(A)",
+        "flag": "YES"
+      },
+      {
+        "name": "GTX",
+        "flag": "YES"
+      },
+      {
+        "name": "X Line",
+        "flag": "YES"
+      },
+      {
+        "name": "GTX(A)",
+        "flag": "YES"
+      },
+      {
+        "name": "X Line(A)",
+        "flag": "YES"
+      },
+      {
+        "name": "GTX(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "X Line(O)",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/kia-seltos.pdf",
+    "artifact_checksum": "cb5a16be2e831e9cf8c1ea456eee4e6dfdcb9430cf6811c9df663c9124e4de95"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/kia-syros/",
+    "tested_vehicle_name": "KIA-SYROS",
+    "tested_variant_config": "KIA \u2013 SYROS \u2013 GASOLINE \u2013 HTX PLUS 7DCT, HTK (O) 6MT",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1577 kg",
+    "year_of_publication": 2025,
+    "test_period": "April 2025 - Onwards",
+    "aop_score": 30.21,
+    "aop_stars": 5,
+    "cop_score": 44.42,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/04/FACT-SHEET_Syros_Rev1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); SYROS_FRONTAL IMPACT_DURING TEST; SYROS_FRONTAL IMPACT_ POST TEST; SYROS_SIDE IMPACT_DURING TEST.; SYROS_SIDE IMPACT_POST TEST; SYROS_SIDE POLE IMPACT_DURING TEST.; SYROS_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability. | The addition of variants is to cover new variants introduced by the vehicle manufacturer.",
+    "explicit_variants": [
+      {
+        "name": "HTK",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK Plus",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX Plus",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX Plus(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTE",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK Plus(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTE(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTX(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK(E)",
+        "flag": "YES"
+      },
+      {
+        "name": "HTK(EX)",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/kia-syros.pdf",
+    "artifact_checksum": "d5f4cd1b47ae6a091beba1211ed9122fb5bcc5a8621c7280112228143560fa0e"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-be-6/",
+    "tested_vehicle_name": "MAHINDRA \u2013 BE 6",
+    "tested_variant_config": "MAHINDRA \u2013 BE 6 \u2013 THREE B79",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2415 kg",
+    "year_of_publication": 2025,
+    "test_period": "January 2025 - Onwards",
+    "aop_score": 31.97,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/01/13.-FACT-SHEET_BE-6.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); BE6_FRONTAL IMPACT_DURING TEST; BE6_FRONTAL IMPACT_ POST TEST; BE6_SIDE IMPACT_DURING TEST; BE6_SIDE IMPACT_POST TEST; BE6_SIDE POLE IMPACT_DURING TEST.; BE6_SIDE POLE IMPACT_POST TEST.",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "ONE B59",
+        "flag": "YES"
+      },
+      {
+        "name": "TWO B59",
+        "flag": "YES"
+      },
+      {
+        "name": "THREE B59",
+        "flag": "YES"
+      },
+      {
+        "name": "THREE B79",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-be-6.pdf",
+    "artifact_checksum": "76cf03211daa3f16c885d2491d0bb84c93c64ca954477809b969b8bef61b0a80"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-thar-roxx/",
+    "tested_vehicle_name": "MAHINDRA \u2013 THAR ROXX",
+    "tested_variant_config": "MAHINDRA \u2013 THAR ROXX \u2013 AX5L, MX3",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2288 kg",
+    "year_of_publication": 2024,
+    "test_period": "November 2024- Onwards",
+    "aop_score": 31.09,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/11/11.-FACT-SHEET_Thar-Roxx.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); THAR ROXX_FRONTAL IMPACT_DURING TEST; THAR ROXX_FRONTAL IMPACT_POST TEST; THAR ROXX_SIDE IMPACT_POST TEST; THAR ROXX_SIDE POLE IMPACT_POST TEST; THAR ROXX_SIDE IMPACT_DURING TEST; THAR ROXX_SIDE POLE IMPACT_DURING TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "MX1",
+        "flag": "YES"
+      },
+      {
+        "name": "MX3",
+        "flag": "YES"
+      },
+      {
+        "name": "MX5",
+        "flag": "YES"
+      },
+      {
+        "name": "AX5L",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7L",
+        "flag": "YES"
+      },
+      {
+        "name": "AX3L",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-thar-roxx.pdf",
+    "artifact_checksum": "9fb0e62c09d074000af6107e80355a664a052e0d7563b2d60aa20d478b3c9a13"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-xev-9e/",
+    "tested_vehicle_name": "MAHINDRA \u2013 XEV 9e",
+    "tested_variant_config": "MAHINDRA \u2013 XEV 9e \u2013 THREE B79",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2492 kg",
+    "year_of_publication": 2025,
+    "test_period": "January 2025 - Onwards",
+    "aop_score": 32.0,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/01/14.-FACT-SHEET_XEV-9e.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); XEV 9e_FRONTAL IMPACT_DURING TEST; XEV 9e_FRONTAL IMPACT_POST TEST; XEV 9e_SIDE IMPACT_DURING TEST.; XEV 9e_SIDE IMPACT_AFTER TEST; XEV 9e_SIDE POLE IMPACT_DURING TEST.; XEV 9e_SIDE POLE IMPACT_AFTER TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "ONE B59",
+        "flag": "YES"
+      },
+      {
+        "name": "TWO B59",
+        "flag": "YES"
+      },
+      {
+        "name": "THREE B59",
+        "flag": "YES"
+      },
+      {
+        "name": "THREE B79",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-xev-9e.pdf",
+    "artifact_checksum": "52818436b66f46ac843a2e969b19a50c2bccc828045ad832a3dbffb8af22680e"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-xuv-3xo/",
+    "tested_vehicle_name": "Mahindra-XUV 3XO",
+    "tested_variant_config": "MAHINDRA \u2013 XUV 3XO \u2013 AX7L, MX2",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1737\u00a0 kg",
+    "year_of_publication": 2024,
+    "test_period": "November 2024- Onwards",
+    "aop_score": 29.36,
+    "aop_stars": 5,
+    "cop_score": 43.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/11/5.-FACT-SHEET_XUV-3XO.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); XUV 3XO_FRONTAL IMPACT_DURING TEST; XUV 3XO_FRONTAL IMPACT_POST TEST; XUV 3XO_SIDE IMPACT_DURING TEST; XUV 3XO_SIDE IMPACT_POST TEST; XUV 3XO_SIDE POLE IMPACT_DURING TEST; XUV 3XO_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "MX2",
+        "flag": "YES"
+      },
+      {
+        "name": "MX3",
+        "flag": "YES"
+      },
+      {
+        "name": "MX1",
+        "flag": "YES"
+      },
+      {
+        "name": "AX5",
+        "flag": "YES"
+      },
+      {
+        "name": "MX2 PRO",
+        "flag": "YES"
+      },
+      {
+        "name": "AX5L",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7",
+        "flag": "YES"
+      },
+      {
+        "name": "MX3 PRO",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7 PRO",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7L",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7L PRO",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-xuv-3xo.pdf",
+    "artifact_checksum": "3907dbe8f0cbf01df9d2170af24f13835dd5e79a9cd48043cdbf0295fe1c580b"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-xuv-400-ev/",
+    "tested_vehicle_name": "Mahindra-XUV 400 EV",
+    "tested_variant_config": "MAHINDRA \u2013 XUV 400 EV \u2013 EC L, EL LH(O)",
+    "body_type": "SUV (2 Row)",
+    "crash_test_weight_kg": "1856\u00a0 kg",
+    "year_of_publication": 2024,
+    "test_period": "November 2024- Onwards",
+    "aop_score": 30.38,
+    "aop_stars": 5,
+    "cop_score": 43.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/11/6.1FACT-SHEET_XUV-400EV_Rev_1_July-2025.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); XUV 400EV_FRONTAL IMPACT_DURING TEST; XUV 400EV_FRONTAL IMPACT_POST TEST; XUV 400EV_POLE SIDE POLE IMPACT_DURING TEST; XUV 400EV_POLE SIDE POLE IMPACT_POST TEST; XUV 400EV_SIDE IMPACT_DURING TEST; XUV 400EV_SIDE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "EC L",
+        "flag": "YES"
+      },
+      {
+        "name": "EC L (O)",
+        "flag": "YES"
+      },
+      {
+        "name": "EL LL",
+        "flag": "YES"
+      },
+      {
+        "name": "EL LL(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "EL LH",
+        "flag": "YES"
+      },
+      {
+        "name": "EL LH(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "EL FH",
+        "flag": "YES"
+      },
+      {
+        "name": "EL FH(O)",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-xuv-400-ev.pdf",
+    "artifact_checksum": "effdf9a3f9256083649aec9814c26188565b940c23ed3a3fed310f2540a6edd1"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/mahindra-xuv-7xo/",
+    "tested_vehicle_name": "MAHINDRA \u2013 XUV 7XO",
+    "tested_variant_config": "MAHINDRA \u2013 XUV 7XO \u2013 AX7 DSL 2W 7S AT, AX7L DSL 4W 7S AT",
+    "body_type": "SUV (3 rows)",
+    "crash_test_weight_kg": "2059\u00a0 kg",
+    "year_of_publication": 2026,
+    "test_period": "September 2026- Onwards",
+    "aop_score": 30.76,
+    "aop_stars": 5,
+    "cop_score": 44.97,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/09/FACT-SHEET_7XO-1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); 7XO_FRONTAL IMPACT_ DURING TEST; 7XO_FRONTAL IMPACT_ POST TEST; 7XO_SIDE IMPACT_DURING TEST; 7XO_SIDE IMPACT_POST TEST; 7XO_SIDE POLE IMPACT_DURING TEST; 7XO_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "AX 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX3 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7T 7STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX5 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7L 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7 6 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "\u2014-",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7T 6 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7T 7 STR",
+        "flag": "YES"
+      },
+      {
+        "name": "AX7L 6 STR",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/mahindra-xuv-7xo.pdf",
+    "artifact_checksum": "42d7c0022aee14a53cbdab79c02748c63490e58bf59d84b74560af3ae0ec8126"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-baleno-gasoline-2-airbags/",
+    "tested_vehicle_name": "MARUTI-BALENO-GASOLINE (2 AB)",
+    "tested_variant_config": "MARUTI \u2013 BALENO- GASOLINE (2 AIRBAG) \u2013 DELTA AGS, ALPHA AGS",
+    "body_type": "Hatchback (2 rows)",
+    "crash_test_weight_kg": "1220 kg",
+    "year_of_publication": 2025,
+    "test_period": "June 2025- Onwards",
+    "aop_score": 24.04,
+    "aop_stars": 4,
+    "cop_score": 34.81,
+    "cop_stars": 3,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_Baleno_Base-Rating.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); 1.BALENO_FRONTAL IMPACT_ DURING TEST; 2.BALENO_FRONTAL IMPACT_ POST TEST; 3.BALENO_SIDE IMPACT_DURING TEST; 4BALENO_SIDE IMPACT_ POST TEST; 5.BALENO_SIDE POLE IMPACT_DURING TEST; 6.BALENO_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "SIGMA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "DELTA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ZETA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "DELTA 1.2L ISS AGS",
+        "flag": "YES"
+      },
+      {
+        "name": "ZETA 1.2L ISS AGS",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA 1.2L ISS AGS",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-baleno-gasoline-2-airbags.pdf",
+    "artifact_checksum": "22b4db1a05c2db24f4ce27ffaa0c45ef87b31b6dfdac762fcdc6711588defa76"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-baleno-gasoline-6-airbags/",
+    "tested_vehicle_name": "MARUTI-BALENO-GASOLINE (6 AB)",
+    "tested_variant_config": "MARUTI \u2013 BALENO- GASOLINE (6 AIRBAG) \u2013 DELTA AGS, ALPHA AGS",
+    "body_type": "Hatchback (2 rows)",
+    "crash_test_weight_kg": "1220 kg",
+    "year_of_publication": 2025,
+    "test_period": "June 2025 - Onwards",
+    "aop_score": 26.52,
+    "aop_stars": 4,
+    "cop_score": 34.81,
+    "cop_stars": 3,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_Baleno_Optional-Rating.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); 1.BALENO_FRONTAL IMPACT_ DURING TEST; 2.BALENO_FRONTAL IMPACT_ POST TEST; 3.BALENO_SIDE IMPACT_ DURING TEST; 4.BALENO_SIDE IMPACT_ POST TEST; 5.BALENO_SIDE POLE IMPACT_DURING TEST; 6.BALENO_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "ZETA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ZETA 1.2L ISS AGS",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA 1.2L ISS AGS",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-baleno-gasoline-6-airbags.pdf",
+    "artifact_checksum": "1ce77fd522099f635ef448fbc53f80d2a3644c66fff69893d71f6b265b533a4e"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-brezza/",
+    "tested_vehicle_name": "MARUTI \u2013 BREZZA",
+    "tested_variant_config": "MARUTI \u2013 BREZZA \u2013 ZXI+ 1.5L 6AT",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1471 kg",
+    "year_of_publication": 2026,
+    "test_period": "July 2026 - Onwards",
+    "aop_score": 30.41,
+    "aop_stars": 5,
+    "cop_score": 43.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/07/FACT-SHEET_Brezza.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); BREZZA_FRONTAL IMPACT_ DURING TEST; BREZZA_FRONTAL IMPACT_ POST TEST; BREZZA_SIDE IMPACT_DURING TEST; BREZZA_SIDE IMPACT_POST TEST; BREZZA_SIDE POLE IMPACT_DURING TEST; BREZZA_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "LXI",
+        "flag": "YES"
+      },
+      {
+        "name": "VXI",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-brezza.pdf",
+    "artifact_checksum": "547c0c0e25379eb3e84c43c9073242d517b6abb0a288662667986486a2cb8bf8"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-dzire-gasoline/",
+    "tested_vehicle_name": "MARUTI \u2013 DZIRE \u2013 GASOLINE",
+    "tested_variant_config": "MARUTI \u2013 DZIRE \u2013 GASOLINE \u2013 LXI 1.2L ISS 5MT",
+    "body_type": "Sedan (2 rows)",
+    "crash_test_weight_kg": "1185 kg",
+    "year_of_publication": 2025,
+    "test_period": "June 2025 - Onwards",
+    "aop_score": 29.46,
+    "aop_stars": 5,
+    "cop_score": 41.57,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_Dzire.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); DZIRE_FRONTAL IMPACT_DURING TEST; DZIRE_FRONTAL IMPACT_ POST TEST; DZIRE_SIDE IMPACT_DURING TEST.; DZIRE_SIDE IMPACT_POST TEST; DZIRE_SIDE POLE IMPACT_DURING TEST.; DZIRE_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "LXI 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "VXI 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+ 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "TOUR S 1.2L ISS 5MT",
+        "flag": "YES"
+      },
+      {
+        "name": "VXI 1.2L ISS AGS",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI 1.2L ISS AGS",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+ 1.2L ISS AGS",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-dzire-gasoline.pdf",
+    "artifact_checksum": "2f520539efe346ae31761b20fe7a6baaf7cda2fc9dc76462f9ad03230a3d56cf"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-suzuki-e-vitara/",
+    "tested_vehicle_name": "MARUTI SUZUKI \u2013 e VITARA",
+    "tested_variant_config": "MARUTI SUZUKI \u2013 e VITARA \u2013 ALPHA 61kWh",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2082\u00a0kg",
+    "year_of_publication": 2025,
+    "test_period": "December 2025 - Onwards",
+    "aop_score": 31.49,
+    "aop_stars": 5,
+    "cop_score": 43.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/12/FACT-SHEET_e-VITARA.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); e VITARA_FRONTAL IMPACT_ DURING TEST; e VITARA_FRONTAL IMPACT_ POST TEST; e VITARA_SIDE IMPACT_DURING TEST.; e VITARA_SIDE IMPACT_POST TEST; e VITARA_SIDE POLE IMPACT_DURING TEST_; e VITARA_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "DELTA",
+        "flag": "YES"
+      },
+      {
+        "name": "ZETA",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-suzuki-e-vitara.pdf",
+    "artifact_checksum": "6ef2a4683325cd533a93763f0196e4da1e506674f37987338c4088b6d39fc301"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-suzuki-invicto/",
+    "tested_vehicle_name": "MARUTI SUZUKI \u2013 INVICTO",
+    "tested_variant_config": "MARUTI SUZUKI \u2013 INVICTO \u2013 ALPHA+ 7STR & ZETA+ 8STR",
+    "body_type": "MPV (3 rows)",
+    "crash_test_weight_kg": "1946 kg",
+    "year_of_publication": 2025,
+    "test_period": "September 2025 - Onwards",
+    "aop_score": 30.43,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/09/FACT-SHEET_Invicto.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); INVICTO_FRONTAL IMPACT_ DURING TEST; INVICTO_FRONTAL IMPACT_ POST TEST; INVICTO_POLE SIDE IMPACT_ DURING TEST; INVICTO_POLE SIDE IMPACT_ POST TEST; INVICTO_SIDE IMPACT_ DURING TEST; INVICTO_SIDE IMPACT_ POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "ZETA+ 8STR",
+        "flag": "YES"
+      },
+      {
+        "name": "ZETA+ 7STR",
+        "flag": "YES"
+      },
+      {
+        "name": "ALPHA+ 7STR",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-suzuki-invicto.pdf",
+    "artifact_checksum": "2adf743d16b89cf33ab6e49b077e843c543e13cd7247a0b6bca6de0e29f637ab"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/maruti-suzuki-victoris/",
+    "tested_vehicle_name": "MARUTI SUZUKI \u2013 VICTORIS",
+    "tested_variant_config": "MARUTI SUZUKI \u2013 VICTORIS \u2013 ZXI+ STRONG HYBRID eCVT, ZXI+(O) STRONG HYBRID eCVT & ZXI+(O) 6AT",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1549 kg",
+    "year_of_publication": 2025,
+    "test_period": "September 2025 - Onwards",
+    "aop_score": 31.66,
+    "aop_stars": 5,
+    "cop_score": 43.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/09/FACT-SHEET_Victoris.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); VICTORIS_FRONTAL IMPACT_ DURING TEST; VICTORIS_FRONTAL IMPACT_ POST TEST; VICTORIS_SIDE IMPACT_DURING TEST.; VICTORIS_SIDE IMPACT_POST TEST; VICTORIS_SIDE POLE IMPACT_DURING TEST; VICTORIS_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "LXI",
+        "flag": "YES"
+      },
+      {
+        "name": "VXI",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI (O)",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+(O)",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+ (O)",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+ 4WD",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXI+(O) 4WD",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/maruti-suzuki-victoris.pdf",
+    "artifact_checksum": "76f3c6413368480f0df9b699358b40c9237820ae25f04b2f885aad39140c1322"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/nissan-tekton/",
+    "tested_vehicle_name": "NISSAN \u2013 TEKTON",
+    "tested_variant_config": "RENAULT \u2013 DUSTER \u2013 EVOLUTION (1.3L MT), TECHNO (1.3L DCT) & ICONIC (1.3L MT)",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1621 kg",
+    "year_of_publication": 2026,
+    "test_period": "July 2026 - Onwards",
+    "aop_score": 30.49,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/07/FACT-SHEET_Tekton.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); DUSTER_FRONTAL IMPACT_ DURING TEST; DUSTER_FRONTAL IMPACT_ POST TEST; DUSTER_SIDE IMPACT_DURING TEST; DUSTER_SIDE IMPACT_POST TEST; DUSTER_SIDE POLE IMPACT_DURING TEST 2; DUSTER_SIDE POLE IMPACT_POST TEST; The Nissan-Tekton is a \u2018corporate twin\u2019 to the Renault-Duster.\u00a0 Safety equipment and vehicle structure is identical between the two models;; hence this rating is based on the assessment of the Renault-Duster assessed in March 2026",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "VISIA",
+        "flag": "YES"
+      },
+      {
+        "name": "N-CONNECTA",
+        "flag": "YES"
+      },
+      {
+        "name": "ACENTA",
+        "flag": "YES"
+      },
+      {
+        "name": "VISIA+",
+        "flag": "YES"
+      },
+      {
+        "name": "TEKNA",
+        "flag": "YES"
+      },
+      {
+        "name": "TEKNA+",
+        "flag": "YES"
+      },
+      {
+        "name": "Note: The Nissan-Tekton is a \u2018corporate twin\u2019 to the Renault-Duster. Safety equipment and vehicle structure is identical between the two cars, so this rating is based on the assessment of the Renault-Duster.",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/nissan-tekton.pdf",
+    "artifact_checksum": "6eb0a46637fcf0b153d1de04a0e53707390ff01b0c7a744c48d67433551ed933"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/renault-duster/",
+    "tested_vehicle_name": "RENAULT \u2013 DUSTER",
+    "tested_variant_config": "RENAULT \u2013 DUSTER \u2013 EVOLUTION (1.3L MT), TECHNO (1.3L DCT) & ICONIC (1.3L MT)",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1621 kg",
+    "year_of_publication": 2026,
+    "test_period": "April 2026 - Onwards",
+    "aop_score": 30.49,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/04/FACT-SHEET_Duster.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); DUSTER_FRONTAL IMPACT_ DURING TEST; DUSTER_FRONTAL IMPACT_ POST TEST; DUSTER_SIDE IMPACT_DURING TEST; DUSTER_SIDE IMPACT_POST TEST; DUSTER_SIDE POLE IMPACT_DURING TEST 2; DUSTER_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Authentic",
+        "flag": "YES"
+      },
+      {
+        "name": "Evolution",
+        "flag": "YES"
+      },
+      {
+        "name": "Techno",
+        "flag": "YES"
+      },
+      {
+        "name": "Authentic+",
+        "flag": "YES"
+      },
+      {
+        "name": "Techno+",
+        "flag": "YES"
+      },
+      {
+        "name": "Iconic",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/renault-duster.pdf",
+    "artifact_checksum": "5983d7d307adfbd44e4cc501d7a9be3fd7d11d0dbbf521345eb62d7936b70e9d"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/skoda-kylaq/",
+    "tested_vehicle_name": "SKODA \u2013 KYLAQ",
+    "tested_variant_config": "SKODA \u2013 KYLAQ \u2013 PRESTIGE MT",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1489 kg",
+    "year_of_publication": 2025,
+    "test_period": "January 2025 - Onwards",
+    "aop_score": 30.88,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/01/12.-FACT-SHEET_Kylaq.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); KYLAQ_FRONTAL IMPACT_DURING TEST; KYLAQ_FRONTAL IMPACT_POST TEST; KYLAQ_SIDE IMPACT_DURING TEST; KYLAQ_SIDE IMPACT_POST TEST; KYLAQ_SIDE POLE IMPACT_DURING TEST; KYLAQ_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Classic",
+        "flag": "YES"
+      },
+      {
+        "name": "Signature",
+        "flag": "YES"
+      },
+      {
+        "name": "Signature +",
+        "flag": "YES"
+      },
+      {
+        "name": "Prestige",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/skoda-kylaq.pdf",
+    "artifact_checksum": "e1d8bf69c8b046fa951bf6f63f5120677bd3399be079cad8040d7b0b2ececb8d"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-altroz/",
+    "tested_vehicle_name": "TATA ALTROZ",
+    "tested_variant_config": "TATA \u2013 ALTROZ \u2013 PURE CNG MT, CRTV S CNG MT, ACCOMP S DMT",
+    "body_type": "Hatchback (2 rows)",
+    "crash_test_weight_kg": "1474 kg",
+    "year_of_publication": 2025,
+    "test_period": "September 2025- Onwards",
+    "aop_score": 29.65,
+    "aop_stars": 5,
+    "cop_score": 44.9,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/09/FACT-SHEET_Altroz_Rev2_June-2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); ALTROZ_FRONTAL IMPACT_ DURING TEST; ALTROZ_FRONTAL IMPACT_ POST TEST; ALTROZ_SIDE IMPACT_DURING TEST.; ALTROZ_SIDE IMPACT_POST TEST; ALTROZ_SIDE POLE IMPACT_DURING TEST; ALTROZ_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "SMART",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP",
+        "flag": "YES"
+      },
+      {
+        "name": "August 2025(Rev. 2: June 2026)",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE S",
+        "flag": "YES"
+      },
+      {
+        "name": "CRTV S",
+        "flag": "YES"
+      },
+      {
+        "name": "CRTV",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP S",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP+S",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-altroz.pdf",
+    "artifact_checksum": "0857329d8bc86d3fdf3ea56435228813b3962a0504a2d6f8ca852ba9bd55c1c5"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-curvv-ev/",
+    "tested_vehicle_name": "TATA CURVV EV",
+    "tested_variant_config": "TATA \u2013 CURVV.EV \u2013 EMP + A 55",
+    "body_type": "SUV Coupe (2 rows)",
+    "crash_test_weight_kg": "1983kg",
+    "year_of_publication": 2024,
+    "test_period": "October 2024- Onwards",
+    "aop_score": 30.81,
+    "aop_stars": 5,
+    "cop_score": 44.83,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Curvv_EV_Rev3_June-2026-1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); Post Test 1; Post Test 2; Post Test 3; Pre Test 1; Pre Test 2; Pre Test 3",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability. | The addition of variants is to cover new variants introduced by the vehicle manufacturer.",
+    "explicit_variants": [
+      {
+        "name": "CRE 45",
+        "flag": "YES"
+      },
+      {
+        "name": "SEPT 2024(Rev.1: Nov 2025)",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ S 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ S DK 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ A 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ SA 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A DK 45",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ S 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ S DK 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ A 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC+ SA 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A DK 55",
+        "flag": "YES"
+      },
+      {
+        "name": "IB ACC+S 45",
+        "flag": "YES"
+      },
+      {
+        "name": "March 2026(Rev. 2: March 2026)",
+        "flag": "YES"
+      },
+      {
+        "name": "IB EMP+ A 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC X 55",
+        "flag": "YES"
+      },
+      {
+        "name": "ACC X DK 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP X 55",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP X DK 55",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-curvv-ev.pdf",
+    "artifact_checksum": "5d5977db1879eb532d6591cb42d20748656e087df2d4889e5886b02425f3377d"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-curvv/",
+    "tested_vehicle_name": "TATA CURVV",
+    "tested_variant_config": "TATA \u2013 CURVV \u2013 ACCOM + A DMT",
+    "body_type": "SUV Coupe (2 rows)",
+    "crash_test_weight_kg": "1715kg",
+    "year_of_publication": 2024,
+    "test_period": "October 2024- Onwards",
+    "aop_score": 29.5,
+    "aop_stars": 5,
+    "cop_score": 43.66,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Curvv_ICE_Rev4_Sept_2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); 1; 2; 3; 4; 5; 6",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Diesel Family",
+        "flag": null
+      },
+      {
+        "name": "DMT",
+        "flag": null
+      },
+      {
+        "name": "PURE",
+        "flag": null
+      },
+      {
+        "name": "CRTV + S",
+        "flag": null
+      },
+      {
+        "name": "ACCOM",
+        "flag": null
+      },
+      {
+        "name": "CRTV S",
+        "flag": null
+      },
+      {
+        "name": "PURE +",
+        "flag": null
+      },
+      {
+        "name": "CRTV + A",
+        "flag": null
+      },
+      {
+        "name": "ACCOM S",
+        "flag": null
+      },
+      {
+        "name": "CRTV",
+        "flag": null
+      },
+      {
+        "name": "PURE + S",
+        "flag": null
+      },
+      {
+        "name": "CRTV + CV",
+        "flag": null
+      },
+      {
+        "name": "ACCOM + A",
+        "flag": null
+      },
+      {
+        "name": "CCRTV",
+        "flag": null
+      },
+      {
+        "name": "CRTV + DC",
+        "flag": null
+      },
+      {
+        "name": "ACCOM + DA",
+        "flag": null
+      },
+      {
+        "name": "CRTV +",
+        "flag": null
+      },
+      {
+        "name": "CRTV + DA",
+        "flag": null
+      },
+      {
+        "name": "ACCOM +",
+        "flag": null
+      },
+      {
+        "name": "Gasoline Family",
+        "flag": null
+      },
+      {
+        "name": "TC",
+        "flag": null
+      },
+      {
+        "name": "SMART",
+        "flag": null
+      },
+      {
+        "name": "TC DCA",
+        "flag": null
+      },
+      {
+        "name": "List of additional variants to which the Ratings are extended (June 2026)",
+        "flag": null
+      },
+      {
+        "name": "DMT*",
+        "flag": null
+      },
+      {
+        "name": "ACCOM S DK",
+        "flag": null
+      },
+      {
+        "name": "ACCOM +A DK",
+        "flag": null
+      },
+      {
+        "name": "ACCOM + DK",
+        "flag": null
+      },
+      {
+        "name": "DCA#",
+        "flag": null
+      },
+      {
+        "name": "CRTV +S",
+        "flag": null
+      },
+      {
+        "name": "ACCOM + A DK",
+        "flag": null
+      },
+      {
+        "name": "TC*",
+        "flag": null
+      },
+      {
+        "name": "TC DCA*",
+        "flag": null
+      },
+      {
+        "name": "TGDI#",
+        "flag": null
+      },
+      {
+        "name": "ACCOMP + A",
+        "flag": null
+      },
+      {
+        "name": "TGDI DCA#",
+        "flag": null
+      },
+      {
+        "name": "ACCOM +A",
+        "flag": null
+      },
+      {
+        "name": "*Variant addition for existing powertrains is to extend ratings to newly introduced variants by vehicle manufacturer.",
+        "flag": null
+      },
+      {
+        "name": "#New powertrain addition to the exiting family of the model. Ratings to these applicable from June 2026 onwards.",
+        "flag": null
+      },
+      {
+        "name": "List of additional variants to which the Ratings are extended (Sept 2026)",
+        "flag": null
+      },
+      {
+        "name": "PURE X",
+        "flag": null
+      },
+      {
+        "name": "CRTV X+",
+        "flag": null
+      },
+      {
+        "name": "PURE X+ DK",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X DK",
+        "flag": null
+      },
+      {
+        "name": "PURE X+",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X",
+        "flag": null
+      },
+      {
+        "name": "CRTV X+ DK",
+        "flag": null
+      },
+      {
+        "name": "DCA",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X +",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X+ DK",
+        "flag": null
+      },
+      {
+        "name": "SMART X",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X\u00a0DK",
+        "flag": null
+      },
+      {
+        "name": "TGDI DCA",
+        "flag": null
+      },
+      {
+        "name": "ACCOM X+",
+        "flag": null
+      },
+      {
+        "name": "Variant addition for existing powertrains is to extend ratings to newly introduced variants by vehicle manufacturer.",
+        "flag": null
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-curvv.pdf",
+    "artifact_checksum": "33bbea8a1c7bc3324c6c2053cfaaf65968564db00a37c26fde3fc5919b5f60f1"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-harrier-ev/",
+    "tested_vehicle_name": "TATA \u2013 HARRIER.EV",
+    "tested_variant_config": "TATA \u2013 HARRIER.EV \u2013 EMP 75 & EMP 75 AWD",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2574 kg",
+    "year_of_publication": 2025,
+    "test_period": "June 2025 - Onwards",
+    "aop_score": 32.0,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_HARRIER.EV_.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); HARRIER_FRONTAL IMPACT_ DURING TEST; HARRIER_FRONTAL IMPACT_ POST TEST; HARRIER_SIDE IMPACT_DURING TEST.; HARRIER_SIDE IMPACT_POST TEST.; HARRIER_SIDE POLE IMPACT_DURING TEST.; HARRIER_SIDE POLE IMPACT_POST TEST.",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "ADV 65",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ 75",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S 65",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ DK 75",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S + A 65",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ A 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA 65",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ A DK 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ 65",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ DK 65",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP ST 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+ A 65",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP DK 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA+A DK 65",
+        "flag": "YES"
+      },
+      {
+        "name": "\u2014\u2013",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 65",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP DK 65",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP ST 65",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV 75",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S 75",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S + A 75",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA 75",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-harrier-ev.pdf",
+    "artifact_checksum": "1c5380432692f32edf95f2e5118f5b4d12fdf991a15336b75b2cbac4d91e8005"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-nexon-ev/",
+    "tested_vehicle_name": "TATA NEXON.EV",
+    "tested_variant_config": "TATA \u2013 NEXON.EV \u2013 LR EMP",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1816 kg",
+    "year_of_publication": 2024,
+    "test_period": "May 2024- Onwards",
+    "aop_score": 29.86,
+    "aop_stars": 5,
+    "cop_score": 44.95,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/06/Fact-Sheet_NexonEV_Revision-Sept-2025-1.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145)",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "LR CRE",
+        "flag": "YES"
+      },
+      {
+        "name": "MR CRE",
+        "flag": "YES"
+      },
+      {
+        "name": "LR FEA",
+        "flag": "YES"
+      },
+      {
+        "name": "MR FEA",
+        "flag": "YES"
+      },
+      {
+        "name": "LR EMP",
+        "flag": "YES"
+      },
+      {
+        "name": "MR EMP",
+        "flag": "YES"
+      },
+      {
+        "name": "LR FEA DK",
+        "flag": "YES"
+      },
+      {
+        "name": "LR EMP DK",
+        "flag": "YES"
+      },
+      {
+        "name": "CRE 45",
+        "flag": "YES"
+      },
+      {
+        "name": "CRE 35",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA 45",
+        "flag": "YES"
+      },
+      {
+        "name": "FEA 35",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 45 DK",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ 45 RDK",
+        "flag": "YES"
+      },
+      {
+        "name": "IB K3 EMP+ 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A 45",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A 45 RDK",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+ A 45 DK",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-nexon-ev.pdf",
+    "artifact_checksum": "ef9d742cd2ebbe8237572d9ee335ad766f6ae30bd41e7a105c0213a18fc61c80"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-nexon/",
+    "tested_vehicle_name": "TATA NEXON",
+    "tested_variant_config": "TATA \u2013 NEXON \u2013 FRLS + DAMT",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1638kg",
+    "year_of_publication": 2024,
+    "test_period": "October 2024- Onwards",
+    "aop_score": 29.41,
+    "aop_stars": 5,
+    "cop_score": 43.83,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/10/FACT-SHEET_Nexon_Rev2_Aug-2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); 1; 2; 3; 4; 5; 6",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability. | The addition of variants is to cover new variants introduced by the vehicle manufacturer. | The addition of variants is to cover new variants introduced by the vehicle manufacturer.",
+    "explicit_variants": [
+      {
+        "name": "SMART",
+        "flag": null
+      },
+      {
+        "name": "CRTV",
+        "flag": null
+      },
+      {
+        "name": "PURE (O)",
+        "flag": null
+      },
+      {
+        "name": "SMART +",
+        "flag": null
+      },
+      {
+        "name": "CRTV S",
+        "flag": null
+      },
+      {
+        "name": "PURE",
+        "flag": null
+      },
+      {
+        "name": "SMART + S",
+        "flag": null
+      },
+      {
+        "name": "CRTV +",
+        "flag": null
+      },
+      {
+        "name": "PURE S",
+        "flag": null
+      },
+      {
+        "name": "CRTV + S",
+        "flag": null
+      },
+      {
+        "name": "CRTV + S (O)",
+        "flag": null
+      },
+      {
+        "name": "CRTV + (O)",
+        "flag": null
+      },
+      {
+        "name": "FRLS (O)",
+        "flag": null
+      },
+      {
+        "name": "FRLS S (O)",
+        "flag": null
+      },
+      {
+        "name": "FRLS",
+        "flag": null
+      },
+      {
+        "name": "FRLS S",
+        "flag": null
+      },
+      {
+        "name": "CRTV DK",
+        "flag": null
+      },
+      {
+        "name": "FRLS + S",
+        "flag": null
+      },
+      {
+        "name": "CRTV + DK",
+        "flag": null
+      },
+      {
+        "name": "FRLS +",
+        "flag": null
+      },
+      {
+        "name": "CRTV + S DK",
+        "flag": null
+      },
+      {
+        "name": "FRLSP (O)",
+        "flag": null
+      },
+      {
+        "name": "\u2014\u2013",
+        "flag": null
+      },
+      {
+        "name": "FRLSP S (O)",
+        "flag": null
+      },
+      {
+        "name": "FRLSP",
+        "flag": null
+      },
+      {
+        "name": "FRLSP S",
+        "flag": null
+      },
+      {
+        "name": "FRLSP + S",
+        "flag": null
+      },
+      {
+        "name": "FRLSP +",
+        "flag": null
+      },
+      {
+        "name": "FRLS DK",
+        "flag": null
+      },
+      {
+        "name": "FRLS + S DK",
+        "flag": null
+      },
+      {
+        "name": "SMART (O)",
+        "flag": null
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-nexon.pdf",
+    "artifact_checksum": "a7fd4aa16211010ea710329e3a332a4f21c5b407584b2415890fe858604f9a11"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-punch-ev-2026/",
+    "tested_vehicle_name": "TATA \u2013 Punch.ev 2026",
+    "tested_variant_config": "Tata \u2013 Punch.ev 2026 \u2013 ADV 40, EMP+S 40",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1613 kg",
+    "year_of_publication": 2026,
+    "test_period": "July 2026- Onwards",
+    "aop_score": 31.09,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/07/FACT-SHEET_Punch.ev-2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); Punch.ev 2026_FRONTAL IMPACT_ DURING TEST; Punch.ev 2026_FRONTAL IMPACT_ POST TEST; Punch.ev 2026_SIDE IMPACT_DURING TEST; Punch.ev 2026_SIDE IMPACT_POST TEST; Punch.ev 2026_SIDE POLE IMPACT_DURING TEST; Punch.ev 2026_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "SMT+40",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV 40",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP 40",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP+S 40",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT 30",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT+ 30",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-punch-ev-2026.pdf",
+    "artifact_checksum": "3ef8de9d1855712743d12ce2200fd3c7e616f8e2d93d7ad8455cf24c8dc7f5dd"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-punch-ev/",
+    "tested_vehicle_name": "TATA PUNCH.EV",
+    "tested_variant_config": "TATA \u2013 PUNCH.EV \u2013 EMP+ S LR",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1626 kg",
+    "year_of_publication": 2024,
+    "test_period": "May 2024- February 2026",
+    "aop_score": 31.46,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/06/FACT-SHEET_Punch.EV_2024.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145)",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "Up to VIN# MAT833031TPBV1178. Refer variant list for details in annexure.",
+    "explicit_variants": [
+      {
+        "name": "SMT LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT + LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT +",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV + LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV +",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP S LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP S",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP + LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP +",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP + S LR ACFC",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP + S",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT LR",
+        "flag": "YES"
+      },
+      {
+        "name": "SMT + LR",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV LR",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV S LR",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV + LR",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP LR",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP S LR",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP + LR",
+        "flag": "YES"
+      },
+      {
+        "name": "EMP + S LR",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-punch-ev.pdf",
+    "artifact_checksum": "3d480e2e53c47ffe2c268f21531d30151ecf6852b406e92ae9b40d81c910568f"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-punch/",
+    "tested_vehicle_name": "TATA \u2013 PUNCH",
+    "tested_variant_config": "TATA \u2013 PUNCH \u2013 PURE+ CNG AMT & ACCOMP CNG MT",
+    "body_type": "Compact SUV (2 rows)",
+    "crash_test_weight_kg": "1448 kg",
+    "year_of_publication": 2026,
+    "test_period": "January 2026- Onwards",
+    "aop_score": 30.58,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_PUNCH_ICE_Rev-1-Feb-2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); PUNCH_FRONTAL IMPACT_ DURING TEST; PUNCH_FRONTAL IMPACT_ POST TEST; PUNCH_SIDE IMPACT_DURING TEST; PUNCH_SIDE IMPACT_POST TEST; PUNCH_SIDE POLE IMPACT_DURING TEST; PUNCH_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability. | The addition of variants is to cover new variants introduced by the vehicle manufacturer.",
+    "explicit_variants": [
+      {
+        "name": "SMART",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE +",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE + S",
+        "flag": "YES"
+      },
+      {
+        "name": "ADVT",
+        "flag": "YES"
+      },
+      {
+        "name": "ADVT S",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP +S",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP+ S",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP + S",
+        "flag": "YES"
+      },
+      {
+        "name": "ADVT MT",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOMP +S MT",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-punch.pdf",
+    "artifact_checksum": "1e8591491af8df99d8844c6e335ab75afc655d54ee056cea512e57214fecbb12"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-safari-harrier/",
+    "tested_vehicle_name": "TATA SAFARI/ HARRIER",
+    "tested_variant_config": "TATA \u2013 SAFARI/ HARRIER \u2013 ADV+",
+    "body_type": "SUV (3 Rows)",
+    "crash_test_weight_kg": "2126 kg",
+    "year_of_publication": 2023,
+    "test_period": "Dec 2023 - Onwards",
+    "aop_score": 30.08,
+    "aop_stars": 5,
+    "cop_score": 44.54,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2024/03/FACT-SHEET_Safari-Harrier_Revision-3-Dec-2025.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145)",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability. | The addition of variants is to cover new variants introduced by the vehicle manufacturer with the cosmetic changes. | The addition of variants is to cover new variants (Stealth edition) introduced by the vehicle manufacturer. | The addition of variants is to cover new variants (Gasoline Powertrain) introduced by the vehicle manufacturer.",
+    "explicit_variants": [
+      {
+        "name": "SMT",
+        "flag": null
+      },
+      {
+        "name": "ADV T",
+        "flag": null
+      },
+      {
+        "name": "7S SMT",
+        "flag": null
+      },
+      {
+        "name": "7S ADV T",
+        "flag": null
+      },
+      {
+        "name": "SMT(O)",
+        "flag": null
+      },
+      {
+        "name": "PUR+S",
+        "flag": null
+      },
+      {
+        "name": "7S SMT(O)",
+        "flag": null
+      },
+      {
+        "name": "7S PUR+S",
+        "flag": null
+      },
+      {
+        "name": "PUR",
+        "flag": null
+      },
+      {
+        "name": "PUR+S DK",
+        "flag": null
+      },
+      {
+        "name": "7S PUR",
+        "flag": null
+      },
+      {
+        "name": "7S PUR+S DK",
+        "flag": null
+      },
+      {
+        "name": "PUR(O)",
+        "flag": null
+      },
+      {
+        "name": "ADV+",
+        "flag": null
+      },
+      {
+        "name": "7S PUR(O)",
+        "flag": null
+      },
+      {
+        "name": "7S ADV+",
+        "flag": null
+      },
+      {
+        "name": "ADV",
+        "flag": null
+      },
+      {
+        "name": "ADV+A",
+        "flag": null
+      },
+      {
+        "name": "7S ADV",
+        "flag": null
+      },
+      {
+        "name": "7S ADV+A",
+        "flag": null
+      },
+      {
+        "name": "ADV+ DK",
+        "flag": null
+      },
+      {
+        "name": "7S ADV+DK",
+        "flag": null
+      },
+      {
+        "name": "FRLR",
+        "flag": null
+      },
+      {
+        "name": "6S ACC+",
+        "flag": null
+      },
+      {
+        "name": "FRL",
+        "flag": null
+      },
+      {
+        "name": "6S ACC+DK",
+        "flag": null
+      },
+      {
+        "name": "FRL+",
+        "flag": null
+      },
+      {
+        "name": "7S ACC",
+        "flag": null
+      },
+      {
+        "name": "FRLR+",
+        "flag": null
+      },
+      {
+        "name": "7S ACC DK",
+        "flag": null
+      },
+      {
+        "name": "FRL DK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC+",
+        "flag": null
+      },
+      {
+        "name": "FRL+ DK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC+DK",
+        "flag": null
+      },
+      {
+        "name": "PUR+",
+        "flag": null
+      },
+      {
+        "name": "7S PUR+",
+        "flag": null
+      },
+      {
+        "name": "ADV+A RD",
+        "flag": null
+      },
+      {
+        "name": "7S ADV+A RD",
+        "flag": null
+      },
+      {
+        "name": "ADV+ RD",
+        "flag": null
+      },
+      {
+        "name": "7S ADV+RD",
+        "flag": null
+      },
+      {
+        "name": "FRL RD",
+        "flag": null
+      },
+      {
+        "name": "6S ACC+RD",
+        "flag": null
+      },
+      {
+        "name": "FRL+ RD",
+        "flag": null
+      },
+      {
+        "name": "7S ACC RD",
+        "flag": null
+      },
+      {
+        "name": "7S ACC+RD",
+        "flag": null
+      },
+      {
+        "name": "FRL+ SD",
+        "flag": null
+      },
+      {
+        "name": "6S ACC+ SD",
+        "flag": null
+      },
+      {
+        "name": "7S ACC+ SD",
+        "flag": null
+      },
+      {
+        "name": "PUR X",
+        "flag": null
+      },
+      {
+        "name": "7S PUR X",
+        "flag": null
+      },
+      {
+        "name": "PUR X DK",
+        "flag": null
+      },
+      {
+        "name": "7S PUR X DK",
+        "flag": null
+      },
+      {
+        "name": "ADV X",
+        "flag": null
+      },
+      {
+        "name": "7S ADV X+",
+        "flag": null
+      },
+      {
+        "name": "ADV X+",
+        "flag": null
+      },
+      {
+        "name": "7S ADV X+ DK",
+        "flag": null
+      },
+      {
+        "name": "ADV X DK",
+        "flag": null
+      },
+      {
+        "name": "6S ACC X+",
+        "flag": null
+      },
+      {
+        "name": "ADV X+ DK",
+        "flag": null
+      },
+      {
+        "name": "6S ACC X+ DK",
+        "flag": null
+      },
+      {
+        "name": "FRL X",
+        "flag": null
+      },
+      {
+        "name": "6S ACC UL RDK",
+        "flag": null
+      },
+      {
+        "name": "FRL X+",
+        "flag": null
+      },
+      {
+        "name": "6S ACC X+ GLD",
+        "flag": null
+      },
+      {
+        "name": "FRL X DK",
+        "flag": null
+      },
+      {
+        "name": "6S ACC X+ SDO",
+        "flag": null
+      },
+      {
+        "name": "FRL X+ DK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X",
+        "flag": null
+      },
+      {
+        "name": "FRL UL RDK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X DK",
+        "flag": null
+      },
+      {
+        "name": "FRL X+ SDO",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X+",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X+ DK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC UL RDK",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X+ GLD",
+        "flag": null
+      },
+      {
+        "name": "7S ACC X+ SDO",
+        "flag": null
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-safari-harrier.pdf",
+    "artifact_checksum": "76e70f7e6391b528dd610be76fcb5d40feed95deaac2787feb0214f7f2b411c9"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/tata-sierra/",
+    "tested_vehicle_name": "TATA \u2013 SIERRA",
+    "tested_variant_config": "TATA \u2013 SIERRA \u2013 ACCOMP+ & ADV+ [CRAIL MT]",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "1825 kg",
+    "year_of_publication": 2026,
+    "test_period": "March 2026- Onwards",
+    "aop_score": 31.14,
+    "aop_stars": 5,
+    "cop_score": 44.73,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/03/FACT-SHEET_Sierra_Rev2_July-2026.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); SIERRA_FRONTAL IMPACT_ DURING TEST; SIERRA_FRONTAL IMPACT_ POST TEST; SIERRA_SIDE IMPACT_DURING TEST; SIERRA_SIDE IMPACT_POST TEST; SIERRRA_SIDE POLE IMPACT_DURING TEST; SIERRA_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "SMT+",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV",
+        "flag": "YES"
+      },
+      {
+        "name": "February 2026(Rev.2: July 2026)",
+        "flag": "YES"
+      },
+      {
+        "name": "PURE+",
+        "flag": "YES"
+      },
+      {
+        "name": "ADV+",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOM",
+        "flag": "YES"
+      },
+      {
+        "name": "ACCOM+",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/tata-sierra.pdf",
+    "artifact_checksum": "72645ef29169662a78d208998aec5e011858f087551099e4bcf26f80cc8eb83d"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/toyota-innova-hycross/",
+    "tested_vehicle_name": "TOYOTA \u2013 INNOVA HYCROSS",
+    "tested_variant_config": "TOYOTA \u2013 INNOVA HYCROSS \u2013 8S, VX8S SHEV & ZX7S SHEV",
+    "body_type": "MPV (3 rows)",
+    "crash_test_weight_kg": "1970\u00a0kg",
+    "year_of_publication": 2025,
+    "test_period": "June  2025 - Onwards",
+    "aop_score": 30.47,
+    "aop_stars": 5,
+    "cop_score": 45.0,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2025/06/FACT-SHEET_INNOVA-HYCROSS.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); HYCROSS_FRONTAL IMPACT_ DURING TEST; HYCROSS_FRONTAL IMPACT_ POST TEST; HYCROSS_SIDE IMPACT_DURING TEST; HYCROSS_SIDE IMPACT_POST TEST; HYCROSS_SIDE POLE IMPACT_DURING TEST.; HYCROSS_SIDE POLE IMPACT_POST TEST.",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "8S",
+        "flag": "YES"
+      },
+      {
+        "name": "FLT8S",
+        "flag": "YES"
+      },
+      {
+        "name": "FLT-8S",
+        "flag": "YES"
+      },
+      {
+        "name": "7S",
+        "flag": "YES"
+      },
+      {
+        "name": "8S LE",
+        "flag": "YES"
+      },
+      {
+        "name": "FLT7S",
+        "flag": "YES"
+      },
+      {
+        "name": "8S OPTION",
+        "flag": "YES"
+      },
+      {
+        "name": "VX8S",
+        "flag": "YES"
+      },
+      {
+        "name": "VXFLT8",
+        "flag": "YES"
+      },
+      {
+        "name": "7S LE",
+        "flag": "YES"
+      },
+      {
+        "name": "VX7S",
+        "flag": "YES"
+      },
+      {
+        "name": "FLT-7S",
+        "flag": "YES"
+      },
+      {
+        "name": "VXFLT7",
+        "flag": "YES"
+      },
+      {
+        "name": "7S OPTION",
+        "flag": "YES"
+      },
+      {
+        "name": "ZX7S",
+        "flag": "YES"
+      },
+      {
+        "name": "\u2014\u2013",
+        "flag": "YES"
+      },
+      {
+        "name": "ZXFLT7",
+        "flag": "YES"
+      },
+      {
+        "name": "ZX7S EXCL",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/toyota-innova-hycross.pdf",
+    "artifact_checksum": "e93f6ced852da3222959660ff8e3171d3e2c6300beb2e0b26e88105214d03d9d"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/vinfast-vf6/",
+    "tested_vehicle_name": "VINFAST \u2013 VF6",
+    "tested_variant_config": "VINFAST \u2013 VF6 \u2013 EARTH, WIND & SKY",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2252 kg",
+    "year_of_publication": 2026,
+    "test_period": "January 2026 - Onwards",
+    "aop_score": 27.13,
+    "aop_stars": 5,
+    "cop_score": 44.41,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_VF6.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); VF6_FRONTAL IMPACT_ DURING TEST; VF6_FRONTAL IMPACT_ POST TEST; VF6_SIDE IMPACT_DURING TEST.; VF6_SIDE IMPACT_POST TEST; VF6_SIDE POLE IMPACT_DURING TEST_; VF6_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Earth",
+        "flag": "YES"
+      },
+      {
+        "name": "Wind",
+        "flag": "YES"
+      },
+      {
+        "name": "Wind Infinity",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/vinfast-vf6.pdf",
+    "artifact_checksum": "8a5bcd20f3960d6e6d5c98fc258b1551b17698e3f0be8f435381b8fb788d46c1"
+  },
+  {
+    "url": "https://www.bncap.in/vehicle/vinfast-vf7/",
+    "tested_vehicle_name": "VINFAST \u2013 VF7",
+    "tested_variant_config": "VINFAST \u2013 VF7 \u2013 WIND & SKY",
+    "body_type": "SUV (2 rows)",
+    "crash_test_weight_kg": "2493 kg",
+    "year_of_publication": 2026,
+    "test_period": "January 2026 - Onwards",
+    "aop_score": 28.54,
+    "aop_stars": 5,
+    "cop_score": 45.25,
+    "cop_stars": 5,
+    "factsheet_url": "https://www.bncap.in/wp-content/uploads/2026/01/FACT-SHEET_VF7.pdf",
+    "sat_summary": "ESC (UN GTR No.8/UNECE R140 AIS-133); Pedestrian protection (AIS-100); Seat Belt Reminder (SBR) (AIS-145); VF7_FRONTAL IMPACT_ DURING TEST; VF7_FRONTAL IMPACT_ POST TEST; VF7_SIDE IMPACT_DURING TEST.; VF7_SIDE IMPACT_POST TEST; VF7_SIDE POLE IMPACT_DURING TEST_; VF7_SIDE POLE IMPACT_POST TEST",
+    "protocol_version": "AIS-197 Version- September 2023 Cl",
+    "applicability_notes": "To the variants listed in the Ratings Applicability.",
+    "explicit_variants": [
+      {
+        "name": "Earth",
+        "flag": "YES"
+      },
+      {
+        "name": "Wind",
+        "flag": "YES"
+      },
+      {
+        "name": "Wind Infinity",
+        "flag": "YES"
+      },
+      {
+        "name": "Sky",
+        "flag": "YES"
+      },
+      {
+        "name": "Sky Infinity",
+        "flag": "YES"
+      }
+    ],
+    "artifact_path": "scratch/bncap_pdfs/vinfast-vf7.pdf",
+    "artifact_checksum": "45d37bfa2398002ab9799b3c5431972025432bab01b2d851a352956a2539db4a"
+  }
+]

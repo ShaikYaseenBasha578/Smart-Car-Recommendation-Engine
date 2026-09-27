@@ -1,0 +1,140 @@
+{
+  "pre_cksum": "e752ebde5b7f227140bedb319c6b9753a3fdbdde",
+  "backup_cksum": "e752ebde5b7f227140bedb319c6b9753a3fdbdde",
+  "post_cksum": "c1e0647ce463c98eebd9d2bd9470940fdb23ead5",
+  "post_integ": "ok",
+  "pre_counts": {
+    "manufacturer": 12,
+    "model": 62,
+    "generation": 62,
+    "variant": 832,
+    "powertrain": 131,
+    "source": 8,
+    "source_observation": 3414,
+    "field_provenance": 36445,
+    "safety_test": 0,
+    "safety_test_applicability": 0
+  },
+  "post_counts": {
+    "manufacturer": 12,
+    "model": 62,
+    "generation": 62,
+    "variant": 832,
+    "powertrain": 131,
+    "source": 8,
+    "source_observation": 3451,
+    "field_provenance": 36445,
+    "safety_test": 37,
+    "safety_test_applicability": 20
+  },
+  "diffs": {
+    "manufacturer": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "model": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "generation": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "variant": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "powertrain": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "source": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "source_observation": {
+      "added": 37,
+      "deleted": 0,
+      "modified": 0
+    },
+    "field_provenance": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "safety_test": {
+      "added": 37,
+      "deleted": 0,
+      "modified": 0
+    },
+    "safety_test_applicability": {
+      "added": 20,
+      "deleted": 0,
+      "modified": 0
+    }
+  },
+  "idemp_diffs": {
+    "manufacturer": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "model": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "generation": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "variant": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "powertrain": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "source": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "source_observation": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "field_provenance": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "safety_test": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    },
+    "safety_test_applicability": {
+      "added": 0,
+      "deleted": 0,
+      "modified": 0
+    }
+  },
+  "idemp_ok": true,
+  "stats": {
+    "UNRESOLVED": 7,
+    "RESOLVED": 20,
+    "NO_MATCH": 10
+  }
+}

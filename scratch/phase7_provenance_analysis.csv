@@ -1,0 +1,8 @@
+decision,decision_reason,cnt,variants,fields
+accepted,v6_migration,24955,812,36
+confirmed,agrees_with_canonical,8398,519,27
+rejected,conflict_with_canonical_authority,2426,469,15
+accepted,new_field,599,251,10
+accepted,edition_override_or_correction,39,16,7
+rejected,conflict_field_tier_5_vs_best_5,26,13,10
+rejected,conflict_field_tier_5_vs_best_3,2,2,1

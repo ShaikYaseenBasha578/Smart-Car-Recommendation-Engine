@@ -1,0 +1,312 @@
+[
+  {
+    "manufacturer": "Honda",
+    "model": "Amaze",
+    "model_id": 19
+  },
+  {
+    "manufacturer": "Honda",
+    "model": "City",
+    "model_id": 20
+  },
+  {
+    "manufacturer": "Honda",
+    "model": "Elevate",
+    "model_id": 50
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Aura",
+    "model_id": 17
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Creta",
+    "model_id": 1
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Exter",
+    "model_id": 51
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Grand i10 Nios",
+    "model_id": 16
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Venue",
+    "model_id": 8
+  },
+  {
+    "manufacturer": "Hyundai",
+    "model": "Verna",
+    "model_id": 18
+  },
+  {
+    "manufacturer": "Kia",
+    "model": "Carens Clavis",
+    "model_id": 61
+  },
+  {
+    "manufacturer": "Kia",
+    "model": "Carens Clavis EV",
+    "model_id": 62
+  },
+  {
+    "manufacturer": "Kia",
+    "model": "Seltos",
+    "model_id": 9
+  },
+  {
+    "manufacturer": "Kia",
+    "model": "Syros",
+    "model_id": 60
+  },
+  {
+    "manufacturer": "MG",
+    "model": "Hector",
+    "model_id": 31
+  },
+  {
+    "manufacturer": "MG",
+    "model": "Windsor EV",
+    "model_id": 4
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "Bolero",
+    "model_id": 26
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "Scorpio Classic",
+    "model_id": 27
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "Scorpio-N",
+    "model_id": 28
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "Thar",
+    "model_id": 53
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "Thar Roxx",
+    "model_id": 54
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "XUV 3XO",
+    "model_id": 2
+  },
+  {
+    "manufacturer": "Mahindra",
+    "model": "XUV 7XO",
+    "model_id": 29
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Alto K10",
+    "model_id": 37
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Baleno",
+    "model_id": 15
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Brezza",
+    "model_id": 7
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Dzire",
+    "model_id": 13
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Eeco",
+    "model_id": 14
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Ertiga",
+    "model_id": 10
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Fronx",
+    "model_id": 35
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Grand Vitara",
+    "model_id": 39
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Jimny",
+    "model_id": 44
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "S-Presso",
+    "model_id": 36
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Swift",
+    "model_id": 3
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "Victoris",
+    "model_id": 40
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "WagonR",
+    "model_id": 12
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "XL6",
+    "model_id": 11
+  },
+  {
+    "manufacturer": "Maruti Suzuki",
+    "model": "e VITARA",
+    "model_id": 45
+  },
+  {
+    "manufacturer": "Nissan",
+    "model": "Gravite",
+    "model_id": 57
+  },
+  {
+    "manufacturer": "Nissan",
+    "model": "Magnite",
+    "model_id": 56
+  },
+  {
+    "manufacturer": "Renault",
+    "model": "Duster",
+    "model_id": 55
+  },
+  {
+    "manufacturer": "Renault",
+    "model": "Triber",
+    "model_id": 32
+  },
+  {
+    "manufacturer": "Skoda",
+    "model": "Kushaq",
+    "model_id": 46
+  },
+  {
+    "manufacturer": "Skoda",
+    "model": "Kylaq",
+    "model_id": 52
+  },
+  {
+    "manufacturer": "Skoda",
+    "model": "Slavia",
+    "model_id": 47
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Altroz",
+    "model_id": 23
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Harrier",
+    "model_id": 30
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Nexon",
+    "model_id": 5
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Nexon EV",
+    "model_id": 6
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Punch EV",
+    "model_id": 59
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Tiago",
+    "model_id": 24
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Tiago EV",
+    "model_id": 58
+  },
+  {
+    "manufacturer": "Tata",
+    "model": "Tigor",
+    "model_id": 25
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Fortuner",
+    "model_id": 22
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Glanza",
+    "model_id": 33
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Hilux",
+    "model_id": 42
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Innova Crysta",
+    "model_id": 21
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Innova Hycross",
+    "model_id": 41
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Rumion",
+    "model_id": 43
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Urban Cruiser Hyryder",
+    "model_id": 38
+  },
+  {
+    "manufacturer": "Toyota",
+    "model": "Urban Cruiser Taisor",
+    "model_id": 34
+  },
+  {
+    "manufacturer": "Volkswagen",
+    "model": "Taigun",
+    "model_id": 48
+  },
+  {
+    "manufacturer": "Volkswagen",
+    "model": "Virtus",
+    "model_id": 49
+  }
+]

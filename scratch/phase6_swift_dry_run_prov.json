@@ -1,0 +1,632 @@
+[
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "LXi Petrol Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi Petrol Automatic",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "55.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "accepted",
+    "decision_reason": "new_field"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "VXi CNG Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "rejected",
+    "decision_reason": "conflict_field_tier_1_vs_best_1"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Petrol Automatic",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "55.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "accepted",
+    "decision_reason": "new_field"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi CNG Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "accepted",
+    "decision_reason": "field_authority_override_tier_1_over_5"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "rejected",
+    "decision_reason": "conflict_field_tier_1_vs_best_1"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Manual",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "length_mm",
+    "accepted_value": "3860.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "width_mm",
+    "accepted_value": "1735.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "height_mm",
+    "accepted_value": "1520.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "wheelbase_mm",
+    "accepted_value": "2450.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "fuel_tank_litres",
+    "accepted_value": "37.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "boot_space_litres",
+    "accepted_value": "265.0",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "airbags",
+    "accepted_value": "6.0",
+    "decision": "rejected",
+    "decision_reason": "conflict_field_tier_1_vs_best_1"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "abs",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "esc",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  },
+  {
+    "variant": "ZXi Plus Petrol Automatic",
+    "field_name": "hill_assist",
+    "accepted_value": "1",
+    "decision": "confirmed",
+    "decision_reason": "agrees_with_canonical"
+  }
+]

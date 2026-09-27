@@ -1,0 +1,129 @@
+--- Table 0 ---
+[
+  [
+    "Variants",
+    "Ex-ShowroomPrice",
+    "On-Road Price"
+  ],
+  [
+    "CretaE1.5L  Petrol Manual",
+    "\u20b910.91 Lakh",
+    "\u20b912.74 Lakh"
+  ],
+  [
+    "CretaEX1.5L  Petrol Manual",
+    "\u20b912.07 Lakh",
+    "\u20b914.09 Lakh"
+  ],
+  [
+    "CretaE1.5L  Diesel Manual",
+    "\u20b912.53 Lakh",
+    "\u20b914.94 Lakh"
+  ],
+  [
+    "CretaEX(O)1.5L  Petrol Manual",
+    "\u20b913.14 Lakh",
+    "\u20b915.34 Lakh"
+  ]
+]
+... 30 more rows
+--- Table 1 ---
+[
+  [
+    "Powertrain",
+    "Top Recommended Variant"
+  ],
+  [
+    "1.5L  Petrol Manual",
+    "CretaS(O)"
+  ]
+]
+--- Table 2 ---
+[
+  [
+    "Length",
+    "4330mm"
+  ],
+  [
+    "Width",
+    "1790mm"
+  ],
+  [
+    "Height",
+    "1635mm"
+  ],
+  [
+    "Wheelbase",
+    "2610mm"
+  ],
+  [
+    "Ground Clearance",
+    "190mm"
+  ]
+]
+... 2 more rows
+--- Table 3 ---
+[
+  [
+    "Engine Type",
+    "Naturally Aspirated"
+  ],
+  [
+    "Engine Displacement",
+    "1.5-Litre"
+  ],
+  [
+    "Cubic Capacity (cc)",
+    "1497cc"
+  ],
+  [
+    "Cylinders",
+    "4"
+  ],
+  [
+    "Max. Power",
+    "115PS @ 6300rpm"
+  ]
+]
+... 6 more rows
+--- Table 4 ---
+[
+  [
+    "Fuel Type",
+    "Petrol"
+  ],
+  [
+    "Fuel Tank Capacity",
+    "50L"
+  ],
+  [
+    "Drivetrain",
+    "FWD"
+  ]
+]
+--- Table 5 ---
+[
+  [
+    "Claimed Fuel Efficiency",
+    "17.4kmpl"
+  ],
+  [
+    "Real World Mileage",
+    "-"
+  ],
+  [
+    "Claimed Range",
+    "870km"
+  ],
+  [
+    "Real World Range",
+    "-"
+  ]
+]
+--- Table 6 ---
+[
+  [
+    "Standard Warranty",
+    "3 Year(s) / Unlimitedkm"
+  ]
+]

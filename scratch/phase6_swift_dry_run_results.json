@@ -1,0 +1,74 @@
+[
+  {
+    "raw_name": "LXi Petrol Manual",
+    "resolution_status": "resolved",
+    "canon_name": "VXi Petrol Manual",
+    "transmission": "Manual",
+    "id": 3669,
+    "raw_payload": "{\"variant_name\": \"LXi Petrol Manual\", \"raw_variant_name\": \"LXi\", \"transmission\": \"MT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"-\", \"rear camera\": \"-\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "VXi Petrol Manual",
+    "resolution_status": "resolved",
+    "canon_name": "LXi Petrol Manual",
+    "transmission": "Manual",
+    "id": 3670,
+    "raw_payload": "{\"variant_name\": \"VXi Petrol Manual\", \"raw_variant_name\": \"VXi\", \"transmission\": \"MT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"-\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "VXi Petrol Automatic",
+    "resolution_status": "resolved",
+    "canon_name": "ZXi Petrol Automatic",
+    "transmission": "AMT",
+    "id": 3671,
+    "raw_payload": "{\"variant_name\": \"VXi Petrol Automatic\", \"raw_variant_name\": \"VXi AMT\", \"transmission\": \"AMT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"-\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "VXi CNG Manual",
+    "resolution_status": "resolved",
+    "canon_name": "ZXi CNG Manual",
+    "transmission": "Manual",
+    "id": 3672,
+    "raw_payload": "{\"variant_name\": \"VXi CNG Manual\", \"raw_variant_name\": \"VXi CNG\", \"transmission\": \"MT\", \"powertrain_type\": \"CNG\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"55 L (Water Equivalent)\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"69.75 PS @ 5700 rpm\", \"max torque\": \"101.8 Nm @ 2900 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"-\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "ZXi Petrol Manual",
+    "resolution_status": "resolved",
+    "canon_name": "LXi Petrol Manual",
+    "transmission": "Manual",
+    "id": 3673,
+    "raw_payload": "{\"variant_name\": \"ZXi Petrol Manual\", \"raw_variant_name\": \"ZXi\", \"transmission\": \"MT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"Standard\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "ZXi Petrol Automatic",
+    "resolution_status": "resolved",
+    "canon_name": "VXi Petrol Automatic",
+    "transmission": "AMT",
+    "id": 3674,
+    "raw_payload": "{\"variant_name\": \"ZXi Petrol Automatic\", \"raw_variant_name\": \"ZXi AMT\", \"transmission\": \"AMT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"Standard\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "ZXi CNG Manual",
+    "resolution_status": "resolved",
+    "canon_name": "VXi CNG Manual",
+    "transmission": "Manual",
+    "id": 3675,
+    "raw_payload": "{\"variant_name\": \"ZXi CNG Manual\", \"raw_variant_name\": \"ZXi CNG\", \"transmission\": \"MT\", \"powertrain_type\": \"CNG\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"55 L (Water Equivalent)\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"69.75 PS @ 5700 rpm\", \"max torque\": \"101.8 Nm @ 2900 rpm\", \"touchscreen\": \"7-inch\", \"rear camera\": \"Standard\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "ZXi Plus Petrol Manual",
+    "resolution_status": "resolved",
+    "canon_name": "LXi Petrol Manual",
+    "transmission": "Manual",
+    "id": 3676,
+    "raw_payload": "{\"variant_name\": \"ZXi Plus Petrol Manual\", \"raw_variant_name\": \"ZXi+\", \"transmission\": \"MT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"9-inch\", \"rear camera\": \"Standard\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  },
+  {
+    "raw_name": "ZXi Plus Petrol Automatic",
+    "resolution_status": "resolved",
+    "canon_name": "VXi Petrol Automatic",
+    "transmission": "AMT",
+    "id": 3677,
+    "raw_payload": "{\"variant_name\": \"ZXi Plus Petrol Automatic\", \"raw_variant_name\": \"ZXi+ AMT\", \"transmission\": \"AMT\", \"powertrain_type\": \"Petrol\", \"length\": \"3860 mm\", \"width\": \"1735 mm\", \"height\": \"1520 mm\", \"wheelbase\": \"2450 mm\", \"displacement\": \"1197 cc\", \"fuel tank capacity\": \"37 L\", \"boot space\": \"265 L\", \"airbags\": \"6\", \"abs\": \"Standard\", \"esc\": \"Standard\", \"hill hold\": \"Standard\", \"max power\": \"81.58 PS @ 5700 rpm\", \"max torque\": \"111.7 Nm @ 4300 rpm\", \"touchscreen\": \"9-inch\", \"rear camera\": \"Standard\", \"sunroof\": \"-\", \"__meta__\": {\"oem\": \"Maruti Suzuki India Limited\", \"model\": \"Swift\", \"generation\": \"4th generation\", \"document_identity\": \"Swift_Brochure_May2024_v1\", \"source_url\": \"file://assets/brochures/Maruti_Swift_2024_Brochure.pdf\", \"published_at\": \"May 2024\", \"extraction_method\": \"pdf_manual_dry_run_v1\", \"page_evidence\": \"Specs Table Pg 14, Features Pg 12-13\"}}"
+  }
+]

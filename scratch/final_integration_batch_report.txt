@@ -1,0 +1,13 @@
+
+--- BATCH EXTRACTION COMPLETE (251.3s) ---
+Attempted: 62
+GENERIC_SUCCESS: 6
+GENERIC_PARTIAL: 11
+EXTRACTION_FAILURE: 21
+RESOLUTION_FAILURE: 12
+PDF_TEXT_FAILURE: 12
+CLASSIFICATION_UNKNOWN: 0
+
+--- RECOMMENDED WORK QUEUE ---
+Priority 1: Fix Generic Extraction Logic (Affects: 21 models)
+Priority 3: Update DB Resolver Synonyms (Affects: 12 models)

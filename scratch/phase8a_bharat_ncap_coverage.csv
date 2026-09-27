@@ -1,0 +1,38 @@
+tested_vehicle_name,manufacturer,source_name,carrec_model,generation,scope,resolution_status,reason
+CITROEN-BASALT,,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""CITROEN-BASALT"""
+CITROEN – C3 AIRCROSS (5-SEATER),,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""CITROEN – C3 AIRCROSS (5-SEATER)"""
+HONDA – AMAZE 3RD GEN,Honda,Bharat NCAP,Amaze,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+HYUNDAI-TUCSON,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Hyundai.
+HYUNDAI – VENUE,Hyundai,Bharat NCAP,Venue,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+KIA – SELTOS,Kia,Bharat NCAP,Seltos,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+KIA-SYROS,Kia,Bharat NCAP,Syros,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+MAHINDRA – BE 6,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Mahindra.
+MAHINDRA – THAR ROXX,,Bharat NCAP,,,,UNRESOLVED,"Multiple model matches: [53, 54]."
+MAHINDRA – XEV 9e,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Mahindra.
+Mahindra-XUV 3XO,Mahindra,Bharat NCAP,XUV 3XO,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+Mahindra-XUV 400 EV,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Mahindra.
+MAHINDRA – XUV 7XO,Mahindra,Bharat NCAP,XUV 7XO,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+MARUTI-BALENO-GASOLINE (2 AB),Maruti Suzuki,Bharat NCAP,Baleno,,MODEL_LEVEL,RESOLVED,Explicitly tested Baleno with 2 airbags. CarRec model 15.
+MARUTI-BALENO-GASOLINE (6 AB),Maruti Suzuki,Bharat NCAP,Baleno,,MODEL_LEVEL,RESOLVED,Explicitly tested Baleno with 6 airbags. CarRec model 15.
+MARUTI – BREZZA,,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""MARUTI – BREZZA"""
+MARUTI – DZIRE – GASOLINE,,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""MARUTI – DZIRE – GASOLINE"""
+MARUTI SUZUKI – e VITARA,Maruti Suzuki,Bharat NCAP,e VITARA,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+MARUTI SUZUKI – INVICTO,,Bharat NCAP,,,,NO_MATCH,Invicto is not in CarRec top-62. Not aliasing to Innova Hycross as test is badge-specific.
+MARUTI SUZUKI – VICTORIS,Maruti Suzuki,Bharat NCAP,Victoris,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+NISSAN – TEKTON,,Bharat NCAP,,,,NO_MATCH,Nissan Tekton is not in CarRec top-62 models.
+RENAULT – DUSTER,Renault,Bharat NCAP,Duster,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+SKODA – KYLAQ,Skoda,Bharat NCAP,Kylaq,,MODEL_LEVEL,RESOLVED,Unambiguous mapping to Skoda Kylaq.
+TATA ALTROZ,Tata,Bharat NCAP,Altroz,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+TATA CURVV EV,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Tata.
+TATA CURVV,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Tata.
+TATA – HARRIER.EV,Tata,Bharat NCAP,Harrier,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+TATA NEXON.EV,Tata,Bharat NCAP,Nexon EV,,MODEL_LEVEL,RESOLVED,Unambiguous mapping to Nexon EV (model_id=6).
+TATA NEXON,Tata,Bharat NCAP,Nexon,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+TATA – Punch.ev 2026,Tata,Bharat NCAP,Punch EV,,MODEL_LEVEL,RESOLVED,BNCAP page states updated model introduced in Feb 2026. Same CarRec model 59.
+TATA PUNCH.EV,Tata,Bharat NCAP,Punch EV,,MODEL_LEVEL,RESOLVED,BNCAP title is TATA PUNCH.EV. Unambiguous.
+TATA – PUNCH,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Tata.
+TATA SAFARI/ HARRIER,Tata,Bharat NCAP,Harrier,,FAMILY_LEVEL,RESOLVED,BNCAP page explicitly covers Harrier AND Safari as one test (shared platform).
+TATA – SIERRA,,Bharat NCAP,,,,NO_MATCH,No matching model found in CarRec top-62 for Tata.
+TOYOTA – INNOVA HYCROSS,Toyota,Bharat NCAP,Innova Hycross,Gen 1 (V6 Import),MODEL_LEVEL,RESOLVED,Matched manufacturer and model systematically.
+VINFAST – VF6,,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""VINFAST – VF6"""
+VINFAST – VF7,,Bharat NCAP,,,,UNRESOLVED,"Could not identify manufacturer from title: ""VINFAST – VF7"""

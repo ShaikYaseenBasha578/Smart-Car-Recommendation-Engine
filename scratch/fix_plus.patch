@@ -1,0 +1,11 @@
+--- knowledge_base/ingestion/common/resolver.py
++++ knowledge_base/ingestion/common/resolver.py
+@@ -23,6 +23,8 @@
+     s1, s2 = s1.lower(), s2.lower()
+     if s1 == s2: return 1.0
+     
++    s1 = s1.replace('+', ' plus ').replace('(o)', ' optional ')
++    s2 = s2.replace('+', ' plus ').replace('(o)', ' optional ')
+     # Exact token inclusion
+     tokens1 = set(s1.split())
+     tokens2 = set(s2.split())

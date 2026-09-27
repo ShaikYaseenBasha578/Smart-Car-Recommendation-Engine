@@ -1,0 +1,1112 @@
+{
+  "16": [],
+  "18": [
+    [
+      [
+        "TECHNICAL SPECIFICATIONS",
+        null,
+        null,
+        null
+      ],
+      [
+        "",
+        "",
+        "",
+        "1.0L K-Series"
+      ],
+      [
+        "",
+        "1.2 L K-Seri es (Petrol)",
+        "1.2 L K-Ser ies (CNG)",
+        "(Turbo)"
+      ],
+      [
+        "DIMENSIONS",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Length (mm)",
+        "39",
+        "95",
+        "3995"
+      ],
+      [
+        "Width (mm)",
+        "17",
+        "65",
+        "1765"
+      ],
+      [
+        "Height (unladen) (mm)",
+        "15",
+        "50",
+        "1550"
+      ],
+      [
+        "Wheelbase (mm)",
+        "25",
+        "20",
+        "2520"
+      ],
+      [
+        "Boot Space (L)*",
+        "308",
+        "-",
+        "308"
+      ],
+      [
+        "Seating Capacity",
+        "",
+        "5",
+        "5"
+      ],
+      [
+        "Min. turning radius (m)",
+        "4",
+        ".9",
+        "4.9"
+      ],
+      [
+        "ENGINE",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Type",
+        "1.2L Dual Je",
+        "t, Dual VVT",
+        "1.0L Turbo Boosterjet"
+      ],
+      [
+        "Engine Capacity (cc)",
+        "11",
+        "97",
+        "998"
+      ],
+      [
+        "",
+        "",
+        "66 kW@6000rpm or 89.73 PS@6000rpm (Petrol)",
+        ""
+      ],
+      [
+        "M ax Power",
+        "66 kW@6000rpm or 89.73 PS@6000rpm",
+        "57 kW@6000rpm or 77.5 PS @6000 rpm (CNG)",
+        "73.6 kW@5500rpm or 100.06 PS@5500rpm"
+      ],
+      [
+        "Max Torque (Nm@rpm)",
+        "113@4400",
+        "113@4400 (Petrol) 98.5@4300 (CNG)",
+        "147.6@2000-4500"
+      ],
+      [
+        "Fuel Efficiency***",
+        "21.79(MT), 22.89(AMT) km/l",
+        "28.51(MT) km/kg",
+        "21.5(MT), 20.01(AT) km/l"
+      ],
+      [
+        "Fuel Tank Capacity (L)",
+        "37",
+        "Petrol: 37 CNG: 55L (Water Equivalent)",
+        "37"
+      ],
+      [
+        "Idle Start Stop",
+        "\uf0fc",
+        "-",
+        "\uf0fc"
+      ],
+      [
+        "Regenerative Braking",
+        "-",
+        "-",
+        "\uf0fc"
+      ],
+      [
+        "Electric Torque Assist during Acceleration",
+        "-",
+        "-",
+        "\uf0fc"
+      ],
+      [
+        "TRANSMISSION",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Type",
+        "5MT/ 5AMT",
+        "5MT",
+        "5MT/ 6AT"
+      ],
+      [
+        "DRIVE PERFORMANCE",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Front Brakes",
+        "Di",
+        "sc",
+        "Disc"
+      ],
+      [
+        "Rear Brakes",
+        "Dr",
+        "um",
+        "Drum"
+      ],
+      [
+        "Front Suspension",
+        "MacPher",
+        "son Strut",
+        "MacPherson Strut"
+      ],
+      [
+        "Rear Suspension",
+        "Torsio",
+        "n Beam",
+        "Torsion Beam"
+      ],
+      [
+        "Tyre##",
+        "195/6",
+        "0 R16",
+        "195/60 R16"
+      ],
+      [
+        "WEIGHT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Kerb Weight (kg)",
+        "960-970(MT), 965-975(AMT)",
+        "1050Kg - 1060Kg",
+        "1015 - 1030(MT), 1055 - 1060(AT)"
+      ],
+      [
+        "Gross Vehicle Weight (kg)",
+        "1450",
+        "1480",
+        "1480"
+      ]
+    ],
+    [
+      [
+        "FEATURE LIST",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "",
+        "Sigma 1.2L",
+        "Delta 1.2L",
+        "Delta+ 1.2L MT/AMT &",
+        "Zeta",
+        "Alpha"
+      ],
+      [
+        "",
+        "MT/MT CNG",
+        "MT/MT CNG/AMT",
+        "1.0L Turbo MT",
+        "1.0L Turbo MT/AT",
+        "1.0L Turbo MT/AT"
+      ],
+      [
+        "Electrically Foldable ORVMs",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc (Auto)"
+      ],
+      [
+        "Engine Push Start/Stop With Smart Key",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Keyless Entry System",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Steering Wheel Mounted Controls",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Height Adjustable Driver Seat",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Front Center Armrest (Sliding Type With Storage)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Rear Foldable Seats (60:40 Split)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Adjustable Seat Headrest (Front & Rear)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Power windows (Front & Rear)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Driver Power Window Auto up/down with Anti-pinch",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Automatic Climate Control",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Rear AC Vents",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Fast USB Charging Sockets (Type A & C) (Rear)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Front Footwell Illumination",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "EXTERIORS",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Headlamps",
+        "Halogen Projector",
+        "Halogen Projector",
+        "LED Multi-reflector",
+        "LED Multi-reflector",
+        "LED Multi-reflector"
+      ],
+      [
+        "NEXTre\u2019 LED DRLs",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Automatic Headlamps (with Follow me Home Function)",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "NEXWave grille with chrome finish",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "NEXA Signature connected Full LED Rear combination Lamp",
+        "Without centre LIT",
+        "Without centre LIT",
+        "Without centre LIT",
+        "With centre LIT",
+        "With centre LIT"
+      ],
+      [
+        "Alloy Wheels",
+        "\u2014",
+        "\u2014",
+        "\uf0fc(Painted)",
+        "\uf0fc(Painted)",
+        "\uf0fc(Precision Cut)"
+      ],
+      [
+        "Steel Wheels with Wheel cover",
+        "\uf0fc",
+        "\uf0fc",
+        "\u2014",
+        "\u2014",
+        "\u2014"
+      ],
+      [
+        "Rear Wiper & Washer",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Roof End Spoiler",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Skid Plate (Fr & Rr)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Wheel arch, Side Door, Underbody Cladding",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Roof Garnish",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Shark Fin Antenna",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Dual Tone Exterior (In Selected Colours)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "UV cut Window Glasses",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "Body coloured ORVMs with Turn Indicator",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "INTERIORS",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Dual Tone Interior",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Leather Wrapped Steering Wheel^",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "Chrome Plated Inside Door Handles",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Premium Fabric Seat",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Flat Bottom Steering Wheel",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Rear Parcel Tray",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "SUZUKI CONNECT**",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "SAFETY AND SECURITY",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Emergency Alerts",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Breakdown notification",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Stolen Vehicle Notification and Tracking",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Immobilizer Request",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Tow Away and Tracking",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Geofence",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Safe Time Alert",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Valet Alert",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "REMOTE OPERATIONS",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Remote AC Control (AT only)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Door Lock/Cancel Lock",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Headlight OFF",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Hazard Lights ON/OFF",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Alarm ON/OFF",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Smartwatch Connectivity",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Suzuki Connect Skills for Amazon Alexa****",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "VEHICLE STATUS & ALERTS",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Low Fuel & Low Range Alert",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Over Speed Alert#",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "AC Idling",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Door & Lock Status",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Battery Status",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Trip (Start & End)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Headlamp & Hazard Lights",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "LOCATION & TRIPS",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Live Vehicle Tracking & Location sharing",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Driving Score",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Navigate to Car",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "View & Share Trip History",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Guidance Around Destination",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ]
+    ],
+    [
+      [
+        "FEATURE LIST",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "",
+        "Sigma 1.2L",
+        "Delta 1.2L",
+        "Delta+ 1.2L MT/AMT &",
+        "Zeta",
+        "Alpha"
+      ],
+      [
+        "",
+        "MT/MT CNG",
+        "MT/MT CNG/AMT",
+        "1.0L Turbo MT",
+        "1.0L Turbo MT/AT",
+        "1.0L Turbo MT/AT"
+      ],
+      [
+        "SAFETY^^",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Head Up Display",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "360 View Camera",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "Electronic Stability Program (ESP\u00ae)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Hill Hold Assist",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Side and Curtain Airbags",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Dual Front Airbags",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Rear View Camera",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Reverse Parking Sensors (with Infographic Display)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Seat Belt Reminder (Driver + Co Driver) - Lamp & Buzzer",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Seat Belt Reminder (Rear) - Lamp & Buzzer",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "All 3-Point ELR Seat Belts",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Rear Defogger (Electric)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Anti-theft Security System",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "ISOFIX Child Seat Restraint System",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Inside Rear View Mirror (Day/Night)",
+        "\uf0fc(Manual)",
+        "\uf0fc(Manual)",
+        "\uf0fc(Manual)",
+        "\uf0fc(Manual)",
+        "\uf0fc(Auto)"
+      ],
+      [
+        "INFOTAINMENT",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Touch Screen Audio",
+        "\u2014",
+        "17.78cm",
+        "17.78cm",
+        "17.78cm",
+        "22.86cm"
+      ],
+      [
+        "",
+        "",
+        "(SmartPlay Pro)",
+        "(SmartPlay Pro)",
+        "(SmartPlay Pro)",
+        "(SmartPlay Pro+)"
+      ],
+      [
+        "Premium Sound System",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "ARKAMYS"
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "(Surround Sense)"
+      ],
+      [
+        "Android Auto and Apple CarPlay (Wireless)###",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Onboard Voice Assistant",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "(Wake-up through \u201c\u201dHi Suzuki\u201d\u201d with Barge-in feature)",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Over the Air Update (OTA)",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "USB and Bluetooth Connectivity",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Speakers (4)",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Tweeters (2)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Multi Information Display (TFT Color)",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Gear Shift Indicator(MT Only)",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "COMFORT AND CONVENIENCE",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Wireless Smartdevice Charger",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc"
+      ],
+      [
+        "Paddle Shifters",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "AT Only",
+        "AT Only"
+      ],
+      [
+        "Cruise Control",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\u2014",
+        "\uf0fc"
+      ],
+      [
+        "Steering Column Adjustment",
+        "\uf0fc(Tilt)",
+        "\uf0fc(Tilt)",
+        "\uf0fc(Tilt)",
+        "\uf0fc (Tilt & Telescopic)",
+        "\uf0fc(Tilt & Telescopic)"
+      ],
+      [
+        "Electrically Adjustable ORVMs",
+        "\u2014",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc",
+        "\uf0fc"
+      ]
+    ],
+    [
+      [
+        "",
+        "Six Airbags 3 Point ELR Seatbelts and Seatbelt Reminder\nABS with EBD ISOFIX Child Seat Anchorages\nESP with Hill Hold Assist Full Frontal impact compliance,\n3 Years/100000km Warranty Frontal Offset impact compliance,\nSide impact compliance & Pedestrian Compliance\nReverse Parking Assist"
+      ]
+    ]
+  ],
+  "19": []
+}
