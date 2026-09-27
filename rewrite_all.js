@@ -1,0 +1,239 @@
+const fs = require('fs');
+
+const HTML_INDEX = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarRec | AI-Powered Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2' }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+                CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-white hover:text-cyan-400 transition-colors">/new_cars</a>
+                <a href="/used" class="text-base-200 hover:text-cyan-400 transition-colors">/used_cars</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 flex flex-col items-center justify-center px-6 pt-32 pb-20">
+        <div class="w-full max-w-4xl flex flex-col items-center text-center space-y-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                ML Intent Parser Active
+            </div>
+            <h1 class="font-display font-bold text-5xl md:text-7xl tracking-tight leading-tight text-white">
+                Find the perfect match <br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">using structured data.</span>
+            </h1>
+            <p class="text-base-200 text-lg md:text-xl max-w-2xl font-light">
+                Describe what you need. Our recommendation engine parses your intent, applies filters, and ranks the results against our dataset.
+            </p>
+            <div class="w-full max-w-2xl relative mt-8">
+                <div class="absolute inset-0 bg-cyan-500/5 blur-xl rounded-2xl"></div>
+                <div class="relative bg-base-900 border border-base-800 rounded-2xl p-2 flex items-center shadow-2xl focus-within:border-cyan-500/50 transition-colors">
+                    <label for="search" class="sr-only">Search</label>
+                    <span class="pl-4 pr-2 text-base-800">
+                        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </span>
+                    <input id="search" type="search" placeholder="e.g. A safe family SUV under 15 lakhs with high mileage" 
+                           class="flex-1 bg-transparent text-white font-sans text-lg px-2 py-4 outline-none placeholder-base-700">
+                    <a href="{{ url_for('recommend_page') }}" onclick="localStorage.setItem('userQuery', document.getElementById('search').value)" 
+                       class="ml-2 bg-cyan-500 hover:bg-cyan-400 text-base-950 font-display font-semibold px-6 py-4 rounded-xl transition-all">
+                        Execute
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mt-16 text-left">
+                <div class="bg-base-900 border border-base-800 rounded-xl p-5">
+                    <p class="font-mono text-xs text-base-200 mb-1 opacity-70">DATASET</p>
+                    <p class="font-display text-xl text-white">Processed</p>
+                </div>
+                <div class="bg-base-900 border border-base-800 rounded-xl p-5">
+                    <p class="font-mono text-xs text-base-200 mb-1 opacity-70">LATENCY</p>
+                    <p class="font-display text-xl text-white">~120ms</p>
+                </div>
+                <div class="bg-base-900 border border-base-800 rounded-xl p-5">
+                    <p class="font-mono text-xs text-base-200 mb-1 opacity-70">PARSER</p>
+                    <p class="font-display text-xl text-cyan-400">ML + Regex</p>
+                </div>
+                <div class="bg-base-900 border border-base-800 rounded-xl p-5">
+                    <p class="font-mono text-xs text-base-200 mb-1 opacity-70">SOURCES</p>
+                    <p class="font-display text-xl text-white">3 Active</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>document.documentElement.classList.add('dark');</script>
+</body>
+</html>`;
+
+const HTML_RECOMMEND = `<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results | CarRec</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 300: '#d4d4d4', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 900: '#164e63' },
+              danger: { 400: '#f87171', 500: '#ef4444', 900: '#7f1d1d' }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div> CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-cyan-400">/new_cars</a>
+                <a href="/used" class="text-base-300 hover:text-cyan-400 transition-colors">/used_cars</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
+        <form onsubmit="sendQuery(event)" class="w-full max-w-4xl mx-auto mb-12">
+            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
+                <label for="userQuery" class="sr-only">Query</label>
+                <span class="pl-4 pr-2 text-base-700 font-mono text-sm">~/query $</span>
+                <input id="userQuery" type="text" class="flex-1 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="Enter parameters...">
+                <button type="submit" class="ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Run</button>
+            </div>
+        </form>
+        <div id="results" class="w-full flex flex-col gap-8"></div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = localStorage.getItem("userQuery");
+            if (saved) {
+                document.getElementById("userQuery").value = saved;
+                localStorage.removeItem("userQuery");
+                sendQuery();
+            }
+        });
+    </script>
+</body>
+</html>`;
+
+const HTML_USED = `<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Cars | CarRec</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 300: '#d4d4d4', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 900: '#164e63' },
+              danger: { 400: '#f87171', 500: '#ef4444', 900: '#7f1d1d' }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div> CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-base-300 hover:text-cyan-400 transition-colors">/new_cars</a>
+                <a href="/used" class="text-cyan-400">/used_cars</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
+        <h1 class="font-display text-3xl md:text-4xl text-white font-bold mb-8">Used Car Aggregator</h1>
+        <form onsubmit="sendUsedQuery(event)" class="w-full max-w-4xl mb-12">
+            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
+                <label for="usedQuery" class="sr-only">Query</label>
+                <span class="pl-4 pr-2 text-base-700 font-mono text-sm">~/scrape $</span>
+                <input id="usedQuery" type="text" class="flex-1 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="e.g. Maruti Swift automatic in Delhi">
+                <button type="submit" class="ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Scrape</button>
+            </div>
+        </form>
+        <div id="results" class="w-full flex flex-col gap-6"></div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>`;
+
+const CSS_CONTENT = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+}`;
+
+fs.writeFileSync("templates/index.html", HTML_INDEX);
+fs.writeFileSync("templates/recommend.html", HTML_RECOMMEND);
+fs.writeFileSync("templates/used.html", HTML_USED);
+fs.writeFileSync("static/style.css", CSS_CONTENT);

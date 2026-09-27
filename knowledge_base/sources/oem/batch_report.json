@@ -1,0 +1,1574 @@
+{
+  "total_attempted": 62,
+  "GENERIC_SUCCESS": [
+    "Honda_City",
+    "Hyundai_Aura",
+    "Maruti Suzuki_Brezza",
+    "Maruti Suzuki_Fronx",
+    "Maruti Suzuki_Swift",
+    "Maruti Suzuki_Victoris"
+  ],
+  "GENERIC_PARTIAL": [
+    "Honda_Amaze",
+    "Hyundai_Creta",
+    "Hyundai_Grand i10 Nios",
+    "MG_Windsor EV",
+    "Maruti Suzuki_Baleno",
+    "Maruti Suzuki_Dzire",
+    "Maruti Suzuki_Jimny",
+    "Maruti Suzuki_XL6",
+    "Skoda_Kylaq",
+    "Volkswagen_Taigun",
+    "Volkswagen_Virtus"
+  ],
+  "EXTRACTION_FAILURE": [
+    "Hyundai_Venue",
+    "Hyundai_Verna",
+    "Kia_Carens Clavis",
+    "Mahindra_Bolero",
+    "Maruti Suzuki_Alto K10",
+    "Nissan_Gravite",
+    "Nissan_Magnite",
+    "Renault_Duster",
+    "Renault_Triber",
+    "Tata_Altroz",
+    "Tata_Harrier",
+    "Tata_Nexon",
+    "Tata_Nexon EV",
+    "Tata_Punch EV",
+    "Tata_Tiago",
+    "Tata_Tiago EV",
+    "Tata_Tigor",
+    "Toyota_Fortuner",
+    "Toyota_Hilux",
+    "Toyota_Innova Crysta",
+    "Toyota_Rumion"
+  ],
+  "RESOLUTION_FAILURE": [
+    "Hyundai_Exter",
+    "Kia_Carens Clavis EV",
+    "MG_Hector",
+    "Mahindra_Scorpio Classic",
+    "Mahindra_Scorpio-N",
+    "Mahindra_Thar",
+    "Mahindra_XUV 3XO",
+    "Maruti Suzuki_e VITARA",
+    "Skoda_Kushaq",
+    "Skoda_Slavia",
+    "Toyota_Glanza",
+    "Toyota_Innova Hycross"
+  ],
+  "PDF_TEXT_FAILURE": [
+    "Honda_Elevate",
+    "Kia_Seltos",
+    "Kia_Syros",
+    "Mahindra_Thar Roxx",
+    "Mahindra_XUV 7XO",
+    "Maruti Suzuki_Eeco",
+    "Maruti Suzuki_Ertiga",
+    "Maruti Suzuki_Grand Vitara",
+    "Maruti Suzuki_S-Presso",
+    "Maruti Suzuki_WagonR",
+    "Toyota_Urban Cruiser Hyryder",
+    "Toyota_Urban Cruiser Taisor"
+  ],
+  "CLASSIFICATION_UNKNOWN": [],
+  "reports": [
+    {
+      "make": "Honda",
+      "model": "Amaze",
+      "brochure_path": "knowledge_base/sources/oem/honda/amaze/latest/brochures/honda_amaze_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 42,
+      "text_extractable": true,
+      "table_count": 33,
+      "candidate_table_pages": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        34,
+        35,
+        37,
+        38,
+        39,
+        40
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 3,
+      "configs_resolved": 2,
+      "configs_unresolved": 1,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Honda",
+      "model": "City",
+      "brochure_path": "knowledge_base/sources/oem/honda/city/latest/brochures/honda_city_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 39,
+      "text_extractable": true,
+      "table_count": 3,
+      "candidate_table_pages": [
+        25,
+        28,
+        29
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 3,
+      "configs_resolved": 3,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Honda",
+      "model": "Elevate",
+      "brochure_path": "knowledge_base/sources/oem/honda/elevate/latest/brochures/honda_elevate_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 53,
+      "text_extractable": true,
+      "table_count": 16,
+      "candidate_table_pages": [
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        18,
+        19,
+        22,
+        27,
+        30,
+        34,
+        36,
+        39,
+        42,
+        51
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Hyundai",
+      "model": "Aura",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/aura/latest/brochures/Aura_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 14,
+      "text_extractable": true,
+      "table_count": 5,
+      "candidate_table_pages": [
+        8,
+        9,
+        10,
+        11,
+        13
+      ],
+      "classifier": "EngineTrimCrossMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 7,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Hyundai",
+      "model": "Creta",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/creta/gen2_facelift_2024/brochures/Hyundai_Creta_Brochure_Official.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 11,
+      "candidate_table_pages": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "classifier": "EngineTrimCrossMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 25,
+      "configs_resolved": 21,
+      "configs_unresolved": 4,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Hyundai",
+      "model": "Exter",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 14,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 13,
+      "configs_resolved": 0,
+      "configs_unresolved": 13,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Hyundai",
+      "model": "Grand i10 Nios",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 13,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "classifier": "EngineTrimCrossMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 10,
+      "configs_resolved": 8,
+      "configs_unresolved": 2,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Hyundai",
+      "model": "Venue",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/venue/latest/brochures/hyundai_venue_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 21,
+      "text_extractable": true,
+      "table_count": 6,
+      "candidate_table_pages": [
+        7,
+        14,
+        17,
+        18,
+        19,
+        20
+      ],
+      "classifier": "EngineTrimCrossMatrixStrategy",
+      "extraction_status": "ZERO_CONFIGS",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "0 configurations extracted"
+      ]
+    },
+    {
+      "make": "Hyundai",
+      "model": "Verna",
+      "brochure_path": "knowledge_base/sources/oem/hyundai/verna/latest/brochures/hyundai_verna_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 14,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        5,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "classifier": "EngineTrimCrossMatrixStrategy",
+      "extraction_status": "ZERO_CONFIGS",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "0 configurations extracted"
+      ]
+    },
+    {
+      "make": "Kia",
+      "model": "Carens Clavis",
+      "brochure_path": "knowledge_base/sources/oem/kia/carens_clavis/latest/brochures/kia_carens_clavis_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 9,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        7
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Kia",
+      "model": "Carens Clavis EV",
+      "brochure_path": "knowledge_base/sources/oem/kia/carens_clavis_ev/latest/brochures/kia_carens_clavis_ev_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 11,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        5,
+        9
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 9,
+      "configs_resolved": 0,
+      "configs_unresolved": 9,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Kia",
+      "model": "Seltos",
+      "brochure_path": "knowledge_base/sources/oem/kia/seltos/latest/brochures/kia_seltos_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 11,
+      "text_extractable": true,
+      "table_count": 3,
+      "candidate_table_pages": [
+        0,
+        9,
+        10
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Kia",
+      "model": "Syros",
+      "brochure_path": "knowledge_base/sources/oem/kia/syros/latest/brochures/kia_syros_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 8,
+      "text_extractable": true,
+      "table_count": 3,
+      "candidate_table_pages": [
+        0,
+        6,
+        7
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "MG",
+      "model": "Hector",
+      "brochure_path": "knowledge_base/sources/oem/mg/hector/latest/brochures/mg_hector_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 29,
+      "text_extractable": true,
+      "table_count": 9,
+      "candidate_table_pages": [
+        9,
+        10,
+        15,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 14,
+      "configs_resolved": 0,
+      "configs_unresolved": 14,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "MG",
+      "model": "Windsor EV",
+      "brochure_path": "knowledge_base/sources/oem/mg/windsor_ev/latest/brochures/mg_windsor_ev_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 46,
+      "text_extractable": true,
+      "table_count": 20,
+      "candidate_table_pages": [
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        15,
+        16,
+        17,
+        21,
+        22,
+        29,
+        35,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 5,
+      "configs_resolved": 1,
+      "configs_unresolved": 4,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Mahindra",
+      "model": "Bolero",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/bolero/latest/brochures/mahindra_bolero_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 5,
+      "text_extractable": true,
+      "table_count": 0,
+      "candidate_table_pages": [],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Mahindra",
+      "model": "Scorpio Classic",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/scorpio_classic/latest/brochures/mahindra_scorpio_classic_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 12,
+      "text_extractable": true,
+      "table_count": 5,
+      "candidate_table_pages": [
+        0,
+        3,
+        9,
+        10,
+        11
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 2,
+      "configs_resolved": 0,
+      "configs_unresolved": 2,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Mahindra",
+      "model": "Scorpio-N",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/scorpio_n/latest/brochures/mahindra_scorpio_n_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 24,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        6,
+        13,
+        22,
+        23
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "CRASH",
+      "errors": [
+        "Resolution crash: Generation Pinning Failed: 0 matches found for mahindra scorpio n starting None."
+      ]
+    },
+    {
+      "make": "Mahindra",
+      "model": "Thar",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/thar/latest/brochures/mahindra_thar_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 20,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        0,
+        9,
+        18,
+        19
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 4,
+      "configs_resolved": 0,
+      "configs_unresolved": 4,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Mahindra",
+      "model": "Thar Roxx",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/thar_roxx/latest/brochures/Thar_Roxx_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 3,
+      "text_extractable": false,
+      "table_count": 2,
+      "candidate_table_pages": [
+        1,
+        2
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF is image-only or lacks extractable text."
+      ]
+    },
+    {
+      "make": "Mahindra",
+      "model": "XUV 3XO",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        13
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 5,
+      "configs_resolved": 0,
+      "configs_unresolved": 5,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Mahindra",
+      "model": "XUV 7XO",
+      "brochure_path": "knowledge_base/sources/oem/mahindra/xuv_7xo/latest/brochures/mahindra_xuv_7xo_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 30,
+      "text_extractable": false,
+      "table_count": 2,
+      "candidate_table_pages": [
+        19,
+        27
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF is image-only or lacks extractable text."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Alto K10",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/alto_k10/latest/brochures/maruti_suzuki_alto_k10_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        3,
+        4
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Baleno",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/baleno/latest/brochures/Baleno_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 11,
+      "text_extractable": true,
+      "table_count": 6,
+      "candidate_table_pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 11,
+      "configs_resolved": 10,
+      "configs_unresolved": 1,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Brezza",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/brezza/latest/brochures/maruti_suzuki_brezza_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 11,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        9
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 4,
+      "configs_resolved": 4,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Dzire",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/dzire/latest/brochures/maruti_suzuki_dzire_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": true,
+      "table_count": 3,
+      "candidate_table_pages": [
+        1,
+        2,
+        4
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 11,
+      "configs_resolved": 2,
+      "configs_unresolved": 9,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Eeco",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/eeco/latest/brochures/maruti_suzuki_eeco_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 2,
+      "text_extractable": false,
+      "table_count": 0,
+      "candidate_table_pages": [],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF is image-only or lacks extractable text."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Ertiga",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/ertiga/latest/brochures/maruti_suzuki_ertiga_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 8,
+      "text_extractable": false,
+      "table_count": 4,
+      "candidate_table_pages": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF is image-only or lacks extractable text."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Fronx",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 20,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        6,
+        10,
+        12,
+        18
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 12,
+      "configs_resolved": 12,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Grand Vitara",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/grand_vitara/latest/brochures/maruti_suzuki_grand_vitara_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        4,
+        6,
+        11,
+        14
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Jimny",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/jimny/latest/brochures/maruti_suzuki_jimny_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 10,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 5,
+      "configs_resolved": 2,
+      "configs_unresolved": 3,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "S-Presso",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/s_presso/latest/brochures/maruti_suzuki_s_presso_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": false,
+      "table_count": 2,
+      "candidate_table_pages": [
+        1,
+        4
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF is image-only or lacks extractable text."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Swift",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/swift/gen4_2024/brochures/Maruti_Suzuki_Swift_Gen4_2024_Official_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 7,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        5
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 12,
+      "configs_resolved": 12,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "Victoris",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 17,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        14,
+        15
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 4,
+      "configs_resolved": 4,
+      "configs_unresolved": 0,
+      "resolution_status": "SUCCESS",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "WagonR",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/wagon_r/latest/brochures/WagonR_Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": true,
+      "table_count": 6,
+      "candidate_table_pages": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "XL6",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/xl6/latest/brochures/NEXA-Xl6-Brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        14
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 5,
+      "configs_resolved": 2,
+      "configs_unresolved": 3,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Maruti Suzuki",
+      "model": "e VITARA",
+      "brochure_path": "knowledge_base/sources/oem/maruti_suzuki/e_vitara/latest/brochures/maruti_suzuki_e_vitara_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 24,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        7,
+        9,
+        10,
+        13,
+        18,
+        22,
+        23
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 3,
+      "configs_resolved": 0,
+      "configs_unresolved": 3,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Nissan",
+      "model": "Gravite",
+      "brochure_path": "knowledge_base/sources/oem/nissan/gravite/latest/brochures/nissan_gravite_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 8,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        1,
+        7
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Nissan",
+      "model": "Magnite",
+      "brochure_path": "knowledge_base/sources/oem/nissan/magnite/latest/brochures/nissan_magnite_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        8,
+        14
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Renault",
+      "model": "Duster",
+      "brochure_path": "knowledge_base/sources/oem/renault/duster/latest/brochures/renault_duster_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 25,
+      "text_extractable": true,
+      "table_count": 0,
+      "candidate_table_pages": [],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Renault",
+      "model": "Triber",
+      "brochure_path": "knowledge_base/sources/oem/renault/triber/latest/brochures/renault_triber_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 21,
+      "text_extractable": true,
+      "table_count": 0,
+      "candidate_table_pages": [],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Skoda",
+      "model": "Kushaq",
+      "brochure_path": "knowledge_base/sources/oem/skoda/kushaq/latest/brochures/cartrade/kushaq_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 28,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 5,
+      "configs_resolved": 0,
+      "configs_unresolved": 5,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Skoda",
+      "model": "Kylaq",
+      "brochure_path": "knowledge_base/sources/oem/skoda/kylaq/latest/brochures/cartrade/kylaq_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 27,
+      "text_extractable": true,
+      "table_count": 7,
+      "candidate_table_pages": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 6,
+      "configs_unresolved": 1,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Skoda",
+      "model": "Slavia",
+      "brochure_path": "knowledge_base/sources/oem/skoda/slavia/latest/brochures/cartrade/slavia_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 44,
+      "text_extractable": true,
+      "table_count": 10,
+      "candidate_table_pages": [
+        10,
+        22,
+        23,
+        25,
+        27,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 8,
+      "configs_resolved": 0,
+      "configs_unresolved": 8,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Tata",
+      "model": "Altroz",
+      "brochure_path": "knowledge_base/sources/oem/tata/altroz/latest/brochures/tata_altroz_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 24,
+      "text_extractable": true,
+      "table_count": 6,
+      "candidate_table_pages": [
+        16,
+        17,
+        19,
+        20,
+        21,
+        22
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Harrier",
+      "brochure_path": "knowledge_base/sources/oem/tata/harrier/latest/brochures/tata_harrier_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 20,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        10,
+        19
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Nexon",
+      "brochure_path": "knowledge_base/sources/oem/tata/nexon/latest/brochures/nexon-ev-brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 40,
+      "text_extractable": true,
+      "table_count": 17,
+      "candidate_table_pages": [
+        2,
+        3,
+        7,
+        8,
+        11,
+        12,
+        17,
+        18,
+        22,
+        27,
+        29,
+        31,
+        32,
+        34,
+        37,
+        38,
+        39
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Nexon EV",
+      "brochure_path": "knowledge_base/sources/oem/tata/nexon_ev/latest/brochures/nexon-ev-brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 40,
+      "text_extractable": true,
+      "table_count": 17,
+      "candidate_table_pages": [
+        2,
+        3,
+        7,
+        8,
+        11,
+        12,
+        17,
+        18,
+        22,
+        27,
+        29,
+        31,
+        32,
+        34,
+        37,
+        38,
+        39
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Punch EV",
+      "brochure_path": "knowledge_base/sources/oem/tata/punch_ev/latest/brochures/tata_punch_ev_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 25,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        23
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Tiago",
+      "brochure_path": "knowledge_base/sources/oem/tata/tiago/latest/brochures/tiago-brochure-evf-final.pdf",
+      "pdf_valid": true,
+      "page_count": 34,
+      "text_extractable": true,
+      "table_count": 11,
+      "candidate_table_pages": [
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        27,
+        32,
+        33
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Tiago EV",
+      "brochure_path": "knowledge_base/sources/oem/tata/tiago_ev/latest/brochures/tiago-brochure-evf-final.pdf",
+      "pdf_valid": true,
+      "page_count": 34,
+      "text_extractable": true,
+      "table_count": 11,
+      "candidate_table_pages": [
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        27,
+        32,
+        33
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Tata",
+      "model": "Tigor",
+      "brochure_path": "knowledge_base/sources/oem/tata/tigor/latest/brochures/tata_tigor_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 20,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        18
+      ],
+      "classifier": "FeatureListStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: FeatureListStrategy unsupported: Complex inheritance lists are quarantined (NOT YET PRODUCTION-CAPABLE)."
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Fortuner",
+      "brochure_path": "knowledge_base/sources/oem/toyota/fortuner/latest/brochures/toyota_fortuner_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 1,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        0
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Glanza",
+      "brochure_path": "knowledge_base/sources/oem/toyota/glanza/latest/brochures/toyota_glanza_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 1,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        0
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 0,
+      "configs_unresolved": 7,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Toyota",
+      "model": "Hilux",
+      "brochure_path": "knowledge_base/sources/oem/toyota/hilux/latest/brochures/toyota_hilux_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 5,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        4
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Innova Crysta",
+      "brochure_path": "knowledge_base/sources/oem/toyota/innova_crysta/latest/brochures/toyota_innova_crysta_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        5
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Innova Hycross",
+      "brochure_path": "knowledge_base/sources/oem/toyota/innova_hycross/latest/brochures/e-brochure-hycross.pdf",
+      "pdf_valid": true,
+      "page_count": 15,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        11,
+        14
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 0,
+      "configs_unresolved": 7,
+      "resolution_status": "UNRESOLVED",
+      "errors": []
+    },
+    {
+      "make": "Toyota",
+      "model": "Rumion",
+      "brochure_path": "knowledge_base/sources/oem/toyota/rumion/latest/brochures/toyota_rumion_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 6,
+      "text_extractable": true,
+      "table_count": 4,
+      "candidate_table_pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "CRASH",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "Extraction crash: Could not structurally locate borderless feature matrix"
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Urban Cruiser Hyryder",
+      "brochure_path": "knowledge_base/sources/oem/toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 14,
+      "text_extractable": true,
+      "table_count": 1,
+      "candidate_table_pages": [
+        13
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Toyota",
+      "model": "Urban Cruiser Taisor",
+      "brochure_path": "knowledge_base/sources/oem/toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 24,
+      "text_extractable": true,
+      "table_count": 2,
+      "candidate_table_pages": [
+        20,
+        21
+      ],
+      "classifier": "Unknown",
+      "extraction_status": "FAILED",
+      "configs_extracted": 0,
+      "configs_resolved": 0,
+      "configs_unresolved": 0,
+      "resolution_status": "FAILED",
+      "errors": [
+        "PDF CID-font corruption detected."
+      ]
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Taigun",
+      "brochure_path": "knowledge_base/sources/oem/volkswagen/taigun/latest/brochures/volkswagen_taigun_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 15,
+      "text_extractable": true,
+      "table_count": 5,
+      "candidate_table_pages": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "classifier": "VariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 5,
+      "configs_unresolved": 2,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Virtus",
+      "brochure_path": "knowledge_base/sources/oem/volkswagen/virtus/latest/brochures/volkswagen_virtus_brochure.pdf",
+      "pdf_valid": true,
+      "page_count": 16,
+      "text_extractable": true,
+      "table_count": 6,
+      "candidate_table_pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "classifier": "BorderlessVariantColumnMatrixStrategy",
+      "extraction_status": "SUCCESS",
+      "configs_extracted": 7,
+      "configs_resolved": 4,
+      "configs_unresolved": 3,
+      "resolution_status": "PARTIAL",
+      "errors": []
+    }
+  ]
+}

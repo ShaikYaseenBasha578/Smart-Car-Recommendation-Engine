@@ -1,0 +1,446 @@
+{
+  "processed_models": [
+    "honda_amaze",
+    "honda_city",
+    "honda_elevate",
+    "hyundai_aura",
+    "hyundai_creta",
+    "hyundai_exter",
+    "hyundai_grand-i10-nios",
+    "hyundai_venue",
+    "hyundai_verna",
+    "kia_carens-clavis",
+    "kia_carens-clavis-ev",
+    "kia_seltos",
+    "kia_syros",
+    "mg_hector",
+    "mg_windsor-ev",
+    "mahindra_bolero",
+    "mahindra_scorpio-classic",
+    "mahindra_scorpio-n",
+    "mahindra_thar",
+    "mahindra_thar-roxx",
+    "mahindra_xuv-3xo",
+    "mahindra_xuv-7xo",
+    "maruti-suzuki_alto-k10",
+    "maruti-suzuki_baleno",
+    "maruti-suzuki_brezza",
+    "maruti-suzuki_dzire",
+    "maruti-suzuki_eeco",
+    "maruti-suzuki_ertiga",
+    "maruti-suzuki_fronx",
+    "maruti-suzuki_grand-vitara",
+    "maruti-suzuki_jimny",
+    "maruti-suzuki_s-presso",
+    "maruti-suzuki_swift",
+    "maruti-suzuki_victoris",
+    "maruti-suzuki_wagonr",
+    "maruti-suzuki_xl6",
+    "maruti-suzuki_e-vitara",
+    "nissan_gravite",
+    "nissan_magnite",
+    "renault_duster",
+    "renault_triber",
+    "skoda_kushaq",
+    "skoda_kylaq",
+    "skoda_slavia",
+    "tata_altroz",
+    "tata_harrier",
+    "tata_nexon",
+    "tata_nexon-ev",
+    "tata_punch-ev",
+    "tata_tiago",
+    "tata_tiago-ev",
+    "tata_tigor",
+    "toyota_fortuner",
+    "toyota_glanza",
+    "toyota_hilux",
+    "toyota_innova-crysta",
+    "toyota_innova-hycross",
+    "toyota_rumion",
+    "toyota_urban-cruiser-hyryder",
+    "toyota_urban-cruiser-taisor",
+    "volkswagen_taigun",
+    "volkswagen_virtus"
+  ],
+  "results": {
+    "honda_amaze": {
+      "discovered": 6,
+      "resolved": 3,
+      "unresolved": 3,
+      "new_fields": 0
+    },
+    "honda_city": {
+      "discovered": 8,
+      "resolved": 4,
+      "unresolved": 4,
+      "new_fields": 0
+    },
+    "honda_elevate": {
+      "discovered": 19,
+      "resolved": 19,
+      "unresolved": 0,
+      "new_fields": 6
+    },
+    "hyundai_aura": {
+      "discovered": 9,
+      "resolved": 5,
+      "unresolved": 4,
+      "new_fields": 1
+    },
+    "hyundai_creta": {
+      "discovered": 33,
+      "resolved": 33,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "hyundai_exter": {
+      "discovered": 36,
+      "resolved": 25,
+      "unresolved": 11,
+      "new_fields": 8
+    },
+    "hyundai_grand-i10-nios": {
+      "discovered": 15,
+      "resolved": 10,
+      "unresolved": 5,
+      "new_fields": 0
+    },
+    "hyundai_venue": {
+      "discovered": 35,
+      "resolved": 11,
+      "unresolved": 24,
+      "new_fields": 0
+    },
+    "hyundai_verna": {
+      "discovered": 33,
+      "resolved": 14,
+      "unresolved": 19,
+      "new_fields": 0
+    },
+    "kia_carens-clavis": {
+      "discovered": 39,
+      "resolved": 27,
+      "unresolved": 12,
+      "new_fields": 9
+    },
+    "kia_carens-clavis-ev": {
+      "discovered": 17,
+      "resolved": 14,
+      "unresolved": 3,
+      "new_fields": 4
+    },
+    "kia_seltos": {
+      "discovered": 52,
+      "resolved": 41,
+      "unresolved": 11,
+      "new_fields": 4
+    },
+    "kia_syros": {
+      "discovered": 17,
+      "resolved": 13,
+      "unresolved": 4,
+      "new_fields": 3
+    },
+    "mg_hector": {
+      "discovered": 7,
+      "resolved": 7,
+      "unresolved": 0,
+      "new_fields": 1
+    },
+    "mg_windsor-ev": {
+      "discovered": 6,
+      "resolved": 5,
+      "unresolved": 1,
+      "new_fields": 0
+    },
+    "mahindra_bolero": {
+      "discovered": 4,
+      "resolved": 4,
+      "unresolved": 0,
+      "new_fields": 3
+    },
+    "mahindra_scorpio-classic": {
+      "discovered": 4,
+      "resolved": 0,
+      "unresolved": 4,
+      "new_fields": 0
+    },
+    "mahindra_scorpio-n": {
+      "discovered": 31,
+      "resolved": 0,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "mahindra_thar": {
+      "discovered": 7,
+      "resolved": 7,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "mahindra_thar-roxx": {
+      "discovered": 28,
+      "resolved": 28,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "mahindra_xuv-3xo": {
+      "discovered": 29,
+      "resolved": 29,
+      "unresolved": 0,
+      "new_fields": 3
+    },
+    "mahindra_xuv-7xo": {
+      "discovered": 44,
+      "resolved": 42,
+      "unresolved": 2,
+      "new_fields": 2
+    },
+    "maruti-suzuki_alto-k10": {
+      "discovered": 8,
+      "resolved": 4,
+      "unresolved": 4,
+      "new_fields": 0
+    },
+    "maruti-suzuki_baleno": {
+      "discovered": 11,
+      "resolved": 8,
+      "unresolved": 3,
+      "new_fields": 0
+    },
+    "maruti-suzuki_brezza": {
+      "discovered": 19,
+      "resolved": 15,
+      "unresolved": 4,
+      "new_fields": 3
+    },
+    "maruti-suzuki_dzire": {
+      "discovered": 9,
+      "resolved": 4,
+      "unresolved": 5,
+      "new_fields": 0
+    },
+    "maruti-suzuki_eeco": {
+      "discovered": 6,
+      "resolved": 0,
+      "unresolved": 6,
+      "new_fields": 0
+    },
+    "maruti-suzuki_ertiga": {
+      "discovered": 9,
+      "resolved": 4,
+      "unresolved": 5,
+      "new_fields": 0
+    },
+    "maruti-suzuki_fronx": {
+      "discovered": 14,
+      "resolved": 12,
+      "unresolved": 2,
+      "new_fields": 3
+    },
+    "maruti-suzuki_grand-vitara": {
+      "discovered": 35,
+      "resolved": 24,
+      "unresolved": 11,
+      "new_fields": 2
+    },
+    "maruti-suzuki_jimny": {
+      "discovered": 6,
+      "resolved": 6,
+      "unresolved": 0,
+      "new_fields": 1
+    },
+    "maruti-suzuki_s-presso": {
+      "discovered": 8,
+      "resolved": 0,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "maruti-suzuki_swift": {
+      "discovered": 14,
+      "resolved": 11,
+      "unresolved": 3,
+      "new_fields": 0
+    },
+    "maruti-suzuki_victoris": {
+      "discovered": 36,
+      "resolved": 30,
+      "unresolved": 6,
+      "new_fields": 2
+    },
+    "maruti-suzuki_wagonr": {
+      "discovered": 22,
+      "resolved": 0,
+      "unresolved": 22,
+      "new_fields": 0
+    },
+    "maruti-suzuki_xl6": {
+      "discovered": 9,
+      "resolved": 7,
+      "unresolved": 2,
+      "new_fields": 1
+    },
+    "maruti-suzuki_e-vitara": {
+      "discovered": 4,
+      "resolved": 4,
+      "unresolved": 0,
+      "new_fields": 2
+    },
+    "nissan_gravite": {
+      "discovered": 13,
+      "resolved": 6,
+      "unresolved": 7,
+      "new_fields": 0
+    },
+    "nissan_magnite": {
+      "discovered": 48,
+      "resolved": 26,
+      "unresolved": 22,
+      "new_fields": 6
+    },
+    "renault_duster": {
+      "discovered": 20,
+      "resolved": 4,
+      "unresolved": 16,
+      "new_fields": 2
+    },
+    "renault_triber": {
+      "discovered": 17,
+      "resolved": 12,
+      "unresolved": 5,
+      "new_fields": 0
+    },
+    "skoda_kushaq": {
+      "discovered": 11,
+      "resolved": 11,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "skoda_kylaq": {
+      "discovered": 13,
+      "resolved": 13,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "skoda_slavia": {
+      "discovered": 10,
+      "resolved": 8,
+      "unresolved": 2,
+      "new_fields": 0
+    },
+    "tata_altroz": {
+      "discovered": 27,
+      "resolved": 16,
+      "unresolved": 11,
+      "new_fields": 2
+    },
+    "tata_harrier": {
+      "discovered": 58,
+      "resolved": 53,
+      "unresolved": 5,
+      "new_fields": 5
+    },
+    "tata_nexon": {
+      "discovered": 84,
+      "resolved": 65,
+      "unresolved": 19,
+      "new_fields": 0
+    },
+    "tata_nexon-ev": {
+      "discovered": 8,
+      "resolved": 8,
+      "unresolved": 0,
+      "new_fields": 3
+    },
+    "tata_punch-ev": {
+      "discovered": 6,
+      "resolved": 6,
+      "unresolved": 0,
+      "new_fields": 1
+    },
+    "tata_tiago": {
+      "discovered": 20,
+      "resolved": 11,
+      "unresolved": 9,
+      "new_fields": 0
+    },
+    "tata_tiago-ev": {
+      "discovered": 4,
+      "resolved": 4,
+      "unresolved": 0,
+      "new_fields": 4
+    },
+    "tata_tigor": {
+      "discovered": 14,
+      "resolved": 8,
+      "unresolved": 6,
+      "new_fields": 0
+    },
+    "toyota_fortuner": {
+      "discovered": 11,
+      "resolved": 0,
+      "unresolved": 11,
+      "new_fields": 0
+    },
+    "toyota_glanza": {
+      "discovered": 9,
+      "resolved": 7,
+      "unresolved": 2,
+      "new_fields": 0
+    },
+    "toyota_hilux": {
+      "discovered": 6,
+      "resolved": 0,
+      "unresolved": 6,
+      "new_fields": 0
+    },
+    "toyota_innova-crysta": {
+      "discovered": 14,
+      "resolved": 0,
+      "unresolved": 14,
+      "new_fields": 0
+    },
+    "toyota_innova-hycross": {
+      "discovered": 21,
+      "resolved": 2,
+      "unresolved": 19,
+      "new_fields": 1
+    },
+    "toyota_rumion": {
+      "discovered": 8,
+      "resolved": 0,
+      "unresolved": 8,
+      "new_fields": 0
+    },
+    "toyota_urban-cruiser-hyryder": {
+      "discovered": 22,
+      "resolved": 0,
+      "unresolved": 22,
+      "new_fields": 0
+    },
+    "toyota_urban-cruiser-taisor": {
+      "discovered": 12,
+      "resolved": 0,
+      "unresolved": 12,
+      "new_fields": 0
+    },
+    "volkswagen_taigun": {
+      "discovered": 11,
+      "resolved": 11,
+      "unresolved": 0,
+      "new_fields": 0
+    },
+    "volkswagen_virtus": {
+      "discovered": 12,
+      "resolved": 12,
+      "unresolved": 0,
+      "new_fields": 0
+    }
+  },
+  "global_stats": {
+    "discovered": 1203,
+    "resolved": 776,
+    "unresolved": 388,
+    "new_fields": 84
+  }
+}

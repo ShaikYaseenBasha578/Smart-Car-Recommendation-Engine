@@ -1,0 +1,14 @@
+{
+  "manufacturer": "Maruti Suzuki",
+  "model": "Swift",
+  "generation": "4th Generation (2024)",
+  "document_type": "Official Brochure",
+  "official_source_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/swift/document/Swift_SCNG_VerticalBrochure.pdf",
+  "local_relative_path": "knowledge_base/sources/oem/maruti_suzuki/swift/gen4_2024/brochures/Maruti_Suzuki_Swift_Gen4_2024_Official_Brochure.pdf",
+  "original_filename": "Swift_SCNG_VerticalBrochure.pdf",
+  "downloaded_at": "2026-09-09T20:20:43Z",
+  "sha256": "db41424a9b8c08bc8ede50ec617dc514ca81e1cdf975f0fd9c675e53b7e633ba",
+  "file_size_bytes": 1205220,
+  "publication_date_present": "Contains references to August 2024 JATO Dynamics certificate.",
+  "acquisition_method": "Automated curl fetch with BypassSandbox network proxy via Akamai 200 OK endpoint."
+}
