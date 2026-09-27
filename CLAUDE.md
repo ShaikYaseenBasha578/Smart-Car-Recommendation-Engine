@@ -39,6 +39,6 @@ Tag claims [VERIFIED] (query/file:line/hash) · [REPORTED-ONLY] · [CONTRADICTED
 
 ## Where things live
 - Reports: `knowledge_base/reports/` (phase reports PHASE3…PHASE9B; latest audit `CLAUDE_CODE_FULL_PROJECT_AUDIT.md`, `CLAUDE_CODE_SCRIPT_SAFETY_MAP.md`, notes in `audit_notes/`).
-- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0). Current prod SHA-1: `2c04286ac891f85db549cfe73125bd639e06f16c` (2026-09-27, after Phase 10B W0) — update after every authorised controlled write.
+- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0, pre_phase10b_w1_20260927T015904Z = pre-W1). Current prod SHA-1: `6f35aa422e290fe7872c84bfb6e080e8584021b1` (2026-09-27, after Phase 10B W1) — update after every authorised controlled write.
 - Schema: live `sqlite_master` is authoritative; `KB_SCHEMA.sql` is stale.
 - Scratch: `/tmp/carrec_audit/` for DB copies and query output.
