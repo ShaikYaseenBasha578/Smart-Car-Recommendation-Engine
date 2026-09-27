@@ -1,0 +1,10 @@
+{
+  "total": 62,
+  "models": {},
+  "source_and_document_verified": 0,
+  "source_verified_document_identity_uncertain": 2,
+  "already_present_and_verified": 55,
+  "rejected_candidate": 0,
+  "unresolved": 2,
+  "failed": 3
+}
