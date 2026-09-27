@@ -265,3 +265,17 @@ scraping/outputs/*
 
 # Historical reproducibility archive
 archive/scraping_reproducibility/
+
+# SQLite databases and side files — never commit (KB Phase 10-0)
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+*.sqlite3
+# Local scratch copies (audit/DB copies live in /tmp, never in the repo)
+/tmp/
+tmp/
