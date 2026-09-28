@@ -2,7 +2,8 @@
 
 The verdicts below are the reviewer's, transcribed as given. This script applies
 no judgement of its own: rows not listed are CORRECT with true_value = extracted_value.
-Reads no database. Run from the repo root:
+Reads no database. Run from the repo root, on the blank sheet from commit 1fa3ecf:
+    git show 1fa3ecf:knowledge_base/reports/phase10c/OEM_SPOTCHECK_SHEET.csv > knowledge_base/reports/phase10c/OEM_SPOTCHECK_SHEET.csv
     python3 knowledge_base/reports/phase10c/fill_spotcheck_results.py
 """
 import csv
@@ -20,6 +21,8 @@ GARBLED = "raw_name_garbled: table cells leaked into name"
 EXCEPTIONS = {
     9: ("1", "WRONG", SYM_TICK, "symbol_not_normalised"),
     12: ("1", "WRONG", SYM_TICK, "symbol_not_normalised"),
+    24: ("1", "WRONG", "extractor read wireless row only; wired AA/CarPlay present", "value_wrong"),
+    25: ("1", "WRONG", "same as #24", "value_wrong"),
     26: ("1", "WRONG", SYM_DOT + "; canonical False contradicts brochure", "symbol_not_normalised"),
     27: ("1", "WRONG", SYM_DOT, "symbol_not_normalised"),
     28: ("1", "WRONG", SYM_DOT, "symbol_not_normalised"),
@@ -65,6 +68,9 @@ def main():
     lines = ["# Phase 10C-1: OEM brochure extraction spot-check — results", "",
              "Verdicts are the human reviewer's, checked against the brochure PDFs (aid: `spotcheck_aid/`). "
              "Transcribed into `OEM_SPOTCHECK_SHEET.csv` by `fill_spotcheck_results.py`; no DB was read or written.", "",
+             "Reviewer confirmed on 2026-09-29 that all 49 rows were viewed. After a full pass, rows #24/#25 were added as "
+             "exceptions and no others. Claude's independent second reading (`spotcheck_aid/claude_second_reading.csv`) "
+             "agrees with the final `true_value` on 49/49 rows.", "",
              "Accuracy = rows with verdict `CORRECT` / rows in stratum (the extracted value matches the brochure). "
              "`error_type` is recorded independently of the verdict: a row can be `CORRECT` in value and still carry an error type "
              "(garbled raw name, wrong column that happens to hold the same value).", "",
