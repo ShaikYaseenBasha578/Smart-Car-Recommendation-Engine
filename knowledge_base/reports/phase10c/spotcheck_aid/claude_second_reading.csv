@@ -1,0 +1,50 @@
+provenance_id,value_read,confidence,page,note
+37201,1,high,9,
+37204,1,high,9,
+37209,1,high,9,
+37238,1,high,11,
+37249,1,high,10,
+37257,1,high,10,
+37267,1,high,10,
+37268,0,medium,10,'Connected Services powered by Next Gen Suzuki Connect' and 'Internet Connectivity' both '-' for ZXi; field-to-row mapping is interpretive
+37269,1,high,10,Electric Sunroof ticked for ZXi
+37275,1,high,10,
+37276,1,high,10,
+37278,1,high,10,
+37279,1,high,10,
+37280,1,high,10,
+37281,1,high,10,
+37287,1,high,6,
+37293,0,high,23,CarTrade-hosted brochure
+37295,0,high,23,CarTrade-hosted brochure
+37302,0,high,23,CarTrade-hosted brochure
+37303,0,high,23,CarTrade-hosted brochure
+37306,0,high,25,"wired and wireless rows both ""-""; CarTrade-hosted brochure"
+37307,0,high,25,"wired and wireless rows both ""-""; CarTrade-hosted brochure"
+37310,0,high,23,CarTrade-hosted brochure
+37312,1,high,25,"wired only (wireless row ""-""); CarTrade-hosted brochure"
+37313,1,high,25,"wired only (wireless row ""-""); CarTrade-hosted brochure"
+37317,1,medium,14,filled dot vs bar; table has no printed legend
+37318,1,medium,14,filled dot vs bar; table has no printed legend
+37319,1,medium,14,filled dot vs bar; table has no printed legend
+37187,0,high,39,'Fully Automatic Climate Control with MAX COOL mode' is '-' for V
+37189,0,medium,36,only cruise row is 'Adaptive Cruise Control' ('-' for SV)
+37190,0,high,37,"both paddle rows ""-"" for SV"
+37192,0,medium,37,"ZX shows 'O (CVT only)'; variant is MT, so 0 for MT"
+37199,0,high,9,
+37200,1,high,9,
+37212,1,high,9,
+37215,1,high,13,
+37218,1,high,13,
+37236,1,high,13,'King' column (not 'King Knight')
+37244,1,high,11,
+37245,1,high,11,Alpha and Alpha (O) columns both ticked
+37256,1,high,10,
+37262,0,high,10,
+37284,1,high,19,Delta+ column header covers 1.2L MT/AMT & 1.0L Turbo MT
+37288,1,high,6,
+37289,0,high,6,
+37291,0,high,6,
+37294,0,high,23,CarTrade-hosted brochure
+37304,0,high,24,'-' for Classic+ (paddles are AT-only from Signature up); CarTrade-hosted brochure
+37296,0,high,24,CarTrade-hosted brochure
