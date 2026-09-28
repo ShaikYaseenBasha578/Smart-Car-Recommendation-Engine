@@ -138,7 +138,8 @@ def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fue
         if cand:
             warnings = validate_structured(cand, fuel, trans, cc, price)
             if warnings:
-                if row['is_verified'] == 1:
+                # A fuel/transmission conflict discards the alias even when verified (fail closed).
+                if row['is_verified'] == 1 and not {'fuel_mismatch', 'transmission_mismatch'} & set(warnings):
                     return c_id, 'resolved_with_warning', None
                 # Discard bad historical alias
             else:

@@ -32,7 +32,7 @@ Two parsing rules are deliberate and should be reviewed:
 - **Electric implies AT.** 45 CarWale names are EVs that state only kWh. All 37 EV variants in the KB are single-speed `Automatic`, so this is a domain rule, not a guess. If rejected, those 45 become `unresolved`.
 - **"Smart Hybrid" is Petrol.** This is Maruti's mild hybrid, which the KB stores as `Petrol`. Only "Electric + Petrol", "Strong Hybrid" or e-CVT count as Hybrid, which is `Petrol Hybrid` in the KB.
 
-**Not changed (residual, needs approval because it is outside scope).** In `resolve_variant`, an alias with `is_verified=1` still returns `resolved_with_warning` even when it conflicts on fuel or transmission. No alias is verified today (0 of 469), so the CarWale path cannot hit this. It should still be closed before anyone marks aliases verified.
+**Verified-alias override closed (owner-approved follow-up, 2026-09-28).** In `resolve_variant`, an alias with `is_verified=1` used to return `resolved_with_warning` even when it conflicted on fuel or transmission. It is now discarded on a `fuel_mismatch` or `transmission_mismatch` and falls through to exact/fuzzy matching, which are themselves validated. A verified alias whose only warnings are cc/price keeps the old `resolved_with_warning` behaviour. No alias is verified today (0 of 469), so current data is unaffected. Test: `test_verified_alias_fails_closed_on_fuel_or_transmission`. It fails when the guard is reverted and passes with it.
 
 ## Tests
 - `knowledge_base/tests/test_carwale_resolution.py`, run only by explicit path.
@@ -46,7 +46,7 @@ Two parsing rules are deliberate and should be reviewed:
 | 10A examples | obs 2928 ↛ 152, 2858 ↛ 23, 2820 ↛ 647; any result is fuel- and transmission-consistent |
 | B3 fixture (332 cases) | Each case never reproduces its bad resolution, and any result or edition base is consistent. obs 3185 is excluded and tested separately: it must still resolve to 820, as the probable false positive from W1 |
 
-- **Result: 353 passed, 0 failed.**
+- **Result: 354 passed, 0 failed** (353 at the first commit, plus the verified-alias test).
 - **Sensitivity check.** Run against the pre-fix behaviour in a `/tmp` package copy (old validator, no parsing, 91wheels alias): **107 failed**.
 - The existing resolver tests (`test_v3cars.py`, `test_identity_resolution.py`, `test_resolution_semantic_normalization.py`) all pass: 15 passed.
 
@@ -71,10 +71,19 @@ Two parsing rules are deliberate and should be reviewed:
   - **The 111 new unresolved** are mostly names like "V Petrol Manual" whose canonical name is "V MT". They were previously matched through the 91wheels alias table. `compute_similarity` cannot bridge "Petrol Manual" and "MT" because its normalisation helper, `get_tokens`, is dead code.
 - An experiment, not applied: a CarWale-local retry with fuel and transmission words stripped from the name recovers 42 of the 111 to the same variant as before. It re-resolves 29 others to *different* variants that are unverified. It was left out to keep the fix minimal and fail-closed.
 
-## Options for the owner (not done)
+## Owner decisions (2026-09-28)
+1. **Option 1 accepted: the coverage loss is accepted.** No CarWale-local retry. The 111 + 5 unflagged observations that no longer resolve stay unresolved under the new code.
+2. **The shared `compute_similarity` change is deferred** to its own phase, because it affects every source.
+3. **The verified-alias override is closed** (see Changes above).
+4. **Policy for any future CarWale re-ingestion:**
+   - Only **exact trim matches** are auto-accepted. An exact trim match is a candidate whose canonical name equals the CarWale version name (or its de-hyphenated slug) after passing the fuel/transmission check. This is the resolver's exact-match branch.
+   - Everything else goes to **review**, not into canonical data: fuzzy matches, unverified alias matches, edition candidates, and CarWale-alias hits whose name differs.
+   - `resolve_variant` currently returns `resolved` for both exact and fuzzy matches. A re-ingestion therefore needs a match-type signal (or an exact-name check in the CarWale path) before it runs. That is a prerequisite, not yet implemented.
+   - No CarWale re-ingestion, and no release of B3 quarantines, happens without a separate authorised phase.
+
+## Options considered (historical)
 1. Accept the fix as-is. The fuel/transmission errors are eliminated; the cost is coverage (111 + 5 unflagged no longer resolved) and 52 changed resolutions to review.
 2. Add the CarWale-local identity-only retry. It stays within the CarWale path: +42 recovered, and 29 changes need review.
 3. Approve a shared change to `compute_similarity`: revive `get_tokens` normalisation of manual/automatic to mt/at. This is outside scope because it affects every source.
 4. Separately, close the verified-alias override in `resolve_variant`, which is also outside scope.
 
-**No CarWale re-ingestion, and no release of B3 quarantines, until the owner chooses.**
