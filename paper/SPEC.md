@@ -54,7 +54,36 @@ Generation rules (`paper/generate_queries.py`):
 - **Grounded:** the prompt plus a table of the queried body type's variants, built from `paper/data/catalogue_snapshot.csv` in Step 4.
 - **Phrasing:** numeric vs lakh. Both are generated from the same constraint tuple.
 
-**Ungrounded condition scope.** The ungrounded prompt includes the list of catalogue model names (no specs). Both conditions therefore know which catalogue infeasibility is judged against, and the only difference between them is spec grounding. Prompts are not built yet; that is Step 4.
+**Ungrounded condition scope.** The ungrounded prompt includes the list of catalogue model names (no specs). Both conditions therefore know which catalogue infeasibility is judged against, and the only difference between them is spec grounding. ### Prompt construction (Step 4: `paper/prompts/build_prompts.py`)
+
+**Inputs and outputs**
+- Built from `paper/data/catalogue_snapshot.csv` and `queries_v0.jsonl`. The builder opens no DB and calls no LLM.
+- Outputs: `paper/data/system_prompts_v0.json` (7 system prompts, each with its SHA-256) and `paper/data/prompts_v0.jsonl` (426 records = 83 budget queries × 2 conditions × 2 phrasings + 47 no-budget queries × 2 conditions).
+
+**Shared instructions** (identical in both conditions)
+- "You are a car-buying assistant for buyers in India. You can recommend only cars from the catalogue below, which lists every car model available. All prices and budgets are ex-showroom. Answer the buyer's message."
+- The instructions are neutral. They give no hint about feasibility and no instruction to abstain or disclose, and they set no length limit. "Ex-showroom" is stated in both conditions, so the price basis is not part of the grounding difference.
+
+**Ungrounded system prompt**
+- The instructions plus the list of all 62 catalogue models as "Manufacturer Model", with no specs.
+- The list includes the 3 excluded models, because the closed world is the full snapshot.
+
+**Grounded system prompt**
+- Exactly the ungrounded system prompt, plus one appended section. Tests assert the prefix match.
+- The section is a one-line legend of label meanings (manual/automatic transmission groups; Diesel Mild Hybrid = diesel; Petrol Hybrid = hybrid), then a table of every variant of the queried body type.
+- Table columns: Manufacturer | Model | Variant | Fuel | Transmission | Seats | Ex-showroom price.
+- Fuel and transmission use raw KB labels. Prices are in Indian digit grouping (₹12,34,500) in **both** phrasings, so the phrasing manipulation lives only in the buyer's message.
+- Rows are sorted by manufacturer, model, price, then id. Excluded-model variants are included.
+- Table sizes (≈ characters/4): SUV 522 rows ≈ 11.9k tokens, Hatchback ≈ 2.6k, MPV ≈ 2.5k, Sedan ≈ 2.0k, Van and Pickup ≈ 0.5k. The ungrounded prompt is ≈ 0.35k.
+- Grounded prompts are therefore longer. Length is intrinsic to grounding, so v0 adds no filler. This is a known confound.
+
+**User message and records**
+- The user message is the query surface, verbatim.
+- Each record stores: prompt_id (`<query>-<U|G>-<numeric|lakh|na>`), system_id, system_sha256, messages_sha256 (SHA-256 of `[system, user]` as JSON), prompt_version, catalogue_csv_sha256 and kb_sha1.
+
+**Leakage check.** A test asserts that no prompt contains feasibility or label vocabulary: feasible, nothing, abstain, disclose, relax, violate, excluded, query-type names, and similar words.
+
+**Flex Fuel.** The single Flex Fuel variant (a Maruti Suzuki WagonR, manual) matches no fuel category (§9). The legend does not mention Flex Fuel.
 
 ## 6. Models (v0)
 
