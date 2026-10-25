@@ -1,0 +1,833 @@
+variant_id,manufacturer,model_id,model,variant_name,full_name,body_type,fuel_raw,fuel,transmission_raw,transmission,seats,price,model_excluded
+1,Hyundai,1,Creta,E Petrol 1.5L Manual,Hyundai Creta E Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1090700,0
+2,Hyundai,1,Creta,EX Petrol 1.5L Manual,Hyundai Creta EX Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1206700,0
+3,Hyundai,1,Creta,E Diesel 1.5L Turbo Manual,Hyundai Creta E Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1252800,0
+4,Hyundai,1,Creta,EX (O) Petrol 1.5L Manual,Hyundai Creta EX (O) Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1314200,0
+5,Hyundai,1,Creta,EX Diesel 1.5L Turbo Manual,Hyundai Creta EX Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1365700,0
+6,Hyundai,1,Creta,S (O) Petrol 1.5L Manual,Hyundai Creta S (O) Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1420700,0
+7,Hyundai,1,Creta,S (O) Knight Petrol 1.5L Manual Knight Edition,Hyundai Creta S (O) Knight Petrol 1.5L Manual Knight Edition,SUV,Petrol,petrol,Manual,manual,5,1439200,0
+8,Hyundai,1,Creta,EX (O) Petrol 1.5L CVT Speed Automatic (CVT),Hyundai Creta EX (O) Petrol 1.5L CVT Speed Automatic (CVT),SUV,Petrol,petrol,CVT,automatic,5,1449700,0
+9,Hyundai,1,Creta,EX (O) Diesel 1.5L Turbo Manual,Hyundai Creta EX (O) Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1473200,0
+10,Hyundai,1,Creta,SX Petrol 1.5L Manual,Hyundai Creta SX Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1504400,0
+11,Hyundai,1,Creta,SX Petrol 1.5L Manual Dual Tone,Hyundai Creta SX Petrol 1.5L Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1519400,0
+12,Hyundai,1,Creta,S (O) Petrol 1.5L CVT Speed Automatic (CVT),Hyundai Creta S (O) Petrol 1.5L CVT Speed Automatic (CVT),SUV,Petrol,petrol,CVT,automatic,5,1565700,0
+13,Hyundai,1,Creta,S (O) Diesel 1.5L Turbo Manual,Hyundai Creta S (O) Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1584700,0
+14,Hyundai,1,Creta,S (O) Knight Diesel 1.5L Turbo Manual Knight Edition,Hyundai Creta S (O) Knight Diesel 1.5L Turbo Manual Knight Edition,SUV,Diesel,diesel,Manual,manual,5,1603200,0
+15,Hyundai,1,Creta,SX Premium Petrol 1.5L Manual,Hyundai Creta SX Premium Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1634200,0
+16,Hyundai,1,Creta,SX Premium Petrol 1.5L Manual Dual Tone,Hyundai Creta SX Premium Petrol 1.5L Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1649200,0
+17,Hyundai,1,Creta,King Edition Petrol 1.5L Manual,Hyundai Creta King Edition Petrol 1.5L Manual,SUV,Petrol,petrol,Manual,manual,5,1727800,0
+18,Hyundai,1,Creta,S (O) Diesel 1.5L Turbo Automatic (TC),Hyundai Creta S (O) Diesel 1.5L Turbo Automatic (TC),SUV,Diesel,diesel,Torque Converter,automatic,5,1729700,0
+19,Hyundai,1,Creta,King Edition Petrol 1.5L Manual Dual Tone,Hyundai Creta King Edition Petrol 1.5L Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1742800,0
+20,Hyundai,1,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT),Hyundai Creta SX Premium Petrol 1.5L CVT Speed Automatic (CVT),SUV,Petrol,petrol,CVT,automatic,5,1778700,0
+21,Hyundai,1,Creta,SX Premium Diesel 1.5L Turbo Manual,Hyundai Creta SX Premium Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1792700,0
+22,Hyundai,1,Creta,SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone,Hyundai Creta SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone,SUV,Petrol,petrol,CVT,automatic,5,1793700,0
+23,Hyundai,1,Creta,SX Premium Diesel 1.5L Turbo Manual Dual Tone,Hyundai Creta SX Premium Diesel 1.5L Turbo Manual Dual Tone,SUV,Diesel,diesel,Manual,manual,5,1807700,0
+24,Hyundai,1,Creta,King Edition Petrol 1.5L CVT Speed Automatic (CVT),Hyundai Creta King Edition Petrol 1.5L CVT Speed Automatic (CVT),SUV,Petrol,petrol,CVT,automatic,5,1868800,0
+25,Hyundai,1,Creta,King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT),Hyundai Creta King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT),SUV,Petrol,petrol,CVT,automatic,5,1883300,0
+26,Hyundai,1,Creta,King Edition Diesel 1.5L Turbo Manual,Hyundai Creta King Edition Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1885800,0
+27,Hyundai,1,Creta,King Edition Diesel 1.5L Turbo Manual Dual Tone,Hyundai Creta King Edition Diesel 1.5L Turbo Manual Dual Tone,SUV,Diesel,diesel,Manual,manual,5,1900800,0
+28,Hyundai,1,Creta,King Edition Diesel 1.5L Turbo Automatic (TC),Hyundai Creta King Edition Diesel 1.5L Turbo Automatic (TC),SUV,Diesel,diesel,Torque Converter,automatic,5,1977800,0
+29,Hyundai,1,Creta,King Edition Petrol 1.5L Automatic (DCT),Hyundai Creta King Edition Petrol 1.5L Automatic (DCT),SUV,Petrol,petrol,DCT,automatic,5,1991300,0
+30,Hyundai,1,Creta,King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone,Hyundai Creta King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone,SUV,Diesel,diesel,Torque Converter,automatic,5,1992800,0
+31,Hyundai,1,Creta,King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone,Hyundai Creta King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone,SUV,Petrol,petrol,DCT,automatic,5,2006300,0
+32,Mahindra,2,XUV 3XO,MX1 Petrol 1.2L Turbo Manual,Mahindra XUV 3XO MX1 Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,754000,0
+33,Mahindra,2,XUV 3XO,REVX M Petrol 1.2L Turbo Manual,Mahindra XUV 3XO REVX M Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,839400,0
+34,Mahindra,2,XUV 3XO,REVX M (O) Petrol 1.2L Turbo Manual,Mahindra XUV 3XO REVX M (O) Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,891000,0
+35,Mahindra,2,XUV 3XO,MX2 Pro Petrol 1.2L Turbo Manual,Mahindra XUV 3XO MX2 Pro Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,899000,0
+36,Mahindra,2,XUV 3XO,MX3 Petrol 1.2L Turbo Manual,Mahindra XUV 3XO MX3 Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,919500,0
+37,Mahindra,2,XUV 3XO,MX2 Diesel 1.5L Turbo Manual,Mahindra XUV 3XO MX2 Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,922000,0
+38,Mahindra,2,XUV 3XO,MX3 Pro Petrol 1.2L Turbo Manual,Mahindra XUV 3XO MX3 Pro Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,942000,0
+39,Mahindra,2,XUV 3XO,MX2 Pro Diesel 1.5L Turbo Manual,Mahindra XUV 3XO MX2 Pro Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,990000,0
+40,Mahindra,2,XUV 3XO,MX2 Pro Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO MX2 Pro Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,993500,0
+41,Mahindra,2,XUV 3XO,AX5 Petrol 1.2L Turbo Manual,Mahindra XUV 3XO AX5 Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,999900,0
+42,Mahindra,2,XUV 3XO,MX3 Diesel 1.5L Turbo Manual,Mahindra XUV 3XO MX3 Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1019500,0
+43,Mahindra,2,XUV 3XO,MX3 Pro Diesel 1.5L Turbo Manual,Mahindra XUV 3XO MX3 Pro Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1072500,0
+44,Mahindra,2,XUV 3XO,MX3 Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO MX3 Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1073900,0
+45,Mahindra,2,XUV 3XO,MX3 Pro Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO MX3 Pro Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1102000,0
+46,Mahindra,2,XUV 3XO,MX3 Diesel 1.5L Turbo Automatic (AMT),Mahindra XUV 3XO MX3 Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1109500,0
+47,Mahindra,2,XUV 3XO,REVX A Petrol 1.2L Turbo Manual,Mahindra XUV 3XO REVX A Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1116500,0
+48,Mahindra,2,XUV 3XO,AX5 Diesel 1.5L Turbo Manual,Mahindra XUV 3XO AX5 Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1125500,0
+49,Mahindra,2,XUV 3XO,AX5 Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO AX5 Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1176000,0
+50,Mahindra,2,XUV 3XO,AX5L Petrol 1.2L Turbo Manual,Mahindra XUV 3XO AX5L Petrol 1.2L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1190500,0
+51,Mahindra,2,XUV 3XO,AX5 Diesel 1.5L Turbo Automatic (AMT),Mahindra XUV 3XO AX5 Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1205500,0
+52,Mahindra,2,XUV 3XO,AX7 Petrol 1.2L Turbo Manual Dual Tone,Mahindra XUV 3XO AX7 Petrol 1.2L Turbo Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1207500,0
+53,Mahindra,2,XUV 3XO,REVX A Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO REVX A Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1227500,0
+54,Mahindra,2,XUV 3XO,AX7 Diesel 1.5L Turbo Manual Dual Tone,Mahindra XUV 3XO AX7 Diesel 1.5L Turbo Manual Dual Tone,SUV,Diesel,diesel,Manual,manual,5,1288500,0
+55,Mahindra,2,XUV 3XO,AX5L Petrol 1.2L Turbo Automatic (TC),Mahindra XUV 3XO AX5L Petrol 1.2L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1314500,0
+56,Mahindra,2,XUV 3XO,AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone,Mahindra XUV 3XO AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone,SUV,Petrol,petrol,Torque Converter,automatic,5,1321000,0
+57,Mahindra,2,XUV 3XO,AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Mahindra XUV 3XO AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone,SUV,Diesel,diesel,AMT,automatic,5,1363500,0
+58,Maruti Suzuki,3,Swift,LXi Petrol Manual,Maruti Suzuki Swift LXi Petrol Manual,Hatchback,Petrol,petrol,Manual,manual,5,578900,0
+59,Maruti Suzuki,3,Swift,VXi Petrol Manual,Maruti Suzuki Swift VXi Petrol Manual,Hatchback,Petrol,petrol,Manual,manual,5,658900,0
+60,Maruti Suzuki,3,Swift,VXi (O) Petrol Manual,Maruti Suzuki Swift VXi (O) Petrol Manual,Hatchback,Petrol,petrol,Manual,manual,5,684900,0
+61,Maruti Suzuki,3,Swift,VXi Petrol Automatic,Maruti Suzuki Swift VXi Petrol Automatic,Hatchback,Petrol,petrol,AMT,automatic,5,703900,0
+62,Maruti Suzuki,3,Swift,VXi (O) Petrol Automatic,Maruti Suzuki Swift VXi (O) Petrol Automatic,Hatchback,Petrol,petrol,AMT,automatic,5,729900,0
+63,Maruti Suzuki,3,Swift,VXi CNG Manual,Maruti Suzuki Swift VXi CNG Manual,Hatchback,CNG,cng,Manual,manual,5,744900,0
+64,Maruti Suzuki,3,Swift,ZXi Petrol Manual,Maruti Suzuki Swift ZXi Petrol Manual,Hatchback,Petrol,petrol,Manual,manual,5,752900,0
+65,Maruti Suzuki,3,Swift,VXi (O) CNG Manual,Maruti Suzuki Swift VXi (O) CNG Manual,Hatchback,CNG,cng,Manual,manual,5,770900,0
+66,Maruti Suzuki,3,Swift,ZXi Petrol Automatic,Maruti Suzuki Swift ZXi Petrol Automatic,Hatchback,Petrol,petrol,AMT,automatic,5,797900,0
+67,Maruti Suzuki,3,Swift,ZXi Plus Petrol Manual,Maruti Suzuki Swift ZXi Plus Petrol Manual,Hatchback,Petrol,petrol,Manual,manual,5,819900,0
+68,Maruti Suzuki,3,Swift,ZXi Plus Petrol Manual Dual Tone,Maruti Suzuki Swift ZXi Plus Petrol Manual Dual Tone,Hatchback,Petrol,petrol,Manual,manual,5,834900,0
+69,Maruti Suzuki,3,Swift,ZXi CNG Manual,Maruti Suzuki Swift ZXi CNG Manual,Hatchback,CNG,cng,Manual,manual,5,838900,0
+70,Maruti Suzuki,3,Swift,ZXi Plus Petrol Automatic,Maruti Suzuki Swift ZXi Plus Petrol Automatic,Hatchback,Petrol,petrol,AMT,automatic,5,864900,0
+71,Maruti Suzuki,3,Swift,ZXi Plus Petrol Automatic Dual Tone,Maruti Suzuki Swift ZXi Plus Petrol Automatic Dual Tone,Hatchback,Petrol,petrol,AMT,automatic,5,879900,0
+72,MG,4,Windsor EV,Excite,MG Windsor EV Excite 38.0 kWh,SUV,Electric,electric,Automatic,automatic,5,1409800,0
+73,Tata,5,Nexon,Smart Petrol 1.2L Turbo 5 Speed Manual,Tata Nexon Smart Petrol 1.2L Turbo 5 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,736990,0
+74,Tata,5,Nexon,Smart Plus Petrol 1.2L Turbo 5 Speed Manual,Tata Nexon Smart Plus Petrol 1.2L Turbo 5 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,806990,0
+75,Tata,5,Nexon,Smart CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Smart CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,829990,0
+76,Tata,5,Nexon,Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual,Tata Nexon Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,836990,0
+77,Tata,5,Nexon,Smart Plus Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Smart Plus Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,881990,0
+78,Tata,5,Nexon,Pure Plus Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,894990,0
+79,Tata,5,Nexon,Smart Plus Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Smart Plus Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,899990,0
+80,Tata,5,Nexon,Smart Plus CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Smart Plus CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,921990,0
+81,Tata,5,Nexon,Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,922990,0
+82,Tata,5,Nexon,Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,936990,0
+83,Tata,5,Nexon,Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,951990,0
+84,Tata,5,Nexon,Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,959000,0
+85,Tata,5,Nexon,Pure Plus Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Pure Plus Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,959990,0
+86,Tata,5,Nexon,Pure Plus CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,984990,0
+87,Tata,5,Nexon,Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,987990,0
+88,Tata,5,Nexon,Creative Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Creative Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,999990,0
+89,Tata,5,Nexon,Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,999990,0
+90,Tata,5,Nexon,Pure Plus Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Pure Plus Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,999990,0
+91,Tata,5,Nexon,Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,1014000,0
+92,Tata,5,Nexon,Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,1027990,0
+93,Tata,5,Nexon,Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,1034990,0
+94,Tata,5,Nexon,Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,1039000,0
+95,Tata,5,Nexon,Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,1054000,0
+96,Tata,5,Nexon,Pure Plus Diesel 1.5L Turbo Automatic (AMT),Tata Nexon Pure Plus Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1064990,0
+97,Tata,5,Nexon,Creative Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Creative Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,1074990,0
+98,Tata,5,Nexon,Creative CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Creative CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,1104990,0
+99,Tata,5,Nexon,Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT),Tata Nexon Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT),SUV,Petrol,petrol,AMT,automatic,5,1104990,0
+100,Tata,5,Nexon,Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT),Tata Nexon Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1119000,0
+101,Tata,5,Nexon,Creative Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Creative Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,1124990,0
+102,Tata,5,Nexon,Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone,Tata Nexon Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1131990,0
+103,Tata,5,Nexon,Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,1134990,0
+104,Tata,5,Nexon,Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual,Tata Nexon Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual,SUV,Diesel,diesel,Manual,manual,5,1149990,0
+105,Tata,5,Nexon,Creative Diesel 1.5L Turbo Automatic (AMT),Tata Nexon Creative Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1184990,0
+106,Tata,5,Nexon,Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT),Tata Nexon Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT),SUV,Diesel,diesel,AMT,automatic,5,1214990,0
+107,Tata,5,Nexon,Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,Tata Nexon Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,SUV,CNG,cng,Manual,manual,5,1216690,0
+108,Tata,5,Nexon,Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,1226990,0
+109,Tata,5,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,Tata Nexon Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual,SUV,Petrol,petrol,Manual,manual,5,1226990,0
+110,Tata,5,Nexon,Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone,Tata Nexon Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone,SUV,Petrol,petrol,DCT,automatic,5,1234990,0
+111,Tata,5,Nexon,Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,Tata Nexon Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,SUV,Diesel,diesel,Manual,manual,5,1241990,0
+112,Tata,5,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition,Tata Nexon Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition,SUV,Petrol,petrol,Manual,manual,5,1246990,0
+113,Tata,5,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition,Tata Nexon Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition,SUV,Petrol,petrol,Manual,manual,5,1256990,0
+114,Tata,5,Nexon,Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Tata Nexon Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,SUV,Diesel,diesel,AMT,automatic,5,1306990,0
+115,Tata,5,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone,SUV,CNG,cng,Manual,manual,5,1321990,0
+116,Tata,5,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,Tata Nexon Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone,SUV,Diesel,diesel,Manual,manual,5,1336990,0
+117,Tata,5,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual,Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual,SUV,CNG,cng,Manual,manual,5,1341990,0
+118,Tata,5,Nexon,Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition,Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition,SUV,CNG,cng,Manual,manual,5,1341990,0
+119,Tata,5,Nexon,Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Tata Nexon Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,SUV,Petrol,petrol,DCT,automatic,5,1344790,0
+120,Tata,5,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,Tata Nexon Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition,SUV,Diesel,diesel,Manual,manual,5,1356990,0
+121,Tata,5,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT),Tata Nexon Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT),SUV,Petrol,petrol,DCT,automatic,5,1361990,0
+122,Tata,5,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,Tata Nexon Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition,SUV,Petrol,petrol,DCT,automatic,5,1381990,0
+123,Tata,5,Nexon,Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition,Tata Nexon Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition,SUV,Petrol,petrol,DCT,automatic,5,1391990,0
+124,Tata,5,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,Tata Nexon Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone,SUV,Diesel,diesel,AMT,automatic,5,1401990,0
+125,Tata,5,Nexon,Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,Tata Nexon Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition,SUV,Diesel,diesel,AMT,automatic,5,1421990,0
+126,Tata,6,Nexon EV,Fearless MR,Tata Nexon EV Fearless MR,SUV,Electric,electric,Automatic,automatic,5,1399000,0
+127,MG,4,Windsor EV,Exclusive,MG Windsor EV Exclusive,SUV,Electric,electric,Automatic,automatic,5,1552900,0
+128,MG,4,Windsor EV,Essence,MG Windsor EV Essence,SUV,Electric,electric,Automatic,automatic,5,1652900,0
+129,MG,4,Windsor EV,Exclusive Pro,MG Windsor EV Exclusive Pro,SUV,Electric,electric,Automatic,automatic,5,1737900,0
+130,MG,4,Windsor EV,Essence Pro,MG Windsor EV Essence Pro,SUV,Electric,electric,Automatic,automatic,5,1859900,0
+131,Tata,6,Nexon EV,Creative+ MR,Tata Nexon EV Creative+ MR,SUV,Electric,electric,Automatic,automatic,5,1299000,0
+132,Tata,6,Nexon EV,Creative 45,Tata Nexon EV Creative 45,SUV,Electric,electric,Automatic,automatic,5,1399000,0
+133,Tata,6,Nexon EV,Fearless 45,Tata Nexon EV Fearless 45,SUV,Electric,electric,Automatic,automatic,5,1499000,0
+134,Tata,6,Nexon EV,Empowered 45,Tata Nexon EV Empowered 45,SUV,Electric,electric,Automatic,automatic,5,1599000,0
+135,Tata,6,Nexon EV,Empowered+ A 45,Tata Nexon EV Empowered+ A 45,SUV,Electric,electric,Automatic,automatic,5,1699000,0
+136,Tata,6,Nexon EV,Empowered+ A 45 Dark,Tata Nexon EV Empowered+ A 45 Dark,SUV,Electric,electric,Automatic,automatic,5,1749000,0
+137,Tata,6,Nexon EV,Empowered+ A 45 Red Dark,Tata Nexon EV Empowered+ A 45 Red Dark,SUV,Electric,electric,Automatic,automatic,5,1719000,0
+138,Maruti Suzuki,7,Brezza,LXi MT,Maruti Suzuki Brezza LXi MT,SUV,Petrol,petrol,Manual,manual,5,825900,1
+139,Maruti Suzuki,7,Brezza,LXi CNG,Maruti Suzuki Brezza LXi CNG,SUV,CNG,cng,Manual,manual,5,916900,1
+140,Maruti Suzuki,7,Brezza,VXi MT,Maruti Suzuki Brezza VXi MT,SUV,Petrol,petrol,Manual,manual,5,925900,1
+141,Maruti Suzuki,7,Brezza,VXi CNG,Maruti Suzuki Brezza VXi CNG,SUV,CNG,cng,Manual,manual,5,1016900,1
+142,Maruti Suzuki,7,Brezza,ZXi MT,Maruti Suzuki Brezza ZXi MT,SUV,Petrol,petrol,Manual,manual,5,1055300,1
+143,Maruti Suzuki,7,Brezza,VXi AT,Maruti Suzuki Brezza VXi AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1059900,1
+144,Maruti Suzuki,7,Brezza,ZXi CNG,Maruti Suzuki Brezza ZXi CNG,SUV,CNG,cng,Manual,manual,5,1146300,1
+145,Maruti Suzuki,7,Brezza,ZXi+ MT,Maruti Suzuki Brezza ZXi+ MT,SUV,Petrol,petrol,Manual,manual,5,1166300,1
+146,Maruti Suzuki,7,Brezza,ZXi AT,Maruti Suzuki Brezza ZXi AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1190300,1
+147,Maruti Suzuki,7,Brezza,ZXi+ AT,Maruti Suzuki Brezza ZXi+ AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1301300,1
+148,Hyundai,8,Venue,HX2 1.2 Petrol MT,Hyundai Venue HX2 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,800000,0
+149,Hyundai,8,Venue,HX2 1.0 Turbo Petrol MT,Hyundai Venue HX2 1.0 Turbo Petrol MT,SUV,Petrol,petrol,Manual,manual,5,891000,0
+150,Hyundai,8,Venue,HX4 1.2 Petrol MT,Hyundai Venue HX4 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,900000,0
+151,Hyundai,8,Venue,HX5 1.2 Petrol MT,Hyundai Venue HX5 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,956000,0
+152,Hyundai,8,Venue,HX5 1.0 Turbo Petrol MT,Hyundai Venue HX5 1.0 Turbo Petrol MT,SUV,Petrol,petrol,Manual,manual,5,990000,0
+153,Hyundai,8,Venue,HX2 1.5 Diesel MT,Hyundai Venue HX2 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,995000,0
+154,Hyundai,8,Venue,HX5+ 1.2 Petrol MT,Hyundai Venue HX5+ 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1000000,0
+155,Hyundai,8,Venue,HX6 1.2 Petrol MT,Hyundai Venue HX6 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1043000,0
+156,Hyundai,8,Venue,HX6T 1.2 Petrol MT,Hyundai Venue HX6T 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1089000,0
+157,Hyundai,8,Venue,HX5 1.0 Turbo Petrol DCT,Hyundai Venue HX5 1.0 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1092000,0
+158,Hyundai,8,Venue,HX5 1.5 Diesel MT,Hyundai Venue HX5 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1094000,0
+159,Hyundai,8,Venue,HX5 1.5 Diesel AT,Hyundai Venue HX5 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1188000,0
+160,Hyundai,8,Venue,HX8 1.0 Turbo Petrol MT,Hyundai Venue HX8 1.0 Turbo Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1191000,0
+161,Hyundai,8,Venue,HX6 1.0 Turbo Petrol DCT,Hyundai Venue HX6 1.0 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1218000,0
+162,Hyundai,8,Venue,HX7 1.5 Diesel MT,Hyundai Venue HX7 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1276000,0
+163,Hyundai,8,Venue,HX8 1.0 Turbo Petrol DCT,Hyundai Venue HX8 1.0 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1300000,0
+164,Hyundai,8,Venue,HX8 1.5 Diesel AT,Hyundai Venue HX8 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1371000,0
+165,Hyundai,8,Venue,HX10 1.0 Turbo Petrol DCT,Hyundai Venue HX10 1.0 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1465000,0
+166,Hyundai,8,Venue,HX10 1.5 Diesel AT,Hyundai Venue HX10 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1565000,0
+167,Kia,9,Seltos,HTE 1.5 Petrol MT,Kia Seltos HTE 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1099900,0
+168,Kia,9,Seltos,HTE(O) 1.5 Petrol MT,Kia Seltos HTE(O) 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1211400,0
+169,Kia,9,Seltos,HTE(O) 1.5 Petrol IVT,Kia Seltos HTE(O) 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1341400,0
+170,Kia,9,Seltos,HTK 1.5 Petrol MT,Kia Seltos HTK 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1311400,0
+171,Kia,9,Seltos,HTK 1.5 Petrol IVT,Kia Seltos HTK 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1441400,0
+172,Kia,9,Seltos,HTK(O) 1.5 Petrol MT,Kia Seltos HTK(O) 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1421400,0
+173,Kia,9,Seltos,HTK(O) 1.5 Petrol IVT,Kia Seltos HTK(O) 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1551400,0
+174,Kia,9,Seltos,HTX 1.5 Petrol MT,Kia Seltos HTX 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1561400,0
+175,Kia,9,Seltos,HTX 1.5 Petrol IVT,Kia Seltos HTX 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1691400,0
+176,Kia,9,Seltos,HTX(A) 1.5 Petrol MT,Kia Seltos HTX(A) 1.5 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1671400,0
+177,Kia,9,Seltos,HTX(A) 1.5 Petrol IVT,Kia Seltos HTX(A) 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1801400,0
+178,Kia,9,Seltos,GTX 1.5 Petrol IVT,Kia Seltos GTX 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1841400,0
+179,Kia,9,Seltos,GTX(A) 1.5 Petrol IVT,Kia Seltos GTX(A) 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1951400,0
+180,Kia,9,Seltos,X-Line 1.5 Petrol IVT,Kia Seltos X-Line 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1841400,0
+181,Kia,9,Seltos,X-Line(A) 1.5 Petrol IVT,Kia Seltos X-Line(A) 1.5 Petrol IVT,SUV,Petrol,petrol,CVT,automatic,5,1951400,0
+182,Kia,9,Seltos,HTE(O) 1.5 Turbo Petrol iMT,Kia Seltos HTE(O) 1.5 Turbo Petrol iMT,SUV,Petrol,petrol,iMT,manual,5,1291400,0
+183,Kia,9,Seltos,HTK 1.5 Turbo Petrol iMT,Kia Seltos HTK 1.5 Turbo Petrol iMT,SUV,Petrol,petrol,iMT,manual,5,1391400,0
+184,Kia,9,Seltos,HTK(O) 1.5 Turbo Petrol iMT,Kia Seltos HTK(O) 1.5 Turbo Petrol iMT,SUV,Petrol,petrol,iMT,manual,5,1499900,0
+185,Kia,9,Seltos,HTK(O) 1.5 Turbo Petrol DCT,Kia Seltos HTK(O) 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1631400,0
+186,Kia,9,Seltos,HTX 1.5 Turbo Petrol DCT,Kia Seltos HTX 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1771400,0
+187,Kia,9,Seltos,HTX(A) 1.5 Turbo Petrol DCT,Kia Seltos HTX(A) 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1881400,0
+188,Kia,9,Seltos,GTX 1.5 Turbo Petrol DCT,Kia Seltos GTX 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1921400,0
+189,Kia,9,Seltos,GTX(A) 1.5 Turbo Petrol DCT,Kia Seltos GTX(A) 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1999900,0
+190,Kia,9,Seltos,X-Line 1.5 Turbo Petrol DCT,Kia Seltos X-Line 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1921400,0
+191,Kia,9,Seltos,X-Line(A) 1.5 Turbo Petrol DCT,Kia Seltos X-Line(A) 1.5 Turbo Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1999900,0
+192,Kia,9,Seltos,HTE 1.5 Diesel MT,Kia Seltos HTE 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1261400,0
+193,Kia,9,Seltos,HTE(O) 1.5 Diesel MT,Kia Seltos HTE(O) 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1371400,0
+194,Kia,9,Seltos,HTE(O) 1.5 Diesel AT,Kia Seltos HTE(O) 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1499900,0
+195,Kia,9,Seltos,HTK 1.5 Diesel MT,Kia Seltos HTK 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1471400,0
+196,Kia,9,Seltos,HTK 1.5 Diesel AT,Kia Seltos HTK 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1601400,0
+197,Kia,9,Seltos,HTK(O) 1.5 Diesel MT,Kia Seltos HTK(O) 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1581400,0
+198,Kia,9,Seltos,HTK(O) 1.5 Diesel AT,Kia Seltos HTK(O) 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1711400,0
+199,Kia,9,Seltos,HTX 1.5 Diesel MT,Kia Seltos HTX 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1721400,0
+200,Kia,9,Seltos,HTX 1.5 Diesel AT,Kia Seltos HTX 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1851400,0
+201,Kia,9,Seltos,HTX(A) 1.5 Diesel MT,Kia Seltos HTX(A) 1.5 Diesel MT,SUV,Diesel,diesel,Manual,manual,5,1831400,0
+202,Kia,9,Seltos,HTX(A) 1.5 Diesel AT,Kia Seltos HTX(A) 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1961400,0
+203,Kia,9,Seltos,GTX 1.5 Diesel AT,Kia Seltos GTX 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1981400,0
+204,Kia,9,Seltos,GTX(A) 1.5 Diesel AT,Kia Seltos GTX(A) 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1999900,0
+205,Kia,9,Seltos,X-Line 1.5 Diesel AT,Kia Seltos X-Line 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1981400,0
+206,Kia,9,Seltos,X-Line(A) 1.5 Diesel AT,Kia Seltos X-Line(A) 1.5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1999900,0
+207,Maruti Suzuki,10,Ertiga,LXi MT,Maruti Suzuki Ertiga LXi MT,MPV,Petrol,petrol,Manual,manual,7,885000,0
+208,Maruti Suzuki,10,Ertiga,VXi MT,Maruti Suzuki Ertiga VXi MT,MPV,Petrol,petrol,Manual,manual,7,990300,0
+209,Maruti Suzuki,10,Ertiga,VXi CNG,Maruti Suzuki Ertiga VXi CNG,MPV,CNG,cng,Manual,manual,7,1086300,0
+210,Maruti Suzuki,10,Ertiga,ZXi MT,Maruti Suzuki Ertiga ZXi MT,MPV,Petrol,petrol,Manual,manual,7,1096500,0
+211,Maruti Suzuki,10,Ertiga,VXi AT,Maruti Suzuki Ertiga VXi AT,MPV,Petrol,petrol,Torque Converter,automatic,7,1125300,0
+212,Maruti Suzuki,10,Ertiga,ZXi+ MT,Maruti Suzuki Ertiga ZXi+ MT,MPV,Petrol,petrol,Manual,manual,7,1164100,0
+213,Maruti Suzuki,10,Ertiga,ZXi CNG,Maruti Suzuki Ertiga ZXi CNG,MPV,CNG,cng,Manual,manual,7,1192500,0
+214,Maruti Suzuki,10,Ertiga,ZXi AT,Maruti Suzuki Ertiga ZXi AT,MPV,Petrol,petrol,Torque Converter,automatic,7,1231500,0
+215,Maruti Suzuki,10,Ertiga,ZXi+ AT,Maruti Suzuki Ertiga ZXi+ AT,MPV,Petrol,petrol,Torque Converter,automatic,7,1299100,0
+216,Maruti Suzuki,11,XL6,Zeta MT,Maruti Suzuki XL6 Zeta MT,MPV,Petrol,petrol,Manual,manual,6,1157300,0
+217,Maruti Suzuki,11,XL6,Zeta CNG,Maruti Suzuki XL6 Zeta CNG,MPV,CNG,cng,Manual,manual,6,1253300,0
+218,Maruti Suzuki,11,XL6,Alpha MT,Maruti Suzuki XL6 Alpha MT,MPV,Petrol,petrol,Manual,manual,6,1253800,0
+219,Maruti Suzuki,11,XL6,Zeta AT,Maruti Suzuki XL6 Zeta AT,MPV,Petrol,petrol,Torque Converter,automatic,6,1292300,0
+220,Maruti Suzuki,11,XL6,Alpha+ MT,Maruti Suzuki XL6 Alpha+ MT,MPV,Petrol,petrol,Manual,manual,6,1302100,0
+221,Maruti Suzuki,11,XL6,Alpha AT,Maruti Suzuki XL6 Alpha AT,MPV,Petrol,petrol,Torque Converter,automatic,6,1389300,0
+222,Maruti Suzuki,11,XL6,Alpha+ AT,Maruti Suzuki XL6 Alpha+ AT,MPV,Petrol,petrol,Torque Converter,automatic,6,1437300,0
+223,Maruti Suzuki,12,WagonR,LXi MT,Maruti Suzuki WagonR LXi MT,Hatchback,Petrol,petrol,Manual,manual,5,498900,0
+224,Maruti Suzuki,12,WagonR,VXi MT,Maruti Suzuki WagonR VXi MT,Hatchback,Petrol,petrol,Manual,manual,5,551900,0
+225,Maruti Suzuki,12,WagonR,LXi CNG,Maruti Suzuki WagonR LXi CNG,Hatchback,CNG,cng,Manual,manual,5,593900,0
+226,Maruti Suzuki,12,WagonR,ZXi MT,Maruti Suzuki WagonR ZXi MT,Hatchback,Petrol,petrol,Manual,manual,5,595900,0
+227,Maruti Suzuki,12,WagonR,VXi AGS,Maruti Suzuki WagonR VXi AGS,Hatchback,Petrol,petrol,AMT,automatic,5,596900,0
+228,Maruti Suzuki,12,WagonR,ZXi AGS,Maruti Suzuki WagonR ZXi AGS,Hatchback,Petrol,petrol,AMT,automatic,5,640900,0
+229,Maruti Suzuki,12,WagonR,VXi CNG,Maruti Suzuki WagonR VXi CNG,Hatchback,CNG,cng,Manual,manual,5,646900,0
+230,Maruti Suzuki,12,WagonR,ZXi+ MT,Maruti Suzuki WagonR ZXi+ MT,Hatchback,Petrol,petrol,Manual,manual,5,649900,0
+231,Maruti Suzuki,12,WagonR,ZXi+ AGS,Maruti Suzuki WagonR ZXi+ AGS,Hatchback,Petrol,petrol,AMT,automatic,5,694900,0
+232,Maruti Suzuki,12,WagonR,ZXi+ MT Flex Fuel,Maruti Suzuki WagonR ZXi+ MT Flex Fuel,Hatchback,Flex Fuel,,Manual,manual,5,723900,0
+233,Maruti Suzuki,13,Dzire,LXi MT,Maruti Suzuki Dzire LXi MT,Sedan,Petrol,petrol,Manual,manual,5,625600,0
+234,Maruti Suzuki,13,Dzire,VXi MT,Maruti Suzuki Dzire VXi MT,Sedan,Petrol,petrol,Manual,manual,5,722100,0
+235,Maruti Suzuki,13,Dzire,VXi AMT,Maruti Suzuki Dzire VXi AMT,Sedan,Petrol,petrol,AMT,automatic,5,767100,0
+236,Maruti Suzuki,13,Dzire,VXi CNG,Maruti Suzuki Dzire VXi CNG,Sedan,CNG,cng,Manual,manual,5,810600,0
+237,Maruti Suzuki,13,Dzire,ZXi MT,Maruti Suzuki Dzire ZXi MT,Sedan,Petrol,petrol,Manual,manual,5,822700,0
+238,Maruti Suzuki,13,Dzire,ZXi AMT,Maruti Suzuki Dzire ZXi AMT,Sedan,Petrol,petrol,AMT,automatic,5,867700,0
+239,Maruti Suzuki,13,Dzire,ZXi+ MT,Maruti Suzuki Dzire ZXi+ MT,Sedan,Petrol,petrol,Manual,manual,5,891300,0
+240,Maruti Suzuki,13,Dzire,ZXi CNG,Maruti Suzuki Dzire ZXi CNG,Sedan,CNG,cng,Manual,manual,5,911200,0
+241,Maruti Suzuki,13,Dzire,ZXi+ AMT,Maruti Suzuki Dzire ZXi+ AMT,Sedan,Petrol,petrol,AMT,automatic,5,936300,0
+242,Maruti Suzuki,14,Eeco,5 Seater Standard,Maruti Suzuki Eeco 5 Seater Standard,Van,Petrol,petrol,Manual,manual,5,523400,0
+243,Maruti Suzuki,14,Eeco,6 Seater Standard,Maruti Suzuki Eeco 6 Seater Standard,Van,Petrol,petrol,Manual,manual,6,549900,0
+244,Maruti Suzuki,14,Eeco,5 Seater AC,Maruti Suzuki Eeco 5 Seater AC,Van,Petrol,petrol,Manual,manual,5,556300,0
+245,Maruti Suzuki,14,Eeco,5 Seater AC CNG,Maruti Suzuki Eeco 5 Seater AC CNG,Van,CNG,cng,Manual,manual,5,640800,0
+246,Maruti Suzuki,15,Baleno,Sigma MT,Maruti Suzuki Baleno Sigma MT,Hatchback,Petrol,petrol,Manual,manual,5,598900,1
+247,Maruti Suzuki,15,Baleno,Delta MT,Maruti Suzuki Baleno Delta MT,Hatchback,Petrol,petrol,Manual,manual,5,684900,1
+248,Maruti Suzuki,15,Baleno,Delta AGS,Maruti Suzuki Baleno Delta AGS,Hatchback,Petrol,petrol,AMT,automatic,5,734900,1
+249,Maruti Suzuki,15,Baleno,Zeta MT,Maruti Suzuki Baleno Zeta MT,Hatchback,Petrol,petrol,Manual,manual,5,774900,1
+250,Maruti Suzuki,15,Baleno,Delta CNG,Maruti Suzuki Baleno Delta CNG,Hatchback,CNG,cng,Manual,manual,5,776900,1
+251,Maruti Suzuki,15,Baleno,Zeta AGS,Maruti Suzuki Baleno Zeta AGS,Hatchback,Petrol,petrol,AMT,automatic,5,824900,1
+252,Maruti Suzuki,15,Baleno,Alpha MT,Maruti Suzuki Baleno Alpha MT,Hatchback,Petrol,petrol,Manual,manual,5,866900,1
+253,Maruti Suzuki,15,Baleno,Zeta CNG,Maruti Suzuki Baleno Zeta CNG,Hatchback,CNG,cng,Manual,manual,5,866900,1
+254,Maruti Suzuki,15,Baleno,Alpha AGS,Maruti Suzuki Baleno Alpha AGS,Hatchback,Petrol,petrol,AMT,automatic,5,916900,1
+255,Hyundai,16,Grand i10 Nios,Era MT,Hyundai Grand i10 Nios Era MT,Hatchback,Petrol,petrol,Manual,manual,5,559700,0
+256,Hyundai,16,Grand i10 Nios,Magna MT,Hyundai Grand i10 Nios Magna MT,Hatchback,Petrol,petrol,Manual,manual,5,632700,0
+257,Hyundai,16,Grand i10 Nios,Corporate MT,Hyundai Grand i10 Nios Corporate MT,Hatchback,Petrol,petrol,Manual,manual,5,655700,0
+258,Hyundai,16,Grand i10 Nios,Magna AMT,Hyundai Grand i10 Nios Magna AMT,Hatchback,Petrol,petrol,AMT,automatic,5,684700,0
+259,Hyundai,16,Grand i10 Nios,Sportz MT,Hyundai Grand i10 Nios Sportz MT,Hatchback,Petrol,petrol,Manual,manual,5,687700,0
+260,Hyundai,16,Grand i10 Nios,Sportz (O) MT,Hyundai Grand i10 Nios Sportz (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,712700,0
+261,Hyundai,16,Grand i10 Nios,Corporate AMT,Hyundai Grand i10 Nios Corporate AMT,Hatchback,Petrol,petrol,AMT,automatic,5,716700,0
+262,Hyundai,16,Grand i10 Nios,Magna Hy-CNG Duo,Hyundai Grand i10 Nios Magna Hy-CNG Duo,Hatchback,CNG,cng,Manual,manual,5,726700,0
+263,Hyundai,16,Grand i10 Nios,Sportz AMT,Hyundai Grand i10 Nios Sportz AMT,Hatchback,Petrol,petrol,AMT,automatic,5,739700,0
+264,Hyundai,16,Grand i10 Nios,Asta MT,Hyundai Grand i10 Nios Asta MT,Hatchback,Petrol,petrol,Manual,manual,5,751700,0
+265,Hyundai,16,Grand i10 Nios,Sportz (O) AMT,Hyundai Grand i10 Nios Sportz (O) AMT,Hatchback,Petrol,petrol,AMT,automatic,5,767200,0
+266,Hyundai,16,Grand i10 Nios,Sportz Hy-CNG Duo,Hyundai Grand i10 Nios Sportz Hy-CNG Duo,Hatchback,CNG,cng,Manual,manual,5,776700,0
+267,Hyundai,16,Grand i10 Nios,Asta AMT,Hyundai Grand i10 Nios Asta AMT,Hatchback,Petrol,petrol,AMT,automatic,5,804300,0
+268,Hyundai,17,Aura,E MT,Hyundai Aura E MT,Sedan,Petrol,petrol,Manual,manual,5,599900,0
+269,Hyundai,17,Aura,Corporate MT,Hyundai Aura Corporate MT,Sedan,Petrol,petrol,Manual,manual,5,684000,0
+270,Hyundai,17,Aura,S MT,Hyundai Aura S MT,Sedan,Petrol,petrol,Manual,manual,5,691000,0
+271,Hyundai,17,Aura,SX MT,Hyundai Aura SX MT,Sedan,Petrol,petrol,Manual,manual,5,770000,0
+272,Hyundai,17,Aura,S CNG,Hyundai Aura S CNG,Sedan,CNG,cng,Manual,manual,5,781700,0
+273,Hyundai,17,Aura,Corporate CNG,Hyundai Aura Corporate CNG,Sedan,CNG,cng,Manual,manual,5,790700,0
+274,Hyundai,17,Aura,SX(O) MT,Hyundai Aura SX(O) MT,Sedan,Petrol,petrol,Manual,manual,5,816000,0
+275,Hyundai,17,Aura,SX+ AMT,Hyundai Aura SX+ AMT,Sedan,Petrol,petrol,AMT,automatic,5,835000,0
+276,Hyundai,17,Aura,SX CNG,Hyundai Aura SX CNG,Sedan,CNG,cng,Manual,manual,5,859700,0
+277,Hyundai,18,Verna,HX2 1.5 MPi MT,Hyundai Verna HX2 1.5 MPi MT,Sedan,Petrol,petrol,Manual,manual,5,1099200,0
+278,Hyundai,18,Verna,HX4 1.5 MPi MT,Hyundai Verna HX4 1.5 MPi MT,Sedan,Petrol,petrol,Manual,manual,5,1225200,0
+279,Hyundai,18,Verna,HX6 1.5 MPi MT,Hyundai Verna HX6 1.5 MPi MT,Sedan,Petrol,petrol,Manual,manual,5,1319200,0
+280,Hyundai,18,Verna,HX6+ 1.5 MPi MT,Hyundai Verna HX6+ 1.5 MPi MT,Sedan,Petrol,petrol,Manual,manual,5,1382200,0
+281,Hyundai,18,Verna,HX6 1.5 MPi IVT,Hyundai Verna HX6 1.5 MPi IVT,Sedan,Petrol,petrol,CVT,automatic,5,1441200,0
+282,Hyundai,18,Verna,HX8 1.5 MPi MT,Hyundai Verna HX8 1.5 MPi MT,Sedan,Petrol,petrol,Manual,manual,5,1489200,0
+283,Hyundai,18,Verna,HX6+ 1.5 MPi IVT,Hyundai Verna HX6+ 1.5 MPi IVT,Sedan,Petrol,petrol,CVT,automatic,5,1503200,0
+284,Hyundai,18,Verna,HX8 1.5 MPi IVT,Hyundai Verna HX8 1.5 MPi IVT,Sedan,Petrol,petrol,CVT,automatic,5,1610200,0
+285,Hyundai,18,Verna,HX8 1.5 Turbo MT,Hyundai Verna HX8 1.5 Turbo MT,Sedan,Petrol,petrol,Manual,manual,5,1629200,0
+286,Hyundai,18,Verna,HX10 1.5 MPi IVT,Hyundai Verna HX10 1.5 MPi IVT,Sedan,Petrol,petrol,CVT,automatic,5,1716200,0
+287,Hyundai,18,Verna,HX8 1.5 Turbo DCT,Hyundai Verna HX8 1.5 Turbo DCT,Sedan,Petrol,petrol,DCT,automatic,5,1763200,0
+288,Hyundai,18,Verna,HX10 1.5 Turbo DCT,Hyundai Verna HX10 1.5 Turbo DCT,Sedan,Petrol,petrol,DCT,automatic,5,1826200,0
+289,Honda,19,Amaze,V MT,Honda Amaze V MT,Sedan,Petrol,petrol,Manual,manual,5,751390,0
+290,Honda,19,Amaze,VX MT,Honda Amaze VX MT,Sedan,Petrol,petrol,Manual,manual,5,851990,0
+291,Honda,19,Amaze,V CVT,Honda Amaze V CVT,Sedan,Petrol,petrol,CVT,automatic,5,865690,0
+292,Honda,19,Amaze,VX CVT,Honda Amaze VX CVT,Sedan,Petrol,petrol,CVT,automatic,5,925190,0
+293,Honda,19,Amaze,ZX MT,Honda Amaze ZX MT,Sedan,Petrol,petrol,Manual,manual,5,925190,0
+294,Honda,19,Amaze,ZX CVT,Honda Amaze ZX CVT,Sedan,Petrol,petrol,CVT,automatic,5,999900,0
+295,Honda,20,City,SV MT,Honda City SV MT,Sedan,Petrol,petrol,Manual,manual,5,1199900,0
+296,Honda,20,City,V MT,Honda City V MT,Sedan,Petrol,petrol,Manual,manual,5,1329900,0
+297,Honda,20,City,V CVT,Honda City V CVT,Sedan,Petrol,petrol,CVT,automatic,5,1429900,0
+298,Honda,20,City,ZX MT,Honda City ZX MT,Sedan,Petrol,petrol,Manual,manual,5,1525000,0
+299,Honda,20,City,ZX CVT,Honda City ZX CVT,Sedan,Petrol,petrol,CVT,automatic,5,1625000,0
+300,Honda,20,City,ZX+ MT,Honda City ZX+ MT,Sedan,Petrol,petrol,Manual,manual,5,1614000,0
+301,Honda,20,City,ZX+ CVT,Honda City ZX+ CVT,Sedan,Petrol,petrol,CVT,automatic,5,1714000,0
+302,Honda,20,City,ZX+ e:HEV,Honda City ZX+ e:HEV,Sedan,Petrol Hybrid,hybrid,e-CVT,automatic,5,2099000,0
+303,Toyota,21,Innova Crysta,GX 7 Seater,Toyota Innova Crysta GX 7 Seater,MPV,Diesel,diesel,Manual,manual,7,1972000,0
+304,Toyota,21,Innova Crysta,GX 8 Seater,Toyota Innova Crysta GX 8 Seater,MPV,Diesel,diesel,Manual,manual,8,1977000,0
+305,Toyota,21,Innova Crysta,GX+ 7 Seater,Toyota Innova Crysta GX+ 7 Seater,MPV,Diesel,diesel,Manual,manual,7,2115000,0
+306,Toyota,21,Innova Crysta,GX+ 8 Seater,Toyota Innova Crysta GX+ 8 Seater,MPV,Diesel,diesel,Manual,manual,8,2120000,0
+307,Toyota,21,Innova Crysta,VX 7 Seater,Toyota Innova Crysta VX 7 Seater,MPV,Diesel,diesel,Manual,manual,7,2493000,0
+308,Toyota,21,Innova Crysta,VX 8 Seater,Toyota Innova Crysta VX 8 Seater,MPV,Diesel,diesel,Manual,manual,8,2498000,0
+309,Toyota,21,Innova Crysta,ZX 7 Seater,Toyota Innova Crysta ZX 7 Seater,MPV,Diesel,diesel,Manual,manual,7,2663000,0
+310,Toyota,22,Fortuner,Fortuner 2.7 Petrol 4x2 AT,Toyota Fortuner Fortuner 2.7 Petrol 4x2 AT,SUV,Petrol,petrol,Torque Converter,automatic,7,3476000,0
+311,Toyota,22,Fortuner,Fortuner 2.8 Diesel 4x2 MT,Toyota Fortuner Fortuner 2.8 Diesel 4x2 MT,SUV,Diesel,diesel,Manual,manual,7,3540000,0
+312,Toyota,22,Fortuner,Fortuner 2.8 Diesel 4x2 AT,Toyota Fortuner Fortuner 2.8 Diesel 4x2 AT,SUV,Diesel,diesel,Torque Converter,automatic,7,3761000,0
+313,Toyota,22,Fortuner,Fortuner 2.8 Diesel 4x4 MT,Toyota Fortuner Fortuner 2.8 Diesel 4x4 MT,SUV,Diesel,diesel,Manual,manual,7,3935000,0
+314,Toyota,22,Fortuner,Legender 2.8 Diesel 4x2 AT,Toyota Fortuner Legender 2.8 Diesel 4x2 AT,SUV,Diesel,diesel,Torque Converter,automatic,7,4292000,0
+315,Toyota,22,Fortuner,Legender 2.8 Diesel 4x4 MT,Toyota Fortuner Legender 2.8 Diesel 4x4 MT,SUV,Diesel,diesel,Manual,manual,7,4508000,0
+316,Toyota,22,Fortuner,Fortuner Neo Drive 48V 4x4 AT,Toyota Fortuner Fortuner Neo Drive 48V 4x4 AT,SUV,Diesel Mild Hybrid,diesel,Torque Converter,automatic,7,4472000,0
+317,Toyota,22,Fortuner,Legender Neo Drive 48V 4x4 AT,Toyota Fortuner Legender Neo Drive 48V 4x4 AT,SUV,Diesel Mild Hybrid,diesel,Torque Converter,automatic,7,5009000,0
+318,Toyota,22,Fortuner,GR-S 2.8 Diesel 4x4 AT,Toyota Fortuner GR-S 2.8 Diesel 4x4 AT,SUV,Diesel,diesel,Torque Converter,automatic,7,5046000,0
+319,Tata,23,Altroz,Smart,Tata Altroz Smart,Hatchback,Petrol,petrol,Manual,manual,5,629990,0
+320,Tata,23,Altroz,Pure,Tata Altroz Pure,Hatchback,Petrol,petrol,Manual,manual,5,709990,0
+321,Tata,23,Altroz,Smart CNG,Tata Altroz Smart CNG,Hatchback,CNG,cng,Manual,manual,5,729990,0
+322,Tata,23,Altroz,Pure S,Tata Altroz Pure S,Hatchback,Petrol,petrol,Manual,manual,5,741990,0
+323,Tata,23,Altroz,Pure AMT,Tata Altroz Pure AMT,Hatchback,Petrol,petrol,AMT,automatic,5,764990,0
+324,Tata,23,Altroz,Pure S AMT,Tata Altroz Pure S AMT,Hatchback,Petrol,petrol,AMT,automatic,5,796990,0
+325,Tata,23,Altroz,Creative,Tata Altroz Creative,Hatchback,Petrol,petrol,Manual,manual,5,801990,0
+326,Tata,23,Altroz,Pure CNG,Tata Altroz Pure CNG,Hatchback,CNG,cng,Manual,manual,5,809990,0
+327,Tata,23,Altroz,Pure Diesel,Tata Altroz Pure Diesel,Hatchback,Diesel,diesel,Manual,manual,5,814990,0
+328,Tata,23,Altroz,Creative S,Tata Altroz Creative S,Hatchback,Petrol,petrol,Manual,manual,5,836990,0
+329,Tata,23,Altroz,Pure S CNG,Tata Altroz Pure S CNG,Hatchback,CNG,cng,Manual,manual,5,841990,0
+330,Tata,23,Altroz,Creative AMT,Tata Altroz Creative AMT,Hatchback,Petrol,petrol,AMT,automatic,5,856990,0
+331,Tata,23,Altroz,Pure AMT CNG,Tata Altroz Pure AMT CNG,Hatchback,CNG,cng,AMT,automatic,5,869990,0
+332,Tata,23,Altroz,Creative S AMT,Tata Altroz Creative S AMT,Hatchback,Petrol,petrol,AMT,automatic,5,891990,0
+333,Tata,23,Altroz,Pure S AMT CNG,Tata Altroz Pure S AMT CNG,Hatchback,CNG,cng,AMT,automatic,5,899990,0
+334,Tata,23,Altroz,Creative CNG,Tata Altroz Creative CNG,Hatchback,CNG,cng,Manual,manual,5,901990,0
+335,Tata,23,Altroz,Accomplished S,Tata Altroz Accomplished S,Hatchback,Petrol,petrol,Manual,manual,5,921990,0
+336,Tata,23,Altroz,Creative S CNG,Tata Altroz Creative S CNG,Hatchback,CNG,cng,Manual,manual,5,926990,0
+337,Tata,23,Altroz,Creative S Diesel,Tata Altroz Creative S Diesel,Hatchback,Diesel,diesel,Manual,manual,5,941990,0
+338,Tata,23,Altroz,Creative S DCA,Tata Altroz Creative S DCA,Hatchback,Petrol,petrol,DCT,automatic,5,951990,0
+339,Tata,23,Altroz,Creative AMT CNG,Tata Altroz Creative AMT CNG,Hatchback,CNG,cng,AMT,automatic,5,956990,0
+340,Tata,23,Altroz,Creative S AMT CNG,Tata Altroz Creative S AMT CNG,Hatchback,CNG,cng,AMT,automatic,5,981990,0
+341,Tata,23,Altroz,Accomplished S CNG,Tata Altroz Accomplished S CNG,Hatchback,CNG,cng,Manual,manual,5,1021990,0
+342,Tata,23,Altroz,Accomplished S Diesel,Tata Altroz Accomplished S Diesel,Hatchback,Diesel,diesel,Manual,manual,5,1026990,0
+343,Tata,23,Altroz,Accomplished S DCA,Tata Altroz Accomplished S DCA,Hatchback,Petrol,petrol,DCT,automatic,5,1036990,0
+344,Tata,23,Altroz,Accomplished+ S DCA,Tata Altroz Accomplished+ S DCA,Hatchback,Petrol,petrol,DCT,automatic,5,1061990,0
+345,Tata,23,Altroz,Accomplished S AMT CNG,Tata Altroz Accomplished S AMT CNG,Hatchback,CNG,cng,AMT,automatic,5,1076990,0
+346,Tata,24,Tiago,Smart,Tata Tiago Smart,Hatchback,Petrol,petrol,Manual,manual,5,469990,0
+347,Tata,24,Tiago,Pure,Tata Tiago Pure,Hatchback,Petrol,petrol,Manual,manual,5,549990,0
+348,Tata,24,Tiago,Smart CNG,Tata Tiago Smart CNG,Hatchback,CNG,cng,Manual,manual,5,579990,0
+349,Tata,24,Tiago,Pure AMT,Tata Tiago Pure AMT,Hatchback,Petrol,petrol,AMT,automatic,5,599990,0
+350,Tata,24,Tiago,Pure+,Tata Tiago Pure+,Hatchback,Petrol,petrol,Manual,manual,5,599990,0
+351,Tata,24,Tiago,Pure CNG,Tata Tiago Pure CNG,Hatchback,CNG,cng,Manual,manual,5,649990,0
+352,Tata,24,Tiago,Pure+ A,Tata Tiago Pure+ A,Hatchback,Petrol,petrol,Manual,manual,5,649990,0
+353,Tata,24,Tiago,Pure+ AMT,Tata Tiago Pure+ AMT,Hatchback,Petrol,petrol,AMT,automatic,5,654990,0
+354,Tata,24,Tiago,Creative,Tata Tiago Creative,Hatchback,Petrol,petrol,Manual,manual,5,699990,0
+355,Tata,24,Tiago,Pure+ CNG,Tata Tiago Pure+ CNG,Hatchback,CNG,cng,Manual,manual,5,699990,0
+356,Tata,24,Tiago,Pure CNG AMT,Tata Tiago Pure CNG AMT,Hatchback,CNG,cng,AMT,automatic,5,704990,0
+357,Tata,24,Tiago,Pure+ A AMT,Tata Tiago Pure+ A AMT,Hatchback,Petrol,petrol,AMT,automatic,5,704990,0
+358,Tata,24,Tiago,Creative+,Tata Tiago Creative+,Hatchback,Petrol,petrol,Manual,manual,5,729990,0
+359,Tata,24,Tiago,Pure+ A CNG,Tata Tiago Pure+ A CNG,Hatchback,CNG,cng,Manual,manual,5,749990,0
+360,Tata,24,Tiago,Creative AMT,Tata Tiago Creative AMT,Hatchback,Petrol,petrol,AMT,automatic,5,754990,0
+361,Tata,24,Tiago,Pure+ CNG AMT,Tata Tiago Pure+ CNG AMT,Hatchback,CNG,cng,AMT,automatic,5,754990,0
+362,Tata,24,Tiago,Creative+ AMT,Tata Tiago Creative+ AMT,Hatchback,Petrol,petrol,AMT,automatic,5,784990,0
+363,Tata,24,Tiago,Creative CNG,Tata Tiago Creative CNG,Hatchback,CNG,cng,Manual,manual,5,799990,0
+364,Tata,24,Tiago,Pure+ A CNG AMT,Tata Tiago Pure+ A CNG AMT,Hatchback,CNG,cng,AMT,automatic,5,804990,0
+365,Tata,24,Tiago,Creative CNG AMT,Tata Tiago Creative CNG AMT,Hatchback,CNG,cng,AMT,automatic,5,854990,0
+366,Tata,25,Tigor,XM,Tata Tigor XM,Sedan,Petrol,petrol,Manual,manual,5,554990,0
+367,Tata,25,Tigor,XT,Tata Tigor XT,Sedan,Petrol,petrol,Manual,manual,5,627990,0
+368,Tata,25,Tigor,XTA AMT,Tata Tigor XTA AMT,Sedan,Petrol,petrol,AMT,automatic,5,672490,0
+369,Tata,25,Tigor,XZ,Tata Tigor XZ,Sedan,Petrol,petrol,Manual,manual,5,682990,0
+370,Tata,25,Tigor,XT CNG,Tata Tigor XT CNG,Sedan,CNG,cng,Manual,manual,5,721990,0
+371,Tata,25,Tigor,XZA AMT,Tata Tigor XZA AMT,Sedan,Petrol,petrol,AMT,automatic,5,727290,0
+372,Tata,25,Tigor,XZ+,Tata Tigor XZ+,Sedan,Petrol,petrol,Manual,manual,5,737990,0
+373,Tata,25,Tigor,XZ CNG,Tata Tigor XZ CNG,Sedan,CNG,cng,Manual,manual,5,776990,0
+374,Tata,25,Tigor,XZ+ Lux,Tata Tigor XZ+ Lux,Sedan,Petrol,petrol,Manual,manual,5,782990,0
+375,Tata,25,Tigor,XZA+ AMT,Tata Tigor XZA+ AMT,Sedan,Petrol,petrol,AMT,automatic,5,789990,0
+376,Tata,25,Tigor,XZA AMT CNG,Tata Tigor XZA AMT CNG,Sedan,CNG,cng,AMT,automatic,5,828990,0
+377,Tata,25,Tigor,XZ+ CNG,Tata Tigor XZ+ CNG,Sedan,CNG,cng,Manual,manual,5,831990,0
+378,Tata,25,Tigor,XZ+ Lux CNG,Tata Tigor XZ+ Lux CNG,Sedan,CNG,cng,Manual,manual,5,876990,0
+379,Tata,25,Tigor,XZA+ AMT CNG,Tata Tigor XZA+ AMT CNG,Sedan,CNG,cng,AMT,automatic,5,883990,0
+380,Mahindra,26,Bolero,B4 Diesel,Mahindra Bolero B4 Diesel,SUV,Diesel,diesel,Manual,manual,7,799500,0
+381,Mahindra,26,Bolero,B6 Diesel,Mahindra Bolero B6 Diesel,SUV,Diesel,diesel,Manual,manual,7,894500,0
+382,Mahindra,26,Bolero,B6 Opt Diesel,Mahindra Bolero B6 Opt Diesel,SUV,Diesel,diesel,Manual,manual,7,935500,0
+383,Mahindra,26,Bolero,B8 Diesel,Mahindra Bolero B8 Diesel,SUV,Diesel,diesel,Manual,manual,7,990500,0
+384,Mahindra,27,Scorpio Classic,Classic S Diesel,Mahindra Scorpio Classic S Diesel,SUV,Diesel,diesel,Manual,manual,7,1299700,0
+385,Mahindra,27,Scorpio Classic,Classic S11 Diesel,Mahindra Scorpio Classic S11 Diesel,SUV,Diesel,diesel,Manual,manual,7,1699900,0
+386,Mahindra,28,Scorpio-N,Scorpio-N Z2 Petrol MT,Mahindra Scorpio-N Z2 Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1349000,0
+387,Mahindra,28,Scorpio-N,Scorpio-N Z2 Diesel MT,Mahindra Scorpio-N Z2 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1399000,0
+388,Mahindra,28,Scorpio-N,Scorpio-N Z4 Petrol MT,Mahindra Scorpio-N Z4 Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1544000,0
+389,Mahindra,28,Scorpio-N,Scorpio-N Z4 Diesel MT,Mahindra Scorpio-N Z4 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1585300,0
+390,Mahindra,28,Scorpio-N,Scorpio-N Z6 Diesel MT,Mahindra Scorpio-N Z6 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1690000,0
+391,Mahindra,28,Scorpio-N,Scorpio-N Z4 Petrol AT,Mahindra Scorpio-N Z4 Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,1702000,0
+392,Mahindra,28,Scorpio-N,Scorpio-N Z8 Select Petrol MT,Mahindra Scorpio-N Z8 Select Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1725000,0
+393,Mahindra,28,Scorpio-N,Scorpio-N Z4 Diesel AT,Mahindra Scorpio-N Z4 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,1750000,0
+394,Mahindra,28,Scorpio-N,Scorpio-N Z4 Diesel 4WD MT,Mahindra Scorpio-N Z4 Diesel 4WD MT,SUV,Diesel,diesel,Manual,manual,7,1802500,0
+395,Mahindra,28,Scorpio-N,Scorpio-N Z8 Select Diesel MT,Mahindra Scorpio-N Z8 Select Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1820000,0
+396,Mahindra,28,Scorpio-N,Scorpio-N Z6 Diesel AT,Mahindra Scorpio-N Z6 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,1852000,0
+397,Mahindra,28,Scorpio-N,Scorpio-N Z8 Select Petrol AT,Mahindra Scorpio-N Z8 Select Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,1868000,0
+398,Mahindra,28,Scorpio-N,Scorpio-N Z8 Select Diesel AT,Mahindra Scorpio-N Z8 Select Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,1918000,0
+399,Mahindra,28,Scorpio-N,Scorpio-N Z8 Diesel MT,Mahindra Scorpio-N Z8 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1930000,0
+400,Mahindra,28,Scorpio-N,Scorpio-N Z8T Petrol MT,Mahindra Scorpio-N Z8T Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1986000,0
+401,Mahindra,28,Scorpio-N,Scorpio-N Z8T Diesel MT,Mahindra Scorpio-N Z8T Diesel MT,SUV,Diesel,diesel,Manual,manual,7,2000000,0
+402,Mahindra,28,Scorpio-N,Scorpio-N Z8L Petrol MT,Mahindra Scorpio-N Z8L Petrol MT,SUV,Petrol,petrol,Manual,manual,7,2075000,0
+403,Mahindra,28,Scorpio-N,Scorpio-N Z8 Diesel AT,Mahindra Scorpio-N Z8 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2080000,0
+404,Mahindra,28,Scorpio-N,Scorpio-N Z8T Petrol AT,Mahindra Scorpio-N Z8T Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,2123000,0
+405,Mahindra,28,Scorpio-N,Scorpio-N Z8L Diesel MT,Mahindra Scorpio-N Z8L Diesel MT,SUV,Diesel,diesel,Manual,manual,7,2132000,0
+406,Mahindra,28,Scorpio-N,Scorpio-N Z8T Diesel AT,Mahindra Scorpio-N Z8T Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2177000,0
+407,Mahindra,28,Scorpio-N,Scorpio-N Z8L Petrol AT,Mahindra Scorpio-N Z8L Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,2227000,0
+408,Mahindra,28,Scorpio-N,Scorpio-N Z8T Diesel 4WD MT,Mahindra Scorpio-N Z8T Diesel 4WD MT,SUV,Diesel,diesel,Manual,manual,7,2238000,0
+409,Mahindra,28,Scorpio-N,Scorpio-N Z8L Diesel AT,Mahindra Scorpio-N Z8L Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2277000,0
+410,Mahindra,28,Scorpio-N,Scorpio-N Z8L Diesel 4WD MT,Mahindra Scorpio-N Z8L Diesel 4WD MT,SUV,Diesel,diesel,Manual,manual,7,2341500,0
+411,Mahindra,28,Scorpio-N,Scorpio-N Z8T Diesel 4WD AT,Mahindra Scorpio-N Z8T Diesel 4WD AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2388000,0
+412,Mahindra,28,Scorpio-N,Scorpio-N Z8L Diesel 4WD AT,Mahindra Scorpio-N Z8L Diesel 4WD AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2495000,0
+413,Mahindra,29,XUV 7XO,AX Petrol MT,Mahindra XUV 7XO AX Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1366000,0
+414,Mahindra,29,XUV 7XO,AX Diesel MT,Mahindra XUV 7XO AX Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1496000,0
+415,Mahindra,29,XUV 7XO,AX3 Petrol MT,Mahindra XUV 7XO AX3 Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1602000,0
+416,Mahindra,29,XUV 7XO,AX3 Diesel MT,Mahindra XUV 7XO AX3 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1649000,0
+417,Mahindra,29,XUV 7XO,AX3 Petrol AT,Mahindra XUV 7XO AX3 Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,1747000,0
+418,Mahindra,29,XUV 7XO,AX5 Petrol MT,Mahindra XUV 7XO AX5 Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1752000,0
+419,Mahindra,29,XUV 7XO,AX3 Diesel AT,Mahindra XUV 7XO AX3 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,1794000,0
+420,Mahindra,29,XUV 7XO,AX5 Diesel MT,Mahindra XUV 7XO AX5 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1799000,0
+421,Mahindra,29,XUV 7XO,AX7 Petrol MT,Mahindra XUV 7XO AX7 Petrol MT,SUV,Petrol,petrol,Manual,manual,7,1848000,0
+422,Mahindra,29,XUV 7XO,AX7 Diesel MT,Mahindra XUV 7XO AX7 Diesel MT,SUV,Diesel,diesel,Manual,manual,7,1895000,0
+423,Mahindra,29,XUV 7XO,AX5 Petrol AT,Mahindra XUV 7XO AX5 Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,1897000,0
+424,Mahindra,29,XUV 7XO,AX5 Diesel AT,Mahindra XUV 7XO AX5 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,1944000,0
+425,Mahindra,29,XUV 7XO,AX7 Petrol AT,Mahindra XUV 7XO AX7 Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,1993000,0
+426,Mahindra,29,XUV 7XO,AX7 Diesel AT,Mahindra XUV 7XO AX7 Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2040000,0
+427,Mahindra,29,XUV 7XO,AX7T Diesel MT,Mahindra XUV 7XO AX7T Diesel MT,SUV,Diesel,diesel,Manual,manual,7,2099000,0
+428,Mahindra,29,XUV 7XO,AX7T 6 Seater Diesel MT,Mahindra XUV 7XO AX7T 6 Seater Diesel MT,SUV,Diesel,diesel,Manual,manual,6,2139000,0
+429,Mahindra,29,XUV 7XO,AX7T Petrol AT,Mahindra XUV 7XO AX7T Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,2197000,0
+430,Mahindra,29,XUV 7XO,AX7T 6 Seater Petrol AT,Mahindra XUV 7XO AX7T 6 Seater Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,6,2216000,0
+431,Mahindra,29,XUV 7XO,AX7T Diesel AT,Mahindra XUV 7XO AX7T Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2244000,0
+432,Mahindra,29,XUV 7XO,AX7L Diesel MT,Mahindra XUV 7XO AX7L Diesel MT,SUV,Diesel,diesel,Manual,manual,7,2247000,0
+433,Mahindra,29,XUV 7XO,AX7T 6 Seater Diesel AT,Mahindra XUV 7XO AX7T 6 Seater Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,6,2284000,0
+434,Mahindra,29,XUV 7XO,AX7T Diesel AWD AT,Mahindra XUV 7XO AX7T Diesel AWD AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2344000,0
+435,Mahindra,29,XUV 7XO,AX7L Petrol AT,Mahindra XUV 7XO AX7L Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,7,2345000,0
+436,Mahindra,29,XUV 7XO,AX7L 6 Seater Petrol AT,Mahindra XUV 7XO AX7L 6 Seater Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,6,2364000,0
+437,Mahindra,29,XUV 7XO,AX7L Diesel AT,Mahindra XUV 7XO AX7L Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2392000,0
+438,Mahindra,29,XUV 7XO,AX7L 6 Seater Diesel AT,Mahindra XUV 7XO AX7L 6 Seater Diesel AT,SUV,Diesel,diesel,Torque Converter,automatic,6,2411000,0
+439,Mahindra,29,XUV 7XO,AX7L Diesel AWD AT,Mahindra XUV 7XO AX7L Diesel AWD AT,SUV,Diesel,diesel,Torque Converter,automatic,7,2492000,0
+440,Tata,30,Harrier,Petrol Smart MT,Tata Harrier Petrol Smart MT,SUV,Petrol,petrol,Manual,manual,5,1289000,0
+441,Tata,30,Harrier,Petrol Pure X MT,Tata Harrier Petrol Pure X MT,SUV,Petrol,petrol,Manual,manual,5,1599990,0
+442,Tata,30,Harrier,Petrol Adventure X MT,Tata Harrier Petrol Adventure X MT,SUV,Petrol,petrol,Manual,manual,5,1686490,0
+443,Tata,30,Harrier,Petrol Adventure X Plus MT,Tata Harrier Petrol Adventure X Plus MT,SUV,Petrol,petrol,Manual,manual,5,1713590,0
+444,Tata,30,Harrier,Petrol Adventure X AT,Tata Harrier Petrol Adventure X AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1847290,0
+445,Tata,30,Harrier,Petrol Fearless X MT,Tata Harrier Petrol Fearless X MT,SUV,Petrol,petrol,Manual,manual,5,1999990,0
+446,Tata,30,Harrier,Petrol Fearless X AT,Tata Harrier Petrol Fearless X AT,SUV,Petrol,petrol,Torque Converter,automatic,5,2178890,0
+447,Tata,30,Harrier,Petrol Fearless X Plus MT,Tata Harrier Petrol Fearless X Plus MT,SUV,Petrol,petrol,Manual,manual,5,2211990,0
+448,Tata,30,Harrier,Petrol Fearless Ultra MT,Tata Harrier Petrol Fearless Ultra MT,SUV,Petrol,petrol,Manual,manual,5,2271990,0
+449,Tata,30,Harrier,Petrol Fearless X Plus AT,Tata Harrier Petrol Fearless X Plus AT,SUV,Petrol,petrol,Torque Converter,automatic,5,2353890,0
+450,Tata,30,Harrier,Petrol Fearless Ultra AT,Tata Harrier Petrol Fearless Ultra AT,SUV,Petrol,petrol,Torque Converter,automatic,5,2413890,0
+451,Tata,30,Harrier,Diesel Smart MT,Tata Harrier Diesel Smart MT,SUV,Diesel,diesel,Manual,manual,5,1399990,0
+452,Tata,30,Harrier,Diesel Pure X MT,Tata Harrier Diesel Pure X MT,SUV,Diesel,diesel,Manual,manual,5,1714990,0
+453,Tata,30,Harrier,Diesel Adventure X MT,Tata Harrier Diesel Adventure X MT,SUV,Diesel,diesel,Manual,manual,5,1814990,0
+454,Tata,30,Harrier,Diesel Adventure X Plus MT,Tata Harrier Diesel Adventure X Plus MT,SUV,Diesel,diesel,Manual,manual,5,1844990,0
+455,Tata,30,Harrier,Diesel Pure X AT,Tata Harrier Diesel Pure X AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1864990,0
+456,Tata,30,Harrier,Diesel Adventure X AT,Tata Harrier Diesel Adventure X AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1964990,0
+457,Tata,30,Harrier,Diesel Adventure X Plus AT,Tata Harrier Diesel Adventure X Plus AT,SUV,Diesel,diesel,Torque Converter,automatic,5,1999990,0
+458,Tata,30,Harrier,Diesel Fearless X MT,Tata Harrier Diesel Fearless X MT,SUV,Diesel,diesel,Manual,manual,5,2124990,0
+459,Tata,30,Harrier,Diesel Fearless X AT,Tata Harrier Diesel Fearless X AT,SUV,Diesel,diesel,Torque Converter,automatic,5,2279990,0
+460,Tata,30,Harrier,Diesel Fearless X Plus MT,Tata Harrier Diesel Fearless X Plus MT,SUV,Diesel,diesel,Manual,manual,5,2324990,0
+461,Tata,30,Harrier,Diesel Fearless Ultra MT,Tata Harrier Diesel Fearless Ultra MT,SUV,Diesel,diesel,Manual,manual,5,2384990,0
+462,Tata,30,Harrier,Diesel Fearless X Plus AT,Tata Harrier Diesel Fearless X Plus AT,SUV,Diesel,diesel,Torque Converter,automatic,5,2469990,0
+463,Tata,30,Harrier,Diesel Fearless Ultra AT,Tata Harrier Diesel Fearless Ultra AT,SUV,Diesel,diesel,Torque Converter,automatic,5,2529990,0
+464,MG,31,Hector,Style 5Str MT,MG Hector Style 5Str MT,SUV,Petrol,petrol,Manual,manual,5,1199000,0
+465,MG,31,Hector,Select Pro 5Str MT,MG Hector Select Pro 5Str MT,SUV,Petrol,petrol,Manual,manual,5,1429000,0
+466,MG,31,Hector,Smart Pro 5Str MT,MG Hector Smart Pro 5Str MT,SUV,Petrol,petrol,Manual,manual,5,1529000,0
+467,MG,31,Hector,Smart Pro 5Str CVT,MG Hector Smart Pro 5Str CVT,SUV,Petrol,petrol,CVT,automatic,5,1659000,0
+468,MG,31,Hector,Sharp Pro 5Str MT,MG Hector Sharp Pro 5Str MT,SUV,Petrol,petrol,Manual,manual,5,1699000,0
+469,MG,31,Hector,Sharp Pro 5Str CVT,MG Hector Sharp Pro 5Str CVT,SUV,Petrol,petrol,CVT,automatic,5,1829000,0
+470,MG,31,Hector,Savvy Pro 5Str CVT,MG Hector Savvy Pro 5Str CVT,SUV,Petrol,petrol,CVT,automatic,5,1919000,0
+471,Renault,32,Triber,Authentic MT,Renault Triber Authentic MT,MPV,Petrol,petrol,Manual,manual,7,580875,0
+472,Renault,32,Triber,Evolution MT,Renault Triber Evolution MT,MPV,Petrol,petrol,Manual,manual,7,669605,0
+473,Renault,32,Triber,Techno MT,Renault Triber Techno MT,MPV,Petrol,petrol,Manual,manual,7,739120,0
+474,Renault,32,Triber,Emotion MT,Renault Triber Emotion MT,MPV,Petrol,petrol,Manual,manual,7,800350,0
+475,Renault,32,Triber,Emotion AMT,Renault Triber Emotion AMT,MPV,Petrol,petrol,AMT,automatic,7,848000,0
+476,Toyota,33,Glanza,E Petrol MT,Toyota Glanza E Petrol MT,Hatchback,Petrol,petrol,Manual,manual,5,646000,0
+477,Toyota,33,Glanza,S Petrol MT,Toyota Glanza S Petrol MT,Hatchback,Petrol,petrol,Manual,manual,5,734000,0
+478,Toyota,33,Glanza,S Petrol AMT,Toyota Glanza S Petrol AMT,Hatchback,Petrol,petrol,AMT,automatic,5,784000,0
+479,Toyota,33,Glanza,S CNG MT,Toyota Glanza S CNG MT,Hatchback,CNG,cng,Manual,manual,5,817000,0
+480,Toyota,33,Glanza,G Petrol MT,Toyota Glanza G Petrol MT,Hatchback,Petrol,petrol,Manual,manual,5,829000,0
+481,Toyota,33,Glanza,G Petrol AMT,Toyota Glanza G Petrol AMT,Hatchback,Petrol,petrol,AMT,automatic,5,879000,0
+482,Toyota,33,Glanza,G CNG MT,Toyota Glanza G CNG MT,Hatchback,CNG,cng,Manual,manual,5,914000,0
+483,Toyota,33,Glanza,V Petrol MT,Toyota Glanza V Petrol MT,Hatchback,Petrol,petrol,Manual,manual,5,912000,0
+484,Toyota,33,Glanza,V Petrol AMT,Toyota Glanza V Petrol AMT,Hatchback,Petrol,petrol,AMT,automatic,5,964000,0
+485,Toyota,34,Urban Cruiser Taisor,E Petrol MT,Toyota Urban Cruiser Taisor E Petrol MT,SUV,Petrol,petrol,Manual,manual,5,725000,0
+486,Toyota,34,Urban Cruiser Taisor,E CNG MT,Toyota Urban Cruiser Taisor E CNG MT,SUV,CNG,cng,Manual,manual,5,824000,0
+487,Toyota,34,Urban Cruiser Taisor,S Petrol MT,Toyota Urban Cruiser Taisor S Petrol MT,SUV,Petrol,petrol,Manual,manual,5,813000,0
+488,Toyota,34,Urban Cruiser Taisor,S Petrol AMT,Toyota Urban Cruiser Taisor S Petrol AMT,SUV,Petrol,petrol,AMT,automatic,5,872000,0
+489,Toyota,34,Urban Cruiser Taisor,S+ Petrol MT,Toyota Urban Cruiser Taisor S+ Petrol MT,SUV,Petrol,petrol,Manual,manual,5,847000,0
+490,Toyota,34,Urban Cruiser Taisor,S+ Petrol AMT,Toyota Urban Cruiser Taisor S+ Petrol AMT,SUV,Petrol,petrol,AMT,automatic,5,906000,0
+491,Toyota,34,Urban Cruiser Taisor,G 1.0L Turbo MT,Toyota Urban Cruiser Taisor G 1.0L Turbo MT,SUV,Petrol,petrol,Manual,manual,5,1020000,0
+492,Toyota,34,Urban Cruiser Taisor,G 1.0L Turbo AT,Toyota Urban Cruiser Taisor G 1.0L Turbo AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1157000,0
+493,Toyota,34,Urban Cruiser Taisor,V 1.0L Turbo MT,Toyota Urban Cruiser Taisor V 1.0L Turbo MT,SUV,Petrol,petrol,Manual,manual,5,1108000,0
+494,Toyota,34,Urban Cruiser Taisor,V 1.0L Turbo AT,Toyota Urban Cruiser Taisor V 1.0L Turbo AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1263000,0
+495,Maruti Suzuki,35,Fronx,Sigma 1.2 Petrol MT,Maruti Suzuki Fronx Sigma 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,684900,0
+496,Maruti Suzuki,35,Fronx,Sigma CNG MT,Maruti Suzuki Fronx Sigma CNG MT,SUV,CNG,cng,Manual,manual,5,785900,0
+497,Maruti Suzuki,35,Fronx,Delta 1.2 Petrol MT,Maruti Suzuki Fronx Delta 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,769900,0
+498,Maruti Suzuki,35,Fronx,Delta 1.2 Petrol AMT,Maruti Suzuki Fronx Delta 1.2 Petrol AMT,SUV,Petrol,petrol,AMT,automatic,5,829900,0
+499,Maruti Suzuki,35,Fronx,Delta CNG MT,Maruti Suzuki Fronx Delta CNG MT,SUV,CNG,cng,Manual,manual,5,865900,0
+500,Maruti Suzuki,35,Fronx,Delta+ 1.2 Petrol MT,Maruti Suzuki Fronx Delta+ 1.2 Petrol MT,SUV,Petrol,petrol,Manual,manual,5,808900,0
+501,Maruti Suzuki,35,Fronx,Delta+ 1.2 Petrol AMT,Maruti Suzuki Fronx Delta+ 1.2 Petrol AMT,SUV,Petrol,petrol,AMT,automatic,5,858900,0
+502,Maruti Suzuki,35,Fronx,Delta+ 1.0 Turbo MT,Maruti Suzuki Fronx Delta+ 1.0 Turbo MT,SUV,Petrol,petrol,Manual,manual,5,891900,0
+503,Maruti Suzuki,35,Fronx,Zeta 1.0 Turbo MT,Maruti Suzuki Fronx Zeta 1.0 Turbo MT,SUV,Petrol,petrol,Manual,manual,5,970900,0
+504,Maruti Suzuki,35,Fronx,Zeta 1.0 Turbo AT,Maruti Suzuki Fronx Zeta 1.0 Turbo AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1098900,0
+505,Maruti Suzuki,35,Fronx,Alpha 1.0 Turbo MT,Maruti Suzuki Fronx Alpha 1.0 Turbo MT,SUV,Petrol,petrol,Manual,manual,5,1055900,0
+506,Maruti Suzuki,35,Fronx,Alpha 1.0 Turbo AT,Maruti Suzuki Fronx Alpha 1.0 Turbo AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1183900,0
+507,Maruti Suzuki,36,S-Presso,Std (O) MT,Maruti Suzuki S-Presso Std (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,349900,0
+508,Maruti Suzuki,36,S-Presso,LXi (O) MT,Maruti Suzuki S-Presso LXi (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,379900,0
+509,Maruti Suzuki,36,S-Presso,VXi (O) MT,Maruti Suzuki S-Presso VXi (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,429900,0
+510,Maruti Suzuki,36,S-Presso,LXi (O) CNG,Maruti Suzuki S-Presso LXi (O) CNG,Hatchback,CNG,cng,Manual,manual,5,461900,0
+511,Maruti Suzuki,36,S-Presso,VXi (O) AGS,Maruti Suzuki S-Presso VXi (O) AGS,Hatchback,Petrol,petrol,AMT,automatic,5,474900,0
+512,Maruti Suzuki,36,S-Presso,VXi+ (O) MT,Maruti Suzuki S-Presso VXi+ (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,479900,0
+513,Maruti Suzuki,36,S-Presso,VXi (O) CNG,Maruti Suzuki S-Presso VXi (O) CNG,Hatchback,CNG,cng,Manual,manual,5,511900,0
+514,Maruti Suzuki,36,S-Presso,VXi+ (O) AGS,Maruti Suzuki S-Presso VXi+ (O) AGS,Hatchback,Petrol,petrol,AMT,automatic,5,524900,0
+515,Maruti Suzuki,37,Alto K10,Std (O) MT,Maruti Suzuki Alto K10 Std (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,369900,0
+516,Maruti Suzuki,37,Alto K10,LXi (O) MT,Maruti Suzuki Alto K10 LXi (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,399900,0
+517,Maruti Suzuki,37,Alto K10,VXi (O) MT,Maruti Suzuki Alto K10 VXi (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,449900,0
+518,Maruti Suzuki,37,Alto K10,LXi (O) CNG,Maruti Suzuki Alto K10 LXi (O) CNG,Hatchback,CNG,cng,Manual,manual,5,481900,0
+519,Maruti Suzuki,37,Alto K10,VXi (O) AGS,Maruti Suzuki Alto K10 VXi (O) AGS,Hatchback,Petrol,petrol,AMT,automatic,5,494900,0
+520,Maruti Suzuki,37,Alto K10,VXi+ (O) MT,Maruti Suzuki Alto K10 VXi+ (O) MT,Hatchback,Petrol,petrol,Manual,manual,5,499900,0
+521,Maruti Suzuki,37,Alto K10,VXi (O) CNG,Maruti Suzuki Alto K10 VXi (O) CNG,Hatchback,CNG,cng,Manual,manual,5,531900,0
+522,Maruti Suzuki,37,Alto K10,VXi+ (O) AGS,Maruti Suzuki Alto K10 VXi+ (O) AGS,Hatchback,Petrol,petrol,AMT,automatic,5,544900,0
+523,Toyota,38,Urban Cruiser Hyryder,E NeoDrive MT,Toyota Urban Cruiser Hyryder E NeoDrive MT,SUV,Petrol,petrol,Manual,manual,5,1099000,0
+524,Toyota,38,Urban Cruiser Hyryder,S NeoDrive MT,Toyota Urban Cruiser Hyryder S NeoDrive MT,SUV,Petrol,petrol,Manual,manual,5,1251000,0
+525,Toyota,38,Urban Cruiser Hyryder,S NeoDrive AT,Toyota Urban Cruiser Hyryder S NeoDrive AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1377000,0
+526,Toyota,38,Urban Cruiser Hyryder,S CNG MT,Toyota Urban Cruiser Hyryder S CNG MT,SUV,CNG,cng,Manual,manual,5,1338000,0
+527,Toyota,38,Urban Cruiser Hyryder,S Hybrid e-CVT,Toyota Urban Cruiser Hyryder S Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1677000,0
+528,Toyota,38,Urban Cruiser Hyryder,G CNG MT,Toyota Urban Cruiser Hyryder G CNG MT,SUV,CNG,cng,Manual,manual,5,1534000,0
+529,Toyota,38,Urban Cruiser Hyryder,G (O) NeoDrive MT,Toyota Urban Cruiser Hyryder G (O) NeoDrive MT,SUV,Petrol,petrol,Manual,manual,5,1451000,0
+530,Toyota,38,Urban Cruiser Hyryder,G (O) NeoDrive AT,Toyota Urban Cruiser Hyryder G (O) NeoDrive AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1574000,0
+531,Toyota,38,Urban Cruiser Hyryder,G (O) Hybrid e-CVT,Toyota Urban Cruiser Hyryder G (O) Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1878000,0
+532,Toyota,38,Urban Cruiser Hyryder,V NeoDrive MT,Toyota Urban Cruiser Hyryder V NeoDrive MT,SUV,Petrol,petrol,Manual,manual,5,1602000,0
+533,Toyota,38,Urban Cruiser Hyryder,V NeoDrive AT,Toyota Urban Cruiser Hyryder V NeoDrive AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1724000,0
+534,Toyota,38,Urban Cruiser Hyryder,V NeoDrive All-Wheel Drive AT,Toyota Urban Cruiser Hyryder V NeoDrive All-Wheel Drive AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1872000,0
+535,Toyota,38,Urban Cruiser Hyryder,V Hybrid e-CVT,Toyota Urban Cruiser Hyryder V Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1999000,0
+536,Maruti Suzuki,39,Grand Vitara,Sigma Petrol MT,Maruti Suzuki Grand Vitara Sigma Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1076500,0
+537,Maruti Suzuki,39,Grand Vitara,Delta Petrol MT,Maruti Suzuki Grand Vitara Delta Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1210000,0
+538,Maruti Suzuki,39,Grand Vitara,Delta Petrol AT,Maruti Suzuki Grand Vitara Delta Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1345000,0
+539,Maruti Suzuki,39,Grand Vitara,Zeta Petrol MT,Maruti Suzuki Grand Vitara Zeta Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1370000,0
+540,Maruti Suzuki,39,Grand Vitara,Zeta Petrol AT,Maruti Suzuki Grand Vitara Zeta Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1505000,0
+541,Maruti Suzuki,39,Grand Vitara,Zeta (O) Petrol MT,Maruti Suzuki Grand Vitara Zeta (O) Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1428000,0
+542,Maruti Suzuki,39,Grand Vitara,Zeta (O) Petrol AT,Maruti Suzuki Grand Vitara Zeta (O) Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1563000,0
+543,Maruti Suzuki,39,Grand Vitara,Alpha Petrol MT,Maruti Suzuki Grand Vitara Alpha Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1520000,0
+544,Maruti Suzuki,39,Grand Vitara,Alpha Petrol AT,Maruti Suzuki Grand Vitara Alpha Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1655000,0
+545,Maruti Suzuki,39,Grand Vitara,Alpha (O) Petrol MT,Maruti Suzuki Grand Vitara Alpha (O) Petrol MT,SUV,Petrol,petrol,Manual,manual,5,1578000,0
+546,Maruti Suzuki,39,Grand Vitara,Alpha (O) Petrol AT,Maruti Suzuki Grand Vitara Alpha (O) Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1713000,0
+547,Maruti Suzuki,39,Grand Vitara,Alpha (O) ALLGRIP Petrol AT,Maruti Suzuki Grand Vitara Alpha (O) ALLGRIP Petrol AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1858000,0
+548,Maruti Suzuki,39,Grand Vitara,Delta CNG MT,Maruti Suzuki Grand Vitara Delta CNG MT,SUV,CNG,cng,Manual,manual,5,1300000,0
+549,Maruti Suzuki,39,Grand Vitara,Zeta CNG MT,Maruti Suzuki Grand Vitara Zeta CNG MT,SUV,CNG,cng,Manual,manual,5,1460000,0
+550,Maruti Suzuki,39,Grand Vitara,Delta+ Strong Hybrid e-CVT,Maruti Suzuki Grand Vitara Delta+ Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1663000,0
+551,Maruti Suzuki,39,Grand Vitara,Zeta+ Strong Hybrid e-CVT,Maruti Suzuki Grand Vitara Zeta+ Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1792000,0
+552,Maruti Suzuki,39,Grand Vitara,Zeta+ (O) Strong Hybrid e-CVT,Maruti Suzuki Grand Vitara Zeta+ (O) Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1850000,0
+553,Maruti Suzuki,39,Grand Vitara,Alpha+ Strong Hybrid e-CVT,Maruti Suzuki Grand Vitara Alpha+ Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1950000,0
+554,Maruti Suzuki,39,Grand Vitara,Alpha+ (O) Strong Hybrid e-CVT,Maruti Suzuki Grand Vitara Alpha+ (O) Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1957000,0
+555,Maruti Suzuki,40,Victoris,LXI MT,Maruti Suzuki Victoris LXI MT,SUV,Petrol,petrol,Manual,manual,5,1049900,0
+556,Maruti Suzuki,40,Victoris,LXI CNG MT,Maruti Suzuki Victoris LXI CNG MT,SUV,CNG,cng,Manual,manual,5,1149900,0
+557,Maruti Suzuki,40,Victoris,VXI MT,Maruti Suzuki Victoris VXI MT,SUV,Petrol,petrol,Manual,manual,5,1179900,0
+558,Maruti Suzuki,40,Victoris,VXI CNG MT,Maruti Suzuki Victoris VXI CNG MT,SUV,CNG,cng,Manual,manual,5,1279900,0
+559,Maruti Suzuki,40,Victoris,VXI AT,Maruti Suzuki Victoris VXI AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1335900,0
+560,Maruti Suzuki,40,Victoris,ZXI MT,Maruti Suzuki Victoris ZXI MT,SUV,Petrol,petrol,Manual,manual,5,1372300,0
+561,Maruti Suzuki,40,Victoris,ZXI (O) MT,Maruti Suzuki Victoris ZXI (O) MT,SUV,Petrol,petrol,Manual,manual,5,1384400,0
+562,Maruti Suzuki,40,Victoris,ZXI CNG MT,Maruti Suzuki Victoris ZXI CNG MT,SUV,CNG,cng,Manual,manual,5,1472300,0
+563,Maruti Suzuki,40,Victoris,ZXI AT,Maruti Suzuki Victoris ZXI AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1528300,0
+564,Maruti Suzuki,40,Victoris,ZXI+ MT,Maruti Suzuki Victoris ZXI+ MT,SUV,Petrol,petrol,Manual,manual,5,1539300,0
+565,Maruti Suzuki,40,Victoris,ZXI (O) AT,Maruti Suzuki Victoris ZXI (O) AT,SUV,Petrol,petrol,Torque Converter,automatic,5,1540400,0
+566,Maruti Suzuki,40,Victoris,ZXI+ (O) MT,Maruti Suzuki Victoris ZXI+ (O) MT,SUV,Petrol,petrol,Manual,manual,5,1558400,0
+567,Maruti Suzuki,40,Victoris,VXI Strong Hybrid e-CVT,Maruti Suzuki Victoris VXI Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1637900,0
+568,Maruti Suzuki,40,Victoris,ZXI+ AT ADAS,Maruti Suzuki Victoris ZXI+ AT ADAS,SUV,Petrol,petrol,Torque Converter,automatic,5,1734300,0
+569,Maruti Suzuki,40,Victoris,ZXI+ (O) AT ADAS,Maruti Suzuki Victoris ZXI+ (O) AT ADAS,SUV,Petrol,petrol,Torque Converter,automatic,5,1753400,0
+570,Maruti Suzuki,40,Victoris,ZXI Strong Hybrid e-CVT,Maruti Suzuki Victoris ZXI Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1795300,0
+571,Maruti Suzuki,40,Victoris,ZXI (O) Strong Hybrid e-CVT,Maruti Suzuki Victoris ZXI (O) Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1854300,0
+572,Maruti Suzuki,40,Victoris,ZXI+ AT ALLGRIP ADAS,Maruti Suzuki Victoris ZXI+ AT ALLGRIP ADAS,SUV,Petrol,petrol,Torque Converter,automatic,5,1879300,0
+573,Maruti Suzuki,40,Victoris,ZXI+ (O) AT ALLGRIP ADAS,Maruti Suzuki Victoris ZXI+ (O) AT ALLGRIP ADAS,SUV,Petrol,petrol,Torque Converter,automatic,5,1937300,0
+574,Maruti Suzuki,40,Victoris,ZXI+ Strong Hybrid e-CVT,Maruti Suzuki Victoris ZXI+ Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1962300,0
+575,Maruti Suzuki,40,Victoris,ZXI+ (O) Strong Hybrid e-CVT,Maruti Suzuki Victoris ZXI+ (O) Strong Hybrid e-CVT,SUV,Petrol Hybrid,hybrid,e-CVT,automatic,5,1998900,0
+576,Toyota,41,Innova Hycross,GX 7 Seater Petrol CVT,Toyota Innova Hycross GX 7 Seater Petrol CVT,MPV,Petrol,petrol,CVT,automatic,7,1953000,0
+577,Toyota,41,Innova Hycross,GX 8 Seater Petrol CVT,Toyota Innova Hycross GX 8 Seater Petrol CVT,MPV,Petrol,petrol,CVT,automatic,8,1958000,0
+578,Toyota,41,Innova Hycross,GX (O) 7 Seater Petrol CVT,Toyota Innova Hycross GX (O) 7 Seater Petrol CVT,MPV,Petrol,petrol,CVT,automatic,7,2097000,0
+579,Toyota,41,Innova Hycross,GX (O) 8 Seater Petrol CVT,Toyota Innova Hycross GX (O) 8 Seater Petrol CVT,MPV,Petrol,petrol,CVT,automatic,8,2084000,0
+580,Toyota,41,Innova Hycross,VX 7 Seater Hybrid e-CVT,Toyota Innova Hycross VX 7 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,7,2676000,0
+581,Toyota,41,Innova Hycross,VX 8 Seater Hybrid e-CVT,Toyota Innova Hycross VX 8 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,8,2681000,0
+582,Toyota,41,Innova Hycross,VX (O) 7 Seater Hybrid e-CVT,Toyota Innova Hycross VX (O) 7 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,7,2877000,0
+583,Toyota,41,Innova Hycross,VX (O) 8 Seater Hybrid e-CVT,Toyota Innova Hycross VX (O) 8 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,8,2882000,0
+584,Toyota,41,Innova Hycross,ZX 7 Seater Hybrid e-CVT,Toyota Innova Hycross ZX 7 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,7,3120000,0
+585,Toyota,41,Innova Hycross,ZX (O) 7 Seater Hybrid e-CVT,Toyota Innova Hycross ZX (O) 7 Seater Hybrid e-CVT,MPV,Petrol Hybrid,hybrid,e-CVT,automatic,7,3184000,0
+586,Toyota,42,Hilux,STD MT 4WD,Toyota Hilux STD MT 4WD,Pickup,Diesel,diesel,Manual,manual,5,2852000,0
+587,Toyota,42,Hilux,High MT 4WD,Toyota Hilux High MT 4WD,Pickup,Diesel,diesel,Manual,manual,5,3530000,0
+588,Toyota,42,Hilux,High AT 4WD,Toyota Hilux High AT 4WD,Pickup,Diesel,diesel,Torque Converter,automatic,5,3600000,0
+589,Toyota,43,Rumion,E MT NeoDrive,Toyota Rumion E MT NeoDrive,MPV,Petrol,petrol,Manual,manual,7,955000,0
+590,Toyota,43,Rumion,S MT NeoDrive,Toyota Rumion S MT NeoDrive,MPV,Petrol,petrol,Manual,manual,7,1051000,0
+591,Toyota,43,Rumion,S MT CNG,Toyota Rumion S MT CNG,MPV,CNG,cng,Manual,manual,7,1140000,0
+592,Toyota,43,Rumion,G MT NeoDrive,Toyota Rumion G MT NeoDrive,MPV,Petrol,petrol,Manual,manual,7,1164000,0
+593,Toyota,43,Rumion,S AT NeoDrive,Toyota Rumion S AT NeoDrive,MPV,Petrol,petrol,Torque Converter,automatic,7,1205000,0
+594,Toyota,43,Rumion,V MT NeoDrive,Toyota Rumion V MT NeoDrive,MPV,Petrol,petrol,Manual,manual,7,1239000,0
+595,Toyota,43,Rumion,G AT NeoDrive,Toyota Rumion G AT NeoDrive,MPV,Petrol,petrol,Torque Converter,automatic,7,1311000,0
+596,Toyota,43,Rumion,V AT NeoDrive,Toyota Rumion V AT NeoDrive,MPV,Petrol,petrol,Torque Converter,automatic,7,1386000,0
+597,Maruti Suzuki,44,Jimny,Zeta PRO MT,Maruti Suzuki Jimny Zeta PRO MT,SUV,Petrol,petrol,Manual,manual,4,1231500,0
+598,Maruti Suzuki,44,Jimny,Zeta PRO AT,Maruti Suzuki Jimny Zeta PRO AT,SUV,Petrol,petrol,Torque Converter,automatic,4,1337500,0
+599,Maruti Suzuki,44,Jimny,Alpha PRO MT,Maruti Suzuki Jimny Alpha PRO MT,SUV,Petrol,petrol,Manual,manual,4,1338600,0
+600,Maruti Suzuki,44,Jimny,Alpha PRO AT,Maruti Suzuki Jimny Alpha PRO AT,SUV,Petrol,petrol,Torque Converter,automatic,4,1429200,0
+601,Maruti Suzuki,45,e VITARA,Delta 49 kWh,Maruti Suzuki e VITARA Delta 49 kWh,SUV,Electric,electric,Automatic,automatic,5,1599000,0
+602,Maruti Suzuki,45,e VITARA,Zeta 61 kWh,Maruti Suzuki e VITARA Zeta 61 kWh,SUV,Electric,electric,Automatic,automatic,5,1749000,0
+603,Maruti Suzuki,45,e VITARA,Alpha 61 kWh,Maruti Suzuki e VITARA Alpha 61 kWh,SUV,Electric,electric,Automatic,automatic,5,1979000,0
+604,Skoda,46,Kushaq,Classic Plus Petrol 1.0L Turbo Automatic (TC),Skoda Kushaq Classic Plus Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1289000,0
+605,Skoda,46,Kushaq,Classic Plus Petrol 1.0L Turbo Manual,Skoda Kushaq Classic Plus Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1069000,0
+606,Skoda,46,Kushaq,Monte Carlo Petrol 1.0L Turbo Automatic (TC),Skoda Kushaq Monte Carlo Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1789000,0
+607,Skoda,46,Kushaq,Monte Carlo Petrol 1.5L Turbo Automatic (DCT),Skoda Kushaq Monte Carlo Petrol 1.5L Turbo Automatic (DCT),SUV,Petrol,petrol,DCT,automatic,5,1899000,0
+608,Skoda,46,Kushaq,Prestige Petrol 1.0L Turbo Automatic (TC),Skoda Kushaq Prestige Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1779000,0
+609,Skoda,46,Kushaq,Prestige Petrol 1.0L Turbo Manual,Skoda Kushaq Prestige Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1679000,0
+610,Skoda,46,Kushaq,Prestige Petrol 1.5L Turbo Automatic (DCT),Skoda Kushaq Prestige Petrol 1.5L Turbo Automatic (DCT),SUV,Petrol,petrol,DCT,automatic,5,1879000,0
+611,Skoda,46,Kushaq,Signature Petrol 1.0L Turbo Automatic (TC),Skoda Kushaq Signature Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1559000,0
+612,Skoda,46,Kushaq,Signature Petrol 1.0L Turbo Manual,Skoda Kushaq Signature Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1459000,0
+613,Skoda,46,Kushaq,Sportline Petrol 1.0L Turbo Automatic (TC),Skoda Kushaq Sportline Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1574000,0
+614,Skoda,46,Kushaq,Sportline Petrol 1.0L Turbo Manual,Skoda Kushaq Sportline Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1474000,0
+615,Skoda,47,Slavia,Classic Petrol 1.0L Turbo Manual,Skoda Slavia Classic Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,999900,0
+616,Skoda,47,Slavia,Monte Carlo Petrol 1.0L Turbo Automatic (TC),Skoda Slavia Monte Carlo Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1669000,0
+617,Skoda,47,Slavia,Monte Carlo Petrol 1.5L Turbo Automatic (DCT),Skoda Slavia Monte Carlo Petrol 1.5L Turbo Automatic (DCT),Sedan,Petrol,petrol,DCT,automatic,5,1819000,0
+618,Skoda,47,Slavia,Prestige Petrol 1.0L Turbo Automatic (TC),Skoda Slavia Prestige Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1615310,0
+619,Skoda,47,Slavia,Prestige Petrol 1.0L Turbo Manual,Skoda Slavia Prestige Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1499900,0
+620,Skoda,47,Slavia,Prestige Petrol 1.5L Turbo Automatic (DCT),Skoda Slavia Prestige Petrol 1.5L Turbo Automatic (DCT),Sedan,Petrol,petrol,DCT,automatic,5,1769793,0
+621,Skoda,47,Slavia,Signature Petrol 1.0L Turbo Automatic (TC),Skoda Slavia Signature Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1418345,0
+622,Skoda,47,Slavia,Signature Petrol 1.0L Turbo Manual,Skoda Slavia Signature Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1312138,0
+623,Skoda,47,Slavia,Sportline Petrol 1.0L Turbo Automatic (TC),Skoda Slavia Sportline Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1438621,0
+624,Skoda,47,Slavia,Sportline Petrol 1.0L Turbo Manual,Skoda Slavia Sportline Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1332414,0
+625,Volkswagen,48,Taigun,Comfortline Petrol 1.0L Turbo Manual,Volkswagen Taigun Comfortline Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1099900,0
+626,Volkswagen,48,Taigun,GT Line Petrol 1.0L Turbo Automatic (TC),Volkswagen Taigun GT Line Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1574900,0
+627,Volkswagen,48,Taigun,GT Line Petrol 1.0L Turbo Manual,Volkswagen Taigun GT Line Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1459900,0
+628,Volkswagen,48,Taigun,GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT),Volkswagen Taigun GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT),SUV,Petrol,petrol,DCT,automatic,5,1899000,0
+629,Volkswagen,48,Taigun,Highline Petrol 1.0L Turbo Automatic (TC),Volkswagen Taigun Highline Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1379000,0
+630,Volkswagen,48,Taigun,Highline Petrol 1.0L Turbo Manual,Volkswagen Taigun Highline Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1269000,0
+631,Volkswagen,48,Taigun,Highline Plus Petrol 1.0L Turbo Automatic (TC),Volkswagen Taigun Highline Plus Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1544900,0
+632,Volkswagen,48,Taigun,Highline Plus Petrol 1.0L Turbo Manual,Volkswagen Taigun Highline Plus Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1429900,0
+633,Volkswagen,48,Taigun,Topline Petrol 1.0L Turbo Automatic (TC),Volkswagen Taigun Topline Petrol 1.0L Turbo Automatic (TC),SUV,Petrol,petrol,Torque Converter,automatic,5,1717900,0
+634,Volkswagen,48,Taigun,Topline Petrol 1.0L Turbo Manual,Volkswagen Taigun Topline Petrol 1.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1599900,0
+635,Volkswagen,49,Virtus,Comfortline Petrol 1.0L Turbo Manual,Volkswagen Virtus Comfortline Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1070900,0
+636,Volkswagen,49,Virtus,GT Line Petrol 1.0L Turbo Automatic (TC),Volkswagen Virtus GT Line Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1499900,0
+637,Volkswagen,49,Virtus,GT Line Petrol 1.0L Turbo Manual,Volkswagen Virtus GT Line Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1409900,0
+638,Volkswagen,49,Virtus,GT Plus Petrol 1.5L Turbo Automatic (DCT) Chrome,Volkswagen Virtus GT Plus Petrol 1.5L Turbo Automatic (DCT) Chrome,Sedan,Petrol,petrol,DCT,automatic,5,1885000,0
+639,Volkswagen,49,Virtus,Highline Petrol 1.0L Turbo Automatic (TC),Volkswagen Virtus Highline Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1470900,0
+640,Volkswagen,49,Virtus,Highline Petrol 1.0L Turbo Manual,Volkswagen Virtus Highline Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1345900,0
+641,Volkswagen,49,Virtus,Highline Plus Petrol 1.0L Turbo Automatic (TC),Volkswagen Virtus Highline Plus Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1490900,0
+642,Volkswagen,49,Virtus,Highline Plus Petrol 1.0L Turbo Manual,Volkswagen Virtus Highline Plus Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1385900,0
+643,Volkswagen,49,Virtus,Topline Petrol 1.0L Turbo Automatic (TC),Volkswagen Virtus Topline Petrol 1.0L Turbo Automatic (TC),Sedan,Petrol,petrol,Torque Converter,automatic,5,1620900,0
+644,Volkswagen,49,Virtus,Topline Petrol 1.0L Turbo Manual,Volkswagen Virtus Topline Petrol 1.0L Turbo Manual,Sedan,Petrol,petrol,Manual,manual,5,1500900,0
+645,Honda,50,Elevate,SV Petrol Manual,Honda Elevate SV Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1164000,0
+646,Honda,50,Elevate,V Petrol Automatic,Honda Elevate V Petrol Automatic,SUV,Petrol,petrol,CVT,automatic,5,1326000,0
+647,Honda,50,Elevate,V Petrol Manual,Honda Elevate V Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1210000,0
+648,Honda,50,Elevate,VX Petrol Automatic,Honda Elevate VX Petrol Automatic,SUV,Petrol,petrol,CVT,automatic,5,1495000,0
+649,Honda,50,Elevate,VX Petrol Manual,Honda Elevate VX Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1379000,0
+650,Honda,50,Elevate,ZX Petrol Automatic,Honda Elevate ZX Petrol Automatic,SUV,Petrol,petrol,CVT,automatic,5,1620000,0
+651,Honda,50,Elevate,ZX Petrol Automatic ADV Edition,Honda Elevate ZX Petrol Automatic ADV Edition,SUV,Petrol,petrol,CVT,automatic,5,1657000,0
+652,Honda,50,Elevate,ZX Petrol Manual,Honda Elevate ZX Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1502000,0
+653,Honda,50,Elevate,ZX Petrol Manual ADV Edition,Honda Elevate ZX Petrol Manual ADV Edition,SUV,Petrol,petrol,Manual,manual,5,1539000,0
+654,Hyundai,51,Exter,HX 10 Petrol Automatic,Hyundai Exter HX 10 Petrol Automatic,SUV,Petrol,petrol,AMT,automatic,5,942000,0
+655,Hyundai,51,Exter,HX 2 CNG Manual,Hyundai Exter HX 2 CNG Manual,SUV,CNG,cng,Manual,manual,5,700000,0
+656,Hyundai,51,Exter,HX 2 Petrol Manual,Hyundai Exter HX 2 Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,580000,0
+657,Hyundai,51,Exter,HX 3 CNG Manual,Hyundai Exter HX 3 CNG Manual,SUV,CNG,cng,Manual,manual,5,744000,0
+658,Hyundai,51,Exter,HX 3 Petrol Automatic,Hyundai Exter HX 3 Petrol Automatic,SUV,Petrol,petrol,AMT,automatic,5,691000,0
+659,Hyundai,51,Exter,HX 3 Petrol Manual,Hyundai Exter HX 3 Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,624000,0
+660,Hyundai,51,Exter,HX 4 CNG Manual,Hyundai Exter HX 4 CNG Manual,SUV,CNG,cng,Manual,manual,5,827000,0
+661,Hyundai,51,Exter,HX 4 Petrol Manual,Hyundai Exter HX 4 Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,722000,0
+662,Hyundai,51,Exter,HX 4 Plus Petrol Automatic,Hyundai Exter HX 4 Plus Petrol Automatic,SUV,Petrol,petrol,AMT,automatic,5,806000,0
+663,Hyundai,51,Exter,HX 6 CNG Manual,Hyundai Exter HX 6 CNG Manual,SUV,CNG,cng,Manual,manual,5,894000,0
+664,Hyundai,51,Exter,HX 6 Petrol Automatic,Hyundai Exter HX 6 Petrol Automatic,SUV,Petrol,petrol,AMT,automatic,5,855000,0
+665,Hyundai,51,Exter,HX 6 Petrol Manual,Hyundai Exter HX 6 Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,795000,0
+666,Hyundai,51,Exter,HX 8 CNG Manual,Hyundai Exter HX 8 CNG Manual,SUV,CNG,cng,Manual,manual,5,941000,0
+667,Hyundai,51,Exter,HX 8 Petrol Automatic,Hyundai Exter HX 8 Petrol Automatic,SUV,Petrol,petrol,AMT,automatic,5,908000,0
+668,Hyundai,51,Exter,HX 8 Petrol Manual,Hyundai Exter HX 8 Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,836000,0
+669,Skoda,52,Kylaq,Classic Petrol Turbo Manual,Skoda Kylaq Classic Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,759000,1
+670,Skoda,52,Kylaq,Classic Plus Petrol Turbo Automatic,Skoda Kylaq Classic Plus Petrol Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,925000,1
+671,Skoda,52,Kylaq,Classic Plus Petrol Turbo Manual,Skoda Kylaq Classic Plus Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,825000,1
+672,Skoda,52,Kylaq,Prestige Petrol Turbo Automatic,Skoda Kylaq Prestige Petrol Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1275000,1
+673,Skoda,52,Kylaq,Prestige Petrol Turbo Manual,Skoda Kylaq Prestige Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1175000,1
+674,Skoda,52,Kylaq,Prestige Plus Petrol Turbo Automatic,Skoda Kylaq Prestige Plus Petrol Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1365000,1
+675,Skoda,52,Kylaq,Prestige Plus Petrol Turbo Manual,Skoda Kylaq Prestige Plus Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1265000,1
+676,Skoda,52,Kylaq,Signature Petrol Turbo Automatic,Skoda Kylaq Signature Petrol Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1043000,1
+677,Skoda,52,Kylaq,Signature Petrol Turbo Manual,Skoda Kylaq Signature Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,943000,1
+678,Skoda,52,Kylaq,Signature Plus Petrol Turbo Automatic,Skoda Kylaq Signature Plus Petrol Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1177000,1
+679,Skoda,52,Kylaq,Signature Plus Petrol Turbo Manual,Skoda Kylaq Signature Plus Petrol Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1077000,1
+680,Mahindra,53,Thar,AXT 2WD Diesel 1.5L Turbo Manual,Mahindra Thar AXT 2WD Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,4,999500,0
+681,Mahindra,53,Thar,LXT 2WD Diesel 1.5L Turbo Manual,Mahindra Thar LXT 2WD Diesel 1.5L Turbo Manual,SUV,Diesel,diesel,Manual,manual,4,1269500,0
+682,Mahindra,53,Thar,LXT 2WD Petrol 2.0L Turbo Automatic,Mahindra Thar LXT 2WD Petrol 2.0L Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,4,1449500,0
+683,Mahindra,53,Thar,LXT 4WD Diesel 2.2L Turbo Automatic,Mahindra Thar LXT 4WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,4,1762500,0
+684,Mahindra,53,Thar,LXT 4WD Diesel 2.2L Turbo Manual,Mahindra Thar LXT 4WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,4,1608500,0
+685,Mahindra,53,Thar,LXT 4WD Petrol 2.0L Turbo Automatic,Mahindra Thar LXT 4WD Petrol 2.0L Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,4,1686500,0
+686,Mahindra,53,Thar,LXT 4WD Petrol 2.0L Turbo Manual,Mahindra Thar LXT 4WD Petrol 2.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,4,1526500,0
+687,Mahindra,54,Thar Roxx,AX3 L 2WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx AX3 L 2WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1679500,0
+688,Mahindra,54,Thar Roxx,AX5 L 2WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx AX5 L 2WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1879500,0
+689,Mahindra,54,Thar Roxx,AX5 L 4WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx AX5 L 4WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,2099500,0
+690,Mahindra,54,Thar Roxx,AX7 L 2WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx AX7 L 2WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1999900,0
+691,Mahindra,54,Thar Roxx,AX7 L 2WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx AX7 L 2WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1899500,0
+692,Mahindra,54,Thar Roxx,AX7 L 2WD Petrol 2.0L Turbo Automatic,Mahindra Thar Roxx AX7 L 2WD Petrol 2.0L Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1999500,0
+693,Mahindra,54,Thar Roxx,AX7 L 4WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx AX7 L 4WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,2281500,0
+694,Mahindra,54,Thar Roxx,AX7 L 4WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx AX7 L 4WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,2143500,0
+695,Mahindra,54,Thar Roxx,MX1 2WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx MX1 2WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1385500,0
+696,Mahindra,54,Thar Roxx,MX1 2WD Petrol 2.0L Turbo Manual,Mahindra Thar Roxx MX1 2WD Petrol 2.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1239500,0
+697,Mahindra,54,Thar Roxx,MX3 2WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx MX3 2WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1734500,0
+698,Mahindra,54,Thar Roxx,MX3 2WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx MX3 2WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1585500,0
+699,Mahindra,54,Thar Roxx,MX3 2WD Petrol 2.0L Turbo Automatic,Mahindra Thar Roxx MX3 2WD Petrol 2.0L Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1489500,0
+700,Mahindra,54,Thar Roxx,MX5 2WD Diesel 2.2L Turbo Automatic,Mahindra Thar Roxx MX5 2WD Diesel 2.2L Turbo Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1824500,0
+701,Mahindra,54,Thar Roxx,MX5 2WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx MX5 2WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1679500,0
+702,Mahindra,54,Thar Roxx,MX5 2WD Petrol 2.0L Turbo Automatic,Mahindra Thar Roxx MX5 2WD Petrol 2.0L Turbo Automatic,SUV,Petrol,petrol,Torque Converter,automatic,5,1769500,0
+703,Mahindra,54,Thar Roxx,MX5 2WD Petrol 2.0L Turbo Manual,Mahindra Thar Roxx MX5 2WD Petrol 2.0L Turbo Manual,SUV,Petrol,petrol,Manual,manual,5,1621800,0
+704,Mahindra,54,Thar Roxx,MX5 4WD Diesel 2.2L Turbo Manual,Mahindra Thar Roxx MX5 4WD Diesel 2.2L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,1904500,0
+705,Renault,55,Duster,Authentic TCe 100 MT,Renault Duster Authentic TCe 100 MT,SUV,Petrol,petrol,Manual,manual,5,1049000,0
+706,Renault,55,Duster,Evolution TCe 100 MT,Renault Duster Evolution TCe 100 MT,SUV,Petrol,petrol,Manual,manual,5,1169000,0
+707,Renault,55,Duster,Evolution TCe 160 DCT,Renault Duster Evolution TCe 160 DCT,SUV,Petrol,petrol,DCT,automatic,5,1449000,0
+708,Renault,55,Duster,Evolution TCe 160 MT,Renault Duster Evolution TCe 160 MT,SUV,Petrol,petrol,Manual,manual,5,1299000,0
+709,Renault,55,Duster,Iconic TCe 160 DCT,Renault Duster Iconic TCe 160 DCT,SUV,Petrol,petrol,DCT,automatic,5,1869000,0
+710,Renault,55,Duster,Iconic TCe 160 MT,Renault Duster Iconic TCe 160 MT,SUV,Petrol,petrol,Manual,manual,5,1699000,0
+711,Renault,55,Duster,Techno TCe 100 MT,Renault Duster Techno TCe 100 MT,SUV,Petrol,petrol,Manual,manual,5,1349000,0
+712,Renault,55,Duster,Techno TCe 160 DCT,Renault Duster Techno TCe 160 DCT,SUV,Petrol,petrol,DCT,automatic,5,1589000,0
+713,Renault,55,Duster,Techno TCe 160 MT,Renault Duster Techno TCe 160 MT,SUV,Petrol,petrol,Manual,manual,5,1449000,0
+714,Renault,55,Duster,Techno+ TCe 160 DCT,Renault Duster Techno+ TCe 160 DCT,SUV,Petrol,petrol,DCT,automatic,5,1629000,0
+715,Renault,55,Duster,Techno+ TCe 160 MT,Renault Duster Techno+ TCe 160 MT,SUV,Petrol,petrol,Manual,manual,5,1529000,0
+716,Nissan,56,Magnite,EZ-SHIFT ACENTA,Nissan Magnite EZ-SHIFT ACENTA,SUV,Petrol,petrol,AMT,automatic,5,736000,0
+717,Nissan,56,Magnite,EZ-SHIFT N-CONNECTA,Nissan Magnite EZ-SHIFT N-CONNECTA,SUV,Petrol,petrol,AMT,automatic,5,799000,0
+718,Nissan,56,Magnite,EZ-SHIFT TEKNA,Nissan Magnite EZ-SHIFT TEKNA,SUV,Petrol,petrol,AMT,automatic,5,892000,0
+719,Nissan,56,Magnite,EZ-SHIFT TEKNA+,Nissan Magnite EZ-SHIFT TEKNA+,SUV,Petrol,petrol,AMT,automatic,5,925000,0
+720,Nissan,56,Magnite,EZ-SHIFT VISIA,Nissan Magnite EZ-SHIFT VISIA,SUV,Petrol,petrol,AMT,automatic,5,624000,0
+721,Nissan,56,Magnite,MT ACENTA,Nissan Magnite MT ACENTA,SUV,Petrol,petrol,Manual,manual,5,680500,0
+722,Nissan,56,Magnite,MT N-CONNECTA,Nissan Magnite MT N-CONNECTA,SUV,Petrol,petrol,Manual,manual,5,743500,0
+723,Nissan,56,Magnite,MT TEKNA,Nissan Magnite MT TEKNA,SUV,Petrol,petrol,Manual,manual,5,836500,0
+724,Nissan,56,Magnite,MT TEKNA+,Nissan Magnite MT TEKNA+,SUV,Petrol,petrol,Manual,manual,5,869500,0
+725,Nissan,56,Magnite,MT VISIA,Nissan Magnite MT VISIA,SUV,Petrol,petrol,Manual,manual,5,565000,0
+726,Nissan,56,Magnite,MT VISIA+,Nissan Magnite MT VISIA+,SUV,Petrol,petrol,Manual,manual,5,619500,0
+727,Nissan,56,Magnite,TURBO MT N-CONNECTA,Nissan Magnite TURBO MT N-CONNECTA,SUV,Petrol,petrol,Manual,manual,5,874500,0
+728,Nissan,56,Magnite,TURBO MT TEKNA,Nissan Magnite TURBO MT TEKNA,SUV,Petrol,petrol,Manual,manual,5,954500,0
+729,Nissan,56,Magnite,TURBO MT TEKNA+,Nissan Magnite TURBO MT TEKNA+,SUV,Petrol,petrol,Manual,manual,5,988400,0
+730,Nissan,56,Magnite,Turbo X-TRONIC CVT ACENTA,Nissan Magnite Turbo X-TRONIC CVT ACENTA,SUV,Petrol,petrol,CVT,automatic,5,925000,0
+731,Nissan,56,Magnite,Turbo X-TRONIC CVT N-CONNECTA,Nissan Magnite Turbo X-TRONIC CVT N-CONNECTA,SUV,Petrol,petrol,CVT,automatic,5,967400,0
+732,Nissan,56,Magnite,Turbo X-TRONIC CVT TEKNA,Nissan Magnite Turbo X-TRONIC CVT TEKNA,SUV,Petrol,petrol,CVT,automatic,5,1062300,0
+733,Nissan,56,Magnite,Turbo X-TRONIC CVT TEKNA+,Nissan Magnite Turbo X-TRONIC CVT TEKNA+,SUV,Petrol,petrol,CVT,automatic,5,1096000,0
+734,Nissan,57,Gravite,Acenta MT,Nissan Gravite Acenta MT,MPV,Petrol,petrol,Manual,manual,7,668400,0
+735,Nissan,57,Gravite,N-Connecta EZ Shift,Nissan Gravite N-Connecta EZ Shift,MPV,Petrol,petrol,AMT,automatic,7,795000,0
+736,Nissan,57,Gravite,N-Connecta MT,Nissan Gravite N-Connecta MT,MPV,Petrol,petrol,Manual,manual,7,738400,0
+737,Nissan,57,Gravite,Tekna EZ Shift,Nissan Gravite Tekna EZ Shift,MPV,Petrol,petrol,AMT,automatic,7,864000,0
+738,Nissan,57,Gravite,Tekna MT,Nissan Gravite Tekna MT,MPV,Petrol,petrol,Manual,manual,7,808000,0
+739,Nissan,57,Gravite,Visia MT,Nissan Gravite Visia MT,MPV,Petrol,petrol,Manual,manual,7,573400,0
+740,Tata,58,Tiago EV,Smart 19,Tata Tiago EV Smart 19,Hatchback,Electric,electric,Automatic,automatic,5,699000,0
+741,Tata,58,Tiago EV,Pure+ 19,Tata Tiago EV Pure+ 19,Hatchback,Electric,electric,Automatic,automatic,5,849000,0
+742,Tata,58,Tiago EV,Pure+ 24,Tata Tiago EV Pure+ 24,Hatchback,Electric,electric,Automatic,automatic,5,949000,0
+743,Tata,58,Tiago EV,Creative+ 24,Tata Tiago EV Creative+ 24,Hatchback,Electric,electric,Automatic,automatic,5,999000,0
+744,Tata,59,Punch EV,Smart 30,Tata Punch EV Smart 30,SUV,Electric,electric,Automatic,automatic,5,969000,0
+745,Tata,59,Punch EV,Smart+ 30,Tata Punch EV Smart+ 30,SUV,Electric,electric,Automatic,automatic,5,1029000,0
+746,Tata,59,Punch EV,Smart+ 40,Tata Punch EV Smart+ 40,SUV,Electric,electric,Automatic,automatic,5,1089000,0
+747,Tata,59,Punch EV,Adventure 40,Tata Punch EV Adventure 40,SUV,Electric,electric,Automatic,automatic,5,1159000,0
+748,Tata,59,Punch EV,Empowered 40,Tata Punch EV Empowered 40,SUV,Electric,electric,Automatic,automatic,5,1229000,0
+749,Tata,59,Punch EV,Empowered+ S 40,Tata Punch EV Empowered+ S 40,SUV,Electric,electric,Automatic,automatic,5,1259000,0
+750,Kia,60,Syros,HTE Petrol Manual,Kia Syros HTE Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,841900,0
+751,Kia,60,Syros,HTE(O) Petrol Manual,Kia Syros HTE(O) Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,921900,0
+752,Kia,60,Syros,HTE(O) Diesel Manual,Kia Syros HTE(O) Diesel Manual,SUV,Diesel,diesel,Manual,manual,5,999900,0
+753,Kia,60,Syros,HTK(EX) Petrol Manual,Kia Syros HTK(EX) Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,981900,0
+754,Kia,60,Syros,HTK(EX) Diesel Manual,Kia Syros HTK(EX) Diesel Manual,SUV,Diesel,diesel,Manual,manual,5,1061900,0
+755,Kia,60,Syros,HTK+ Petrol Manual,Kia Syros HTK+ Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1075900,0
+756,Kia,60,Syros,HTK+ Petrol DCT,Kia Syros HTK+ Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1195900,0
+757,Kia,60,Syros,HTK+ Diesel Manual,Kia Syros HTK+ Diesel Manual,SUV,Diesel,diesel,Manual,manual,5,1155900,0
+758,Kia,60,Syros,HTK+ Diesel Automatic,Kia Syros HTK+ Diesel Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1275900,0
+759,Kia,60,Syros,HTK+(O) Petrol Manual,Kia Syros HTK+(O) Petrol Manual,SUV,Petrol,petrol,Manual,manual,5,1201900,0
+760,Kia,60,Syros,HTK+(O) Petrol DCT,Kia Syros HTK+(O) Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1321900,0
+761,Kia,60,Syros,HTK+(O) Diesel Manual,Kia Syros HTK+(O) Diesel Manual,SUV,Diesel,diesel,Manual,manual,5,1281900,0
+762,Kia,60,Syros,HTK+(O) Diesel Automatic,Kia Syros HTK+(O) Diesel Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1401900,0
+763,Kia,60,Syros,HTX Petrol DCT,Kia Syros HTX Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1401900,0
+764,Kia,60,Syros,HTX Diesel Automatic,Kia Syros HTX Diesel Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1481900,0
+765,Kia,60,Syros,HTX(O) Petrol DCT,Kia Syros HTX(O) Petrol DCT,SUV,Petrol,petrol,DCT,automatic,5,1499900,0
+766,Kia,60,Syros,HTX(O) Diesel Automatic,Kia Syros HTX(O) Diesel Automatic,SUV,Diesel,diesel,Torque Converter,automatic,5,1581900,0
+767,Kia,61,Carens Clavis,HTK+ 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTK+ 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,1664700,0
+768,Kia,61,Carens Clavis,HTK+ 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTK+ 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,1664700,0
+769,Kia,61,Carens Clavis,HTK+(O) 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTK+(O) 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,1765700,0
+770,Kia,61,Carens Clavis,HTK+(O) 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTK+(O) 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,1765700,0
+771,Kia,61,Carens Clavis,HTX(O) 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX(O) 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,1941700,0
+772,Kia,61,Carens Clavis,HTX(O) 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX(O) 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,1941700,0
+773,Kia,61,Carens Clavis,GTX 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis GTX 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,1982700,0
+774,Kia,61,Carens Clavis,GTX 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis GTX 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,1982700,0
+775,Kia,61,Carens Clavis,HTX(O) A 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX(O) A 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,1987700,0
+776,Kia,61,Carens Clavis,HTX(O) A 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX(O) A 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,1987700,0
+777,Kia,61,Carens Clavis,HTX+ 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX+ 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,2086700,0
+778,Kia,61,Carens Clavis,HTX+ 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis HTX+ 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,2086700,0
+779,Kia,61,Carens Clavis,GTX+ 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis GTX+ 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,2158700,0
+780,Kia,61,Carens Clavis,GTX+ 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis GTX+ 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,2158700,0
+781,Kia,61,Carens Clavis,X-Line 6 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis X-Line 6 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,6,2158700,0
+782,Kia,61,Carens Clavis,X-Line 7 Seater 1.5 Turbo Petrol DCT,Kia Carens Clavis X-Line 7 Seater 1.5 Turbo Petrol DCT,MPV,Petrol,petrol,DCT,automatic,7,2158700,0
+783,Kia,61,Carens Clavis,HTX 7 Seater 1.5 Turbo Petrol iMT,Kia Carens Clavis HTX 7 Seater 1.5 Turbo Petrol iMT,MPV,Petrol,petrol,iMT,manual,7,1816700,0
+784,Kia,61,Carens Clavis,HTX+ 6 Seater 1.5 Turbo Petrol iMT,Kia Carens Clavis HTX+ 6 Seater 1.5 Turbo Petrol iMT,MPV,Petrol,petrol,iMT,manual,6,1912700,0
+785,Kia,61,Carens Clavis,HTX+ 7 Seater 1.5 Turbo Petrol iMT,Kia Carens Clavis HTX+ 7 Seater 1.5 Turbo Petrol iMT,MPV,Petrol,petrol,iMT,manual,7,1912700,0
+786,Kia,61,Carens Clavis,HTE(O) 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTE(O) 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1301700,0
+787,Kia,61,Carens Clavis,HTE(EX) 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTE(EX) 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1356700,0
+788,Kia,61,Carens Clavis,HTK+ 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTK+ 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1519790,0
+789,Kia,61,Carens Clavis,HTK+(O) 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTK+(O) 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1621700,0
+790,Kia,61,Carens Clavis,HTX 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTX 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1787700,0
+791,Kia,61,Carens Clavis,HTE 7 Seater 1.5 Petrol Manual,Kia Carens Clavis HTE 7 Seater 1.5 Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1122700,0
+792,Kia,61,Carens Clavis,HTE(O) 7 Seater 1.5 Petrol Manual,Kia Carens Clavis HTE(O) 7 Seater 1.5 Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1218700,0
+793,Kia,61,Carens Clavis,HTE(EX) 7 Seater 1.5 Petrol Manual,Kia Carens Clavis HTE(EX) 7 Seater 1.5 Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1269700,0
+794,Kia,61,Carens Clavis,HTK+ 6 Seater 1.5 Diesel Automatic,Kia Carens Clavis HTK+ 6 Seater 1.5 Diesel Automatic,MPV,Diesel,diesel,Torque Converter,automatic,6,1736700,0
+795,Kia,61,Carens Clavis,HTK+ 7 Seater 1.5 Diesel Automatic,Kia Carens Clavis HTK+ 7 Seater 1.5 Diesel Automatic,MPV,Diesel,diesel,Torque Converter,automatic,7,1736700,0
+796,Kia,61,Carens Clavis,HTE 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTE 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1315700,0
+797,Kia,61,Carens Clavis,HTE(O) 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTE(O) 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1416700,0
+798,Kia,61,Carens Clavis,HTE(EX) 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTE(EX) 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1467700,0
+799,Kia,61,Carens Clavis,HTK+ 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTK+ 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1623700,0
+800,Kia,61,Carens Clavis,HTK+(O) 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTK+(O) 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1701700,0
+801,Kia,61,Carens Clavis,HTX 7 Seater 1.5 Diesel Manual,Kia Carens Clavis HTX 7 Seater 1.5 Diesel Manual,MPV,Diesel,diesel,Manual,manual,7,1880700,0
+802,Kia,62,Carens Clavis EV,HTK+ 7,Kia Carens Clavis EV HTK+ 7,MPV,Electric,electric,Automatic,automatic,7,1800500,0
+803,Kia,62,Carens Clavis EV,HTX (E) 7,Kia Carens Clavis EV HTX (E) 7,MPV,Electric,electric,Automatic,automatic,7,1999500,0
+804,Kia,62,Carens Clavis EV,HTX 7,Kia Carens Clavis EV HTX 7,MPV,Electric,electric,Automatic,automatic,7,2050500,0
+805,Kia,62,Carens Clavis EV,HTX (E) ER,Kia Carens Clavis EV HTX (E) ER,MPV,Electric,electric,Automatic,automatic,7,2200500,0
+806,Kia,62,Carens Clavis EV,HTX ER,Kia Carens Clavis EV HTX ER,MPV,Electric,electric,Automatic,automatic,7,2250500,0
+807,Kia,62,Carens Clavis EV,GTX ER,Kia Carens Clavis EV GTX ER,MPV,Electric,electric,Automatic,automatic,7,2300500,0
+808,Kia,62,Carens Clavis EV,HTX+ ER,Kia Carens Clavis EV HTX+ ER,MPV,Electric,electric,Automatic,automatic,7,2450500,0
+809,Kia,62,Carens Clavis EV,GTX+ ER,Kia Carens Clavis EV GTX+ ER,MPV,Electric,electric,Automatic,automatic,7,2499500,0
+810,Kia,62,Carens Clavis EV,X-Line ER,Kia Carens Clavis EV X-Line ER,MPV,Electric,electric,Automatic,automatic,7,2499500,0
+811,Kia,61,Carens Clavis,HTX+ 6 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTX+ 6 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,6,1883700,0
+812,Kia,61,Carens Clavis,HTX+ 7 Seater 1.5 Turbo Petrol Manual,Kia Carens Clavis HTX+ 7 Seater 1.5 Turbo Petrol Manual,MPV,Petrol,petrol,Manual,manual,7,1883700,0
+814,Honda,50,Elevate,ZX Petrol Manual Black Edition,Honda Elevate VX Petrol Manual ZX Petrol Manual Black Edition,SUV,Petrol,petrol,Manual,manual,5,1379000,0
+815,Hyundai,51,Exter,HX 6 Petrol Manual Dual Tone,Hyundai Exter HX 2 Petrol Manual HX 6 Petrol Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,580000,0
+816,Hyundai,51,Exter,HX 10 Petrol Automatic Dual Tone,Hyundai Exter HX 3 Petrol Automatic HX 10 Petrol Automatic Dual Tone,SUV,Petrol,petrol,AMT,automatic,5,691000,0
+817,Hyundai,18,Verna,HX 8 Petrol 1.5L Turbo Manual Dual Tone,Hyundai Verna HX8 1.5 Turbo MT HX 8 Petrol 1.5L Turbo Manual Dual Tone,Sedan,Petrol,petrol,Manual,manual,5,1629200,0
+818,Hyundai,18,Verna,HX 10 Petrol 1.5L Turbo Automatic (DCT) Dual Tone,Hyundai Verna HX10 1.5 Turbo DCT HX 10 Petrol 1.5L Turbo Automatic (DCT) Dual Tone,Sedan,Petrol,petrol,DCT,automatic,5,1826200,0
+819,Kia,9,Seltos,GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone,Kia Seltos GTX(A) 1.5 Petrol IVT GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone,SUV,Petrol,petrol,CVT,automatic,5,1951400,0
+820,Mahindra,29,XUV 7XO,AX7 2WD Petrol 2.0L Turbo Manual 7 STR Dual Tone,Mahindra XUV 7XO AX7 Petrol MT AX7 2WD Petrol 2.0L Turbo Manual 7 STR Dual Tone,SUV,Petrol,petrol,Manual,manual,7,1848000,0
+821,Maruti Suzuki,7,Brezza,Zxi Petrol 1.0L Turbo Manual Dual Tone,Maruti Suzuki Brezza ZXi MT Zxi Petrol 1.0L Turbo Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1055300,1
+822,Maruti Suzuki,35,Fronx,Alpha Petrol 1.0L Turbo Manual Dual Tone,Maruti Suzuki Fronx Alpha 1.0 Turbo MT Alpha Petrol 1.0L Turbo Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1055900,0
+823,Maruti Suzuki,39,Grand Vitara,Zeta 2WD Petrol 1.5L Manual Dual Tone,Maruti Suzuki Grand Vitara Zeta Petrol MT Zeta 2WD Petrol 1.5L Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1370000,0
+824,Maruti Suzuki,44,Jimny,Alpha Petrol Manual Dual Tone,Maruti Suzuki Jimny Alpha PRO MT Alpha Petrol Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,4,1338600,0
+825,Maruti Suzuki,40,Victoris,ZXi 2WD Petrol 1.5L Manual Dual Tone,Maruti Suzuki Victoris ZXI MT ZXi 2WD Petrol 1.5L Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,1372300,0
+826,Maruti Suzuki,11,XL6,Alpha Plus Petrol Manual Dual Tone Smart Hybrid,Maruti Suzuki XL6 Alpha MT Alpha Plus Petrol Manual Dual Tone Smart Hybrid,MPV,Petrol,petrol,Manual,manual,6,1253800,0
+827,Maruti Suzuki,45,e VITARA,Alpha 61.0 kWh Dual Tone,Maruti Suzuki e VITARA Alpha 61 kWh Alpha 61.0 kWh Dual Tone,SUV,Electric,electric,Automatic,automatic,5,1979000,0
+828,Nissan,56,Magnite,N-Connecta Petrol Manual Dual Tone,Nissan Magnite MT N-CONNECTA N-Connecta Petrol Manual Dual Tone,SUV,Petrol,petrol,Manual,manual,5,743500,0
+829,Renault,32,Triber,Emotion Petrol Manual Dual Tone,Renault Triber Emotion MT Emotion Petrol Manual Dual Tone,MPV,Petrol,petrol,Manual,manual,7,800350,0
+830,Tata,30,Harrier,Pure X Petrol 1.5L Turbo Manual Dark Edition,Tata Harrier Petrol Pure X MT Pure X Petrol 1.5L Turbo Manual Dark Edition,SUV,Petrol,petrol,Manual,manual,5,1599990,0
+831,Tata,30,Harrier,Fearless X Dark Edition Diesel 2.0L Turbo Manual,Tata Harrier Diesel Fearless X MT Fearless X Dark Edition Diesel 2.0L Turbo Manual,SUV,Diesel,diesel,Manual,manual,5,2124990,0
+832,Tata,6,Nexon EV,Empowered Plus A  45.0 kWh Dark Edition,Tata Nexon EV Empowered+ A 45 Dark Empowered Plus A  45.0 kWh Dark Edition,SUV,Electric,electric,Automatic,automatic,5,1749000,0
+833,Volkswagen,49,Virtus,Anniversary Edition Petrol 1.5L Turbo Automatic (DCT),Volkswagen Virtus Topline Petrol 1.0L Turbo Automatic (TC) Anniversary Edition Petrol 1.5L Turbo Automatic (DCT),Sedan,Petrol,petrol,Torque Converter,automatic,5,1620900,0
