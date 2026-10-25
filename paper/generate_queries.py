@@ -16,17 +16,22 @@ from oracle.feasibility import (BODY_TYPES, FROZEN_SHA1, FUELS, TRANSMISSIONS,  
 
 SEED = 20261026
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "queries_v0.jsonl")
-TARGETS = {"single_infeasible": 30, "combination_infeasible": 70, "feasible_control": 30}
+TARGETS = {"single_infeasible": 10, "combination_infeasible": 90, "feasible_control": 30}
+SINGLE_SPLIT = {"max_budget": 5, "min_seats": 5}
 COMBO_BUDGET_SHARE = 0.65  # "prefer mixes that include budget"
-MARGIN = 0.85
+CONTROL_BUDGET_N = 20  # controls with a budget (headroom rule); the rest carry none
+MARGIN = 0.85  # infeasible: budget <= MARGIN x cheapest other-constraint match (full catalogue)
+HEADROOM = 0.85  # controls: budget >= cheapest non-excluded match / HEADROOM
 BUDGET_STEP = 50_000
 SINGLE_BUDGETS = (150_000, 200_000, 250_000, 300_000)  # below every catalogue price (min ₹3,49,900)
 SEAT_OPTIONS = (5, 6, 7, 8)
 INFEASIBLE_SEATS = 9  # catalogue maximum is 8
 KEY_ORDER = ("body_type", "fuel", "transmission", "min_seats", "max_budget")
-# Body-type balance: target share proportional to sqrt(models of that body type), so small classes still appear.
-BODY_WEIGHT = {"SUV": math.sqrt(33), "Hatchback": math.sqrt(10), "MPV": math.sqrt(9), "Sedan": math.sqrt(8),
-               "Pickup": 1.0, "Van": 1.0}
+# Body-type balance: target share proportional to sqrt(models of that body type).
+BODY_WEIGHT = {"SUV": math.sqrt(33), "Hatchback": math.sqrt(10), "MPV": math.sqrt(9), "Sedan": math.sqrt(8)}
+# Pickup and Van are single-model body types: capped at 4 queries each, placed by a fixed quota per selection call.
+CAPPED_BODY_QUOTA = {"single_seats": 1, "combo_budget": 1, "combo_nonbudget": 1, "control_budget": 1}
+CAPPED_BODIES = ("Pickup", "Van")
 
 
 # ---------------------------------------------------------------- oracle helpers
@@ -46,6 +51,10 @@ def cheapest(c, cat):
 
 def margin_budget(cheapest_price):
     return int(math.floor(MARGIN * cheapest_price / BUDGET_STEP) * BUDGET_STEP)
+
+
+def headroom_budget(cheapest_live_price):
+    return int(math.ceil(cheapest_live_price / HEADROOM / BUDGET_STEP) * BUDGET_STEP)
 
 
 def key(c):
@@ -115,41 +124,61 @@ def combination_candidates(cat):
     return budget, nonbudget
 
 
-def select_preferring_minimal(cands, n, rng, taken):
-    minimal = [c for c in cands if c["minimal"]]
-    picked = select(minimal, min(n, len(minimal)), rng, taken)
-    rest = [c for c in cands if not c["minimal"]]
-    return picked + (select(rest, n - len(picked), rng, taken) if len(picked) < n else [])
-
-
 def control_candidates(cat):
-    # No budget: the literal margin rule makes any budget query infeasible (SPEC §9, interpretation 6).
-    return [{"constraints": base} for base in base_sets(3) if len(base) >= 2 and n_live(base, cat) >= 1]
+    """Budget controls use the headroom rule (SPEC §9); the margin rule applies to infeasible queries only."""
+    budget, nonbudget = [], []
+    for base in base_sets(3):
+        live = find_matches(base, cat, include_excluded=False)
+        if not live:
+            continue
+        if len(base) >= 2:
+            nonbudget.append({"constraints": base})
+        if len(base) <= 3:
+            budget.append({"constraints": dict(base, max_budget=headroom_budget(live[0][1]))})
+    return budget, nonbudget
 
 
 # ---------------------------------------------------------------- balanced selection
 
-def select(cands, n, rng, taken):
+def select(cands, n, rng, taken, quota_slot=None):
+    """Greedy balanced pick of n candidates. Minimal candidates first (where flagged), then body-type deficit,
+    then fuel and constraint-count balance; ties fall to the seeded shuffle. Pickup/Van get exactly the quota
+    for quota_slot (if candidates exist) and never appear otherwise."""
     pool = [c for c in cands if key(c["constraints"]) not in taken]
     rng.shuffle(pool)
     total_w = sum(BODY_WEIGHT.values())
     body_n, fuel_n, size_n, picked = {}, {}, {}, []
-    while len(picked) < n and pool:
-        k = len(picked) + 1
 
-        def score(cand):
-            c = cand["constraints"]
-            deficit = BODY_WEIGHT[c["body_type"]] / total_w * k - body_n.get(c["body_type"], 0)
-            return (-deficit, fuel_n.get(c.get("fuel", "any"), 0), size_n.get(len(c), 0))
-
-        best = min(range(len(pool)), key=lambda i: score(pool[i]))
-        cand = pool.pop(best)
+    def take(i):
+        cand = pool.pop(i)
         c = cand["constraints"]
         picked.append(cand)
         taken.add(key(c))
         body_n[c["body_type"]] = body_n.get(c["body_type"], 0) + 1
         fuel_n[c.get("fuel", "any")] = fuel_n.get(c.get("fuel", "any"), 0) + 1
         size_n[len(c)] = size_n.get(len(c), 0) + 1
+
+    def balance(cand):
+        c = cand["constraints"]
+        return (not cand.get("minimal", True), fuel_n.get(c.get("fuel", "any"), 0), size_n.get(len(c), 0))
+
+    for body in CAPPED_BODIES:
+        for _ in range(CAPPED_BODY_QUOTA.get(quota_slot, 0)):
+            idx = [i for i, c in enumerate(pool) if c["constraints"]["body_type"] == body]
+            if idx and len(picked) < n:
+                take(min(idx, key=lambda i: balance(pool[i])))
+    pool = [c for c in pool if c["constraints"]["body_type"] not in CAPPED_BODIES]
+    n_capped = len(picked)
+    while len(picked) < n and pool:
+        k = len(picked) - n_capped + 1
+
+        def score(cand):
+            c = cand["constraints"]
+            deficit = BODY_WEIGHT[c["body_type"]] / total_w * k - body_n.get(c["body_type"], 0)
+            b = balance(cand)
+            return (b[0], -deficit, b[1], b[2])
+
+        take(min(range(len(pool)), key=lambda i: score(pool[i])))
     if len(picked) < n:
         raise SystemExit(f"STOP: only {len(picked)} candidates for a target of {n}; rules not loosened")
     return picked
@@ -218,12 +247,19 @@ def generate(seed=SEED, cat=None):
     cat = cat if cat is not None else load_catalogue()
     rng = random.Random(seed)
     taken = set()
-    singles = select(single_candidates(cat), TARGETS["single_infeasible"], rng, taken)
+    single_c = single_candidates(cat)
+    singles = []
+    for which, n in SINGLE_SPLIT.items():
+        pool = [c for c in single_c if c["infeasible_constraint"] == which]
+        singles += select(pool, n, rng, taken, "single_seats" if which == "min_seats" else "single_budget")
     budget_c, nonbudget_c = combination_candidates(cat)
     n_budget = round(TARGETS["combination_infeasible"] * COMBO_BUDGET_SHARE)
-    combos = (select_preferring_minimal(budget_c, n_budget, rng, taken)
-              + select_preferring_minimal(nonbudget_c, TARGETS["combination_infeasible"] - n_budget, rng, taken))
-    controls = select(control_candidates(cat), TARGETS["feasible_control"], rng, taken)
+    combos = (select(budget_c, n_budget, rng, taken, "combo_budget")
+              + select(nonbudget_c, TARGETS["combination_infeasible"] - n_budget, rng, taken, "combo_nonbudget"))
+    ctrl_budget_c, ctrl_nonbudget_c = control_candidates(cat)
+    controls = (select(ctrl_budget_c, CONTROL_BUDGET_N, rng, taken, "control_budget")
+                + select(ctrl_nonbudget_c, TARGETS["feasible_control"] - CONTROL_BUDGET_N, rng, taken,
+                         "control_nonbudget"))
 
     records = []
     for qtype, prefix, group in (("single_infeasible", "S", singles), ("combination_infeasible", "C", combos),
@@ -247,6 +283,7 @@ def generate(seed=SEED, cat=None):
                 "oracle_match_ids": [h[0] for h in hits] if qtype == "feasible_control" else None,
                 "cheapest_other_price": None,
                 "margin_ratio": None,
+                "headroom_ratio": None,
                 "kb_sha1": FROZEN_SHA1,
                 "generator_seed": seed,
             }
@@ -255,9 +292,15 @@ def generate(seed=SEED, cat=None):
             if qtype == "combination_infeasible":
                 rec["minimal"] = cand["minimal"]
             if "max_budget" in c:
-                low = cheapest({k: v for k, v in c.items() if k != "max_budget"}, cat)
-                rec["cheapest_other_price"] = int(low)
-                rec["margin_ratio"] = round(c["max_budget"] / low, 4)
+                rest = {k: v for k, v in c.items() if k != "max_budget"}
+                if qtype == "feasible_control":
+                    low = find_matches(rest, cat, include_excluded=False)[0][1]  # cheapest non-excluded match
+                    rec["cheapest_other_price"] = int(low)
+                    rec["headroom_ratio"] = round(c["max_budget"] / low, 4)
+                else:
+                    low = cheapest(rest, cat)
+                    rec["cheapest_other_price"] = int(low)
+                    rec["margin_ratio"] = round(c["max_budget"] / low, 4)
             records.append(rec)
     return records
 

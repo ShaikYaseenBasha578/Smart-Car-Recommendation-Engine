@@ -52,16 +52,38 @@ def test_controls_have_a_non_excluded_match(queries, catalogue):
             assert q["oracle_match_ids"] == [h[0] for h in find_matches(q["constraints"], catalogue)]
 
 
-def test_budget_margin(queries, catalogue):
+def test_budget_margin_on_infeasible(queries, catalogue):
     for q in queries:
         c = q["constraints"]
         if "max_budget" not in c:
-            assert q["margin_ratio"] is None
+            assert q["margin_ratio"] is None and q["headroom_ratio"] is None
+            continue
+        assert c["max_budget"] % 50_000 == 0
+        if q["type"] == "feasible_control":
             continue
         low = find_matches(others(c), catalogue)[0][1]
         assert c["max_budget"] <= 0.85 * low, q["query_id"]
-        assert c["max_budget"] % 50_000 == 0
-        assert q["cheapest_other_price"] == int(low)
+        assert q["cheapest_other_price"] == int(low) and q["headroom_ratio"] is None
+
+
+def test_budget_headroom_on_controls(queries, catalogue):
+    budgeted = [q for q in queries if q["type"] == "feasible_control" and "max_budget" in q["constraints"]]
+    assert len(budgeted) == gq.CONTROL_BUDGET_N
+    for q in budgeted:
+        c = q["constraints"]
+        low = find_matches(others(c), catalogue, include_excluded=False)[0][1]
+        assert c["max_budget"] * 0.85 >= low, q["query_id"]
+        assert q["cheapest_other_price"] == int(low) and q["margin_ratio"] is None
+
+
+def test_single_split_and_capped_bodies(queries):
+    singles = [q["infeasible_constraint"] for q in queries if q["type"] == "single_infeasible"]
+    assert {k: singles.count(k) for k in set(singles)} == gq.SINGLE_SPLIT
+    bodies = [q["constraints"]["body_type"] for q in queries]
+    assert bodies.count("Pickup") <= 4 and bodies.count("Van") <= 4
+    for q in queries:
+        if q["type"] == "combination_infeasible":
+            assert isinstance(q["minimal"], bool)
 
 
 def test_combination_constraints_satisfiable_alone(queries, catalogue):
