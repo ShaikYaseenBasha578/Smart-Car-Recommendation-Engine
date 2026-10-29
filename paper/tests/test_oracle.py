@@ -24,7 +24,7 @@ def test_transmission_map_is_exactly_the_spec_set():
 
 @pytest.mark.parametrize("value,expected", [
     ("Petrol", "petrol"), ("Diesel", "diesel"), ("Diesel Mild Hybrid", "diesel"), ("CNG", "cng"),
-    ("Electric", "electric"), ("Petrol Hybrid", "hybrid"), ("Flex Fuel", None),
+    ("Electric", "electric"), ("Petrol Hybrid", "hybrid"), ("Flex Fuel", "petrol"),
 ])
 def test_fuel_mapping(value, expected):
     assert build_row(raw(1, fuel=value))["fuel"] == expected
@@ -50,11 +50,11 @@ def test_null_constraint_field_raises(field):
         build_row(r)
 
 
-def test_flex_fuel_never_matches_a_fuel_constraint_but_matches_without_one():
+def test_flex_fuel_counts_as_petrol_only():
     cat = [build_row(raw(1, fuel="Flex Fuel"))]
-    for fuel in ("petrol", "diesel", "cng", "electric", "hybrid"):
+    assert find_matches({"body_type": "SUV", "fuel": "petrol"}, cat) == [(1, 800000.0)]
+    for fuel in ("diesel", "cng", "electric", "hybrid"):
         assert find_matches({"body_type": "SUV", "fuel": fuel}, cat) == []
-    assert find_matches({"body_type": "SUV"}, cat) == [(1, 800000.0)]
 
 
 def test_imt_is_manual_not_automatic():

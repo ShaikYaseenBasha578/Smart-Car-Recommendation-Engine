@@ -32,7 +32,7 @@ FUEL_MAP = {
     "CNG": "cng",
     "Electric": "electric",
     "Petrol Hybrid": "hybrid",
-    "Flex Fuel": None,  # listed, excluded from every fuel category
+    "Flex Fuel": "petrol",  # author decision 2026-10-29; no v0 query changes (SPEC §9)
 }
 BODY_TYPES = ("Hatchback", "Sedan", "SUV", "MPV", "Pickup", "Van")
 FUELS = ("petrol", "diesel", "cng", "electric", "hybrid")
@@ -131,7 +131,7 @@ def satisfies(row, constraints):
     c = constraints
     if "max_budget" in c and not row["price"] <= c["max_budget"]:
         return False
-    if "fuel" in c and row["fuel"] != c["fuel"]:  # Flex Fuel maps to None: never matches a fuel constraint
+    if "fuel" in c and row["fuel"] != c["fuel"]:
         return False
     if "transmission" in c and row["transmission"] != c["transmission"]:
         return False

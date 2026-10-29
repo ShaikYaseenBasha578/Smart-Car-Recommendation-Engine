@@ -71,21 +71,40 @@ def test_ungrounded_lists_every_model_and_no_specs(on_disk):
     assert "₹" not in u and "|" not in u and "lakh" not in u.lower()
 
 
-def test_grounded_table_is_exactly_the_body_types_variants(on_disk):
+def test_grounded_table_covers_exactly_the_body_types_configurations(on_disk):
     systems, _ = on_disk
     rows = bp.load_catalogue_csv()
     for sid, s in systems.items():
         if sid == "U":
             continue
-        body = s["body_type"]
-        expected = [r for r in rows if r["body_type"] == body]
-        assert sorted(s["table_variant_ids"]) == sorted(int(r["variant_id"]) for r in expected)
+        body_rows = [r for r in rows if r["body_type"] == s["body_type"]]
+        assert s["table_variant_ids"] == sorted(int(r["variant_id"]) for r in body_rows)
+        configs = {}
+        for r in body_rows:
+            configs.setdefault((r["manufacturer"], r["model"], r["fuel_raw"], r["transmission_raw"], r["seats"]),
+                               []).append(int(r["price"]))
         table_lines = [ln for ln in s["text"].splitlines() if ln.startswith("| ") and "Manufacturer" not in ln]
-        assert len(table_lines) == len(expected)
-        for r in expected:
-            line = (f"| {r['manufacturer']} | {r['model']} | {r['variant_name']} | {r['fuel_raw']} | "
-                    f"{r['transmission_raw']} | {r['seats']} | {bp.indian_rupees(r['price'])} |")
-            assert line in table_lines, (sid, r["variant_id"])
+        assert len(table_lines) == len(configs) == s["table_rows"], sid
+        for (mfr, model, fuel, trans, seats), prices in configs.items():
+            lo, hi = bp.indian_rupees(min(prices)), bp.indian_rupees(max(prices))
+            rng = lo if lo == hi else f"{lo} – {hi}"
+            line = f"| {mfr} | {model} | {fuel} | {trans} | {seats} | {len(prices)} | {rng} |"
+            assert line in table_lines, (sid, line)
+
+
+def test_compact_table_preserves_every_query_verdict(on_disk, queries):
+    """A configuration row admits a query iff some variant in it matches, so the table loses no feasibility fact."""
+    from oracle.feasibility import FUEL_MAP, TRANSMISSION_MAP, find_matches, load_catalogue
+    cat = load_catalogue()
+    rows = bp.load_catalogue_csv()
+    for q in queries.values():
+        c = q["constraints"]
+        ok_rows = [g for g in bp.configurations(rows, c["body_type"])
+                   if ("fuel" not in c or FUEL_MAP[g["key"][2]] == c["fuel"])
+                   and ("transmission" not in c or TRANSMISSION_MAP[g["key"][3]] == c["transmission"])
+                   and ("min_seats" not in c or int(g["key"][4]) >= c["min_seats"])
+                   and ("max_budget" not in c or g["min_price"] <= c["max_budget"])]
+        assert bool(ok_rows) == bool(find_matches(c, cat)), q["query_id"]
 
 
 def test_prompt_records_cover_every_query_once_per_cell(on_disk, queries):

@@ -25,8 +25,9 @@ INSTRUCTIONS = (
     "which lists every car model available. All prices and budgets are ex-showroom. Answer the buyer's message."
 )
 TABLE_LEGEND = ("Label meanings: Manual and iMT are manual; Torque Converter, AMT, DCT, CVT, e-CVT and "
-                       "Automatic are automatic. Diesel Mild Hybrid is a diesel; Petrol Hybrid is a hybrid.")
-TABLE_COLUMNS = ("Manufacturer", "Model", "Variant", "Fuel", "Transmission", "Seats", "Ex-showroom price")
+                       "Automatic are automatic. Diesel Mild Hybrid is a diesel; Petrol Hybrid is a hybrid; Flex Fuel is a petrol. "
+                "Each row is one configuration; the price range covers its variants.")
+TABLE_COLUMNS = ("Manufacturer", "Model", "Fuel", "Transmission", "Seats", "Variants", "Ex-showroom price")
 
 
 def sha256(text):
@@ -60,15 +61,36 @@ def model_list(rows):
     return "\n".join(f"- {mfr} {model}" for mfr, model in names)
 
 
+CONFIG_KEY = ("manufacturer", "model", "fuel_raw", "transmission_raw", "seats")
+
+
+def configurations(rows, body_type):
+    """Compact grounding: one row per model x fuel x transmission x seats, with min-max ex-showroom price."""
+    groups = {}
+    for r in rows:
+        if r["body_type"] == body_type:
+            groups.setdefault(tuple(r[k] for k in CONFIG_KEY), []).append(r)
+    out = []
+    for k, members in groups.items():
+        prices = [int(m["price"]) for m in members]
+        out.append({"key": k, "min_price": min(prices), "max_price": max(prices), "n_variants": len(members),
+                    "variant_ids": sorted(int(m["variant_id"]) for m in members)})
+    return sorted(out, key=lambda g: (g["key"][0], g["key"][1], g["min_price"], g["key"]))
+
+
+def price_range(g):
+    lo, hi = indian_rupees(g["min_price"]), indian_rupees(g["max_price"])
+    return lo if lo == hi else f"{lo} – {hi}"
+
+
 def variant_table(rows, body_type):
-    sel = sorted((r for r in rows if r["body_type"] == body_type),
-                 key=lambda r: (r["manufacturer"], r["model"], int(r["price"]), int(r["variant_id"])))
+    configs = configurations(rows, body_type)
     lines = ["| " + " | ".join(TABLE_COLUMNS) + " |", "|" + "---|" * len(TABLE_COLUMNS)]
-    for r in sel:
-        cells = (r["manufacturer"], r["model"], r["variant_name"], r["fuel_raw"], r["transmission_raw"], r["seats"],
-                 indian_rupees(r["price"]))
+    for g in configs:
+        mfr, model, fuel, trans, seats = g["key"]
+        cells = (mfr, model, fuel, trans, str(seats), str(g["n_variants"]), price_range(g))
         lines.append("| " + " | ".join(c.replace("|", "/") for c in cells) + " |")
-    return "\n".join(lines), [int(r["variant_id"]) for r in sel]
+    return "\n".join(lines), sorted(i for g in configs for i in g["variant_ids"]), len(configs)
 
 
 def ungrounded_system(rows):
@@ -76,9 +98,10 @@ def ungrounded_system(rows):
 
 
 def grounded_system(rows, body_type):
-    table, ids = variant_table(rows, body_type)
+    table, ids, n_rows = variant_table(rows, body_type)
     return (f"{ungrounded_system(rows)}\n\n"
-            f"Every {body_type} variant in the catalogue, with its specifications:\n{TABLE_LEGEND}\n\n{table}"), ids
+            f"Every {body_type} configuration in the catalogue, with its specifications:\n{TABLE_LEGEND}\n\n"
+            f"{table}"), ids, n_rows
 
 
 def build(rows=None, queries=None):
@@ -91,11 +114,11 @@ def build(rows=None, queries=None):
     systems = {}
     u_text = ungrounded_system(rows)
     systems["U"] = {"condition": "ungrounded", "body_type": None, "text": u_text, "sha256": sha256(u_text),
-                    "table_variant_ids": [], "approx_tokens": len(u_text) // 4}
+                    "table_variant_ids": [], "table_rows": 0, "approx_tokens": len(u_text) // 4}
     for body in sorted({q["constraints"]["body_type"] for q in queries}):
-        g_text, ids = grounded_system(rows, body)
+        g_text, ids, n_rows = grounded_system(rows, body)
         systems[f"G-{body}"] = {"condition": "grounded", "body_type": body, "text": g_text, "sha256": sha256(g_text),
-                                "table_variant_ids": ids, "approx_tokens": len(g_text) // 4}
+                                "table_variant_ids": ids, "table_rows": n_rows, "approx_tokens": len(g_text) // 4}
 
     prompts = []
     for q in queries:
@@ -131,7 +154,8 @@ def main():
             f.write(json.dumps(p, ensure_ascii=False) + "\n")
     print(f"wrote {len(systems)} system prompts and {len(prompts)} prompt records")
     for sid, s in systems.items():
-        print(f"  {sid:12s} rows={len(s['table_variant_ids']):4d} ~{s['approx_tokens']} tokens")
+        print(f"  {sid:12s} rows={s['table_rows']:4d} variants={len(s['table_variant_ids']):4d} "
+              f"~{s['approx_tokens']} tokens")
 
 
 if __name__ == "__main__":

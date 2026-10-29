@@ -230,7 +230,7 @@ variant_id,manufacturer,model_id,model,variant_name,full_name,body_type,fuel_raw
 229,Maruti Suzuki,12,WagonR,VXi CNG,Maruti Suzuki WagonR VXi CNG,Hatchback,CNG,cng,Manual,manual,5,646900,0
 230,Maruti Suzuki,12,WagonR,ZXi+ MT,Maruti Suzuki WagonR ZXi+ MT,Hatchback,Petrol,petrol,Manual,manual,5,649900,0
 231,Maruti Suzuki,12,WagonR,ZXi+ AGS,Maruti Suzuki WagonR ZXi+ AGS,Hatchback,Petrol,petrol,AMT,automatic,5,694900,0
-232,Maruti Suzuki,12,WagonR,ZXi+ MT Flex Fuel,Maruti Suzuki WagonR ZXi+ MT Flex Fuel,Hatchback,Flex Fuel,,Manual,manual,5,723900,0
+232,Maruti Suzuki,12,WagonR,ZXi+ MT Flex Fuel,Maruti Suzuki WagonR ZXi+ MT Flex Fuel,Hatchback,Flex Fuel,petrol,Manual,manual,5,723900,0
 233,Maruti Suzuki,13,Dzire,LXi MT,Maruti Suzuki Dzire LXi MT,Sedan,Petrol,petrol,Manual,manual,5,625600,0
 234,Maruti Suzuki,13,Dzire,VXi MT,Maruti Suzuki Dzire VXi MT,Sedan,Petrol,petrol,Manual,manual,5,722100,0
 235,Maruti Suzuki,13,Dzire,VXi AMT,Maruti Suzuki Dzire VXi AMT,Sedan,Petrol,petrol,AMT,automatic,5,767100,0

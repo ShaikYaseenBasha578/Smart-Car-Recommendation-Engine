@@ -51,7 +51,7 @@ Generation rules (`paper/generate_queries.py`):
 ## 5. Conditions
 
 - **Ungrounded:** the prompt plus the list of catalogue model names, with no specs.
-- **Grounded:** the prompt plus a table of the queried body type's variants, built from `paper/data/catalogue_snapshot.csv` in Step 4.
+- **Grounded:** the prompt plus a compact table of the queried body type's configurations (model × fuel × transmission × seats, with min–max price), built from `paper/data/catalogue_snapshot.csv` in Step 4.
 - **Phrasing:** numeric vs lakh. Both are generated from the same constraint tuple.
 
 **Ungrounded condition scope.** The ungrounded prompt includes the list of catalogue model names (no specs). Both conditions therefore know which catalogue infeasibility is judged against, and the only difference between them is spec grounding. ### Prompt construction (Step 4: `paper/prompts/build_prompts.py`)
@@ -70,12 +70,26 @@ Generation rules (`paper/generate_queries.py`):
 
 **Grounded system prompt**
 - Exactly the ungrounded system prompt, plus one appended section. Tests assert the prefix match.
-- The section is a one-line legend of label meanings (manual/automatic transmission groups; Diesel Mild Hybrid = diesel; Petrol Hybrid = hybrid), then a table of every variant of the queried body type.
-- Table columns: Manufacturer | Model | Variant | Fuel | Transmission | Seats | Ex-showroom price.
+- The section is a legend of label meanings, then a **compact configuration table** for the queried body type (author decision, 2026-10-29).
+  - The legend covers the manual/automatic transmission groups; Diesel Mild Hybrid = diesel; Petrol Hybrid = hybrid; Flex Fuel = petrol. It also says each row is one configuration whose price range covers its variants.
+  - The table has one row per (manufacturer, model, raw fuel, raw transmission, seats).
+- Table columns: Manufacturer | Model | Fuel | Transmission | Seats | Variants | Ex-showroom price. The price is shown as the range "min – max", or a single value if all variants cost the same. Variant names are not shown.
 - Fuel and transmission use raw KB labels. Prices are in Indian digit grouping (₹12,34,500) in **both** phrasings, so the phrasing manipulation lives only in the buyer's message.
-- Rows are sorted by manufacturer, model, price, then id. Excluded-model variants are included.
-- Table sizes (≈ characters/4): SUV 522 rows ≈ 11.9k tokens, Hatchback ≈ 2.6k, MPV ≈ 2.5k, Sedan ≈ 2.0k, Van and Pickup ≈ 0.5k. The ungrounded prompt is ≈ 0.35k.
-- Grounded prompts are therefore longer. Length is intrinsic to grounding, so v0 adds no filler. This is a known confound.
+- Rows are sorted by manufacturer, model, minimum price, then key. Excluded-model configurations are included.
+- **What the compact form loses and keeps.** It discards per-variant names and prices, but no fact the oracle uses. A configuration admits a query iff its minimum price ≤ budget and its fuel, transmission and seats satisfy the other constraints. That holds iff some variant in it matches. A test re-checks this for all 130 queries, and also checks that each table covers exactly its body type's configurations and variants.
+- Table sizes, as configuration rows / variants and approximate tokens (characters ÷ 4) for the whole grounded system prompt:
+
+  | Body type | Rows | Variants | ≈ tokens |
+  |---|---|---|---|
+  | SUV | 107 | 522 | 2.5k |
+  | Hatchback | 33 | 122 | 1.1k |
+  | MPV | 29 | 100 | 1.0k |
+  | Sedan | 24 | 81 | 0.9k |
+  | Van | 3 | 4 | 0.5k |
+  | Pickup | 2 | 3 | 0.5k |
+
+  The ungrounded prompt is ≈ 0.35k tokens. These are estimates; ₹ and en dashes may tokenise to more.
+- **Length confound (accepted, author decision 2026-10-29).** Grounded prompts are 1.4–7× longer than ungrounded ones. Length is intrinsic to grounding, so v0 adds no filler. Report this as a limitation.
 
 **User message and records**
 - The user message is the query surface, verbatim.
@@ -83,7 +97,7 @@ Generation rules (`paper/generate_queries.py`):
 
 **Leakage check.** A test asserts that no prompt contains feasibility or label vocabulary: feasible, nothing, abstain, disclose, relax, violate, excluded, query-type names, and similar words.
 
-**Flex Fuel.** The single Flex Fuel variant (a Maruti Suzuki WagonR, manual) matches no fuel category (§9). The legend does not mention Flex Fuel.
+**Flex Fuel.** The single Flex Fuel variant (Maruti Suzuki WagonR ZXi+ MT, id 232) counts as petrol (§9). The legend says so.
 
 ## 6. Models (v0)
 
@@ -124,7 +138,7 @@ These rules are implemented in `paper/oracle/feasibility.py`. If any raw value i
 - cng = {`CNG`}
 - electric = {`Electric`}
 - hybrid = {`Petrol Hybrid`}
-- `Flex Fuel` (1 variant) is listed and **excluded from every fuel category**. It never matches a fuel constraint, but it can match queries with no fuel constraint.
+- petrol also includes `Flex Fuel`: 1 variant, Maruti Suzuki WagonR ZXi+ MT (id 232), Hatchback, Manual, 5 seats, ₹7,23,900. **Author decision, 2026-10-29.** It was originally excluded from every fuel category. Before switching, every v0 query was re-checked with Flex Fuel as petrol. No infeasible query gained a match. No budget margin and no `cheapest_other_price` changed. No control's match list changed. Regenerating with the new mapping gives byte-identical `queries_v0.jsonl`.
 - Values found: exactly these 7.
 
 **Other fields**
