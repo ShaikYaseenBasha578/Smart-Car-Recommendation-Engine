@@ -39,17 +39,17 @@ The oracle checks budget, fuel, transmission family (manual/automatic), body typ
 ## Limitations
 
 - 12 brands only: Honda, Hyundai, Kia, MG, Mahindra, Maruti Suzuki, Nissan, Renault, Skoda, Tata, Toyota, Volkswagen.
-- 22 of 62 models have a real photo. The rest, including every Maruti Suzuki, show a body-type silhouette.
+- 56 of 62 models have a photo (22 older images, 34 from OEM brochures, captioned with their source). The other 6 show a body-type silhouette.
 - Mileage is unknown for about 40% of non-EV variants: 336 of 795 have no ARAI kmpl figure, and 299 have no mileage figure at all. Mileage minimums keep these cars, labelled "Unverified: mileage".
 - Safety stars come only from Bharat NCAP: 20 models / 363 variants are rated. Older Global NCAP ratings are not used.
 - Used-car search is off in the demo. It needs Selenium and headless Chrome and is enabled only with `ENABLE_USED_CARS=1`.
 
 ## Run locally
 
-The production code is on the `deploy/new-car-v1` branch. Python 3.12:
+Python 3.12:
 
 ```bash
-git clone -b deploy/new-car-v1 https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine.git
+git clone https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine.git
 ```
 
 ```bash
@@ -78,5 +78,5 @@ Flask, pandas, scikit-learn, gunicorn, hosted on Render.
 
 ## Branches
 
-- `deploy/new-car-v1`: the production code that Render deploys.
-- `main`: this README, plus older code and the earlier data-enrichment tooling in `scraping/` and `datasets/`.
+- `main`: the production code that Render deploys.
+- `deploy/new-car-v1`: the previous deploy branch, kept as a rollback reference.
