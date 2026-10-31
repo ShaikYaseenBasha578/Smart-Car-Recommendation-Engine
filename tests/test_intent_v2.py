@@ -153,6 +153,14 @@ CASES = [
     ("powerful and fun to drive", expected(soft_preferences=["performance"], use_case="enthusiast")),
     ("comfortable and safe car for parents", expected(soft_preferences=["comfort", "safety"], use_case="parents")),
     ("fully loaded feature rich SUV", expected(soft_preferences=["features"], body_types=["suv"])),
+    # --- seats as a verb (paper queries_v0 phrasing) ---
+    ("I need a manual SUV under 3 lakh that seats 6. What should I buy?",
+     expected(transmission=MANUAL, body_types=["suv"], budget=budget(hi=3 * L), seats_min=6)),
+    ("Looking for a van that seats 9. Which car would you recommend?", expected(body_types=["van"], seats_min=9)),
+    ("Can you suggest a petrol sedan that seats 5 under ₹3,00,000?",
+     expected(fuel_types=["petrol"], body_types=["sedan"], seats_min=5, budget=budget(hi=300_000))),
+    ("MPV that seats at least 7", expected(body_types=["mpv"], seats_min=7)),
+    ("seating for 8", expected(seats_min=8)),
 ]
 
 

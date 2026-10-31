@@ -239,7 +239,9 @@ def _rupees(number: str, unit: str | None, cue: bool) -> int | None:
 def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
     specs = [
         ("seats_min", int, r"(\d+)\s*-?\s*(?:seater|seats?|seat)|(?:seating\s*(?:for|capacity\s*(?:of)?)|family\s*of)\s*(\d+)"
-                           r"|(\d+)\s*(?:people|persons|log|logon|members)"),
+                           r"|(\d+)\s*(?:people|persons|log|logon|members)"
+                           # verb form: "that seats 6", "seats at least 7" (not "seats 5 lakh")
+                           r"|seats?\s*(?:at\s*least\s*|minimum\s*|min\s*)?(\d+)(?!\s*(?:lakhs?|lacs?|lac|l|k|cr|crores?|%)(?![a-z]))"),
         ("min_airbags", int, r"(\d+)\s*-?\s*air\s*-?bags?"),
         ("min_safety_stars", int, r"([1-5])\s*-?\s*(?:stars?|\*)(?:\s*(?:safety|rated|rating|ncap))*"
                                   r"|(?:ncap|safety)\s*rating\s*(?:of\s*)?([1-5])"),
