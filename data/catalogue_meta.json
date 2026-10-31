@@ -1,0 +1,163 @@
+{
+  "catalogue_sha256": "1ba7cb9e13139f051b61e8abcc294090f7a95bef8fd9f3b8618267080ee66a89",
+  "columns": {
+    "abs": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "adas_available": {
+      "non_null": 829,
+      "quarantined": 1,
+      "unverified": 3
+    },
+    "adas_tier": {
+      "non_null": 828,
+      "quarantined": 0,
+      "unverified": 4
+    },
+    "airbags": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "android_auto": {
+      "non_null": 806,
+      "quarantined": 0,
+      "unverified": 26
+    },
+    "apple_carplay": {
+      "non_null": 806,
+      "quarantined": 0,
+      "unverified": 26
+    },
+    "boot_space_litres": {
+      "non_null": 791,
+      "quarantined": 0,
+      "unverified": 41
+    },
+    "camera_360": {
+      "non_null": 826,
+      "quarantined": 0,
+      "unverified": 6
+    },
+    "cruise_control": {
+      "non_null": 558,
+      "quarantined": 85,
+      "unverified": 274
+    },
+    "drivetrain": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "engine_cc": {
+      "non_null": 795,
+      "quarantined": 0,
+      "unverified": 37
+    },
+    "ev_range_km": {
+      "non_null": 37,
+      "quarantined": 0,
+      "unverified": 795
+    },
+    "ground_clearance_mm": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "heads_up_display": {
+      "non_null": 482,
+      "quarantined": 115,
+      "unverified": 350
+    },
+    "mileage_km_per_kg": {
+      "non_null": 39,
+      "quarantined": 0,
+      "unverified": 793
+    },
+    "mileage_kmpl": {
+      "non_null": 459,
+      "quarantined": 0,
+      "unverified": 373
+    },
+    "power_bhp": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "price_ex_showroom": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "safety_stars_adult": {
+      "non_null": 363,
+      "quarantined": 0,
+      "unverified": 469
+    },
+    "safety_stars_child": {
+      "non_null": 363,
+      "quarantined": 0,
+      "unverified": 469
+    },
+    "safety_test_year": {
+      "non_null": 363,
+      "quarantined": 0,
+      "unverified": 469
+    },
+    "safety_testing_body": {
+      "non_null": 363,
+      "quarantined": 0,
+      "unverified": 469
+    },
+    "seats": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "sunroof": {
+      "non_null": 830,
+      "quarantined": 1,
+      "unverified": 2
+    },
+    "torque_nm": {
+      "non_null": 832,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "ventilated_front_seats": {
+      "non_null": 819,
+      "quarantined": 9,
+      "unverified": 13
+    },
+    "wireless_charging": {
+      "non_null": 464,
+      "quarantined": 132,
+      "unverified": 368
+    }
+  },
+  "export_utc": "2026-10-31T11:38:36Z",
+  "fuel_type_distribution": {
+    "cng": 82,
+    "diesel": 167,
+    "electric": 37,
+    "hybrid": 20,
+    "petrol": 526
+  },
+  "kb_latest_phase": "10B-W6",
+  "kb_sha256": "ab78684bf9ccac1a751d7d5c61cb9fafb4f886c1efdc9535cbb5ea8c8ba33565",
+  "kb_wal_nonempty": false,
+  "row_count": 832,
+  "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
+  "transmission_type_distribution": {
+    "amt": 84,
+    "cvt": 41,
+    "dct": 54,
+    "e_cvt": 20,
+    "imt": 6,
+    "manual": 447,
+    "single_speed_ev": 37,
+    "torque_converter": 143
+  }
+}
