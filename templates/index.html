@@ -37,7 +37,9 @@
             </a>
             <nav class="flex items-center gap-6 font-mono text-sm">
                 <a href="/" class="text-white hover:text-cyan-400 transition-colors">/new_cars</a>
+                {% if used_cars_enabled %}
                 <a href="/used" class="text-base-200 hover:text-cyan-400 transition-colors">/used_cars</a>
+                {% endif %}
             </nav>
         </div>
     </header>
