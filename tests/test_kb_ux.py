@@ -3,7 +3,7 @@ import pytest
 
 from services.catalogue import get_catalogue
 from services.filter_v2 import REFERENCE_LENGTH_TOLERANCE, REFERENCE_PRICE_BAND
-from services.new_car_service import MAX_KB_MODELS, select_models
+from services.new_car_service import MAX_KB_MODELS, MIN_MAKES_FOR_CAP, select_models
 from services.twins import TWIN_GROUPS, complete_twin_pairs
 
 NO_FILTER_INTENT = {"makes": [], "models": []}
@@ -54,6 +54,19 @@ def test_extra_slot_still_respects_make_cap():
             *FILLER[:5], ("Maruti Suzuki", "Baleno"), ("Kia", "Seltos")]
     out = names(select_models(ranked(*cars), NO_FILTER_INTENT))
     assert len(out) == 9 and out[-1] == "Seltos" and "Baleno" not in out
+
+
+# --- per-make cap: off when fewer than MIN_MAKES_FOR_CAP makes match ---
+
+def test_cap_off_with_few_makes():
+    cars = [("Mahindra", f"M{i}") for i in range(4)] + [("Tata", "T0"), ("Tata", "T1")]
+    assert MIN_MAKES_FOR_CAP == 4
+    assert names(select_models(ranked(*cars), NO_FILTER_INTENT)) == ["M0", "M1", "M2", "M3", "T0", "T1"]
+
+
+def test_cap_on_with_enough_makes():
+    cars = [("Mahindra", f"M{i}") for i in range(4)] + [("Tata", "T0"), ("Kia", "K0"), ("Honda", "H0")]
+    assert names(select_models(ranked(*cars), NO_FILTER_INTENT)) == ["M0", "M1", "T0", "K0", "H0"]
 
 
 def test_twin_groups_exist_in_catalogue():

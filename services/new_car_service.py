@@ -15,6 +15,7 @@ from services.twins import complete_twin_pairs
 DEFAULT_DATA_SOURCE = "kb"
 MAX_KB_MODELS = 8
 MAX_KB_MODELS_PER_MAKE = 2  # same diversity rule as the legacy path, at model level
+MIN_MAKES_FOR_CAP = 4  # with fewer matching makes the per-make cap only hides cars, so it is off
 MAX_RELAXATION_HINTS = 3
 
 TRANSMISSION_LABELS = {
@@ -201,9 +202,12 @@ def safety_summary(car):
 def select_models(ranked, intent):
     """Best variant per model, max per make, up to MAX_KB_MODELS models.
 
+    The per-make cap is off when the user names makes/models, or when fewer than
+    MIN_MAKES_FOR_CAP makes have any match.
     Each twin pair (services/twins.py) with both models selected raises the limit by one.
     """
-    per_make_cap = None if (intent["makes"] or intent["models"]) else MAX_KB_MODELS_PER_MAKE
+    capped = not (intent["makes"] or intent["models"]) and ranked["make"].nunique() >= MIN_MAKES_FOR_CAP
+    per_make_cap = MAX_KB_MODELS_PER_MAKE if capped else None
 
     selected = []
     seen_models = set()
