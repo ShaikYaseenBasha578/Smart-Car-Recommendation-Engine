@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from services.intent_v2 import BODY_TYPES, FEATURES, FUEL_TYPES, TRANSMISSION_TYPES, parse_intent
+from services.intent_v2 import BODY_TYPES, FEATURES, FUEL_TYPES, SOFT_PREFERENCES, TRANSMISSION_TYPES, parse_intent
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,6 +29,11 @@ def expected(**fields):
         "min_ev_range_km": None,
         "min_mileage_kmpl": None,
         "use_case": None,
+        "exclude_fuel_types": [],
+        "exclude_body_types": [],
+        "models": [],
+        "unsupported_terms": [],
+        "soft_preferences": [],
     }
     for key, value in fields.items():
         assert key in base, key
@@ -85,7 +90,7 @@ CASES = [
     ("Tata ya Mahindra ki SUV, 5 star safety honi chahiye",
      expected(makes=["Mahindra", "Tata"], body_types=["suv"], min_safety_stars=5)),
     ("diesel nahi chahiye, petrol automatic 10 se 12 lakh",
-     expected(fuel_types=["petrol"], transmission=AUTO, budget=budget(10 * L, 12 * L))),
+     expected(fuel_types=["petrol"], exclude_fuel_types=["diesel"], transmission=AUTO, budget=budget(10 * L, 12 * L))),
     ("6 airbags wali gaadi 9 lakh tak", expected(min_airbags=6, budget=budget(hi=9 * L))),
     ("clutchless gaadi chahiye", expected(transmission=trans("manual", ["imt"]))),
     # --- features / numeric ---
@@ -120,6 +125,32 @@ CASES = [
     ("which car should I buy?", expected()),
     ("suggest something nice", expected()),
     ("", expected()),
+    # --- v2.1: exclusions ---
+    ("diesel nahi chahiye automatic SUV",
+     expected(exclude_fuel_types=["diesel"], transmission=AUTO, body_types=["suv"])),
+    ("no SUV, sedan or hatchback", expected(exclude_body_types=["suv"], body_types=["hatchback", "sedan"])),
+    ("avoid diesel and CNG", expected(exclude_fuel_types=["diesel", "cng"])),
+    ("petrol car but not a hatchback", expected(fuel_types=["petrol"], exclude_body_types=["hatchback"])),
+    # --- v2.1: models ---
+    ("scorpio n diesel", expected(models=["Scorpio-N"], fuel_types=["diesel"])),
+    ("xuv 3xo or xuv3xo AMT", expected(models=["XUV 3XO"], transmission=trans("automatic", ["amt"]))),
+    ("Hyundai Creta automatic", expected(models=["Creta"], makes=["Hyundai"], transmission=AUTO)),
+    ("innova for family", expected(models=["Innova Crysta", "Innova Hycross"], use_case="family")),
+    ("honda city or verna", expected(models=["City", "Verna"], makes=["Honda"])),
+    ("car for city driving", expected(use_case="city")),
+    ("something like Creta", expected(body_types=["suv"])),
+    ("Nexon EV vs Punch EV", expected(models=["Nexon EV", "Punch EV"])),
+    # --- v2.1: unsupported brands ---
+    ("BMW SUV", expected(unsupported_terms=["BMW"], body_types=["suv"])),
+    ("mercedes or audi sedan", expected(unsupported_terms=["Audi", "Mercedes-Benz"], body_types=["sedan"])),
+    ("Mini Cooper", expected(unsupported_terms=["Mini"])),
+    ("mini SUV under 8 lakh", expected(body_types=["suv"], budget=budget(hi=8 * L))),
+    # --- v2.1: soft preferences (never hard constraints) ---
+    ("good mileage hatchback", expected(soft_preferences=["mileage"], body_types=["hatchback"])),
+    ("spacious car for big family", expected(soft_preferences=["space"], use_case="family")),
+    ("powerful and fun to drive", expected(soft_preferences=["performance"], use_case="enthusiast")),
+    ("comfortable and safe car for parents", expected(soft_preferences=["comfort", "safety"], use_case="parents")),
+    ("fully loaded feature rich SUV", expected(soft_preferences=["features"], body_types=["suv"])),
 ]
 
 
@@ -137,10 +168,14 @@ def test_output_vocab_matches_catalogue():
     assert set(FUEL_TYPES) == {r["fuel_type"] for r in rows}
     assert set(TRANSMISSION_TYPES) == {r["transmission_type"] for r in rows}
     makes = {r["make"] for r in rows}
+    models = {r["model"] for r in rows}
     for query, _ in CASES:
         out = parse_intent(query)
         assert set(out["makes"]) <= makes
+        assert set(out["models"]) <= models
+        assert not set(out["unsupported_terms"]) & makes
         assert set(out["required_features"]) <= set(FEATURES)
+        assert set(out["soft_preferences"]) <= set(SOFT_PREFERENCES)
 
 
 def test_rules_only_mode_has_no_ml_trace():

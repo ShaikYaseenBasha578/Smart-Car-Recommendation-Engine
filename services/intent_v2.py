@@ -10,7 +10,11 @@ Not wired into the app yet. Vocabularies match data/catalogue.csv.
 
 from __future__ import annotations
 
+import csv
 import re
+from pathlib import Path
+
+CATALOGUE_CSV = Path(__file__).resolve().parents[1] / "data" / "catalogue.csv"
 
 BODY_TYPES = ["suv", "hatchback", "sedan", "mpv", "van", "pickup"]
 FUEL_TYPES = ["petrol", "diesel", "cng", "electric", "hybrid"]
@@ -20,6 +24,8 @@ FEATURES = [
     "sunroof", "adas", "camera_360", "ventilated_seats", "cruise_control",
     "wireless_charging", "heads_up_display", "android_auto", "apple_carplay",
 ]
+
+SOFT_PREFERENCES = ["mileage", "space", "performance", "comfort", "safety", "features"]
 
 AROUND_BAND = 0.15  # "around 10 lakh" -> 8.5 to 11.5 lakh
 ML_MIN_CONFIDENCE = 0.5
@@ -74,6 +80,63 @@ MAKE_PATTERNS = [
     ("Toyota", r"toyota"),
 ]
 
+# Brands that are not in the catalogue: reported back, never used as a filter.
+UNSUPPORTED_BRAND_PATTERNS = [
+    ("BMW", r"bmw"),
+    ("Audi", r"audi"),
+    ("Mercedes-Benz", r"mercedes(?:[- ]benz)?|merc|benz"),
+    ("Volvo", r"volvo"),
+    ("Jeep", r"jeep"),
+    ("Ford", r"ford"),
+    ("Citroen", r"citro[eë]n"),
+    ("BYD", r"byd"),
+    ("Lexus", r"lexus"),
+    ("Porsche", r"porsche"),
+    ("Land Rover", r"land\s*rover|range\s*rover"),
+    ("Jaguar", r"jaguar"),
+    ("Mini", r"mini(?=\s*(?:cooper|countryman|clubman|brand))"),
+    ("Isuzu", r"isuzu"),
+    ("Force", r"force(?=\s*(?:motors|gurkha|traveller|trax|urbania))"),
+    ("Fiat", r"fiat"),
+    ("Chevrolet", r"chevrolet|chevy"),
+    ("Datsun", r"datsun"),
+]
+
+# Vague wishes -> soft preferences (ranking boosts only, never filters).
+SOFT_PREFERENCE_PATTERNS = [
+    ("mileage", r"(?:good|great|better|best|high|excellent|achha|acha|achhi|achi)\s*(?:mileage|average|fuel\s*economy)"
+                r"|mileage\s*(?:achha|acha|achhi|achi|good|wali|wala)|fuel[- ]efficient|fuel\s*economy|economical|kifayati"),
+    ("space", r"spacious|roomy|big\s*family|large\s*family|joint\s*family|lots\s*of\s*space|big\s*boot|more\s*space"
+              r"|space\s*wali|badi\s*gaadi"),
+    ("performance", r"powerful|fun\s*to\s*drive|sporty|performance|fast|quick|peppy|punchy|torquey|zippy"),
+    ("comfort", r"comfortable|comfort|smooth\s*ride|plush|comfy|aaramdayak"),
+    ("safety", r"safe|safer|safest|safety|secure"),
+    ("features", r"(?:fully\s*)?loaded|feature[- ]?(?:rich|packed|loaded)|lots\s*of\s*features|top[- ]end|tech[- ]?(?:savvy|loaded)"),
+]
+
+# A model after one of these is a reference point ("something like Creta"), not a hard filter.
+REFERENCE_BEFORE = r"(?:like|similar\s*to|alternatives?\s*(?:to|for)|rivals?\s*(?:of|to)|competitors?\s*(?:of|to)" \
+                   r"|instead\s*of)\s*(?:a|an|the)?\s*$"
+REFERENCE_AFTER = r"^\s*(?:jaisi|jaisa|jaise|type|like|alternative|alternatives|rival|rivals)(?![a-z])"
+# Common words that are also model names: only a model when the make comes right before ("honda city").
+AMBIGUOUS_MODELS = {"City", "Venue", "Aura", "Elevate"}
+MODEL_ALIASES = {
+    "innova": ["Innova Crysta", "Innova Hycross"],
+    "scorpio": ["Scorpio Classic", "Scorpio-N"],
+    "carens": ["Carens Clavis", "Carens Clavis EV"],
+    "clavis": ["Carens Clavis", "Carens Clavis EV"],
+    "vitara": ["Grand Vitara", "e VITARA"],
+    "hyryder": ["Urban Cruiser Hyryder"],
+    "taisor": ["Urban Cruiser Taisor"],
+    "grand i10": ["Grand i10 Nios"],
+    "i10 nios": ["Grand i10 Nios"],
+    "nios": ["Grand i10 Nios"],
+    "alto": ["Alto K10"],
+    "wagon r": ["WagonR"],
+    "crysta": ["Innova Crysta"],
+    "hycross": ["Innova Hycross"],
+}
+
 # First match wins; same label set as the ML use_case model (minus "general").
 USE_CASE_PATTERNS = [
     ("premium", r"luxury|luxurious|premium"),
@@ -116,7 +179,9 @@ SHORT_STOP_AFTER = {"the", "a", "an", "my", "home", "night", "least", "most", "a
 NEGATION_BEFORE = {"no", "not", "avoid", "without", "except", "excluding", "dont", "don't", "never", "nor",
                    "hate", "na", "bina"}
 NEGATION_FILLER = {"a", "an", "the", "want", "wanna", "need", "like", "any", "prefer", "please", "really", "to",
-                   "have", "do", "i", "an", "using", "with"}
+                   "have", "do", "i", "an", "using", "with",
+                   # coordination: "avoid diesel and CNG" negates both (earlier terms are already blanked)
+                   "and", "or", "nor", "ya", "aur", "&", "/"}
 NEGATION_AFTER = {"nahi", "nahin", "nhi", "mat", "not", "na"}
 CLAUSE_BREAK = re.compile(r"[,.;!?]|\bbut\b|\bhowever\b|\bwhile\b|\blekin\b|\bpar\b")
 
@@ -272,20 +337,76 @@ def _parse_budget(text: str, out: dict, trace: list) -> str:
 # Categorical fields
 # ---------------------------------------------------------------------------
 
-def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str], bool, str]:
-    """Return (positive labels, any mention incl. negated, masked text)."""
-    found, mentioned = [], False
+def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str], list[str], bool, str]:
+    """Return (positive labels, negated labels, any mention, masked text)."""
+    found, negated, mentioned = [], [], False
+    matches = []
     for label, pattern in patterns:
         for m in _find(pattern, text):
-            mentioned = True
-            if _is_negated(text, m.start(), m.end()):
-                trace.append(f"{field}: '{m.group(0).strip()}' negated, not required")
-            else:
-                if label not in found:
-                    found.append(label)
-                    trace.append(f"{field}+={label} <- rule '{m.group(0).strip()}'")
+            matches.append((label, m))
             text = _mask(text, m)
-    return found, mentioned, text
+    # negation is judged with every term of this vocab blanked, so list order doesn't matter
+    for label, m in sorted(matches, key=lambda lm: lm[1].start()):
+        mentioned = True
+        if _is_negated(text, m.start(), m.end()):
+            if label not in negated:
+                negated.append(label)
+                trace.append(f"{field}-={label} <- negated '{m.group(0).strip()}'")
+        elif label not in found:
+            found.append(label)
+            trace.append(f"{field}+={label} <- rule '{m.group(0).strip()}'")
+    found = [label for label in found if label not in negated]
+    return found, negated, mentioned, text
+
+
+def _model_regex(name: str) -> str:
+    # "XUV 3XO" -> xuv[\s.-]*3[\s.-]*xo : matches "xuv 3xo", "xuv3xo", "XUV-3XO"
+    chunks = re.findall(r"[a-z]+|\d+", name.lower())
+    return r"[\s.\-]*".join(chunks)
+
+
+_model_vocab: list[tuple[str, str, list[str]]] | None = None  # (regex, needs_make, models)
+_model_info: dict[str, dict] = {}
+
+
+def _load_model_vocab() -> list[tuple[str, str | None, list[str]]]:
+    global _model_vocab
+    if _model_vocab is None:
+        with CATALOGUE_CSV.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                _model_info.setdefault(row["model"], {"make": row["make"], "body_type": row["body_type"]})
+        make_regex = dict(MAKE_PATTERNS)
+        vocab = []
+        for model, info in _model_info.items():
+            needs_make = make_regex[info["make"]] if model in AMBIGUOUS_MODELS else None
+            vocab.append((_model_regex(model), needs_make, [model]))
+        for alias, models in MODEL_ALIASES.items():
+            models = [m for m in models if m in _model_info]
+            if models:
+                vocab.append((_model_regex(alias), None, models))
+        # longest pattern first: "scorpio classic" before the "scorpio" alias, "thar roxx" before "thar"
+        _model_vocab = sorted(vocab, key=lambda v: -len(v[0]))
+    return _model_vocab
+
+
+def _parse_models(text: str, out: dict, trace: list) -> tuple[list[str], str]:
+    """Hard model filters into out["models"]; returns (reference models, masked text)."""
+    any_make = "|".join(p for _, p in MAKE_PATTERNS)
+    references = []
+    for pattern, needs_make, models in _load_model_vocab():
+        for m in _find(pattern, text):
+            before = text[:m.start()]
+            if needs_make and not re.search(rf"(?<![a-z0-9])(?:{needs_make})\s*$", before):
+                continue
+            before = re.sub(rf"(?<![a-z0-9])(?:{any_make})\s*$", "", before)
+            if re.search(REFERENCE_BEFORE, before) or re.match(REFERENCE_AFTER, text[m.end():]):
+                references += [x for x in models if x not in references]
+                trace.append(f"reference model {models} <- '{m.group(0).strip()}' (similar-to, not a filter)")
+            else:
+                out["models"] += [x for x in models if x not in out["models"]]
+                trace.append(f"models+={models} <- rule '{m.group(0).strip()}'")
+            text = _mask(text, m)
+    return references, text
 
 
 def _short_transmission_tokens(text: str):
@@ -416,13 +537,26 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         "min_ev_range_km": None,
         "min_mileage_kmpl": None,
         "use_case": None,
+        "exclude_fuel_types": [],
+        "exclude_body_types": [],
+        "models": [],
+        "unsupported_terms": [],
+        "soft_preferences": [],
         "trace": [],
     }
     trace = out["trace"]
     work = " " + re.sub(r"\s+", " ", (text or "").lower().replace("₹", " rs ")) + " "
 
-    # features first, so "android auto" / "360 camera" / "level 2" can't leak into other fields
-    features, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace)
+    # brands we don't carry and model names go first, so "Mini Cooper" / "XUV 3XO" can't leak into other fields
+    unsupported, _, _, work = _parse_vocab(UNSUPPORTED_BRAND_PATTERNS, work, "unsupported", trace)
+    out["unsupported_terms"] = sorted(unsupported)
+    references, work = _parse_models(work, out, trace)
+    out["models"] = sorted(out["models"])
+    # use case reads this (only models blanked): "family of 5" is both seats_min and a family use case
+    use_case_text = work
+
+    # then features, so "android auto" / "360 camera" / "level 2" can't leak into other fields
+    features, _, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace)
     if "adaptive_cruise" in features:
         features += ["adas", "cruise_control"]
     out["required_features"] = [f for f in FEATURES if f in features]
@@ -431,20 +565,28 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
     work = _parse_budget(work, out, trace)
     # ML sees the text with feature/number/budget phrases removed, so "budget 12 lakh" can't become use_case=budget
     ml_text = work
+    soft, _, _, _ = _parse_vocab(SOFT_PREFERENCE_PATTERNS, work, "soft", trace)
+    out["soft_preferences"] = [s for s in SOFT_PREFERENCES if s in soft]
     work = _parse_transmission(work, out, trace)
 
-    fuels, fuel_mentioned, work = _parse_vocab(FUEL_PATTERNS, work, "fuel", trace)
+    fuels, no_fuels, fuel_mentioned, work = _parse_vocab(FUEL_PATTERNS, work, "fuel", trace)
     out["fuel_types"] = [f for f in FUEL_TYPES if f in fuels]
-    bodies, body_mentioned, work = _parse_vocab(BODY_PATTERNS, work, "body", trace)
+    out["exclude_fuel_types"] = [f for f in FUEL_TYPES if f in no_fuels]
+    bodies, no_bodies, body_mentioned, work = _parse_vocab(BODY_PATTERNS, work, "body", trace)
     out["body_types"] = [b for b in BODY_TYPES if b in bodies]
-    makes, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace)
+    out["exclude_body_types"] = [b for b in BODY_TYPES if b in no_bodies]
+    if references and not body_mentioned:
+        # "something like Creta": use the reference model's body type, nothing else
+        ref_bodies = {_model_info[m]["body_type"] for m in references}
+        out["body_types"] = [b for b in BODY_TYPES if b in ref_bodies]
+        body_mentioned = True
+        trace.append(f"body_types={out['body_types']} <- reference model {references}")
+    makes, _, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace)
     out["makes"] = sorted(makes)
 
-    # use case reads the unmasked text: "family of 5" is both seats_min and a family use case
-    normalized = " " + re.sub(r"\s+", " ", (text or "").lower()) + " "
     use_case_mentioned = False
     for label, pattern in USE_CASE_PATTERNS:
-        m = next(iter(_find(pattern, normalized)), None)
+        m = next(iter(_find(pattern, use_case_text)), None)
         if m:
             use_case_mentioned = True
             out["use_case"] = label
