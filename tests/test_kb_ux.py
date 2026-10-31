@@ -155,6 +155,16 @@ def test_non_empty_result_has_no_hints(client, monkeypatch):
 def test_covered_makes_and_placeholder_images(client, monkeypatch):
     data = predict(client, monkeypatch, "Maruti hatchback")
     assert data["covered_makes"] == sorted(get_catalogue()["make"].unique())
-    # no Maruti photos exist on disk: every card falls back to the hatchback silhouette
-    assert data["recommendations"]
-    assert all(r["carImage"] == "/static/car_images/placeholders/hatchback.svg" for r in data["recommendations"])
+    # each card: a brochure photo with its caption, or the hatchback silhouette without one
+    recs = data["recommendations"]
+    assert recs
+    for r in recs:
+        if r["imageAttribution"]:
+            assert r["carImage"].endswith(".webp") and r["imageAttribution"] == "Maruti Suzuki brochure"
+        else:
+            assert r["carImage"] == "/static/car_images/placeholders/hatchback.svg"
+    assert any(r["imageAttribution"] for r in recs)
+    by_model = {r["Model"]: r for r in recs}
+    for model in ("Baleno", "WagonR"):  # no brochure photo yet
+        if model in by_model:
+            assert by_model[model]["carImage"] == "/static/car_images/placeholders/hatchback.svg"

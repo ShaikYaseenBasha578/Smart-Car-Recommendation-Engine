@@ -29,8 +29,13 @@ def test_manifest_first_then_filename_then_placeholder(monkeypatch):
     assert find_car_image(ROOT, "Hyundai", "Creta", "suv") == "/static/car_images/hyundai_creta.jpg"
     assert image_attribution(ROOT, "Hyundai", "Creta") is None
     # nothing at all: body-type silhouette
-    assert find_car_image(ROOT, "Maruti Suzuki", "Fronx", "suv") == "/static/car_images/placeholders/suv.svg"
-    assert image_attribution(ROOT, "Maruti Suzuki", "Fronx") is None
+    assert find_car_image(ROOT, "Maruti Suzuki", "Baleno", "hatchback") == "/static/car_images/placeholders/hatchback.svg"
+    assert image_attribution(ROOT, "Maruti Suzuki", "Baleno") is None
+
+
+def test_brochure_image_has_caption():
+    assert find_car_image(ROOT, "Maruti Suzuki", "Fronx", "suv") == "/static/car_images/maruti_suzuki_fronx.webp"
+    assert image_attribution(ROOT, "Maruti Suzuki", "Fronx") == "Maruti Suzuki brochure"
 
 
 def test_legacy_images_have_no_caption():
