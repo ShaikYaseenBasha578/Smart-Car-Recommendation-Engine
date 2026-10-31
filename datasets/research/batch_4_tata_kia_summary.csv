@@ -1,6 +1,0 @@
-make,model,proposed_rows,already_present_current,update_existing,add_new,replace_obsolete,unresolved_prices,unresolved_core_specs,official_only_rows,secondary_supported_rows,status
-Tata,Tiago EV,3,0,0,3,0,3,3,0,3,RESEARCH_SKELETON_UNRESOLVED_VALUES
-Tata,Punch EV,6,0,0,6,0,5,6,6,0,RESEARCH_SKELETON_UNRESOLVED_VALUES
-Kia,Syros,17,0,0,17,0,0,0,17,0,EXACT_PRICES_RESOLVED_OFFICIAL_CONFIGURATOR
-Kia,Carens Clavis,37,0,0,37,0,0,0,37,0,EXACT_PRICES_RESOLVED_OFFICIAL_CONFIGURATOR_WITH_OMITTED_VARIANTS_ADDED
-Kia,Carens Clavis EV,9,0,0,9,0,5,9,0,9,RESEARCH_SKELETON_UNRESOLVED_VALUES

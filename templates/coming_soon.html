@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Cars | CarRec</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 300: '#d4d4d4', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 900: '#164e63' },
+              danger: { 400: '#f87171', 500: '#ef4444', 900: '#7f1d1d' }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div> CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-base-300 hover:text-cyan-400 transition-colors">/new_cars</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
+        <div class="flex-1 flex flex-col items-center justify-center text-center">
+            <h1 class="font-display text-3xl md:text-4xl text-white font-bold mb-4">Used Cars</h1>
+            <p class="font-mono text-sm text-base-300">Used-car search is coming soon.</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,154 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Used Car Listings</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="site-page used-page">
-  <header>
-    <nav>
-      <div class="navbar">
-        <div class="logo">
-          <h1>CarRec</h1>
-        </div>
-        <div class="nav-elements">
-          <ul>
-            <li><a href="/">HOME</a></li>
-            <li><a href="/#about">ABOUT</a></li>
-            <li><a href="/used">USED CARS</a></li>
-          </ul>
-        </div>
-        <div class="ICONS">
-          <img class="dark-toggle" src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Toggle dark mode" role="button" tabindex="0">
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <section class="recommend">
-    <div class="box">
-      <h1 class="text">Find the Right <span>Used Car</span> for You</h1>
-      <div class="hp-used">
-        <input type="text" id="usedQuery" placeholder="e.g. SUV under 15 lakhs in Hyderabad">
-        <button class="search-btn" id="usedSearchButton" onclick="sendUsedQuery()">🔍</button>
-      </div>      
-      <div id="loading" style="display:none; font-size: 20px; text-align:center;">🔄 Loading results...</div>
-
-      <div id="used-results" class="lists">
-        <!-- Injected car cards go here -->
-      </div>
-    </div>
-  </section>
-
-  <script>
-    (function () {
-      const savedTheme = localStorage.getItem("theme");
-      document.body.classList.toggle("dark-mode", savedTheme === "dark");
-
-      const toggle = document.querySelector(".dark-toggle");
-      if (!toggle) return;
-
-      function toggleTheme() {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-      }
-
-      toggle.addEventListener("click", toggleTheme);
-      toggle.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          toggleTheme();
-        }
-      });
-    })();
-
-    async function sendUsedQuery() {
-      const userInput = document.getElementById("usedQuery").value;
-      const resultBox = document.getElementById("used-results");
-      const loadingBox = document.getElementById("loading");
-      const searchButton = document.getElementById("usedSearchButton");
-      const originalButtonText = "🔍";
-
-      resultBox.innerHTML = "";
-      loadingBox.textContent = "Searching CarTrade and OLX... This may take 20-40 seconds.";
-      loadingBox.style.display = "block";
-      searchButton.disabled = true;
-      searchButton.textContent = "Searching...";
-
-      try {
-        const response = await fetch("/used-cars", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ query: userInput })
-        });
-
-        const data = await response.json();
-
-        if (data.source_errors && data.source_errors.length > 0) {
-          const warningBox = document.createElement("div");
-          warningBox.classList.add("source-warning");
-          warningBox.innerHTML = `
-            <p><strong>Some sources could not be searched.</strong></p>
-            <ul>
-              ${data.source_errors.map(item => `
-                <li>${item.source}: ${String(item.error).slice(0, 140)}</li>
-              `).join("")}
-            </ul>
-          `;
-          resultBox.appendChild(warningBox);
-        }
-
-        if (data.recommendations && data.recommendations.length > 0) {
-          data.recommendations.forEach(car => {
-            const item = document.createElement("div");
-            item.classList.add("elements");
-            const listingUrl = car.listing_url || "";
-            let sourceName = car.source;
-
-            if (!sourceName && listingUrl.includes("cartrade")) {
-              sourceName = "CarTrade";
-            } else if (!sourceName && listingUrl.includes("cars24")) {
-              sourceName = "Cars24";
-            } else if (!sourceName) {
-              sourceName = "Source";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Cars | CarRec</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 300: '#d4d4d4', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 900: '#164e63' },
+              danger: { 400: '#f87171', 500: '#ef4444', 900: '#7f1d1d' }
             }
-            const imageUrl = car.image_url || "/static/pic.avif";
-
-            item.innerHTML = `
-              <img src="${imageUrl}" alt="${car.title}" loading="lazy" onerror="this.onerror=null; this.src='/static/pic.avif';">
-              <div class="t">
-                <h1>${car.title}</h1>
-                <div class="p">
-                  <p>${car.price || 'Price not listed'}</p>
-                  <p>${car.km || 'KM unknown'} | ${car.fuel || ''} | ${car.transmission || ''}</p>
-                  <p>${car.owner ? 'Owner: ' + car.owner : ''}</p>
-                <p>${car.location}</p>
-              </div>
-              <div class="links">
-                <a href="${listingUrl}" target="_blank">View on ${sourceName}</a>
-              </div>
-            </div>
-          `;
-            resultBox.appendChild(item);
-          });
-        } else {
-          const noResults = document.createElement("p");
-          noResults.textContent = "No used cars found right now. Try changing the budget, city, brand, or filters.";
-          resultBox.appendChild(noResults);
+          }
         }
-      } catch (error) {
-        resultBox.innerHTML = `<p>Something went wrong while searching used cars. Please try again.</p>`;
-      } finally {
-        loadingBox.style.display = "none";
-        searchButton.disabled = false;
-        searchButton.textContent = originalButtonText;
       }
-    }
-  </script>
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div> CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-base-300 hover:text-cyan-400 transition-colors">/new_cars</a>
+                <a href="/used" class="text-cyan-400">/used_cars</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
+        <h1 class="font-display text-3xl md:text-4xl text-white font-bold mb-8">Used Car Aggregator</h1>
+        <form onsubmit="sendUsedQuery(event)" class="w-full max-w-4xl mb-12">
+            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
+                <label for="usedQuery" class="sr-only">Query</label>
+                <span class="pl-4 pr-2 text-base-700 font-mono text-sm">~/scrape $</span>
+                <input id="usedQuery" type="text" class="flex-1 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="e.g. Maruti Swift automatic in Delhi">
+                <button type="submit" class="ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Scrape</button>
+            </div>
+        </form>
+        <div id="results" class="w-full flex flex-col gap-6"></div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

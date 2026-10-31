@@ -3,28 +3,43 @@ from flask_cors import CORS
 
 import pandas as pd
 import numpy as np
+import os
 import pickle
 import traceback
 
 from services.new_car_service import get_new_car_recommendations
-from services.used_car_service import get_used_car_recommendations
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Used-car search needs selenium/bs4 + headless Chrome; off unless explicitly enabled.
+ENABLE_USED_CARS = os.environ.get("ENABLE_USED_CARS", "0") == "1"
+
+if ENABLE_USED_CARS:
+    from services.used_car_service import get_used_car_recommendations
 
 
 app = Flask(__name__)
 CORS(app)
 
 
+@app.context_processor
+def inject_feature_flags():
+    return {"used_cars_enabled": ENABLE_USED_CARS}
+
+
 # =========================
 # Load Assets
 # =========================
 
-with open("car_recommendation_assets/label_encoders.pkl", "rb") as f:
+ASSETS_DIR = os.path.join(BASE_DIR, "car_recommendation_assets")
+
+with open(os.path.join(ASSETS_DIR, "label_encoders.pkl"), "rb") as f:
     label_encoders = pickle.load(f)
 
-with open("car_recommendation_assets/categorical_mappings.pkl", "rb") as f:
+with open(os.path.join(ASSETS_DIR, "categorical_mappings.pkl"), "rb") as f:
     categorical_mappings = pickle.load(f)
 
-df = pd.read_csv("car_recommendation_assets/processed_dataset.csv")
+df = pd.read_csv(os.path.join(ASSETS_DIR, "processed_dataset.csv"))
 
 
 # =========================
@@ -82,6 +97,8 @@ def recommend_page():
 
 @app.route("/used")
 def used_page():
+    if not ENABLE_USED_CARS:
+        return render_template("coming_soon.html")
     return render_template("used.html")
 
 
@@ -91,6 +108,9 @@ def used_page():
 
 @app.route("/used-cars", methods=["POST"])
 def get_used_cars():
+    if not ENABLE_USED_CARS:
+        return jsonify({"error": "Used-car search is not available in this demo"}), 404
+
     try:
         query = request.get_json().get("query")
 

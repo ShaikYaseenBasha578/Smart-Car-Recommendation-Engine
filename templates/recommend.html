@@ -1,217 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Recommendations</title>
+    <title>Results | CarRec</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-        rel="stylesheet">
-</head>
-
-<body class="site-page recommend-page">
-    <header>
-        <nav>
-            <div class="navbar">
-                <div class="logo">
-                    <h1>CarRec</h1>
-                </div>
-                <div class="nav-elements">
-                    <ul>
-                        <li><a href="/">HOME</a></li>
-                        <li><a href="/#about">ABOUT</a></li>
-                        <li><a href="/used">USED CARS</a></li>
-                    </ul>
-                </div>
-                <div class="ICONS">
-                    <img class="dark-toggle" src="{{ url_for('static', filename='FontAwesome-Moon-icon.png') }}" alt="Toggle dark mode" role="button" tabindex="0">
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <section class="recommend chat-recommend">
-        <div class="box chat-box">
-            <h1 class="text">Recommend Cars According To Search</h1>
-
-            <div id="chat-window" class="chat-window">
-                <!-- Query and recommendation blocks will be injected here dynamically -->
-            </div>
-
-            <div class="search-again-box chat-input-box">
-                <input
-                    type="text"
-                    id="recommendQuery"
-                    placeholder="Ask another query, e.g. automatic SUV under 15 lakh"
-                >
-                <button type="button" onclick="searchAgain()">Search</button>
-            </div>
-        </div>
-    </section>
-
-   <script>
-    (function () {
-        const savedTheme = localStorage.getItem("theme");
-        document.body.classList.toggle("dark-mode", savedTheme === "dark");
-
-        const toggle = document.querySelector(".dark-toggle");
-        if (!toggle) return;
-
-        function toggleTheme() {
-            document.body.classList.toggle("dark-mode");
-            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"DM Sans"', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              base: { 950: '#0a0a0a', 900: '#121212', 800: '#1a1a1a', 700: '#262626', 300: '#d4d4d4', 200: '#e5e5e5', 100: '#f5f5f5', 50: '#fafafa' },
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 900: '#164e63' },
+              danger: { 400: '#f87171', 500: '#ef4444', 900: '#7f1d1d' }
+            }
+          }
         }
-
-        toggle.addEventListener("click", toggleTheme);
-        toggle.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                toggleTheme();
+      }
+    </script>
+</head>
+<body class="bg-base-950 text-base-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30">
+    <header class="fixed top-0 w-full z-50 bg-base-950/80 backdrop-blur-md border-b border-base-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div> CarRec
+            </a>
+            <nav class="flex items-center gap-6 font-mono text-sm">
+                <a href="/" class="text-cyan-400">/new_cars</a>
+                {% if used_cars_enabled %}
+                <a href="/used" class="text-base-300 hover:text-cyan-400 transition-colors">/used_cars</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
+        <form onsubmit="sendQuery(event)" class="w-full max-w-4xl mx-auto mb-12">
+            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex flex-wrap sm:flex-nowrap items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
+                <label for="userQuery" class="sr-only">Query</label>
+                <span class="pl-4 pr-2 text-base-700 font-mono text-sm">~/query $</span>
+                <input id="userQuery" type="text" class="flex-1 min-w-0 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="Enter parameters...">
+                <button type="submit" class="w-full sm:w-auto mt-2 sm:mt-0 sm:ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Run</button>
+            </div>
+        </form>
+        <div id="results" class="w-full flex flex-col gap-8"></div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = localStorage.getItem("userQuery");
+            if (saved) {
+                document.getElementById("userQuery").value = saved;
+                localStorage.removeItem("userQuery");
+                sendQuery();
             }
         });
-    })();
-
-    async function fetchRecommendations(query) {
-        const chatWindow = document.getElementById("chat-window");
-        const chatBlock = document.createElement("div");
-        chatBlock.classList.add("chat-block");
-
-        const userBubble = document.createElement("div");
-        userBubble.classList.add("chat-bubble", "user-bubble");
-        userBubble.textContent = query;
-
-        const resultBox = document.createElement("div");
-        resultBox.classList.add("lists", "chat-results");
-        resultBox.innerHTML = "<p>Loading recommendations...</p>";
-
-        chatBlock.appendChild(userBubble);
-        chatBlock.appendChild(resultBox);
-        chatWindow.appendChild(chatBlock);
-        chatBlock.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        try {
-            const response = await fetch("/predict", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ query: query })
-            });
-
-            const data = await response.json();
-
-            console.log("FULL BACKEND RESPONSE:", data);
-
-            resultBox.innerHTML = "";
-
-            if (!response.ok) {
-                resultBox.innerHTML = `<p>Error: ${data.error || "Something went wrong."}</p>`;
-                return;
-            }
-
-            if (data.message && (!data.recommendations || data.recommendations.length === 0)) {
-                resultBox.innerHTML = `<p>${data.message}</p>`;
-                return;
-            }
-
-            if (!data.recommendations || data.recommendations.length === 0) {
-                resultBox.innerHTML = "<p>No recommendations found.</p>";
-                return;
-            }
-
-            const recommendations = [
-                ...new Map(data.recommendations.map(item => [item.Model, item])).values()
-            ].slice(0, 4);
-
-            recommendations.forEach(car => {
-                const item = document.createElement("div");
-                item.classList.add("elements");
-
-                const price = car["Ex-Showroom_Price"]
-                    ? Math.round(Number(car["Ex-Showroom_Price"])).toLocaleString("en-IN")
-                    : "N/A";
-
-                const mileage = car["ARAI_Certified_Mileage"]
-                    ? Number(car["ARAI_Certified_Mileage"]).toFixed(1)
-                    : "N/A";
-
-                const reasons = car.match_reasons && car.match_reasons.length > 0
-                    ? `<p><strong>Why:</strong> ${car.match_reasons.join(", ")}</p>`
-                    : "";
-
-                item.innerHTML = `
-                    <img src="${car.carImage || "/static/car_images/pic1.avif"}" 
-                         alt="${car.Make || "Car"} ${car.Model || ""}">
-
-                    <div class="t">
-                        <h1>${car.Make || "Unknown"} ${car.Model || ""} ${car.Variant || ""}</h1>
-
-                        <div class="p">
-                            <p>₹${price}</p>
-                            <p>Mileage: ${mileage} kmpl</p>
-                            <p>Transmission: ${car.Transmission || "Not specified"}</p>
-                            <p>Fuel: ${car.Fuel_Type || "Not specified"}</p>
-                            ${reasons}
-                        </div>
-
-                        <div class="links">
-                            <a href="${car.carDekhoLink || "#"}" target="_blank">CarDekho</a>
-                            <a href="${car.carWaleLink || "#"}" target="_blank">CarWale</a>
-                        </div>
-                    </div>
-                `;
-
-                resultBox.appendChild(item);
-            });
-
-        } catch (error) {
-            console.error("FRONTEND ERROR:", error);
-            resultBox.innerHTML = `
-                <p>Frontend error:</p>
-                <pre style="white-space: pre-wrap; color: red;">${error.message}</pre>
-            `;
-        }
-    }
-
-    function searchAgain() {
-        const inputBox = document.getElementById("recommendQuery");
-        const query = inputBox.value.trim();
-
-        if (!query) {
-            alert("Please enter a query.");
-            return;
-        }
-
-        localStorage.setItem("userQuery", query);
-        inputBox.value = "";
-        fetchRecommendations(query);
-    }
-
-    window.onload = function () {
-        const userQuery = localStorage.getItem("userQuery");
-
-        if (!userQuery) {
-            const chatWindow = document.getElementById("chat-window");
-            const emptyState = document.createElement("div");
-            emptyState.classList.add("chat-empty");
-            emptyState.textContent = "No search query found. Please go back and search again.";
-            chatWindow.appendChild(emptyState);
-            return;
-        }
-
-        fetchRecommendations(userQuery);
-    };
-    document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        const activeElement = document.activeElement;
-
-        if (activeElement && activeElement.id === "recommendQuery") {
-            searchAgain();
-        }
-    }
-});
-</script>
+    </script>
 </body>
 </html>

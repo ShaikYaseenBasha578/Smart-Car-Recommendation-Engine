@@ -265,3 +265,10 @@ scraping/outputs/*
 
 # Historical reproducibility archive
 archive/scraping_reproducibility/
+
+# Deploy branch: never track local-only data
+knowledge_base/
+scratch/
+*.db
+.env
+.temp_venv/
