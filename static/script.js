@@ -200,6 +200,7 @@ async function sendQuery(event) {
                             ${isHero ? '<div class="mb-3"><span class="px-2 py-1 rounded bg-cyan-500 text-base-950 font-bold font-mono text-[10px] tracking-widest uppercase">Top Match</span></div>' : ''}
                             <h2 class="font-display ${isHero ? 'text-3xl md:text-4xl' : 'text-2xl'} font-bold text-white leading-tight mb-1">${car.Make} ${car.Model}</h2>
                             <p class="text-base-300 font-mono text-sm">${car.Variant || ''}</p>
+                            ${car.imageAttribution ? `<p class="mt-2 text-base-400 font-mono text-[10px]">Image: ${car.imageAttribution}</p>` : ''}
                         </div>
                     </div>
 

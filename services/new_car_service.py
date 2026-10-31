@@ -7,6 +7,7 @@ from ml_parser.ml_intent_parser import preprocess_user_input_ml
 from ranking_engine import rank_cars
 from services.catalogue import get_catalogue, get_meta
 from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
+from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent
 from services.ranking_adapter import rank_candidates
 from services.twins import complete_twin_pairs
@@ -158,25 +159,6 @@ def get_new_car_recommendations(
         raise ValueError(f"DATA_SOURCE must be 'kb' or 'legacy', got {data_source!r}")
 
     return get_kb_recommendations(user_query, app_root_path, make_json_safe)
-
-
-def find_car_image(app_root_path, make, model, body_type=None):
-    """make_model.jpg as before; then the hyphenated model name used by most files on disk;
-    then an in-house body-type silhouette (static/car_images/placeholders/<body_type>.svg)."""
-    make_part = str(make).lower().replace(" ", "_")
-    model_part = str(model).lower()
-
-    for image_filename in (
-        f"{make_part}_{model_part.replace(' ', '_')}.jpg",
-        f"{make_part}_{model_part.replace(' ', '-')}.jpg",
-    ):
-        if os.path.exists(os.path.join(app_root_path, "static", "car_images", image_filename)):
-            return f"/static/car_images/{image_filename}"
-
-    if body_type and os.path.exists(os.path.join(app_root_path, "static", "car_images", "placeholders", f"{body_type}.svg")):
-        return f"/static/car_images/placeholders/{body_type}.svg"
-
-    return "/static/car_images/pic1.avif"
 
 
 def data_as_of():
@@ -378,6 +360,7 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe):
             "matched_features": [m for m in car["matched"] if m in FEATURE_COLUMNS],
             "unverified": unverified,
             "safety": safety_summary(car),
+            "imageAttribution": image_attribution(app_root_path, car["make"], car["model"]),
             "matching_variant_count": int(variant_counts[car["model"]]),
         })
 
