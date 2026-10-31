@@ -231,8 +231,8 @@ def generate_cartrade_filtered_url(filters):
 
     # --- Transmission ---
     trans_map = {
-        "manual": 1,
-        "automatic": 2
+        "manual": 2,
+        "automatic": 1
     }
     transmission = filters.get("transmission")
     if transmission:
