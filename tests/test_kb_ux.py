@@ -124,3 +124,11 @@ def test_empty_state_relaxation_hints(client, monkeypatch):
 
 def test_non_empty_result_has_no_hints(client, monkeypatch):
     assert "relaxation_hints" not in predict(client, monkeypatch, "sedan with sunroof")
+
+
+def test_covered_makes_and_placeholder_images(client, monkeypatch):
+    data = predict(client, monkeypatch, "Maruti hatchback")
+    assert data["covered_makes"] == sorted(get_catalogue()["make"].unique())
+    # no Maruti photos exist on disk: every card falls back to the hatchback silhouette
+    assert data["recommendations"]
+    assert all(r["carImage"] == "/static/car_images/placeholders/hatchback.svg" for r in data["recommendations"])

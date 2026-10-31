@@ -159,8 +159,9 @@ def get_new_car_recommendations(
     return get_kb_recommendations(user_query, app_root_path, make_json_safe)
 
 
-def find_car_image(app_root_path, make, model):
-    """make_model.jpg as before; then the hyphenated model name used by most files on disk."""
+def find_car_image(app_root_path, make, model, body_type=None):
+    """make_model.jpg as before; then the hyphenated model name used by most files on disk;
+    then an in-house body-type silhouette (static/car_images/placeholders/<body_type>.svg)."""
     make_part = str(make).lower().replace(" ", "_")
     model_part = str(model).lower()
 
@@ -170,6 +171,9 @@ def find_car_image(app_root_path, make, model):
     ):
         if os.path.exists(os.path.join(app_root_path, "static", "car_images", image_filename)):
             return f"/static/car_images/{image_filename}"
+
+    if body_type and os.path.exists(os.path.join(app_root_path, "static", "car_images", "placeholders", f"{body_type}.svg")):
+        return f"/static/car_images/placeholders/{body_type}.svg"
 
     return "/static/car_images/pic1.avif"
 
@@ -322,6 +326,7 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe):
         "recommendations": [],
         "data_as_of": data_as_of(),
         "unsupported_terms": intent["unsupported_terms"],
+        "covered_makes": sorted(get_catalogue()["make"].unique().tolist()),
     }
 
     unsupported_note = ""
@@ -358,7 +363,7 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe):
             "ARAI_Certified_Mileage": make_json_safe(car["mileage_kmpl"]),
             "Transmission": car["transmission_family"].title(),
             "Fuel_Type": make_json_safe(car["fuel_raw"]),
-            "carImage": find_car_image(app_root_path, car["make"], car["model"]),
+            "carImage": find_car_image(app_root_path, car["make"], car["model"], car["body_type"]),
             "carDekhoLink": format_cardekho_url(car["make"], car["model"]),
             "carWaleLink": format_carwale_url(car["make"], car["model"]),
             "ranking_score": make_json_safe(car["ranking_score"]),
