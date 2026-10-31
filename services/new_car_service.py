@@ -5,6 +5,26 @@ import pandas as pd
 from utils import preprocess_user_input, filter_cars
 from ml_parser.ml_intent_parser import preprocess_user_input_ml
 from ranking_engine import rank_cars
+from services.catalogue import get_catalogue, get_meta
+from services.filter_v2 import FEATURE_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
+from services.intent_v2 import parse_intent
+from services.ranking_adapter import rank_candidates
+
+# "kb" (default): KB catalogue + intent_v2 + filter_v2. "legacy": processed_dataset.csv path.
+DEFAULT_DATA_SOURCE = "kb"
+MAX_KB_MODELS = 8
+MAX_KB_MODELS_PER_MAKE = 2  # same diversity rule as the legacy path, at model level
+
+TRANSMISSION_LABELS = {
+    "manual": "Manual",
+    "imt": "Manual (iMT, clutchless)",
+    "amt": "Automatic (AMT)",
+    "dct": "Automatic (DCT)",
+    "cvt": "Automatic (CVT)",
+    "e_cvt": "Automatic (e-CVT)",
+    "torque_converter": "Automatic (torque converter)",
+    "single_speed_ev": "Automatic (single-speed EV)",
+}
 
 
 def safe_slug(value):
@@ -120,6 +140,154 @@ def apply_hard_feature_filters(filtered_df, filters):
 
 
 def get_new_car_recommendations(
+    user_query,
+    df,
+    categorical_mappings,
+    app_root_path,
+    make_json_safe
+):
+    data_source = os.environ.get("DATA_SOURCE", DEFAULT_DATA_SOURCE).strip().lower()
+
+    if data_source == "legacy":
+        return get_legacy_recommendations(user_query, df, categorical_mappings, app_root_path, make_json_safe)
+
+    if data_source != "kb":
+        raise ValueError(f"DATA_SOURCE must be 'kb' or 'legacy', got {data_source!r}")
+
+    return get_kb_recommendations(user_query, app_root_path, make_json_safe)
+
+
+def find_car_image(app_root_path, make, model):
+    """make_model.jpg as before; then the hyphenated model name used by most files on disk."""
+    make_part = str(make).lower().replace(" ", "_")
+    model_part = str(model).lower()
+
+    for image_filename in (
+        f"{make_part}_{model_part.replace(' ', '_')}.jpg",
+        f"{make_part}_{model_part.replace(' ', '-')}.jpg",
+    ):
+        if os.path.exists(os.path.join(app_root_path, "static", "car_images", image_filename)):
+            return f"/static/car_images/{image_filename}"
+
+    return "/static/car_images/pic1.avif"
+
+
+def data_as_of():
+    meta = get_meta()
+    return {
+        "exported": meta["export_utc"][:10],
+        "kb_phase": meta["kb_latest_phase"],
+    }
+
+
+def safety_summary(car):
+    if pd.isna(car["safety_stars_adult"]):
+        return None
+
+    return {
+        "stars_adult": int(car["safety_stars_adult"]),
+        "stars_child": None if pd.isna(car["safety_stars_child"]) else int(car["safety_stars_child"]),
+        "testing_body": car["safety_testing_body"],
+        "year": None if pd.isna(car["safety_test_year"]) else int(car["safety_test_year"]),
+    }
+
+
+def get_kb_recommendations(user_query, app_root_path, make_json_safe):
+    print("🔎 Received new-car query (kb):", user_query)
+
+    intent = parse_intent(user_query)
+    candidates = filter_candidates(intent, get_catalogue())
+    ranked, filters = rank_candidates(intent, candidates)
+
+    print("🧾 intent_v2:", {k: v for k, v in intent.items() if k != "trace"})
+    print("🔎 Candidates after filter_v2:", len(candidates))
+
+    response = {
+        "parser_used": "intent_v2",
+        "intent": make_json_safe(intent),
+        "filters": make_json_safe(filters),
+        "recommendations": [],
+        "data_as_of": data_as_of(),
+        "unsupported_terms": intent["unsupported_terms"],
+    }
+
+    unsupported_note = ""
+    if intent["unsupported_terms"]:
+        unsupported_note = (
+            ", ".join(intent["unsupported_terms"])
+            + " isn't in our catalogue, so that part of your query was ignored."
+        )
+
+    if ranked.empty:
+        response["message"] = " ".join(filter(None, [unsupported_note, "No cars found matching your query."]))
+        return response
+
+    # =========================
+    # Best variant per model, max per make, max models
+    # =========================
+
+    variant_counts = candidates["model"].value_counts()
+    per_make_cap = None if (intent["makes"] or intent["models"]) else MAX_KB_MODELS_PER_MAKE
+
+    selected = []
+    seen_models = set()
+    make_count = {}
+
+    for _, car in ranked.iterrows():
+        if len(selected) >= MAX_KB_MODELS:
+            break
+
+        if car["model"] in seen_models:
+            continue
+
+        if per_make_cap is not None and make_count.get(car["make"], 0) >= per_make_cap:
+            continue
+
+        seen_models.add(car["model"])
+        make_count[car["make"]] = make_count.get(car["make"], 0) + 1
+        selected.append(car)
+
+    recommendations = []
+
+    for car in selected:
+        unverified = list(car["unverified"])
+        if car["unrated_safety"]:
+            unverified.append(UNRATED_SAFETY_LABEL)
+
+        recommendations.append({
+            # existing response keys (same names and types as the legacy path)
+            "Make": make_json_safe(car["make"]),
+            "Model": make_json_safe(car["model"]),
+            "Variant": make_json_safe(car["variant"]),
+            "Ex-Showroom_Price": make_json_safe(car["price_ex_showroom"]),
+            "Displacement": make_json_safe(car["engine_cc"]),
+            "Power": make_json_safe(car["power_bhp"]),
+            "ARAI_Certified_Mileage": make_json_safe(car["mileage_kmpl"]),
+            "Transmission": car["transmission_family"].title(),
+            "Fuel_Type": make_json_safe(car["fuel_raw"]),
+            "carImage": find_car_image(app_root_path, car["make"], car["model"]),
+            "carDekhoLink": format_cardekho_url(car["make"], car["model"]),
+            "carWaleLink": format_carwale_url(car["make"], car["model"]),
+            "ranking_score": make_json_safe(car["ranking_score"]),
+            "match_reasons": make_json_safe(car["match_reasons"]),
+            # added by the kb path
+            "transmission_type": car["transmission_type"],
+            "transmission_label": TRANSMISSION_LABELS[car["transmission_type"]],
+            "matched_features": [m for m in car["matched"] if m in FEATURE_COLUMNS],
+            "unverified": unverified,
+            "safety": safety_summary(car),
+            "matching_variant_count": int(variant_counts[car["model"]]),
+        })
+
+    response["recommendations"] = recommendations
+    if unsupported_note:
+        response["message"] = unsupported_note + " Showing the closest matches."
+
+    print("✅ Returning recommendations (kb):", len(recommendations))
+    return response
+
+
+def get_legacy_recommendations(
     user_query,
     df,
     categorical_mappings,
