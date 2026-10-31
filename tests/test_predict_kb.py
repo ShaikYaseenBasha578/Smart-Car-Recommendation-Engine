@@ -10,6 +10,7 @@ import pytest
 from services.catalogue import get_catalogue
 from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, UNRATED_SAFETY_LABEL, allowed_transmission_types
 from services.intent_v2 import parse_intent
+from services.twins import complete_twin_pairs
 
 QUERIES = [
     # the 12 Hinglish queries from Phase 2
@@ -112,7 +113,8 @@ def test_kb_predict(client, monkeypatch, query):
     assert data["unsupported_terms"] == intent["unsupported_terms"]
 
     recs = data["recommendations"]
-    assert len(recs) <= 8
+    # 8 models, plus one extra slot per twin pair that appears in full
+    assert len(recs) <= 8 + complete_twin_pairs([(r["Make"], r["Model"]) for r in recs])
     assert len({r["Model"] for r in recs}) == len(recs)  # one variant per model
 
     flags = []

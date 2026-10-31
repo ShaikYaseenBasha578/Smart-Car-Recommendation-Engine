@@ -32,6 +32,7 @@ def expected(**fields):
         "exclude_fuel_types": [],
         "exclude_body_types": [],
         "models": [],
+        "reference_models": [],
         "unsupported_terms": [],
         "soft_preferences": [],
     }
@@ -138,7 +139,8 @@ CASES = [
     ("innova for family", expected(models=["Innova Crysta", "Innova Hycross"], use_case="family")),
     ("honda city or verna", expected(models=["City", "Verna"], makes=["Honda"])),
     ("car for city driving", expected(use_case="city")),
-    ("something like Creta", expected(body_types=["suv"])),
+    ("something like Creta", expected(body_types=["suv"], reference_models=["Creta"])),
+    ("creta jaisi gaadi under 15 lakh", expected(body_types=["suv"], reference_models=["Creta"], budget=budget(hi=15 * L))),
     ("Nexon EV vs Punch EV", expected(models=["Nexon EV", "Punch EV"])),
     # --- v2.1: unsupported brands ---
     ("BMW SUV", expected(unsupported_terms=["BMW"], body_types=["suv"])),

@@ -16,6 +16,10 @@ falls back to mileage_km_per_kg (its ARAI figure is quoted per kg).
 
 min_safety_stars: rated and meets -> matched; rated below -> excluded; unrated -> kept with
 unrated_safety=True ("No Bharat NCAP rating on record").
+
+reference_models ("something like Creta"): the reference model itself is excluded, and unless
+the user gave a budget, price must sit in [0.8 x its cheapest, 1.2 x its dearest variant].
+(intent_v2 already sets body_types to the reference model's body type.)
 """
 
 from __future__ import annotations
@@ -48,6 +52,20 @@ MIN_COLUMNS = {
     "min_mileage_kmpl": ("mileage_kmpl", "mileage"),
 }
 UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
+REFERENCE_PRICE_BAND = (0.8, 1.2)
+
+
+def reference_price_band(intent: dict, df: pd.DataFrame) -> tuple[float, float] | None:
+    """Price band from the reference models, or None if there are none or the user set a budget."""
+    budget = intent.get("budget") or {}
+    refs = intent.get("reference_models") or []
+    if not refs or budget.get("min") is not None or budget.get("max") is not None:
+        return None
+    prices = df.loc[df["model"].isin(refs), "price_ex_showroom"].dropna()
+    if prices.empty:
+        return None
+    lo, hi = REFERENCE_PRICE_BAND
+    return lo * prices.min(), hi * prices.max()
 
 
 def allowed_transmission_types(transmission: dict) -> set[str]:
@@ -81,6 +99,13 @@ def _hard_filter(intent: dict, df: pd.DataFrame) -> pd.DataFrame:
         mask &= df["fuel_type"].isin(intent["fuel_types"])
     if intent.get("exclude_fuel_types"):
         mask &= ~df["fuel_type"].isin(intent["exclude_fuel_types"])
+
+    refs = intent.get("reference_models") or []
+    if refs:
+        mask &= ~df["model"].isin(refs)
+        band = reference_price_band(intent, df)
+        if band:
+            mask &= df["price_ex_showroom"].between(*band)
 
     mask &= df["transmission_type"].isin(allowed_transmission_types(intent.get("transmission") or {}))
 

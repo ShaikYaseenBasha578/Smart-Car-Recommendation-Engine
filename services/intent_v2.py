@@ -540,6 +540,7 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         "exclude_fuel_types": [],
         "exclude_body_types": [],
         "models": [],
+        "reference_models": [],
         "unsupported_terms": [],
         "soft_preferences": [],
         "trace": [],
@@ -552,6 +553,7 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
     out["unsupported_terms"] = sorted(unsupported)
     references, work = _parse_models(work, out, trace)
     out["models"] = sorted(out["models"])
+    out["reference_models"] = sorted(references)
     # use case reads this (only models blanked): "family of 5" is both seats_min and a family use case
     use_case_text = work
 

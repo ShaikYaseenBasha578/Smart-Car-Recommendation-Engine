@@ -167,5 +167,12 @@ def rank_candidates(intent: dict, candidates: pd.DataFrame) -> tuple[pd.DataFram
             for reasons, h in zip(out["match_reasons"], hits)
         ]
 
+    refs = intent.get("reference_models") or []
+    if refs:
+        budget = intent.get("budget") or {}
+        what = "body type" if budget.get("min") is not None or budget.get("max") is not None else "body type and price"
+        reason = f"Similar {what} to {', '.join(refs)}"
+        out["match_reasons"] = [[reason] + reasons for reasons in out["match_reasons"]]
+
     out = out.sort_values(["n_soft_flags", "ranking_score", "variant_id"], ascending=[True, False, True])
     return out, filters

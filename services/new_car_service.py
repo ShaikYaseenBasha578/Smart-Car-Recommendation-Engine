@@ -6,14 +6,16 @@ from utils import preprocess_user_input, filter_cars
 from ml_parser.ml_intent_parser import preprocess_user_input_ml
 from ranking_engine import rank_cars
 from services.catalogue import get_catalogue, get_meta
-from services.filter_v2 import FEATURE_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
+from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
 from services.intent_v2 import parse_intent
 from services.ranking_adapter import rank_candidates
+from services.twins import complete_twin_pairs
 
 # "kb" (default): KB catalogue + intent_v2 + filter_v2. "legacy": processed_dataset.csv path.
 DEFAULT_DATA_SOURCE = "kb"
 MAX_KB_MODELS = 8
 MAX_KB_MODELS_PER_MAKE = 2  # same diversity rule as the legacy path, at model level
+MAX_RELAXATION_HINTS = 3
 
 TRANSMISSION_LABELS = {
     "manual": "Manual",
@@ -192,6 +194,117 @@ def safety_summary(car):
     }
 
 
+def select_models(ranked, intent):
+    """Best variant per model, max per make, up to MAX_KB_MODELS models.
+
+    Each twin pair (services/twins.py) with both models selected raises the limit by one.
+    """
+    per_make_cap = None if (intent["makes"] or intent["models"]) else MAX_KB_MODELS_PER_MAKE
+
+    selected = []
+    seen_models = set()
+    make_count = {}
+
+    for _, car in ranked.iterrows():
+        limit = MAX_KB_MODELS + complete_twin_pairs([(c["make"], c["model"]) for c in selected])
+        if len(selected) >= limit:
+            break
+
+        if car["model"] in seen_models:
+            continue
+
+        if per_make_cap is not None and make_count.get(car["make"], 0) >= per_make_cap:
+            continue
+
+        seen_models.add(car["model"])
+        make_count[car["make"]] = make_count.get(car["make"], 0) + 1
+        selected.append(car)
+
+    return selected
+
+
+def _transmission_label(transmission):
+    if transmission["include_types"]:
+        names = sorted({TRANSMISSION_LABELS[t].split("(")[-1].rstrip(")") if "(" in TRANSMISSION_LABELS[t]
+                        else TRANSMISSION_LABELS[t] for t in transmission["include_types"]})
+        label = " / ".join(names) + " transmission"
+    elif transmission["family"]:
+        label = f"{transmission['family']} transmission"
+    else:
+        label = "transmission preference"
+    if transmission["exclude_types"]:
+        label += " (excluding " + ", ".join(t.upper() for t in transmission["exclude_types"]) + ")"
+    return label
+
+
+def _rupees(value):
+    return f"₹{value / 100000:g} lakh"
+
+
+def relaxable_constraints(intent):
+    """(human label, intent with only that constraint dropped) for every active constraint."""
+    def without(**changes):
+        relaxed = dict(intent)
+        relaxed.update(changes)
+        return relaxed
+
+    options = []
+    budget = intent["budget"]
+    if budget["min"] is not None or budget["max"] is not None:
+        if budget["min"] is not None and budget["max"] is not None:
+            label = f"budget {_rupees(budget['min'])}–{_rupees(budget['max'])}"
+        elif budget["max"] is not None:
+            label = f"budget under {_rupees(budget['max'])}"
+        else:
+            label = f"budget above {_rupees(budget['min'])}"
+        options.append((label, without(budget={"min": None, "max": None})))
+    if intent["body_types"]:
+        options.append((" / ".join(intent["body_types"]).upper().replace("HATCHBACK", "hatchback")
+                        .replace("SEDAN", "sedan").replace("PICKUP", "pickup").replace("VAN", "van")
+                        + " body type", without(body_types=[], reference_models=[])))
+    if intent["exclude_body_types"]:
+        options.append(("excluding " + ", ".join(intent["exclude_body_types"]), without(exclude_body_types=[])))
+    if intent["fuel_types"]:
+        options.append((" / ".join(intent["fuel_types"]) + " fuel", without(fuel_types=[])))
+    if intent["exclude_fuel_types"]:
+        options.append(("excluding " + ", ".join(intent["exclude_fuel_types"]), without(exclude_fuel_types=[])))
+    transmission = intent["transmission"]
+    if transmission["family"] or transmission["include_types"] or transmission["exclude_types"]:
+        options.append((_transmission_label(transmission),
+                        without(transmission={"family": None, "include_types": [], "exclude_types": []})))
+    if intent["seats_min"] is not None:
+        options.append((f"{intent['seats_min']}+ seats", without(seats_min=None)))
+    if intent["makes"]:
+        options.append((" / ".join(intent["makes"]), without(makes=[])))
+    if intent["models"]:
+        options.append((" / ".join(intent["models"]), without(models=[])))
+    if intent["reference_models"]:
+        options.append(("similar to " + ", ".join(intent["reference_models"]), without(reference_models=[])))
+    for feature in intent["required_features"]:
+        options.append((FEATURE_COLUMNS[feature][1],
+                        without(required_features=[f for f in intent["required_features"] if f != feature])))
+    for key, (_, label) in MIN_COLUMNS.items():
+        if intent[key] is not None:
+            options.append((f"minimum {label} {intent[key]:g}", without(**{key: None})))
+    if intent["min_safety_stars"] is not None:
+        options.append((f"{intent['min_safety_stars']}-star safety", without(min_safety_stars=None)))
+    return options
+
+
+def relaxation_hints(intent):
+    """For an empty result: how many models each single dropped constraint would bring back."""
+    hints = []
+    for label, relaxed in relaxable_constraints(intent):
+        ranked, _ = rank_candidates(relaxed, filter_candidates(relaxed, get_catalogue()))
+        if ranked.empty:
+            continue
+        models = list(dict.fromkeys(ranked["model"]))
+        hints.append({"drop": label, "would_return": len(models), "top_models": models[:3]})
+
+    hints.sort(key=lambda h: -h["would_return"])
+    return hints[:MAX_RELAXATION_HINTS]
+
+
 def get_kb_recommendations(user_query, app_root_path, make_json_safe):
     print("🔎 Received new-car query (kb):", user_query)
 
@@ -219,33 +332,13 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe):
         )
 
     if ranked.empty:
-        response["message"] = " ".join(filter(None, [unsupported_note, "No cars found matching your query."]))
+        response["message"] = " ".join(filter(None, [unsupported_note, "No cars match all your requirements."]))
+        # separate from recommendations: the result stays empty
+        response["relaxation_hints"] = relaxation_hints(intent)
         return response
 
-    # =========================
-    # Best variant per model, max per make, max models
-    # =========================
-
     variant_counts = candidates["model"].value_counts()
-    per_make_cap = None if (intent["makes"] or intent["models"]) else MAX_KB_MODELS_PER_MAKE
-
-    selected = []
-    seen_models = set()
-    make_count = {}
-
-    for _, car in ranked.iterrows():
-        if len(selected) >= MAX_KB_MODELS:
-            break
-
-        if car["model"] in seen_models:
-            continue
-
-        if per_make_cap is not None and make_count.get(car["make"], 0) >= per_make_cap:
-            continue
-
-        seen_models.add(car["model"])
-        make_count[car["make"]] = make_count.get(car["make"], 0) + 1
-        selected.append(car)
+    selected = select_models(ranked, intent)
 
     recommendations = []
 
