@@ -54,6 +54,88 @@ function buildSpecTile(label, value) {
     `;
 }
 
+// KB result extras (absent on the legacy data path, so every helper tolerates missing fields)
+const FEATURE_LABELS = {
+    sunroof: "Sunroof",
+    adas: "ADAS",
+    camera_360: "360° camera",
+    ventilated_seats: "Ventilated seats",
+    cruise_control: "Cruise control",
+    wireless_charging: "Wireless charging",
+    heads_up_display: "Heads-up display",
+    android_auto: "Android Auto",
+    apple_carplay: "Apple CarPlay"
+};
+const NO_RATING_LABEL = "No Bharat NCAP rating on record";
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+}
+
+function chip(text, kind) {
+    const styles = {
+        accent: "bg-cyan-500/10 border-cyan-500/30 text-cyan-400",
+        plain: "bg-base-950 border-base-700 text-base-200",
+        muted: "bg-base-950 border-base-800 text-base-300 border-dashed"
+    };
+    const icon = kind === "muted"
+        ? '<svg aria-hidden="true" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"></circle><path stroke-linecap="round" stroke-width="2" d="M12 8v5m0 3h.01"></path></svg>'
+        : "";
+    return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border font-mono text-[11px] leading-tight ${styles[kind]}">${icon}<span>${escapeHtml(text)}</span></span>`;
+}
+
+function buildExtraChips(car) {
+    const chips = [];
+
+    if (car.transmission_label) chips.push(chip(car.transmission_label, "plain"));
+
+    (car.matched_features || []).forEach(f => chips.push(chip(FEATURE_LABELS[f] || f, "accent")));
+
+    if (car.safety) {
+        const year = car.safety.year ? ` (${car.safety.year})` : "";
+        chips.push(chip(`★ ${car.safety.stars_adult} ${car.safety.testing_body}${year}`, "accent"));
+    } else if ("safety" in car) {
+        chips.push(chip(NO_RATING_LABEL, "muted"));
+    }
+
+    (car.unverified || [])
+        .filter(u => !(u === NO_RATING_LABEL && "safety" in car && !car.safety))  // already shown above
+        .forEach(u => chips.push(chip(u, "muted")));
+
+    if (car.matching_variant_count) {
+        const n = car.matching_variant_count;
+        chips.push(chip(`${n} matching variant${n === 1 ? "" : "s"}`, "plain"));
+    }
+
+    return chips.join("");
+}
+
+function buildUnsupportedBanner(data) {
+    if (!data.unsupported_terms || !data.unsupported_terms.length) return "";
+    const brands = data.unsupported_terms.join(", ");
+    const covered = data.covered_makes || [];
+    const coveredText = covered.length
+        ? ` Showing the closest matches from the ${covered.length} brands we cover: ${covered.join(", ")}.`
+        : "";
+    return `<div class="w-full p-4 md:p-5 border border-cyan-500/30 bg-cyan-500/5 rounded-xl text-sm text-base-200 leading-relaxed">
+        <span class="font-mono text-[10px] tracking-widest text-cyan-400 uppercase block mb-1">Not covered</span>
+        We don't cover ${escapeHtml(brands)} yet.${escapeHtml(coveredText)}
+    </div>`;
+}
+
+function buildRelaxationHints(hints) {
+    if (!hints || !hints.length) return "";
+    return `<ul class="mt-4 flex flex-col gap-2 text-left max-w-xl mx-auto">` + hints.map(h => {
+        const examples = h.top_models && h.top_models.length ? ` (e.g. ${h.top_models.join(", ")})` : "";
+        return `<li class="text-sm text-base-300 font-mono">Without ${escapeHtml(h.drop)}: ${h.would_return} option${h.would_return === 1 ? "" : "s"}${escapeHtml(examples)}</li>`;
+    }).join("") + `</ul>`;
+}
+
+function buildDataStamp(data) {
+    if (!data.data_as_of) return "";
+    return `<p class="font-mono text-[11px] text-base-300 opacity-70">Data: ${escapeHtml(data.data_as_of.exported)} · KB ${escapeHtml(data.data_as_of.kb_phase)}</p>`;
+}
+
 // 🆕 NEW CARS HANDLER
 async function sendQuery(event) {
     if (event) event.preventDefault();
@@ -84,12 +166,17 @@ async function sendQuery(event) {
             return;
         }
         
+        const banner = buildUnsupportedBanner(data);
+
         if (data.message && (!data.recommendations || !data.recommendations.length)) {
-            resultsBox.innerHTML = `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p></div>`;
+            resultsBox.innerHTML = banner + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>` + buildDataStamp(data);
             return;
         }
 
         const recs = data.recommendations;
+        if (banner) resultsBox.insertAdjacentHTML("beforeend", banner);
+        const stamp = buildDataStamp(data);
+        if (stamp) resultsBox.insertAdjacentHTML("beforeend", stamp);
         const maxScore = recs.length > 0 ? Math.max(recs[0].ranking_score, 30) : 30;
 
         recs.forEach((car, index) => {
@@ -100,6 +187,7 @@ async function sendQuery(event) {
             const fuel = car.Fuel_Type || "N/A";
             const confidence = normalizeScore(car.ranking_score, maxScore);
             const image = car.carImage || "/static/pic.avif";
+            const extraChips = buildExtraChips(car);
             
             const bentoHTML = `
                 <div class="w-full grid grid-cols-1 ${isHero ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-4 p-4 md:p-5 bg-base-900 border ${isHero ? 'border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.05)]' : 'border-base-800'} rounded-[24px]">
@@ -141,6 +229,12 @@ async function sendQuery(event) {
                     <div class="${isHero ? 'md:col-span-1' : 'md:col-span-4'} flex flex-col justify-end gap-3 mt-1 md:mt-0">
                          <a href="${car.carDekhoLink || '#'}" target="_blank" class="w-full text-center py-3 bg-base-800 hover:bg-base-700 text-white font-mono text-sm rounded-[10px] transition-colors border border-base-700">CarDekho</a>
                     </div>
+
+                    ${extraChips ? `
+                    <!-- KB details -->
+                    <div class="${isHero ? 'md:col-span-3' : 'md:col-span-4'} flex flex-wrap gap-2">
+                        ${extraChips}
+                    </div>` : ''}
                 </div>
             `;
             

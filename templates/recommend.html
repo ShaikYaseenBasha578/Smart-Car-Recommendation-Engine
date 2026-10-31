@@ -45,11 +45,11 @@
     </header>
     <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-20 flex flex-col">
         <form onsubmit="sendQuery(event)" class="w-full max-w-4xl mx-auto mb-12">
-            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
+            <div class="bg-base-900 border border-base-800 rounded-xl p-2 flex flex-wrap sm:flex-nowrap items-center shadow-lg focus-within:border-cyan-500/50 transition-colors">
                 <label for="userQuery" class="sr-only">Query</label>
                 <span class="pl-4 pr-2 text-base-700 font-mono text-sm">~/query $</span>
-                <input id="userQuery" type="text" class="flex-1 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="Enter parameters...">
-                <button type="submit" class="ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Run</button>
+                <input id="userQuery" type="text" class="flex-1 min-w-0 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="Enter parameters...">
+                <button type="submit" class="w-full sm:w-auto mt-2 sm:mt-0 sm:ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Run</button>
             </div>
         </form>
         <div id="results" class="w-full flex flex-col gap-8"></div>
