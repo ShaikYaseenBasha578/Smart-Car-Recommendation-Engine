@@ -2,7 +2,7 @@ import pandas as pd
 import pytest
 
 from services.catalogue import get_catalogue
-from services.filter_v2 import REFERENCE_PRICE_BAND
+from services.filter_v2 import REFERENCE_LENGTH_TOLERANCE, REFERENCE_PRICE_BAND
 from services.new_car_service import MAX_KB_MODELS, select_models
 from services.twins import TWIN_GROUPS, complete_twin_pairs
 
@@ -103,13 +103,26 @@ def test_like_creta(client, monkeypatch):
         row = by_variant.loc[(r["Model"], r["Variant"])]
         assert row["body_type"] == "suv"
         assert lo <= row["price_ex_showroom"] <= hi
-        assert r["match_reasons"][0] == "Similar body type and price to Creta"
+        assert r["match_reasons"][0] == "Similar body type, size and price to Creta"
+    assert "Exter" not in {r["Model"] for r in recs}
 
 
 def test_like_creta_with_budget_uses_budget(client, monkeypatch):
     recs = predict(client, monkeypatch, "creta jaisi gaadi under 9 lakh")["recommendations"]
     assert recs and all(r["Ex-Showroom_Price"] <= 900_000 and r["Model"] != "Creta" for r in recs)
-    assert all(r["match_reasons"][0] == "Similar body type to Creta" for r in recs)
+    assert all(r["match_reasons"][0] == "Similar body type and size to Creta" for r in recs)
+
+
+def test_like_nexon_only_similar_length_suvs(client, monkeypatch):
+    recs = predict(client, monkeypatch, "like Nexon")["recommendations"]
+    cat = get_catalogue()
+    nexon = cat.loc[cat["model"] == "Nexon", "length_mm"].median()
+    lo, hi = (1 - REFERENCE_LENGTH_TOLERANCE) * nexon, (1 + REFERENCE_LENGTH_TOLERANCE) * nexon
+    by_variant = cat.set_index(["model", "variant"])
+    assert recs and all(r["Model"] != "Nexon" for r in recs)
+    for r in recs:
+        row = by_variant.loc[(r["Model"], r["Variant"])]
+        assert row["body_type"] == "suv" and lo <= row["length_mm"] <= hi
 
 
 def test_empty_state_relaxation_hints(client, monkeypatch):

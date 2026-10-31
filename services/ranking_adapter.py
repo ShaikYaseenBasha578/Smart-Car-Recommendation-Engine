@@ -145,6 +145,7 @@ def _soft_hits(row, prefs: list[str]) -> list[str]:
 def rank_candidates(intent: dict, candidates: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """Candidates with ranking_score / match_reasons, sorted; plus the legacy filters used."""
     filters = legacy_filters(intent)
+    length_band = candidates.attrs.get("reference_length_band")
     if candidates.empty:
         return candidates.assign(ranking_score=[], match_reasons=[]), filters
 
@@ -170,9 +171,16 @@ def rank_candidates(intent: dict, candidates: pd.DataFrame) -> tuple[pd.DataFram
     refs = intent.get("reference_models") or []
     if refs:
         budget = intent.get("budget") or {}
-        what = "body type" if budget.get("min") is not None or budget.get("max") is not None else "body type and price"
+        has_budget = budget.get("min") is not None or budget.get("max") is not None
+        sized = length_band is not None
+        what = ["body type"] + (["size"] if sized else []) + ([] if has_budget else ["price"])
+        what = what[0] if len(what) == 1 else ", ".join(what[:-1]) + " and " + what[-1]
         reason = f"Similar {what} to {', '.join(refs)}"
         out["match_reasons"] = [[reason] + reasons for reasons in out["match_reasons"]]
 
-    out = out.sort_values(["n_soft_flags", "ranking_score", "variant_id"], ascending=[True, False, True])
+    keys = ["n_soft_flags", "ranking_score", "variant_id"]
+    ascending = [True, False, True]
+    if length_band is not None:
+        keys, ascending = ["length_unknown"] + keys, [True] + ascending
+    out = out.sort_values(keys, ascending=ascending)
     return out, filters

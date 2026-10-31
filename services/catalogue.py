@@ -22,8 +22,8 @@ TEXT_COLUMNS = [
 ]
 NUMERIC_COLUMNS = [
     "price_ex_showroom", "seats", "engine_cc", "power_bhp", "torque_nm", "mileage_kmpl",
-    "mileage_km_per_kg", "ev_range_km", "boot_space_litres", "ground_clearance_mm", "airbags",
-    "adas_tier", "safety_stars_adult", "safety_stars_child", "safety_test_year",
+    "mileage_km_per_kg", "ev_range_km", "boot_space_litres", "ground_clearance_mm", "length_mm",
+    "airbags", "adas_tier", "safety_stars_adult", "safety_stars_child", "safety_test_year",
 ]
 BOOL_COLUMNS = [
     "abs", "android_auto", "apple_carplay", "cruise_control", "sunroof", "adas_available",

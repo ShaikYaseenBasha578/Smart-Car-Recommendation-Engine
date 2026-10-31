@@ -19,7 +19,10 @@ unrated_safety=True ("No Bharat NCAP rating on record").
 
 reference_models ("something like Creta"): the reference model itself is excluded, and unless
 the user gave a budget, price must sit in [0.8 x its cheapest, 1.2 x its dearest variant].
-(intent_v2 already sets body_types to the reference model's body type.)
+(intent_v2 already sets body_types to the reference model's body type.) If the reference's
+length is known, length_mm must also sit within +/-8% of its median length (per reference
+model; the band spans all of them). A candidate with unknown length is kept, flagged
+length_unknown, and ranked after length-confirmed ones. Unknown reference length: no length band.
 """
 
 from __future__ import annotations
@@ -53,6 +56,7 @@ MIN_COLUMNS = {
 }
 UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
+REFERENCE_LENGTH_TOLERANCE = 0.08
 
 
 def reference_price_band(intent: dict, df: pd.DataFrame) -> tuple[float, float] | None:
@@ -66,6 +70,17 @@ def reference_price_band(intent: dict, df: pd.DataFrame) -> tuple[float, float] 
         return None
     lo, hi = REFERENCE_PRICE_BAND
     return lo * prices.min(), hi * prices.max()
+
+
+def reference_length_band(intent: dict, df: pd.DataFrame) -> tuple[float, float] | None:
+    """+/-8% around the reference models' median length_mm, or None if no reference length is known."""
+    refs = intent.get("reference_models") or []
+    if not refs:
+        return None
+    medians = df.loc[df["model"].isin(refs)].groupby("model")["length_mm"].median().dropna()
+    if medians.empty:
+        return None
+    return (1 - REFERENCE_LENGTH_TOLERANCE) * medians.min(), (1 + REFERENCE_LENGTH_TOLERANCE) * medians.max()
 
 
 def allowed_transmission_types(transmission: dict) -> set[str]:
@@ -106,6 +121,9 @@ def _hard_filter(intent: dict, df: pd.DataFrame) -> pd.DataFrame:
         band = reference_price_band(intent, df)
         if band:
             mask &= df["price_ex_showroom"].between(*band)
+        length_band = reference_length_band(intent, df)
+        if length_band:
+            mask &= df["length_mm"].between(*length_band) | df["length_mm"].isna()
 
     mask &= df["transmission_type"].isin(allowed_transmission_types(intent.get("transmission") or {}))
 
@@ -174,7 +192,7 @@ def _is_nan(value) -> bool:
 
 
 def filter_candidates(intent: dict, df: pd.DataFrame) -> pd.DataFrame:
-    """Surviving variants, with matched / unverified / unrated_safety / n_soft_flags columns."""
+    """Surviving variants, with matched / unverified / unrated_safety / n_soft_flags / length_unknown columns."""
     hard = _hard_filter(intent, df)
     keep, matched, unverified, unrated = [], [], [], []
     for _, row in hard.iterrows():
@@ -190,4 +208,7 @@ def filter_candidates(intent: dict, df: pd.DataFrame) -> pd.DataFrame:
     out["unrated_safety"] = unrated
     out = out[pd.Series(keep, index=out.index, dtype=bool)].copy()
     out["n_soft_flags"] = out["unverified"].map(len) + out["unrated_safety"].astype(int)
+    length_band = reference_length_band(intent, df)
+    out["length_unknown"] = out["length_mm"].isna() if length_band else False
+    out.attrs["reference_length_band"] = length_band
     return out

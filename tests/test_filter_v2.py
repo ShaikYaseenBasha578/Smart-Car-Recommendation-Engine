@@ -174,3 +174,27 @@ def test_soft_preference_boost_is_bounded():
     delta = boosted["ranking_score"] - plain["ranking_score"].reindex(boosted.index)
     assert delta.loc[1] == pytest.approx(0.10 * spread)
     assert delta.loc[2] == 0 and delta.loc[3] == 0
+
+
+# --- "like X": length band ---
+
+def test_like_x_length_band_and_unknown_length_ranks_last():
+    # ref M1 4000mm; M2 inside +/-8%, M3 outside, M4 length unknown (kept, ranked after M2)
+    df = frame({"length_mm": 4000.0}, {"length_mm": 4300.0}, {"length_mm": 3600.0},
+               {"length_mm": NAN, "mileage_kmpl": 30.0})
+    it = intent(reference_models=["M1"])
+    out = filter_candidates(it, df)
+    assert ids(out) == [2, 4]
+    assert out.loc[4, "length_unknown"] and not out.loc[2, "length_unknown"]
+    ranked, _ = rank_candidates(it, out)
+    assert ranked["variant_id"].tolist() == [2, 4]
+    assert ranked.loc[2, "match_reasons"][0] == "Similar body type, size and price to M1"
+
+
+def test_like_x_without_reference_length_falls_back():
+    df = frame({"length_mm": NAN}, {"length_mm": 4300.0}, {"length_mm": 3000.0})
+    it = intent(reference_models=["M1"])
+    out = filter_candidates(it, df)
+    assert ids(out) == [2, 3] and not out["length_unknown"].any()
+    ranked, _ = rank_candidates(it, out)
+    assert all(r[0] == "Similar body type and price to M1" for r in ranked["match_reasons"])
