@@ -1,143 +1,158 @@
 {
-  "catalogue_sha256": "1ba7cb9e13139f051b61e8abcc294090f7a95bef8fd9f3b8618267080ee66a89",
+  "catalogue_sha256": "7044eded79bf8bd6e4868903de037cf3420365362f21d0a7597b527c06ae1029",
   "columns": {
     "abs": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "adas_available": {
       "non_null": 829,
+      "not_applicable_blank": 0,
       "quarantined": 1,
       "unverified": 3
     },
     "adas_tier": {
       "non_null": 828,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 4
     },
     "airbags": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "android_auto": {
       "non_null": 806,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 26
     },
     "apple_carplay": {
       "non_null": 806,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 26
     },
     "boot_space_litres": {
       "non_null": 791,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 41
     },
     "camera_360": {
       "non_null": 826,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 6
     },
     "cruise_control": {
       "non_null": 558,
+      "not_applicable_blank": 0,
       "quarantined": 85,
       "unverified": 274
     },
     "drivetrain": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "engine_cc": {
       "non_null": 795,
+      "not_applicable_blank": 37,
       "quarantined": 0,
-      "unverified": 37
+      "unverified": 0
     },
     "ev_range_km": {
       "non_null": 37,
+      "not_applicable_blank": 795,
       "quarantined": 0,
-      "unverified": 795
+      "unverified": 0
     },
     "ground_clearance_mm": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "heads_up_display": {
       "non_null": 482,
+      "not_applicable_blank": 0,
       "quarantined": 115,
       "unverified": 350
     },
     "mileage_km_per_kg": {
       "non_null": 39,
+      "not_applicable_blank": 750,
       "quarantined": 0,
-      "unverified": 793
+      "unverified": 43
     },
     "mileage_kmpl": {
       "non_null": 459,
+      "not_applicable_blank": 37,
       "quarantined": 0,
-      "unverified": 373
+      "unverified": 336
     },
     "power_bhp": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "price_ex_showroom": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "safety_stars_adult": {
-      "non_null": 363,
-      "quarantined": 0,
-      "unverified": 469
+      "non_null": 363
     },
     "safety_stars_child": {
-      "non_null": 363,
-      "quarantined": 0,
-      "unverified": 469
+      "non_null": 363
     },
     "safety_test_year": {
-      "non_null": 363,
-      "quarantined": 0,
-      "unverified": 469
+      "non_null": 363
     },
     "safety_testing_body": {
-      "non_null": 363,
-      "quarantined": 0,
-      "unverified": 469
+      "non_null": 363
     },
     "seats": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "sunroof": {
       "non_null": 830,
+      "not_applicable_blank": 0,
       "quarantined": 1,
       "unverified": 2
     },
     "torque_nm": {
       "non_null": 832,
+      "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "ventilated_front_seats": {
       "non_null": 819,
+      "not_applicable_blank": 0,
       "quarantined": 9,
       "unverified": 13
     },
     "wireless_charging": {
       "non_null": 464,
+      "not_applicable_blank": 0,
       "quarantined": 132,
       "unverified": 368
     }
   },
-  "export_utc": "2026-10-31T11:38:36Z",
+  "export_utc": "2026-10-31T11:47:04Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,

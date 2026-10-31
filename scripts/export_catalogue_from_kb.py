@@ -8,8 +8,8 @@ Reads only the KB's quarantine-aware read path:
 
 The legacy safety_rating table (mostly old-protocol Global NCAP) is deliberately unused.
 
-Pass a COPY of the KB: the DB is opened with mode=ro, but SQLite may still create
-a -shm file next to a WAL-mode database.
+The KB (plus its -wal, if any) is copied into a temporary directory and only that
+copy is opened (mode=ro), so nothing is ever created next to the --kb path.
 
 Usage:
     python scripts/export_catalogue_from_kb.py --kb /tmp/kb_ro.db [--out-dir data]
@@ -22,8 +22,10 @@ import csv
 import hashlib
 import json
 import re
+import shutil
 import sqlite3
 import sys
+import tempfile
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -81,8 +83,17 @@ BOOL_COLUMNS = [
 SAFETY_COLUMNS = [
     "safety_stars_adult", "safety_stars_child", "safety_testing_body", "safety_test_year",
 ]
-# Fields checked for NULL/quarantine and listed in unverified_fields.
-CHECKED_COLUMNS = SPEC_COLUMNS + BOOL_COLUMNS + ["adas_tier"] + SAFETY_COLUMNS
+# Fields checked for NULL/quarantine and listed in unverified_fields. Safety is excluded:
+# a blank safety_stars_adult means "no Bharat NCAP rating on record", handled by the app.
+CHECKED_COLUMNS = SPEC_COLUMNS + BOOL_COLUMNS + ["adas_tier"]
+# Fields that don't apply to a fuel type, so a blank there is not "unverified".
+NOT_APPLICABLE = {
+    "electric": {"engine_cc", "mileage_kmpl", "mileage_km_per_kg"},
+    "petrol": {"ev_range_km", "mileage_km_per_kg"},
+    "diesel": {"ev_range_km", "mileage_km_per_kg"},
+    "hybrid": {"ev_range_km", "mileage_km_per_kg"},
+    "cng": {"ev_range_km"},
+}
 
 # export column -> variant field name used in evidence_quarantine.target_field
 VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: c for c in BOOL_COLUMNS}, "adas_tier": "adas_tier"}
@@ -122,6 +133,19 @@ def fmt_bool(value, column: str, variant_id: int) -> str:
     if text in FALSE_VALUES:
         return "false"
     raise ExportError(f"variant {variant_id}: unmapped boolean {column}={value!r}")
+
+
+def fmt_int(value, column: str, variant_id: int) -> str:
+    """Integer-valued cell stored as text/real in the KB ('1.0' -> '1')."""
+    if value is None:
+        return ""
+    try:
+        number = float(value)
+    except ValueError:
+        raise ExportError(f"variant {variant_id}: non-numeric {column}={value!r}") from None
+    if not number.is_integer():
+        raise ExportError(f"variant {variant_id}: non-integer {column}={value!r}")
+    return str(int(number))
 
 
 def phase_key(phase: str):
@@ -215,7 +239,7 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
             row[col] = fmt_num(r[col])
         for col in BOOL_COLUMNS:
             row[col] = fmt_bool(r[col], col, vid)
-        row["adas_tier"] = r["adas_tier"] if r["adas_tier"] is not None else ""
+        row["adas_tier"] = fmt_int(r["adas_tier"], "adas_tier", vid)
 
         test = safety.get(r["model_id"])
         if test is not None:
@@ -229,7 +253,8 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
             for col in SAFETY_COLUMNS:
                 row[col] = ""
 
-        row["unverified_fields"] = ";".join(c for c in CHECKED_COLUMNS if row[c] == "")
+        skip = NOT_APPLICABLE[row["fuel_type"]]
+        row["unverified_fields"] = ";".join(c for c in CHECKED_COLUMNS if c not in skip and row[c] == "")
         out.append(row)
 
     if len(out) != EXPECTED_ROWS:
@@ -289,17 +314,23 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: KB not found: {args.kb}", file=sys.stderr)
         return 2
 
-    conn = sqlite3.connect(f"file:{args.kb.resolve()}?mode=ro", uri=True)
-    conn.row_factory = sqlite3.Row
-    try:
-        rows, safety = build_rows(conn)
-        quarantined = quarantine_counts(conn, rows, safety)
-        phase = latest_phase(conn)
-    except ExportError as exc:
-        print(f"error: {exc}", file=sys.stderr)
-        return 1
-    finally:
-        conn.close()
+    wal_path = Path(f"{args.kb}-wal")
+    with tempfile.TemporaryDirectory(prefix="carrec_kb_") as tmp:
+        copy = Path(tmp) / "kb.db"
+        shutil.copyfile(args.kb, copy)
+        if wal_path.exists():
+            shutil.copyfile(wal_path, Path(f"{copy}-wal"))
+        conn = sqlite3.connect(f"file:{copy}?mode=ro", uri=True)
+        conn.row_factory = sqlite3.Row
+        try:
+            rows, safety = build_rows(conn)
+            quarantined = quarantine_counts(conn, rows, safety)
+            phase = latest_phase(conn)
+        except ExportError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
+        finally:
+            conn.close()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = args.out_dir / "catalogue.csv"
@@ -308,7 +339,6 @@ def main(argv: list[str] | None = None) -> int:
         writer.writeheader()
         writer.writerows(rows)
 
-    wal_path = Path(f"{args.kb}-wal")
     meta = {
         "export_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "kb_sha256": sha256_file(args.kb),
@@ -321,12 +351,17 @@ def main(argv: list[str] | None = None) -> int:
                        "latest year_of_publication per model, tie -> highest safety_test.id; "
                        "legacy safety_rating unused",
         "columns": {
-            col: {
-                "non_null": sum(1 for r in rows if r[col] != ""),
-                "unverified": sum(1 for r in rows if r[col] == ""),
-                "quarantined": quarantined.get(col, 0),
-            }
-            for col in CHECKED_COLUMNS
+            **{
+                col: {
+                    "non_null": sum(1 for r in rows if r[col] != ""),
+                    "unverified": sum(1 for r in rows if col in r["unverified_fields"].split(";")),
+                    "not_applicable_blank": sum(
+                        1 for r in rows if r[col] == "" and col in NOT_APPLICABLE[r["fuel_type"]]),
+                    "quarantined": quarantined.get(col, 0),
+                }
+                for col in CHECKED_COLUMNS
+            },
+            **{col: {"non_null": sum(1 for r in rows if r[col] != "")} for col in SAFETY_COLUMNS},
         },
         "transmission_type_distribution": dict(sorted(Counter(r["transmission_type"] for r in rows).items())),
         "fuel_type_distribution": dict(sorted(Counter(r["fuel_type"] for r in rows).items())),
