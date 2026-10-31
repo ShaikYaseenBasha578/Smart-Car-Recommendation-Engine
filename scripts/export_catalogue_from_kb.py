@@ -68,13 +68,14 @@ SPEC_FROM_VARIANT = {
     "ev_range_km": "claimed_ev_range_km",
     "boot_space_litres": "boot_space_litres",
     "ground_clearance_mm": "ground_clearance_mm",
+    "length_mm": "length_mm",
     "airbags": "airbags",
 }
 SPEC_FROM_POWERTRAIN = ("engine_cc", "power_bhp", "torque_nm")
 SPEC_COLUMNS = [
     "price_ex_showroom", "seats", "engine_cc", "power_bhp", "torque_nm", "drivetrain",
     "mileage_kmpl", "mileage_km_per_kg", "ev_range_km", "boot_space_litres",
-    "ground_clearance_mm", "airbags",
+    "ground_clearance_mm", "length_mm", "airbags",
 ]
 BOOL_COLUMNS = [
     "abs", "android_auto", "apple_carplay", "cruise_control", "sunroof", "adas_available",

@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "7044eded79bf8bd6e4868903de037cf3420365362f21d0a7597b527c06ae1029",
+  "catalogue_sha256": "ff714cb0e4d8d85d86867d3895b59b8290edd73b78f9b3139edf902f966fb588",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -85,6 +85,12 @@
       "quarantined": 115,
       "unverified": 350
     },
+    "length_mm": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
+    },
     "mileage_km_per_kg": {
       "non_null": 39,
       "not_applicable_blank": 750,
@@ -152,7 +158,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-10-31T11:47:04Z",
+  "export_utc": "2026-10-31T15:00:47Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
