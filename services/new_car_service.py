@@ -528,22 +528,7 @@ def get_legacy_recommendations(
             car.get("Model")
         )
 
-        image_filename = (
-            f"{str(car.get('Make')).lower().replace(' ', '_')}_"
-            f"{str(car.get('Model')).lower().replace(' ', '_')}.jpg"
-        )
-
-        image_path = os.path.join(
-            app_root_path,
-            "static",
-            "car_images",
-            image_filename
-        )
-
-        if os.path.exists(image_path):
-            car["carImage"] = f"/static/car_images/{image_filename}"
-        else:
-            car["carImage"] = "/static/car_images/pic1.avif"
+        car["carImage"] = find_car_image(app_root_path, car.get("Make"), car.get("Model"))
 
     # =========================
     # Remove Duplicate Models + Clean Frontend Response
