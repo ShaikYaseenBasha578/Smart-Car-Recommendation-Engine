@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // shared links (/?q=...) open the results page
+      if (new URLSearchParams(location.search).has("q")) location.replace("{{ url_for('recommend_page') }}" + location.search);
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -73,6 +77,7 @@
                         Execute
                     </a>
                 </div>
+                <div data-suggestions class="relative mt-4 flex flex-wrap gap-2 justify-center" aria-label="Suggested searches"></div>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mt-16 text-left">
                 <div class="bg-base-900 border border-base-800 rounded-xl p-5">
@@ -95,5 +100,12 @@
         </div>
     </main>
     <script>document.documentElement.classList.add('dark');</script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        initSuggestions(document.querySelector("[data-suggestions]"), q => {
+            document.getElementById("search").value = q;
+            location.href = "{{ url_for('recommend_page') }}?" + new URLSearchParams({ q });
+        });
+    </script>
 </body>
 </html>

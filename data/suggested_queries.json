@@ -1,0 +1,82 @@
+[
+  {
+    "query": "10 lakh ke aas paas petrol hatchback",
+    "category": "hinglish"
+  },
+  {
+    "query": "diesel nahi chahiye, petrol automatic 10 se 12 lakh",
+    "category": "hinglish"
+  },
+  {
+    "query": "automatic but not AMT",
+    "category": "transmission"
+  },
+  {
+    "query": "DCT petrol under 15 lakh",
+    "category": "transmission"
+  },
+  {
+    "query": "15 lakh tak automatic chahiye, AMT nahi",
+    "category": "transmission"
+  },
+  {
+    "query": "SUV with ADAS and 360 camera under 25 lakh",
+    "category": "features"
+  },
+  {
+    "query": "sedan with sunroof",
+    "category": "features"
+  },
+  {
+    "query": "sunroof wali SUV 12 lakh ke andar",
+    "category": "features"
+  },
+  {
+    "query": "something like Creta",
+    "category": "like_model"
+  },
+  {
+    "query": "like Nexon",
+    "category": "like_model"
+  },
+  {
+    "query": "creta jaisi gaadi under 9 lakh",
+    "category": "like_model"
+  },
+  {
+    "query": "5 star safety sedan",
+    "category": "safety"
+  },
+  {
+    "query": "6 airbags wali gaadi 9 lakh tak",
+    "category": "safety"
+  },
+  {
+    "query": "EV under 15 lakh",
+    "category": "ev"
+  },
+  {
+    "query": "electric car chahiye 400 km range wali, 20 lakh tak",
+    "category": "ev"
+  },
+  {
+    "query": "petrol SUV under 15 lakh",
+    "category": "budget"
+  },
+  {
+    "query": "CNG gaadi under 8 lakh",
+    "category": "budget"
+  },
+  {
+    "query": "7 seater under 15 lakh",
+    "category": "family"
+  },
+  {
+    "query": "family ke liye 7 seater diesel",
+    "category": "family"
+  },
+  {
+    "query": "papa ke liye automatic sedan, budget 15 lakh",
+    "category": "family"
+  }
+]
