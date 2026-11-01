@@ -130,3 +130,9 @@ def test_cng_mileage_uses_km_per_kg_and_never_kmpl(client):
             assert v["mileage_kmpl"] is None  # the KB's kmpl cell on CNG rows is not a kmpl figure
             shown = v["mileage_display"]["value"]
             assert shown is None or shown.endswith("km/kg (CNG)")
+
+
+def test_permalink_page_route(client):
+    r = get(client, "/car/skoda/slavia?q=DCT%20petrol%20under%2015%20lakh")
+    assert r.status_code == 200 and b'id="car-detail"' in r.data and b"initCarPage" in r.data
+    assert get(client, "/car/bmw/x5").status_code == 404
