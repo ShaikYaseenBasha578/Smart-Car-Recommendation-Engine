@@ -45,11 +45,11 @@ function buildReasonsList(reasons) {
     ).join('') + '</ul>';
 }
 
-function buildSpecTile(label, value) {
+function buildSpecTile(label, value, wrap = false) {
     return `
         <div class="flex-1 min-w-[110px] bg-base-950 border border-base-800 rounded-lg p-3">
             <p class="font-mono text-[10px] tracking-wider text-base-400 uppercase mb-1">${label}</p>
-            <p class="font-sans font-medium text-white text-sm md:text-base whitespace-nowrap">${value}</p>
+            <p class="font-sans font-medium text-white text-sm md:text-base ${wrap ? "break-words" : "whitespace-nowrap"}">${value}</p>
         </div>
     `;
 }
@@ -86,8 +86,6 @@ function chip(text, kind) {
 
 function buildExtraChips(car) {
     const chips = [];
-
-    if (car.transmission_label) chips.push(chip(car.transmission_label, "plain"));
 
     (car.matched_features || []).forEach(f => chips.push(chip(FEATURE_LABELS[f] || f, "accent")));
 
@@ -183,7 +181,8 @@ async function sendQuery(event) {
             const isHero = index === 0;
             const price = formatPrice(car["Ex-Showroom_Price"]);
             const mileage = car["ARAI_Certified_Mileage"] ? Number(car["ARAI_Certified_Mileage"]).toFixed(1) + " kmpl" : "N/A";
-            const trans = car.Transmission || "N/A";
+            // KB path: specific gearbox ("Automatic (DCT)"); legacy path: Transmission only
+            const trans = car.transmission_label ? escapeHtml(car.transmission_label) : (car.Transmission || "N/A");
             const fuel = car.Fuel_Type || "N/A";
             const confidence = normalizeScore(car.ranking_score, maxScore);
             const image = car.carImage || "/static/pic.avif";
@@ -223,7 +222,7 @@ async function sendQuery(event) {
                         ${buildSpecTile("PRICE", price)}
                         ${buildSpecTile("MILEAGE", mileage)}
                         ${buildSpecTile("FUEL", fuel)}
-                        ${buildSpecTile("TRANS", trans)}
+                        ${buildSpecTile("TRANS", trans, true)}
                     </div>
                     
                     <!-- Actions -->
