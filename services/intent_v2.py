@@ -261,6 +261,18 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
                 trace.append(f"{field}={value} <- rule '{m.group(0).strip()}'")
             text = _mask(text, m)
 
+    # CNG mileage first: "25 km/kg", "25 km per kg", "above 25 km/kg". Its own field: a km/kg
+    # threshold is never compared with kmpl (and the kmpl rule below can't re-read it: it's masked)
+    kmkg = r"(?:km\s*/\s*kg|km\s*per\s*kg|kmpkg|km\s*kg)"
+    for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?(?:mileage\s*(?:of\s*)?)?({NUM})\s*\+?\s*(?:(?:to|-)\s*{NUM}\s*)?{kmkg}"
+                   rf"|(?:under|below|less\s*than|max(?:imum)?)\s*({NUM})\s*{kmkg}", text):
+        if m.group(2):
+            trace.append(f"min_mileage_km_per_kg ignored: upper bound only '{m.group(0).strip()}'")
+        elif out["min_mileage_km_per_kg"] is None:
+            out["min_mileage_km_per_kg"] = float(m.group(1))
+            trace.append(f"min_mileage_km_per_kg={out['min_mileage_km_per_kg']} <- rule '{m.group(0).strip()}'")
+        text = _mask(text, m)
+
     # mileage: "20+ kmpl", "above 18 kmpl", "18 to 22 kmpl" (lower bound), "mileage above 20"
     kmpl = r"(?:kmpl|km\s*/\s*l|kpl|km\s*per\s*lit(?:re|er))"
     for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?({NUM})\s*\+?\s*(?:(?:to|-)\s*{NUM}\s*)?{kmpl}"
@@ -538,6 +550,7 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         "min_ground_clearance_mm": None,
         "min_ev_range_km": None,
         "min_mileage_kmpl": None,
+        "min_mileage_km_per_kg": None,
         "use_case": None,
         "exclude_fuel_types": [],
         "exclude_body_types": [],

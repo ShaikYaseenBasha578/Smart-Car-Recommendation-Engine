@@ -11,8 +11,10 @@ A blank in a field that does not apply to the fuel type (e.g. ev_range_km on a p
 mileage on an EV) is "not applicable", not unverified: such a row cannot meet that minimum
 and is excluded.
 
-Mileage: min_mileage_kmpl is checked against mileage_kmpl. A CNG variant with no kmpl figure
-falls back to mileage_km_per_kg (its ARAI figure is quoted per kg).
+Mileage: units are never mixed. min_mileage_kmpl is checked against mileage_kmpl only, and
+min_mileage_km_per_kg against mileage_km_per_kg only (blank on a CNG car -> unverified; not
+applicable to other fuels -> excluded). A CNG car's mileage_kmpl cell is not trusted (see
+ranking_adapter.KMPL_UNTRUSTED_FUELS), so a kmpl threshold leaves CNG cars unverified.
 
 min_safety_stars: rated and meets -> matched; rated below -> excluded; unrated -> kept with
 unrated_safety=True ("No Bharat NCAP rating on record").
@@ -30,6 +32,8 @@ from __future__ import annotations
 import math
 
 import pandas as pd
+
+from services.ranking_adapter import KMPL_UNTRUSTED_FUELS
 
 AUTOMATIC_TYPES = ["amt", "dct", "cvt", "e_cvt", "torque_converter", "single_speed_ev"]
 MANUAL_TYPES = ["manual", "imt"]
@@ -53,6 +57,7 @@ MIN_COLUMNS = {
     "min_ground_clearance_mm": ("ground_clearance_mm", "ground clearance"),
     "min_ev_range_km": ("ev_range_km", "EV range"),
     "min_mileage_kmpl": ("mileage_kmpl", "mileage"),
+    "min_mileage_km_per_kg": ("mileage_km_per_kg", "CNG mileage"),
 }
 UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
@@ -161,8 +166,10 @@ def _check_row(row, intent: dict):
         if threshold is None:
             continue
         value = row[col]
-        if key == "min_mileage_kmpl" and _is_nan(value) and row["fuel_type"] == "cng":
-            col, value = "mileage_km_per_kg", row["mileage_km_per_kg"]
+        if key == "min_mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
+            # the KB's kmpl cell on CNG rows holds the CNG (km/kg) figure: unknown as kmpl
+            unverified.append(f"Unverified: {label}")
+            continue
         if not _is_nan(value):
             if value >= threshold:
                 matched.append(key)

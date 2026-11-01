@@ -69,18 +69,29 @@ SPEC_FROM_VARIANT = {
     "boot_space_litres": "boot_space_litres",
     "ground_clearance_mm": "ground_clearance_mm",
     "length_mm": "length_mm",
+    "width_mm": "width_mm",
+    "height_mm": "height_mm",
+    "wheelbase_mm": "wheelbase_mm",
+    "kerb_weight_kg": "kerb_weight_kg",
+    "fuel_tank_litres": "fuel_tank_litres",
     "airbags": "airbags",
 }
 SPEC_FROM_POWERTRAIN = ("engine_cc", "power_bhp", "torque_nm")
 SPEC_COLUMNS = [
     "price_ex_showroom", "seats", "engine_cc", "power_bhp", "torque_nm", "drivetrain",
     "mileage_kmpl", "mileage_km_per_kg", "ev_range_km", "boot_space_litres",
-    "ground_clearance_mm", "length_mm", "airbags",
+    "ground_clearance_mm", "length_mm", "width_mm", "height_mm", "wheelbase_mm", "kerb_weight_kg",
+    "fuel_tank_litres", "airbags",
 ]
 BOOL_COLUMNS = [
     "abs", "android_auto", "apple_carplay", "cruise_control", "sunroof", "adas_available",
     "camera_360", "ventilated_front_seats", "wireless_charging", "heads_up_display",
+    # detail-view features (>= 50% coverage in v_variant_canonical_q)
+    "esc", "hill_assist", "tpms", "rear_parking_sensors", "rear_camera",
+    "auto_climate_control", "rear_ac_vents", "connected_car_features", "paddle_shifters",
 ]
+# export column -> v_variant_canonical_q column, where the names differ
+BOOL_SOURCE = {"tpms": "tyre_pressure_monitoring_system", "auto_climate_control": "automatic_climate_control"}
 SAFETY_COLUMNS = [
     "safety_stars_adult", "safety_stars_child", "safety_testing_body", "safety_test_year",
 ]
@@ -89,7 +100,7 @@ SAFETY_COLUMNS = [
 CHECKED_COLUMNS = SPEC_COLUMNS + BOOL_COLUMNS + ["adas_tier"]
 # Fields that don't apply to a fuel type, so a blank there is not "unverified".
 NOT_APPLICABLE = {
-    "electric": {"engine_cc", "mileage_kmpl", "mileage_km_per_kg"},
+    "electric": {"engine_cc", "mileage_kmpl", "mileage_km_per_kg", "fuel_tank_litres"},
     "petrol": {"ev_range_km", "mileage_km_per_kg"},
     "diesel": {"ev_range_km", "mileage_km_per_kg"},
     "hybrid": {"ev_range_km", "mileage_km_per_kg"},
@@ -97,7 +108,7 @@ NOT_APPLICABLE = {
 }
 
 # export column -> variant field name used in evidence_quarantine.target_field
-VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: c for c in BOOL_COLUMNS}, "adas_tier": "adas_tier"}
+VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS}, "adas_tier": "adas_tier"}
 
 COLUMNS = [
     "variant_id", "make", "model", "variant", "full_name", "body_type",
@@ -162,7 +173,8 @@ def sha256_file(path: Path) -> str:
 
 
 def load_variants(conn: sqlite3.Connection) -> list[sqlite3.Row]:
-    variant_cols = ", ".join(f"q.{c}" for c in sorted(set(SPEC_FROM_VARIANT.values()) | set(BOOL_COLUMNS) | {"adas_tier"}))
+    sources = set(SPEC_FROM_VARIANT.values()) | {BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS} | {"adas_tier"}
+    variant_cols = ", ".join(f"q.{c}" for c in sorted(sources))
     return conn.execute(
         f"""
         SELECT q.id AS variant_id, mf.name AS make, m.name AS model, q.name AS variant,
@@ -239,7 +251,7 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
         for col in SPEC_FROM_POWERTRAIN:
             row[col] = fmt_num(r[col])
         for col in BOOL_COLUMNS:
-            row[col] = fmt_bool(r[col], col, vid)
+            row[col] = fmt_bool(r[BOOL_SOURCE.get(col, col)], col, vid)
         row["adas_tier"] = fmt_int(r["adas_tier"], "adas_tier", vid)
 
         test = safety.get(r["model_id"])
