@@ -176,5 +176,13 @@ def car_detail_api(make_slug, model_slug):
     return jsonify(make_json_safe(detail)), 200
 
 
+@app.route("/car/<make_slug>/<model_slug>")
+def car_page(make_slug, model_slug):
+    from services.car_detail import find_model
+
+    status = 200 if find_model(make_slug, model_slug) is not None else 404
+    return render_template("car.html"), status
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

@@ -153,6 +153,123 @@ def card_checks(page, base, tag, w, shots):
             full_shot(page, f"{shots}/{tag}-{key}.png")
 
 
+DETAIL_HEADINGS = ["Summary", "Variants", "Specifications", "Safety", "Warranty"]
+STANDOUTS = ["Lowest price here", "Best mileage here", "Longest range here", "Most powerful here",
+             "Biggest boot here", "Most airbags here"]
+
+
+def open_panel(page, card_index=0):
+    """Expand a card's detail panel and wait for its content."""
+    card = page.locator("article.car").nth(card_index)
+    with page.expect_response(lambda r: "/api/car/" in r.url, timeout=30_000):
+        card.locator("[data-detail]").click()
+    panel = page.locator(".cards > .detail.open").first
+    panel.locator(".detail-section h3").first.wait_for()
+    page.wait_for_timeout(450)  # expand transition
+    return panel
+
+
+def detail_checks(page, base, tag, w, shots):
+    # sunroof: headings, matching rows, variant switching, reason rules
+    q = CARD_QUERIES["sunroof"]
+    data = page.evaluate("q => fetch('/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({query: q})}).then(r => r.json())", q)
+    predict(page, lambda: page.goto(base + "/recommend?q=" + quote(q)))
+    cards = page.evaluate(CARD_INFO_JS)
+    recs = {f"{r['Make']} {r['Model']}": r for r in data["recommendations"]}
+    bags = [r["airbags"] or 0 for r in recs.values()]
+    most, n = max(bags), len(bags)
+    bad_bags = [(c["name"], r) for c in cards for r in c["reasons"]
+                if re.fullmatch(r"\d+ airbags", r) and not (recs[c["name"]]["airbags"] == most and bags.count(most) < n / 2)]
+    check(f"{tag} [sunroof]: 'N airbags' only when highest and shared by < half", not bad_bags, bad_bags[:3])
+    holders = {label: [c["name"] for c in cards if any(r.startswith(label) for r in c["reasons"])] for label in STANDOUTS}
+    check(f"{tag} [sunroof]: no standout label on 3+ cards", all(len(v) <= 2 for v in holders.values()),
+          {k: v for k, v in holders.items() if v})
+    cheapest = min(r["Ex-Showroom_Price"] for r in recs.values())
+    check(f"{tag} [sunroof]: 'Lowest price here' within Rs 10k of the minimum",
+          all(recs[name]["Ex-Showroom_Price"] - cheapest <= 10_000 for name in holders["Lowest price here"]))
+
+    panel = open_panel(page, 0)
+    headings = panel.locator(".detail-section h3").all_inner_texts()
+    check(f"{tag} [detail]: panel shows all section headings", headings == DETAIL_HEADINGS, headings)
+    check(f"{tag} [detail]: panel sits directly under its card",
+          page.evaluate("() => document.querySelector('.cards > .detail').previousElementSibling.matches('article.car')"))
+    matches = panel.locator("tr.is-match", has_text="Matches your search").count()
+    check(f"{tag} [detail]: >= 1 'Matches your search' row", matches >= 1, matches)
+    check(f"{tag} [detail]: data stamp + external on-road price in panel",
+          panel.locator(".data-stamp").count() == 1 and panel.locator(".detail-actions a[target=_blank]").count() == 1)
+    before = panel.locator(".spec-groups").inner_text()
+    selected = panel.locator("tr.is-selected").get_attribute("data-variant-id")
+    rows = panel.locator("tbody tr")
+    target = None
+    sel_gear = panel.locator("tr.is-selected td").nth(2).inner_text()
+    for i in range(rows.count()):  # prefer a variant with a different gearbox, so specs must change
+        if rows.nth(i).get_attribute("data-variant-id") != selected and rows.nth(i).locator("td").nth(2).inner_text() != sel_gear:
+            target = rows.nth(i); break
+    target = target or rows.nth(1 if rows.nth(0).get_attribute("data-variant-id") == selected else 0)
+    target_name = target.locator(".variant-pick").inner_text()
+    with page.expect_response(lambda r: "/api/car/" in r.url and "variant_id=" in r.url):
+        target.click()
+    page.wait_for_function("name => document.querySelector('.cards > .detail .detail-section:nth-of-type(3) .detail-note').innerText.includes(name)", arg=target_name)
+    after = panel.locator(".spec-groups").inner_text()
+    check(f"{tag} [detail]: clicking a variant row changes the spec values", before != after and
+          panel.locator("tr.is-selected .variant-pick").inner_text() == target_name, target_name)
+    sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+    check(f"{tag} [detail]: no horizontal page overflow with a panel open", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
+    panel_btn = page.locator("article.car").first.locator("[data-detail]")
+    panel_btn.click()
+    page.wait_for_timeout(450)
+    check(f"{tag} [detail]: panel collapses", page.locator(".cards > .detail").count() == 0 and panel_btn.inner_text() == "View details")
+
+    # CNG: no kmpl presented as CNG mileage; km/kg always labelled (CNG)
+    predict(page, lambda: page.goto(base + "/recommend?q=" + quote(CARD_QUERIES["cng"])))
+    facts = page.locator("article.car .facts").all_inner_texts()
+    bad = [f for f in facts if re.search(r"CNG mileage:\s*[\d.]+\s*kmpl", f) or re.search(r"km/kg(?! \(CNG\))", f)
+           or ("Fuel: CNG" in f and "kmpl" in f)]
+    check(f"{tag} [cng]: cards never show kmpl as CNG mileage; km/kg labelled (CNG)", not bad, bad[:2])
+    panel = open_panel(page, 0)
+    table = panel.locator("tbody tr").evaluate_all("rows => rows.map(r => [...r.cells].map(c => c.innerText.trim()))")
+    bad = [r for r in table if (r[3] == "CNG" and "kmpl" in r[4]) or ("km/kg" in r[4] and "(CNG)" not in r[4])]
+    check(f"{tag} [cng]: panel never shows kmpl for CNG variants; km/kg labelled (CNG)", table and not bad, bad[:2])
+    if shots and w in (1366, 390):
+        page.locator("article.car").first.evaluate("el => el.scrollIntoView({ block: 'start' })")
+        page.wait_for_timeout(300)
+        page.screenshot(path=f"{shots}/{tag}-cng-card-panel.png")
+
+    # Skoda Slavia panel from a search it appears in
+    predict(page, lambda: page.goto(base + "/recommend?q=" + quote("Skoda Slavia DCT")))
+    names = [c["name"] for c in page.evaluate(CARD_INFO_JS)]
+    if "Skoda Slavia" in names:
+        panel = open_panel(page, names.index("Skoda Slavia"))
+        check(f"{tag} [slavia]: panel lists DCT variants as matches", panel.locator("tr.is-match", has_text="DCT").count() >= 1)
+        if shots and w in (1366, 390):
+            page.locator("article.car").nth(names.index("Skoda Slavia")).evaluate("el => el.scrollIntoView({ block: 'start' })")
+            page.wait_for_timeout(300)
+            full_shot(page, f"{shots}/{tag}-slavia-panel.png")
+    else:
+        check(f"{tag} [slavia]: Slavia card present for 'Skoda Slavia DCT'", False, names)
+
+    # permalink renders standalone, no JS errors
+    errors = []
+    perm = page.context.new_page()
+    perm.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+    perm.on("pageerror", lambda e: errors.append(str(e)))
+    url = base + "/car/skoda/slavia?q=" + quote("DCT petrol under 15 lakh")
+    resp = perm.goto(url)
+    perm.locator("#car-detail .detail-section h3").first.wait_for(timeout=30_000)
+    heads = perm.locator("#car-detail .detail-section h3").all_inner_texts()
+    check(f"{tag} [permalink]: renders standalone with every section", resp.status == 200 and heads == DETAIL_HEADINGS
+          and perm.locator("h1").inner_text() == "Skoda Slavia", heads)
+    sw, vw = perm.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+    check(f"{tag} [permalink]: no horizontal overflow", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
+    check(f"{tag} [permalink]: unknown car is a 404", perm.goto(base + "/car/bmw/x5").status == 404)
+    check(f"{tag} [permalink]: zero JS errors", not [e for e in errors if "404" not in e], errors[:3])
+    if shots and w in (1366, 390):
+        perm.goto(url)
+        perm.locator("#car-detail .detail-section h3").first.wait_for()
+        full_shot(perm, f"{shots}/{tag}-slavia-permalink.png")
+    perm.close()
+
+
 def last_turn(page):
     return page.locator("[data-turn]").last
 
@@ -240,6 +357,7 @@ def run(base, shots):
                 full_shot(page, f"{shots}/{tag}-results-sunroof.png")
 
             card_checks(page, base, tag, w, shots)
+            detail_checks(page, base, tag, w, shots)
 
             # transmission label
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("DCT petrol under 15 lakh")))
@@ -277,7 +395,9 @@ def run(base, shots):
             if shots:
                 full_shot(page, f"{shots}/{tag}-thread-2-turns.png")
             page.wait_for_selector("#followup [data-suggestion]")
-            predict(page, lambda: page.locator("#followup [data-suggestion]").first.click())
+            # a chip that repeats the current search replaces the history entry instead of adding one
+            chip = page.locator("#followup [data-suggestion]:not([data-suggestion='EV under 15 lakh'])").first
+            predict(page, lambda: chip.click())
             check(f"{tag}: 3 queries -> 3 turns", page.locator("[data-turn]").count() == 3)
             page.go_back()
             page.wait_for_timeout(400)

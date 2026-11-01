@@ -9,6 +9,11 @@ function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 }
 
+// same rule as services.new_car_service.safe_slug: "Maruti Suzuki" -> "maruti-suzuki"
+function slug(value) {
+    return String(value).toLowerCase().replace(/ /g, "-");
+}
+
 function trimNumber(n, digits = 2) {
     return String(Number(n.toFixed(digits)));
 }
@@ -72,21 +77,25 @@ const NO_RATING_LABEL = "No Bharat NCAP rating on record";
 const MAX_REASONS = 4;
 const RIGHT_AT_BUDGET = 25000;   // within ₹25k of the user's max reads as "right at" it
 const MIN_FOR_STANDOUTS = 3;     // "…here" comparisons need at least this many results
-const EXTRA_AIRBAGS = 6;
+// values this close to the best count as a tie; 2 tied cars both get the label, 3+ nobody does
+const TIE = { price: 10000, kmpl: 0.1, kmkg: 0.1, range: 5, power: 1, boot: 5, airbags: 0 };
 
 function isElectric(car) { return /electric/i.test(car.Fuel_Type || ""); }
 function isCng(car) { return /cng/i.test(car.Fuel_Type || ""); }
 
-// the efficiency figure the card shows, so comparisons are like with like:
-// { kind: "range" | "kmkg" | "kmpl", value, label: "Range" | "Mileage", text } or null value when unknown
+// The efficiency figure a card shows, in the car's own unit, so comparisons are like with like:
+// { kind: "range" | "kmkg" | "kmpl", value, label, text }. A CNG car is only ever shown and compared
+// by km/kg: the KB's kmpl cell on CNG rows holds the CNG-cycle figure, so it is never shown as kmpl.
 function efficiency(car) {
     if (isElectric(car)) {
         const v = Number(car.ev_range_km) || null;
         return { kind: "range", value: v, label: "Range", text: v ? `${v} km` : null };
     }
-    if (isCng(car) && Number(car.mileage_km_per_kg)) {
-        const v = Number(car.mileage_km_per_kg);
-        return { kind: "kmkg", value: v, label: "Mileage", text: `${trimNumber(v, 1)} km/kg` };
+    if (isCng(car)) {
+        const v = Number(car.mileage_km_per_kg) || null;
+        return v
+            ? { kind: "kmkg", value: v, label: "Mileage", text: `${trimNumber(v, 1)} km/kg (CNG)` }
+            : { kind: "kmkg", value: null, label: "CNG mileage", text: null };
     }
     const v = Number(car.ARAI_Certified_Mileage) || null;
     return { kind: "kmpl", value: v, label: "Mileage", text: v ? `${trimNumber(v, 1)} kmpl` : null };
@@ -102,36 +111,43 @@ function budgetReason(car, intent) {
     return null;
 }
 
-// true when car is the single best among the cars that have this value (and >= 2 of them do)
-function uniqueBest(car, recs, value, higherIsBetter = true) {
-    const mine = value(car);
-    if (mine == null) return false;
-    const others = recs.filter(r => r !== car).map(value).filter(v => v != null);
-    if (!others.length) return false;
-    return others.every(v => (higherIsBetter ? mine > v : mine < v));
+// The cars that lead `recs` on value(car), with ties within `tol`: [] when fewer than 2 cars have a
+// value, when 3+ cars tie for the lead, or when every compared car ties (nothing stands out).
+function leaders(recs, value, higherIsBetter, tol) {
+    const known = recs.filter(r => value(r) != null);
+    if (known.length < 2) return [];
+    const vals = known.map(value);
+    const best = higherIsBetter ? Math.max(...vals) : Math.min(...vals);
+    const top = known.filter(r => Math.abs(value(r) - best) <= tol + 1e-9);
+    return top.length >= 3 || top.length === known.length ? [] : top;
 }
 
 function standoutReasons(car, recs) {
     if (recs.length < MIN_FOR_STANDOUTS) return [];
     const num = key => r => (Number(r[key]) || null);
     const out = [];
-    if (uniqueBest(car, recs, num("Ex-Showroom_Price"), false)) out.push("Lowest price here");
+    if (leaders(recs, num("Ex-Showroom_Price"), false, TIE.price).includes(car)) out.push("Lowest price here");
     const eff = efficiency(car);
     const sameKind = recs.filter(r => efficiency(r).kind === eff.kind);
-    if (sameKind.length >= 2 && uniqueBest(car, sameKind, r => efficiency(r).value)) {
+    if (leaders(sameKind, r => efficiency(r).value, true, TIE[eff.kind]).includes(car)) {
         out.push(eff.kind === "range" ? `Longest range here (${eff.text})` : `Best mileage here (${eff.text})`);
     }
     const power = r => Number(r.power_bhp ?? r.Power) || null;
-    if (uniqueBest(car, recs, power)) out.push(`Most powerful here (${Math.round(power(car))} bhp)`);
-    if (uniqueBest(car, recs, num("boot_space_litres"))) out.push(`Biggest boot here (${car.boot_space_litres} L)`);
-    if (uniqueBest(car, recs, num("airbags"))) out.push(`Most airbags here (${car.airbags})`);
+    if (leaders(recs, power, true, TIE.power).includes(car)) out.push(`Most powerful here (${Math.round(power(car))} bhp)`);
+    if (leaders(recs, num("boot_space_litres"), true, TIE.boot).includes(car)) out.push(`Biggest boot here (${car.boot_space_litres} L)`);
+    if (leaders(recs, num("airbags"), true, TIE.airbags).includes(car)) out.push(`Most airbags here (${car.airbags})`);
     return out;
 }
 
-function extraReasons(car, intent, already) {
+// "6 airbags" only when it sets the car apart: it has the highest airbag count here and fewer than
+// half of the cards share that count (and the user didn't ask about airbags)
+function extraReasons(car, recs, intent, already) {
     const out = [];
-    const askedAirbags = intent && intent.min_airbags;
-    if (!askedAirbags && Number(car.airbags) >= EXTRA_AIRBAGS && !already.some(r => /airbags/i.test(r))) {
+    const bags = recs.map(r => Number(r.airbags) || 0);
+    const most = Math.max(...bags);
+    const sharing = bags.filter(b => b === most).length;
+    if (!(intent && intent.min_airbags) && most > 0 && Number(car.airbags) === most && sharing < recs.length / 2
+        && !already.some(r => /airbags/i.test(r))) {
         out.push(`${car.airbags} airbags`);
     }
     return out;
@@ -152,7 +168,7 @@ function buyerReasons(car, recs, intent, chipTexts) {
     if (car.safety && car.safety.stars_adult && !chips.some(c => /ncap|crash/.test(c))) {
         add(`${car.safety.stars_adult}★ ${car.safety.testing_body || "crash-test"}`);
     }
-    extraReasons(car, intent, out).forEach(add);
+    extraReasons(car, recs, intent, out).forEach(add);
     return out.slice(0, MAX_REASONS);
 }
 
@@ -243,7 +259,7 @@ function buildFacts(car) {
     const facts = [
         ["Gearbox", car.transmission_label || car.Transmission || "Not listed"],
         ["Fuel", car.Fuel_Type || "Not listed"],
-        [eff.label, eff.text || "Not listed"]
+        [eff.label, eff.text || (eff.label === "CNG mileage" ? "not listed" : "Not listed")]
     ];
     return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${escapeHtml(v)}</span></li>`).join("") + `</ul>`;
 }
@@ -260,7 +276,7 @@ function buildCarCard(car, index, recs, topScore, intent) {
     const tags = buildExtraChips(chips);
     const link = car.carDekhoLink;
     return `
-        <article class="car${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}">
+        <article class="car${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
                 ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
@@ -281,12 +297,194 @@ function buildCarCard(car, index, recs, topScore, intent) {
                 </div>
                 <div class="car-foot">
                     ${tags ? `<ul class="tags" aria-label="Features and safety">${tags}</ul>` : ""}
-                    ${link ? `<div class="car-actions">
-                        <a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
-                    </div>` : ""}
+                    <div class="car-actions">
+                        <button type="button" class="btn btn-quiet" data-detail aria-expanded="false">View details</button>
+                        ${link ? `<a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>` : ""}
+                    </div>
                 </div>
             </div>
         </article>`;
+}
+
+// --- car detail (inline panel under a card, and the /car/<make>/<model> permalink page) ---
+// One component: renderDetail() draws GET /api/car/... for both. Sections, in order: Summary,
+// Variants, Specifications, Safety, Warranty, then the data stamp and actions.
+const DETAIL_SPEC_GROUPS = ["Engine & performance", "Dimensions & capacity", "Comfort & convenience", "Technology"];
+
+function detailUrl(base, opts) {
+    const params = new URLSearchParams();
+    if (opts.q) params.set("q", opts.q);
+    if (opts.drop && opts.drop.length) params.set("drop", opts.drop.join(","));
+    if (opts.variantId) params.set("variant_id", opts.variantId);
+    const query = params.toString();
+    return `${base}/${encodeURIComponent(opts.make)}/${encodeURIComponent(opts.model)}${query ? "?" + query : ""}`;
+}
+
+function specList(items) {
+    const shown = items.filter(i => i.status !== "not_applicable");
+    if (!shown.length) return "";
+    return `<dl class="spec-list">` + shown.map(i => `<div><dt>${escapeHtml(i.label)}</dt><dd>${
+        i.status === "ok" ? escapeHtml(i.value_display) : '<span class="not-verified">Not verified</span>'
+    }</dd></div>`).join("") + `</dl>`;
+}
+
+function variantMileage(v) {
+    const m = v.mileage_display;
+    return m.value || (m.unit === "km/kg" ? "CNG mileage not listed" : "Not listed");
+}
+
+function buildVariantsTable(data, hasQuery) {
+    const rows = [...data.variants].sort((a, b) =>
+        (b.matches_query - a.matches_query) || ((a.price || 0) - (b.price || 0)) || (a.variant_id - b.variant_id));
+    const matching = rows.filter(v => v.matches_query).length;
+    const note = hasQuery
+        ? (matching ? `${matching} of ${rows.length} variants match your search.` : `None of the ${rows.length} variants match your search; all are listed below.`)
+        : `${rows.length} variants.`;
+    return `<p class="detail-note">${note} Select a variant to see its specifications.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Variants">
+        <table class="variants">
+            <thead><tr><th scope="col">Variant</th><th scope="col">Price</th><th scope="col">Gearbox</th><th scope="col">Fuel</th><th scope="col">Mileage</th></tr></thead>
+            <tbody>${rows.map(v => {
+                const selected = v.variant_id === data.selected_variant_id;
+                return `<tr data-variant-id="${v.variant_id}" class="${v.matches_query ? "is-match" : ""}${selected ? " is-selected" : ""}"${selected ? ' aria-current="true"' : ""}>
+                    <td><button type="button" class="variant-pick" data-variant-id="${v.variant_id}" aria-pressed="${selected}">${escapeHtml(v.variant)}</button>
+                        ${v.matches_query ? '<span class="match-badge">Matches your search</span>' : ""}</td>
+                    <td>${formatPrice(v.price)}</td>
+                    <td>${escapeHtml(v.transmission_label)}</td>
+                    <td>${escapeHtml(v.fuel_label)}</td>
+                    <td>${escapeHtml(variantMileage(v))}</td>
+                </tr>`;
+            }).join("")}</tbody>
+        </table></div>`;
+}
+
+function buildSafetySection(data) {
+    const group = data.specs.find(g => g.group === "Safety");
+    const s = data.safety;
+    const rating = s
+        ? `<p class="ncap">${ICONS.star}<span><strong>${s.stars_adult}-star</strong> adult${s.stars_child != null ? ` · <strong>${s.stars_child}-star</strong> child` : ""} · ${escapeHtml(s.testing_body)}${s.year ? ` (${s.year})` : ""}</span></p>`
+        : `<p class="ncap ncap--none">${ICONS.info}<span>${NO_RATING_LABEL}</span></p>`;
+    return rating + (group ? specList(group.items) : "");
+}
+
+function renderDetail(data, opts) {
+    const selected = data.variants.find(v => v.variant_id === data.selected_variant_id);
+    const hasQuery = Boolean(opts.q);
+    const permalink = location.origin + detailUrl("/car", { ...opts, variantId: data.selected_variant_id });
+    const range = data.price_range
+        ? (data.price_range.min === data.price_range.max ? formatPrice(data.price_range.min)
+            : `${formatPrice(data.price_range.min)} – ${formatPrice(data.price_range.max)}`)
+        : "";
+    const head = opts.standalone ? `
+        <header class="detail-hero">
+            <figure class="detail-photo"><img src="${escapeHtml(data.image)}" alt="${escapeHtml(data.make + " " + data.model)}">
+                ${data.image_attribution ? `<figcaption>Image: ${escapeHtml(data.image_attribution)}</figcaption>` : ""}</figure>
+            <div>
+                <h1>${escapeHtml(data.make)} ${escapeHtml(data.model)}</h1>
+                ${range ? `<p class="detail-range">${range} <span>ex-showroom</span></p>` : ""}
+                ${hasQuery ? `<p class="detail-note">For your search “${escapeHtml(opts.q)}”</p>` : ""}
+            </div>
+        </header>` : "";
+    const specGroups = data.specs.filter(g => DETAIL_SPEC_GROUPS.includes(g.group))
+        .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><h4>${escapeHtml(g.group)}</h4>${list}</div>` : ""; })
+        .join("");
+    const warranty = data.specs.find(g => g.group === "Warranty");
+    return `${head}
+        <section class="detail-section"><h3>Summary</h3><p class="detail-summary">${escapeHtml(data.summary)}</p></section>
+        <section class="detail-section"><h3>Variants</h3>${buildVariantsTable(data, hasQuery)}</section>
+        <section class="detail-section"><h3>Specifications</h3>
+            <p class="detail-note">For <strong>${escapeHtml(selected ? selected.variant : "")}</strong>${selected ? ` · ${formatPrice(selected.price)}` : ""}</p>
+            <div class="spec-groups">${specGroups}</div></section>
+        <section class="detail-section"><h3>Safety</h3>${buildSafetySection(data)}</section>
+        <section class="detail-section"><h3>Warranty</h3>${warranty ? specList(warranty.items) : ""}
+            <p class="detail-note">Warranty terms aren't in our verified data yet; check with the dealer.</p></section>
+        <footer class="detail-foot">
+            ${buildDataStamp(data)}
+            <div class="detail-actions">
+                <button type="button" class="btn btn-quiet" data-copy-link="${escapeHtml(permalink)}">Copy link</button>
+                <a class="btn btn-primary" href="${escapeHtml(data.cardekho_link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
+            </div>
+        </footer>`;
+}
+
+// fills `body` with the detail for opts {make, model, q, drop, variantId, standalone}
+async function loadDetail(body, opts) {
+    body.setAttribute("aria-busy", "true");
+    if (!body.innerHTML.trim()) body.innerHTML = `<div class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Loading details…</div>`;
+    try {
+        const response = await fetch(detailUrl("/api/car", opts));
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "not found");
+        body.innerHTML = renderDetail(data, opts);
+        body.dataset.selected = data.selected_variant_id;
+        if (opts.standalone) document.title = `${data.make} ${data.model} | CarRec`;
+    } catch (error) {
+        body.innerHTML = errorState("We couldn't load the details for this car.");
+    }
+    body.removeAttribute("aria-busy");
+}
+
+// variant rows: clicking a row (or its button) reloads the detail for that variant
+function bindVariantPicks(body, opts) {
+    body.addEventListener("click", e => {
+        const row = e.target.closest("tr[data-variant-id]");
+        if (!row || e.target.closest("a")) return;
+        const variantId = Number(row.dataset.variantId);
+        if (String(variantId) === body.dataset.selected) return;
+        opts.variantId = variantId;
+        loadDetail(body, opts);
+    });
+}
+
+function toggleDetail(button) {
+    const card = button.closest("article.car");
+    const turn = card.closest("[data-turn]");
+    const open = card.nextElementSibling && card.nextElementSibling.matches(".detail") ? card.nextElementSibling : null;
+    const close = (panel, btn) => {
+        btn.setAttribute("aria-expanded", "false");
+        btn.textContent = "View details";
+        panel.classList.remove("open");
+        const remove = () => panel.remove();
+        if (prefersReducedMotion()) remove(); else setTimeout(remove, 350);
+    };
+    if (open) return close(open, button);
+
+    // one open panel per turn
+    turn.querySelectorAll(".cards > .detail").forEach(p => close(p, p.previousElementSibling.querySelector("[data-detail]")));
+
+    const id = `detail-${turn.dataset.turn}-${[...card.parentElement.children].indexOf(card)}`;
+    card.insertAdjacentHTML("afterend", `<section class="detail" id="${id}" aria-label="Details: ${escapeHtml(card.getAttribute("aria-label"))}">
+        <div class="detail-clip"><div class="detail-body"></div></div></section>`);
+    const panel = card.nextElementSibling;
+    button.setAttribute("aria-expanded", "true");
+    button.setAttribute("aria-controls", id);
+    button.textContent = "Hide details";
+    requestAnimationFrame(() => panel.classList.add("open"));
+    const opts = {
+        make: card.dataset.makeSlug, model: card.dataset.modelSlug,
+        q: turn.dataset.q, drop: turn.dataset.drop ? turn.dataset.drop.split(",") : []
+    };
+    const body = panel.querySelector(".detail-body");
+    bindVariantPicks(body, opts);
+    loadDetail(body, opts);
+}
+
+// /car/<make_slug>/<model_slug>?q=&drop=&variant_id=
+function initCarPage() {
+    const [, , make, model] = location.pathname.split("/");
+    const params = new URLSearchParams(location.search);
+    const opts = {
+        make: decodeURIComponent(make || ""), model: decodeURIComponent(model || ""),
+        q: params.get("q") || "", drop: (params.get("drop") || "").split(",").filter(Boolean),
+        variantId: Number(params.get("variant_id")) || null, standalone: true
+    };
+    const body = document.getElementById("car-detail");
+    body.addEventListener("click", e => {
+        const copy = e.target.closest("[data-copy-link]");
+        if (copy) copyLink(copy);
+    });
+    bindVariantPicks(body, opts);
+    loadDetail(body, opts);
 }
 
 // 🆕 NEW CARS HANDLER
@@ -515,6 +713,8 @@ function initNewCarPage() {
         }
         const copy = e.target.closest("[data-copy-link]");
         if (copy) copyLink(copy);
+        const details = e.target.closest("[data-detail]");
+        if (details) toggleDetail(details);
     });
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {

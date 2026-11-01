@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car details | CarRec</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include "_header.html" %}
+    <main class="car-page">
+        <div class="wrap">
+            <p class="back-link"><a href="{{ url_for('recommend_page') }}{% if request.query_string %}?{{ request.query_string.decode() }}{% endif %}">← Back to search</a></p>
+            <article id="car-detail" class="detail-body detail-body--page" aria-live="polite"></article>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">Prices are ex-showroom. Car images are taken from manufacturer brochures.</div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>document.addEventListener("DOMContentLoaded", initCarPage);</script>
+</body>
+</html>

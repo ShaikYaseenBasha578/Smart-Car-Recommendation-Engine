@@ -403,7 +403,7 @@ button { cursor: pointer; }
 .tag--safety { background: var(--accent-soft); color: var(--accent-text); }
 .tag--unverified { background: var(--warn-soft); color: var(--warn-text); outline: 1px dashed currentColor; outline-offset: -1px; }
 .tag--plain { background: var(--surface-2); color: var(--ink-2); }
-.car-actions { grid-column: 2; }
+.car-actions { grid-column: 2; display: flex; gap: var(--s0); }
 .car-actions .btn { min-height: 42px; padding: 9px var(--s2); font-size: 0.9375rem; }
 
 @media (max-width: 599px) {
@@ -418,6 +418,81 @@ button { cursor: pointer; }
   .car { grid-template-columns: 39% minmax(0, 1fr); }
   .car-photo img { aspect-ratio: 16 / 10; }
   .car-body { padding: 18px var(--s2); }
+}
+
+/* ---------- car detail: inline panel under a card + /car/<make>/<model> page ---------- */
+.detail {
+  display: grid; grid-template-rows: 0fr; margin-top: calc(-1 * var(--s2) + var(--s0));
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s;
+  opacity: 0;
+}
+.detail.open { grid-template-rows: 1fr; opacity: 1; }
+.detail-clip { min-height: 0; overflow: hidden; }
+.detail-body {
+  display: flex; flex-direction: column; gap: var(--s3);
+  padding: var(--s3); border-radius: var(--r-card);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.detail .detail-body { border-top: 3px solid var(--accent); }
+.detail-body--page { margin-top: var(--s2); }
+@media (prefers-reduced-motion: reduce) { .detail { transition: none; } }
+
+.detail-section h3 { font-size: var(--text-lg); line-height: 1.3; letter-spacing: -0.01em; font-weight: 720; margin-bottom: 12px; }
+.detail-summary { max-width: 72ch; color: var(--ink-2); }
+.detail-note { font-size: 0.9375rem; color: var(--ink-3); margin-bottom: 12px; }
+.detail-section > .detail-note:last-child { margin: 12px 0 0; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-ctl); -webkit-overflow-scrolling: touch; }
+.table-wrap:focus-visible { outline-offset: 2px; }
+.variants { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.variants th { position: sticky; top: 0; text-align: left; font-size: 0.8125rem; font-weight: 650; color: var(--ink-3); background: var(--surface-2); padding: 10px 12px; white-space: nowrap; }
+.variants td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+.variants td:first-child { white-space: normal; min-width: 220px; }
+.variants tbody tr { cursor: pointer; transition: background-color 0.15s; }
+.variants tbody tr:hover { background: var(--surface-2); }
+.variants tr.is-match { background: var(--good-soft); }
+.variants tr.is-match:hover { background: color-mix(in srgb, var(--good-soft) 70%, var(--surface-2)); }
+.variants tr.is-selected td { box-shadow: inset 0 2px 0 var(--accent), inset 0 -2px 0 var(--accent); }
+.variants tr.is-selected td:first-child { box-shadow: inset 3px 0 0 var(--accent), inset 0 2px 0 var(--accent), inset 0 -2px 0 var(--accent); }
+.variant-pick { padding: 0; border: 0; background: none; text-align: left; font-weight: 650; color: var(--ink); }
+.variant-pick:hover { color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.2em; }
+.match-badge { display: inline-block; margin-top: 4px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--surface); color: var(--good); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+
+.spec-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--s2) var(--s3); }
+.spec-group h4 { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--s0); }
+.spec-list { display: grid; gap: 0; }
+.spec-list > div { display: flex; justify-content: space-between; gap: var(--s1); padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 0.9375rem; }
+.spec-list dt { color: var(--ink-2); }
+.spec-list dd { font-weight: 650; text-align: right; }
+.not-verified { font-weight: 500; color: var(--ink-3); font-style: italic; }
+.detail-section .spec-list { max-width: 640px; }
+
+.ncap { display: flex; align-items: center; gap: var(--s0); margin-bottom: 12px; padding: 10px 14px; border-radius: var(--r-ctl); background: var(--accent-soft); color: var(--ink); }
+.ncap svg { width: 18px; height: 18px; flex: none; color: var(--accent-text); }
+.ncap--none { background: var(--warn-soft); color: var(--warn-text); }
+.ncap--none svg { color: var(--warn-text); }
+
+.detail-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s1); padding-top: var(--s2); border-top: 1px solid var(--line); }
+.detail-actions { display: flex; flex-wrap: wrap; gap: var(--s0); }
+
+.car-page { padding-block: var(--s3) var(--s6); }
+.back-link a { font-size: var(--text-sm); font-weight: 600; color: var(--accent-text); text-decoration: none; }
+.back-link a:hover { text-decoration: underline; }
+.detail-hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s2); align-items: center; }
+.detail-hero h1 { font-size: var(--text-display); line-height: 1.08; letter-spacing: -0.03em; font-weight: 780; text-wrap: balance; }
+.detail-range { margin-top: var(--s0); font-size: 1.5rem; font-weight: 750; letter-spacing: -0.02em; }
+.detail-range span { font-size: var(--text-sm); font-weight: 500; color: var(--ink-3); }
+.detail-hero .detail-note { margin: var(--s0) 0 0; }
+.detail-photo { position: relative; margin: 0; border-radius: var(--r-ctl); overflow: hidden; background: var(--surface-2); }
+.detail-photo img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.detail-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--s2) 12px 6px; font-size: 0.75rem; color: #f3f1ec; background: linear-gradient(transparent, rgb(14 15 18 / 0.62)); }
+@media (min-width: 860px) { .detail-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s4); } }
+
+@media (max-width: 599px) {
+  .detail-body { padding: var(--s2) var(--s1); gap: var(--s2); }
+  .car-actions { flex-wrap: wrap; }
+  .car-actions .btn { flex: 1 1 100%; }
+  .detail-actions, .detail-actions .btn { width: 100%; }
 }
 
 /* follow-up box */
