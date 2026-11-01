@@ -22,7 +22,7 @@ function formatPrice(num) {
     return "₹" + Math.round(num).toLocaleString("en-IN");
 }
 
-// short form for sentences: 1200000 -> "₹12L"
+// short form for sentences: 310000 -> "₹3.1L"
 function formatBudget(num) {
     num = Number(num);
     if (num >= 1e7) return `₹${trimNumber(num / 1e7)}Cr`;
@@ -53,7 +53,10 @@ function matchLevel(score, topScore) {
     return { key: "fair", label: "Fair match" };
 }
 
-// --- plain-English reasons ---
+// --- reasons: only things the card doesn't already say ---
+// Priority: budget headroom > standouts within this result set > safety (only when no safety chip)
+// > notable extras the user didn't ask for. Never body type, fuel, gearbox or a feature shown as a
+// chip; the server's match_reasons mostly echo the query, so they aren't used. No filler.
 const FEATURE_LABELS = {
     sunroof: "Sunroof",
     adas: "ADAS",
@@ -67,101 +70,119 @@ const FEATURE_LABELS = {
 };
 const NO_RATING_LABEL = "No Bharat NCAP rating on record";
 const MAX_REASONS = 4;
-const FUEL_REASONS = { petrol: "Runs on petrol", diesel: "Diesel engine", cng: "Runs on CNG", electric: "Fully electric", hybrid: "Hybrid engine" };
-const VOWEL_BODIES = /^(suv|muv|mpv|suv coupe)$/i;
+const RIGHT_AT_BUDGET = 25000;   // within ₹25k of the user's max reads as "right at" it
+const MIN_FOR_STANDOUTS = 3;     // "…here" comparisons need at least this many results
+const EXTRA_AIRBAGS = 6;
 
-function mileageText(car) {
-    const m = Number(car.ARAI_Certified_Mileage);
-    if (!m) return null;
-    const unit = /cng/i.test(car.Fuel_Type || "") ? "km/kg" : "kmpl";
-    return `${trimNumber(m, 1)} ${unit}`;
-}
+function isElectric(car) { return /electric/i.test(car.Fuel_Type || ""); }
+function isCng(car) { return /cng/i.test(car.Fuel_Type || ""); }
 
-function budgetReason(intent) {
-    const b = intent && intent.budget;
-    if (b && b.min && b.max) return `In your ${formatBudget(b.min)}–${formatBudget(b.max).slice(1)} range`;
-    if (b && b.max) return `Fits your ${formatBudget(b.max)} budget`;
-    return "Within your budget";
-}
-
-function safetyReason(car) {
-    const s = car.safety;
-    if (!s || !s.stars_adult) return null;
-    return `${s.stars_adult}★ ${s.testing_body || "crash-test"} safety`;
-}
-
-// one raw match_reasons string -> buyer language (null drops it)
-function buyerReason(raw, car, intent) {
-    const text = String(raw).trim();
-    const lower = text.toLowerCase();
-    if (lower === "within budget") return budgetReason(intent);
-    if (lower === "uses budget well for practical use") return "Good value for the money";
-    if (lower === "good mileage" || lower === "fits your mileage preference") {
-        const m = mileageText(car);
-        return m ? `Good mileage (${m})` : null;  // don't claim it next to "Mileage: Not listed"
+// the efficiency figure the card shows, so comparisons are like with like:
+// { kind: "range" | "kmkg" | "kmpl", value, label: "Range" | "Mileage", text } or null value when unknown
+function efficiency(car) {
+    if (isElectric(car)) {
+        const v = Number(car.ev_range_km) || null;
+        return { kind: "range", value: v, label: "Range", text: v ? `${v} km` : null };
     }
-    if (lower === "automatic transmission") return `${car.transmission_label || "Automatic"} gearbox`;
-    if (lower === "manual transmission") return `${car.transmission_label || "Manual"} gearbox`;
-    if (lower === "automatic is easier for parents") return "Automatic, so it's easy to drive";
-    if (lower === "airbags for safety" || lower === "has airbags") return "Has airbags";
-    if (lower === "abs for safety") return "Has ABS brakes";
-    if (lower === "seating capacity" || lower === "extra seating capacity") return "Plenty of seats";
-    if (lower === "suitable seating for family") return "Seats the whole family";
-    if (lower === "very practical family body type") return "Practical shape for families";
-    if (lower === "comfortable family sedan") return "Comfortable family sedan";
-    if (lower === "fits your space preference") return "Roomy inside";
-    let m = lower.match(/^(\w+) fuel preference$/);
-    if (m) return FUEL_REASONS[m[1]] || `Runs on ${m[1]}`;
-    m = text.match(/^(.+) body type$/i);
-    if (m) {
-        const body = /^(suv|muv|mpv)$/i.test(m[1]) ? m[1].toUpperCase() : m[1].toLowerCase();
-        return `It's ${VOWEL_BODIES.test(body) ? "an" : "a"} ${body}`;
+    if (isCng(car) && Number(car.mileage_km_per_kg)) {
+        const v = Number(car.mileage_km_per_kg);
+        return { kind: "kmkg", value: v, label: "Mileage", text: `${trimNumber(v, 1)} km/kg` };
     }
-    m = text.match(/^similar body type, size and price to (.+)$/i);
-    if (m) return `Similar size and price to the ${m[1]}`;
-    const feature = lower.replace(/^has /, "");
-    const key = Object.keys(FEATURE_LABELS).find(k => FEATURE_LABELS[k].toLowerCase() === feature || k === feature);
-    if (key) return key === "sunroof" ? "Has a sunroof" : `Has ${FEATURE_LABELS[key]}`;
-    return text.charAt(0).toUpperCase() + text.slice(1);
+    const v = Number(car.ARAI_Certified_Mileage) || null;
+    return { kind: "kmpl", value: v, label: "Mileage", text: v ? `${trimNumber(v, 1)} kmpl` : null };
 }
 
-function buyerReasons(car, intent) {
+function budgetReason(car, intent) {
+    const max = intent && intent.budget && intent.budget.max;
+    const price = Number(car["Ex-Showroom_Price"]);
+    if (!max || !price) return null;
+    const headroom = max - price;
+    if (Math.abs(headroom) <= RIGHT_AT_BUDGET) return "Right at your budget";
+    if (headroom > 0) return `${formatBudget(headroom)} under your budget`;
+    return null;
+}
+
+// true when car is the single best among the cars that have this value (and >= 2 of them do)
+function uniqueBest(car, recs, value, higherIsBetter = true) {
+    const mine = value(car);
+    if (mine == null) return false;
+    const others = recs.filter(r => r !== car).map(value).filter(v => v != null);
+    if (!others.length) return false;
+    return others.every(v => (higherIsBetter ? mine > v : mine < v));
+}
+
+function standoutReasons(car, recs) {
+    if (recs.length < MIN_FOR_STANDOUTS) return [];
+    const num = key => r => (Number(r[key]) || null);
     const out = [];
-    const add = r => { if (r && !out.some(o => o.toLowerCase() === r.toLowerCase())) out.push(r); };
-    const safety = safetyReason(car);
-    if (safety && intent && intent.min_safety_stars) add(safety);  // they asked for it: lead with it
-    (car.match_reasons || []).forEach(r => add(buyerReason(r, car, intent)));
-    if (safety && car.safety.stars_adult >= 4) add(safety);
+    if (uniqueBest(car, recs, num("Ex-Showroom_Price"), false)) out.push("Lowest price here");
+    const eff = efficiency(car);
+    const sameKind = recs.filter(r => efficiency(r).kind === eff.kind);
+    if (sameKind.length >= 2 && uniqueBest(car, sameKind, r => efficiency(r).value)) {
+        out.push(eff.kind === "range" ? `Longest range here (${eff.text})` : `Best mileage here (${eff.text})`);
+    }
+    const power = r => Number(r.power_bhp ?? r.Power) || null;
+    if (uniqueBest(car, recs, power)) out.push(`Most powerful here (${Math.round(power(car))} bhp)`);
+    if (uniqueBest(car, recs, num("boot_space_litres"))) out.push(`Biggest boot here (${car.boot_space_litres} L)`);
+    if (uniqueBest(car, recs, num("airbags"))) out.push(`Most airbags here (${car.airbags})`);
+    return out;
+}
+
+function extraReasons(car, intent, already) {
+    const out = [];
+    const askedAirbags = intent && intent.min_airbags;
+    if (!askedAirbags && Number(car.airbags) >= EXTRA_AIRBAGS && !already.some(r => /airbags/i.test(r))) {
+        out.push(`${car.airbags} airbags`);
+    }
+    return out;
+}
+
+function buyerReasons(car, recs, intent, chipTexts) {
+    const chips = chipTexts.map(t => t.toLowerCase());
+    const out = [];
+    const add = r => {
+        if (!r) return;
+        const low = r.toLowerCase();
+        if (out.some(o => o.toLowerCase() === low)) return;
+        if (chips.some(c => c.includes(low) || low.includes(c))) return;  // the chip already says it
+        out.push(r);
+    };
+    add(budgetReason(car, intent));
+    standoutReasons(car, recs).forEach(add);
+    if (car.safety && car.safety.stars_adult && !chips.some(c => /ncap|crash/.test(c))) {
+        add(`${car.safety.stars_adult}★ ${car.safety.testing_body || "crash-test"}`);
+    }
+    extraReasons(car, intent, out).forEach(add);
     return out.slice(0, MAX_REASONS);
 }
 
 // --- chips under a card: features / safety / unverified ---
-function tag(text, kind, icon = "") {
-    return `<li class="tag tag--${kind}">${icon}<span>${escapeHtml(text)}</span></li>`;
-}
+function chipList(car) {
+    const chips = [];
 
-function buildExtraChips(car) {
-    const tags = [];
-
-    (car.matched_features || []).forEach(f => tags.push(tag(FEATURE_LABELS[f] || f, "feature", ICONS.check)));
+    (car.matched_features || []).forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
 
     if (car.safety) {
         const year = car.safety.year ? ` (${car.safety.year})` : "";
-        tags.push(tag(`${car.safety.stars_adult}-star ${car.safety.testing_body}${year}`, "safety", ICONS.star));
+        chips.push({ text: `${car.safety.stars_adult}-star ${car.safety.testing_body}${year}`, kind: "safety", icon: ICONS.star });
     } else if ("safety" in car) {
-        tags.push(tag(NO_RATING_LABEL, "unverified", ICONS.info));
+        chips.push({ text: NO_RATING_LABEL, kind: "unverified", icon: ICONS.info });
     }
 
     (car.unverified || [])
         .filter(u => !(u === NO_RATING_LABEL && "safety" in car && !car.safety))  // already shown above
-        .forEach(u => tags.push(tag(u, "unverified", ICONS.info)));
+        .forEach(u => chips.push({ text: u, kind: "unverified", icon: ICONS.info }));
 
     if (car.matching_variant_count) {
         const n = car.matching_variant_count;
-        tags.push(tag(`${n} matching variant${n === 1 ? "" : "s"}`, "plain"));
+        chips.push({ text: `${n} matching variant${n === 1 ? "" : "s"}`, kind: "plain", icon: "" });
     }
 
-    return tags.join("");
+    return chips;
+}
+
+function buildExtraChips(chips) {
+    return chips.map(c => `<li class="tag tag--${c.kind}">${c.icon}<span>${escapeHtml(c.text)}</span></li>`).join("");
 }
 
 // --- banners, hints, toolbar ---
@@ -215,47 +236,55 @@ function buildResultsToolbar(data, link) {
 }
 
 // --- result card ---
+// facts: electric -> "Range: 465 km"; CNG -> "Mileage: 26.4 km/kg" (kmpl if km/kg is missing);
+// others -> "Mileage: 19.2 kmpl". "Not listed" only when that value is truly null.
 function buildFacts(car) {
-    const isEv = /electric/i.test(car.Fuel_Type || "");
-    const mileage = mileageText(car);
+    const eff = efficiency(car);
     const facts = [
         ["Gearbox", car.transmission_label || car.Transmission || "Not listed"],
         ["Fuel", car.Fuel_Type || "Not listed"],
-        isEv ? ["Range", "Not listed"] : ["Mileage", mileage || "Not listed"]
+        [eff.label, eff.text || "Not listed"]
     ];
-    return `<dl class="facts">` + facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("") + `</dl>`;
+    return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${escapeHtml(v)}</span></li>`).join("") + `</ul>`;
 }
 
-function buildCarCard(car, index, topScore, intent) {
+function buildCarCard(car, index, recs, topScore, intent) {
     const name = `${car.Make} ${car.Model}`;
     const image = car.carImage || "/static/pic.avif";
     const caption = car.imageAttribution
         ? `Image: ${car.imageAttribution}`
         : (/\.svg$/.test(image) ? "Illustration: no photo of this model yet" : "");
     const match = matchLevel(car.ranking_score, topScore);
-    const reasons = buyerReasons(car, intent);
-    const tags = buildExtraChips(car);
+    const chips = chipList(car);
+    const reasons = buyerReasons(car, recs, intent, chips.map(c => c.text));
+    const tags = buildExtraChips(chips);
     const link = car.carDekhoLink;
     return `
         <article class="car${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}">
             <figure class="car-photo">
                 ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
-                <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 2 ? "eager" : "lazy"}" decoding="async">
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
                 ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
             </figure>
             <div class="car-body">
-                <header>
-                    <h3 class="car-title">${escapeHtml(name)}</h3>
-                    ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
+                <div class="car-head">
+                    <div>
+                        <h3 class="car-title">${escapeHtml(name)}</h3>
+                        ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
+                    </div>
                     <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span></p>
-                </header>
+                </div>
                 ${buildFacts(car)}
-                <div class="car-meta"><span class="match match--${match.key}">${match.label}</span></div>
-                ${reasons.length ? `<ul class="reasons" aria-label="Why it fits">${reasons.map(r => `<li>${ICONS.check}<span>${escapeHtml(r)}</span></li>`).join("")}</ul>` : ""}
-                ${tags ? `<ul class="tags" aria-label="Features and safety">${tags}</ul>` : ""}
-                ${link ? `<div class="car-actions">
-                    <a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
-                </div>` : ""}
+                <div class="car-fit">
+                    <span class="match match--${match.key}">${match.label}</span>
+                    ${reasons.length ? `<ul class="reasons" aria-label="Why it stands out">${reasons.map(r => `<li>${ICONS.check}<span>${escapeHtml(r)}</span></li>`).join("")}</ul>` : ""}
+                </div>
+                <div class="car-foot">
+                    ${tags ? `<ul class="tags" aria-label="Features and safety">${tags}</ul>` : ""}
+                    ${link ? `<div class="car-actions">
+                        <a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
+                    </div>` : ""}
+                </div>
             </div>
         </article>`;
 }
@@ -382,7 +411,7 @@ function renderResults(box, data, ok, link) {
     const recs = data.recommendations || [];
     const topScore = recs.length ? Math.max(...recs.map(r => Number(r.ranking_score) || 0)) : 0;
     box.innerHTML = banner + buildResultsToolbar(data, link)
-        + `<div class="cards">${recs.map((car, i) => buildCarCard(car, i, topScore, data.intent)).join("")}</div>`;
+        + `<div class="cards">${recs.map((car, i) => buildCarCard(car, i, recs, topScore, data.intent)).join("")}</div>`;
 }
 
 async function copyLink(button) {

@@ -182,6 +182,13 @@ def safety_summary(car):
     }
 
 
+def number_or_none(value, whole=False):
+    """Catalogue number for the response: None when blank, int for whole-number columns."""
+    if pd.isna(value):
+        return None
+    return int(value) if whole else float(value)
+
+
 def select_models(ranked, intent):
     """Best variant per model, max per make, up to MAX_KB_MODELS models.
 
@@ -384,6 +391,12 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None)
             "safety": safety_summary(car),
             "imageAttribution": image_attribution(app_root_path, car["make"], car["model"]),
             "matching_variant_count": int(variant_counts[car["model"]]),
+            # card facts and comparisons (None when blank)
+            "mileage_km_per_kg": number_or_none(car["mileage_km_per_kg"]),
+            "ev_range_km": number_or_none(car["ev_range_km"], whole=True),
+            "power_bhp": number_or_none(car["power_bhp"]),
+            "airbags": number_or_none(car["airbags"], whole=True),
+            "boot_space_litres": number_or_none(car["boot_space_litres"], whole=True),
         })
 
     response["recommendations"] = recommendations
