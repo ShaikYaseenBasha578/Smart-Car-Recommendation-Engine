@@ -159,5 +159,22 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 
+# =========================
+# Car Detail Route
+# =========================
+
+@app.route("/api/car/<make_slug>/<model_slug>")
+def car_detail_api(make_slug, model_slug):
+    from services.car_detail import get_car_detail
+
+    drop = [d for d in request.args.get("drop", "").split(",") if d]
+    variant_id = request.args.get("variant_id", type=int)
+    detail = get_car_detail(make_slug, model_slug, q=request.args.get("q", ""), drop=drop,
+                            variant_id=variant_id, app_root_path=app.root_path)
+    if detail is None:
+        return jsonify({"error": f"No car found for {make_slug}/{model_slug}"}), 404
+    return jsonify(make_json_safe(detail)), 200
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

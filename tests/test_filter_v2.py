@@ -20,7 +20,7 @@ def intent(**fields):
         "seats_min": None, "makes": [], "models": [], "required_features": [],
         "min_airbags": None, "min_safety_stars": None, "min_boot_space_litres": None,
         "min_ground_clearance_mm": None, "min_ev_range_km": None, "min_mileage_kmpl": None,
-        "use_case": None, "soft_preferences": [],
+        "min_mileage_km_per_kg": None, "use_case": None, "soft_preferences": [],
     }
     base.update(fields)
     return base
@@ -78,12 +78,32 @@ def test_min_not_applicable_is_excluded():
     assert out.loc[3, "unverified"] == ["Unverified: EV range"]
 
 
-def test_mileage_cng_falls_back_to_km_per_kg():
+def test_kmpl_threshold_never_uses_km_per_kg():
     df = frame({"fuel_type": "cng", "mileage_kmpl": NAN, "mileage_km_per_kg": 30.0},
-               {"fuel_type": "cng", "mileage_kmpl": NAN, "mileage_km_per_kg": 15.0},
+               {"fuel_type": "cng", "mileage_kmpl": NAN, "mileage_km_per_kg": 30.0,
+                "unverified_fields": frozenset({"mileage_kmpl"})},
                {"fuel_type": "electric", "mileage_kmpl": NAN},
-               {"mileage_kmpl": 21.0}, {"mileage_kmpl": 15.0})
-    assert ids(filter_candidates(intent(min_mileage_kmpl=20), df)) == [1, 4]
+               {"mileage_kmpl": 21.0}, {"mileage_kmpl": 15.0},
+               {"fuel_type": "cng", "mileage_kmpl": 22.0, "mileage_km_per_kg": 15.0})
+    out = filter_candidates(intent(min_mileage_kmpl=20), df)
+    # 30 km/kg never satisfies "20 kmpl"; a CNG row's kmpl cell isn't trusted either (the KB stores
+    # CNG-cycle figures there), so CNG cars are kept as unverified rather than matched or excluded
+    assert ids(out) == [1, 2, 4, 6]
+    assert all(out.loc[i, "unverified"] == ["Unverified: mileage"] for i in (1, 2, 6))
+    assert out.loc[4, "matched"] == ["min_mileage_kmpl"]
+
+
+def test_km_per_kg_threshold_uses_km_per_kg_only():
+    df = frame({"fuel_type": "cng", "mileage_km_per_kg": 30.0},
+               {"fuel_type": "cng", "mileage_km_per_kg": 15.0},
+               {"fuel_type": "cng", "mileage_km_per_kg": NAN, "unverified_fields": frozenset({"mileage_km_per_kg"})},
+               {"fuel_type": "cng", "mileage_kmpl": 40.0, "mileage_km_per_kg": NAN},
+               {"mileage_kmpl": 40.0, "mileage_km_per_kg": NAN})
+    out = filter_candidates(intent(min_mileage_km_per_kg=25), df)
+    # 40 kmpl never satisfies "25 km/kg"; petrol has no km/kg figure at all (not applicable)
+    assert ids(out) == [1, 3]
+    assert out.loc[1, "matched"] == ["min_mileage_km_per_kg"]
+    assert out.loc[3, "unverified"] == ["Unverified: CNG mileage"]
 
 
 # --- safety ---

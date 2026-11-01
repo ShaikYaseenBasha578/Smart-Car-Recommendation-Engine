@@ -20,6 +20,10 @@ import pandas as pd
 from ranking_engine import rank_cars
 
 SOFT_BOOST_SHARE = 0.10
+# Every CNG row in the KB that has a mileage_kmpl value (6 of 82) holds its CNG-cycle figure
+# there (26.1-27.0, equal to mileage_km_per_kg where both exist), not a petrol kmpl. Until the
+# KB is corrected, a CNG car's kmpl cell is treated as unknown, so units are never mixed.
+KMPL_UNTRUSTED_FUELS = {"cng"}
 
 BODY_COLUMNS = {
     "suv": "Body_Type_SUV",
@@ -42,9 +46,9 @@ LEGACY_COLUMNS = {
     "Model": lambda r: r["model"],
     "Variant": lambda r: r["variant"],
     "Ex-Showroom_Price": lambda r: r["price_ex_showroom"],
-    # CNG variants without a kmpl figure are scored on their km/kg figure
-    "ARAI_Certified_Mileage": lambda r: r["mileage_kmpl"] if not _nan(r["mileage_kmpl"]) or r["fuel_type"] != "cng"
-    else r["mileage_km_per_kg"],
+    # kmpl only: a km/kg figure is never fed into this kmpl field. CNG rows count as unknown
+    # (see KMPL_UNTRUSTED_FUELS), which the engine scores like any other blank mileage.
+    "ARAI_Certified_Mileage": lambda r: trusted_kmpl(r),
     "Displacement": lambda r: r["engine_cc"],
     "Power": lambda r: r["power_bhp"],
     "Torque": lambda r: r["torque_nm"],
@@ -69,6 +73,11 @@ LEGACY_FEATURE_FILTERS = {
     "android_auto": "Android_Auto",
     "apple_carplay": "Apple_CarPlay",
 }
+
+
+def trusted_kmpl(row) -> float:
+    """mileage_kmpl, or NaN where the KB's kmpl cell can't be taken as a kmpl figure."""
+    return math.nan if row["fuel_type"] in KMPL_UNTRUSTED_FUELS else row["mileage_kmpl"]
 
 
 def _nan(value) -> bool:
@@ -129,7 +138,8 @@ def _soft_hits(row, prefs: list[str]) -> list[str]:
         return None if _nan(v) else v
 
     checks = {
-        "mileage": lambda: (num("mileage_kmpl") or 0) >= 18 or (num("mileage_km_per_kg") or 0) >= 25
+        "mileage": lambda: (0 if _nan(trusted_kmpl(row)) else trusted_kmpl(row)) >= 18
+        or (num("mileage_km_per_kg") or 0) >= 25
         or row["fuel_type"] == "electric",
         "space": lambda: (num("seats") or 0) >= 7 or (num("boot_space_litres") or 0) >= 400,
         "performance": lambda: (num("power_bhp") or 0) >= 120,

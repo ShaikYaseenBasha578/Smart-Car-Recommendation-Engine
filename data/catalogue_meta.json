@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "ff714cb0e4d8d85d86867d3895b59b8290edd73b78f9b3139edf902f966fb588",
+  "catalogue_sha256": "c34312e2b056fa5a64f567407549b6f6133d173aa0c3a9cfa59c0bfa166bff3d",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -37,6 +37,12 @@
       "quarantined": 0,
       "unverified": 26
     },
+    "auto_climate_control": {
+      "non_null": 815,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 17
+    },
     "boot_space_litres": {
       "non_null": 791,
       "not_applicable_blank": 0,
@@ -48,6 +54,12 @@
       "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 6
+    },
+    "connected_car_features": {
+      "non_null": 780,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 52
     },
     "cruise_control": {
       "non_null": 558,
@@ -67,11 +79,23 @@
       "quarantined": 0,
       "unverified": 0
     },
+    "esc": {
+      "non_null": 803,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 29
+    },
     "ev_range_km": {
       "non_null": 37,
       "not_applicable_blank": 795,
       "quarantined": 0,
       "unverified": 0
+    },
+    "fuel_tank_litres": {
+      "non_null": 741,
+      "not_applicable_blank": 37,
+      "quarantined": 0,
+      "unverified": 54
     },
     "ground_clearance_mm": {
       "non_null": 832,
@@ -84,6 +108,24 @@
       "not_applicable_blank": 0,
       "quarantined": 115,
       "unverified": 350
+    },
+    "height_mm": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "hill_assist": {
+      "non_null": 809,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 23
+    },
+    "kerb_weight_kg": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
     },
     "length_mm": {
       "non_null": 832,
@@ -103,6 +145,12 @@
       "quarantined": 0,
       "unverified": 336
     },
+    "paddle_shifters": {
+      "non_null": 461,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 371
+    },
     "power_bhp": {
       "non_null": 832,
       "not_applicable_blank": 0,
@@ -110,6 +158,24 @@
       "unverified": 0
     },
     "price_ex_showroom": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "rear_ac_vents": {
+      "non_null": 827,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 5
+    },
+    "rear_camera": {
+      "non_null": 805,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 27
+    },
+    "rear_parking_sensors": {
       "non_null": 832,
       "not_applicable_blank": 0,
       "quarantined": 0,
@@ -145,11 +211,29 @@
       "quarantined": 0,
       "unverified": 0
     },
+    "tpms": {
+      "non_null": 796,
+      "not_applicable_blank": 0,
+      "quarantined": 10,
+      "unverified": 36
+    },
     "ventilated_front_seats": {
       "non_null": 819,
       "not_applicable_blank": 0,
       "quarantined": 9,
       "unverified": 13
+    },
+    "wheelbase_mm": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
+    },
+    "width_mm": {
+      "non_null": 832,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 0
     },
     "wireless_charging": {
       "non_null": 464,
@@ -158,7 +242,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-10-31T15:00:47Z",
+  "export_utc": "2026-11-01T11:43:21Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,

@@ -286,7 +286,7 @@ def relaxable_constraints(intent):
         options.append((f"feature:{feature}", FEATURE_COLUMNS[feature][1],
                         without(required_features=[f for f in intent["required_features"] if f != feature])))
     for key, (_, label) in MIN_COLUMNS.items():
-        if intent[key] is not None:
+        if intent.get(key) is not None:
             options.append((key, f"minimum {label} {intent[key]:g}", without(**{key: None})))
     if intent["min_safety_stars"] is not None:
         options.append(("min_safety_stars", f"{intent['min_safety_stars']}-star safety",
