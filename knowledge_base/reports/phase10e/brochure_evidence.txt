@@ -1,0 +1,12 @@
+maruti_suzuki_eeco_brochure.pdf | sha1 d964c7b53a8136234131c0d5c165c647ae1f2a11 | index MATCH | p2 textlen=0 | {}
+maruti_suzuki_ertiga_brochure.pdf | sha1 d5a10fb1556e2ad77abd66a5747471bed3df5d2d | index MATCH | p7 textlen=0 | {}
+toyota_rumion_brochure.pdf | sha1 c1d41f62df6331b12d505f05032fdf4425e3da80 | index MATCH | p6 textlen=7097 | {'26\\.11': True}
+maruti_suzuki_victoris_brochure.pdf | sha1 94f94973736c150efdf2cc5ae6c40845d8e856a3 | index MATCH | p16 textlen=15229 | {'27\\.02': True, 'Paddle': False}
+NEXA-Xl6-Brochure.pdf | sha1 e66cbeecb310f06cd6f0205f2772f152a5b6a891 | index MATCH | p15 textlen=13248 | {'26\\.23': False, 'Dual Tone': True}
+tata_altroz_brochure.pdf | sha1 5cbbf8b65224b23bb027ff078fe5e4721f793d25 | index MATCH | p23 textlen=3260 | {} whole-doc km/kg|km/l|kmpl hits=0
+Hyundai_Creta_Brochure_Official.pdf | sha1 cc5b2fbc3490e16d1e5de56d61b49eb7372ce362 | index MATCH | p14 textlen=4659 | {'Paddle shifters': True, 'iVT/AT/DCT only': True}
+hyundai_venue_brochure.pdf | sha1 00eabf1c73ad06d076b7e3928d9ca54d9b4cb1c4 | index MATCH | p20 textlen=4723 | {'DCT/AT only': True}
+volkswagen_taigun_brochure.pdf | sha1 b2a396b599758b80a6643ad479eb21426eaa2c3c | index MATCH | p10 textlen=2462 | {'AT only': True}
+toyota_glanza_brochure.pdf | sha1 fd682f602d0fe869b41128fe8e7b96d8268f029f | index MATCH | p1 textlen=9897 | {'66\\s*kw': True}
+maruti_suzuki_grand_vitara_brochure.pdf | sha1 023ce2e3d22ca4bd3a2cd1a9aded193273482e91 | index MATCH | p15 textlen=21550 | {'3 YEARS': True}
+honda_elevate_brochure.pdf | sha1 3b794463eeda84b292eab3a1b9e07ab65a40ccfc | index MATCH | p48 textlen=2041 | {'ZX Black Edition \\(Over ZX\\)': True, 'ELEVATE ZX MT/CVT R BLK': True}

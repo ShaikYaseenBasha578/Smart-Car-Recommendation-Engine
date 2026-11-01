@@ -1,0 +1,14 @@
+--- a/paper/oracle/feasibility.py	2026-11-02 04:47:49
++++ b/paper/oracle/feasibility.py	2026-11-02 04:47:49
+@@ -12,7 +12,10 @@
+ import sqlite3
+ 
+ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-DB_PATH = os.path.join(REPO_ROOT, "knowledge_base", "carrec_kb.db")
++# Frozen paper KB: a read-only (chmod 444) copy of prod at SHA-1 8592508, taken 2026-11-02 before KB phase 10E
++# wrote to prod. Override with CARREC_PAPER_KB.
++DB_PATH = os.environ.get("CARREC_PAPER_KB",
++                         os.path.expanduser("~/carrec_kb_snapshots/carrec_kb_paper_v0_8592508.db"))
+ FROZEN_SHA1 = "8592508789594ab76cf98e463bbf77606a76a7e2"
+ 
+ TRANSMISSION_MAP = {

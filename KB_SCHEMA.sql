@@ -107,7 +107,8 @@ CREATE TABLE variant (
     rear_camera INTEGER,
     camera_360 INTEGER,
     adas_available INTEGER,
-    adas_tier TEXT,
+    adas_tier TEXT,                      -- DEPRECATED 2026-11 (Phase 10E): duplicates adas_available; removed from
+                                         -- v_variant_canonical_q. Raw column kept; do not read it.
 
     -- Comfort & Convenience
     automatic_climate_control INTEGER,
@@ -285,3 +286,52 @@ JOIN model mdl ON v.model_id = mdl.id
 JOIN manufacturer mfr ON mdl.manufacturer_id = mfr.id
 LEFT JOIN generation g ON v.generation_id = g.id
 LEFT JOIN powertrain pt ON v.powertrain_id = pt.id;
+
+-- =====================================================================================================
+-- Phase 10E (2026-11-02): live definitions from sqlite_master after the 10E controlled write
+-- (prod SHA-1 57f31e4d4a5f1f01b4a12e1c0d2e507795953cfe). The live sqlite_master stays authoritative.
+-- =====================================================================================================
+
+-- evidence_quarantine: CHECK extended to allow target_table='warranty' (warranty rows need a target_field).
+CREATE TABLE evidence_quarantine (
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  target_table    TEXT NOT NULL CHECK (target_table IN
+                   ('source_observation','field_provenance','variant','safety_test','safety_test_applicability','warranty')),
+  target_id       INTEGER NOT NULL,
+  target_field    TEXT,
+  reason_code     TEXT NOT NULL,
+  phase           TEXT NOT NULL,
+  note            TEXT,
+  created_at      TEXT NOT NULL DEFAULT (datetime('now')),
+  released_at     TEXT,
+  released_reason TEXT,
+  CHECK (target_table NOT IN ('variant','warranty') OR target_field IS NOT NULL),
+  CHECK (released_at IS NULL OR released_reason IS NOT NULL)
+);
+
+CREATE UNIQUE INDEX ux_quarantine_active
+  ON evidence_quarantine(target_table, target_id, IFNULL(target_field,''), reason_code)
+  WHERE released_at IS NULL;
+
+-- v_warranty_q: quarantine-aware warranty read path. Cells are masked when an active quarantine row targets
+-- ('warranty', id) with target_field = the column or '*'. Rows are never hidden. has_provenance is a constant 0:
+-- field_provenance and source_observation reference variant rows only, so no provenance can attach to a warranty row.
+-- Not yet read by the app export.
+CREATE VIEW v_warranty_q AS
+  SELECT
+    w.id,
+    w.manufacturer_id,
+    w.model_id,
+    CASE WHEN w.model_id IS NULL THEN 'MAKE' ELSE 'MODEL' END AS grain,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='warranty' AND q.target_id=w.id AND q.target_field IN ('warranty_years','*')) THEN NULL ELSE w.warranty_years END AS warranty_years,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='warranty' AND q.target_id=w.id AND q.target_field IN ('warranty_km','*')) THEN NULL ELSE w.warranty_km END AS warranty_km,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='warranty' AND q.target_id=w.id AND q.target_field IN ('battery_warranty_years','*')) THEN NULL ELSE w.battery_warranty_years END AS battery_warranty_years,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='warranty' AND q.target_id=w.id AND q.target_field IN ('battery_warranty_km','*')) THEN NULL ELSE w.battery_warranty_km END AS battery_warranty_km,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='warranty' AND q.target_id=w.id AND q.target_field IN ('extended_warranty_available','*')) THEN NULL ELSE w.extended_warranty_available END AS extended_warranty_available,
+    w.source,
+    w.source_url,
+    0 AS has_provenance  -- constant: field_provenance/source_observation reference variant rows only (no schema change made)
+  FROM warranty w;
+
+-- v_variant_canonical_q (definition not reproduced here): Phase 10E removed its adas_tier column. All other
+-- columns are unchanged. variant.adas_tier, v_effective_variant and v_variant_full keep the raw column.
