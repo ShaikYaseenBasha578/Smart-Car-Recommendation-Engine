@@ -51,19 +51,11 @@
                 <input id="userQuery" type="text" class="flex-1 min-w-0 bg-transparent text-white font-mono text-sm md:text-base px-2 py-3 outline-none placeholder-base-700" placeholder="Enter parameters...">
                 <button type="submit" class="w-full sm:w-auto mt-2 sm:mt-0 sm:ml-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-sm px-6 py-3 rounded-lg transition-all">Run</button>
             </div>
+            <div data-suggestions class="mt-3 flex flex-wrap gap-2 justify-center" aria-label="Suggested searches"></div>
         </form>
         <div id="results" class="w-full flex flex-col gap-8"></div>
     </main>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const saved = localStorage.getItem("userQuery");
-            if (saved) {
-                document.getElementById("userQuery").value = saved;
-                localStorage.removeItem("userQuery");
-                sendQuery();
-            }
-        });
-    </script>
+    <script>document.addEventListener("DOMContentLoaded", initNewCarPage);</script>
 </body>
 </html>

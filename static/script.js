@@ -125,8 +125,24 @@ function buildRelaxationHints(hints) {
     if (!hints || !hints.length) return "";
     return `<ul class="mt-4 flex flex-col gap-2 text-left max-w-xl mx-auto">` + hints.map(h => {
         const examples = h.top_models && h.top_models.length ? ` (e.g. ${h.top_models.join(", ")})` : "";
-        return `<li class="text-sm text-base-300 font-mono">Without ${escapeHtml(h.drop)}: ${h.would_return} option${h.would_return === 1 ? "" : "s"}${escapeHtml(examples)}</li>`;
+        const text = `Without ${escapeHtml(h.drop)}: ${h.would_return} option${h.would_return === 1 ? "" : "s"}${escapeHtml(examples)}`;
+        if (!h.key) return `<li class="text-sm text-base-300 font-mono">${text}</li>`;
+        // clicking reruns the same query with this constraint dropped
+        return `<li><button type="button" data-drop-key="${escapeHtml(h.key)}" class="w-full text-left text-sm text-base-200 font-mono px-3 py-2 rounded-lg border border-base-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">${text} →</button></li>`;
     }).join("") + `</ul>`;
+}
+
+function buildDroppedBanner(data) {
+    if (!data.dropped || !data.dropped.length) return "";
+    return `<p class="font-mono text-xs text-cyan-400">Showing results without: ${escapeHtml(data.dropped.map(d => d.label).join(", "))}</p>`;
+}
+
+// banner of dropped constraints + data stamp on the left, "Copy link" on the right
+function buildResultsToolbar(data) {
+    return `<div class="w-full flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-col gap-1 min-w-0">${buildDroppedBanner(data)}${buildDataStamp(data)}</div>
+        <button type="button" data-copy-link class="shrink-0 font-mono text-xs px-3 py-1.5 rounded-md border border-base-700 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">Copy link</button>
+    </div>`;
 }
 
 function buildDataStamp(data) {
@@ -135,12 +151,39 @@ function buildDataStamp(data) {
 }
 
 // 🆕 NEW CARS HANDLER
-async function sendQuery(event) {
-    if (event) event.preventDefault();
-    const queryInput = document.getElementById("userQuery").value;
-    const resultsBox = document.getElementById("results");
+// The current search lives in the URL (?q=<query>&drop=<key>,<key>), so results can be shared,
+// reopened and walked with back/forward.
+let currentSearch = { q: "", drop: [] };
+let searchSeq = 0;
 
-    if (!queryInput.trim()) return;
+function searchUrl(q, drop) {
+    const params = new URLSearchParams({ q });
+    if (drop.length) params.set("drop", drop.join(","));
+    return `${location.pathname}?${params}`;
+}
+
+function searchFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const drop = (params.get("drop") || "").split(",").filter(Boolean);
+    return { q: params.get("q") || "", drop };
+}
+
+function sendQuery(event) {
+    if (event) event.preventDefault();
+    return runSearch(document.getElementById("userQuery").value, [], "push");
+}
+
+// history: "push" (new search), "replace" (page load) or "none" (back/forward)
+async function runSearch(query, drop = [], history = "push") {
+    const resultsBox = document.getElementById("results");
+    if (!query.trim()) return;
+
+    document.getElementById("userQuery").value = query;
+    currentSearch = { q: query, drop };
+    const url = searchUrl(query, drop);
+    if (history === "push" && url !== location.pathname + location.search) window.history.pushState(currentSearch, "", url);
+    if (history === "replace") window.history.replaceState(currentSearch, "", url);
+    const seq = ++searchSeq;
 
     resultsBox.innerHTML = `
         <div class="w-full h-64 flex flex-col items-center justify-center border border-dashed border-base-800 rounded-2xl">
@@ -153,10 +196,11 @@ async function sendQuery(event) {
         const response = await fetch("/predict", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query: queryInput })
+            body: JSON.stringify(drop.length ? { query, drop } : { query })
         });
         
         const data = await response.json();
+        if (seq !== searchSeq) return;  // a newer search has started
         resultsBox.innerHTML = "";
 
         if (!response.ok) {
@@ -167,14 +211,13 @@ async function sendQuery(event) {
         const banner = buildUnsupportedBanner(data);
 
         if (data.message && (!data.recommendations || !data.recommendations.length)) {
-            resultsBox.innerHTML = banner + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>` + buildDataStamp(data);
+            resultsBox.innerHTML = banner + buildResultsToolbar(data) + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>`;
             return;
         }
 
         const recs = data.recommendations;
         if (banner) resultsBox.insertAdjacentHTML("beforeend", banner);
-        const stamp = buildDataStamp(data);
-        if (stamp) resultsBox.insertAdjacentHTML("beforeend", stamp);
+        resultsBox.insertAdjacentHTML("beforeend", buildResultsToolbar(data));
         const maxScore = recs.length > 0 ? Math.max(recs[0].ranking_score, 30) : 30;
 
         recs.forEach((car, index) => {
@@ -244,8 +287,113 @@ async function sendQuery(event) {
         });
 
     } catch (error) {
+        if (seq !== searchSeq) return;
         resultsBox.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Frontend Error: ${error.message}</div>`;
     }
+}
+
+async function copyCurrentLink(button) {
+    try {
+        await navigator.clipboard.writeText(location.href);
+        button.textContent = "Copied ✓";
+    } catch (error) {
+        window.prompt("Copy this link:", location.href);
+    }
+    setTimeout(() => { button.textContent = "Copy link"; }, 2000);
+}
+
+// --- suggestion chips ---
+const SUGGESTION_COUNT = 5;
+const SUGGESTION_MIN_CATEGORIES = 3;
+const SUGGESTION_ROTATE_MS = 8000;
+
+function shuffled(items) {
+    const out = [...items];
+    for (let i = out.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [out[i], out[j]] = [out[j], out[i]];
+    }
+    return out;
+}
+
+// SUGGESTION_COUNT random queries from at least SUGGESTION_MIN_CATEGORIES categories,
+// avoiding the set on screen where possible
+function pickSuggestions(all, previous = []) {
+    const fresh = all.filter(s => !previous.includes(s.query));
+    const pool = shuffled(fresh.length >= SUGGESTION_COUNT ? fresh : all);
+    const picked = [];
+    for (const s of pool) {  // one per category first
+        if (picked.length < SUGGESTION_MIN_CATEGORIES && !picked.some(p => p.category === s.category)) picked.push(s);
+    }
+    for (const s of pool) {
+        if (picked.length < SUGGESTION_COUNT && !picked.includes(s)) picked.push(s);
+    }
+    return shuffled(picked);
+}
+
+// box: the <div data-suggestions> under a query input; onPick(query) runs the search
+async function initSuggestions(box, onPick) {
+    let all;
+    try {
+        all = await (await fetch("/static/suggested_queries.json")).json();
+    } catch (error) {
+        return;  // suggestions are optional
+    }
+    let shown = [];
+    const render = () => {
+        shown = pickSuggestions(all, shown).map(s => s.query);
+        box.innerHTML = shown.map(q => `<button type="button" data-suggestion="${escapeHtml(q)}" title="${escapeHtml(q)}" class="max-w-full truncate font-mono text-xs px-3 py-1.5 rounded-full border border-base-700 bg-base-900 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">${escapeHtml(q)}</button>`).join("")
+            + `<button type="button" data-more-ideas class="font-mono text-xs px-3 py-1.5 text-cyan-400 hover:text-cyan-300">More ideas ↻</button>`;
+    };
+    render();
+
+    box.addEventListener("click", e => {
+        const chipButton = e.target.closest("[data-suggestion]");
+        if (chipButton) {
+            chipButton.blur();  // the search has started; don't keep rotation paused on focus
+            onPick(chipButton.dataset.suggestion);
+        }
+        else if (e.target.closest("[data-more-ideas]")) render();
+    });
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let hovered = false;
+    box.addEventListener("mouseenter", () => { hovered = true; });
+    box.addEventListener("mouseleave", () => { hovered = false; });
+    setInterval(() => {
+        if (!hovered && !box.contains(document.activeElement)) render();
+    }, SUGGESTION_ROTATE_MS);
+}
+
+function initNewCarPage() {
+    const resultsBox = document.getElementById("results");
+    resultsBox.addEventListener("click", e => {
+        const hint = e.target.closest("[data-drop-key]");
+        if (hint) runSearch(currentSearch.q, [...currentSearch.drop, hint.dataset.dropKey], "push");
+        const copy = e.target.closest("[data-copy-link]");
+        if (copy) copyCurrentLink(copy);
+    });
+
+    const box = document.querySelector("[data-suggestions]");
+    if (box) initSuggestions(box, q => runSearch(q, [], "push"));
+
+    window.addEventListener("popstate", () => {
+        const { q, drop } = searchFromUrl();
+        if (q) {
+            runSearch(q, drop, "none");
+        } else {
+            searchSeq++;
+            currentSearch = { q: "", drop: [] };
+            document.getElementById("userQuery").value = "";
+            resultsBox.innerHTML = "";
+        }
+    });
+
+    const fromUrl = searchFromUrl();
+    const saved = localStorage.getItem("userQuery");  // handed over by the landing page's box
+    if (saved) localStorage.removeItem("userQuery");
+    if (fromUrl.q) runSearch(fromUrl.q, fromUrl.drop, "replace");
+    else if (saved) runSearch(saved, [], "replace");
 }
 
 

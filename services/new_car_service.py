@@ -148,7 +148,8 @@ def get_new_car_recommendations(
     df,
     categorical_mappings,
     app_root_path,
-    make_json_safe
+    make_json_safe,
+    drop=None
 ):
     data_source = os.environ.get("DATA_SOURCE", DEFAULT_DATA_SOURCE).strip().lower()
 
@@ -158,7 +159,7 @@ def get_new_car_recommendations(
     if data_source != "kb":
         raise ValueError(f"DATA_SOURCE must be 'kb' or 'legacy', got {data_source!r}")
 
-    return get_kb_recommendations(user_query, app_root_path, make_json_safe)
+    return get_kb_recommendations(user_query, app_root_path, make_json_safe, drop)
 
 
 def data_as_of():
@@ -232,7 +233,8 @@ def _rupees(value):
 
 
 def relaxable_constraints(intent):
-    """(human label, intent with only that constraint dropped) for every active constraint."""
+    """(machine key, human label, intent with only that constraint dropped) for every active constraint.
+    The key is what /predict accepts in `drop` (e.g. "budget", "transmission", "feature:sunroof")."""
     def without(**changes):
         relaxed = dict(intent)
         relaxed.update(changes)
@@ -247,58 +249,76 @@ def relaxable_constraints(intent):
             label = f"budget under {_rupees(budget['max'])}"
         else:
             label = f"budget above {_rupees(budget['min'])}"
-        options.append((label, without(budget={"min": None, "max": None})))
+        options.append(("budget", label, without(budget={"min": None, "max": None})))
     if intent["body_types"]:
-        options.append((" / ".join(intent["body_types"]).upper().replace("HATCHBACK", "hatchback")
+        options.append(("body_type", " / ".join(intent["body_types"]).upper().replace("HATCHBACK", "hatchback")
                         .replace("SEDAN", "sedan").replace("PICKUP", "pickup").replace("VAN", "van")
                         + " body type", without(body_types=[], reference_models=[])))
     if intent["exclude_body_types"]:
-        options.append(("excluding " + ", ".join(intent["exclude_body_types"]), without(exclude_body_types=[])))
+        options.append(("exclude_body_type", "excluding " + ", ".join(intent["exclude_body_types"]),
+                        without(exclude_body_types=[])))
     if intent["fuel_types"]:
-        options.append((" / ".join(intent["fuel_types"]) + " fuel", without(fuel_types=[])))
+        options.append(("fuel", " / ".join(intent["fuel_types"]) + " fuel", without(fuel_types=[])))
     if intent["exclude_fuel_types"]:
-        options.append(("excluding " + ", ".join(intent["exclude_fuel_types"]), without(exclude_fuel_types=[])))
+        options.append(("exclude_fuel", "excluding " + ", ".join(intent["exclude_fuel_types"]),
+                        without(exclude_fuel_types=[])))
     transmission = intent["transmission"]
     if transmission["family"] or transmission["include_types"] or transmission["exclude_types"]:
-        options.append((_transmission_label(transmission),
+        options.append(("transmission", _transmission_label(transmission),
                         without(transmission={"family": None, "include_types": [], "exclude_types": []})))
     if intent["seats_min"] is not None:
-        options.append((f"{intent['seats_min']}+ seats", without(seats_min=None)))
+        options.append(("seats", f"{intent['seats_min']}+ seats", without(seats_min=None)))
     if intent["makes"]:
-        options.append((" / ".join(intent["makes"]), without(makes=[])))
+        options.append(("makes", " / ".join(intent["makes"]), without(makes=[])))
     if intent["models"]:
-        options.append((" / ".join(intent["models"]), without(models=[])))
+        options.append(("models", " / ".join(intent["models"]), without(models=[])))
     if intent["reference_models"]:
-        options.append(("similar to " + ", ".join(intent["reference_models"]), without(reference_models=[])))
+        options.append(("like_model", "similar to " + ", ".join(intent["reference_models"]),
+                        without(reference_models=[])))
     for feature in intent["required_features"]:
-        options.append((FEATURE_COLUMNS[feature][1],
+        options.append((f"feature:{feature}", FEATURE_COLUMNS[feature][1],
                         without(required_features=[f for f in intent["required_features"] if f != feature])))
     for key, (_, label) in MIN_COLUMNS.items():
         if intent[key] is not None:
-            options.append((f"minimum {label} {intent[key]:g}", without(**{key: None})))
+            options.append((key, f"minimum {label} {intent[key]:g}", without(**{key: None})))
     if intent["min_safety_stars"] is not None:
-        options.append((f"{intent['min_safety_stars']}-star safety", without(min_safety_stars=None)))
+        options.append(("min_safety_stars", f"{intent['min_safety_stars']}-star safety",
+                        without(min_safety_stars=None)))
     return options
+
+
+def apply_drops(intent, drop_keys):
+    """Remove the parsed constraints named by `drop_keys`, one at a time (so two feature drops compose).
+    Returns (relaxed intent, [{"key", "label"}] for the keys that matched an active constraint)."""
+    if isinstance(drop_keys, str):
+        drop_keys = [drop_keys]
+    dropped = []
+    for key in dict.fromkeys(drop_keys or []):
+        match = next(((label, relaxed) for k, label, relaxed in relaxable_constraints(intent) if k == key), None)
+        if match:
+            intent = match[1]
+            dropped.append({"key": key, "label": match[0]})
+    return intent, dropped
 
 
 def relaxation_hints(intent):
     """For an empty result: how many models each single dropped constraint would bring back."""
     hints = []
-    for label, relaxed in relaxable_constraints(intent):
+    for key, label, relaxed in relaxable_constraints(intent):
         ranked, _ = rank_candidates(relaxed, filter_candidates(relaxed, get_catalogue()))
         if ranked.empty:
             continue
         models = list(dict.fromkeys(ranked["model"]))
-        hints.append({"drop": label, "would_return": len(models), "top_models": models[:3]})
+        hints.append({"drop": label, "key": key, "would_return": len(models), "top_models": models[:3]})
 
     hints.sort(key=lambda h: -h["would_return"])
     return hints[:MAX_RELAXATION_HINTS]
 
 
-def get_kb_recommendations(user_query, app_root_path, make_json_safe):
+def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None):
     print("🔎 Received new-car query (kb):", user_query)
 
-    intent = parse_intent(user_query)
+    intent, dropped = apply_drops(parse_intent(user_query), drop)
     candidates = filter_candidates(intent, get_catalogue())
     ranked, filters = rank_candidates(intent, candidates)
 
@@ -314,6 +334,8 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe):
         "unsupported_terms": intent["unsupported_terms"],
         "covered_makes": sorted(get_catalogue()["make"].unique().tolist()),
     }
+    if drop is not None:
+        response["dropped"] = dropped
 
     unsupported_note = ""
     if intent["unsupported_terms"]:

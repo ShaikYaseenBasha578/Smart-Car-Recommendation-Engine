@@ -147,7 +147,8 @@ def predict():
             df=df,
             categorical_mappings=categorical_mappings,
             app_root_path=app.root_path,
-            make_json_safe=make_json_safe
+            make_json_safe=make_json_safe,
+            drop=request.json.get("drop")
         )
 
         return jsonify(response_payload), 200
