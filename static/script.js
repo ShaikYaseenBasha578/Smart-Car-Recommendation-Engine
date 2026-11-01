@@ -1,60 +1,59 @@
-
 // ============================================
-// CARREC - AI BENTO RENDERING ENGINE
+// CARREC - page scripts (homepage hero, search thread, result cards)
 // ============================================
+// The /predict response is unchanged; everything buyer-facing (match labels, plain-English
+// reasons, price formatting) is a presentation mapping done here.
 
-// Formatting utility
+// --- small helpers ---
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+}
+
+function trimNumber(n, digits = 2) {
+    return String(Number(n.toFixed(digits)));
+}
+
+// 894000 -> "₹8.94 lakh", 12500000 -> "₹1.25 crore"
 function formatPrice(num) {
-    if (!num || isNaN(num)) return "N/A";
-    return "₹ " + Number(Math.round(num)).toLocaleString("en-IN");
+    if (!num || isNaN(num)) return "Price not listed";
+    num = Number(num);
+    if (num >= 1e7) return `₹${trimNumber(num / 1e7)} crore`;
+    if (num >= 1e5) return `₹${trimNumber(num / 1e5)} lakh`;
+    return "₹" + Math.round(num).toLocaleString("en-IN");
 }
 
-function normalizeScore(score, maxScore) {
-    // Relative confidence mapping based on max score in result set
-    // Clamp top value at 98% and bottom at 15%
-    if (!score || isNaN(score)) return 0;
-    const safeMax = Math.max(maxScore, 30); 
-    let conf = Math.round((score / safeMax) * 98);
-    return Math.max(15, Math.min(98, conf));
+// short form for sentences: 1200000 -> "₹12L"
+function formatBudget(num) {
+    num = Number(num);
+    if (num >= 1e7) return `₹${trimNumber(num / 1e7)}Cr`;
+    return `₹${trimNumber(num / 1e5, 1)}L`;
 }
 
-function createRing(percentage) {
-    // 36px viewBox ring
-    const dash = `${percentage}, 100`;
-    const color = percentage > 80 ? 'text-cyan-400' : (percentage > 50 ? 'text-cyan-600' : 'text-base-600');
-    return `
-        <div class="relative flex items-center justify-center">
-            <svg viewBox="0 0 36 36" class="w-20 h-20 md:w-24 md:h-24 transform -rotate-90">
-                <path class="text-base-800 stroke-current" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="${color} stroke-current transition-all duration-1000 ease-out" stroke-dasharray="${dash}" stroke-width="3" stroke-linecap="round" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                <span class="font-display text-xl md:text-2xl font-bold text-white">${percentage}%</span>
-            </div>
-        </div>
-    `;
+const ICONS = {
+    check: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
+    star: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.7.7-4.2 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.2-4 5.7-.7z"/></svg>',
+    info: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v4.5M10 6.3v.2"/></svg>',
+    plus: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11"/></svg>',
+    external: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5H5a1.5 1.5 0 0 0-1.5 1.5v9A1.5 1.5 0 0 0 5 16.5h9a1.5 1.5 0 0 0 1.5-1.5v-3M11.5 3.5h5v5M16.5 3.5L9 11"/></svg>',
+    arrow: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>',
+    alert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.2v.3"/></svg>'
+};
+
+// --- match label ---
+// r = score / max(top score in this result set, 30), the same normalisation the old % ring used.
+// Thresholds picked from the 187 results of the 28 tests/test_predict_kb.py queries:
+// r >= 0.90 -> Great (75 results), r >= 0.70 -> Good (81), else Fair (31).
+const MATCH_GREAT = 0.9;
+const MATCH_GOOD = 0.7;
+
+function matchLevel(score, topScore) {
+    const r = (Number(score) || 0) / Math.max(topScore, 30);
+    if (r >= MATCH_GREAT) return { key: "great", label: "Great match" };
+    if (r >= MATCH_GOOD) return { key: "good", label: "Good match" };
+    return { key: "fair", label: "Fair match" };
 }
 
-function buildReasonsList(reasons) {
-    if (!reasons || !reasons.length) return '<p class="text-xs text-base-500 font-mono">No specific reasons generated.</p>';
-    return '<ul class="flex flex-col gap-2.5 mt-3">' + reasons.map(r => 
-        `<li class="flex items-start gap-2">
-            <svg class="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            <span class="text-sm text-base-200 leading-snug">${r}</span>
-        </li>`
-    ).join('') + '</ul>';
-}
-
-function buildSpecTile(label, value, wrap = false) {
-    return `
-        <div class="flex-1 min-w-[110px] bg-base-950 border border-base-800 rounded-lg p-3">
-            <p class="font-mono text-[10px] tracking-wider text-base-400 uppercase mb-1">${label}</p>
-            <p class="font-sans font-medium text-white text-sm md:text-base ${wrap ? "break-words" : "whitespace-nowrap"}">${value}</p>
-        </div>
-    `;
-}
-
-// KB result extras (absent on the legacy data path, so every helper tolerates missing fields)
+// --- plain-English reasons ---
 const FEATURE_LABELS = {
     sunroof: "Sunroof",
     adas: "ADAS",
@@ -67,47 +66,105 @@ const FEATURE_LABELS = {
     apple_carplay: "Apple CarPlay"
 };
 const NO_RATING_LABEL = "No Bharat NCAP rating on record";
+const MAX_REASONS = 4;
+const FUEL_REASONS = { petrol: "Runs on petrol", diesel: "Diesel engine", cng: "Runs on CNG", electric: "Fully electric", hybrid: "Hybrid engine" };
+const VOWEL_BODIES = /^(suv|muv|mpv|suv coupe)$/i;
 
-function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+function mileageText(car) {
+    const m = Number(car.ARAI_Certified_Mileage);
+    if (!m) return null;
+    const unit = /cng/i.test(car.Fuel_Type || "") ? "km/kg" : "kmpl";
+    return `${trimNumber(m, 1)} ${unit}`;
 }
 
-function chip(text, kind) {
-    const styles = {
-        accent: "bg-cyan-500/10 border-cyan-500/30 text-cyan-400",
-        plain: "bg-base-950 border-base-700 text-base-200",
-        muted: "bg-base-950 border-base-800 text-base-300 border-dashed"
-    };
-    const icon = kind === "muted"
-        ? '<svg aria-hidden="true" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"></circle><path stroke-linecap="round" stroke-width="2" d="M12 8v5m0 3h.01"></path></svg>'
-        : "";
-    return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border font-mono text-[11px] leading-tight ${styles[kind]}">${icon}<span>${escapeHtml(text)}</span></span>`;
+function budgetReason(intent) {
+    const b = intent && intent.budget;
+    if (b && b.min && b.max) return `In your ${formatBudget(b.min)}–${formatBudget(b.max).slice(1)} range`;
+    if (b && b.max) return `Fits your ${formatBudget(b.max)} budget`;
+    return "Within your budget";
+}
+
+function safetyReason(car) {
+    const s = car.safety;
+    if (!s || !s.stars_adult) return null;
+    return `${s.stars_adult}★ ${s.testing_body || "crash-test"} safety`;
+}
+
+// one raw match_reasons string -> buyer language (null drops it)
+function buyerReason(raw, car, intent) {
+    const text = String(raw).trim();
+    const lower = text.toLowerCase();
+    if (lower === "within budget") return budgetReason(intent);
+    if (lower === "uses budget well for practical use") return "Good value for the money";
+    if (lower === "good mileage" || lower === "fits your mileage preference") {
+        const m = mileageText(car);
+        return m ? `Good mileage (${m})` : null;  // don't claim it next to "Mileage: Not listed"
+    }
+    if (lower === "automatic transmission") return `${car.transmission_label || "Automatic"} gearbox`;
+    if (lower === "manual transmission") return `${car.transmission_label || "Manual"} gearbox`;
+    if (lower === "automatic is easier for parents") return "Automatic, so it's easy to drive";
+    if (lower === "airbags for safety" || lower === "has airbags") return "Has airbags";
+    if (lower === "abs for safety") return "Has ABS brakes";
+    if (lower === "seating capacity" || lower === "extra seating capacity") return "Plenty of seats";
+    if (lower === "suitable seating for family") return "Seats the whole family";
+    if (lower === "very practical family body type") return "Practical shape for families";
+    if (lower === "comfortable family sedan") return "Comfortable family sedan";
+    if (lower === "fits your space preference") return "Roomy inside";
+    let m = lower.match(/^(\w+) fuel preference$/);
+    if (m) return FUEL_REASONS[m[1]] || `Runs on ${m[1]}`;
+    m = text.match(/^(.+) body type$/i);
+    if (m) {
+        const body = /^(suv|muv|mpv)$/i.test(m[1]) ? m[1].toUpperCase() : m[1].toLowerCase();
+        return `It's ${VOWEL_BODIES.test(body) ? "an" : "a"} ${body}`;
+    }
+    m = text.match(/^similar body type, size and price to (.+)$/i);
+    if (m) return `Similar size and price to the ${m[1]}`;
+    const feature = lower.replace(/^has /, "");
+    const key = Object.keys(FEATURE_LABELS).find(k => FEATURE_LABELS[k].toLowerCase() === feature || k === feature);
+    if (key) return key === "sunroof" ? "Has a sunroof" : `Has ${FEATURE_LABELS[key]}`;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function buyerReasons(car, intent) {
+    const out = [];
+    const add = r => { if (r && !out.some(o => o.toLowerCase() === r.toLowerCase())) out.push(r); };
+    const safety = safetyReason(car);
+    if (safety && intent && intent.min_safety_stars) add(safety);  // they asked for it: lead with it
+    (car.match_reasons || []).forEach(r => add(buyerReason(r, car, intent)));
+    if (safety && car.safety.stars_adult >= 4) add(safety);
+    return out.slice(0, MAX_REASONS);
+}
+
+// --- chips under a card: features / safety / unverified ---
+function tag(text, kind, icon = "") {
+    return `<li class="tag tag--${kind}">${icon}<span>${escapeHtml(text)}</span></li>`;
 }
 
 function buildExtraChips(car) {
-    const chips = [];
+    const tags = [];
 
-    (car.matched_features || []).forEach(f => chips.push(chip(FEATURE_LABELS[f] || f, "accent")));
+    (car.matched_features || []).forEach(f => tags.push(tag(FEATURE_LABELS[f] || f, "feature", ICONS.check)));
 
     if (car.safety) {
         const year = car.safety.year ? ` (${car.safety.year})` : "";
-        chips.push(chip(`★ ${car.safety.stars_adult} ${car.safety.testing_body}${year}`, "accent"));
+        tags.push(tag(`${car.safety.stars_adult}-star ${car.safety.testing_body}${year}`, "safety", ICONS.star));
     } else if ("safety" in car) {
-        chips.push(chip(NO_RATING_LABEL, "muted"));
+        tags.push(tag(NO_RATING_LABEL, "unverified", ICONS.info));
     }
 
     (car.unverified || [])
         .filter(u => !(u === NO_RATING_LABEL && "safety" in car && !car.safety))  // already shown above
-        .forEach(u => chips.push(chip(u, "muted")));
+        .forEach(u => tags.push(tag(u, "unverified", ICONS.info)));
 
     if (car.matching_variant_count) {
         const n = car.matching_variant_count;
-        chips.push(chip(`${n} matching variant${n === 1 ? "" : "s"}`, "plain"));
+        tags.push(tag(`${n} matching variant${n === 1 ? "" : "s"}`, "plain"));
     }
 
-    return chips.join("");
+    return tags.join("");
 }
 
+// --- banners, hints, toolbar ---
 function buildUnsupportedBanner(data) {
     if (!data.unsupported_terms || !data.unsupported_terms.length) return "";
     const brands = data.unsupported_terms.join(", ");
@@ -115,39 +172,92 @@ function buildUnsupportedBanner(data) {
     const coveredText = covered.length
         ? ` Showing the closest matches from the ${covered.length} brands we cover: ${covered.join(", ")}.`
         : "";
-    return `<div class="w-full p-4 md:p-5 border border-cyan-500/30 bg-cyan-500/5 rounded-xl text-sm text-base-200 leading-relaxed">
-        <span class="font-mono text-[10px] tracking-widest text-cyan-400 uppercase block mb-1">Not covered</span>
-        We don't cover ${escapeHtml(brands)} yet.${escapeHtml(coveredText)}
-    </div>`;
+    return `<div class="notice" role="status">${ICONS.alert}<div>
+        <strong>We don't cover ${escapeHtml(brands)} yet.</strong>
+        <p>${escapeHtml(coveredText.trim())}</p>
+    </div></div>`;
 }
 
 function buildRelaxationHints(hints) {
     if (!hints || !hints.length) return "";
-    return `<ul class="mt-4 flex flex-col gap-2 text-left max-w-xl mx-auto">` + hints.map(h => {
-        const examples = h.top_models && h.top_models.length ? ` (e.g. ${h.top_models.join(", ")})` : "";
-        const text = `Without ${escapeHtml(h.drop)}: ${h.would_return} option${h.would_return === 1 ? "" : "s"}${escapeHtml(examples)}`;
-        if (!h.key) return `<li class="text-sm text-base-300 font-mono">${text}</li>`;
+    return `<ul class="hints">` + hints.map(h => {
+        const n = h.would_return;
+        const examples = h.top_models && h.top_models.length ? `, e.g. ${h.top_models.join(", ")}` : "";
+        const detail = `${n} option${n === 1 ? "" : "s"}${escapeHtml(examples)}`;
+        if (!h.key) return `<li class="hint-static">Without ${escapeHtml(h.drop)}: ${detail}</li>`;
         // clicking reruns the same query with this constraint dropped
-        return `<li><button type="button" data-drop-key="${escapeHtml(h.key)}" class="w-full text-left text-sm text-base-200 font-mono px-3 py-2 rounded-lg border border-base-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">${text} →</button></li>`;
+        return `<li><button type="button" data-drop-key="${escapeHtml(h.key)}" class="hint-btn">
+            <span><strong>Without ${escapeHtml(h.drop)}</strong><small>${detail}</small></span>${ICONS.arrow}
+        </button></li>`;
     }).join("") + `</ul>`;
 }
 
 function buildDroppedBanner(data) {
     if (!data.dropped || !data.dropped.length) return "";
-    return `<p class="font-mono text-xs text-cyan-400">Showing results without: ${escapeHtml(data.dropped.map(d => d.label).join(", "))}</p>`;
-}
-
-// banner of dropped constraints + data stamp on the left, "Copy link" on the right
-function buildResultsToolbar(data, link) {
-    return `<div class="w-full flex flex-wrap items-center justify-between gap-3">
-        <div class="flex flex-col gap-1 min-w-0">${buildDroppedBanner(data)}${buildDataStamp(data)}</div>
-        <button type="button" data-copy-link="${escapeHtml(link)}" class="shrink-0 font-mono text-xs px-3 py-1.5 rounded-md border border-base-700 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">Copy link</button>
-    </div>`;
+    return `<p class="dropped">Showing results without: ${escapeHtml(data.dropped.map(d => d.label).join(", "))}</p>`;
 }
 
 function buildDataStamp(data) {
     if (!data.data_as_of) return "";
-    return `<p class="font-mono text-[11px] text-base-300 opacity-70">Data: ${escapeHtml(data.data_as_of.exported)} · KB ${escapeHtml(data.data_as_of.kb_phase)}</p>`;
+    const [y, m, d] = String(data.data_as_of.exported).split("-").map(Number);
+    const date = y && m && d
+        ? new Date(y, m - 1, d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+        : data.data_as_of.exported;
+    return `<p class="data-stamp">Car data updated ${escapeHtml(date)} · knowledge base <span class="nowrap">${escapeHtml(data.data_as_of.kb_phase)}</span></p>`;
+}
+
+// dropped-constraint banner + data stamp on the left, "Copy link" on the right
+function buildResultsToolbar(data, link) {
+    return `<div class="toolbar">
+        <div class="toolbar-info">${buildDroppedBanner(data)}${buildDataStamp(data)}</div>
+        <button type="button" data-copy-link="${escapeHtml(link)}" class="btn btn-quiet">Copy link</button>
+    </div>`;
+}
+
+// --- result card ---
+function buildFacts(car) {
+    const isEv = /electric/i.test(car.Fuel_Type || "");
+    const mileage = mileageText(car);
+    const facts = [
+        ["Gearbox", car.transmission_label || car.Transmission || "Not listed"],
+        ["Fuel", car.Fuel_Type || "Not listed"],
+        isEv ? ["Range", "Not listed"] : ["Mileage", mileage || "Not listed"]
+    ];
+    return `<dl class="facts">` + facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("") + `</dl>`;
+}
+
+function buildCarCard(car, index, topScore, intent) {
+    const name = `${car.Make} ${car.Model}`;
+    const image = car.carImage || "/static/pic.avif";
+    const caption = car.imageAttribution
+        ? `Image: ${car.imageAttribution}`
+        : (/\.svg$/.test(image) ? "Illustration: no photo of this model yet" : "");
+    const match = matchLevel(car.ranking_score, topScore);
+    const reasons = buyerReasons(car, intent);
+    const tags = buildExtraChips(car);
+    const link = car.carDekhoLink;
+    return `
+        <article class="car${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}">
+            <figure class="car-photo">
+                ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 2 ? "eager" : "lazy"}" decoding="async">
+                ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
+            </figure>
+            <div class="car-body">
+                <header>
+                    <h3 class="car-title">${escapeHtml(name)}</h3>
+                    ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
+                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span></p>
+                </header>
+                ${buildFacts(car)}
+                <div class="car-meta"><span class="match match--${match.key}">${match.label}</span></div>
+                ${reasons.length ? `<ul class="reasons" aria-label="Why it fits">${reasons.map(r => `<li>${ICONS.check}<span>${escapeHtml(r)}</span></li>`).join("")}</ul>` : ""}
+                ${tags ? `<ul class="tags" aria-label="Features and safety">${tags}</ul>` : ""}
+                ${link ? `<div class="car-actions">
+                    <a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
+                </div>` : ""}
+            </div>
+        </article>`;
 }
 
 // 🆕 NEW CARS HANDLER
@@ -194,9 +304,9 @@ function appendTurn(query, drop) {
     const thread = document.getElementById("results");
     const id = ++turnCount;
     thread.insertAdjacentHTML("beforeend", `
-        <section data-turn="${id}" class="w-full flex flex-col gap-6">
-            <h2 data-turn-heading tabindex="-1" class="scroll-mt-24 font-display text-xl md:text-2xl font-semibold text-white break-words border-t border-base-800 pt-6"><span class="font-mono text-sm text-cyan-500 mr-2">~/query $</span>${escapeHtml(query)}</h2>
-            <div data-turn-body class="w-full flex flex-col gap-8"></div>
+        <section data-turn="${id}" class="turn">
+            <h2 data-turn-heading tabindex="-1" class="turn-head"><span class="turn-label">You searched for</span><span class="turn-query">“${escapeHtml(query)}”</span></h2>
+            <div data-turn-body class="turn-body"></div>
         </section>`);
     while (thread.children.length > MAX_TURNS) thread.firstElementChild.remove();
     const turn = thread.lastElementChild;
@@ -209,6 +319,10 @@ function appendTurn(query, drop) {
 function clearThread() {
     document.getElementById("results").innerHTML = "";
     document.getElementById("followup").hidden = true;
+}
+
+function errorState(message) {
+    return `<div class="state state--error" role="alert"><h3>Something went wrong</h3><p>${escapeHtml(message)} Please try again.</p></div>`;
 }
 
 // push: add a history entry (a new search) or replace the current one (page load, back/forward)
@@ -225,12 +339,7 @@ async function runSearch(query, drop = [], push = true) {
     const scroll = Boolean(turn.previousElementSibling);
 
     const box = turn.querySelector("[data-turn-body]");
-    box.innerHTML = `
-        <div class="w-full h-64 flex flex-col items-center justify-center border border-dashed border-base-800 rounded-2xl">
-            <div class="w-8 h-8 rounded-full border-2 border-cyan-500/20 border-t-cyan-500 animate-spin mb-4"></div>
-            <p class="font-mono text-cyan-500 text-sm animate-pulse">Running ML Intent Parser...</p>
-        </div>
-    `;
+    box.innerHTML = `<div class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Finding cars that match…</div>`;
     if (scroll) scrollToTurn(turn);
 
     try {
@@ -246,7 +355,7 @@ async function runSearch(query, drop = [], push = true) {
         if (scroll) scrollToTurn(turn);
     } catch (error) {
         if (!turn.isConnected) return;
-        box.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Frontend Error: ${error.message}</div>`;
+        box.innerHTML = errorState("We couldn't reach the server.");
     }
 }
 
@@ -254,93 +363,32 @@ function renderResults(box, data, ok, link) {
     box.innerHTML = "";
 
     if (!ok) {
-        box.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Error: ${data.error || "Request failed"}</div>`;
+        box.innerHTML = errorState(data.error || "The search didn't go through.");
         return;
     }
 
     const banner = buildUnsupportedBanner(data);
 
     if (data.message && (!data.recommendations || !data.recommendations.length)) {
-        box.innerHTML = banner + buildResultsToolbar(data, link) + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>`;
+        const hints = buildRelaxationHints(data.relaxation_hints);
+        box.innerHTML = banner + buildResultsToolbar(data, link) + `<div class="state">
+            <h3>${escapeHtml(data.message)}</h3>
+            <p>${hints ? "Loosen one requirement to see close matches:" : "Try a wider budget or fewer must-haves."}</p>
+            ${hints}
+        </div>`;
         return;
     }
 
-    const recs = data.recommendations;
-    if (banner) box.insertAdjacentHTML("beforeend", banner);
-    box.insertAdjacentHTML("beforeend", buildResultsToolbar(data, link));
-    const maxScore = recs.length > 0 ? Math.max(recs[0].ranking_score, 30) : 30;
-
-    recs.forEach((car, index) => {
-        const isHero = index === 0;
-        const price = formatPrice(car["Ex-Showroom_Price"]);
-        const mileage = car["ARAI_Certified_Mileage"] ? Number(car["ARAI_Certified_Mileage"]).toFixed(1) + " kmpl" : "N/A";
-        // KB path: specific gearbox ("Automatic (DCT)"); legacy path: Transmission only
-        const trans = car.transmission_label ? escapeHtml(car.transmission_label) : (car.Transmission || "N/A");
-        const fuel = car.Fuel_Type || "N/A";
-        const confidence = normalizeScore(car.ranking_score, maxScore);
-        const image = car.carImage || "/static/pic.avif";
-        const extraChips = buildExtraChips(car);
-        
-        const bentoHTML = `
-            <div class="w-full grid grid-cols-1 ${isHero ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-4 p-4 md:p-5 bg-base-900 border ${isHero ? 'border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.05)]' : 'border-base-800'} rounded-[24px]">
-                
-                <!-- Hero Image -->
-                <div class="${isHero ? 'col-span-1 md:col-span-2 row-span-2' : 'col-span-1 md:col-span-1'} relative rounded-[16px] overflow-hidden border border-base-800 min-h-[220px] md:min-h-[100%] group">
-                    <img src="${image}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-base-950 via-base-950/20 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-5 md:p-6 w-full">
-                        ${isHero ? '<div class="mb-3"><span class="px-2 py-1 rounded bg-cyan-500 text-base-950 font-bold font-mono text-[10px] tracking-widest uppercase">Top Match</span></div>' : ''}
-                        <h3 class="font-display ${isHero ? 'text-3xl md:text-4xl' : 'text-2xl'} font-bold text-white leading-tight mb-1">${car.Make} ${car.Model}</h3>
-                        <p class="text-base-300 font-mono text-sm">${car.Variant || ''}</p>
-                        ${car.imageAttribution ? `<p class="mt-2 text-base-400 font-mono text-[10px]">Image: ${car.imageAttribution}</p>` : ''}
-                    </div>
-                </div>
-
-                <!-- Confidence -->
-                <div class="col-span-1 bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col items-center justify-center">
-                    ${createRing(confidence)}
-                    <p class="mt-3 font-mono text-[10px] tracking-widest text-base-400 uppercase">Confidence</p>
-                </div>
-
-                <!-- Reasons -->
-                <div class="${isHero ? 'col-span-1 row-span-2' : 'col-span-1 md:col-span-2'} bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col">
-                    <p class="font-mono text-[10px] tracking-widest text-base-400 uppercase">Ranking Logic</p>
-                    <div class="mt-1 flex-1 overflow-y-auto">
-                        ${buildReasonsList(car.match_reasons)}
-                    </div>
-                </div>
-
-                <!-- Specs -->
-                <div class="${isHero ? 'md:col-span-2' : 'md:col-span-4'} flex flex-wrap gap-3 mt-1 md:mt-0">
-                    ${buildSpecTile("PRICE", price)}
-                    ${buildSpecTile("MILEAGE", mileage)}
-                    ${buildSpecTile("FUEL", fuel)}
-                    ${buildSpecTile("TRANS", trans, true)}
-                </div>
-                
-                <!-- Actions -->
-                <div class="${isHero ? 'md:col-span-1' : 'md:col-span-4'} flex flex-col justify-end gap-3 mt-1 md:mt-0">
-                     <a href="${car.carDekhoLink || '#'}" target="_blank" class="w-full text-center py-3 bg-base-800 hover:bg-base-700 text-white font-mono text-sm rounded-[10px] transition-colors border border-base-700">CarDekho</a>
-                </div>
-
-                ${extraChips ? `
-                <!-- KB details -->
-                <div class="${isHero ? 'md:col-span-3' : 'md:col-span-4'} flex flex-wrap gap-2">
-                    ${extraChips}
-                </div>` : ''}
-            </div>
-        `;
-        
-        const wrapper = document.createElement("div");
-        wrapper.innerHTML = bentoHTML;
-        box.appendChild(wrapper.firstElementChild);
-    });
+    const recs = data.recommendations || [];
+    const topScore = recs.length ? Math.max(...recs.map(r => Number(r.ranking_score) || 0)) : 0;
+    box.innerHTML = banner + buildResultsToolbar(data, link)
+        + `<div class="cards">${recs.map((car, i) => buildCarCard(car, i, topScore, data.intent)).join("")}</div>`;
 }
 
 async function copyLink(button) {
     try {
         await navigator.clipboard.writeText(button.dataset.copyLink);
-        button.textContent = "Copied ✓";
+        button.textContent = "Link copied";
     } catch (error) {
         window.prompt("Copy this link:", button.dataset.copyLink);
     }
@@ -388,8 +436,8 @@ async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
     let shown = [];
     const render = () => {
         shown = pickSuggestions(all, shown, count).map(s => s.query);
-        box.innerHTML = shown.map(q => `<button type="button" data-suggestion="${escapeHtml(q)}" title="${escapeHtml(q)}" class="max-w-full truncate font-mono text-xs px-3 py-1.5 rounded-full border border-base-700 bg-base-900 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">${escapeHtml(q)}</button>`).join("")
-            + `<button type="button" data-more-ideas class="font-mono text-xs px-3 py-1.5 text-cyan-400 hover:text-cyan-300">More ideas ↻</button>`;
+        box.innerHTML = shown.map(q => `<button type="button" data-suggestion="${escapeHtml(q)}" title="${escapeHtml(q)}" class="chip-btn">${escapeHtml(q)}</button>`).join("")
+            + `<button type="button" data-more-ideas class="chip-btn chip-more">More ideas ↻</button>`;
     };
     render();
 
@@ -409,6 +457,21 @@ async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
     setInterval(() => {
         if (!hovered && !box.contains(document.activeElement)) render();
     }, SUGGESTION_ROTATE_MS);
+}
+
+// --- homepage hero mosaic (brochure thumbnails from static/hero_images.json) ---
+const HERO_TILES = 24;  // CSS shows 24 / 16 / 12 by viewport; hidden tiles are lazy and never load
+
+async function initHeroMosaic(box) {
+    let images;
+    try {
+        images = await (await fetch("/static/hero_images.json")).json();
+    } catch (error) {
+        return;  // the hero reads fine on its plain dark background
+    }
+    box.innerHTML = shuffled(images).slice(0, HERO_TILES)
+        .map(img => `<img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt)}" width="400" height="300" loading="lazy" decoding="async">`)
+        .join("");
 }
 
 function initNewCarPage() {
@@ -457,7 +520,7 @@ function initNewCarPage() {
     });
 
     const fromUrl = searchFromUrl();
-    const saved = localStorage.getItem("userQuery");  // handed over by the landing page's box
+    const saved = localStorage.getItem("userQuery");  // handed over by older landing-page links
     if (saved) localStorage.removeItem("userQuery");
     const first = fromUrl.q ? fromUrl : (saved ? { q: saved, drop: [] } : null);
     if (first) {

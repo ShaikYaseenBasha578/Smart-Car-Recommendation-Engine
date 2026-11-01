@@ -1,0 +1,13 @@
+<header class="site-header{% if over_hero %} site-header--over{% endif %}">
+    <div class="wrap">
+        <a href="/" class="logo" aria-label="CarRec home">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/><path d="M8 19.5l2-5.2c.4-1 1.3-1.6 2.3-1.6h7.4c1 0 1.9.6 2.3 1.6l2 5.2v3.3a1 1 0 0 1-1 1h-1.3a1 1 0 0 1-1-1v-1H11.3v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" fill="#fff"/><circle cx="11.6" cy="18.6" r="1.3" fill="currentColor"/><circle cx="20.4" cy="18.6" r="1.3" fill="currentColor"/></svg>
+            CarRec
+        </a>
+        <nav class="nav" aria-label="Main">
+            <a href="/recommend"{% if active == 'search' %} aria-current="page"{% endif %}>Find a car</a>
+            <a href="/#how-it-works">How it works</a>
+            {% if used_cars_enabled %}<a href="/used">Used cars</a>{% endif %}
+        </nav>
+    </div>
+</header>

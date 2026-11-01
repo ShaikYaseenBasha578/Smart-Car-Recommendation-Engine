@@ -1,0 +1,362 @@
+[
+ {
+  "src": "/static/car_images/hero/honda_amaze.webp",
+  "alt": "Honda Amaze",
+  "make": "Honda",
+  "model": "Amaze"
+ },
+ {
+  "src": "/static/car_images/hero/honda_city.webp",
+  "alt": "Honda City",
+  "make": "Honda",
+  "model": "City"
+ },
+ {
+  "src": "/static/car_images/hero/honda_elevate.webp",
+  "alt": "Honda Elevate",
+  "make": "Honda",
+  "model": "Elevate"
+ },
+ {
+  "src": "/static/car_images/hero/hyundai_aura.webp",
+  "alt": "Hyundai Aura",
+  "make": "Hyundai",
+  "model": "Aura"
+ },
+ {
+  "src": "/static/car_images/hero/hyundai_exter.webp",
+  "alt": "Hyundai Exter",
+  "make": "Hyundai",
+  "model": "Exter"
+ },
+ {
+  "src": "/static/car_images/hero/hyundai_grand_i10_nios.webp",
+  "alt": "Hyundai Grand i10 Nios",
+  "make": "Hyundai",
+  "model": "Grand i10 Nios"
+ },
+ {
+  "src": "/static/car_images/hero/hyundai_venue.webp",
+  "alt": "Hyundai Venue",
+  "make": "Hyundai",
+  "model": "Venue"
+ },
+ {
+  "src": "/static/car_images/hero/hyundai_verna.webp",
+  "alt": "Hyundai Verna",
+  "make": "Hyundai",
+  "model": "Verna"
+ },
+ {
+  "src": "/static/car_images/hero/kia_carens_clavis.webp",
+  "alt": "Kia Carens Clavis",
+  "make": "Kia",
+  "model": "Carens Clavis"
+ },
+ {
+  "src": "/static/car_images/hero/kia_carens_clavis_ev.webp",
+  "alt": "Kia Carens Clavis EV",
+  "make": "Kia",
+  "model": "Carens Clavis EV"
+ },
+ {
+  "src": "/static/car_images/hero/kia_seltos.webp",
+  "alt": "Kia Seltos",
+  "make": "Kia",
+  "model": "Seltos"
+ },
+ {
+  "src": "/static/car_images/hero/kia_syros.webp",
+  "alt": "Kia Syros",
+  "make": "Kia",
+  "model": "Syros"
+ },
+ {
+  "src": "/static/car_images/hero/mg_hector.webp",
+  "alt": "MG Hector",
+  "make": "MG",
+  "model": "Hector"
+ },
+ {
+  "src": "/static/car_images/hero/mg_windsor_ev.webp",
+  "alt": "MG Windsor EV",
+  "make": "MG",
+  "model": "Windsor EV"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_bolero.webp",
+  "alt": "Mahindra Bolero",
+  "make": "Mahindra",
+  "model": "Bolero"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_scorpio_classic.webp",
+  "alt": "Mahindra Scorpio Classic",
+  "make": "Mahindra",
+  "model": "Scorpio Classic"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_scorpio_n.webp",
+  "alt": "Mahindra Scorpio-N",
+  "make": "Mahindra",
+  "model": "Scorpio-N"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_thar.webp",
+  "alt": "Mahindra Thar",
+  "make": "Mahindra",
+  "model": "Thar"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_xuv_3xo.webp",
+  "alt": "Mahindra XUV 3XO",
+  "make": "Mahindra",
+  "model": "XUV 3XO"
+ },
+ {
+  "src": "/static/car_images/hero/mahindra_xuv_7xo.webp",
+  "alt": "Mahindra XUV 7XO",
+  "make": "Mahindra",
+  "model": "XUV 7XO"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_alto_k10.webp",
+  "alt": "Maruti Suzuki Alto K10",
+  "make": "Maruti Suzuki",
+  "model": "Alto K10"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_baleno.webp",
+  "alt": "Maruti Suzuki Baleno",
+  "make": "Maruti Suzuki",
+  "model": "Baleno"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_brezza.webp",
+  "alt": "Maruti Suzuki Brezza",
+  "make": "Maruti Suzuki",
+  "model": "Brezza"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_dzire.webp",
+  "alt": "Maruti Suzuki Dzire",
+  "make": "Maruti Suzuki",
+  "model": "Dzire"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_eeco.webp",
+  "alt": "Maruti Suzuki Eeco",
+  "make": "Maruti Suzuki",
+  "model": "Eeco"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_ertiga.webp",
+  "alt": "Maruti Suzuki Ertiga",
+  "make": "Maruti Suzuki",
+  "model": "Ertiga"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_fronx.webp",
+  "alt": "Maruti Suzuki Fronx",
+  "make": "Maruti Suzuki",
+  "model": "Fronx"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_grand_vitara.webp",
+  "alt": "Maruti Suzuki Grand Vitara",
+  "make": "Maruti Suzuki",
+  "model": "Grand Vitara"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_jimny.webp",
+  "alt": "Maruti Suzuki Jimny",
+  "make": "Maruti Suzuki",
+  "model": "Jimny"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_s_presso.webp",
+  "alt": "Maruti Suzuki S-Presso",
+  "make": "Maruti Suzuki",
+  "model": "S-Presso"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_swift.webp",
+  "alt": "Maruti Suzuki Swift",
+  "make": "Maruti Suzuki",
+  "model": "Swift"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_victoris.webp",
+  "alt": "Maruti Suzuki Victoris",
+  "make": "Maruti Suzuki",
+  "model": "Victoris"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_wagonr.webp",
+  "alt": "Maruti Suzuki WagonR",
+  "make": "Maruti Suzuki",
+  "model": "WagonR"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_xl6.webp",
+  "alt": "Maruti Suzuki XL6",
+  "make": "Maruti Suzuki",
+  "model": "XL6"
+ },
+ {
+  "src": "/static/car_images/hero/maruti_suzuki_e_vitara.webp",
+  "alt": "Maruti Suzuki e VITARA",
+  "make": "Maruti Suzuki",
+  "model": "e VITARA"
+ },
+ {
+  "src": "/static/car_images/hero/nissan_gravite.webp",
+  "alt": "Nissan Gravite",
+  "make": "Nissan",
+  "model": "Gravite"
+ },
+ {
+  "src": "/static/car_images/hero/nissan_magnite.webp",
+  "alt": "Nissan Magnite",
+  "make": "Nissan",
+  "model": "Magnite"
+ },
+ {
+  "src": "/static/car_images/hero/renault_duster.webp",
+  "alt": "Renault Duster",
+  "make": "Renault",
+  "model": "Duster"
+ },
+ {
+  "src": "/static/car_images/hero/renault_triber.webp",
+  "alt": "Renault Triber",
+  "make": "Renault",
+  "model": "Triber"
+ },
+ {
+  "src": "/static/car_images/hero/skoda_kushaq.webp",
+  "alt": "Skoda Kushaq",
+  "make": "Skoda",
+  "model": "Kushaq"
+ },
+ {
+  "src": "/static/car_images/hero/skoda_kylaq.webp",
+  "alt": "Skoda Kylaq",
+  "make": "Skoda",
+  "model": "Kylaq"
+ },
+ {
+  "src": "/static/car_images/hero/skoda_slavia.webp",
+  "alt": "Skoda Slavia",
+  "make": "Skoda",
+  "model": "Slavia"
+ },
+ {
+  "src": "/static/car_images/hero/tata_altroz.webp",
+  "alt": "Tata Altroz",
+  "make": "Tata",
+  "model": "Altroz"
+ },
+ {
+  "src": "/static/car_images/hero/tata_harrier.webp",
+  "alt": "Tata Harrier",
+  "make": "Tata",
+  "model": "Harrier"
+ },
+ {
+  "src": "/static/car_images/hero/tata_nexon.webp",
+  "alt": "Tata Nexon",
+  "make": "Tata",
+  "model": "Nexon"
+ },
+ {
+  "src": "/static/car_images/hero/tata_nexon_ev.webp",
+  "alt": "Tata Nexon EV",
+  "make": "Tata",
+  "model": "Nexon EV"
+ },
+ {
+  "src": "/static/car_images/hero/tata_punch_ev.webp",
+  "alt": "Tata Punch EV",
+  "make": "Tata",
+  "model": "Punch EV"
+ },
+ {
+  "src": "/static/car_images/hero/tata_tiago.webp",
+  "alt": "Tata Tiago",
+  "make": "Tata",
+  "model": "Tiago"
+ },
+ {
+  "src": "/static/car_images/hero/tata_tiago_ev.webp",
+  "alt": "Tata Tiago EV",
+  "make": "Tata",
+  "model": "Tiago EV"
+ },
+ {
+  "src": "/static/car_images/hero/tata_tigor.webp",
+  "alt": "Tata Tigor",
+  "make": "Tata",
+  "model": "Tigor"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_fortuner.webp",
+  "alt": "Toyota Fortuner",
+  "make": "Toyota",
+  "model": "Fortuner"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_glanza.webp",
+  "alt": "Toyota Glanza",
+  "make": "Toyota",
+  "model": "Glanza"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_hilux.webp",
+  "alt": "Toyota Hilux",
+  "make": "Toyota",
+  "model": "Hilux"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_innova_crysta.webp",
+  "alt": "Toyota Innova Crysta",
+  "make": "Toyota",
+  "model": "Innova Crysta"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_innova_hycross.webp",
+  "alt": "Toyota Innova Hycross",
+  "make": "Toyota",
+  "model": "Innova Hycross"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_rumion.webp",
+  "alt": "Toyota Rumion",
+  "make": "Toyota",
+  "model": "Rumion"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_urban_cruiser_hyryder.webp",
+  "alt": "Toyota Urban Cruiser Hyryder",
+  "make": "Toyota",
+  "model": "Urban Cruiser Hyryder"
+ },
+ {
+  "src": "/static/car_images/hero/toyota_urban_cruiser_taisor.webp",
+  "alt": "Toyota Urban Cruiser Taisor",
+  "make": "Toyota",
+  "model": "Urban Cruiser Taisor"
+ },
+ {
+  "src": "/static/car_images/hero/volkswagen_taigun.webp",
+  "alt": "Volkswagen Taigun",
+  "make": "Volkswagen",
+  "model": "Taigun"
+ },
+ {
+  "src": "/static/car_images/hero/volkswagen_virtus.webp",
+  "alt": "Volkswagen Virtus",
+  "make": "Volkswagen",
+  "model": "Virtus"
+ }
+]
