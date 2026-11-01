@@ -2,7 +2,7 @@
 
     python tests/ui_gates.py http://127.0.0.1:5077 [--shots DIR]
 
-Runs every user flow at 1440x900 and 390x844 and prints one PASS/FAIL line per check.
+Runs every user flow at 1440x900, 1366x860 and 390x844 and prints one PASS/FAIL line per check.
 Exit status 1 if any check fails.
 """
 
@@ -13,7 +13,10 @@ from urllib.parse import parse_qs, quote, urlparse
 
 from playwright.sync_api import sync_playwright
 
-VIEWPORTS = {"desktop": (1440, 900), "mobile": (390, 844)}
+VIEWPORTS = {"desktop": (1440, 900), "laptop": (1366, 860), "mobile": (390, 844)}
+MAX_CARD_HEIGHT = 340
+CARD_QUERIES = {"sunroof": "sunroof wali SUV 12 lakh ke andar", "cng": "CNG gaadi under 8 lakh", "ev": "EV under 15 lakh"}
+BUDGET_REASON = re.compile(r"₹[\d.]+L under your budget|Right at your budget")
 BANNED = ["ML Intent", "Latency", "Regex", "Execute", "/new_cars", "Ranking logic", "confidence"]
 MAX_HOME_BYTES = 3 * 1024 * 1024
 
@@ -89,6 +92,67 @@ def full_shot(page, path):
     page.screenshot(path=path, full_page=True)
 
 
+CARD_INFO_JS = """() => [...document.querySelectorAll('article.car')].map(c => {
+    const r = c.getBoundingClientRect(), photo = c.querySelector('.car-photo').getBoundingClientRect(),
+          body = c.querySelector('.car-body').getBoundingClientRect();
+    return {
+        name: c.getAttribute('aria-label'), height: Math.round(r.height),
+        photoAbove: photo.bottom <= body.top + 1, photoLeft: photo.right <= body.left + 1,
+        facts: c.querySelector('.facts').innerText.replace(/\\s+/g, ' '),
+        reasons: [...c.querySelectorAll('.reasons li')].map(li => li.innerText.trim()),
+        chips: [...c.querySelectorAll('.tag')].map(t => t.innerText.trim()),
+    };
+})"""
+
+
+def card_checks(page, base, tag, w, shots):
+    for key, q in CARD_QUERIES.items():
+        predict(page, lambda: page.goto(base + "/recommend?q=" + quote(q)))
+        cards = page.evaluate(CARD_INFO_JS)
+        check(f"{tag} [{key}]: has cards", cards, len(cards))
+        if w >= 1024:
+            heights = [c["height"] for c in cards]
+            check(f"{tag} [{key}]: every card <= {MAX_CARD_HEIGHT}px tall", all(h <= MAX_CARD_HEIGHT for h in heights), heights)
+            check(f"{tag} [{key}]: photo left of content", all(c["photoLeft"] for c in cards))
+        else:
+            check(f"{tag} [{key}]: photo above content", all(c["photoAbove"] for c in cards))
+        sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+        check(f"{tag} [{key}]: no horizontal overflow", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
+        dupes = [(c["name"], r, ch) for c in cards for r in c["reasons"] for ch in c["chips"]
+                 if r.lower() in ch.lower() or ch.lower() in r.lower()]
+        check(f"{tag} [{key}]: no reason duplicates a chip", not dupes, dupes[:3])
+        if w == 1366:
+            page.locator("article.car").first.evaluate("el => el.scrollIntoView({ block: 'start' })")
+            page.wait_for_timeout(300)
+            full = page.evaluate("""() => {
+                const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
+                return [...document.querySelectorAll('article.car')].filter(c => {
+                    const r = c.getBoundingClientRect(); return r.top >= top - 1 && r.bottom <= innerHeight + 1;
+                }).length;
+            }""")
+            check(f"{tag} [{key}]: >= 2 full cards visible after scrolling the first to the top", full >= 2, full)
+        if key == "cng":
+            kmkg = [c for c in cards if "km/kg" in c["facts"]]
+            check(f"{tag} [cng]: a card shows km/kg", kmkg, len(kmkg))
+            # cards whose response has mileage_km_per_kg must never say Not listed
+            data = page.evaluate("q => fetch('/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({query: q})}).then(r => r.json())", q)
+            have = {f"{r['Make']} {r['Model']}" for r in data["recommendations"] if r.get("mileage_km_per_kg")}
+            bad = [c["name"] for c in cards if c["name"] in have and ("Not listed" in c["facts"] or "km/kg" not in c["facts"])]
+            check(f"{tag} [cng]: km/kg shown wherever it exists", have and not bad, bad or f"{len(have)} with km/kg")
+        if key == "ev":
+            bad = [c["facts"] for c in cards if not re.search(r"Range: \d+ km", c["facts"])]
+            check(f"{tag} [ev]: every card shows 'Range: <n> km'", not bad, bad[:2])
+        if key == "sunroof":
+            echo = [r for c in cards for r in c["reasons"] if re.search("suv|sunroof", r, re.I)]
+            check(f"{tag} [sunroof]: no reason mentions SUV or sunroof", not echo, echo[:3])
+            budget = [r for c in cards for r in c["reasons"] if "budget" in r.lower()]
+            check(f"{tag} [sunroof]: budget reasons are headroom", budget and all(BUDGET_REASON.fullmatch(r) for r in budget), budget[:3])
+            check(f"{tag} [sunroof]: no bare 'Fits your budget'", not any("fits your" in r.lower() for c in cards for r in c["reasons"]))
+            print(f"INFO  {tag} [sunroof] reasons: " + " | ".join(f"{c['name']}: {c['reasons']}" for c in cards))
+        if shots and w in (1366, 390):
+            full_shot(page, f"{shots}/{tag}-{key}.png")
+
+
 def last_turn(page):
     return page.locator("[data-turn]").last
 
@@ -121,7 +185,7 @@ def run(base, shots):
             page.wait_for_load_state("networkidle")
             visible = page.evaluate("""() => [...document.querySelectorAll('#hero-mosaic img')]
                 .filter(i => i.checkVisibility()).map(i => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 }))""")
-            need = 12 if vp_name == "desktop" else 6
+            need = 12 if w >= 1024 else 6
             check(f"{tag}: hero shows >= {need} images", len(visible) >= need, len(visible))
             check(f"{tag}: every visible hero image loaded", all(v["ok"] for v in visible))
             bad_status = {u: s for u, s in hero_status.items() if s != 200}
@@ -160,9 +224,8 @@ def run(base, shots):
             check(f"{tag}: card has photo + caption", first.locator(".car-photo img").count() == 1 and "Image:" in first.locator("figcaption").inner_text())
             labels = page.locator(".match").all_inner_texts()
             check(f"{tag}: match labels", labels and all(l in ("Great match", "Good match", "Fair match") for l in labels), labels[:3])
-            reasons = [first.locator(".reasons li").count() for first in cards.all()]
-            check(f"{tag}: 1-4 reasons per card", all(1 <= n <= 4 for n in reasons), reasons)
-            check(f"{tag}: budget reason in buyer language", "Fits your ₹12L budget" in page.locator(".reasons").first.inner_text())
+            reasons = [c.locator(".reasons li").count() for c in cards.all()]
+            check(f"{tag}: at most 4 reasons per card", all(n <= 4 for n in reasons), reasons)
             check(f"{tag}: feature chip (Sunroof)", page.locator(".tag--feature", has_text="Sunroof").count() > 0)
             check(f"{tag}: matching_variant_count chip", page.locator(".tag", has_text=re.compile(r"\d+ matching variants?")).count() > 0)
             check(f"{tag}: safety chip or no-rating chip", page.locator(".tag--safety").count() + page.locator(".tag", has_text="No Bharat NCAP rating on record").count() > 0)
@@ -176,9 +239,11 @@ def run(base, shots):
             if shots:
                 full_shot(page, f"{shots}/{tag}-results-sunroof.png")
 
+            card_checks(page, base, tag, w, shots)
+
             # transmission label
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("DCT petrol under 15 lakh")))
-            check(f"{tag}: transmission label 'Automatic (DCT)'", page.locator(".facts dd", has_text="Automatic (DCT)").count() > 0)
+            check(f"{tag}: transmission label 'Automatic (DCT)'", page.locator(".facts", has_text="Automatic (DCT)").count() > 0)
 
             # unverified chips somewhere in a broad result set
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("5 star safety sedan")))
