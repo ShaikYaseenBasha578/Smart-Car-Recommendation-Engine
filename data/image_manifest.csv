@@ -1,27 +1,29 @@
 make,model,filename,source,license,attribution
-Honda,Amaze,honda_amaze.jpg,unknown — legacy,unknown — legacy,
-Honda,City,honda_city.jpg,unknown — legacy,unknown — legacy,
+Honda,Amaze,honda_amaze.webp,"honda_amaze_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Honda brochure
+Honda,City,honda_city.webp,"honda_city_brochure.pdf, p.15",OEM brochure — not licensed for reuse; replace for commercial use,Honda brochure
 Honda,Elevate,honda_elevate.webp,"honda_elevate_brochure.pdf, p.41",OEM brochure — not licensed for reuse; replace for commercial use,Honda brochure
-Hyundai,Aura,hyundai_aura.jpg,unknown — legacy,unknown — legacy,
-Hyundai,Creta,hyundai_creta.jpg,unknown — legacy,unknown — legacy,
+Hyundai,Aura,hyundai_aura.webp,"Aura_Brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Hyundai brochure
 Hyundai,Exter,hyundai_exter.webp,"hyundai_exter_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Hyundai brochure
-Hyundai,Grand i10 Nios,hyundai_grand-i10-nios.jpg,unknown — legacy,unknown — legacy,
-Hyundai,Venue,hyundai_venue.jpg,unknown — legacy,unknown — legacy,
-Hyundai,Verna,hyundai_verna.jpg,unknown — legacy,unknown — legacy,
+Hyundai,Grand i10 Nios,hyundai_grand_i10_nios.webp,"Grand_i10_Nios_Brochure.pdf, p.6",OEM brochure — not licensed for reuse; replace for commercial use,Hyundai brochure
+Hyundai,Venue,hyundai_venue.webp,"hyundai_venue_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Hyundai brochure
+Hyundai,Verna,hyundai_verna.webp,"hyundai_verna_brochure.pdf, p.10",OEM brochure — not licensed for reuse; replace for commercial use,Hyundai brochure
 Kia,Carens Clavis,kia_carens_clavis.webp,"kia_carens_clavis_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Kia brochure
 Kia,Carens Clavis EV,kia_carens_clavis_ev.webp,"kia_carens_clavis_ev_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Kia brochure
-Kia,Seltos,kia_seltos.jpg,unknown — legacy,unknown — legacy,
+Kia,Seltos,kia_seltos.webp,"kia_seltos_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Kia brochure
 Kia,Syros,kia_syros.webp,"kia_syros_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Kia brochure
-MG,Hector,mg_hector.jpg,unknown — legacy,unknown — legacy,
-Mahindra,Bolero,mahindra_bolero.jpg,unknown — legacy,unknown — legacy,
+MG,Hector,mg_hector.webp,"mg_hector_brochure.pdf, p.12",OEM brochure — not licensed for reuse; replace for commercial use,MG brochure
+MG,Windsor EV,mg_windsor_ev.webp,"mg_windsor_ev_brochure.pdf, p.36",OEM brochure — not licensed for reuse; replace for commercial use,MG brochure
+Mahindra,Bolero,mahindra_bolero.webp,"mahindra_bolero_brochure.pdf, p.4",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
 Mahindra,Scorpio Classic,mahindra_scorpio_classic.webp,"mahindra_scorpio_classic_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
 Mahindra,Scorpio-N,mahindra_scorpio_n.webp,"mahindra_scorpio_n_brochure.pdf, p.4",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
-Mahindra,Thar,mahindra_thar.jpg,unknown — legacy,unknown — legacy,
+Mahindra,Thar,mahindra_thar.webp,"mahindra_thar_brochure.pdf, p.18",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
 Mahindra,XUV 3XO,mahindra_xuv_3xo.webp,"mahindra_xuv_3xo_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
 Mahindra,XUV 7XO,mahindra_xuv_7xo.webp,"mahindra_xuv_7xo_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Mahindra brochure
 Maruti Suzuki,Alto K10,maruti_suzuki_alto_k10.webp,"maruti_suzuki_alto_k10_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
+Maruti Suzuki,Baleno,maruti_suzuki_baleno.webp,"Baleno_Brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Brezza,maruti_suzuki_brezza.webp,"maruti_suzuki_brezza_brochure.pdf, p.5",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Dzire,maruti_suzuki_dzire.webp,"maruti_suzuki_dzire_brochure.pdf, p.2",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
+Maruti Suzuki,Eeco,maruti_suzuki_eeco.webp,"maruti_suzuki_eeco_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Ertiga,maruti_suzuki_ertiga.webp,"maruti_suzuki_ertiga_brochure.pdf, p.4",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Fronx,maruti_suzuki_fronx.webp,"Fronx_Brochure.pdf, p.16",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Grand Vitara,maruti_suzuki_grand_vitara.webp,"maruti_suzuki_grand_vitara_brochure.pdf, p.14",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
@@ -29,29 +31,31 @@ Maruti Suzuki,Jimny,maruti_suzuki_jimny.webp,"maruti_suzuki_jimny_brochure.pdf, 
 Maruti Suzuki,S-Presso,maruti_suzuki_s_presso.webp,"maruti_suzuki_s_presso_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Swift,maruti_suzuki_swift.webp,"Maruti_Suzuki_Swift_Gen4_2024_Official_Brochure.pdf, p.4",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,Victoris,maruti_suzuki_victoris.webp,"maruti_suzuki_victoris_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
+Maruti Suzuki,WagonR,maruti_suzuki_wagonr.webp,"WagonR_Brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,XL6,maruti_suzuki_xl6.webp,"NEXA-Xl6-Brochure.pdf, p.12",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Maruti Suzuki,e VITARA,maruti_suzuki_e_vitara.webp,"maruti_suzuki_e_vitara_brochure.pdf, p.6",OEM brochure — not licensed for reuse; replace for commercial use,Maruti Suzuki brochure
 Nissan,Gravite,nissan_gravite.webp,"nissan_gravite_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Nissan brochure
 Nissan,Magnite,nissan_magnite.webp,"nissan_magnite_brochure.pdf, p.14",OEM brochure — not licensed for reuse; replace for commercial use,Nissan brochure
-Renault,Duster,renault_duster.jpg,unknown — legacy,unknown — legacy,
-Renault,Triber,renault_triber.jpg,unknown — legacy,unknown — legacy,
+Renault,Duster,renault_duster.webp,"renault_duster_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Renault brochure
+Renault,Triber,renault_triber.webp,"renault_triber_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Renault brochure
 Skoda,Kushaq,skoda_kushaq.webp,"kushaq_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Skoda brochure
 Skoda,Kylaq,skoda_kylaq.webp,"kylaq_brochure.pdf, p.18",OEM brochure — not licensed for reuse; replace for commercial use,Skoda brochure
 Skoda,Slavia,skoda_slavia.webp,"slavia_brochure.pdf, p.35",OEM brochure — not licensed for reuse; replace for commercial use,Skoda brochure
-Tata,Altroz,tata_altroz.jpg,unknown — legacy,unknown — legacy,
-Tata,Harrier,tata_harrier.jpg,unknown — legacy,unknown — legacy,
-Tata,Nexon,tata_nexon.jpg,unknown — legacy,unknown — legacy,
-Tata,Nexon EV,tata_nexon-ev.jpg,unknown — legacy,unknown — legacy,
+Tata,Altroz,tata_altroz.webp,"tata_altroz_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
+Tata,Harrier,tata_harrier.webp,"tata_harrier_brochure.pdf, p.4",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
+Tata,Nexon,tata_nexon.webp,"tata_nexon_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
+Tata,Nexon EV,tata_nexon_ev.webp,"nexon-ev-brochure.pdf, p.7",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
 Tata,Punch EV,tata_punch_ev.webp,"tata_punch_ev_brochure.pdf, p.21",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
-Tata,Tiago,tata_tiago.jpg,unknown — legacy,unknown — legacy,
+Tata,Tiago,tata_tiago.webp,"tata_tiago_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
 Tata,Tiago EV,tata_tiago_ev.webp,"tiago-brochure-evf-final.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
-Tata,Tigor,tata_tigor.jpg,unknown — legacy,unknown — legacy,
-Toyota,Fortuner,toyota_fortuner.jpg,unknown — legacy,unknown — legacy,
-Toyota,Glanza,toyota_glanza.jpg,unknown — legacy,unknown — legacy,
+Tata,Tigor,tata_tigor.webp,"tata_tigor_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Tata brochure
+Toyota,Fortuner,toyota_fortuner.webp,"toyota_fortuner_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
+Toyota,Glanza,toyota_glanza.webp,"toyota_glanza_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
 Toyota,Hilux,toyota_hilux.webp,"toyota_hilux_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
-Toyota,Innova Crysta,toyota_innova-crysta.jpg,unknown — legacy,unknown — legacy,
+Toyota,Innova Crysta,toyota_innova_crysta.webp,"toyota_innova_crysta_brochure.pdf, p.2",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
 Toyota,Innova Hycross,toyota_innova_hycross.webp,"e-brochure-hycross.pdf, p.11",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
 Toyota,Rumion,toyota_rumion.webp,"toyota_rumion_brochure.pdf, p.3",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
 Toyota,Urban Cruiser Hyryder,toyota_urban_cruiser_hyryder.webp,"toyota_urban_cruiser_hyryder_brochure.pdf, p.6",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
 Toyota,Urban Cruiser Taisor,toyota_urban_cruiser_taisor.webp,"toyota_urban_cruiser_taisor_brochure.pdf, p.5",OEM brochure — not licensed for reuse; replace for commercial use,Toyota brochure
+Volkswagen,Taigun,volkswagen_taigun.webp,"volkswagen_taigun_brochure.pdf, p.1",OEM brochure — not licensed for reuse; replace for commercial use,Volkswagen brochure
 Volkswagen,Virtus,volkswagen_virtus.webp,"volkswagen_virtus_brochure.pdf, p.7",OEM brochure — not licensed for reuse; replace for commercial use,Volkswagen brochure
