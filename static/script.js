@@ -138,10 +138,10 @@ function buildDroppedBanner(data) {
 }
 
 // banner of dropped constraints + data stamp on the left, "Copy link" on the right
-function buildResultsToolbar(data) {
+function buildResultsToolbar(data, link) {
     return `<div class="w-full flex flex-wrap items-center justify-between gap-3">
         <div class="flex flex-col gap-1 min-w-0">${buildDroppedBanner(data)}${buildDataStamp(data)}</div>
-        <button type="button" data-copy-link class="shrink-0 font-mono text-xs px-3 py-1.5 rounded-md border border-base-700 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">Copy link</button>
+        <button type="button" data-copy-link="${escapeHtml(link)}" class="shrink-0 font-mono text-xs px-3 py-1.5 rounded-md border border-base-700 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">Copy link</button>
     </div>`;
 }
 
@@ -151,10 +151,11 @@ function buildDataStamp(data) {
 }
 
 // 🆕 NEW CARS HANDLER
-// The current search lives in the URL (?q=<query>&drop=<key>,<key>), so results can be shared,
-// reopened and walked with back/forward.
-let currentSearch = { q: "", drop: [] };
-let searchSeq = 0;
+// Results are a thread of turns: every search (top box, follow-up box, chip or hint) appends a turn
+// below the previous ones. v1: each query is independent; nothing carries over between turns.
+// The latest search also lives in the URL (?q=<query>&drop=<key>,<key>) for sharing and back/forward.
+const MAX_TURNS = 10;
+let turnCount = 0;
 
 function searchUrl(q, drop) {
     const params = new URLSearchParams({ q });
@@ -168,29 +169,69 @@ function searchFromUrl() {
     return { q: params.get("q") || "", drop };
 }
 
-function sendQuery(event) {
-    if (event) event.preventDefault();
-    return runSearch(document.getElementById("userQuery").value, [], "push");
+function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-// history: "push" (new search), "replace" (page load) or "none" (back/forward)
-async function runSearch(query, drop = [], history = "push") {
-    const resultsBox = document.getElementById("results");
+function scrollToTurn(turn) {
+    turn.querySelector("[data-turn-heading]").scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+}
+
+function sendQuery(event) {
+    if (event) event.preventDefault();
+    return runSearch(document.getElementById("userQuery").value, []);
+}
+
+function sendFollowup(event) {
+    if (event) event.preventDefault();
+    const input = document.getElementById("followupQuery");
+    const query = input.value;
+    input.value = "";
+    return runSearch(query, []);
+}
+
+function appendTurn(query, drop) {
+    const thread = document.getElementById("results");
+    const id = ++turnCount;
+    thread.insertAdjacentHTML("beforeend", `
+        <section data-turn="${id}" class="w-full flex flex-col gap-6">
+            <h2 data-turn-heading tabindex="-1" class="scroll-mt-24 font-display text-xl md:text-2xl font-semibold text-white break-words border-t border-base-800 pt-6"><span class="font-mono text-sm text-cyan-500 mr-2">~/query $</span>${escapeHtml(query)}</h2>
+            <div data-turn-body class="w-full flex flex-col gap-8"></div>
+        </section>`);
+    while (thread.children.length > MAX_TURNS) thread.firstElementChild.remove();
+    const turn = thread.lastElementChild;
+    turn.dataset.q = query;
+    turn.dataset.drop = drop.join(",");
+    document.getElementById("followup").hidden = false;
+    return turn;
+}
+
+function clearThread() {
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("followup").hidden = true;
+}
+
+// push: add a history entry (a new search) or replace the current one (page load, back/forward)
+async function runSearch(query, drop = [], push = true) {
     if (!query.trim()) return;
 
-    document.getElementById("userQuery").value = query;
-    currentSearch = { q: query, drop };
+    const turn = appendTurn(query, drop);
     const url = searchUrl(query, drop);
-    if (history === "push" && url !== location.pathname + location.search) window.history.pushState(currentSearch, "", url);
-    if (history === "replace") window.history.replaceState(currentSearch, "", url);
-    const seq = ++searchSeq;
+    const state = { q: query, drop, turn: turn.dataset.turn };
+    if (push && url !== location.pathname + location.search) window.history.pushState(state, "", url);
+    else window.history.replaceState(state, "", url);
+    // the first turn sits right under the top box; later turns are scrolled into view, again once
+    // their results are in (the page may be too short to bring the heading up before that)
+    const scroll = Boolean(turn.previousElementSibling);
 
-    resultsBox.innerHTML = `
+    const box = turn.querySelector("[data-turn-body]");
+    box.innerHTML = `
         <div class="w-full h-64 flex flex-col items-center justify-center border border-dashed border-base-800 rounded-2xl">
             <div class="w-8 h-8 rounded-full border-2 border-cyan-500/20 border-t-cyan-500 animate-spin mb-4"></div>
             <p class="font-mono text-cyan-500 text-sm animate-pulse">Running ML Intent Parser...</p>
         </div>
     `;
+    if (scroll) scrollToTurn(turn);
 
     try {
         const response = await fetch("/predict", {
@@ -198,106 +239,110 @@ async function runSearch(query, drop = [], history = "push") {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(drop.length ? { query, drop } : { query })
         });
-        
+
         const data = await response.json();
-        if (seq !== searchSeq) return;  // a newer search has started
-        resultsBox.innerHTML = "";
-
-        if (!response.ok) {
-            resultsBox.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Error: ${data.error || "Request failed"}</div>`;
-            return;
-        }
-        
-        const banner = buildUnsupportedBanner(data);
-
-        if (data.message && (!data.recommendations || !data.recommendations.length)) {
-            resultsBox.innerHTML = banner + buildResultsToolbar(data) + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>`;
-            return;
-        }
-
-        const recs = data.recommendations;
-        if (banner) resultsBox.insertAdjacentHTML("beforeend", banner);
-        resultsBox.insertAdjacentHTML("beforeend", buildResultsToolbar(data));
-        const maxScore = recs.length > 0 ? Math.max(recs[0].ranking_score, 30) : 30;
-
-        recs.forEach((car, index) => {
-            const isHero = index === 0;
-            const price = formatPrice(car["Ex-Showroom_Price"]);
-            const mileage = car["ARAI_Certified_Mileage"] ? Number(car["ARAI_Certified_Mileage"]).toFixed(1) + " kmpl" : "N/A";
-            // KB path: specific gearbox ("Automatic (DCT)"); legacy path: Transmission only
-            const trans = car.transmission_label ? escapeHtml(car.transmission_label) : (car.Transmission || "N/A");
-            const fuel = car.Fuel_Type || "N/A";
-            const confidence = normalizeScore(car.ranking_score, maxScore);
-            const image = car.carImage || "/static/pic.avif";
-            const extraChips = buildExtraChips(car);
-            
-            const bentoHTML = `
-                <div class="w-full grid grid-cols-1 ${isHero ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-4 p-4 md:p-5 bg-base-900 border ${isHero ? 'border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.05)]' : 'border-base-800'} rounded-[24px]">
-                    
-                    <!-- Hero Image -->
-                    <div class="${isHero ? 'col-span-1 md:col-span-2 row-span-2' : 'col-span-1 md:col-span-1'} relative rounded-[16px] overflow-hidden border border-base-800 min-h-[220px] md:min-h-[100%] group">
-                        <img src="${image}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-base-950 via-base-950/20 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-5 md:p-6 w-full">
-                            ${isHero ? '<div class="mb-3"><span class="px-2 py-1 rounded bg-cyan-500 text-base-950 font-bold font-mono text-[10px] tracking-widest uppercase">Top Match</span></div>' : ''}
-                            <h2 class="font-display ${isHero ? 'text-3xl md:text-4xl' : 'text-2xl'} font-bold text-white leading-tight mb-1">${car.Make} ${car.Model}</h2>
-                            <p class="text-base-300 font-mono text-sm">${car.Variant || ''}</p>
-                            ${car.imageAttribution ? `<p class="mt-2 text-base-400 font-mono text-[10px]">Image: ${car.imageAttribution}</p>` : ''}
-                        </div>
-                    </div>
-
-                    <!-- Confidence -->
-                    <div class="col-span-1 bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col items-center justify-center">
-                        ${createRing(confidence)}
-                        <p class="mt-3 font-mono text-[10px] tracking-widest text-base-400 uppercase">Confidence</p>
-                    </div>
-
-                    <!-- Reasons -->
-                    <div class="${isHero ? 'col-span-1 row-span-2' : 'col-span-1 md:col-span-2'} bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col">
-                        <p class="font-mono text-[10px] tracking-widest text-base-400 uppercase">Ranking Logic</p>
-                        <div class="mt-1 flex-1 overflow-y-auto">
-                            ${buildReasonsList(car.match_reasons)}
-                        </div>
-                    </div>
-
-                    <!-- Specs -->
-                    <div class="${isHero ? 'md:col-span-2' : 'md:col-span-4'} flex flex-wrap gap-3 mt-1 md:mt-0">
-                        ${buildSpecTile("PRICE", price)}
-                        ${buildSpecTile("MILEAGE", mileage)}
-                        ${buildSpecTile("FUEL", fuel)}
-                        ${buildSpecTile("TRANS", trans, true)}
-                    </div>
-                    
-                    <!-- Actions -->
-                    <div class="${isHero ? 'md:col-span-1' : 'md:col-span-4'} flex flex-col justify-end gap-3 mt-1 md:mt-0">
-                         <a href="${car.carDekhoLink || '#'}" target="_blank" class="w-full text-center py-3 bg-base-800 hover:bg-base-700 text-white font-mono text-sm rounded-[10px] transition-colors border border-base-700">CarDekho</a>
-                    </div>
-
-                    ${extraChips ? `
-                    <!-- KB details -->
-                    <div class="${isHero ? 'md:col-span-3' : 'md:col-span-4'} flex flex-wrap gap-2">
-                        ${extraChips}
-                    </div>` : ''}
-                </div>
-            `;
-            
-            const wrapper = document.createElement("div");
-            wrapper.innerHTML = bentoHTML;
-            resultsBox.appendChild(wrapper.firstElementChild);
-        });
-
+        if (!turn.isConnected) return;  // thread was cleared meanwhile
+        renderResults(box, data, response.ok, location.origin + url);
+        if (scroll) scrollToTurn(turn);
     } catch (error) {
-        if (seq !== searchSeq) return;
-        resultsBox.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Frontend Error: ${error.message}</div>`;
+        if (!turn.isConnected) return;
+        box.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Frontend Error: ${error.message}</div>`;
     }
 }
 
-async function copyCurrentLink(button) {
+function renderResults(box, data, ok, link) {
+    box.innerHTML = "";
+
+    if (!ok) {
+        box.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Error: ${data.error || "Request failed"}</div>`;
+        return;
+    }
+
+    const banner = buildUnsupportedBanner(data);
+
+    if (data.message && (!data.recommendations || !data.recommendations.length)) {
+        box.innerHTML = banner + buildResultsToolbar(data, link) + `<div class="p-6 border border-base-800 bg-base-900 rounded-xl text-center"><p class="font-display text-xl text-base-200">${data.message}</p>${buildRelaxationHints(data.relaxation_hints)}</div>`;
+        return;
+    }
+
+    const recs = data.recommendations;
+    if (banner) box.insertAdjacentHTML("beforeend", banner);
+    box.insertAdjacentHTML("beforeend", buildResultsToolbar(data, link));
+    const maxScore = recs.length > 0 ? Math.max(recs[0].ranking_score, 30) : 30;
+
+    recs.forEach((car, index) => {
+        const isHero = index === 0;
+        const price = formatPrice(car["Ex-Showroom_Price"]);
+        const mileage = car["ARAI_Certified_Mileage"] ? Number(car["ARAI_Certified_Mileage"]).toFixed(1) + " kmpl" : "N/A";
+        // KB path: specific gearbox ("Automatic (DCT)"); legacy path: Transmission only
+        const trans = car.transmission_label ? escapeHtml(car.transmission_label) : (car.Transmission || "N/A");
+        const fuel = car.Fuel_Type || "N/A";
+        const confidence = normalizeScore(car.ranking_score, maxScore);
+        const image = car.carImage || "/static/pic.avif";
+        const extraChips = buildExtraChips(car);
+        
+        const bentoHTML = `
+            <div class="w-full grid grid-cols-1 ${isHero ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-4 p-4 md:p-5 bg-base-900 border ${isHero ? 'border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.05)]' : 'border-base-800'} rounded-[24px]">
+                
+                <!-- Hero Image -->
+                <div class="${isHero ? 'col-span-1 md:col-span-2 row-span-2' : 'col-span-1 md:col-span-1'} relative rounded-[16px] overflow-hidden border border-base-800 min-h-[220px] md:min-h-[100%] group">
+                    <img src="${image}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base-950 via-base-950/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 md:p-6 w-full">
+                        ${isHero ? '<div class="mb-3"><span class="px-2 py-1 rounded bg-cyan-500 text-base-950 font-bold font-mono text-[10px] tracking-widest uppercase">Top Match</span></div>' : ''}
+                        <h3 class="font-display ${isHero ? 'text-3xl md:text-4xl' : 'text-2xl'} font-bold text-white leading-tight mb-1">${car.Make} ${car.Model}</h3>
+                        <p class="text-base-300 font-mono text-sm">${car.Variant || ''}</p>
+                        ${car.imageAttribution ? `<p class="mt-2 text-base-400 font-mono text-[10px]">Image: ${car.imageAttribution}</p>` : ''}
+                    </div>
+                </div>
+
+                <!-- Confidence -->
+                <div class="col-span-1 bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col items-center justify-center">
+                    ${createRing(confidence)}
+                    <p class="mt-3 font-mono text-[10px] tracking-widest text-base-400 uppercase">Confidence</p>
+                </div>
+
+                <!-- Reasons -->
+                <div class="${isHero ? 'col-span-1 row-span-2' : 'col-span-1 md:col-span-2'} bg-base-950 border border-base-800 rounded-[16px] p-5 flex flex-col">
+                    <p class="font-mono text-[10px] tracking-widest text-base-400 uppercase">Ranking Logic</p>
+                    <div class="mt-1 flex-1 overflow-y-auto">
+                        ${buildReasonsList(car.match_reasons)}
+                    </div>
+                </div>
+
+                <!-- Specs -->
+                <div class="${isHero ? 'md:col-span-2' : 'md:col-span-4'} flex flex-wrap gap-3 mt-1 md:mt-0">
+                    ${buildSpecTile("PRICE", price)}
+                    ${buildSpecTile("MILEAGE", mileage)}
+                    ${buildSpecTile("FUEL", fuel)}
+                    ${buildSpecTile("TRANS", trans, true)}
+                </div>
+                
+                <!-- Actions -->
+                <div class="${isHero ? 'md:col-span-1' : 'md:col-span-4'} flex flex-col justify-end gap-3 mt-1 md:mt-0">
+                     <a href="${car.carDekhoLink || '#'}" target="_blank" class="w-full text-center py-3 bg-base-800 hover:bg-base-700 text-white font-mono text-sm rounded-[10px] transition-colors border border-base-700">CarDekho</a>
+                </div>
+
+                ${extraChips ? `
+                <!-- KB details -->
+                <div class="${isHero ? 'md:col-span-3' : 'md:col-span-4'} flex flex-wrap gap-2">
+                    ${extraChips}
+                </div>` : ''}
+            </div>
+        `;
+        
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = bentoHTML;
+        box.appendChild(wrapper.firstElementChild);
+    });
+}
+
+async function copyLink(button) {
     try {
-        await navigator.clipboard.writeText(location.href);
+        await navigator.clipboard.writeText(button.dataset.copyLink);
         button.textContent = "Copied ✓";
     } catch (error) {
-        window.prompt("Copy this link:", location.href);
+        window.prompt("Copy this link:", button.dataset.copyLink);
     }
     setTimeout(() => { button.textContent = "Copy link"; }, 2000);
 }
@@ -316,23 +361,24 @@ function shuffled(items) {
     return out;
 }
 
-// SUGGESTION_COUNT random queries from at least SUGGESTION_MIN_CATEGORIES categories,
+// `count` random queries from at least SUGGESTION_MIN_CATEGORIES categories (fewer if count is smaller),
 // avoiding the set on screen where possible
-function pickSuggestions(all, previous = []) {
+function pickSuggestions(all, previous = [], count = SUGGESTION_COUNT) {
     const fresh = all.filter(s => !previous.includes(s.query));
-    const pool = shuffled(fresh.length >= SUGGESTION_COUNT ? fresh : all);
+    const pool = shuffled(fresh.length >= count ? fresh : all);
+    const minCategories = Math.min(SUGGESTION_MIN_CATEGORIES, count);
     const picked = [];
     for (const s of pool) {  // one per category first
-        if (picked.length < SUGGESTION_MIN_CATEGORIES && !picked.some(p => p.category === s.category)) picked.push(s);
+        if (picked.length < minCategories && !picked.some(p => p.category === s.category)) picked.push(s);
     }
     for (const s of pool) {
-        if (picked.length < SUGGESTION_COUNT && !picked.includes(s)) picked.push(s);
+        if (picked.length < count && !picked.includes(s)) picked.push(s);
     }
     return shuffled(picked);
 }
 
 // box: the <div data-suggestions> under a query input; onPick(query) runs the search
-async function initSuggestions(box, onPick) {
+async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
     let all;
     try {
         all = await (await fetch("/static/suggested_queries.json")).json();
@@ -341,7 +387,7 @@ async function initSuggestions(box, onPick) {
     }
     let shown = [];
     const render = () => {
-        shown = pickSuggestions(all, shown).map(s => s.query);
+        shown = pickSuggestions(all, shown, count).map(s => s.query);
         box.innerHTML = shown.map(q => `<button type="button" data-suggestion="${escapeHtml(q)}" title="${escapeHtml(q)}" class="max-w-full truncate font-mono text-xs px-3 py-1.5 rounded-full border border-base-700 bg-base-900 text-base-200 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors">${escapeHtml(q)}</button>`).join("")
             + `<button type="button" data-more-ideas class="font-mono text-xs px-3 py-1.5 text-cyan-400 hover:text-cyan-300">More ideas ↻</button>`;
     };
@@ -356,7 +402,7 @@ async function initSuggestions(box, onPick) {
         else if (e.target.closest("[data-more-ideas]")) render();
     });
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (prefersReducedMotion()) return;
     let hovered = false;
     box.addEventListener("mouseenter", () => { hovered = true; });
     box.addEventListener("mouseleave", () => { hovered = false; });
@@ -366,34 +412,58 @@ async function initSuggestions(box, onPick) {
 }
 
 function initNewCarPage() {
-    const resultsBox = document.getElementById("results");
-    resultsBox.addEventListener("click", e => {
+    const thread = document.getElementById("results");
+    window.history.scrollRestoration = "manual";  // back/forward scroll to the turn themselves
+    thread.addEventListener("click", e => {
         const hint = e.target.closest("[data-drop-key]");
-        if (hint) runSearch(currentSearch.q, [...currentSearch.drop, hint.dataset.dropKey], "push");
+        if (hint) {
+            const turn = hint.closest("[data-turn]");
+            const drop = turn.dataset.drop ? turn.dataset.drop.split(",") : [];
+            runSearch(turn.dataset.q, [...drop, hint.dataset.dropKey]);
+        }
         const copy = e.target.closest("[data-copy-link]");
-        if (copy) copyCurrentLink(copy);
+        if (copy) copyLink(copy);
     });
 
-    const box = document.querySelector("[data-suggestions]");
-    if (box) initSuggestions(box, q => runSearch(q, [], "push"));
+    document.querySelectorAll("[data-suggestions]").forEach(box => {
+        const input = box.closest("form").querySelector("input");
+        initSuggestions(box, q => {
+            input.value = q;
+            runSearch(q, []);
+            if (input.id === "followupQuery") input.value = "";
+        }, Number(box.dataset.count) || SUGGESTION_COUNT);
+    });
 
-    window.addEventListener("popstate", () => {
+    document.querySelector("[data-new-search]").addEventListener("click", () => {
+        clearThread();
+        const input = document.getElementById("userQuery");
+        input.value = "";
+        window.history.pushState({}, "", location.pathname);
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+        input.focus();
+    });
+
+    // back/forward: scroll to that search's turn if it is still in the thread, else start over with it
+    window.addEventListener("popstate", e => {
         const { q, drop } = searchFromUrl();
-        if (q) {
-            runSearch(q, drop, "none");
-        } else {
-            searchSeq++;
-            currentSearch = { q: "", drop: [] };
-            document.getElementById("userQuery").value = "";
-            resultsBox.innerHTML = "";
+        const turn = e.state && e.state.turn && thread.querySelector(`[data-turn="${e.state.turn}"]`);
+        document.getElementById("userQuery").value = q;
+        if (turn) {
+            scrollToTurn(turn);
+            return;
         }
+        clearThread();
+        if (q) runSearch(q, drop, false);
     });
 
     const fromUrl = searchFromUrl();
     const saved = localStorage.getItem("userQuery");  // handed over by the landing page's box
     if (saved) localStorage.removeItem("userQuery");
-    if (fromUrl.q) runSearch(fromUrl.q, fromUrl.drop, "replace");
-    else if (saved) runSearch(saved, [], "replace");
+    const first = fromUrl.q ? fromUrl : (saved ? { q: saved, drop: [] } : null);
+    if (first) {
+        document.getElementById("userQuery").value = first.q;
+        runSearch(first.q, first.drop, false);
+    }
 }
 
 
