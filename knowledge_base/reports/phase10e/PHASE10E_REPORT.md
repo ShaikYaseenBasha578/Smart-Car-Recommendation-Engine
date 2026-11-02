@@ -273,7 +273,41 @@ Nothing else changed: views, tables, indexes and triggers are all identical.
 
 ## 7. Branches
 
-STEP8_PLACEHOLDER
+- **`kb/10e-corrections`:**
+  - worktree `~/carrec_worktrees/kb-10e`, branched from `paper/v0` HEAD `ad91692`;
+  - commit `18ab5fe` (CLAUDE.md, KB_SCHEMA.sql, `knowledge_base/db/migrations/apply_phase10e.py` + `verify_phase10e.py`, `phase10c/10C_CLOSURE.md`, this report and its evidence), plus this follow-up commit;
+  - pushed, no PR.
+- **`app/kb-10e-export`:**
+  - worktree `~/carrec_worktrees/app-10e`, from `origin/main` `583f08d`. `origin/main` had not moved at `git fetch` time, so no rebase was needed;
+  - commit `952855c`, pushed;
+  - **PR: https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/15** (open, not merged).
+  - **Code:** `adas_tier` removed from `scripts/export_catalogue_from_kb.py` (plus the unused `fmt_int`), `services/catalogue.py` and `tests/test_filter_v2.py`.
+  - **Tests:** `pytest -q` 351 passed.
+  - **Export (two runs, identical):**
+    - `catalogue.csv` SHA-1 `81c06461fd5b0798bd0e300d1fce193caf4b217b`;
+    - sha256 `d0202c09…`;
+    - `catalogue_meta.json` SHA-1 `518efafab5776054cdc6a8d88afdef6cb6b958fc`;
+    - 832 rows → 832.
+- **Catalogue field diff vs `main`:**
+  - **Mileage:**
+    - `mileage_kmpl` → blank on 213, 217, 245, 345, 556, 591;
+    - `mileage_km_per_kg` blank → value on 213, 217, 245;
+    - `mileage_km_per_kg` 26.6 → 27.02 on 556.
+  - **Paddle shifters** (14 rows):
+    - `true` → `false` on 5, 15, 16, 21, 23, 158, 561, 566, 627;
+    - `true` → blank on 216, 217, 218, 220 and 826 (826 inherits from 220).
+  - **Glanza power:** `power_bhp` 89.7 → 88.51 on 476, 477, 478, 480, 481, 483, 484.
+  - **`adas_tier`:** the column is removed.
+  - **Edition rebases:**
+    - 814 → 652: price 1379000 → 1502000; `adas_available` and `connected_car_features` false → true.
+    - 826 → 220: price 1253800 → 1302100; `tpms` and `ventilated_front_seats` false → true.
+  - **`unverified_fields`** (14 rows):
+    - CNG rows 213, 217, 245, 345, 556, 591 now list `mileage_kmpl`, because the exporter's not-applicable map treats km/l as applicable to CNG;
+    - XL6 216, 217, 218, 220 and 826 list `paddle_shifters`;
+    - Harrier 442, 444, 453, 456 drop `adas_tier`.
+  - **Approval:** the owner accepted the edition-rebase and `unverified_fields` changes as expected (the earlier step-8 whitelist had left out item 6).
+  - **Full listing:** `catalogue_field_diff.txt` in the Pass B scratch directory.
+- **`paper/v0`:** not touched. The owner will apply `paper_loader.diff` separately.
 
 ## 8. Prod SHA-1
 
@@ -282,7 +316,7 @@ STEP8_PLACEHOLDER
 
 ## 9. Message for the ranking track
 
-MSG_PLACEHOLDER
+KB corrections (10E) merged-ready, export re-run: https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/15
 
 ## 10. Deferred or skipped
 
