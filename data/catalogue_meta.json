@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "c34312e2b056fa5a64f567407549b6f6133d173aa0c3a9cfa59c0bfa166bff3d",
+  "catalogue_sha256": "d0202c0927774b25b58489d41d160b9201690f3b78d1545581e9cf61a679f9b0",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -12,12 +12,6 @@
       "not_applicable_blank": 0,
       "quarantined": 1,
       "unverified": 3
-    },
-    "adas_tier": {
-      "non_null": 828,
-      "not_applicable_blank": 0,
-      "quarantined": 0,
-      "unverified": 4
     },
     "airbags": {
       "non_null": 832,
@@ -134,22 +128,22 @@
       "unverified": 0
     },
     "mileage_km_per_kg": {
-      "non_null": 39,
+      "non_null": 42,
       "not_applicable_blank": 750,
       "quarantined": 0,
-      "unverified": 43
+      "unverified": 40
     },
     "mileage_kmpl": {
-      "non_null": 459,
+      "non_null": 453,
       "not_applicable_blank": 37,
-      "quarantined": 0,
-      "unverified": 336
+      "quarantined": 1,
+      "unverified": 342
     },
     "paddle_shifters": {
-      "non_null": 461,
+      "non_null": 456,
       "not_applicable_blank": 0,
-      "quarantined": 0,
-      "unverified": 371
+      "quarantined": 5,
+      "unverified": 376
     },
     "power_bhp": {
       "non_null": 832,
@@ -238,11 +232,11 @@
     "wireless_charging": {
       "non_null": 464,
       "not_applicable_blank": 0,
-      "quarantined": 132,
+      "quarantined": 131,
       "unverified": 368
     }
   },
-  "export_utc": "2026-11-01T11:43:21Z",
+  "export_utc": "2026-11-01T23:31:42Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -250,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "10B-W6",
-  "kb_sha256": "ab78684bf9ccac1a751d7d5c61cb9fafb4f886c1efdc9535cbb5ea8c8ba33565",
+  "kb_latest_phase": "10E",
+  "kb_sha256": "acd8dbfc65ed61055f1406b2924c6b7893e8bfa0a15265e538e6e2eec2759904",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",

@@ -54,7 +54,7 @@ def test_feature_tristate():
 
 
 def test_adas_feature_uses_adas_available():
-    df = frame({"adas_available": True, "adas_tier": 0.0}, {"adas_available": False, "adas_tier": 1.0})
+    df = frame({"adas_available": True}, {"adas_available": False})
     assert ids(filter_candidates(intent(required_features=["adas"]), df)) == [1]
 
 
