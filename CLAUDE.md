@@ -45,6 +45,7 @@ The 297 orphaned `field_provenance` rows (keep, never re-point); the 24 Global N
   - B4 edition identity: 814 and 826 were re-based in 10E (814 → 652 ZX, 826 → 220 Alpha+). **833 is still open (high-priority backlog):** its name says "1.5L Turbo Automatic (DCT)", but it is linked to base 643 (Topline 1.0 TC) and powertrain 103 (999 cc). The Virtus brochure does not mention the edition, and it offers the 1.5 DSG only on GT Plus trims.
   - Variant ids run 1–833 for 832 rows: id **813** is a gap, not a defect. A CarWale-pilot edition was created and deleted on 2026-09-09 (the same clean-up that left the 297 orphans).
   - Still open: CATALOG_CURRENCY (no model-year dimension; Brezza, Baleno, Kylaq Sportline; see the 10D audit).
+  - Backlog: Victoris **558** (VXI CNG MT) and **562** (ZXI CNG MT) hold `mileage_arai_km_per_kg` 26.6 (sole provenance `v6_migration`, fp 17208/17338). The Victoris brochure prints a single CNG figure, 27.02 km/kg (p16), already applied to sibling 556 in 10E; 26.6 is the Grand Vitara/Hyryder figure. Same fix as 556 (→ 27.02 + brochure provenance + quarantine the v6 fp rows); needs its own authorised controlled write.
 
 ## Evidence discipline for reports
 Tag claims [VERIFIED] (query/file:line/hash) · [REPORTED-ONLY] · [CONTRADICTED]. Never upgrade a prior report's claim without re-checking. Git has no KB history — use backups, hashes, mtimes, and say so.
