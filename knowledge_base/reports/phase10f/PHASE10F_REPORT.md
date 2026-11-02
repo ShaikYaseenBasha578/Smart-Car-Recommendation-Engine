@@ -207,9 +207,27 @@ The full listing is in `verify_prod.md`.
 
 ## 7. Branches
 
-- **`kb/10f-units`:** worktree `~/carrec_worktrees/kb-10f`, from the `paper/v0` HEAD `c5a8609`. Pushed, no PR.
+- **`kb/10f-units`:** worktree `~/carrec_worktrees/kb-10f`, from the `paper/v0` HEAD `c5a8609`. Pushed, no PR (commit `16b54c0` + this report follow-up).
   - It carries CLAUDE.md (the Victoris item removed; WagonR 225, GV 548/549, the missing GV and Nexon iCNG brochures, Exter, pt 84 and pt 88 added; backup listed; prod SHA updated), `knowledge_base/db/migrations/apply_phase10f.py` + `verify_phase10f.py`, and `knowledge_base/reports/phase10f/`.
-- **`app/kb-10f-export`:** STEP8_PLACEHOLDER
+- **`app/kb-10f-export`:** worktree `~/carrec_worktrees/app-10f`, from `origin/main` `d40b368` (after `git fetch origin`). Data-only commit `9c52d9c`, pushed.
+  - **PR: https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/16** (open, not merged).
+  - **Export:** run twice from a byte copy of prod `dedefb53`; the two runs were identical.
+    - `catalogue.csv` SHA-1 `f6ef96072718680374db84059ea5d33864cbb6ab` (sha256 `ffce4794…`).
+    - `catalogue_meta.json` SHA-1 `932e4d387771dcf3ce5e363b19e362810e111306` (identical across runs apart from the export timestamp).
+    - 832 rows; `kb_latest_phase` 10F; the exporter's failure checks passed (exit 0).
+  - **Tests:** `pytest -q` 352 passed.
+  - **Catalogue field diff vs `main`:** only allowed fields changed (`catalogue_field_diff.txt`).
+    - `power_bhp` on 83 rows: the 80 base variants of §1, plus editions 822, 823 and 825 via the shared powertrain.
+      - 89.7 → 88.51 ×10
+      - 77.5 → 76.44 ×3
+      - 100.1 → 98.7 ×10
+      - 56.7 → 55.92 ×4
+      - 103.1 → 101.65 ×35
+      - 87.8 → 86.63 ×5
+      - 115.6 → 113.99 ×8
+      - 163 → 160.77 ×8
+    - `mileage_km_per_kg` on 2 rows: 558 and 562, 26.6 → 27.02.
+    - `unverified_fields`: unchanged. Columns and rows are unchanged.
 
 ## 8. Prod SHA-1
 
@@ -218,7 +236,7 @@ The full listing is in `verify_prod.md`.
 
 ## 9. Message for the ranking track
 
-MSG_PLACEHOLDER
+KB unit corrections (10F) merged-ready, export re-run: https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/16
 
 ## 10. Report-only / deferred
 
