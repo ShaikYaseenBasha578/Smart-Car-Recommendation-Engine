@@ -279,14 +279,16 @@ Nothing else changed: views, tables, indexes and triggers are all identical.
   - pushed, no PR.
 - **`app/kb-10e-export`:**
   - worktree `~/carrec_worktrees/app-10e`, from `origin/main` `583f08d`. `origin/main` had not moved at `git fetch` time, so no rebase was needed;
-  - commit `952855c`, pushed;
+  - commits `952855c` (re-export, `adas_tier` removal) and `ab3a70e` (km/l not applicable to CNG), pushed;
   - **PR: https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/15** (open, not merged).
   - **Code:** `adas_tier` removed from `scripts/export_catalogue_from_kb.py` (plus the unused `fmt_int`), `services/catalogue.py` and `tests/test_filter_v2.py`.
-  - **Tests:** `pytest -q` 351 passed.
-  - **Export (two runs, identical):**
-    - `catalogue.csv` SHA-1 `81c06461fd5b0798bd0e300d1fce193caf4b217b`;
-    - sha256 `d0202c09…`;
-    - `catalogue_meta.json` SHA-1 `518efafab5776054cdc6a8d88afdef6cb6b958fc`;
+  - **km/l not applicable to CNG (`ab3a70e`, owner-requested follow-up):** `mileage_kmpl` added to the CNG entry of `NOT_APPLICABLE` in `scripts/export_catalogue_from_kb.py` and `services/car_detail.py`. New test `test_kmpl_not_applicable_on_cng`, which fails without the `car_detail.py` change. Filtering is unchanged: a km/l threshold still keeps CNG cars as unverified (`KMPL_UNTRUSTED_FUELS`).
+  - **Tests:** `pytest -q` 352 passed (351 at `952855c`).
+  - **Export at `ab3a70e`** (two runs, identical; KB copy SHA-1 `57f31e4d…`):
+    - `catalogue.csv` SHA-1 `c3998b78b79d616f39b90c09e34e4bce6f051a76`;
+    - sha256 `b1440293…`;
+    - `catalogue_meta.json` SHA-1 `9da45036bb955dceb8bca3e3b0981311f7331708` (both runs; it carries an export timestamp, so a new run gives a new hash);
+    - superseded export at `952855c`: `catalogue.csv` SHA-1 `81c06461…`, meta `518efafa…`;
     - 832 rows → 832.
 - **Catalogue field diff vs `main`:**
   - **Mileage:**
@@ -301,12 +303,12 @@ Nothing else changed: views, tables, indexes and triggers are all identical.
   - **Edition rebases:**
     - 814 → 652: price 1379000 → 1502000; `adas_available` and `connected_car_features` false → true.
     - 826 → 220: price 1253800 → 1302100; `tpms` and `ventilated_front_seats` false → true.
-  - **`unverified_fields`** (14 rows):
-    - CNG rows 213, 217, 245, 345, 556, 591 now list `mileage_kmpl`, because the exporter's not-applicable map treats km/l as applicable to CNG;
+  - **`unverified_fields`** (87 rows):
+    - 79 CNG rows: 76 no longer list `mileage_kmpl` (km/l is not applicable to CNG); 213, 217 and 245 no longer list `mileage_km_per_kg` (now filled);
     - XL6 216, 217, 218, 220 and 826 list `paddle_shifters`;
     - Harrier 442, 444, 453, 456 drop `adas_tier`.
   - **Approval:** the owner accepted the edition-rebase and `unverified_fields` changes as expected (the earlier step-8 whitelist had left out item 6).
-  - **Full listing:** `catalogue_field_diff.txt` in the Pass B scratch directory.
+  - **Full listing:** `catalogue_field_diff.txt` in the Pass B scratch directory (taken at `952855c`; the CNG change at `ab3a70e` alters only `unverified_fields`, on all 82 CNG rows, each losing `mileage_kmpl`).
 - **`paper/v0`:** not touched. The owner will apply `paper_loader.diff` separately.
 
 ## 8. Prod SHA-1
