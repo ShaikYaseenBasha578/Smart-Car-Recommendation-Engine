@@ -1,0 +1,69 @@
+## (a) engine groups (fuel, cc, torque) with power spread > 1%
+CNG 998cc 82.1Nm  spread=1.39%  ratio=1.0139 (~PS/hp 1.0139)
+    pt=28   Maruti Suzuki WagonR  power_bhp=55.92  nvar=2
+    pt=77   Maruti Suzuki S-Presso  power_bhp=56.7  nvar=2
+    pt=79   Maruti Suzuki Alto K10  power_bhp=56.7  nvar=2
+Petrol 998cc 89.0Nm  spread=2.07%  ratio=1.0207 (other)
+    pt=27   Maruti Suzuki WagonR  power_bhp=64.37  nvar=3
+    pt=76   Maruti Suzuki S-Presso  power_bhp=65.7  nvar=6
+    pt=78   Maruti Suzuki Alto K10  power_bhp=65.7  nvar=6
+CNG 1197cc 98.5Nm  spread=1.44%  ratio=1.0144 (~PS/hp 1.0139)
+    pt=69   Toyota Glanza  power_bhp=76.4  nvar=2
+    pt=36   Maruti Suzuki Baleno  power_bhp=76.44  nvar=2
+    pt=71   Toyota Urban Cruiser Taisor  power_bhp=77.5  nvar=1
+    pt=74   Maruti Suzuki Fronx  power_bhp=77.5  nvar=2
+Petrol 1197cc 113.0Nm  spread=1.34%  ratio=1.0134 (~PS/hp 1.0139)
+    pt=35   Maruti Suzuki Baleno  power_bhp=88.51  nvar=7
+    pt=68   Toyota Glanza  power_bhp=88.51  nvar=7
+    pt=70   Toyota Urban Cruiser Taisor  power_bhp=89.7  nvar=5
+    pt=73   Maruti Suzuki Fronx  power_bhp=89.7  nvar=5
+CNG 1462cc 121.5Nm  spread=1.39%  ratio=1.0139 (~PS/hp 1.0139)
+    pt=93   Toyota Rumion  power_bhp=86.6  nvar=1
+    pt=16   Maruti Suzuki Brezza  power_bhp=86.63  nvar=3
+    pt=24   Maruti Suzuki Ertiga  power_bhp=86.63  nvar=2
+    pt=26   Maruti Suzuki XL6  power_bhp=86.63  nvar=1
+    pt=81   Toyota Urban Cruiser Hyryder  power_bhp=87.8  nvar=2
+    pt=84   Maruti Suzuki Grand Vitara  power_bhp=87.8  nvar=2
+    pt=87   Maruti Suzuki Victoris  power_bhp=87.8  nvar=3
+Petrol 1462cc 136.8Nm  spread=1.43%  ratio=1.0143 (~PS/hp 1.0139)
+    pt=23   Maruti Suzuki Ertiga  power_bhp=101.65  nvar=7
+    pt=80   Toyota Urban Cruiser Hyryder  power_bhp=103.1  nvar=8
+    pt=83   Maruti Suzuki Grand Vitara  power_bhp=103.1  nvar=13
+    pt=86   Maruti Suzuki Victoris  power_bhp=103.1  nvar=14
+Petrol 1997cc 380.0Nm  spread=13.29%  ratio=1.1329 (other)
+    pt=114  Mahindra Thar Roxx  power_bhp=174.0  nvar=3
+    pt=62   Mahindra XUV 7XO  power_bhp=197.13  nvar=12
+
+## (b) stored power_bhp printed as PS in the model brochure, or equal to brochure kW x 1.3596 (PS) rather than x 1.341 (hp)
+pt=73   Maruti Suzuki Fronx Petrol 1197cc power_bhp=89.7 nvar=5 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 kW->PS-match '66 kW' (hp would be 88.51)
+pt=73   Maruti Suzuki Fronx Petrol 1197cc power_bhp=89.7 nvar=5 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 PS-match '89.73 PS'
+pt=74   Maruti Suzuki Fronx CNG 1197cc power_bhp=77.5 nvar=2 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 kW->PS-match '57 kW' (hp would be 76.44)
+pt=74   Maruti Suzuki Fronx CNG 1197cc power_bhp=77.5 nvar=2 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 PS-match '77.5 PS'
+pt=75   Maruti Suzuki Fronx Petrol 998cc power_bhp=100.1 nvar=6 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 kW->PS-match '73.6 kW' (hp would be 98.70)
+pt=75   Maruti Suzuki Fronx Petrol 998cc power_bhp=100.1 nvar=6 :: maruti_suzuki/fronx/latest/brochures/Fronx_Brochure.pdf p19 PS-match '100.06 PS'
+pt=83   Maruti Suzuki Grand Vitara Petrol 1462cc power_bhp=103.1 nvar=13 :: maruti_suzuki/grand_vitara/latest/brochures/maruti_suzuki_grand_vitara_brochure.pdf p15 PS-match '103.06 PS'
+pt=85   Maruti Suzuki Grand Vitara Petrol Hybrid 1490cc power_bhp=115.6 nvar=5 :: maruti_suzuki/grand_vitara/latest/brochures/maruti_suzuki_grand_vitara_brochure.pdf p15 kW->PS-match '85 kW' (hp would be 113.99)
+pt=85   Maruti Suzuki Grand Vitara Petrol Hybrid 1490cc power_bhp=115.6 nvar=5 :: maruti_suzuki/grand_vitara/latest/brochures/maruti_suzuki_grand_vitara_brochure.pdf p15 PS-match '115.56 PS'
+pt=86   Maruti Suzuki Victoris Petrol 1462cc power_bhp=103.1 nvar=14 :: maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf p16 kW->PS-match '75.8 kW' (hp would be 101.65)
+pt=86   Maruti Suzuki Victoris Petrol 1462cc power_bhp=103.1 nvar=14 :: maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf p16 PS-match '103.06 Ps'
+pt=87   Maruti Suzuki Victoris CNG 1462cc power_bhp=87.8 nvar=3 :: maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf p16 kW->PS-match '64.6 kW' (hp would be 86.63)
+pt=87   Maruti Suzuki Victoris CNG 1462cc power_bhp=87.8 nvar=3 :: maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf p16 PS-match '87.8 Ps'
+pt=117  Renault Duster Petrol 1333cc power_bhp=163.0 nvar=8 :: renault/duster/latest/brochures/renault_duster_brochure.pdf p9 PS-match '163 ps'
+pt=80   Toyota Urban Cruiser Hyryder Petrol 1462cc power_bhp=103.1 nvar=8 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 kW->PS-match '75.8 kW' (hp would be 101.65)
+pt=80   Toyota Urban Cruiser Hyryder Petrol 1462cc power_bhp=103.1 nvar=8 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 PS-match '103.06 PS'
+pt=81   Toyota Urban Cruiser Hyryder CNG 1462cc power_bhp=87.8 nvar=2 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 kW->PS-match '64.6kW' (hp would be 86.63)
+pt=81   Toyota Urban Cruiser Hyryder CNG 1462cc power_bhp=87.8 nvar=2 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 PS-match '87.8 PS'
+pt=82   Toyota Urban Cruiser Hyryder Petrol Hybrid 1490cc power_bhp=115.6 nvar=3 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 kW->PS-match '85 kW' (hp would be 113.99)
+pt=82   Toyota Urban Cruiser Hyryder Petrol Hybrid 1490cc power_bhp=115.6 nvar=3 :: toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf p14 PS-match '115.56PS'
+pt=70   Toyota Urban Cruiser Taisor Petrol 1197cc power_bhp=89.7 nvar=5 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 kW->PS-match '66 kW' (hp would be 88.51)
+pt=70   Toyota Urban Cruiser Taisor Petrol 1197cc power_bhp=89.7 nvar=5 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 PS-match '89.73 PS'
+pt=70   Toyota Urban Cruiser Taisor Petrol 1197cc power_bhp=89.7 nvar=5 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 kW->PS-match '66 kW' (hp would be 88.51)
+pt=70   Toyota Urban Cruiser Taisor Petrol 1197cc power_bhp=89.7 nvar=5 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 PS-match '89.73 PS'
+pt=71   Toyota Urban Cruiser Taisor CNG 1197cc power_bhp=77.5 nvar=1 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 kW->PS-match '57 kW' (hp would be 76.44)
+pt=71   Toyota Urban Cruiser Taisor CNG 1197cc power_bhp=77.5 nvar=1 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 PS-match '77.5PS'
+pt=71   Toyota Urban Cruiser Taisor CNG 1197cc power_bhp=77.5 nvar=1 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 kW->PS-match '57 kW' (hp would be 76.44)
+pt=71   Toyota Urban Cruiser Taisor CNG 1197cc power_bhp=77.5 nvar=1 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 PS-match '77.5PS'
+pt=72   Toyota Urban Cruiser Taisor Petrol 998cc power_bhp=100.1 nvar=4 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 kW->PS-match '73.6 kW' (hp would be 98.70)
+pt=72   Toyota Urban Cruiser Taisor Petrol 998cc power_bhp=100.1 nvar=4 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p14 PS-match '100.06PS'
+pt=72   Toyota Urban Cruiser Taisor Petrol 998cc power_bhp=100.1 nvar=4 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 kW->PS-match '73.6 kW' (hp would be 98.70)
+pt=72   Toyota Urban Cruiser Taisor Petrol 998cc power_bhp=100.1 nvar=4 :: toyota/urban_cruiser_taisor/latest/brochures/toyota_urban_cruiser_taisor_brochure.pdf p21 PS-match '100.06PS'

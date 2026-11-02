@@ -1,0 +1,22 @@
+## (a) engine groups (fuel, cc, torque) with power spread > 1%
+Petrol 998cc 89.0Nm  spread=2.07%  ratio=1.0207 (other)
+    pt=27   Maruti Suzuki WagonR  power_bhp=64.37  nvar=3
+    pt=76   Maruti Suzuki S-Presso  power_bhp=65.7  nvar=6
+    pt=78   Maruti Suzuki Alto K10  power_bhp=65.7  nvar=6
+CNG 1462cc 121.5Nm  spread=1.39%  ratio=1.0139 (~PS/hp 1.0139)
+    pt=93   Toyota Rumion  power_bhp=86.6  nvar=1
+    pt=16   Maruti Suzuki Brezza  power_bhp=86.63  nvar=3
+    pt=24   Maruti Suzuki Ertiga  power_bhp=86.63  nvar=2
+    pt=26   Maruti Suzuki XL6  power_bhp=86.63  nvar=1
+    pt=81   Toyota Urban Cruiser Hyryder  power_bhp=86.63  nvar=2
+    pt=87   Maruti Suzuki Victoris  power_bhp=86.63  nvar=3
+    pt=84   Maruti Suzuki Grand Vitara  power_bhp=87.8  nvar=2
+Petrol Hybrid 1490cc 122.0Nm  spread=1.41%  ratio=1.0141 (~PS/hp 1.0139)
+    pt=82   Toyota Urban Cruiser Hyryder  power_bhp=113.99  nvar=3
+    pt=85   Maruti Suzuki Grand Vitara  power_bhp=113.99  nvar=5
+    pt=88   Maruti Suzuki Victoris  power_bhp=115.6  nvar=5
+Petrol 1997cc 380.0Nm  spread=13.29%  ratio=1.1329 (other)
+    pt=114  Mahindra Thar Roxx  power_bhp=174.0  nvar=3
+    pt=62   Mahindra XUV 7XO  power_bhp=197.13  nvar=12
+
+## (b) stored power_bhp printed as PS in the model brochure, or equal to brochure kW x 1.3596 (PS) rather than x 1.341 (hp)
