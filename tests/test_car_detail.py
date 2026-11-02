@@ -113,6 +113,16 @@ def test_not_applicable_on_an_ev(client):
     assert all(v["mileage_display"]["label"] == "Range" for v in d["variants"])
 
 
+def test_kmpl_not_applicable_on_cng():
+    df = get_catalogue()
+    cng = df[df["fuel_type"] == "cng"]
+    assert not cng.empty and not any("mileage_kmpl" in f for f in cng["unverified_fields"])
+    row = cng.iloc[0]
+    d = get_car_detail(safe_slug(row["make"]), safe_slug(row["model"]), variant_id=int(row["variant_id"]))
+    engine = {i["label"]: i for i in d["specs"][0]["items"]}
+    assert engine["Mileage (ARAI)"] == {"label": "Mileage (ARAI)", "value_display": None, "status": "not_applicable"}
+
+
 def test_unverified_status_follows_unverified_fields():
     df = get_catalogue()
     row = df[df["unverified_fields"].map(lambda f: "heads_up_display" in f)].iloc[0]

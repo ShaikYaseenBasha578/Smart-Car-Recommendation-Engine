@@ -104,7 +104,8 @@ NOT_APPLICABLE = {
     "petrol": {"ev_range_km", "mileage_km_per_kg"},
     "diesel": {"ev_range_km", "mileage_km_per_kg"},
     "hybrid": {"ev_range_km", "mileage_km_per_kg"},
-    "cng": {"ev_range_km"},
+    # CNG mileage is a km/kg figure; the KB holds no kmpl figure for any CNG row (Phase 10E).
+    "cng": {"ev_range_km", "mileage_kmpl"},
 }
 
 # export column -> variant field name used in evidence_quarantine.target_field

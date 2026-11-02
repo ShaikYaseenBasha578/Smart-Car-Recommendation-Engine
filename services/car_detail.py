@@ -30,7 +30,7 @@ NOT_APPLICABLE = {
     "petrol": {"ev_range_km", "mileage_km_per_kg"},
     "diesel": {"ev_range_km", "mileage_km_per_kg"},
     "hybrid": {"ev_range_km", "mileage_km_per_kg"},
-    "cng": {"ev_range_km"},
+    "cng": {"ev_range_km", "mileage_kmpl"},  # keep in step with scripts/export_catalogue_from_kb.py
 }
 FUEL_LABELS = {"petrol": "Petrol", "diesel": "Diesel", "cng": "CNG", "hybrid": "Petrol hybrid", "electric": "Electric"}
 
