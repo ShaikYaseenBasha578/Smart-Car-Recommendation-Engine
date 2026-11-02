@@ -97,24 +97,25 @@ SAFETY_COLUMNS = [
 ]
 # Fields checked for NULL/quarantine and listed in unverified_fields. Safety is excluded:
 # a blank safety_stars_adult means "no Bharat NCAP rating on record", handled by the app.
-CHECKED_COLUMNS = SPEC_COLUMNS + BOOL_COLUMNS + ["adas_tier"]
+CHECKED_COLUMNS = SPEC_COLUMNS + BOOL_COLUMNS
 # Fields that don't apply to a fuel type, so a blank there is not "unverified".
 NOT_APPLICABLE = {
     "electric": {"engine_cc", "mileage_kmpl", "mileage_km_per_kg", "fuel_tank_litres"},
     "petrol": {"ev_range_km", "mileage_km_per_kg"},
     "diesel": {"ev_range_km", "mileage_km_per_kg"},
     "hybrid": {"ev_range_km", "mileage_km_per_kg"},
-    "cng": {"ev_range_km"},
+    # CNG mileage is a km/kg figure; the KB holds no kmpl figure for any CNG row (Phase 10E).
+    "cng": {"ev_range_km", "mileage_kmpl"},
 }
 
 # export column -> variant field name used in evidence_quarantine.target_field
-VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS}, "adas_tier": "adas_tier"}
+VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS}}
 
 COLUMNS = [
     "variant_id", "make", "model", "variant", "full_name", "body_type",
     "fuel_raw", "fuel_type",
     "transmission_raw", "transmission_type", "transmission_family",
-    *SPEC_COLUMNS, *BOOL_COLUMNS, "adas_tier", *SAFETY_COLUMNS,
+    *SPEC_COLUMNS, *BOOL_COLUMNS, *SAFETY_COLUMNS,
     "unverified_fields",
 ]
 
@@ -147,19 +148,6 @@ def fmt_bool(value, column: str, variant_id: int) -> str:
     raise ExportError(f"variant {variant_id}: unmapped boolean {column}={value!r}")
 
 
-def fmt_int(value, column: str, variant_id: int) -> str:
-    """Integer-valued cell stored as text/real in the KB ('1.0' -> '1')."""
-    if value is None:
-        return ""
-    try:
-        number = float(value)
-    except ValueError:
-        raise ExportError(f"variant {variant_id}: non-numeric {column}={value!r}") from None
-    if not number.is_integer():
-        raise ExportError(f"variant {variant_id}: non-integer {column}={value!r}")
-    return str(int(number))
-
-
 def phase_key(phase: str):
     return tuple((0, int(p)) if p.isdigit() else (1, p) for p in re.findall(r"\d+|\D+", phase))
 
@@ -173,7 +161,7 @@ def sha256_file(path: Path) -> str:
 
 
 def load_variants(conn: sqlite3.Connection) -> list[sqlite3.Row]:
-    sources = set(SPEC_FROM_VARIANT.values()) | {BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS} | {"adas_tier"}
+    sources = set(SPEC_FROM_VARIANT.values()) | {BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS}
     variant_cols = ", ".join(f"q.{c}" for c in sorted(sources))
     return conn.execute(
         f"""
@@ -252,7 +240,6 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
             row[col] = fmt_num(r[col])
         for col in BOOL_COLUMNS:
             row[col] = fmt_bool(r[BOOL_SOURCE.get(col, col)], col, vid)
-        row["adas_tier"] = fmt_int(r["adas_tier"], "adas_tier", vid)
 
         test = safety.get(r["model_id"])
         if test is not None:
