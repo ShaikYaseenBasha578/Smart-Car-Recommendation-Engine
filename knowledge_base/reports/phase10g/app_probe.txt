@@ -1,0 +1,11 @@
+catalogue power NaN rows: [548, 549, 567, 570, 571, 574, 575]
+/api/car/maruti-suzuki/grand-vitara 548 200 Power item: {'label': 'Power', 'status': 'unverified', 'value_display': None} | unverified: ['Boot space', 'Power'] | summary: Maruti Suzuki Grand Vitara is a 5-seat SUV priced from ₹10.77 lakh to ₹19.57 lakh (ex-showroom) across 20 variants. It has petrol, CNG and petrol-hybrid power from 1462–1490 cc engines, making 102–114
+/api/car/maruti-suzuki/victoris 567 200 Power item: {'label': 'Power', 'status': 'unverified', 'value_display': None} | unverified: ['Power'] | summary: Maruti Suzuki Victoris is a 5-seat SUV priced from ₹10.5 lakh to ₹19.99 lakh (ex-showroom) across 22 variants. It has petrol, CNG and petrol-hybrid power from 1462–1490 cc engines, making 87–102 bhp, 
+page routes: 200 200
+'Grand Vitara CNG': 1 recs; GV/Victoris: [('Grand Vitara', 'Delta CNG MT', None)]; Power==0: 0; NaN in JSON: False
+'Victoris strong hybrid': 1 recs; GV/Victoris: [('Victoris', 'VXI Strong Hybrid e-CVT', None)]; Power==0: 0; NaN in JSON: False
+'CNG SUV under 15 lakh': 6 recs; GV/Victoris: [('Victoris', 'LXI CNG MT', 86.63)]; Power==0: 0; NaN in JSON: False
+'hybrid SUV under 20 lakh': 3 recs; GV/Victoris: [('Victoris', 'VXI Strong Hybrid e-CVT', None), ('Grand Vitara', 'Delta+ Strong Hybrid e-CVT', 113.99)]; Power==0: 0; NaN in JSON: False
+'powerful SUV under 20 lakh': 9 recs; GV/Victoris: [('Victoris', 'ZXI (O) MT', 101.65), ('Grand Vitara', 'Zeta (O) Petrol MT', 101.65)]; Power==0: 0; NaN in JSON: False
+'SUV with at least 100 bhp under 20 lakh': 0 recs; GV/Victoris: []; Power==0: 0; NaN in JSON: False
+'performance car under 25 lakh': 8 recs; GV/Victoris: []; Power==0: 0; NaN in JSON: False

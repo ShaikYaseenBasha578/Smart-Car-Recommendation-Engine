@@ -1,0 +1,15 @@
+schema identical: True
+## evidence_amendment: +4 -0
+  + (126, 'powertrain', 84, 'power_bhp', '87.8', None, 'PS_AS_BHP_NO_OEM_SOURCE', '10G', '2026-11-03 10:51:00')
+  + (127, 'powertrain', 84, 'description', '1462cc 87.8bhp CNG', '1462cc CNG', 'PS_AS_BHP_NO_OEM_SOURCE', '10G', '2026-11-03 10:51:00')
+  + (128, 'powertrain', 88, 'power_bhp', '115.6', None, 'PS_AS_BHP_NO_OEM_SOURCE', '10G', '2026-11-03 10:51:00')
+  + (129, 'powertrain', 88, 'description', '1490cc 115.6bhp Petrol Hybrid', '1490cc Petrol Hybrid', 'PS_AS_BHP_NO_OEM_SOURCE', '10G', '2026-11-03 10:51:00')
+## powertrain: +2 -2
+  - (84, 39, 'CNG', 1462.0, 87.8, 121.5, '1462cc 87.8bhp CNG')
+  - (88, 40, 'Petrol Hybrid', 1490.0, 115.6, 122.0, '1490cc 115.6bhp Petrol Hybrid')
+  + (84, 39, 'CNG', 1462.0, None, 121.5, '1462cc CNG')
+  + (88, 40, 'Petrol Hybrid', 1490.0, None, 122.0, '1490cc Petrol Hybrid')
+## sqlite_sequence: +1 -1
+  - ('evidence_amendment', 125)
+  + ('evidence_amendment', 129)
+total differing rows: 10

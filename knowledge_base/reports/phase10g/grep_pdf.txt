@@ -1,0 +1,170 @@
+=== maruti_suzuki/victoris/latest/brochures/maruti_suzuki_victoris_brochure.pdf sha1=94f94973736c
+  p6: *Advanced Driver Assistance System (ADAS) is not a substitute for human eye and driver vigilance, it is a driver assist system that
+  p6: enhances driving experience and safety. The system performance may vary from road and driving conditions. The driver shall remain
+  p8: Experience intuitive tech at its best with the Smartplay Pro X Touchscreen Infotainment System.
+  p11: STRONG HYBRID
+  p11: Hybrid is the perfect ally.
+  p13: UNDERBODY S-CNG
+  p13: factory-ﬁtted underbody S-CNG ensures that every journey
+  p14: SMART HYBRID
+  p14: The always reliable K15C engine with progressive mild hybrid
+  p14: W IT H  PRO GRESSIVE MIL D  HYBRID
+  p16: km/kg
+  p16: CNG
+  p16: Strong Hybrid
+  p16: 1.5L K15C Petrol
+  p16: 1.5L K15C Petrol
+  p16: CNG (5MT)
+  p16: 1.5L M15D
+  p16: Strong Hybrid (eCVT)
+  p16: HYBRID SYSTEM
+  p16: 59 kW (80 Ps) @ 3995 -5500
+  p16: K15C Smart Hybrid
+  p16: Petrol+CNG
+  p16: Petrol (Strong Hybrid )
+  p16: 75.8 kW (103.06 Ps) @ 6000 rpm
+  p16: 74 kW (100.6 Ps)
+  p16: 64.6 kW (87.8 Ps) @ 5500 rpm
+  p16: 68kW (92.45 Ps) @ 5500 rpm
+  p16: - CNG Mode
+  p16: 121.5 Nm @ 4200 rpm
+  p16: - CNG Mode
+  p16: PETROL/CNG
+  p16: STRONG HYBRID
+  p16: 27.02 km/kg
+  p16: (Strong Hybrid Petrol e-CVT)
+  p16: CNG: 55 (water eqvt)
+  p16: INFOTAINMENT SYSTEM
+  p16: Inﬁnity Premium Sound 8-Speaker System with
+  p16: Traction Control System (TCS)
+  p16: Tyre-Pressure Monitoring System (TPMS)
+  p16: Acoustic Vehicle Alert System (AVAS)
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: (MT & Strong Hybrid)
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: (Petrol, S-CNG)
+  p16: (Petrol, S-CNG)
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: (Black & Ivory-Petrol / Black-Strong Hybrid)
+  p16: (Black & Ivory-Petrol / Black-Strong Hybrid)
+  p16: Petrol, S-CNG/Black PVC+ Petrol, S-CNG/Black PVC+
+  p16: Stitch-Strong Hybrid
+  p16: Stitch-Strong Hybrid
+  p16: Strong Hybrid
+  p16: Strong Hybrid
+  p16: Silver - Petrol, S-CNG
+  p16: Silver - Petrol, S-CNG
+  p16: Grey - Strong Hybrid
+  p16: Grey - Strong Hybrid
+=== maruti_suzuki/grand_vitara/latest/brochures/maruti_suzuki_grand_vitara_brochure.pdf sha1=023ce2e3d22c
+  p5: STRONG HYBRID TECHNOLOGY
+  p7: Drive System with selectable driving modes uses a
+  p7: ࡧzȥʋǠơLOCK mode, the system sends power to
+  p9: • Premium Sound System by Clarion
+  p12: • Tyre Pressure Monitoring System
+  p15: STRONG HYBRID
+  p15: INFOTAINMENT SYSTEM
+  p15: Premium Sound System by Clarion9
+  p15: Tyre Pressure Monitoring System (TPMS)
+  p15: Acoustic Vehicle Alert System (AVAS)
+  p15: | 1. Applicable only in Auto mode with Strong Hybrid variant subject to individual driving
+  p15: Strong Hybrid
+  p15: Max Power [1 kW = 1.35962 PS]
+  p15: 68 kW @ 5500 rpm [92.45 PS @ 5500 rpm]
+  p15: HYBRID
+  p15: Total System Max. Power [1 kW = 1.35962 PS]
+  p15: 85 kW [115.56 PS]
+  p15: Max Power (kW@rpm)
+  p15: STRONG HYBRID
+  p15: STRONG HYBRID
+=== volkswagen/virtus/latest/brochures/volkswagen_virtus_brochure.pdf sha1=882313c241b1
+  p4: 1.5L GT Plus Sport
+  p4: performance.  Equipped with a 7-speed DSG transmission to ensure fun on the
+  p7: a GT welcome message on the infotainment system, all adding a touch of
+  p8: an impressive 115 PS (85 kW) at 5000-5500 rpm and a torque of 178 Nm from 1750-4000 rpm. At
+  p8: 1.5L TSI EVO
+  p8: 7 - Speed DSG Transmission
+  p8: Equipped with a 1.5L TSI EVO engine featuring active cylinder management technology, the
+  p8: Volkswagen Virtus delivers a remarkable 150 PS (110 kW) of power at 5000-6000 rpm and a robust
+  p9: Speed alert system
+  p9: TCS - Traction Control System
+  p10: 1.5 TSI 150 PS, 7-Speed DSG Automatic
+  p12: Electronic Stability Control (ESC), Anti-lock Braking System (ABS) and
+  p12: Engine immobiliser with floating code system
+  p12: Speed alert system
+  p15: 1.5 TSI
+  p15: DSG
+  p15: 1.5 TSI EVO with ACT
+  p15: 7-Speed DSG
+  p15: Max. Power [PS (kW) @ rpm]
+=== hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf sha1=19da8e83686a
+  p7: 61 kW
+  p8: Company fitted dual cylinder CNG
+  p8: CNG switch
+  p8: Convenient CNG filling with fast refuelling nozzle
+  p8: With smarter CNG efficiency, the new Hyundai EXTER lets you turn everyday
+  p8: 50.5 kW
+  p8: Ample CNG boot space of 225 l^
+  p8: petrol with CNG
+  p8: CNG
+  p9: EXTER Knight also available with Hy-CNG Duo
+  p10: 1.2 l Bi-fuel Kappa petrol with CNG
+  p12: 1.2 l Bi-fuel Kappa petrol with CNG
+  p12: CNG: 60 (Water equivalent)
+  p12: Petrol + CNG
+  p12: 61 kW (83 PS) @ 6 000 r/min
+  p12: 50.5 kW (69 PS) @ 6 000 r/min
+=== tata/nexon/latest/brochures/tata_nexon_brochure.pdf sha1=4485b42444e6
+  p27: CNG ENGINE
+  p27: A turbocharged CNG SUV engine enhances your
+  p27: power that is unlike any other CNG engine.
+  p27: Superior power of 73.5 kW in CNG mode
+  p27: Torque of 170 Nm in CNG mode
+  p27: NEXON TURBO CNG SUV
+  p27: India’s first Turbo CNG SUV that offers unmatched performance
+  p27: CNG SUV
+  p28: Shift effortlessly between CNG and petrol mode
+  p28: for higher fuel efficiency
+  p28: conveniently in case of low CNG
+  p28: directly in CNG mode.
+  p28: DIRECT START IN CNG
+  p28: CNG SUV
+  p29: With best-in-class safety* features, the Nexon iCNG is housed
+  p29: CNG to petrol mode
+  p29: The iCNG kit has been tested across temperatures
+  p29: ADVANCED MATERIALS IN iCNG KIT TO
+  p29: Cuts off CNG supply to the engine immediately in case of a
+  p29: TURBO CNG ARE:
+  p29: CNG SUV
+  p39: *For Nexon iCNG feature list please refer to Nexon iCNG brochure
+  p40: Exteriors. *This varies as per variant **Bootspace as per ISO V215. Features like Multi drive modes, Cruise control, iRA Connected car feature, E-Call
+  p40: - JBL branded speaker system, Subwoofer, ADAS*, ADAS not available in CNG & Diesel. Rear sunshade only available in fearless +PS DCA and in all of Red
+  p40: #DARK edition only available in fearless+ PS. ◊Cruise control is not available in CNG. ¤Nexon BNCAP safety rating is applicable for Petrol & Diesel tr
+  p40: CNG
+  p40: Petrol + CNG
+  p40: Power (kW)
+  p40: CNG Mode - 73.52 @5000 rpm
+  p40: CNG Mode - 170 @2000 rpm
+=== toyota/urban_cruiser_hyryder/latest/brochures/toyota_urban_cruiser_hyryder_brochure.pdf sha1=ec7984cef43e
+  p11: top performance and unmatched mileage.
+  p11: (for neoDrive & e-CNG grades)
+  p11: E-CNG technology
+  p11: * km/kg
+  p11: FUEL EFFICIENCY OF 27.97* km/l
+  p14: E CNG
+  p14: BS6 Ph2 Petrol + CNG
+  p14: "74 kW (100.6 PS) @ 6000 rpm [Gasoline mode]
+  p14: 64.6kW  (87.8 PS) @ 5500 rpm [CNG mode]"
+  p14: 75.8 kW (103.06 PS) @ 6000 rpm
+  p14: 68 kW (92.45 PS) @ 5500 rpm
+  p14: 121.5 Nm @ 4200 rpm [CNG mode]"
+  p14: 85 kW (115.56PS)
+  p14: 59 kW (80.2 PS) @ 3995 rpm
+  p14: Gasoline:  0.045 m3  (45 l)”CNG:  0.055 m3  (55 l) [Water
+  p14: 26.6 km/kg  [CNG mode]
+  p14: E CNG

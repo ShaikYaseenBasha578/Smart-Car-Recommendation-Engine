@@ -1,0 +1,75 @@
+# Power held: pt 84, 88 (and twin pts for comparison)
+(84, 'Maruti Suzuki', 'Grand Vitara', 'CNG', 1462.0, 87.8, 121.5, '1462cc 87.8bhp CNG') users [548, 549]
+   obs (548, 'v6_migration/migration/t2', 'v6_migration', 548, 'applied', 'Maruti Suzuki Grand Vitara Delta CNG MT', {'power_bhp': '87.8'})
+   obs (549, 'v6_migration/migration/t2', 'v6_migration', 549, 'applied', 'Maruti Suzuki Grand Vitara Zeta CNG MT', {'power_bhp': '87.8'})
+(88, 'Maruti Suzuki', 'Victoris', 'Petrol Hybrid', 1490.0, 115.6, 122.0, '1490cc 115.6bhp Petrol Hybrid') users [567, 570, 571, 574, 575]
+   obs (567, 'v6_migration/migration/t2', 'v6_migration', 567, 'applied', 'Maruti Suzuki Victoris VXI Strong Hybrid e-CVT', {'power_bhp': '115.6'})
+   obs (570, 'v6_migration/migration/t2', 'v6_migration', 570, 'applied', 'Maruti Suzuki Victoris ZXI Strong Hybrid e-CVT', {'power_bhp': '115.6'})
+   obs (571, 'v6_migration/migration/t2', 'v6_migration', 571, 'applied', 'Maruti Suzuki Victoris ZXI (O) Strong Hybrid e-CVT', {'power_bhp': '115.6'})
+   obs (574, 'v6_migration/migration/t2', 'v6_migration', 574, 'applied', 'Maruti Suzuki Victoris ZXI+ Strong Hybrid e-CVT', {'power_bhp': '115.6'})
+   obs (575, 'v6_migration/migration/t2', 'v6_migration', 575, 'applied', 'Maruti Suzuki Victoris ZXI+ (O) Strong Hybrid e-CV', {'power_bhp': '115.6'})
+
+# twin powertrains (same cc/fuel family, Maruti/Toyota 1.5)
+   (84, 'Grand Vitara', 'CNG', 1462.0, 87.8, 121.5)
+   (81, 'Urban Cruiser Hyryder', 'CNG', 1462.0, 86.63, 121.5)
+   (87, 'Victoris', 'CNG', 1462.0, 86.63, 121.5)
+   (83, 'Grand Vitara', 'Petrol', 1462.0, 101.65, 136.8)
+   (80, 'Urban Cruiser Hyryder', 'Petrol', 1462.0, 101.65, 136.8)
+   (86, 'Victoris', 'Petrol', 1462.0, 101.65, 136.8)
+   (85, 'Grand Vitara', 'Petrol Hybrid', 1490.0, 113.99, 122.0)
+   (82, 'Urban Cruiser Hyryder', 'Petrol Hybrid', 1490.0, 113.99, 122.0)
+   (88, 'Victoris', 'Petrol Hybrid', 1490.0, 115.6, 122.0)
+
+# GV 548/549 km/kg: [548, 549]
+  canonical_q: [(548, 26.6), (549, 26.6)]
+  fp (16871, 548, '26.6', 'accepted', 'v6_migration', 548, None)
+  fp (16904, 549, '26.6', 'accepted', 'v6_migration', 549, None)
+  obs (548, 'v6_migration/migration/t2', 'v6_migration', 548, 'applied', 'Maruti Suzuki Grand Vitara Delta CNG MT', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '26.6'})
+  obs (549, 'v6_migration/migration/t2', 'v6_migration', 549, 'applied', 'Maruti Suzuki Grand Vitara Zeta CNG MT', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '26.6'})
+
+# Exter CNG km/kg: [655, 657, 660, 663, 666]
+  canonical_q: [(655, 27.1), (657, 27.1), (660, 27.1), (663, 27.1), (666, 27.1)]
+  fp (20240, 655, '27.1', 'accepted', 'v6_migration', 655, None)
+  fp (20305, 657, '27.1', 'accepted', 'v6_migration', 657, None)
+  fp (20403, 660, '27.1', 'accepted', 'v6_migration', 660, None)
+  fp (20501, 663, '27.1', 'accepted', 'v6_migration', 663, None)
+  fp (20599, 666, '27.1', 'accepted', 'v6_migration', 666, None)
+  obs (655, 'v6_migration/migration/t2', 'v6_migration', 655, 'applied', 'Hyundai Exter HX 2 CNG Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '27.1'})
+  obs (657, 'v6_migration/migration/t2', 'v6_migration', 657, 'applied', 'Hyundai Exter HX 3 CNG Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '27.1'})
+  obs (660, 'v6_migration/migration/t2', 'v6_migration', 660, 'applied', 'Hyundai Exter HX 4 CNG Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '27.1'})
+  obs (663, 'v6_migration/migration/t2', 'v6_migration', 663, 'applied', 'Hyundai Exter HX 6 CNG Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '27.1'})
+  obs (666, 'v6_migration/migration/t2', 'v6_migration', 666, 'applied', 'Hyundai Exter HX 8 CNG Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '27.1'})
+
+# Nexon CNG km/kg: [75, 80, 83, 86, 89, 94, 98, 103, 107, 108, 115, 117, 118]
+  canonical_q: [(75, 17.44), (80, 17.44), (83, 17.44), (86, 17.44), (89, 17.44), (94, 17.44), (98, 17.44), (103, 17.44), (107, 17.44), (108, 17.44), (115, 17.44), (117, 17.44), (118, 17.44)]
+  fp (2465, 75, '17.44', 'accepted', 'v6_migration', 75, None)
+  fp (2623, 80, '17.44', 'accepted', 'v6_migration', 80, None)
+  fp (2715, 83, '17.44', 'accepted', 'v6_migration', 83, None)
+  fp (2806, 86, '17.44', 'accepted', 'v6_migration', 86, None)
+  fp (2899, 89, '17.44', 'accepted', 'v6_migration', 89, None)
+  fp (3057, 94, '17.44', 'accepted', 'v6_migration', 94, None)
+  fp (3182, 98, '17.44', 'accepted', 'v6_migration', 98, None)
+  fp (3343, 103, '17.44', 'accepted', 'v6_migration', 103, None)
+  fp (3472, 107, '17.44', 'accepted', 'v6_migration', 107, None)
+  fp (3499, 108, '17.44', 'accepted', 'v6_migration', 108, None)
+  fp (3723, 115, '17.44', 'accepted', 'v6_migration', 115, None)
+  fp (3784, 117, '17.44', 'accepted', 'v6_migration', 117, None)
+  fp (3811, 118, '17.44', 'accepted', 'v6_migration', 118, None)
+  obs (75, 'v6_migration/migration/t2', 'v6_migration', 75, 'applied', 'Tata Nexon Smart CNG 1.2L Turbo 6 Speed Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (80, 'v6_migration/migration/t2', 'v6_migration', 80, 'applied', 'Tata Nexon Smart Plus CNG 1.2L Turbo 6 Speed Manua', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (83, 'v6_migration/migration/t2', 'v6_migration', 83, 'applied', 'Tata Nexon Smart Plus (S) CNG 1.2L Turbo 6 Speed M', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (86, 'v6_migration/migration/t2', 'v6_migration', 86, 'applied', 'Tata Nexon Pure Plus CNG 1.2L Turbo 6 Speed Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (89, 'v6_migration/migration/t2', 'v6_migration', 89, 'applied', 'Tata Nexon Pure Plus (S) CNG 1.2L Turbo 6 Speed Ma', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (94, 'v6_migration/migration/t2', 'v6_migration', 94, 'applied', 'Tata Nexon Pure Plus (PS) CNG 1.2L Turbo 6 Speed M', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (98, 'v6_migration/migration/t2', 'v6_migration', 98, 'applied', 'Tata Nexon Creative CNG 1.2L Turbo 6 Speed Manual', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (103, 'v6_migration/migration/t2', 'v6_migration', 103, 'applied', 'Tata Nexon Creative Plus (S) CNG 1.2L Turbo 6 Spee', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (107, 'v6_migration/migration/t2', 'v6_migration', 107, 'applied', 'Tata Nexon Creative Plus (PS) CNG 1.2L Turbo 6 Spe', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (108, 'v6_migration/migration/t2', 'v6_migration', 108, 'applied', 'Tata Nexon Creative Plus (PS) CNG 1.2L Turbo 6 Spe', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (115, 'v6_migration/migration/t2', 'v6_migration', 115, 'applied', 'Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Spe', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (117, 'v6_migration/migration/t2', 'v6_migration', 117, 'applied', 'Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Spe', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+  obs (118, 'v6_migration/migration/t2', 'v6_migration', 118, 'applied', 'Tata Nexon Fearless Plus (PS) CNG 1.2L Turbo 6 Spe', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '17.44'})
+
+# WagonR 225 km/kg: [225]
+  canonical_q: [(225, 33.54)]
+  fp (7149, 225, '33.54', 'accepted', 'v6_migration', 225, None)
+  obs (225, 'v6_migration/migration/t2', 'v6_migration', 225, 'applied', 'Maruti Suzuki WagonR LXi CNG', {'mileage_arai_kmpl': '', 'mileage_arai_km_per_kg': '33.54'})

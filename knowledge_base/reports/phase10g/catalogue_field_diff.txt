@@ -1,0 +1,16 @@
+rows 832 832 same ids True same columns True
+  v548 Grand Vitara | Delta CNG MT | power_bhp: '87.8' -> ''
+  v548 Grand Vitara | Delta CNG MT | unverified_fields: 'boot_space_litres' -> 'power_bhp;boot_space_litres'
+  v549 Grand Vitara | Zeta CNG MT | power_bhp: '87.8' -> ''
+  v549 Grand Vitara | Zeta CNG MT | unverified_fields: 'boot_space_litres' -> 'power_bhp;boot_space_litres'
+  v567 Victoris | VXI Strong Hybrid e-CVT | power_bhp: '115.6' -> ''
+  v567 Victoris | VXI Strong Hybrid e-CVT | unverified_fields: '' -> 'power_bhp'
+  v570 Victoris | ZXI Strong Hybrid e-CVT | power_bhp: '115.6' -> ''
+  v570 Victoris | ZXI Strong Hybrid e-CVT | unverified_fields: '' -> 'power_bhp'
+  v571 Victoris | ZXI (O) Strong Hybrid e-CVT | power_bhp: '115.6' -> ''
+  v571 Victoris | ZXI (O) Strong Hybrid e-CVT | unverified_fields: '' -> 'power_bhp'
+  v574 Victoris | ZXI+ Strong Hybrid e-CVT | power_bhp: '115.6' -> ''
+  v574 Victoris | ZXI+ Strong Hybrid e-CVT | unverified_fields: '' -> 'power_bhp'
+  v575 Victoris | ZXI+ (O) Strong Hybrid e-CVT | power_bhp: '115.6' -> ''
+  v575 Victoris | ZXI+ (O) Strong Hybrid e-CVT | unverified_fields: '' -> 'power_bhp'
+{'power_bhp': 7, 'unverified_fields': 7}
