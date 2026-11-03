@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "ffce4794dc255b1f28e24a1be7b4b2d6e57c2da94ef65b3759ecbe4278f401e0",
+  "catalogue_sha256": "d8cbf83dc7fccf8d8966f2e842018d4ff8e0cf76472906002fff1e2d90a59326",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -146,10 +146,10 @@
       "unverified": 376
     },
     "power_bhp": {
-      "non_null": 832,
+      "non_null": 825,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 0
+      "unverified": 7
     },
     "price_ex_showroom": {
       "non_null": 832,
@@ -236,7 +236,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-11-02T09:21:34Z",
+  "export_utc": "2026-11-03T10:51:18Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "10F",
-  "kb_sha256": "7a2f32a3ed60cf45a79674aa91d4ddac5277cdc34211fbc18926218a90bce78e",
+  "kb_latest_phase": "10G",
+  "kb_sha256": "4ad98698e5c593c17193d3d1efde0ac0dd982b4f59296e713e52ede8983ebe0c",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
