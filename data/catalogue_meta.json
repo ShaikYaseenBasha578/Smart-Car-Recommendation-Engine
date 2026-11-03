@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "d8cbf83dc7fccf8d8966f2e842018d4ff8e0cf76472906002fff1e2d90a59326",
+  "catalogue_sha256": "067f9accc3d018b68dca0751fe78198393b134b17c71e0ee869eaf5836f83640",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -8,10 +8,10 @@
       "unverified": 0
     },
     "adas_available": {
-      "non_null": 829,
+      "non_null": 828,
       "not_applicable_blank": 0,
-      "quarantined": 1,
-      "unverified": 3
+      "quarantined": 2,
+      "unverified": 4
     },
     "airbags": {
       "non_null": 832,
@@ -38,10 +38,10 @@
       "unverified": 17
     },
     "boot_space_litres": {
-      "non_null": 791,
+      "non_null": 789,
       "not_applicable_blank": 0,
-      "quarantined": 0,
-      "unverified": 41
+      "quarantined": 2,
+      "unverified": 43
     },
     "camera_360": {
       "non_null": 826,
@@ -56,10 +56,10 @@
       "unverified": 52
     },
     "cruise_control": {
-      "non_null": 558,
+      "non_null": 542,
       "not_applicable_blank": 0,
-      "quarantined": 85,
-      "unverified": 274
+      "quarantined": 101,
+      "unverified": 290
     },
     "drivetrain": {
       "non_null": 832,
@@ -98,10 +98,10 @@
       "unverified": 0
     },
     "heads_up_display": {
-      "non_null": 482,
+      "non_null": 475,
       "not_applicable_blank": 0,
-      "quarantined": 115,
-      "unverified": 350
+      "quarantined": 122,
+      "unverified": 357
     },
     "height_mm": {
       "non_null": 832,
@@ -134,10 +134,10 @@
       "unverified": 40
     },
     "mileage_kmpl": {
-      "non_null": 453,
+      "non_null": 446,
       "not_applicable_blank": 119,
-      "quarantined": 1,
-      "unverified": 260
+      "quarantined": 8,
+      "unverified": 267
     },
     "paddle_shifters": {
       "non_null": 456,
@@ -194,10 +194,10 @@
       "unverified": 0
     },
     "sunroof": {
-      "non_null": 830,
+      "non_null": 826,
       "not_applicable_blank": 0,
-      "quarantined": 1,
-      "unverified": 2
+      "quarantined": 5,
+      "unverified": 6
     },
     "torque_nm": {
       "non_null": 832,
@@ -206,16 +206,16 @@
       "unverified": 0
     },
     "tpms": {
-      "non_null": 796,
+      "non_null": 789,
       "not_applicable_blank": 0,
-      "quarantined": 10,
-      "unverified": 36
+      "quarantined": 17,
+      "unverified": 43
     },
     "ventilated_front_seats": {
-      "non_null": 819,
+      "non_null": 813,
       "not_applicable_blank": 0,
-      "quarantined": 9,
-      "unverified": 13
+      "quarantined": 15,
+      "unverified": 19
     },
     "wheelbase_mm": {
       "non_null": 832,
@@ -236,7 +236,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-11-03T10:51:18Z",
+  "export_utc": "2026-11-03T11:27:21Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "10G",
-  "kb_sha256": "4ad98698e5c593c17193d3d1efde0ac0dd982b4f59296e713e52ede8983ebe0c",
+  "kb_latest_phase": "10H",
+  "kb_sha256": "56c7d46717c0079a84e1f8f24f1bfe20509171cb0138b0f9b288f40446438ee4",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
