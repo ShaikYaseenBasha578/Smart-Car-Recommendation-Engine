@@ -1,0 +1,9 @@
+already quarantined: mislinked obs 177 edition obs 0
+fp rows on mislinked obs, by decision: Counter({('MISLINK', 'confirmed'): 2834, ('MISLINK', 'rejected'): 893, ('EDITION', 'confirmed'): 273, ('EDITION', 'rejected'): 108, ('MISLINK', 'accepted'): 97})
+canonical cells whose accepted value comes from a mislinked/edition obs: 47
+  by class: Counter({'MISLINK_TARGET': 37, 'MISLINK_NONE': 10})
+  by field: [('cruise_control', 17), ('heads_up_display', 8), ('mileage_arai_kmpl', 7), ('tyre_pressure_monitoring_system', 6), ('ventilated_front_seats', 5), ('sunroof', 2), ('boot_space_litres', 2)]
+  with independent agreeing support: 8 | sole support: 39
+  cell stored on the variant itself (not inherited): 47
+corroboration cells that drop: mislinks only 790 | incl. edition obs 797 | to zero (mislinks): 123
+carwale resolved obs: 753 payload name differs from raw name: 470 Counter({'MISLINK_TARGET': 216, 'OK': 209, 'MISLINK_NONE': 45})

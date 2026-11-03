@@ -1,0 +1,49 @@
+set	variant	field	canonical	evidence_classes	depends_on_no_match	no_match_obs
+Q3+Q2	v36	ventilated_front_seats	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v41	ventilated_front_seats	0	{'MISLINK_TARGET': 3}	False	
+Q3+Q2	v50	ventilated_front_seats	0	{'MISLINK_TARGET': 2, 'MISLINK_NONE': 1}	True	2206
+Q3+Q2	v52	ventilated_front_seats	0	{'MISLINK_NONE': 1}	True	3172
+Q3+Q2	v54	ventilated_front_seats	0	{'MISLINK_NONE': 1}	True	3175
+Q3+Q2	v146	mileage_arai_kmpl	20.17	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v210	mileage_arai_kmpl	20.3	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v237	mileage_arai_kmpl	25.71	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v252	mileage_arai_kmpl	22.94	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v293	mileage_arai_kmpl	19.46	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v306	mileage_arai_kmpl	16.0	{'MISLINK_NONE': 1}	True	1587
+Q3+Q2	v343	heads_up_display	0	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v416	mileage_arai_kmpl	17.0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v452	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v452	heads_up_display	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v452	sunroof	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v452	tyre_pressure_monitoring_system	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v453	adas_available	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v453	cruise_control	1	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v453	heads_up_display	0	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v453	tyre_pressure_monitoring_system	1	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v457	cruise_control	1	{'MISLINK_TARGET': 1, 'MISLINK_NONE': 1, 'EDITION_NOT_IN_KB': 1}	True	2421
+Q3+Q2	v457	tyre_pressure_monitoring_system	1	{'MISLINK_TARGET': 1, 'MISLINK_NONE': 1, 'EDITION_NOT_IN_KB': 1}	True	2421
+Q3+Q2	v458	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v458	heads_up_display	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v458	tyre_pressure_monitoring_system	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v460	cruise_control	1	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v460	tyre_pressure_monitoring_system	1	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v462	cruise_control	1	{'MISLINK_TARGET': 1, 'MISLINK_NONE': 1}	True	2434
+Q3+Q2	v462	tyre_pressure_monitoring_system	1	{'MISLINK_TARGET': 1, 'MISLINK_NONE': 1}	True	2434
+Q3+Q2	v597	cruise_control	0	{'MISLINK_TARGET': 1, 'MISLINK_NONE': 1}	True	3302
+Q3+Q2	v629	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v630	cruise_control	1	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v630	heads_up_display	0	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v631	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v632	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v742	cruise_control	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v746	cruise_control	0	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v757	cruise_control	1	{'MISLINK_TARGET': 1}	False	
+Q3+Q2	v804	cruise_control	1	{'MISLINK_TARGET': 4}	False	
+Q3+Q2	v821	cruise_control	1	{'MISLINK_NONE': 3}	True	3241,3244,3246
+Q3+Q2	v821	heads_up_display	1	{'MISLINK_NONE': 3}	True	3241,3244,3246
+Q3+Q2	v821	sunroof	0	{'MISLINK_NONE': 3}	True	3241,3244,3246
+Q3+Q2	v831	boot_space_litres	445.0	{'MISLINK_NONE': 5, 'MISLINK_TARGET': 2}	True	3505,3514,3519,3524,3525
+Q3+Q2	v831	sunroof	0	{'MISLINK_NONE': 5, 'MISLINK_TARGET': 2}	True	3505,3514,3519,3524,3525
+Q3+Q2	v831	ventilated_front_seats	0	{'MISLINK_NONE': 1}	True	3514
+Q3+Q2	v832	boot_space_litres	350.0	{'MISLINK_TARGET': 2}	False	
+Q3+Q2	v832	sunroof	0	{'MISLINK_TARGET': 2}	False	

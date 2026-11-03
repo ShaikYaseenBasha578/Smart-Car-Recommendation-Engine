@@ -1,0 +1,80 @@
+case	obs	verdict	better_variant_id	evidence
+1	1506	mislink	342	raw/slug "accomplished-s-1-5l-revotroq-diesel" is Diesel; 335 Accomplished S is Petrol 1199 cc. 342 Accomplished S Diesel (1497 cc) matches.
+2	2851	mislink	10	CarWale payload "SX Petrol 1.5L Manual" (1497 cc, 6MT) is trim SX; linked 2 is EX. 10 SX Petrol 1.5L Manual matches.
+3	1880	mislink		v3cars name has "Camo" edition; 98 Creative CNG is not an edition. KB has no Creative Camo CNG.
+4	3073	mislink		Payload GTX (O) Petrol 1482 cc DCT; 819 is GTX (A) edition on 1497 cc CVT (wrong trim, engine, gearbox). KB has no GTX (O).
+5	3082	mislink	751	raw_name says Diesel but payload v_variant_name "HTE (O) Petrol 1.0L Turbo Manual" with Fuel Type Petrol; 752 is Diesel 1493 cc. 751 HTE(O) Petrol Manual matches payload (raw would match 752).
+6	1881	mislink		"Creative Camo" names the Camo edition; 101 Creative Diesel MT is not an edition. No Camo row in KB.
+7	1046	mislink		91wheels "Sportz Vibe AT" (slug sportz-vibe-amt) names a Vibe special version; 263 Sportz AMT is plain Sportz. Unsure whether Vibe is an edition or a pack.
+8	2511	correct link		Fortuner 2WD 2.7L Petrol Automatic = 310 Fortuner 2.7 Petrol 4x2 AT (2694 cc, TC).
+9	898	mislink		Slug "creative-plus-ps-dark-1-5-diesel-6-speed-amt": Creative+ PS, Dark, AMT; 104 is Creative Plus (S) Diesel Manual (wrong trim suffix, gearbox, edition). No Creative Plus PS Dark diesel AMT in KB.
+10	1861	mislink		"Creative Camo" edition; 88 Creative Petrol MT is not an edition. No Camo row in KB.
+11	2514	correct link		Fortuner 4WD 2.8L Diesel Manual = 313 Fortuner 2.8 Diesel 4x4 MT.
+12	3514	mislink		raw and payload both "Adventure X Plus Dark Edition" (payload Petrol 1498 cc MT, raw Diesel); 831 is Fearless X Dark Diesel - wrong trim. KB has no Adventure X Plus Dark.
+13	2512	correct link		Fortuner 2WD 2.8L Diesel Manual = 311 Fortuner 2.8 Diesel 4x2 MT.
+14	1082	mislink		"HX10 Knight Turbo 7AT (DCT) DT" names Knight edition; 165 HX10 Turbo DCT is not an edition. No Knight row in KB.
+15	1913	mislink		v3cars "Creative Plus PS Dark" diesel automatic; 106 is Creative Plus (S) (S vs PS) and not Dark. No Creative Plus PS Dark diesel AMT in KB.
+16	1301	mislink	544	"Alpha Smart Hybrid AT" (slug alpha-at; Smart Hybrid = mild hybrid Petrol) is automatic; 543 is Alpha Petrol MT. 544 Alpha Petrol AT matches.
+17	2421	mislink		v3cars "Adventure X Dark" Diesel Automatic; 457 is Adventure X Plus AT (Plus extra, not Dark). No Adventure X Dark in KB.
+18	1903	mislink	113	"Fearless Plus PS Red Dark" petrol manual; 109 is the non-edition Fearless Plus (PS) MT. 113 Fearless Plus (PS) Petrol MT Red Dark Edition matches.
+19	1314	mislink	546	"Alpha (O) Smart Hybrid AT DT" (slug alpha-at-dt-smart-hybrid) = mild-hybrid petrol AT; 554 is Alpha+ (O) Strong Hybrid e-CVT. 546 Alpha (O) Petrol AT matches (DT paint-only).
+20	3235	mislink		raw "Alpha (O) AMT", payload "Alpha (O) MT" with Fuel Type CNG, 5MT; 252 is Alpha MT Petrol (no (O), wrong fuel). KB Baleno has no Alpha (O).
+21	3236	mislink		Payload Lxi Petrol 1.0L Turbo, Engine 998 cc; 138 LXi MT is 1462 cc. KB Brezza has no 1.0 turbo powertrain.
+22	1081	mislink		"HX8 Knight Diesel AT DT" names Knight edition; 164 HX8 Diesel AT is not an edition.
+23	3247	mislink		raw "Zxi Petrol 1.5L Automatic" but payload "Zxi Petrol 1.0L Turbo Manual" (998 cc); 821 is a DT edition whose powertrain is 1462 cc. Payload has no KB match; raw would match 146 ZXi AT.
+24	3121	mislink	696	Payload "MX1 2WD Petrol 2.0L Turbo Manual" (1997 cc); 698 is MX3 Diesel (wrong trim and fuel). 696 MX1 2WD Petrol MT matches payload (raw MX1 Diesel would be 695).
+25	2164	mislink		v3cars "STAR EDITION 2WD 2.0L Turbo Petrol Automatic"; 692 AX7 L is not the Star edition. No Star Edition row in KB.
+26	849	mislink		91wheels "SX Premium Summer Edition Diesel" names Summer edition; 21 SX Premium Diesel MT is not an edition (gearbox also unstated).
+27	3076	mislink		raw GTX (O) Diesel TC, payload GTX (O) Petrol 1482 cc DCT; 819 is GTX (A) 1497 cc CVT edition. No GTX (O) in KB.
+28	1036	mislink	263	"Sportz Auto AT", slug sportz-amt = automatic; 259 is Sportz MT. 263 Sportz AMT matches.
+29	2989	mislink		raw "HTK Plus Diesel Manual 7 STR" but payload "HTK Plus CNG" (Fuel CNG); 788 is HTK+ Turbo Petrol. No CNG Clavis in KB; raw would match 799.
+30	1948	mislink	814	v3cars "ZX Black 1.5L Petrol Manual" = ZX Black Edition; 649 is VX. 814 ZX Petrol Manual Black Edition matches.
+31	3534	mislink		"Stealth Edition" (raw Diesel TC, payload Petrol 1498 cc MT); 831 is Fearless X Dark Edition - different edition. No Stealth row in KB.
+32	1892	mislink		"Creative Camo" Diesel Automatic; 106 is Creative Plus (S), not Camo. No Camo row in KB (105 is plain Creative Diesel AMT).
+33	1405	mislink		91wheels "Tekna Launch Edition AT (EZ-Shift)" names Launch edition; 737 Tekna EZ Shift is not an edition.
+34	3074	mislink		Payload X-Line (O) Petrol 1482 cc DCT; 819 is GTX (A) 1497 cc CVT edition. KB has X-Line / X-Line(A) but no X-Line (O).
+35	1178	mislink		91wheels "AX7 L Diesel MT"; 52 is AX7 Petrol (wrong trim suffix L and fuel). KB XUV 3XO has no AX7 L.
+36	3556	mislink	93	Payload "Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual"; 102 is Creative Plus (PS). 93 Creative Plus (S) Petrol MT matches payload; raw adds "Dark Edition", which KB lacks for this trim.
+37	1899	mislink	112	"Fearless Plus PS Dark" petrol manual; 109 is non-edition. 112 Fearless Plus (PS) Petrol MT Dark Edition matches.
+38	2983	mislink		raw "HTE Diesel Manual 7 STR", payload "HTE CNG" (Fuel CNG); 786 is HTE(O) Turbo Petrol (wrong trim and fuel). No CNG Clavis; raw would match 796.
+39	925	mislink		"Creative CAMO Edition Diesel AMT"; 105 Creative Diesel AMT is not the Camo edition.
+40	3342	mislink	561	Payload "ZXi (O) 2WD Petrol 1.5L Manual" (1462 cc, 5MT); 825 is ZXi (no (O)) DT edition. 561 ZXI (O) MT matches payload (raw hybrid e-CVT would be 571).
+41	3668	mislink		Payload Anniversary Edition 1498 cc DCT matches 833's name, but 833's powertrain is 999 cc and transmission TC (base 643 Topline 1.0 TC): engine incompatible. KB row itself is defective (known 833 issue).
+42	1428	mislink		91wheels "Tekna CNG"; 723 MT TEKNA is Petrol. No CNG Magnite in KB.
+43	1569	correct link		"2.7L 4x2 Petrol AT", v_variant_fuel_type Petrol, transmission Automatic = 310.
+44	1162	mislink		"Star Edition 2WD Diesel AT"; 688 AX5 L is not the Star edition. No Star row in KB.
+45	3078	mislink		raw GTX (O) Diesel TC DT, payload GTX (O) Petrol 1482 cc DCT; 819 is GTX (A) 1497 cc CVT edition. No GTX (O) in KB.
+46	2450	mislink		"Fearless Ultra Red Dark" Diesel Automatic; 463 Fearless Ultra AT is not an edition. No Red Dark Harrier in KB.
+47	1505	mislink	341	"Accomplished S 1.2L iCNG" (slug ...-icng) is CNG; 335 is Petrol. 341 Accomplished S CNG matches.
+48	2987	mislink		raw "HTK Plus Petrol Turbo Manual 7 STR", payload "HTK Plus CNG"; 799 is HTK+ Diesel - wrong fuel either way. No CNG Clavis; raw would match 788.
+49	2083	mislink	758	v3cars "HTK Plus 1.5L Turbo Diesel Automatic"; 762 is HTK+(O). 758 HTK+ Diesel Automatic matches.
+50	3245	mislink		Payload "Zxi Plus Petrol 1.0L Turbo Manual" 998 cc; 142 is ZXi (no Plus), 1462 cc. 145 ZXi+ MT is 1462 cc, so no compatible row.
+51	1615	mislink		91wheels "G-FLT 8 Seater" is the G fleet trim; 577 is GX 8 Seater. KB Hycross has no G-FLT.
+52	1510	mislink	337	"Creative S 1.5L Revotorq Diesel"; 325 is Creative Petrol (missing S, wrong fuel). 337 Creative S Diesel matches.
+53	3077	mislink		raw X-Line (O) Diesel TC, payload X-Line (O) Petrol 1482 cc DCT; 191 is X-Line(A) - (O) vs (A) trim differs. No X-Line (O) in KB.
+54	2606	mislink		v3cars "GT Plus Sport (150PS)" DCT; 638 is GT Plus Chrome - Sport and Chrome are distinct trims. No GT Plus Sport in KB Virtus.
+55	1889	mislink		"Creative Plus PS Dark" petrol manual; 88 is plain Creative. KB has no Creative Plus PS Dark petrol MT (102 is Dual Tone, non-edition).
+56	3656	mislink		Payload "GT Plus Sport" DCT; 628 is GT Plus Chrome. No GT Plus Sport in KB Taigun.
+57	3592	mislink	109	Payload "Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual" (1199 cc); 120 is Diesel Dark Edition. 109 matches payload; raw (Diesel Red Dark) has no KB row (120 is Dark, not Red Dark).
+58	3242	mislink		raw "Zxi Petrol 1.5L Manual" but payload "Zxi Petrol 1.0L Turbo Manual" 998 cc; 142 is 1462 cc. Payload has no KB match; raw would match 142.
+59	1237	mislink	143	91wheels "VXi AT"; 140 is VXi MT. 143 VXi AT matches.
+60	889	mislink	96	"Pure + 1.5 Diesel 6 Speed AT" (slug ...-at); 90 is Pure Plus Diesel Manual. 96 Pure Plus Diesel AMT matches.
+61	1114	mislink	758	"HTK+ Diesel AT"; 757 is HTK+ Diesel Manual. 758 HTK+ Diesel Automatic matches.
+62	3116	mislink	681	Payload "LXT 2WD Diesel 1.5L Turbo Manual" 1497 cc; 684 is LXT 4WD Diesel 2.2L. 681 matches payload (raw LXT 4WD Petrol MT would be 686).
+63	3588	mislink	109	Payload "Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual" 1199 cc Petrol; 116 is Diesel. 109 matches payload; raw (Diesel MT DT) would match 116.
+64	2513	correct link		Fortuner 2WD 2.8L Diesel Automatic = 312 Fortuner 2.8 Diesel 4x2 AT.
+65	2191	mislink	41	v3cars "AX5 1.2L Turbo Petrol Manual" (no L); 50 is AX5L. 41 AX5 Petrol 1.2L Turbo Manual matches.
+66	3476	mislink	344	Payload "Accomplished Plus S Petrol 1.2L Automatic (DCT)"; 343 is Accomplished S DCA (no Plus). 344 Accomplished+ S DCA matches.
+101	2206	mislink		v3cars "AX7 L (131PS) 1.2L Turbo Petrol Manual"; 50 is AX5L. KB XUV 3XO has no AX7 L (52 is AX7).
+102	3172	mislink		Payload "AX7L Petrol 1.2L Turbo Manual Dual Tone"; 52 is AX7 (no L). No AX7 L in KB.
+103	3175	mislink		raw AX7L Diesel, payload "AX7L Petrol 1.2L Turbo Manual Dual Tone"; 54 is AX7 Diesel (wrong trim, and wrong fuel vs payload). No AX7 L in KB.
+104	1587	mislink		91wheels "GX FLT 8 Seater" (slug gx-flt-8s) is the fleet trim; 306 is GX+ 8 Seater. No GX FLT in KB.
+105	2434	mislink		v3cars "Fearless X Dark" Diesel Automatic; 462 is Fearless X Plus AT (Plus extra, not Dark). 831 Fearless X Dark is Manual, so no match.
+106	3302	unclear		Payload "Zeta Petrol Manual" 1462 cc 5MT vs 597 "Zeta PRO MT"; KB names all Jimny trims "PRO", so it is unclear whether PRO is a pack/edition or the current trim name. Needs a source defining PRO.
+107	3241	mislink		Payload "Zxi Petrol 1.0L Turbo Manual" 998 cc matches 821's name, but 821's powertrain is 1462 cc (base 142): engine incompatible. KB row 821 itself is inconsistent.
+108	3244	mislink		raw "Zxi Petrol 1.5L Manual Dual Tone", payload "Zxi Petrol 1.0L Turbo Manual" 998 cc; 821 is a DT edition on 1462 cc. Payload has no KB match; raw would match 142 (DT paint-only).
+109	3246	mislink		Payload "Zxi Plus Petrol 1.0L Turbo Manual" 998 cc; 821 is Zxi (no Plus). 145 ZXi+ MT is 1462 cc, so no compatible row.
+110	3505	mislink		Payload "Fearless X Dark Edition Petrol 1.5L Turbo Manual" 1498 cc Petrol; 831 is Diesel 1956 cc. No petrol Fearless X Dark in KB; raw (Diesel) would match 831.
+111	3519	mislink		"Fearless X Plus Dark Edition" (payload Petrol TC); 831 is Fearless X (no Plus) Diesel MT. No match in KB.
+112	3524	mislink		"Fearless Ultra Red Dark" (payload Petrol 1498 cc MT); 831 is Fearless X Dark Diesel. No match in KB.
+113	3525	mislink		"Stealth Edition" (payload Petrol 1498 cc MT); 831 is Fearless X Dark Edition. No Stealth row in KB.

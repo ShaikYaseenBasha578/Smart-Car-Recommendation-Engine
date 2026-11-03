@@ -1,0 +1,14 @@
+case	obs	src	model	raw	payload_name	resolved	resolved_name
+101	2206	v3cars	XUV 3XO	Xuv 3xoAX7 L (131PS)1.2L Turbo Petrol Manual (131PS)		50	AX5L Petrol 1.2L Turbo Manual
+102	3172	carwale	XUV 3XO	AX7L Petrol 1.2L Turbo Manual Dual Tone		52	AX7 Petrol 1.2L Turbo Manual Dual Tone
+103	3175	carwale	XUV 3XO	AX7L Diesel 1.5L Turbo Manual Dual Tone	AX7L Petrol 1.2L Turbo Manual Dual Tone	54	AX7 Diesel 1.5L Turbo Manual Dual Tone
+104	1587	91wheels	Innova Crysta	GX FLT 8 Seater		306	GX+ 8 Seater
+105	2434	v3cars	Harrier	HarrierFearless X Dark2.0L Diesel Automatic		462	Diesel Fearless X Plus AT
+106	3302	carwale	Jimny	Zeta Petrol Manual		597	Zeta PRO MT
+107	3241	carwale	Brezza	Zxi Petrol 1.0L Turbo Manual Dual Tone	Zxi Petrol 1.0L Turbo Manual	821	Zxi Petrol 1.0L Turbo Manual Dual Tone
+108	3244	carwale	Brezza	Zxi Petrol 1.5L Manual Dual Tone	Zxi Petrol 1.0L Turbo Manual	821	Zxi Petrol 1.0L Turbo Manual Dual Tone
+109	3246	carwale	Brezza	Zxi Plus Petrol 1.0L Turbo Manual Dual Tone	Zxi Plus Petrol 1.0L Turbo Manual	821	Zxi Petrol 1.0L Turbo Manual Dual Tone
+110	3505	carwale	Harrier	Fearless X Dark Edition Diesel 2.0L Turbo Manual	Fearless X Dark Edition Petrol 1.5L Turbo Manual	831	Fearless X Dark Edition Diesel 2.0L Turbo Manual
+111	3519	carwale	Harrier	Fearless X Plus  Dark Edition Diesel 2.0L Turbo Manual	Fearless X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC)	831	Fearless X Dark Edition Diesel 2.0L Turbo Manual
+112	3524	carwale	Harrier	Fearless Ultra Red Dark Diesel 2.0L Turbo Manual	Fearless Ultra Red Dark Petrol 1.5L Turbo Manual	831	Fearless X Dark Edition Diesel 2.0L Turbo Manual
+113	3525	carwale	Harrier	Stealth Edition Diesel 2.0L Turbo Manual	Stealth Edition Petrol 1.5L Turbo Manual	831	Fearless X Dark Edition Diesel 2.0L Turbo Manual

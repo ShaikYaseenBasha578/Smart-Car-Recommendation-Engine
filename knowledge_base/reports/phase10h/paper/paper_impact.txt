@@ -1,0 +1,10 @@
+oracle DB: /Users/shaikyaseenbasha/carrec_kb_scratch/phase10h/paper/oracle_copy/snap.db
+{821: {'model': 'Brezza', 'fuel': 'petrol', 'transmission': 'manual', 'seats': 5, 'price': 1055300.0, 'body_type': 'SUV', 'model_excluded': True}, 831: {'model': 'Harrier', 'fuel': 'diesel', 'transmission': 'manual', 'seats': 5, 'price': 2124990.0, 'body_type': 'SUV', 'model_excluded': False}, 832: {'model': 'Nexon EV', 'fuel': 'electric', 'transmission': 'automatic', 'seats': 5, 'price': 1749000.0, 'body_type': 'SUV', 'model_excluded': False}, 833: {'model': 'Virtus', 'fuel': 'petrol', 'transmission': 'automatic', 'seats': 5, 'price': 1620900.0, 'body_type': 'Sedan', 'model_excluded': False}}
+('F025', 'feasible_control', {'body_type': 'SUV', 'fuel': 'diesel', 'transmission': 'automatic'}, 831, False, False, '64 other non-excluded matches', False, 'cheapest_other_price None -> without 831: 1064990.0')
+('F026', 'feasible_control', {'body_type': 'SUV', 'fuel': 'electric', 'transmission': 'automatic', 'min_seats': 5}, 832, True, True, '23 other non-excluded matches', False, 'cheapest_other_price None -> without 832: 969000.0')
+('F029', 'feasible_control', {'body_type': 'Sedan', 'transmission': 'manual'}, 833, False, False, '46 other non-excluded matches', False, 'cheapest_other_price None -> without 833: 554990.0')
+verdict flips: []
+G-SUV table without 821: rows/ranges changed none (only n_variants) | n_variants-only diffs 1
+G-SUV table without 831: rows/ranges changed none (only n_variants) | n_variants-only diffs 1
+G-SUV table without 832: rows/ranges changed none (only n_variants) | n_variants-only diffs 1
+G-Sedan table without 833: rows/ranges changed none (only n_variants) | n_variants-only diffs 1

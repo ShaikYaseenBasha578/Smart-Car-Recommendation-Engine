@@ -1,0 +1,15 @@
+ts 20261103T112654Z
+lsof: status error on knowledge_base/carrec_kb.db-wal: No such file or directory
+lsof: status error on knowledge_base/carrec_kb.db-shm: No such file or directory
+COMMAND                          PID             USER   FD   TYPE DEVICE SIZE/OFF      NODE NAME
+com.apple.Virtualization.Virtua 4854 shaikyaseenbasha 2613r   REG   1,17 38699008 136286357 knowledge_base/carrec_kb.db
+knowledge_base/carrec_kb.db
+52f00fc761a11be5f4763a022fd526e6ea20396d  knowledge_base/carrec_kb.db
+52f00fc761a11be5f4763a022fd526e6ea20396d  knowledge_base/carrec_kb.db
+52f00fc761a11be5f4763a022fd526e6ea20396d  /Users/shaikyaseenbasha/carrec_kb_scratch/phase10h/backup_work/src.db
+(eval):1: no matches found: knowledge_base/backups/pre_phase10h_*
+b3e7cae30732b70051f1c15c3e283eb587d98c32  knowledge_base/backups/pre_phase10h_20261103T112654Z.db
+sha3 src    246a43baf69d05e294e4050f8c319e58fc5f8fcde6adfbcbc6855d4a
+sha3 backup 246a43baf69d05e294e4050f8c319e58fc5f8fcde6adfbcbc6855d4a
+-rw-r--r--@ 1 shaikyaseenbasha  staff  38699008 Nov  3 16:56 knowledge_base/backups/pre_phase10h_20261103T112654Z.db
+.gitignore:270:*.db	knowledge_base/backups/pre_phase10h_20261103T112654Z.db

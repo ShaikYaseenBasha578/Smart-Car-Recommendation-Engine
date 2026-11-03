@@ -1,0 +1,7 @@
+variant	edition_of	field	value	status	mislinked_evidence
+818	288	transmission	DCT	no_evidence	
+820	421	transmission	Manual	no_evidence	
+821	142	transmission	Manual	SOLE_MISLINK	obs3241:confirmed;obs3244:confirmed;obs3246:confirmed
+831	458	transmission	Manual	SOLE_MISLINK	obs3505:confirmed;obs3513:confirmed;obs3514:confirmed;obs3519:confirmed;obs3520:confirmed;obs3524:confirmed;obs3525:confirmed
+832	136	transmission	Automatic	SOLE_MISLINK	obs3606:confirmed;obs3607:confirmed
+833	643	transmission	Torque Converter	no_evidence	

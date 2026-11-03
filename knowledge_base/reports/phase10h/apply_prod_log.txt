@@ -1,0 +1,13 @@
+== pre-apply 2026-11-03T11:27:06Z
+sha1 52f00fc761a11be5f4763a022fd526e6ea20396d
+COMMAND                          PID             USER   FD   TYPE DEVICE SIZE/OFF      NODE NAME
+com.apple.Virtualization.Virtua 4854 shaikyaseenbasha 2613r   REG   1,17 38699008 136286357 knowledge_base/carrec_kb.db
+pre-apply checks OK (holder: com.apple.Virtualization.Virtua|2613r)
+== apply script sha1 27716e5d6251fbe4b4fb6b713423af98703c544d; entries sha1 f7277c99b978b1fcec0d56df4cc0332ec6c9e9c2
+COMMITTED; {"inserted": 661, "active": 1383, "canonical_cells_masked": 50}
+== post-apply 2026-11-03T11:27:06Z
+ok
+297
+0|0|0
+-rw-r--r--@ 1 shaikyaseenbasha  staff  38973440 Nov  3 16:57 knowledge_base/carrec_kb.db
+8074a9dd67829042ba04a16bbe9c5a26702c88c6  knowledge_base/carrec_kb.db
