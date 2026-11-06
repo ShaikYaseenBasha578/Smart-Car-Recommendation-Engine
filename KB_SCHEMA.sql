@@ -1,37 +1,55 @@
--- CarRec Knowledge Base Phase 1 Schema (SQLite)
-PRAGMA journal_mode = WAL;
-PRAGMA foreign_keys = ON;
+-- CarRec knowledge base schema: documentation only, generated from the live sqlite_master.
+-- Generated from prod SHA-1 459e4a995ad5a52622e98e26449f36772dcd28ae. The live database stays authoritative. Do not run this against prod.
+-- Objects: 15 tables, 17 indexes, 10 views, 0 triggers.
 
--- ==========================================
--- 1. SOURCE REGISTRY
--- ==========================================
-
-CREATE TABLE source (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE,          -- 'v6_migration', '91wheels', 'v3cars', etc.
-    source_type TEXT NOT NULL,          -- 'migration', 'aggregator', 'oem', 'rating_agency', 'review'
-    base_url TEXT,
-    authority_tier INTEGER NOT NULL DEFAULT 3, -- 1=highest (OEM/NCAP), 2=primary aggregator, 3=secondary
-    notes TEXT
+-- table: evidence_amendment
+CREATE TABLE evidence_amendment (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  target_table TEXT NOT NULL,
+  target_id    INTEGER NOT NULL,
+  column_name  TEXT NOT NULL,
+  old_value    TEXT,
+  new_value    TEXT,
+  reason_code  TEXT NOT NULL,
+  phase        TEXT NOT NULL,
+  created_at   TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
--- ==========================================
--- 2. HIERARCHY ENTITIES
--- ==========================================
-
-CREATE TABLE manufacturer (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE            -- 'Hyundai', 'Maruti Suzuki', etc.
+-- table: evidence_quarantine
+CREATE TABLE evidence_quarantine (
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  target_table    TEXT NOT NULL CHECK (target_table IN
+                   ('source_observation','field_provenance','variant','safety_test','safety_test_applicability','warranty')),
+  target_id       INTEGER NOT NULL,
+  target_field    TEXT,
+  reason_code     TEXT NOT NULL,
+  phase           TEXT NOT NULL,
+  note            TEXT,
+  created_at      TEXT NOT NULL DEFAULT (datetime('now')),
+  released_at     TEXT,
+  released_reason TEXT,
+  CHECK (target_table NOT IN ('variant','warranty') OR target_field IS NOT NULL),
+  CHECK (released_at IS NULL OR released_reason IS NOT NULL)
 );
 
-CREATE TABLE model (
+-- table: field_provenance
+CREATE TABLE field_provenance (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    manufacturer_id INTEGER NOT NULL REFERENCES manufacturer(id),
-    name TEXT NOT NULL,                  -- 'Creta', 'Fronx', etc.
-    body_type TEXT,                      -- 'SUV', 'Hatchback', 'Sedan', etc.
-    UNIQUE(manufacturer_id, name)
+    variant_id INTEGER NOT NULL REFERENCES variant(id),
+    field_name TEXT NOT NULL,            -- Column name: 'boot_space_litres', etc.
+    accepted_value TEXT,                 -- Stringified accepted value
+    source_observation_id INTEGER REFERENCES source_observation(id),
+    decision TEXT NOT NULL DEFAULT 'accepted',
+    -- 'accepted' (this observation provided the canonical value),
+    -- 'confirmed' (agrees with existing canonical value),
+    -- 'rejected' (disagrees, was overridden),
+    -- 'pending' (conflict unresolved)
+    decision_reason TEXT,                -- Why: 'v6_migration', 'authority_priority', 'manual', etc.
+    decided_at TEXT DEFAULT (datetime('now')),
+    UNIQUE(variant_id, field_name, source_observation_id)
 );
 
+-- table: generation
 CREATE TABLE generation (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     model_id INTEGER NOT NULL REFERENCES model(id),
@@ -43,6 +61,22 @@ CREATE TABLE generation (
     notes TEXT
 );
 
+-- table: manufacturer
+CREATE TABLE manufacturer (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE            -- 'Hyundai', 'Maruti Suzuki', etc.
+);
+
+-- table: model
+CREATE TABLE model (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    manufacturer_id INTEGER NOT NULL REFERENCES manufacturer(id),
+    name TEXT NOT NULL,                  -- 'Creta', 'Fronx', etc.
+    body_type TEXT,                      -- 'SUV', 'Hatchback', 'Sedan', etc.
+    UNIQUE(manufacturer_id, name)
+);
+
+-- table: powertrain
 CREATE TABLE powertrain (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     model_id INTEGER NOT NULL REFERENCES model(id),
@@ -58,10 +92,85 @@ CREATE TABLE powertrain (
     -- add a disambiguator column then.
 );
 
--- ==========================================
--- 3. CANONICAL VARIANT (THE WIDE TABLE)
--- ==========================================
+-- table: safety_rating
+CREATE TABLE safety_rating (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    model_id INTEGER NOT NULL REFERENCES model(id),
+    generation_id INTEGER REFERENCES generation(id),
+    testing_body TEXT NOT NULL,           -- 'Global NCAP', 'Bharat NCAP'
+    adult_stars REAL,
+    child_stars REAL,
+    test_year INTEGER,
+    tested_variant TEXT,                  -- Exact variant string that was tested
+    source_url TEXT,
+    UNIQUE(model_id, testing_body, test_year)
+);
 
+-- table: safety_test
+CREATE TABLE safety_test (
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id             INTEGER NOT NULL REFERENCES source(id),
+    source_observation_id INTEGER REFERENCES source_observation(id),
+    tested_vehicle_name   TEXT NOT NULL,
+    tested_variant_config TEXT,
+    body_type             TEXT,
+    crash_test_weight_kg  TEXT,
+    year_of_publication   INTEGER,
+    test_period           TEXT,
+    protocol_version      TEXT,
+    aop_score             REAL,
+    aop_stars             INTEGER,
+    cop_score             REAL,
+    cop_stars             INTEGER,
+    sat_summary           TEXT,
+    factsheet_url         TEXT,
+    raw_source_url        TEXT NOT NULL UNIQUE,
+    artifact_path         TEXT,
+    artifact_checksum     TEXT,
+    resolution_status     TEXT NOT NULL,
+    applicability_notes   TEXT,
+    resolution_justification TEXT,
+    created_at            TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- table: safety_test_applicability
+CREATE TABLE safety_test_applicability (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    safety_test_id    INTEGER NOT NULL REFERENCES safety_test(id),
+    manufacturer_id   INTEGER REFERENCES manufacturer(id),
+    model_id          INTEGER REFERENCES model(id),
+    generation_id     INTEGER REFERENCES generation(id),
+    variant_id        INTEGER REFERENCES variant(id),
+    match_confidence  TEXT NOT NULL,
+    notes             TEXT,
+    UNIQUE(safety_test_id, model_id, match_confidence)
+);
+
+-- table: source
+CREATE TABLE source (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,          -- 'v6_migration', '91wheels', 'v3cars', etc.
+    source_type TEXT NOT NULL,          -- 'migration', 'aggregator', 'oem', 'rating_agency', 'review'
+    base_url TEXT,
+    authority_tier INTEGER NOT NULL DEFAULT 3, -- 1=highest (OEM/NCAP), 2=primary aggregator, 3=secondary
+    notes TEXT
+);
+
+-- table: source_observation
+CREATE TABLE source_observation (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id INTEGER NOT NULL REFERENCES source(id),
+    raw_name TEXT NOT NULL,              -- As the source named this variant
+    raw_payload TEXT,                     -- JSON blob of all extracted fields
+    source_url TEXT,
+    observed_at TEXT NOT NULL DEFAULT (datetime('now')),
+    extraction_method TEXT,              -- 'v6_migration', 'meta_tag_json', 'html_scrape'
+    resolved_variant_id INTEGER REFERENCES variant(id),
+    resolution_status TEXT NOT NULL DEFAULT 'pending'
+    -- 'pending', 'applied', 'conflict', 'rejected', 'unresolvable'
+);
+
+-- table: variant
 CREATE TABLE variant (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     model_id INTEGER NOT NULL REFERENCES model(id),
@@ -107,8 +216,7 @@ CREATE TABLE variant (
     rear_camera INTEGER,
     camera_360 INTEGER,
     adas_available INTEGER,
-    adas_tier TEXT,                      -- DEPRECATED 2026-11 (Phase 10E): duplicates adas_available; removed from
-                                         -- v_variant_canonical_q. Raw column kept; do not read it.
+    adas_tier TEXT,
 
     -- Comfort & Convenience
     automatic_climate_control INTEGER,
@@ -131,45 +239,12 @@ CREATE TABLE variant (
 
     -- Timestamps
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
-    updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now')), base_variant_id INTEGER REFERENCES variant(id), edition_classification TEXT,
 
     UNIQUE(model_id, name, generation_id)
 );
 
--- ==========================================
--- 4. SAFETY & WARRANTY
--- ==========================================
-
-CREATE TABLE safety_rating (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    model_id INTEGER NOT NULL REFERENCES model(id),
-    generation_id INTEGER REFERENCES generation(id),
-    testing_body TEXT NOT NULL,           -- 'Global NCAP', 'Bharat NCAP'
-    adult_stars REAL,
-    child_stars REAL,
-    test_year INTEGER,
-    tested_variant TEXT,                  -- Exact variant string that was tested
-    source_url TEXT,
-    UNIQUE(model_id, testing_body, test_year)
-);
-
-CREATE TABLE warranty (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    manufacturer_id INTEGER REFERENCES manufacturer(id),
-    model_id INTEGER REFERENCES model(id), -- NULL = manufacturer-wide
-    warranty_years REAL,
-    warranty_km TEXT,                     -- 'Unlimited' or numeric string
-    battery_warranty_years REAL,
-    battery_warranty_km TEXT,
-    extended_warranty_available INTEGER,
-    source TEXT,
-    source_url TEXT
-);
-
--- ==========================================
--- 5. ENTITY RESOLUTION
--- ==========================================
-
+-- table: variant_alias
 CREATE TABLE variant_alias (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     variant_id INTEGER NOT NULL REFERENCES variant(id),
@@ -183,76 +258,210 @@ CREATE TABLE variant_alias (
     UNIQUE(source_id, alias_name)
 );
 
--- ==========================================
--- 6. SOURCE OBSERVATIONS & PROVENANCE
--- ==========================================
-
-CREATE TABLE source_observation (
+-- table: warranty
+CREATE TABLE warranty (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    source_id INTEGER NOT NULL REFERENCES source(id),
-    raw_name TEXT NOT NULL,              -- As the source named this variant
-    raw_payload TEXT,                     -- JSON blob of all extracted fields
-    source_url TEXT,
-    observed_at TEXT NOT NULL DEFAULT (datetime('now')),
-    extraction_method TEXT,              -- 'v6_migration', 'meta_tag_json', 'html_scrape'
-    resolved_variant_id INTEGER REFERENCES variant(id),
-    resolution_status TEXT NOT NULL DEFAULT 'pending'
-    -- 'pending', 'applied', 'conflict', 'rejected', 'unresolvable'
+    manufacturer_id INTEGER REFERENCES manufacturer(id),
+    model_id INTEGER REFERENCES model(id), -- NULL = manufacturer-wide
+    warranty_years REAL,
+    warranty_km TEXT,                     -- 'Unlimited' or numeric string
+    battery_warranty_years REAL,
+    battery_warranty_km TEXT,
+    extended_warranty_available INTEGER,
+    source TEXT,
+    source_url TEXT
 );
 
-CREATE TABLE field_provenance (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    variant_id INTEGER NOT NULL REFERENCES variant(id),
-    field_name TEXT NOT NULL,            -- Column name: 'boot_space_litres', etc.
-    accepted_value TEXT,                 -- Stringified accepted value
-    source_observation_id INTEGER REFERENCES source_observation(id),
-    decision TEXT NOT NULL DEFAULT 'accepted',
-    -- 'accepted' (this observation provided the canonical value),
-    -- 'confirmed' (agrees with existing canonical value),
-    -- 'rejected' (disagrees, was overridden),
-    -- 'pending' (conflict unresolved)
-    decision_reason TEXT,                -- Why: 'v6_migration', 'authority_priority', 'manual', etc.
-    decided_at TEXT DEFAULT (datetime('now')),
-    UNIQUE(variant_id, field_name, source_observation_id)
-);
-
--- ==========================================
--- 7. INDEXES
--- ==========================================
-
-CREATE INDEX idx_model_manufacturer ON model(manufacturer_id);
-CREATE INDEX idx_generation_model ON generation(model_id);
-CREATE INDEX idx_powertrain_model ON powertrain(model_id);
-CREATE INDEX idx_variant_model ON variant(model_id);
-CREATE INDEX idx_variant_generation ON variant(generation_id);
-CREATE INDEX idx_variant_powertrain ON variant(powertrain_id);
-CREATE INDEX idx_variant_price ON variant(price_ex_showroom);
-CREATE INDEX idx_safety_model ON safety_rating(model_id);
-CREATE INDEX idx_warranty_mfr ON warranty(manufacturer_id);
-CREATE INDEX idx_observation_source ON source_observation(source_id);
-CREATE INDEX idx_observation_variant ON source_observation(resolved_variant_id);
-CREATE INDEX idx_provenance_variant ON field_provenance(variant_id);
-CREATE INDEX idx_provenance_field ON field_provenance(field_name);
+-- index: idx_alias_variant
 CREATE INDEX idx_alias_variant ON variant_alias(variant_id);
 
--- ==========================================
--- 8. SEED: INITIAL SOURCES
--- ==========================================
+-- index: idx_generation_model
+CREATE INDEX idx_generation_model ON generation(model_id);
 
-INSERT INTO source (name, source_type, base_url, authority_tier, notes) VALUES
-('v6_migration',  'migration',     NULL,                              2, 'Bootstrap from V6 CSV (itself sourced from 91Wheels + CarWale + V3Cars)'),
-('91wheels',      'aggregator',    'https://www.91wheels.com',        2, 'Primary structured source. Hidden variant-data meta tag.'),
-('v3cars',        'aggregator',    'https://www.v3cars.com',          2, 'Warranty and spec cross-check.'),
-('carwale',       'aggregator',    'https://www.carwale.com',         3, 'Secondary validation. Autocar India parent.'),
-('cardekho',      'aggregator',    'https://www.cardekho.com',        3, 'Secondary. Good historical coverage.'),
-('oem',           'oem',           NULL,                              1, 'Official manufacturer data. Highest authority for specs/pricing.'),
-('bharat_ncap',   'rating_agency', 'https://bharatncap.nicer.co.in',  1, 'Indian crash test ratings.'),
-('global_ncap',   'rating_agency', 'https://www.globalncap.org',      1, 'International crash test ratings.');
+-- index: idx_model_manufacturer
+CREATE INDEX idx_model_manufacturer ON model(manufacturer_id);
 
--- ==========================================
--- 9. VIEWS
--- ==========================================
+-- index: idx_observation_source
+CREATE INDEX idx_observation_source ON source_observation(source_id);
 
+-- index: idx_observation_url
+CREATE INDEX idx_observation_url ON source_observation(source_url);
+
+-- index: idx_observation_variant
+CREATE INDEX idx_observation_variant ON source_observation(resolved_variant_id);
+
+-- index: idx_powertrain_model
+CREATE INDEX idx_powertrain_model ON powertrain(model_id);
+
+-- index: idx_provenance_field
+CREATE INDEX idx_provenance_field ON field_provenance(field_name);
+
+-- index: idx_provenance_variant
+CREATE INDEX idx_provenance_variant ON field_provenance(variant_id);
+
+-- index: idx_safety_model
+CREATE INDEX idx_safety_model ON safety_rating(model_id);
+
+-- index: idx_variant_generation
+CREATE INDEX idx_variant_generation ON variant(generation_id);
+
+-- index: idx_variant_model
+CREATE INDEX idx_variant_model ON variant(model_id);
+
+-- index: idx_variant_powertrain
+CREATE INDEX idx_variant_powertrain ON variant(powertrain_id);
+
+-- index: idx_variant_price
+CREATE INDEX idx_variant_price ON variant(price_ex_showroom);
+
+-- index: idx_warranty_mfr
+CREATE INDEX idx_warranty_mfr ON warranty(manufacturer_id);
+
+-- index: ix_amendment_target
+CREATE INDEX ix_amendment_target ON evidence_amendment(target_table, target_id);
+
+-- index: ux_quarantine_active
+CREATE UNIQUE INDEX ux_quarantine_active
+  ON evidence_quarantine(target_table, target_id, IFNULL(target_field,''), reason_code)
+  WHERE released_at IS NULL;
+
+-- view: v_active_quarantine
+CREATE VIEW v_active_quarantine AS
+  SELECT id, target_table, target_id, target_field, reason_code, phase, created_at
+  FROM evidence_quarantine
+  WHERE released_at IS NULL;
+
+-- view: v_corroboration
+CREATE VIEW v_corroboration AS
+  SELECT e.variant_id, e.field_name,
+         COUNT(DISTINCT e.source_id) AS corroborating_sources,
+         GROUP_CONCAT(DISTINCT e.source_id) AS source_ids
+  FROM v_live_evidence e
+  WHERE e.decision IN ('accepted','confirmed')
+    AND NOT EXISTS (SELECT 1 FROM v_active_quarantine q
+                    WHERE q.target_table='variant' AND q.target_id=e.variant_id
+                      AND q.target_field IN (e.field_name,'*'))
+  GROUP BY e.variant_id, e.field_name;
+
+-- view: v_effective_variant
+CREATE VIEW v_effective_variant AS
+    SELECT
+        v.id, v.model_id, v.generation_id, v.powertrain_id, v.name, v.full_name, v.transmission, v.drivetrain, v.is_discontinued, COALESCE(v.price_ex_showroom, bv.price_ex_showroom) AS price_ex_showroom, COALESCE(v.length_mm, bv.length_mm) AS length_mm, COALESCE(v.width_mm, bv.width_mm) AS width_mm, COALESCE(v.height_mm, bv.height_mm) AS height_mm, COALESCE(v.wheelbase_mm, bv.wheelbase_mm) AS wheelbase_mm, COALESCE(v.ground_clearance_mm, bv.ground_clearance_mm) AS ground_clearance_mm, COALESCE(v.kerb_weight_kg, bv.kerb_weight_kg) AS kerb_weight_kg, COALESCE(v.seating_capacity, bv.seating_capacity) AS seating_capacity, COALESCE(v.boot_space_litres, bv.boot_space_litres) AS boot_space_litres, COALESCE(v.fuel_tank_litres, bv.fuel_tank_litres) AS fuel_tank_litres, COALESCE(v.mileage_arai_kmpl, bv.mileage_arai_kmpl) AS mileage_arai_kmpl, COALESCE(v.mileage_arai_km_per_kg, bv.mileage_arai_km_per_kg) AS mileage_arai_km_per_kg, COALESCE(v.claimed_ev_range_km, bv.claimed_ev_range_km) AS claimed_ev_range_km, COALESCE(v.airbags, bv.airbags) AS airbags, COALESCE(v.abs, bv.abs) AS abs, COALESCE(v.esc, bv.esc) AS esc, COALESCE(v.hill_assist, bv.hill_assist) AS hill_assist, COALESCE(v.tyre_pressure_monitoring_system, bv.tyre_pressure_monitoring_system) AS tyre_pressure_monitoring_system, COALESCE(v.rear_parking_sensors, bv.rear_parking_sensors) AS rear_parking_sensors, COALESCE(v.rear_camera, bv.rear_camera) AS rear_camera, COALESCE(v.camera_360, bv.camera_360) AS camera_360, COALESCE(v.adas_available, bv.adas_available) AS adas_available, COALESCE(v.adas_tier, bv.adas_tier) AS adas_tier, COALESCE(v.automatic_climate_control, bv.automatic_climate_control) AS automatic_climate_control, COALESCE(v.rear_ac_vents, bv.rear_ac_vents) AS rear_ac_vents, COALESCE(v.sunroof, bv.sunroof) AS sunroof, COALESCE(v.ventilated_front_seats, bv.ventilated_front_seats) AS ventilated_front_seats, COALESCE(v.cruise_control, bv.cruise_control) AS cruise_control, COALESCE(v.paddle_shifters, bv.paddle_shifters) AS paddle_shifters, COALESCE(v.wireless_charging, bv.wireless_charging) AS wireless_charging, COALESCE(v.heads_up_display, bv.heads_up_display) AS heads_up_display, COALESCE(v.drive_modes, bv.drive_modes) AS drive_modes, COALESCE(v.connected_car_features, bv.connected_car_features) AS connected_car_features, COALESCE(v.android_auto, bv.android_auto) AS android_auto, COALESCE(v.apple_carplay, bv.apple_carplay) AS apple_carplay, v.v6_row_index, v.created_at, v.updated_at, v.base_variant_id, v.edition_classification
+    FROM variant v
+    LEFT JOIN variant bv ON v.base_variant_id = bv.id;
+
+-- view: v_live_evidence
+CREATE VIEW v_live_evidence AS
+  SELECT fp.id AS fp_id, fp.variant_id, fp.field_name, fp.decision, fp.accepted_value,
+         so.id AS observation_id, so.source_id
+  FROM field_provenance fp
+  JOIN source_observation so ON so.id = fp.source_observation_id
+  WHERE NOT EXISTS (SELECT 1 FROM v_active_quarantine q
+                    WHERE q.target_table='source_observation' AND q.target_id=so.id)
+    AND NOT EXISTS (SELECT 1 FROM v_active_quarantine q
+                    WHERE q.target_table='field_provenance' AND q.target_id=fp.id);
+
+-- view: v_observation_status
+CREATE VIEW v_observation_status AS
+  SELECT so.id AS observation_id, so.source_id, so.resolution_status AS raw_status,
+    CASE
+      WHEN so.source_id = 7 AND so.id IN (3721, 3722, 3756, 3757) AND so.resolution_status = 'UNRESOLVED' THEN 'no_match'
+      WHEN so.resolution_status = 'applied' THEN 'resolved_variant'
+      WHEN so.resolution_status = 'resolved' AND so.source_id = 3 THEN 'resolved_variant_unverified'
+      WHEN so.resolution_status = 'resolved' THEN 'resolved_variant'
+      WHEN so.resolution_status = 'resolved_with_warning' THEN 'resolved_variant_unverified'
+      WHEN so.resolution_status IN ('model_level','RESOLVED') THEN 'resolved_model'
+      WHEN so.resolution_status IN ('unresolved','unresolvable','UNRESOLVED') THEN 'unresolved'
+      WHEN so.resolution_status = 'NO_MATCH' THEN 'no_match'
+    END AS canonical_status,
+    CASE
+      WHEN so.source_id = 7 AND so.id IN (3721, 3722, 3756, 3757) AND so.resolution_status = 'UNRESOLVED'
+        THEN 'manufacturer_not_in_kb'   -- Citroen x2, VinFast x2 (owner decision 2026-09-27)
+      WHEN so.resolution_status = 'resolved' AND so.source_id = 3 THEN 'v3cars_status_forced'
+    END AS status_reason
+  FROM source_observation so;
+
+-- view: v_safety_applicability_q
+CREATE VIEW v_safety_applicability_q AS
+  SELECT a.*
+  FROM safety_test_applicability a
+  WHERE NOT EXISTS (SELECT 1 FROM v_active_quarantine q
+                    WHERE q.target_table='safety_test_applicability' AND q.target_id=a.id)
+    AND NOT EXISTS (SELECT 1 FROM v_active_quarantine q
+                    WHERE q.target_table='safety_test' AND q.target_id=a.safety_test_id)
+    AND NOT EXISTS (SELECT 1 FROM v_safety_test_status s
+                    WHERE s.safety_test_id=a.safety_test_id AND s.canonical_status='no_match');
+
+-- view: v_safety_test_status
+CREATE VIEW v_safety_test_status AS
+  SELECT st.id AS safety_test_id, st.source_observation_id, st.resolution_status AS raw_status,
+    CASE
+      WHEN st.id IN (1, 2, 36, 37) AND st.resolution_status = 'UNRESOLVED' THEN 'no_match'
+      WHEN st.resolution_status = 'RESOLVED' THEN 'resolved_model'
+      WHEN st.resolution_status = 'UNRESOLVED' THEN 'unresolved'
+      WHEN st.resolution_status = 'NO_MATCH' THEN 'no_match'
+    END AS canonical_status,
+    CASE
+      WHEN st.id IN (1, 2, 36, 37) AND st.resolution_status = 'UNRESOLVED'
+        THEN 'manufacturer_not_in_kb'   -- Citroen x2, VinFast x2 (owner decision 2026-09-27)
+    END AS status_reason
+  FROM safety_test st;
+
+-- view: v_variant_canonical_q
+CREATE VIEW v_variant_canonical_q AS
+  SELECT
+    v.id,
+    v.model_id,
+    v.generation_id,
+    v.powertrain_id,
+    v.name,
+    v.full_name,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('transmission','*')) THEN NULL ELSE v.transmission END AS transmission,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('drivetrain','*')) THEN NULL ELSE v.drivetrain END AS drivetrain,
+    v.is_discontinued,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('price_ex_showroom','*')) OR (v.price_ex_showroom IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('price_ex_showroom','*'))) THEN NULL ELSE COALESCE(v.price_ex_showroom, bv.price_ex_showroom) END AS price_ex_showroom,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('length_mm','*')) OR (v.length_mm IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('length_mm','*'))) THEN NULL ELSE COALESCE(v.length_mm, bv.length_mm) END AS length_mm,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('width_mm','*')) OR (v.width_mm IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('width_mm','*'))) THEN NULL ELSE COALESCE(v.width_mm, bv.width_mm) END AS width_mm,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('height_mm','*')) OR (v.height_mm IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('height_mm','*'))) THEN NULL ELSE COALESCE(v.height_mm, bv.height_mm) END AS height_mm,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('wheelbase_mm','*')) OR (v.wheelbase_mm IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('wheelbase_mm','*'))) THEN NULL ELSE COALESCE(v.wheelbase_mm, bv.wheelbase_mm) END AS wheelbase_mm,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('ground_clearance_mm','*')) OR (v.ground_clearance_mm IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('ground_clearance_mm','*'))) THEN NULL ELSE COALESCE(v.ground_clearance_mm, bv.ground_clearance_mm) END AS ground_clearance_mm,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('kerb_weight_kg','*')) OR (v.kerb_weight_kg IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('kerb_weight_kg','*'))) THEN NULL ELSE COALESCE(v.kerb_weight_kg, bv.kerb_weight_kg) END AS kerb_weight_kg,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('seating_capacity','*')) OR (v.seating_capacity IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('seating_capacity','*'))) THEN NULL ELSE COALESCE(v.seating_capacity, bv.seating_capacity) END AS seating_capacity,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('boot_space_litres','*')) OR (v.boot_space_litres IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('boot_space_litres','*'))) THEN NULL ELSE COALESCE(v.boot_space_litres, bv.boot_space_litres) END AS boot_space_litres,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('fuel_tank_litres','*')) OR (v.fuel_tank_litres IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('fuel_tank_litres','*'))) THEN NULL ELSE COALESCE(v.fuel_tank_litres, bv.fuel_tank_litres) END AS fuel_tank_litres,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('mileage_arai_kmpl','*')) OR (v.mileage_arai_kmpl IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('mileage_arai_kmpl','*'))) THEN NULL ELSE COALESCE(v.mileage_arai_kmpl, bv.mileage_arai_kmpl) END AS mileage_arai_kmpl,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('mileage_arai_km_per_kg','*')) OR (v.mileage_arai_km_per_kg IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('mileage_arai_km_per_kg','*'))) THEN NULL ELSE COALESCE(v.mileage_arai_km_per_kg, bv.mileage_arai_km_per_kg) END AS mileage_arai_km_per_kg,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('claimed_ev_range_km','*')) OR (v.claimed_ev_range_km IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('claimed_ev_range_km','*'))) THEN NULL ELSE COALESCE(v.claimed_ev_range_km, bv.claimed_ev_range_km) END AS claimed_ev_range_km,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('airbags','*')) OR (v.airbags IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('airbags','*'))) THEN NULL ELSE COALESCE(v.airbags, bv.airbags) END AS airbags,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('abs','*')) OR (v.abs IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('abs','*'))) THEN NULL ELSE COALESCE(v.abs, bv.abs) END AS abs,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('esc','*')) OR (v.esc IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('esc','*'))) THEN NULL ELSE COALESCE(v.esc, bv.esc) END AS esc,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('hill_assist','*')) OR (v.hill_assist IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('hill_assist','*'))) THEN NULL ELSE COALESCE(v.hill_assist, bv.hill_assist) END AS hill_assist,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('tyre_pressure_monitoring_system','*')) OR (v.tyre_pressure_monitoring_system IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('tyre_pressure_monitoring_system','*'))) THEN NULL ELSE COALESCE(v.tyre_pressure_monitoring_system, bv.tyre_pressure_monitoring_system) END AS tyre_pressure_monitoring_system,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('rear_parking_sensors','*')) OR (v.rear_parking_sensors IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('rear_parking_sensors','*'))) THEN NULL ELSE COALESCE(v.rear_parking_sensors, bv.rear_parking_sensors) END AS rear_parking_sensors,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('rear_camera','*')) OR (v.rear_camera IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('rear_camera','*'))) THEN NULL ELSE COALESCE(v.rear_camera, bv.rear_camera) END AS rear_camera,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('camera_360','*')) OR (v.camera_360 IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('camera_360','*'))) THEN NULL ELSE COALESCE(v.camera_360, bv.camera_360) END AS camera_360,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('adas_available','*')) OR (v.adas_available IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('adas_available','*'))) THEN NULL ELSE COALESCE(v.adas_available, bv.adas_available) END AS adas_available,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('automatic_climate_control','*')) OR (v.automatic_climate_control IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('automatic_climate_control','*'))) THEN NULL ELSE COALESCE(v.automatic_climate_control, bv.automatic_climate_control) END AS automatic_climate_control,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('rear_ac_vents','*')) OR (v.rear_ac_vents IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('rear_ac_vents','*'))) THEN NULL ELSE COALESCE(v.rear_ac_vents, bv.rear_ac_vents) END AS rear_ac_vents,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('sunroof','*')) OR (v.sunroof IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('sunroof','*'))) THEN NULL ELSE COALESCE(v.sunroof, bv.sunroof) END AS sunroof,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('ventilated_front_seats','*')) OR (v.ventilated_front_seats IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('ventilated_front_seats','*'))) THEN NULL ELSE COALESCE(v.ventilated_front_seats, bv.ventilated_front_seats) END AS ventilated_front_seats,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('cruise_control','*')) OR (v.cruise_control IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('cruise_control','*'))) THEN NULL ELSE COALESCE(v.cruise_control, bv.cruise_control) END AS cruise_control,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('paddle_shifters','*')) OR (v.paddle_shifters IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('paddle_shifters','*'))) THEN NULL ELSE COALESCE(v.paddle_shifters, bv.paddle_shifters) END AS paddle_shifters,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('wireless_charging','*')) OR (v.wireless_charging IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('wireless_charging','*'))) THEN NULL ELSE COALESCE(v.wireless_charging, bv.wireless_charging) END AS wireless_charging,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('heads_up_display','*')) OR (v.heads_up_display IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('heads_up_display','*'))) THEN NULL ELSE COALESCE(v.heads_up_display, bv.heads_up_display) END AS heads_up_display,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('drive_modes','*')) OR (v.drive_modes IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('drive_modes','*'))) THEN NULL ELSE COALESCE(v.drive_modes, bv.drive_modes) END AS drive_modes,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('connected_car_features','*')) OR (v.connected_car_features IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('connected_car_features','*'))) THEN NULL ELSE COALESCE(v.connected_car_features, bv.connected_car_features) END AS connected_car_features,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('android_auto','*')) OR (v.android_auto IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('android_auto','*'))) THEN NULL ELSE COALESCE(v.android_auto, bv.android_auto) END AS android_auto,
+    CASE WHEN EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.id AND q.target_field IN ('apple_carplay','*')) OR (v.apple_carplay IS NULL AND EXISTS (SELECT 1 FROM v_active_quarantine q WHERE q.target_table='variant' AND q.target_id=v.base_variant_id AND q.target_field IN ('apple_carplay','*'))) THEN NULL ELSE COALESCE(v.apple_carplay, bv.apple_carplay) END AS apple_carplay,
+    v.v6_row_index,
+    v.created_at,
+    v.updated_at,
+    v.base_variant_id,
+    v.edition_classification
+  FROM variant v
+  LEFT JOIN variant bv ON bv.id = v.base_variant_id;
+
+-- view: v_variant_full
 CREATE VIEW v_variant_full AS
 SELECT
     v.id AS variant_id,
@@ -287,36 +496,7 @@ JOIN manufacturer mfr ON mdl.manufacturer_id = mfr.id
 LEFT JOIN generation g ON v.generation_id = g.id
 LEFT JOIN powertrain pt ON v.powertrain_id = pt.id;
 
--- =====================================================================================================
--- Phase 10E (2026-11-02): live definitions from sqlite_master after the 10E controlled write
--- (prod SHA-1 57f31e4d4a5f1f01b4a12e1c0d2e507795953cfe). The live sqlite_master stays authoritative.
--- =====================================================================================================
-
--- evidence_quarantine: CHECK extended to allow target_table='warranty' (warranty rows need a target_field).
-CREATE TABLE evidence_quarantine (
-  id              INTEGER PRIMARY KEY AUTOINCREMENT,
-  target_table    TEXT NOT NULL CHECK (target_table IN
-                   ('source_observation','field_provenance','variant','safety_test','safety_test_applicability','warranty')),
-  target_id       INTEGER NOT NULL,
-  target_field    TEXT,
-  reason_code     TEXT NOT NULL,
-  phase           TEXT NOT NULL,
-  note            TEXT,
-  created_at      TEXT NOT NULL DEFAULT (datetime('now')),
-  released_at     TEXT,
-  released_reason TEXT,
-  CHECK (target_table NOT IN ('variant','warranty') OR target_field IS NOT NULL),
-  CHECK (released_at IS NULL OR released_reason IS NOT NULL)
-);
-
-CREATE UNIQUE INDEX ux_quarantine_active
-  ON evidence_quarantine(target_table, target_id, IFNULL(target_field,''), reason_code)
-  WHERE released_at IS NULL;
-
--- v_warranty_q: quarantine-aware warranty read path. Cells are masked when an active quarantine row targets
--- ('warranty', id) with target_field = the column or '*'. Rows are never hidden. has_provenance is a constant 0:
--- field_provenance and source_observation reference variant rows only, so no provenance can attach to a warranty row.
--- Not yet read by the app export.
+-- view: v_warranty_q
 CREATE VIEW v_warranty_q AS
   SELECT
     w.id,
@@ -333,5 +513,3 @@ CREATE VIEW v_warranty_q AS
     0 AS has_provenance  -- constant: field_provenance/source_observation reference variant rows only (no schema change made)
   FROM warranty w;
 
--- v_variant_canonical_q (definition not reproduced here): Phase 10E removed its adas_tier column. All other
--- columns are unchanged. variant.adas_tier, v_effective_variant and v_variant_full keep the raw column.

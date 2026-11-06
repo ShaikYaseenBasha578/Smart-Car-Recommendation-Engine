@@ -20,6 +20,12 @@ It is untracked and git-ignored (`knowledge_base/.gitignore:1`), so the code PR 
 - **Option B:** add the Exter price list or a brochure that names the DT trims.
 - **Option C:** keep holding; the wrong prices stay visible.
 
+### N5. Schema proposal batch (G2, P16)
+Four changes are proposed in [SCHEMA_PROPOSAL_20261106.md](reports/SCHEMA_PROPOSAL_20261106.md): powertrain-level quarantine, edition identity masking (833, 821, 815, 816), a catalogue-currency mechanism, and new feature fields. Nothing has been applied.
+- **Option A (recommended):** approve S1 + S2 now (small, unblock held items), S3 as designed, and S4 for the fields brochures print widely.
+- **Option B:** approve S1 + S2 only.
+- **Option C:** defer all.
+
 ### N3. Out of this goal; need your input or ingestion
 - Resuming 10D.
 - GNCAP ingestion.
