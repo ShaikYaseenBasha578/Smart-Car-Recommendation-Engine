@@ -108,8 +108,18 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Grand Vitara battery figures, Hyryder battery km: not printed in the brochures.
 **Prod SHA-1:** `459e4a99…` → `acf32b47…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/22 **Ranking-track line:** KB 10L: warranty cited and exported; new catalogue columns; no existing column changed.
 
+## 10M — 2026-11-06 — CNG pages say km/l doesn't apply
+**Why:** CNG cars are rated in km/kg, and the car page hid the km/l row with no explanation. Cards, the variants table and ranking already used km/kg only.
+**What changed:** App code only. Cells changed: 0. Schema: none.
+**Examples:**
+- Maruti Ertiga ZXi CNG: "Mileage (ARAI)" hidden → "Not applicable: CNG is rated in km/kg", beside 26.11 km/kg (app display, no data change)
+**What app users now see:** On CNG car pages, km/l is marked not applicable next to the km/kg figure.
+**Not done / held:**
+- 40 of 82 CNG variants have no km/kg yet: item 8.
+**Prod SHA-1:** `acf32b47…` → `acf32b47…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/23 **Ranking-track line:** App only; no data change.
+
 ## Current state
-As of phase 10L (prod `acf32b47e19c711d9f8bdc332132c5df6510c489`).
+As of phase 10M (prod `acf32b47e19c711d9f8bdc332132c5df6510c489`).
 - **Active quarantines:** 1,378 (950 observations, 378 variant cells, 49 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
