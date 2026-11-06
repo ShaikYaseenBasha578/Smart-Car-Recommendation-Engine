@@ -6,27 +6,58 @@ These KB rules live in this repo-root `CLAUDE.md`. There is no `knowledge_base/C
 - Flask recommender (`app.py`, `services/`, `ranking_engine.py`, `ml_parser/`) reads only `car_recommendation_assets/processed_dataset.csv` + pickles. It does not touch the KB.
 - Knowledge base (KB): `knowledge_base/carrec_kb.db` (SQLite, WAL mode). **Production.** Not in git (ignored), and neither are `knowledge_base/backups/` and `scratch/`. KB code (`knowledge_base/db/`, `knowledge_base/ingestion/`), reports (`knowledge_base/reports/`), `KB_SCHEMA.sql` and this file **are tracked** on `paper/v0` and the `kb/*` branches.
 
+## KB decision policy (owner-approved 2026-11-06)
+
+### Evidence
+- P1. A value is corrected only from a local OEM brochure in knowledge_base/sources/oem/. Cite file, page and PDF SHA-1. Render and visually confirm the page whenever its text layer is image-only, rotated or scrambled.
+- P2. Aggregator observations (CarWale, CarDekho, 91wheels, v3cars) only corroborate. They are never the sole basis for writing or correcting a value.
+- P3. No cross-model inference. A value from a twin or platform-sharing model is never written. An existing value that nothing contradicts may stay, marked unverified.
+- P4. Units: power_bhp = kW × 1.34102 (2 dp); if only PS is printed, PS × 0.98632. km/kg and km/l are never mixed. CNG efficiency is km/kg.
+
+### Unknowns
+- P5. Precision over coverage. A value known to be wrong with no verified replacement is quarantined at cell level. If that table cannot be quarantined, it is set to NULL by an amended UPDATE, and the observations are kept as evidence.
+- P6. Unclear evidence is not invalid evidence. Do not quarantine on "unclear"; record it.
+- P7. Catalogue currency: if a brochure is newer than the KB's rows for that model (a model-year change), hold and record it. Never correct one variant of a model on its own.
+- P8. Editions: never write an edition's own cells; they inherit from base_variant_id. An edition with an identity contradiction is fully held, never partially quarantined. Re-base an edition only with brochure evidence naming its base trim.
+- P9. No brochure, or a brochure older than the KB data → UNVERIFIED, no change.
+
+### Process
+- P10. Every write: backup per these rules → one transactional script → dry run on a fresh scratch copy → full verification → idempotency re-run (must make 0 changes) → apply the identical script to prod → integrity_check → verify a byte copy of prod.
+- P11. Access. The read-only com.apple.Virtualization.VirtualMachine holder is pre-accepted for reads and writes, provided:
+  - its FD mode is read-only
+  - no -wal/-shm files sit beside prod
+  - the SHA-1 is rechecked immediately before the apply
+  - integrity_check runs immediately after
+  Any other holder → stop.
+- P12. Any classifier or heuristic that would decide more than 20 rows must be validated by a fresh subagent that never sees the classifier's code or labels, on a stratified sample. Agreement must be at least 95% in every class, or no write.
+- P13. Paper: any phase touching body_type, fuel, transmission, seats or price checks exposure on a byte copy of the frozen snapshot and records it in the report. If any paper verdict would flip → stop.
+- P14. App: export twice (identical SHA-1, failure checks pass), run the full test suite, keep the catalogue diff within the phase whitelist, open a PR, never merge. Any user-visible UI change needs screenshots in the PR.
+- P15. Ingestion freeze: no aggregator ingestion or re-ingestion until the resolver fix is merged AND a fresh blind subagent finds auto-accept precision ≥98% on a random sample of 50 auto-accepted links (re-links included).
+- P16. No schema or DDL change without owner approval. Batch schema proposals together.
+- P17. Never write in sources/oem/. Never delete files without owner approval. Never force-push. Never merge PRs. The only change allowed to paper/v0 is a fast-forward merge of a kb/* branch, with a baseline check proving every uncommitted file is unchanged.
+- P18. After every applied phase, append to knowledge_base/KB_CHANGELOG.md.
+
 ## Production DB — read-only by default
-- Never open `knowledge_base/carrec_kb.db` for writing unless the user explicitly authorises a named controlled write in this session.
+- Never open `knowledge_base/carrec_kb.db` for writing except through a controlled write under the KB decision policy (P10, P11).
 - Before any read: run `lsof knowledge_base/carrec_kb.db knowledge_base/carrec_kb.db-wal knowledge_base/carrec_kb.db-shm` and resolve each holder's full name with `lsof +c 0` or `ps -o comm= -p <PID>`; never judge by PID. A holder is allowed for a READ only if ALL of these hold:
   1. the process is `com.apple.Virtualization.VirtualMachine` (by name; macOS's virtualization service, under `/System/Library/Frameworks/Virtualization.framework/`);
   2. its FD mode is read-only (`r`; never `u` or `w`);
   3. no `-wal` and no `-shm` file exists for the DB;
   4. the `.db` SHA-1 is identical before and after you copy it.
   Anything else (another process, a `u`/`w` FD, a side file, a hash change): STOP and report the raw lsof output. (DB Browser for SQLite has held the DB open rw before. The virtualization service holds it `r` while the repo folder is shared into a VM; first seen 2026-11-02, PID 4854.)
-- Before any WRITE to production: ANY holder at all, including the allowed read-only reader above, means STOP and ask the owner. Do not kill the process or work around it. Proceed only on the owner's explicit acceptance for that write.
+- Before any WRITE to production: P11 applies. The read-only reader above is pre-accepted on P11's conditions; any other holder means STOP. Do not kill the process or work around it.
 - Record `shasum -a 1` of `.db` and `-wal` (if present). A non-empty `-wal` means the file hash does not describe the DB.
 - Query a copy: `cp knowledge_base/carrec_kb.db{,-wal} /tmp/carrec_audit/prod/` (no -shm), then query the copy. Do **not** rely on `?immutable=1` when a -wal exists (it ignores WAL content). `?mode=ro` still writes -shm.
-- Re-check the SHA-1 after your work; if it changed and you were not authorised to write, stop and report.
+- Re-check the SHA-1 after your work; if it changed outside a controlled write under the policy, stop and report.
 - Nearly every repo script opens the DB read-write even when it only reads. Do not run repo scripts against production; read their source instead.
 
 ## NEVER run on production
 `run_mini_pilot.py`, `test_debug.py`, `orchestrator.py`, anything in `knowledge_base/ingestion/{carwale,v3cars,source_91wheels}/` batch/ingest runners, `knowledge_base/db/migrate_v6.py`, `knowledge_base/db/migrate_editions.py`, `scratch/production_ingestion*.py`, `scratch/final_production_ingestion.py`, `scratch/phase8_production_ingestion.py`, `scratch/phase8b_prod_ingestion.py`, `scratch/test_oem_override*.py`, all `fix_*`/`patch_*`/`rewrite_*`/`update_*` source rewriters, and `pytest` from the repo root (collects a test that opens prod). Full list and reasons: `knowledge_base/reports/CLAUDE_CODE_SCRIPT_SAFETY_MAP.md`.
 
-**Ingestion freeze (owner, 2026-11-03):** no aggregator ingestion or re-ingestion (91wheels, v3cars, CarWale), on prod or on a copy destined for prod, until the resolver fix (see the open items) is merged.
+**Ingestion freeze:** P15 applies, on prod or on a copy destined for prod.
 
-## Controlled-write procedure (only when explicitly authorised)
-1. `lsof` empty, or the owner has explicitly accepted the holder for this write (see the write rule above); record SHA-1 (+ `.sha3sum` via sqlite3).
+## Controlled-write procedure (how P10 is carried out)
+1. `lsof` per P11; record SHA-1 (+ `.sha3sum` via sqlite3).
 2. Backup with `sqlite3 prod ".backup 'knowledge_base/backups/<phase>_<UTCts>.db'"`; verify backup `.sha3sum` == prod.
 3. Apply to an isolated copy; produce a full per-table `EXCEPT` diff in both directions (not counts, not hash-set heuristics).
 4. Re-apply on the post-change copy → diff must be empty (idempotency).
@@ -55,7 +86,7 @@ The 297 orphaned `field_provenance` rows (keep, never re-point); the 24 Global N
   - Power set to NULL in 10G (unverified, amendments 126–129): **pt 84** Grand Vitara CNG (was 87.8 PS-as-bhp; no CNG data in its brochure) and **pt 88** Victoris Petrol Hybrid (was 115.6, the GV/Hyryder system PS figure; its brochure prints engine 68 kW and motor 59 kW but no total). The v6 observations are kept. Restore a value only from the model's own OEM source.
   - **Powertrain / edition-identity masking needs DDL (view change):** `evidence_quarantine.target_table` (CHECK) excludes `powertrain`, and `v_variant_canonical_q` passes `powertrain_id` through unmasked, so neither a powertrain value nor an edition's own powertrain/transmission (833, 821) can be quarantined. A schema change to the CHECK and the view is needed to allow it. Until then an untrusted powertrain value can only be set to NULL with an amendment.
   - **Resolver mislinks: quarantined in 10H** (661 entries, phase `10H`): 558 mislinked aggregator observations (`H1_RESOLVER_MISLINK` 442, the KB has the right variant; `H1_RESOLVER_NO_KB_VARIANT` 116), 56 edition-on-base observations (`H1_EDITION_NOT_IN_KB`), and 47 stored canonical cells left with no live evidence (`H1_SOLE_SOURCE_FROM_MISLINK`; edition 831 inherits 3 of them from 458, so 50 cells are masked). 177 other mislinks were already under 10B-W1 B3 quarantines. Classifier blind-validated (100% agreement on decided cases). Report: `knowledge_base/reports/phase10h/PHASE10H_REPORT.md`. Paper v0 is unaffected (no verdict flips; see §6 of that report).
-  - **Resolver fix (required before the ingestion freeze lifts):**
+  - **Resolver fix (required before the ingestion freeze can lift; see P15):**
     - CarWale page check: `ingest_carwale.py` stores whatever trim page CarWale serves without comparing its `versionName` to the requested name (470 of 753 resolved CarWale observations carried another version's payload).
     - Trim identity: `resolver.py` accepts a fuzzy match when identity tokens merely overlap (`score > 0.5`, 0.05 margin); it must require equal trim identity. Thresholds stay as they are.
     - Fuel and gearbox parsing: when the source supplies neither (490 of 711 resolved 91wheels observations), parse them from the slug/name instead of skipping `validate_structured`.
