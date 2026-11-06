@@ -252,7 +252,7 @@ function buildResultsToolbar(data, link) {
 }
 
 // --- result card ---
-// facts: electric -> "Range: 465 km"; CNG -> "Mileage: 26.4 km/kg" (kmpl if km/kg is missing);
+// facts: electric -> "Range: 465 km"; CNG -> "Mileage: 26.4 km/kg" (never kmpl);
 // others -> "Mileage: 19.2 kmpl". "Not listed" only when that value is truly null.
 function buildFacts(car) {
     const eff = efficiency(car);
@@ -321,10 +321,12 @@ function detailUrl(base, opts) {
 }
 
 function specList(items) {
-    const shown = items.filter(i => i.status !== "not_applicable");
+    const shown = items.filter(i => i.status !== "not_applicable" || i.note);
     if (!shown.length) return "";
     return `<dl class="spec-list">` + shown.map(i => `<div><dt>${escapeHtml(i.label)}</dt><dd>${
-        i.status === "ok" ? escapeHtml(i.value_display) : '<span class="not-verified">Not verified</span>'
+        i.status === "ok" ? escapeHtml(i.value_display)
+            : i.note ? `<span class="not-verified">${escapeHtml(i.note)}</span>`
+            : '<span class="not-verified">Not verified</span>'
     }</dd></div>`).join("") + `</dl>`;
 }
 
