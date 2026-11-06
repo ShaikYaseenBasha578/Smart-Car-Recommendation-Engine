@@ -26,6 +26,16 @@ Four changes are proposed in [SCHEMA_PROPOSAL_20261106.md](reports/SCHEMA_PROPOS
 - **Option B:** approve S1 + S2 only.
 - **Option C:** defer all.
 
+### N6. Resolver fix and re-ingestion (G3, P15)
+Merge [PR #19](https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/19) when you're happy with it, then fast-forward is routine. After that I can run the blind P15 check (offline), but fetching car data needs your go. Plan: [REINGESTION_PLAN_20261106.md](reports/REINGESTION_PLAN_20261106.md).
+- **Option A (recommended):** merge #19; I run the P15 check; you decide on fetching from its result.
+- **Option B:** hold re-ingestion; the aggregator evidence stays as it is, with mislinks quarantined.
+
+### N7. The 297 orphaned provenance rows (G5 if deleted)
+They affect no value. See [ORPHANS_PROPOSAL.md](reports/phase10o/ORPHANS_PROPOSAL.md).
+- **Option A (recommended):** keep them for now.
+- **Option B:** archive and delete them, batched with the schema changes, so `foreign_key_check` becomes clean.
+
 ### N3. Out of this goal; need your input or ingestion
 - Resuming 10D.
 - GNCAP ingestion.
