@@ -57,14 +57,25 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - No re-linking until after the resolver fix and re-ingestion.
 **Prod SHA-1:** `52f00fc7…` → `8074a9dd…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/18 **Ranking-track line:** KB 10H: mislinked aggregator evidence quarantined, paper v0 unaffected: PR #18.
 
+## 10H-b — 2026-11-06 — Quarantine three more observations linked to the wrong variant
+**Why:** The resolver-fix prototype found three mislinks 10H missed: two Thar Roxx 4WD listings linked to 2WD variants and a Seltos turbo-petrol listing linked to a diesel. A blind subagent confirmed all three.
+**What changed:** 3 observations quarantined. Cells corrected, nulled or quarantined: 0, because these observations fed no values. Schema: none.
+**Examples:**
+- Thar Roxx "AX7L Diesel 4WD AT (TC)" (91wheels): link to AX7 L 2WD Automatic → quarantined (no brochure change)
+- Seltos "X-Line (A) T-GDI 7AT (DCT)" (91wheels): link to X-Line(A) Diesel AT → quarantined (no brochure change)
+**What app users now see:** No change.
+**Not done / held:**
+- Re-linking: waits for the resolver fix and re-ingestion (P15).
+**Prod SHA-1:** `8074a9dd…` → `9bf0bc7a…`. **App PR:** none. **Ranking-track line:** KB 10H-b: 3 more mislinks quarantined; no value changed.
+
 ## Current state
-As of phase 10H (prod `8074a9dd67829042ba04a16bbe9c5a26702c88c6`).
-- **Active quarantines:** 1,383 (947 observations, 403 variant cells, 30 provenance rows, 2 warranty cells, 1 safety applicability row).
+As of phase 10H-b (prod `9bf0bc7a23bc95508968abe2025ceae3787a1bed`).
+- **Active quarantines:** 1,386 (950 observations, 403 variant cells, 30 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
-  - power: 825/832 = 99.2%
-  - mileage km/l (non-CNG, non-EV): 446/713 = 62.6%
-  - km/kg on CNG variants: 42/82 = 51.2%
-  - safety stars (variants of models with a usable test): 363/832 = 43.6%
-  - warranty (a model or manufacturer-wide figure, not yet exported, no brochure provenance): 832/832 = 100%
-- **Open items:** see [NEEDS_YOU.md](NEEDS_YOU.md).
+  - power: 825/832 = 99.2%%
+  - mileage km/l (non-CNG, non-EV): 446/713 = 62.6%%
+  - km/kg on CNG variants: 42/82 = 51.2%%
+  - safety stars (variants of models with a usable test): 363/832 = 43.6%%
+  - warranty: 832/832 = 100.0%; rows 18 of 18; see the warranty entries for provenance and export status.
+- **Open items:** 4 in [NEEDS_YOU.md](NEEDS_YOU.md).
