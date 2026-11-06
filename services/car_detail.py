@@ -27,10 +27,10 @@ from services.summary import build_summary
 # blanks that are expected for a fuel type (same rule as scripts/export_catalogue_from_kb.py)
 NOT_APPLICABLE = {
     "electric": {"engine_cc", "mileage_kmpl", "mileage_km_per_kg", "fuel_tank_litres"},
-    "petrol": {"ev_range_km", "mileage_km_per_kg"},
-    "diesel": {"ev_range_km", "mileage_km_per_kg"},
+    "petrol": {"ev_range_km", "mileage_km_per_kg", "battery_warranty_years"},
+    "diesel": {"ev_range_km", "mileage_km_per_kg", "battery_warranty_years"},
     "hybrid": {"ev_range_km", "mileage_km_per_kg"},
-    "cng": {"ev_range_km", "mileage_kmpl"},  # keep in step with scripts/export_catalogue_from_kb.py
+    "cng": {"ev_range_km", "mileage_kmpl", "battery_warranty_years"},  # keep in step with scripts/export_catalogue_from_kb.py
 }
 FUEL_LABELS = {"petrol": "Petrol", "diesel": "Diesel", "cng": "CNG", "hybrid": "Petrol hybrid", "electric": "Electric"}
 
@@ -84,9 +84,10 @@ SPEC_GROUPS = [
         ("camera_360", "360° camera", "bool"),
         ("adas_available", "ADAS", "bool"),
     ]),
-    # The KB has no warranty in its quarantine-aware read path, so nothing is exported for it.
+    # Exported only where the KB holds a brochure citation; otherwise unverified.
     ("Warranty", [
-        (None, "Standard warranty", "missing"),
+        ("warranty_years", "Standard warranty", "warranty"),
+        ("battery_warranty_years", "Battery warranty", "warranty"),
     ]),
 ]
 COLUMN_ALIASES = {"hill_hold": "hill_assist"}
@@ -106,9 +107,16 @@ def _status(row, col: str) -> str:
     return "unverified"
 
 
+def warranty_display(row, years_col: str) -> str:
+    """'3 years / 100,000 km', '3 years / unlimited km', or just the years when no km figure is known."""
+    km = row[years_col.replace("_years", "_km")]
+    years = f"{_number(row[years_col])} years"
+    if not km:
+        return years
+    return f"{years} / unlimited km" if km.lower() == "unlimited" else f"{years} / {int(float(km)):,} km"
+
+
 def spec_item(row, col: str | None, label: str, kind: str) -> dict:
-    if kind == "missing":
-        return {"label": label, "value_display": None, "status": "unverified"}
     col = COLUMN_ALIASES.get(col, col)
     value = row[col]
     if col == "mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
@@ -123,6 +131,8 @@ def spec_item(row, col: str | None, label: str, kind: str) -> dict:
         display = FUEL_LABELS.get(value, value)
     elif kind == "text":
         display = str(value)
+    elif kind == "warranty":
+        display = warranty_display(row, col)
     else:
         display = _number(value) + kind
     return {"label": label, "value_display": display, "status": "ok"}

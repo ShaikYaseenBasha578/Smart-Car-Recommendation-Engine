@@ -146,3 +146,22 @@ def test_permalink_page_route(client):
     r = get(client, "/car/skoda/slavia?q=DCT%20petrol%20under%2015%20lakh")
     assert r.status_code == 200 and b'id="car-detail"' in r.data and b"initCarPage" in r.data
     assert get(client, "/car/bmw/x5").status_code == 404
+
+
+def test_warranty_row_shows_only_brochure_cited_figures():
+    df = get_catalogue()
+    def item(model, label, fuel=None):
+        rows = df[(df["model"] == model) & (df["fuel_type"] == fuel if fuel else True)]
+        row = rows.iloc[0]
+        d = get_car_detail(safe_slug(row["make"]), safe_slug(row["model"]), variant_id=int(row["variant_id"]))
+        return next(i for i in d["specs"][5]["items"] if i["label"] == label)
+    assert item("Grand Vitara", "Standard warranty")["value_display"] == "3 years / 100,000 km"
+    assert item("Elevate", "Standard warranty")["value_display"] == "3 years / unlimited km"
+    assert item("Slavia", "Standard warranty")["value_display"] == "4 years / 100,000 km"
+    # the make-wide Hyundai row is contradicted by two brochures, so only model rows with a citation show
+    assert item("Grand i10 Nios", "Standard warranty")["value_display"] == "3 years / 100,000 km"
+    assert item("Exter", "Standard warranty")["value_display"] == "3 years / unlimited km"
+    assert item("Creta", "Standard warranty") == {"label": "Standard warranty", "value_display": None, "status": "unverified"}
+    assert item("Nexon EV", "Battery warranty")["value_display"] == "8 years / 160,000 km"
+    assert item("Nexon EV", "Standard warranty")["value_display"] == "3 years / 125,000 km"
+    assert item("Creta", "Battery warranty")["status"] == "not_applicable"

@@ -111,11 +111,19 @@ NOT_APPLICABLE = {
 # export column -> variant field name used in evidence_quarantine.target_field
 VARIANT_FIELD = {**SPEC_FROM_VARIANT, **{c: BOOL_SOURCE.get(c, c) for c in BOOL_COLUMNS}}
 
+# Only figures with a brochure citation are exported; anything else shows as unverified in the app.
+WARRANTY_COLUMNS = ["warranty_years", "warranty_km", "battery_warranty_years", "battery_warranty_km"]
+OEM_WARRANTY_SOURCE = "OEM brochure"
+BATTERY_WARRANTY_FUELS = {"electric", "hybrid"}
+# The source text says when a brochure backs only part of a row (KB Phase 10L).
+BATTERY_FIGURES_NOT_CITED = "battery figures not in this brochure"
+BATTERY_KM_NOT_CITED = "battery km not printed"
+
 COLUMNS = [
     "variant_id", "make", "model", "variant", "full_name", "body_type",
     "fuel_raw", "fuel_type",
     "transmission_raw", "transmission_type", "transmission_family",
-    *SPEC_COLUMNS, *BOOL_COLUMNS, *SAFETY_COLUMNS,
+    *SPEC_COLUMNS, *BOOL_COLUMNS, *SAFETY_COLUMNS, *WARRANTY_COLUMNS,
     "unverified_fields",
 ]
 
@@ -166,7 +174,7 @@ def load_variants(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     return conn.execute(
         f"""
         SELECT q.id AS variant_id, mf.name AS make, m.name AS model, q.name AS variant,
-               q.full_name, m.body_type, q.model_id, q.base_variant_id,
+               q.full_name, m.body_type, q.model_id, m.manufacturer_id, q.base_variant_id,
                pt.fuel_type AS fuel_raw, q.transmission AS transmission_raw,
                pt.engine_cc, pt.power_bhp, pt.torque_nm, {variant_cols}
         FROM v_variant_canonical_q q
@@ -197,8 +205,29 @@ def load_safety(conn: sqlite3.Connection) -> dict[int, sqlite3.Row]:
     return latest
 
 
+def load_warranty(conn: sqlite3.Connection) -> tuple[dict[int, sqlite3.Row], dict[int, sqlite3.Row]]:
+    """Brochure-cited rows from the quarantine-aware view: (by model, by make)."""
+    by_model: dict[int, sqlite3.Row] = {}
+    by_make: dict[int, sqlite3.Row] = {}
+    for w in conn.execute("SELECT * FROM v_warranty_q WHERE source LIKE ? ORDER BY id", (OEM_WARRANTY_SOURCE + "%",)):
+        if w["model_id"] is not None:
+            by_model[w["model_id"]] = w
+        else:
+            by_make[w["manufacturer_id"]] = w
+    return by_model, by_make
+
+
+def fmt_km(value) -> str:
+    """'100000.0' -> '100000'; 'Unlimited' stays."""
+    if value is None or value == "":
+        return ""
+    text = str(value).strip()
+    return text if text.lower() == "unlimited" else fmt_num(float(text))
+
+
 def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.Row]]:
     safety = load_safety(conn)
+    warranty_by_model, warranty_by_make = load_warranty(conn)
     out = []
     seen: set[int] = set()
     for r in load_variants(conn):
@@ -252,6 +281,15 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
         else:
             for col in SAFETY_COLUMNS:
                 row[col] = ""
+
+        w = warranty_by_model.get(r["model_id"]) or warranty_by_make.get(r["manufacturer_id"])
+        battery = (w is not None and row["fuel_type"] in BATTERY_WARRANTY_FUELS
+                   and BATTERY_FIGURES_NOT_CITED not in (w["source"] or ""))
+        row["warranty_years"] = fmt_num(w["warranty_years"]) if w else ""
+        row["warranty_km"] = fmt_km(w["warranty_km"]) if w else ""
+        row["battery_warranty_years"] = fmt_num(w["battery_warranty_years"]) if battery else ""
+        row["battery_warranty_km"] = (fmt_km(w["battery_warranty_km"])
+                                      if battery and BATTERY_KM_NOT_CITED not in (w["source"] or "") else "")
 
         skip = NOT_APPLICABLE[row["fuel_type"]]
         row["unverified_fields"] = ";".join(c for c in CHECKED_COLUMNS if c not in skip and row[c] == "")

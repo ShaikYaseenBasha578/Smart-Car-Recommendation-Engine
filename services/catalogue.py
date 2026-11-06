@@ -18,12 +18,13 @@ META_JSON = DATA_DIR / "catalogue_meta.json"
 TEXT_COLUMNS = [
     "make", "model", "variant", "full_name", "body_type", "fuel_raw", "fuel_type",
     "transmission_raw", "transmission_type", "transmission_family", "drivetrain",
-    "safety_testing_body",
+    "safety_testing_body", "warranty_km", "battery_warranty_km",
 ]
 NUMERIC_COLUMNS = [
     "price_ex_showroom", "seats", "engine_cc", "power_bhp", "torque_nm", "mileage_kmpl",
     "mileage_km_per_kg", "ev_range_km", "boot_space_litres", "ground_clearance_mm", "length_mm",
     "width_mm", "height_mm", "wheelbase_mm", "kerb_weight_kg", "fuel_tank_litres", "airbags", "safety_stars_adult", "safety_stars_child", "safety_test_year",
+    "warranty_years", "battery_warranty_years",
 ]
 BOOL_COLUMNS = [
     "abs", "android_auto", "apple_carplay", "cruise_control", "sunroof", "adas_available",
