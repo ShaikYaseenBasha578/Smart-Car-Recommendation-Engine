@@ -17,13 +17,14 @@ def same(a, b):
         return {"true": "1", "false": "0"}.get(str(a).lower(), str(a)) == {"true": "1", "false": "0"}.get(str(b).lower(), str(b))
 
 
-def run(db, phase, bro_table, cells, expect_counts=None):
+def run(db, phase, bro_table, cells, expect_counts=None, quarantine_contradicted=False):
     method, fp_reason = f"manual_brochure_{phase}", f"OEM_BROCHURE_VERIFIED_{phase}"
     c = sqlite3.connect(db, isolation_level=None); c.execute("PRAGMA foreign_keys=ON")
     one = lambda q, *a: c.execute(q, a).fetchone()
     tables = [r[0] for r in c.execute("select name from sqlite_master where type='table' and name<>'sqlite_sequence'")]
     snap = lambda t: {r[0]: r for r in c.execute(f'select * from "{t}"')}
     n = dict(corrected=0, confirmed=0, amend=0, obs=0, fp=0, released=0)
+    if quarantine_contradicted: n["quar"] = 0
     assert len({(x["vid"], x["col"]) for x in cells}) == len(cells), "duplicate cell"
     c.execute("BEGIN IMMEDIATE")
     try:
@@ -53,6 +54,12 @@ def run(db, phase, bro_table, cells, expect_counts=None):
                 dec = "confirmed" if same(x["old"], x["new"]) else "accepted"
                 c.execute("insert into field_provenance(variant_id,field_name,accepted_value,source_observation_id,decision,decision_reason) values (?,?,?,?,?,?)",
                           (vid, col, str(x["new"]), oid, dec, fp_reason)); n["fp"] += 1
+            if quarantine_contradicted and not same(x["old"], x["new"]):
+                # live provenance rows the brochure contradicts (10E/10F pattern); the rows themselves stay as evidence
+                for fid, val in c.execute("select fp_id, accepted_value from v_live_evidence where variant_id=? and field_name=? and decision in ('accepted','confirmed')", (vid, col)).fetchall():
+                    if not same(val, x["new"]):
+                        c.execute("insert into evidence_quarantine(target_table,target_id,target_field,reason_code,phase,note) values ('field_provenance',?,NULL,'CONTRADICTED_BY_OEM_BROCHURE',?,?)",
+                                  (fid, phase, f"fp_id={fid}; variant_id={vid}; field={col}; accepted_value={val}; contradicted by knowledge_base/sources/oem/{path} sha1 {sha1} p{x['page']}")); n["quar"] += 1
             if x.get("release"):
                 n["released"] += c.execute("update evidence_quarantine set released_at=datetime('now'), released_reason=? where target_table='variant' and target_id=? and target_field=? and reason_code=? and released_at is null",
                                            (f"{phase}: verified from brochure {x['bro']} p{x['page']}", vid, col, x["release"])).rowcount
@@ -64,7 +71,8 @@ def run(db, phase, bro_table, cells, expect_counts=None):
             if t in ("evidence_amendment", "source_observation", "field_provenance"):
                 assert set(b) <= set(a) and all(a[k] == b[k] for k in b), f"{t}: existing rows changed"
             elif t == "evidence_quarantine":
-                assert set(a) == set(b)
+                assert set(b) <= set(a)
+                assert all(a[k][1] == "field_provenance" and a[k][5] == phase for k in set(a) - set(b))
                 for k in b:
                     if a[k] != b[k]:
                         assert a[k][:7] == b[k][:7] and b[k][8] is None and a[k][4] == "H1_SOLE_SOURCE_FROM_MISLINK" or a[k][5] == phase, f"quarantine {k} changed unexpectedly"

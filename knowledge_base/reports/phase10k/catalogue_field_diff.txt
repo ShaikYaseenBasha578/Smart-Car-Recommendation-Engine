@@ -1,0 +1,21 @@
+rows 832 832 same ids True same columns True
+expected cells 16 | export columns not found: set()
+  v150 Venue | HX4 1.2 Petrol MT | cruise_control: 'true' -> 'false'
+  v151 Venue | HX5 1.2 Petrol MT | cruise_control: 'true' -> 'false'
+  v154 Venue | HX5+ 1.2 Petrol MT | cruise_control: 'true' -> 'false'
+  v155 Venue | HX6 1.2 Petrol MT | cruise_control: 'true' -> 'false'
+  v156 Venue | HX6T 1.2 Petrol MT | cruise_control: 'true' -> 'false'
+  v259 Grand i10 Nios | Sportz MT | hill_assist: 'false' -> 'true'
+  v260 Grand i10 Nios | Sportz (O) MT | hill_assist: 'false' -> 'true'
+  v261 Grand i10 Nios | Corporate AMT | esc: 'false' -> 'true'
+  v264 Grand i10 Nios | Asta MT | hill_assist: 'false' -> 'true'
+  v266 Grand i10 Nios | Sportz Hy-CNG Duo | hill_assist: 'false' -> 'true'
+  v364 Tiago | Pure+ A CNG AMT | cruise_control: 'true' -> 'false'
+  v365 Tiago | Creative CNG AMT | cruise_control: 'true' -> 'false'
+  v570 Victoris | ZXI Strong Hybrid e-CVT | cruise_control: 'false' -> 'true'
+  v574 Victoris | ZXI+ Strong Hybrid e-CVT | cruise_control: 'false' -> 'true'
+  v605 Kushaq | Classic Plus Petrol 1.0L Turbo Manual | cruise_control: 'true' -> 'false'
+  v605 Kushaq | Classic Plus Petrol 1.0L Turbo Manual | paddle_shifters: 'true' -> 'false'
+{'cruise_control': 10, 'hill_assist': 4, 'esc': 1, 'paddle_shifters': 1}
+value diffs == expected cells: True | unexpected: [] | expected but unchanged: []
+unverified_fields consistent: True []

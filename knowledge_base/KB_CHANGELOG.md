@@ -83,9 +83,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Editions 821, 831, 832 (8 cells): edition cells are never written.
 **Prod SHA-1:** `9bf0bc7a…` → `2623fa7a…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/20 **Ranking-track line:** KB 10J: 25 hidden values settled from brochures, 8 corrected; export re-run.
 
+## 10K — 2026-11-06 — Restore "AT only"-style qualifiers dropped from brochure tables
+**Why:** Some feature cells ignored a qualifier printed in the brochure, such as "AT only", "AMT only" or "not available in CNG AMT". So manual cars claimed automatic-only features, and a misread "AMT only" took hill assist away from higher trims.
+**What changed:** 16 cells corrected; 19 contradicted provenance rows quarantined; 16 brochure observations added. Schema: none.
+**Examples:**
+- Skoda Kushaq Classic Plus MT: paddle shifters and cruise control yes → no (Kushaq brochure, p27)
+- Hyundai Venue HX4 1.2 MT: cruise control yes → no (Venue brochure, p20)
+- Grand i10 Nios Asta MT: hill assist no → yes (Nios brochure, p10)
+**What app users now see:** Correct feature ticks on these 15 Kushaq, Venue, Nios, Victoris and Tiago variants.
+**Not done / held:**
+- Jimny 599 paddle shifters: the brochure doesn't mention them.
+- Nios Magna AMT: the brochure has no such variant.
+**Prod SHA-1:** `2623fa7a…` → `459e4a99…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/21 **Ranking-track line:** KB 10K: 16 feature cells corrected from brochure qualifiers; export re-run.
+
 ## Current state
-As of phase 10J (prod `2623fa7af76f02f846e5de8603cb5e2b14eafde2`).
-- **Active quarantines:** 1,361 (950 observations, 378 variant cells, 30 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
+As of phase 10K (prod `459e4a995ad5a52622e98e26449f36772dcd28ae`).
+- **Active quarantines:** 1,380 (950 observations, 378 variant cells, 49 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

@@ -1,0 +1,111 @@
+honda/amaze|p32|Max. GVW (kg) 1 360 (MT), 1 380 (CVT)
+honda/amaze|p34|7-Speed Paddle Shifters (CVT Only)
+honda/amaze|p40|7-Speed Paddle Shifters (CVT Only) O O O
+honda/city|p32|7-Speed Paddle Shifters (CVT only)
+honda/city|p37|7-Speed Paddle Shifters (for Sequential Shifts) - O (CVT only) O (CVT only) O (CVT only)
+honda/city|p37|Deceleration Selector Paddle Shifters (for Battery Regeneration) - - - O (e:HEV only)
+honda/city|p38|Deceleration Paddle Selector & Shift Position Indicator - - - O (e:HEV only)
+honda/city|p38|Wireless Charger (Centre Console Smartphone Tray) - - - O (e:HEV only)
+honda/city|p38|Wireless Charger (Plug & Play Type) - - O O (MT & CVT only)
+honda/elevate|p46|7-Speed Paddle Shifters (CVT Only)
+honda/elevate|p51|7-Speed Paddle Shifters (CVT Only) - O O O O O
+hyundai/aura|p10|Cruise control - - PL only S
+hyundai/aura|p10|Wireless phone charger^ - - AMT only S
+hyundai/aura|p14|capacity from 1 197-1 199 cc. • Apple CarPlay / Android Auto functions only in select Hyundai car(s) and depends
+hyundai/creta/gen2_facelift_2024/brochures/Hyundai_Creta_Brochure_Official.pdf|p16|manual to know more. Apple CarPlay/Android Auto functions only in select Hyundai car(s) and depends upon
+hyundai/exter|p11|** Works with select Android & Apple smartphones only
+hyundai/exter|p11|Cruise control - - - - PL Only PL Only PL Only S S
+hyundai/exter|p11|Paddle shifters - - - - AMT Only AMT Only AMT Only S S
+hyundai/grand_i10_nios|p3|Other features: Steering mounted audio & bluetooth controls *Through Android Auto & Apple Carplay only.
+hyundai/grand_i10_nios|p10|Electronic stability control (ESC) - - AMT only S S S S S
+hyundai/grand_i10_nios|p10|Hill start assist control (HAC) - - AMT only S S S S S
+hyundai/grand_i10_nios|p10|Vehicle stability management (VSM) - - AMT only S S S S S
+hyundai/grand_i10_nios|p11|Cruise control - - - PL only S S S S
+hyundai/grand_i10_nios|p13|mentioned in respective official websites as on 09 April 2026. • Apple CarPlay/Android Auto functions only in
+hyundai/venue|p20|Cruise control - - S## 1.5 DSL only - S^ - - S S S S S
+hyundai/verna|p5|** Works with select Android & Apple smartphones only. Wireless Apple CarPlay & Android Auto
+hyundai/verna|p12|Smart Cruise Control With Stop & Go (SCC with S&G) - - - - DCT Only S
+hyundai/verna|p13|** Works with select Android & Apple smartphones only
+kia/carens_clavis_ev|p11|may vary depending on the variant, device compatibility, software and network availability in the both vehicle and Alexa device. Kia Connect skill is only available in In
+kia/seltos|p10|Seats Automatic only: Head-Up Display - Windshield Projection
+kia/syros|p7|HTK+ Dual Pane Panoramic Sunroof Automatic Only Features : 60:40 Split Rear Seats with Slide & Recline Function
+kia/syros|p7|HTX (O) • New R17 - 43.66 cm (17”) Sporty Crystal Cut Alloy Wheels • 31.24 cm (12.3”) HD Touchscreen Navigation Cockpit • Rear Ventilated Seats (Seat thigh only) Gravity 
+kia/syros|p7|• Drive Mode Select [Eco/ Normal/ Sport] 1.5 l CRDi VGT 6AT – – –
+kia/syros|p7|• Drive Mode Select [Eco/ Normal/ Sport] • Centre Console with Armrest & Cup Holders (MT only)
+mahindra/scorpio_n|p24|Adaptive Cruise Control with Stop & Go [AT variant only]       
+mahindra/scorpio_n|p24|Leather Wrapped Steering + Gear Shift Lever        Drive Modes (Diesel) – Zip-Zap-Zoom    (Diesel 2WD)  (Diesel 2WD)    and driver’s vigilance. The driver s
+mahindra/xuv_3xo|p16|Smart Pilot Assist and Adaptive Cruise Control is only available on Luxury pack (L) Petrol Automatic variants of the Vehicle. Advanced Driver Assistance System (ADAS) are
+mahindra/xuv_3xo|p16|ance. Kindly visit your nearest Mahindra dealership to check the actual appearance of the Vehicle. Sunroof of the Vehicle is the largest sunroof in terms of dimensions in
+mahindra/xuv_3xo|p16|and without any liability. Drive Modes are available only in Petrol Automatic variants. ‘Android Auto’ is a trademark of Google LLC and its aﬃliates. To use Android Auto 
+maruti_suzuki/brezza|p10|Auto Climate Control (Turbo)   
+maruti_suzuki/brezza|p10|Cruise Control - - (Turbo) 
+maruti_suzuki/brezza|p10|Front Parking Sensors - - (Turbo) 
+maruti_suzuki/brezza|p10|Reverse Parking Camera - (Turbo)  
+maruti_suzuki/brezza|p10|Tyre Pressure Monitoring System (TPMS Highline) - - (Turbo) 
+maruti_suzuki/dzire|p4|360 HD View Camera and the AGS Technology maximises the convenience factor on every journey. Best-in Segment Mileage - CNG
+maruti_suzuki/dzire|p4|AGS Technology Wireless Charger Next Gen Suzuki Connect
+maruti_suzuki/dzire|p5|Outside Temperature Display - AMT Only √ √ Trip (Start & End) - - √ √ https://support.google.com/androidauto/ #6140477. Android, Android Auto,
+maruti_suzuki/fronx|p7|Transmission, coupled with the ease of Paddle Technology, FRONX will take you further acceleration, FRONX with AGS has
+maruti_suzuki/fronx|p19|66 kW@6000rpm or 89.73 PS@6000rpm (Petrol) Rear AC Vents — — —  
+maruti_suzuki/fronx|p19|Paddle Shifters — — — AT Only AT Only Navigate to Car — — —  
+maruti_suzuki/grand_vitara|p15|Drive Mode Selector — — — ALLGRIP Only — — —
+maruti_suzuki/grand_vitara|p15|FEATURE SPECIFICATIONS PETROL STRONG HYBRID Hill-Descent Control — — — ALLGRIP Only — — —
+maruti_suzuki/grand_vitara|p15|Fuel Efficiency8 (km/l) 21.11 (MT), 20.58 (AT), 19.20 (ALLGRIP AT) 27.97 (e-CVT) Cruise Control — Arctic White
+maruti_suzuki/grand_vitara|p15|Paddle Shifters — (AT only) (AT only) (AT only) — — — REVERSE PARKING ASSIST COMPLIANCE, PEDESTRIAN COMPLIANCE Mercedes-Benz Group AG
+maruti_suzuki/victoris|p16|Adaptive Cruise Control with all Speed Following & - - - 6AT
+maruti_suzuki/victoris|p16|ISG 12V - 6Ah (Li-ion) - - Hill Descent Control - - - ALLGRIP
+maruti_suzuki/victoris|p16|Kerb Weight (kg) 1285-1305* (ALLGRIP AT) 1230-1245 1250-1295 Engine Drive Modes - Eco, Normal, Sport - Strong Hybrid Strong Hybrid Strong Hybrid
+maruti_suzuki/victoris|p16|Max Power 75.8 kW (103.06 Ps) @ 6000 rpm 64.6 kW (87.8 Ps) @ 5500 rpm Level 2 ADAS Lane Departure Warning (LDW) - - - 6AT
+maruti_suzuki/victoris|p16|Paddle Shifters - 6AT 6AT 6AT
+maruti_suzuki/victoris|p16|Petrol: 45 Cruise Control -   (MT & Strong Hybrid)
+maruti_suzuki/victoris|p16|Type 2WD/AWD (ALLGRIP SELECT) 2WD 2WD Rear Parking Sensors    
+maruti_suzuki/wagon_r|p5|https://www.android.com/auto/#hit-the-road. phones with Android 5.0+ work with Android Auto: https://support.google.com/androidauto/#6140477. Android Auto, Google, Google
+maruti_suzuki/xl6|p15|Dedicated CNG Fuel Gauge  (CNG only) — — ABS WITH EBD COMPLIANCE PEDESTRIAN COMPLIANCE extends the Android platform into the car in a way that’s purpose-built for drivin
+mg/windsor_ev|p3|Battery capacity, environmental conditions, and connected devices. Always adhere to local regulations and safety standards when using the V2L adapter. **Only for compatib
+mg/windsor_ev|p25|vary based on vehicle Battery capacity, environmental conditions, and connected devices. Always adhere to local regulations and safety standards when using the V2L adapte
+nissan/gravite|p8|• Cruise Control (MT Only)
+nissan/magnite|p15|3 3 G49006VBIB G49006VBIB DUEL DUEL LAYER LAYER MAT MAT (MT) (MT) 6999 6999 43 B818MZZ102 10.33’’ ANDROID AUDIO (MID) 31999
+renault/duster|p17|• hill descent control (DCT only)
+skoda/kushaq|p13|*Panoramic sunroof available only in Prestige and Monte Carlo
+skoda/kushaq|p24|HHC (Hill Hold Control) AT only ◼ ◼ ◼ ◼
+skoda/kushaq|p26|Cruise Control AT only ◼ ◼ ◼ ◼
+skoda/kushaq|p26|Paddle Shifters on Steering Wheel AT only AT only AT only AT/DSG only ◼
+skoda/kushaq|p27|Central Paddle Shifters Door Locking on Steering with speed Wheel sensor AT ◼ only AT ◼ only AT ◼ only AT/DSG ◼ only ◼ ◼
+skoda/kushaq|p27|KESSY Cruise Control (Keyless Locking/Unlocking of Door & Engine Start/Stop) AT - only ◼ ◼ ◼ ◼ ◼ ◼ ◼ ◼
+skoda/kylaq|p24|Paddle Shifters - - ◼ (AT Only) ◼ (AT Only) ◼ (AT Only) ◼ (AT Only) ◼ (AT Only)
+skoda/slavia|p31|Paddle Shifters (AT Only) Electric Sunroof with Anti - Pinch Technology
+skoda/slavia|p33|Paddle Shifters (AT Only) Sporty Alu Pedals
+tata/harrier|p9|ADAPTIVE CRUISE CONTROL (AT)*
+tata/harrier|p18|**Adaptive Cruise Contol in AT only
+tata/harrier|p18|• Paddle Shifters (AT)
+tata/harrier|p19|*AT only | **Adaptive Cruise Control in AT only
+tata/harrier|p20|enhances driving experience and safety. The driver shall remain responsible for safe, vigilant and attentive driving. Adaptive Cruise Control is available in AT only. ADA
+tata/nexon|p40|for compatible EV models only at a power output of 5kVA. ***Maximum amount of power output is 3kVA. ^As per Bharat NCAP August 2025 Score. ◆Estimated real world range as 
+tata/nexon|p40|#DARK edition only available in fearless+ PS. ◊Cruise control is not available in CNG. ¤Nexon BNCAP safety rating is applicable for Petrol & Diesel trims active as on May
+tata/nexon|p40|Connected Vehicle, E-Call, B-Call, Subwoofer). Features only available in Fearless + PS DCA: - JBL branded speaker system, Subwoofer, ADAS*, ADAS not available in CNG & D
+tata/nexon|p40|Exteriors. *This varies as per variant **Bootspace as per ISO V215. Features like Multi drive modes, Cruise control, iRA Connected car feature, E-Call & B-Call only avail
+tata/nexon_ev|p40|for compatible EV models only at a power output of 5kVA. ***Maximum amount of power output is 3kVA. ^As per Bharat NCAP August 2025 Score. ◆Estimated real world range as 
+tata/punch_ev|p23|Electronic Stability Program (ESP) (40kWh only)
+tata/punch_ev|p23|ISOFIX Child Seat Anchors Hill Hold Control (40kWh only)
+tata/punch_ev|p23|Rear Parking Sensors with Auto Hold (40kWh only)
+tata/tiago|p14|QUICK RESPONSE PADDLE SHIFTERS (AMT)
+tata/tiago|p28|Genuine Genuine Genuine differ. Accessories. Accessories. Accessories. *Cruise ##Warranty ##Warranty ##Warranty control cover cover cover is for not for for 3 3 Years 3 a
+tata/tiago|p28|Wheel Arch Cladding • Hill Hold Control Alloy Wheels (Petrol only)
+tata/tiago|p28|• Rotary Gear Knob (AMT only) Temperature Control (FATC) USB Charger
+tata/tigor|p18|Cruise Control (petrol only)
+tata_motors/nexon/gen2_facelift_2023/brochures/Tata_Nexon_Brochure_Official.pdf|p40|#DARK edition only available in fearless+ PS. ◊Cruise control is not available in CNG. ¤Nexon BNCAP safety rating is applicable for Petrol & Diesel trims active as on May
+tata_motors/nexon/gen2_facelift_2023/brochures/Tata_Nexon_Brochure_Official.pdf|p40|Connected Vehicle, E-Call, B-Call, Subwoofer). Features only available in Fearless + PS DCA: - JBL branded speaker system, Subwoofer, ADAS*, ADAS not available in CNG & D
+tata_motors/nexon/gen2_facelift_2023/brochures/Tata_Nexon_Brochure_Official.pdf|p40|Exteriors. *This varies as per variant **Bootspace as per ISO V215. Features like Multi drive modes, Cruise control, iRA Connected car feature, E-Call & B-Call only avail
+toyota/fortuner|p1|150 kW [204 PS] (AT) @ 50 - 57 s-1 Ventilated Front Seats
+toyota/fortuner|p1|6AT [Sequential Shift + Paddle Shift + Shiftlock]
+toyota/glanza|p1|(Android Tweeter Hey Door Toyota speaker auto/Apple carplay)] ‐ ‐ ‐ 4 - - N 2 4 N N 2 4 N N assistance *5 on feature contact - the Application network execution only is w
+toyota/glanza|p1|Spare Projector Wheel headlamp (Steel Wheel – 185/65 R15 Diameter 38.1 cm) Halogen E (MT) S (MT/AMT/CNG) Halogen G (MT/AMT/CNG) LED V (MT/AMT) LED Cruise Adjustable Steer
+toyota/glanza|p1|Sporty ﬁbre Texture Front bumper element with Carbon E (MT) S (MT/AMT/CNG) G (MT/AMT/CNG) V (MT/AMT) & Driver Keyless Head-Up All power side push Display windows Auto sta
+toyota/innova_hycross|p15|Front & Reverse Parking Sensor √ (Reverse only) X √ √ √ √ √
+toyota/rumion|p6|Paddle Shifters - √ (AT) √ (AT) √ (AT)
+toyota/urban_cruiser_hyryder|p14|Drive Type 2WD 2WD 2WD / AWD (MT only) 2WD Centre ventilation knob & ﬁn (Satin silver)
+toyota/urban_cruiser_hyryder|p14|Hill descent - - - - - (AWD only) - - -
+toyota/urban_cruiser_hyryder|p14|Paddle Shift - - - (AT only) (AT only) (AT only)
+toyota/urban_cruiser_hyryder|p14|Steering mounted commands (Audio, BT, Cruise control) (audio command only)
+toyota/urban_cruiser_hyryder|p14|Transmission Type 5MT 5MT 5MT / 6AT 5MT (2WD) / 6AT (2/4WD) e-Drive Front (side) ventilation knob (Satin chrome)
+toyota/urban_cruiser_taisor|p22|Paddle Shifters — — — AT Only AT Only
