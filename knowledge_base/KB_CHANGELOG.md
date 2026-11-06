@@ -96,14 +96,26 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Nios Magna AMT: the brochure has no such variant.
 **Prod SHA-1:** `2623fa7a…` → `459e4a99…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/21 **Ranking-track line:** KB 10K: 16 feature cells corrected from brochure qualifiers; export re-run.
 
+## 10L — 2026-11-06 — Warranty gets brochure citations and appears in the app
+**Why:** Warranty rows came mostly from an aggregator, Grand Vitara's figures were wrong, Hyundai's make-wide "unlimited km" was contradicted by two of its brochures, and the app showed no warranty at all.
+**What changed:** 2 cells corrected, 15 rows cited to a brochure page, 3 model rows added, 2 quarantines released. Schema: none.
+**Examples:**
+- Maruti Grand Vitara: warranty 2 years / 40,000 km → 3 years / 100,000 km (Grand Vitara brochure, p15)
+- Hyundai Grand i10 Nios: unlimited km (make-wide) → 3 years / 100,000 km (Nios brochure, p13)
+**What app users now see:** The car page shows standard warranty, and battery warranty on EVs and hybrids, wherever a brochure backs it. Otherwise it says "Not verified".
+**Not done / held:**
+- Hyundai make row, MG, Renault: no brochure on disk settles them; shown as not verified.
+- Grand Vitara battery figures, Hyryder battery km: not printed in the brochures.
+**Prod SHA-1:** `459e4a99…` → `acf32b47…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/22 **Ranking-track line:** KB 10L: warranty cited and exported; new catalogue columns; no existing column changed.
+
 ## Current state
-As of phase 10K (prod `459e4a995ad5a52622e98e26449f36772dcd28ae`).
-- **Active quarantines:** 1,380 (950 observations, 378 variant cells, 49 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
+As of phase 10L (prod `acf32b47e19c711d9f8bdc332132c5df6510c489`).
+- **Active quarantines:** 1,378 (950 observations, 378 variant cells, 49 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
   - mileage km/l (non-CNG, non-EV): 449/713 = 63.0%
   - km/kg on CNG variants: 42/82 = 51.2%
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
-  - warranty: 832/832 = 100.0%; rows 18 of 18; see the warranty entries for provenance and export status.
-- **Open items:** 4 in [NEEDS_YOU.md](NEEDS_YOU.md).
+  - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
+- **Open items:** 5 in [NEEDS_YOU.md](NEEDS_YOU.md).
