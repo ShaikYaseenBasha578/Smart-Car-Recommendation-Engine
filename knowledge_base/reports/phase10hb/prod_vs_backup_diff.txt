@@ -1,0 +1,9 @@
+schema identical: True
+## evidence_quarantine: +3 -0
+  + (1384, 'source_observation', 955, None, 'H1_RESOLVER_MISLINK', '10H-b', "src=91wheels; resolved_variant=206 'X-Line(A) 1.5 Diesel AT'; source_name='X-Line (A) G1.5 Smartstream T-GDI 7AT (DCT)'; mismatch=fuel (turbo petrol vs diesel); better_target=191; blind-validated", '2026-11-06 14:55:19', None, None)
+  + (1385, 'source_observation', 1151, None, 'H1_RESOLVER_MISLINK', '10H-b', "src=91wheels; resolved_variant=690 'AX7 L 2WD Diesel 2.2L Turbo Automatic'; source_name='AX7L Diesel 4WD AT (TC)'; mismatch=drivetrain (4WD vs 2WD); better_target=693; blind-validated", '2026-11-06 14:55:19', None, None)
+  + (1386, 'source_observation', 1157, None, 'H1_RESOLVER_MISLINK', '10H-b', "src=91wheels; resolved_variant=691 'AX7 L 2WD Diesel 2.2L Turbo Manual'; source_name='AX7L 4WD MOCHA INTRS Diesel'; mismatch=drivetrain (4WD vs 2WD); better_target=694 (interior option not modelled); blind-validated", '2026-11-06 14:55:19', None, None)
+## sqlite_sequence: +1 -1
+  - ('evidence_quarantine', 1383)
+  + ('evidence_quarantine', 1386)
+total differing rows: 5

@@ -14,6 +14,12 @@ It is untracked and git-ignored (`knowledge_base/.gitignore:1`), so the code PR 
 - **Option A (recommended):** keep them. They hide values whose only evidence is mislinked, and P8 is applied going forward.
 - **Option B:** release the three so 821 is fully held as it was.
 
+### N4. Exter editions 815 and 816 show another trim's price (G1)
+815 "HX 6 Petrol Manual Dual Tone" sits on base HX 2 and 816 "HX 10 Petrol Automatic Dual Tone" on base HX 3, so the app shows ₹5.80 lakh and ₹6.91 lakh (HX 6 is ₹7.95 lakh, HX 10 ₹9.42 lakh). The brochure says only "Dual Tone Option is available on select trims" (p11), so P8 forbids a re-base. P8 (hold) and P5 (a known-wrong value is quarantined) pull in opposite directions. No paper verdict flips.
+- **Option A (recommended):** allow a re-base when the edition's own name states the trim and the KB has exactly one such base, as an owner-approved exception to P8 for 815 and 816.
+- **Option B:** add the Exter price list or a brochure that names the DT trims.
+- **Option C:** keep holding; the wrong prices stay visible.
+
 ### N3. Out of this goal; need your input or ingestion
 - Resuming 10D.
 - GNCAP ingestion.

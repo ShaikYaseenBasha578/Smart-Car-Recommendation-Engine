@@ -4,7 +4,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 
 ## 10E — 2026-11-02 — Brochure corrections: CNG mileage, paddle shifters, Glanza power, edition bases
 **Why:** CNG cars held km/kg figures in the km/l column, some manual cars claimed paddle shifters, Glanza power was a PS figure labelled bhp, and two editions pointed at the wrong base trim.
-**What changed:** 19 variant cells corrected or moved, 4 cells quarantined for paddle shifters and 1 for a suspect unit; 1 powertrain power corrected (7 Glanza variants); 2 editions re-based; 15 contradicted provenance rows and 2 warranty cells quarantined. 22 brochure observations added. Schema: `evidence_quarantine` rebuilt to allow warranty targets, and views updated.
+**What changed:** 18 variant cells corrected or moved, 4 cells quarantined for paddle shifters and 1 for a suspect unit; 1 powertrain power corrected (7 Glanza variants); 2 editions re-based; 15 contradicted provenance rows and 2 warranty cells quarantined. 22 brochure observations added. Schema: `evidence_quarantine` rebuilt to allow warranty targets, and views updated.
 **Examples:**
 - Maruti Ertiga ZXi CNG: km/kg blank → 26.11 and km/l 26.11 → blank (brochure, p7)
 - Hyundai Creta SX Premium Petrol Manual: paddle shifters yes → no (brochure, p14)

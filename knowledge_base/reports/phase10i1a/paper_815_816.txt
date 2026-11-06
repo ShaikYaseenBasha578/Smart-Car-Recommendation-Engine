@@ -1,0 +1,3 @@
+{815: ('HX 6 Petrol Manual Dual Tone', 580000.0, 'manual'), 816: ('HX 10 Petrol Automatic Dual Tone', 691000.0, 'automatic')}
+F019 feasible_control {'body_type': 'SUV', 'max_budget': 700000} edition 815 match@stored True match@named-trim-price False other matches 10 cheapest_other 565000
+F019 feasible_control {'body_type': 'SUV', 'max_budget': 700000} edition 816 match@stored True match@named-trim-price False other matches 10 cheapest_other 565000

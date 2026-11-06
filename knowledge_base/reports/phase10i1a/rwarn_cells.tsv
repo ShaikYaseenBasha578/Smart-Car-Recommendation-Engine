@@ -1,0 +1,99 @@
+fp	vid	field	val	canon	src	oid	raw	obs_live	in_canonical	other_live	other_agree
+25415	289	mileage_arai_kmpl	18.65	18.65	91wheels	975	V	True	True	0	0
+25457	295	mileage_arai_kmpl	17.77	17.77	91wheels	981	SV	True	True	0	0
+25492	645	cruise_control	0	0	91wheels	989	SV 1.5L i-VTEC Petrol 5 MT	True	True	1	1
+25502	645	wireless_charging	0		91wheels	989	SV 1.5L i-VTEC Petrol 5 MT	True	False	1	1
+25503	645	heads_up_display	0	0	91wheels	989	SV 1.5L i-VTEC Petrol 5 MT	True	True	1	1
+25507	646	cruise_control	0		91wheels	991	V 1.5L i-VTEC Petrol 7 AT	True	False	1	1
+25517	646	wireless_charging	0		91wheels	991	V 1.5L i-VTEC Petrol 7 AT	True	False	1	1
+25518	646	heads_up_display	0		91wheels	991	V 1.5L i-VTEC Petrol 7 AT	True	False	1	1
+25524	268	mileage_arai_kmpl	21.0	21.0	91wheels	1002	E 	True	True	0	0
+25539	270	mileage_arai_kmpl	21.0	21.0	91wheels	1003	S 	True	True	0	0
+25554	271	mileage_arai_kmpl	21.0	21.0	91wheels	1004	SX 	True	True	0	0
+25597	255	mileage_arai_kmpl	21.0	21.0	91wheels	1033	Era	True	True	0	0
+25611	256	mileage_arai_kmpl	21.0	21.0	91wheels	1034	Magna	True	True	0	0
+25788	380	mileage_arai_kmpl	16.0	16.0	91wheels	1122	B4	True	True	0	0
+25795	381	mileage_arai_kmpl	16.0	16.0	91wheels	1123	B6	True	True	0	0
+25802	382	mileage_arai_kmpl	16.0	16.0	91wheels	1124	B6(O)	True	True	0	0
+25809	383	mileage_arai_kmpl	16.0	16.0	91wheels	1125	B8	True	True	0	0
+25824	385	cruise_control	1	1	91wheels	1127	S11 mHawk 7 Seater Diesel MT	True	True	1	1
+25826	385	mileage_arai_kmpl	15.0	15.0	91wheels	1127	S11 mHawk 7 Seater Diesel MT	True	True	0	0
+25833	680	cruise_control	0		91wheels	1129	AXT 2.2 L mHawk Turbo Diesel D117 CRDe RWD	True	False	1	1
+25835	680	mileage_arai_kmpl	15.2	15.2	91wheels	1129	AXT 2.2 L mHawk Turbo Diesel D117 CRDe RWD	True	True	0	0
+25842	681	cruise_control	1	1	91wheels	1130	LXT 2.2 L mHawk Turbo Diesel D117 CRDe RWD	True	True	0	0
+25844	681	mileage_arai_kmpl	15.2	15.2	91wheels	1130	LXT 2.2 L mHawk Turbo Diesel D117 CRDe RWD	True	True	0	0
+25890	32	ventilated_front_seats	0	0	91wheels	1165	MX1 TCMPFi Petrol MT	True	True	0	0
+25919	33	ventilated_front_seats	0	0	91wheels	1189	REV X M TCMPFi	True	True	0	0
+25920	33	cruise_control	0		91wheels	1189	REV X M TCMPFi	True	False	0	0
+25930	33	heads_up_display	0	0	91wheels	1189	REV X M TCMPFi	True	True	0	0
+25976	439	mileage_arai_kmpl	17.0	17.0	91wheels	1218	AX7L AWD Diesel AT	True	True	0	0
+26048	246	mileage_arai_kmpl	22.35	22.35	91wheels	1228	Sigma	True	True	0	0
+26063	252	mileage_arai_kmpl	22.94		91wheels	1229	Alpha AT (AGS)	False	False	0	0
+26078	247	mileage_arai_kmpl	22.35	22.35	91wheels	1230	Delta	True	True	0	0
+26145	234	mileage_arai_kmpl	24.79	24.79	91wheels	1252	VXi	True	True	0	0
+26231	245	cruise_control	0		91wheels	1268	AC 5 Seater CNG	True	False	0	0
+26233	245	mileage_arai_kmpl	26.78		91wheels	1268	AC 5 Seater CNG	False	False	0	0
+26241	245	wireless_charging	0		91wheels	1268	AC 5 Seater CNG	True	False	0	0
+26243	245	heads_up_display	0		91wheels	1268	AC 5 Seater CNG	True	False	0	0
+26246	244	cruise_control	0		91wheels	1269	AC 5 Seater	True	False	0	0
+26248	244	mileage_arai_kmpl	19.71	19.71	91wheels	1269	AC 5 Seater	True	True	0	0
+26256	244	wireless_charging	0		91wheels	1269	AC 5 Seater	True	False	0	0
+26258	244	heads_up_display	0		91wheels	1269	AC 5 Seater	True	False	0	0
+26261	242	cruise_control	0		91wheels	1270	STD 5 Seater	True	False	0	0
+26263	242	mileage_arai_kmpl	19.71	19.71	91wheels	1270	STD 5 Seater	True	True	0	0
+26271	242	wireless_charging	0		91wheels	1270	STD 5 Seater	True	False	0	0
+26273	242	heads_up_display	0		91wheels	1270	STD 5 Seater	True	False	0	0
+26276	243	cruise_control	0		91wheels	1271	STD 6 Seater	True	False	0	0
+26278	243	mileage_arai_kmpl	19.71	19.71	91wheels	1271	STD 6 Seater	True	True	0	0
+26284	243	boot_space_litres	510.0	510.0	91wheels	1271	STD 6 Seater	True	True	0	0
+26286	243	wireless_charging	0		91wheels	1271	STD 6 Seater	True	False	0	0
+26288	243	heads_up_display	0		91wheels	1271	STD 6 Seater	True	False	0	0
+26293	207	mileage_arai_kmpl	20.51	20.51	91wheels	1272	Smart Hybrid LXI 	True	True	0	0
+26308	208	mileage_arai_kmpl	20.51	20.51	91wheels	1273	VXI Smart Hybrid	True	True	0	0
+26621	556	mileage_arai_kmpl	27.02		91wheels	1359	LXi CNG	False	False	0	0
+26627	556	boot_space_litres	320.0	320.0	91wheels	1359	LXi CNG	True	True	0	0
+26695	217	mileage_arai_kmpl	26.23		91wheels	1387	Zeta CNG 	False	False	0	0
+26701	217	boot_space_litres	209.0	209.0	91wheels	1387	Zeta CNG 	True	True	0	0
+26708	464	cruise_control	0	0	91wheels	1388	Style	True	True	1	1
+26715	464	tyre_pressure_monitoring_system	0	0	91wheels	1388	Style	True	True	1	1
+26716	464	wireless_charging	0		91wheels	1388	Style	True	False	0	0
+26718	464	heads_up_display	0		91wheels	1388	Style	True	False	0	0
+26721	470	cruise_control	1	1	91wheels	1389	Savvy Pro AT (CVT)	True	True	1	1
+26729	470	wireless_charging	1	1	91wheels	1389	Savvy Pro AT (CVT)	True	True	0	0
+26731	470	heads_up_display	0		91wheels	1389	Savvy Pro AT (CVT)	True	False	0	0
+26733	465	cruise_control	1	1	91wheels	1390	Select Pro	True	True	1	1
+26740	465	tyre_pressure_monitoring_system	0	0	91wheels	1390	Select Pro	True	True	2	2
+26741	465	wireless_charging	1	1	91wheels	1390	Select Pro	True	True	0	0
+26743	465	heads_up_display	0		91wheels	1390	Select Pro	True	False	1	1
+26872	725	cruise_control	0	0	91wheels	1406	Visia B4D 1.0L Petrol	True	True	1	1
+26883	725	heads_up_display	0	0	91wheels	1406	Visia B4D 1.0L Petrol	True	True	1	1
+26900	705	cruise_control	0	0	91wheels	1434	Authentic 1.0L Turbo	True	True	1	1
+26909	705	wireless_charging	0		91wheels	1434	Authentic 1.0L Turbo	True	False	0	0
+26911	705	heads_up_display	0	0	91wheels	1434	Authentic 1.0L Turbo	True	True	1	1
+26914	706	cruise_control	1	1	91wheels	1435	Evolution 1.0L Turbo	True	True	2	2
+26923	706	wireless_charging	0		91wheels	1435	Evolution 1.0L Turbo	True	False	0	0
+26925	706	heads_up_display	0	0	91wheels	1435	Evolution 1.0L Turbo	True	True	2	2
+26983	604	cruise_control	1	1	91wheels	1461	Classic+ 8-Speed AT (TC)	True	True	1	1
+26992	604	wireless_charging	0		91wheels	1461	Classic+ 8-Speed AT (TC)	True	False	1	1
+26994	604	heads_up_display	0		91wheels	1461	Classic+ 8-Speed AT (TC)	True	False	1	1
+27326	744	wireless_charging	0		91wheels	1538	Smart 30kWh	True	False	0	0
+27328	744	heads_up_display	0	0	91wheels	1538	Smart 30kWh	True	True	1	1
+27330	744	cruise_control	0	0	91wheels	1538	Smart 30kWh	True	True	1	1
+27438	740	wireless_charging	0		91wheels	1555	Smart 19.2kWh	True	False	0	0
+27440	740	heads_up_display	0		91wheels	1555	Smart 19.2kWh	True	False	0	0
+27450	741	wireless_charging	0		91wheels	1556	Pure+ 19.2kWh	True	False	0	0
+27452	741	heads_up_display	0		91wheels	1556	Pure+ 19.2kWh	True	False	0	0
+27462	742	wireless_charging	0		91wheels	1557	Pure+ 24kWh	True	False	0	0
+27464	742	heads_up_display	0		91wheels	1557	Pure+ 24kWh	True	False	0	0
+27474	743	wireless_charging	0		91wheels	1558	Creative+ 24kWh	True	False	0	0
+27476	743	heads_up_display	0		91wheels	1558	Creative+ 24kWh	True	False	0	0
+27480	366	mileage_arai_kmpl	19.2	19.2	91wheels	1559	XM 	True	True	0	0
+27500	367	mileage_arai_kmpl	19.2	19.2	91wheels	1563	XT	True	True	0	0
+27520	318	mileage_arai_kmpl	14.2	14.2	91wheels	1568	GR S 2.8L 4x4 Diesel AT	True	True	0	0
+27622	587	cruise_control	1	1	91wheels	1582	High Diesel MT	True	True	0	0
+27624	587	mileage_arai_kmpl	13.0	13.0	91wheels	1582	High Diesel MT	True	True	0	0
+27630	587	boot_space_litres	435.0	435.0	91wheels	1582	High Diesel MT	True	True	0	0
+27633	587	heads_up_display	0		91wheels	1582	High Diesel MT	True	False	0	0
+27652	303	mileage_arai_kmpl	16.0	16.0	91wheels	1584	GX	True	True	0	0
+27737	591	mileage_arai_kmpl	26.11		91wheels	1632	S CNG MT	False	False	0	0
+27743	591	boot_space_litres	209.0	209.0	91wheels	1632	S CNG MT	True	True	0	0

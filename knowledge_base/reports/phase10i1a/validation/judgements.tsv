@@ -1,0 +1,46 @@
+case	obs	verdict	better_variant_id	evidence
+1	989	correct link		Name SV 1.5L i-VTEC Petrol 5 MT, slug sv-mt, specs 1498 cc, Manual, FWD all match 645; the only SV in the model. Specs list 6 gears against the name's "5 MT", same manual family.
+2	1123	correct link		Slug b6, Diesel, Manual, 1493 cc, RWD, 7 seats match 381; B6 Opt is the separate 382 and the source has no (O).
+3	955	mislink	191	Name and slug say X-Line (A) G1.5 Smartstream T-GDI 7AT (DCT), a turbo petrol DCT, but 206 is X-Line(A) 1.5 Diesel AT (torque converter, 1493 cc). 191 X-Line(A) 1.5 Turbo Petrol DCT matches, and its price 1999900 equals the payload price.
+4	1434	correct link		Name has no gearbox, but specs give Turbo TCe 100, 999 cc, Manual, and price 1049000 equals 705 exactly; 705 is the only Authentic.
+5	1004	correct link		Slug 1-2-petrol-sx-mt, Petrol, Manual, price 769700 (KB 770000) match 271; not SX(O) 274, SX+ AMT 275 or SX CNG 276.
+6	1273	correct link		Slug vxi-mt, Petrol, Manual, K15C Smart Hybrid 1462 cc match 208 (mild hybrid stored as Petrol); not VXi AT 211 or VXi CNG 209.
+7	1127	correct link		S11 mHawk 7 Seater Diesel MT, slug s11, 2184 cc, RWD, 7 seats match 385 Classic S11 Diesel.
+8	1125	correct link		Slug b8, Diesel, Manual, 1493 cc, RWD match 383, the only B8.
+9	1271	correct link		STD 6 Seater, slug std-6-seater, Petrol, Manual, RWD match 243 (6 seats, Standard).
+10	1165	correct link		MX1 TCMPFi Petrol MT, slug mx-1-petrol-mt, 1197 cc, 109.96 bhp, Manual match 32, the only MX1.
+11	1563	correct link		Slug xt, Petrol, Manual, price 627990 equals 367 exactly; not XT CNG 370 or XTA AMT 368.
+12	1252	correct link		Slug vxi, Petrol, Manual, Z12E 1197 cc, price 727100 (KB 722100) match 234; not VXi AMT 235 or VXi CNG 236.
+13	1389	correct link		Savvy Pro AT (CVT), specs 1451 cc Petrol CVT FWD match 470, the only Savvy Pro. Seating is not stated in the sample fields and the KB has only a 5Str Savvy Pro.
+14	1461	correct link		Classic+ 8-Speed AT (TC), specs 999 cc 1.0 TSI Automatic, price 1289000 equals 604 exactly; 605 is the manual at 1069000.
+15	1387	correct link		Slug zeta-mt-cng, CNG, Manual, price 1253300 equals 217 exactly.
+16	1632	correct link		S CNG MT, slug s-cng, CNG, Manual, 1462 cc, 7 seats match 591, the only S CNG.
+17	1218	correct link		Name and slug say AX7L AWD Diesel AT, 2184 cc, matching 439, the only AX7L AWD. The payload spec Drivetrain FWD contradicts its own name, so I treat it as a source spec error; price 2579000 is well above FWD 437 (2392000).
+18	1269	correct link		AC 5 Seater, slug 5-str-ac, Petrol, Manual match 244; not 245 (AC CNG) or 242 (Standard).
+19	1359	correct link		LXi CNG, slug lxi-cng, CNG, Manual, 1462 cc match 556.
+20	1124	correct link		B6(O), slug b6-opt, Diesel, Manual match 382 B6 Opt Diesel.
+21	1002	correct link		Slug 1-2-petrol-e-mt-, Petrol, Manual, price 599990 (KB 599900) match 268, the only E.
+22	1228	correct link		Slug sigma, Petrol, Manual, price 598900 equals 246 exactly, the only Sigma.
+23	1584	correct link		Slug gx-7-str, Diesel, Manual, price 1972000 equal 303 exactly (GX 7 Seater), which settles it over 8-seater 304.
+24	1157	mislink	694	Name says AX7L 4WD and slug ax7-l-diesel-mt-4wd-mocha-intrs says diesel manual 4WD, but 691 is 2WD (RWD). 694 AX7 L 4WD Diesel Manual is the nearest KB row, but it has no Mocha-interior distinction and the price differs (2212000 vs 2143500).
+25	1130	correct link		LXT, Diesel, Manual, RWD, D117, specs 1497 cc and 118.55 PS match 681, the only 2WD diesel LXT. The "2.2 L mHawk" in the source name conflicts with its own 1497 cc spec, so I treat it as a source label error.
+26	1270	correct link		STD 5 Seater, slug 5-str-std, Petrol, Manual, RWD match 242.
+27	975	correct link		Slug v, Petrol, Manual, 1199 cc match 289 V MT; 291 is the CVT and 290 is VX.
+28	1568	correct link		GR S 2.8L 4x4 Diesel AT, 2755 cc, price 5046000 equal 318 exactly.
+29	1435	correct link		Name has no gearbox, but specs give Turbo TCe 100, 999 cc, Manual, and price 1169000 equals 706 exactly; 707 and 708 are the TCe 160 Evolutions.
+30	1230	correct link		Slug delta, Petrol, Manual, price 684900 equals 247 exactly; not Delta AGS 248 or Delta CNG 250.
+31	1538	correct link		Smart 30kWh, slug smart-30-kwh, Electric, Battery 30, Automatic, FWD match 744 Smart 30; Smart+ 30 is the separate 745.
+32	1151	mislink	693	Name and slug say AX7L Diesel 4WD AT (TC), but 690 is 2WD (RWD). 693 AX7 L 4WD Diesel Automatic matches; price 2352500 is closer to 693 (2281500) than to 690 (1999900).
+33	981	correct link		Name has no gearbox, but specs give 1498 cc Petrol Manual FWD, matching 295, the only SV.
+34	1582	correct link		High Diesel MT, slug high-mt, specs 4WD Manual, price 3530000 equal 587 exactly; 588 is the AT.
+35	1033	correct link		Slug era, Petrol, Manual, price 559700 equals 255 exactly, the only Era.
+36	1129	correct link		AXT, Diesel, Manual, RWD, D117, specs 1497 cc and 118.55 PS match 680, the only AXT. The "2.2 L mHawk" in the source name conflicts with its own 1497 cc spec, so I treat it as a source label error.
+37	1272	correct link		Slug lxi-mt, Petrol, Manual, K15C Smart Hybrid 1462 cc match 207 (mild hybrid stored as Petrol), the only LXi.
+38	1390	correct link		Name has no gearbox, but specs give 1451 cc Petrol Manual FWD, matching 465, the only Select Pro. Price 1479800 vs KB 1429000 is a gap, but no other KB row fits.
+39	1388	correct link		Name has no gearbox, but specs give Manual, 1451 cc, and price 1199000 equals 464 exactly, the only Style.
+40	1406	correct link		Visia B4D 1.0L Petrol, slug visia-b4d-1-0-petrol, Manual, 999 cc, 71 bhp, price 568000 (KB 565000) match 725; not EZ-SHIFT 720 or VISIA+ 726.
+41	1034	correct link		Slug magna, Petrol, Manual, price 632700 equals 256 exactly; not Magna AMT 258 or Hy-CNG 262.
+42	1189	correct link		REV X M TCMPFi, slug rev-x-m-tcmpfi, Petrol, Manual, 1197 cc, 109.96 bhp match 33; no (O), so not 34.
+43	1003	correct link		Slug 1-2-petrol-s-mt, Petrol, Manual, price 691200 (KB 691000) match 270; not S CNG 272 or SX 271.
+44	1559	correct link		Slug 1-2-petrol-xm, Petrol, Manual, price 554990 equals 366 exactly, the only XM.
+45	1122	correct link		Slug b4, Diesel, Manual, 1493 cc, RWD match 380, the only B4.

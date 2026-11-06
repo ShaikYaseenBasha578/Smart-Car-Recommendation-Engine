@@ -1,0 +1,33 @@
+## (i) edition-candidate path
+rows with base_variant_id / classification / id>812: 20 | ids: [814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833]
+outside 814..833: []
+known ids absent: []
+no v6 observation: [814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833]
+ec: Counter({'FEATURE_OR_SPEC_DIFFERENCE': 16, 'NO_MATERIAL_DIFFERENCE': 4}) created: Counter({'2026-09-09': 20})
+base rows with v6 obs among editions: []
+  814 Elevate | ZX Petrol Manual Black Edition | Manual 1498.0 Petrol | base: ZX Petrol Manual
+  815 Exter | HX 6 Petrol Manual Dual Tone | Manual 1197.0 Petrol | base: HX 2 Petrol Manual
+  816 Exter | HX 10 Petrol Automatic Dual Tone | AMT 1197.0 Petrol | base: HX 3 Petrol Automatic
+  817 Verna | HX 8 Petrol 1.5L Turbo Manual Dual Tone | Manual 1482.0 Petrol | base: HX8 1.5 Turbo MT
+  818 Verna | HX 10 Petrol 1.5L Turbo Automatic (DCT) Dual Tone | DCT 1482.0 Petrol | base: HX10 1.5 Turbo DCT
+  819 Seltos | GTX (A) Petrol 1.5L Automatic (CVT) Dual Tone | CVT 1497.0 Petrol | base: GTX(A) 1.5 Petrol IVT
+  820 XUV 7XO | AX7 2WD Petrol 2.0L Turbo Manual 7 STR Dual Tone | Manual 1997.0 Petrol | base: AX7 Petrol MT
+  821 Brezza | Zxi Petrol 1.0L Turbo Manual Dual Tone | Manual 1462.0 Petrol | base: ZXi MT
+  822 Fronx | Alpha Petrol 1.0L Turbo Manual Dual Tone | Manual 998.0 Petrol | base: Alpha 1.0 Turbo MT
+  823 Grand Vitara | Zeta 2WD Petrol 1.5L Manual Dual Tone | Manual 1462.0 Petrol | base: Zeta Petrol MT
+  824 Jimny | Alpha Petrol Manual Dual Tone | Manual 1462.0 Petrol | base: Alpha PRO MT
+  825 Victoris | ZXi 2WD Petrol 1.5L Manual Dual Tone | Manual 1462.0 Petrol | base: ZXI MT
+  826 XL6 | Alpha Plus Petrol Manual Dual Tone Smart Hybrid | Manual 1462.0 Petrol | base: Alpha+ MT
+  827 e VITARA | Alpha 61.0 kWh Dual Tone | Automatic None Electric | base: Alpha 61 kWh
+  828 Magnite | N-Connecta Petrol Manual Dual Tone | Manual 999.0 Petrol | base: MT N-CONNECTA
+  829 Triber | Emotion Petrol Manual Dual Tone | Manual 999.0 Petrol | base: Emotion MT
+  830 Harrier | Pure X Petrol 1.5L Turbo Manual Dark Edition | Manual 1498.0 Petrol | base: Petrol Pure X MT
+  831 Harrier | Fearless X Dark Edition Diesel 2.0L Turbo Manual | Manual 1956.0 Diesel | base: Diesel Fearless X MT
+  832 Nexon EV | Empowered Plus A  45.0 kWh Dark Edition | Automatic None Electric | base: Empowered+ A 45 Dark
+  833 Virtus | Anniversary Edition Petrol 1.5L Turbo Automatic (DCT) | Torque Converter 999.0 Petrol | base: Topline Petrol 1.0L Turbo Automatic (TC)
+## (ii) canonical cells from resolved_with_warning
+obs by status: [<sqlite3.Row object at 0x109b2f490>, <sqlite3.Row object at 0x109b2fab0>, <sqlite3.Row object at 0x109b2fa50>, <sqlite3.Row object at 0x109b2fad0>, <sqlite3.Row object at 0x109b2faf0>, <sqlite3.Row object at 0x109b2f850>, <sqlite3.Row object at 0x109b2fb10>, <sqlite3.Row object at 0x109b2fb50>, <sqlite3.Row object at 0x109b2fb70>, <sqlite3.Row object at 0x109b2fb90>, <sqlite3.Row object at 0x109b2fbf0>, <sqlite3.Row object at 0x109b2fc50>, <sqlite3.Row object at 0x109b2fc30>]
+fp rows on rwarn obs: 1245 Counter({'confirmed': 1005, 'rejected': 142, 'accepted': 98}) | obs quarantined: 124 | fp quarantined: 4
+accepted fp rows on rwarn obs: 98
+Counter({(True, True): 57, (True, False): 36, (False, False): 5})
+live, in canonical: 57 | with no other agreeing live evidence: 40 Counter({'mileage_arai_kmpl': 28, 'boot_space_litres': 5, 'cruise_control': 2, 'ventilated_front_seats': 2, 'wireless_charging': 2, 'heads_up_display': 1}) Counter({'91wheels': 40})
