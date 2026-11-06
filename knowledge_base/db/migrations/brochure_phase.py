@@ -61,8 +61,10 @@ def run(db, phase, bro_table, cells, expect_counts=None, quarantine_contradicted
                         c.execute("insert into evidence_quarantine(target_table,target_id,target_field,reason_code,phase,note) values ('field_provenance',?,NULL,'CONTRADICTED_BY_OEM_BROCHURE',?,?)",
                                   (fid, phase, f"fp_id={fid}; variant_id={vid}; field={col}; accepted_value={val}; contradicted by knowledge_base/sources/oem/{path} sha1 {sha1} p{x['page']}")); n["quar"] += 1
             if x.get("release"):
-                n["released"] += c.execute("update evidence_quarantine set released_at=datetime('now'), released_reason=? where target_table='variant' and target_id=? and target_field=? and reason_code=? and released_at is null",
-                                           (f"{phase}: verified from brochure {x['bro']} p{x['page']}", vid, col, x["release"])).rowcount
+                # release == "*": any active quarantine on this cell, because the brochure now settles it
+                any_reason = "" if x["release"] == "*" else " and reason_code=?"
+                n["released"] += c.execute(f"update evidence_quarantine set released_at=datetime('now'), released_reason=? where target_table='variant' and target_id=? and target_field=?{any_reason} and released_at is null",
+                                           (f"{phase}: verified from brochure {x['bro']} p{x['page']}", vid, col) + (() if x["release"] == "*" else (x["release"],))).rowcount
         # ================= invariants before COMMIT =================
         cellset = {(x["vid"], x["col"]) for x in cells}; vcols = [r[1] for r in c.execute("pragma table_info(variant)")]
         after = {t: snap(t) for t in tables}
@@ -75,7 +77,7 @@ def run(db, phase, bro_table, cells, expect_counts=None, quarantine_contradicted
                 assert all(a[k][1] == "field_provenance" and a[k][5] == phase for k in set(a) - set(b))
                 for k in b:
                     if a[k] != b[k]:
-                        assert a[k][:7] == b[k][:7] and b[k][8] is None and a[k][4] == "H1_SOLE_SOURCE_FROM_MISLINK" or a[k][5] == phase, f"quarantine {k} changed unexpectedly"
+                        assert a[k][:7] == b[k][:7] and b[k][8] is None, f"quarantine {k} changed unexpectedly"
                         assert (a[k][2], a[k][3]) in cellset
             elif t == "variant":
                 assert set(a) == set(b)

@@ -1,0 +1,150 @@
+vid	col	old	new	bro	page	quarantined	printed
+291	mileage_arai_kmpl		19.46	amaze	27	0	CVT: Fuel Efficiency 19.46 km/l
+292	mileage_arai_kmpl		19.46	amaze	27	0	CVT: Fuel Efficiency 19.46 km/l
+294	mileage_arai_kmpl		19.46	amaze	27	0	CVT: Fuel Efficiency 19.46 km/l
+297	mileage_arai_kmpl		17.97	city	13	0	7-speed CVT (Automatic): Mileage 17.97 km/L
+299	mileage_arai_kmpl		17.97	city	13	0	7-speed CVT (Automatic): Mileage 17.97 km/L
+301	mileage_arai_kmpl		17.97	city	13	0	7-speed CVT (Automatic): Mileage 17.97 km/L
+298	mileage_arai_kmpl		17.77	city	13	0	6-speed MT: Mileage 17.77 km/L
+300	mileage_arai_kmpl		17.77	city	13	0	6-speed MT: Mileage 17.77 km/L
+302	mileage_arai_kmpl		27.26	city	11	0	Sporty Hybrid Performance: Outstanding Fuel Efficiency 27.26 km/L
+238	mileage_arai_kmpl		25.71	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+241	mileage_arai_kmpl		25.71	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+235	mileage_arai_kmpl	22.0	25.71	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+239	mileage_arai_kmpl		24.79	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+236	mileage_arai_km_per_kg		33.73	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+240	mileage_arai_km_per_kg		33.73	dzire	5	0	Fuel Efficiency: 24.79 km/l MT, 25.71 km/l AMT, 33.73 km/kg
+212	mileage_arai_kmpl		20.51	ertiga	7	0	20.51 km/l Petrol: LXi MT, VXi MT, ZXi MT, ZXi+ MT
+211	mileage_arai_kmpl	18.69	20.3	ertiga	7	0	20.30 km/l Petrol: VXi AT, ZXi AT, ZXi+ AT
+214	mileage_arai_kmpl	18.69	20.3	ertiga	7	0	20.30 km/l Petrol: VXi AT, ZXi AT, ZXi+ AT
+215	mileage_arai_kmpl	18.69	20.3	ertiga	7	0	20.30 km/l Petrol: VXi AT, ZXi AT, ZXi+ AT
+209	mileage_arai_km_per_kg		26.11	ertiga	7	0	26.11 km/kg CNG: VXi MT, ZXi MT
+555	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+557	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+560	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+561	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+564	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+566	mileage_arai_kmpl	21.11	21.18	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+559	mileage_arai_kmpl	20.58	21.06	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+563	mileage_arai_kmpl	20.58	21.06	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+565	mileage_arai_kmpl	20.58	21.06	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+568	mileage_arai_kmpl	20.58	21.06	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+569	mileage_arai_kmpl	20.58	21.06	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+572	mileage_arai_kmpl	20.58	19.07	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+573	mileage_arai_kmpl	20.58	19.07	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+567	mileage_arai_kmpl	27.97	28.65	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+570	mileage_arai_kmpl	27.97	28.65	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+571	mileage_arai_kmpl	27.97	28.65	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+574	mileage_arai_kmpl	27.97	28.65	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+575	mileage_arai_kmpl	27.97	28.65	victoris	16	0	Fuel Efficiency: 21.18 km/l (MT), 21.06 km/l (AT), 19.07 km/l (ALLGRIP AT); 28.65 km/l (Strong Hybrid Petrol e-CVT)
+455	cruise_control		1	harrier	18	0	Pure X (Features over Smart) lists Cruise Control; higher trims add to it
+456	cruise_control		1	harrier	18	0	Pure X (Features over Smart) lists Cruise Control; higher trims add to it
+459	cruise_control		1	harrier	18	0	Pure X (Features over Smart) lists Cruise Control; higher trims add to it
+448	cruise_control	0	1	harrier	18	0	Pure X (Features over Smart) lists Cruise Control; higher trims add to it
+451	wireless_charging	0	0	harrier	19	1	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+452	wireless_charging		0	harrier	19	0	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+453	wireless_charging		0	harrier	19	0	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+454	wireless_charging	0	0	harrier	19	1	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+455	wireless_charging		0	harrier	19	0	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+456	wireless_charging		0	harrier	19	0	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+457	wireless_charging	0	0	harrier	19	1	Wireless Charger first listed at Fearless X (Features over Adventure X+)
+458	wireless_charging		1	harrier	19	0	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+459	wireless_charging		1	harrier	19	0	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+460	wireless_charging	0	1	harrier	19	1	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+461	wireless_charging	0	1	harrier	19	1	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+462	wireless_charging	0	1	harrier	19	1	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+463	wireless_charging	0	1	harrier	19	1	Fearless X (Features over Adventure X+) lists Wireless Charger; higher trims add to it
+160	cruise_control	0	1	venue	20	1	Cruise control: HX 6 S^ (DCT/AT only), HX 8 S
+161	cruise_control	0	1	venue	20	1	Cruise control: HX 6 S^ (DCT/AT only), HX 8 S
+163	cruise_control	0	1	venue	20	1	Cruise control: HX 6 S^ (DCT/AT only), HX 8 S
+150	wireless_charging	0	0	venue	20	1	Smartphone wireless charger: HX 2 -, HX 4 -, HX 5 -
+159	wireless_charging	0	0	venue	20	1	Smartphone wireless charger: HX 2 -, HX 4 -, HX 5 -
+154	wireless_charging	0	1	venue	20	0	Smartphone wireless charger: HX 5+ S, HX 6 S, HX 8 S, HX 10 S
+160	wireless_charging	0	1	venue	20	1	Smartphone wireless charger: HX 5+ S, HX 6 S, HX 8 S, HX 10 S
+161	wireless_charging	0	1	venue	20	1	Smartphone wireless charger: HX 5+ S, HX 6 S, HX 8 S, HX 10 S
+163	wireless_charging	0	1	venue	20	1	Smartphone wireless charger: HX 5+ S, HX 6 S, HX 8 S, HX 10 S
+166	wireless_charging	0	1	venue	20	1	Smartphone wireless charger: HX 5+ S, HX 6 S, HX 8 S, HX 10 S
+625	cruise_control	0	0	taigun	10	1	Cruise control: Comfortline -, GT Line dot (AT only)
+627	cruise_control	0	0	taigun	10	1	Cruise control: Comfortline -, GT Line dot (AT only)
+626	cruise_control	0	1	taigun	10	1	Cruise control: GT Line dot (AT only), GT Plus Chrome dot
+628	cruise_control	0	1	taigun	10	1	Cruise control: GT Line dot (AT only), GT Plus Chrome dot
+636	cruise_control	0	1	virtus	10	1	Cruise control: GT Line dot
+637	cruise_control	0	1	virtus	10	1	Cruise control: GT Line dot
+604	wireless_charging	0	0	kushaq	27	1	Wireless Charging: Classic+ -
+745	cruise_control	0	0	punch_ev	23	1	Cruise Control first listed at Adventure 40
+744	wireless_charging	0	0	punch_ev	23	1	Wireless Smartphone Charger first listed at Empowered+ S 40
+745	wireless_charging	0	0	punch_ev	23	1	Wireless Smartphone Charger first listed at Empowered+ S 40
+746	wireless_charging	0	0	punch_ev	23	1	Wireless Smartphone Charger first listed at Empowered+ S 40
+749	wireless_charging		1	punch_ev	23	0	Empowered+ S 40 lists Wireless Smartphone Charger
+321	cruise_control		0	altroz	22	0	Cruise control first listed at Pure; not in Smart
+322	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+323	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+324	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+326	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+327	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+329	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+328	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+330	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+332	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+334	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+336	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+337	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+338	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+335	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+342	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+343	cruise_control	0	1	altroz	22	1	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+344	cruise_control		1	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only)
+331	cruise_control		0	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only): not CNG AMT
+333	cruise_control		0	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only): not CNG AMT
+339	cruise_control		0	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only): not CNG AMT
+340	cruise_control		0	altroz	22	0	Pure (in addition to Smart): Cruise control *** (Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only): not CNG AMT
+319	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+320	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+321	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+322	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+323	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+324	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+325	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+326	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+327	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+328	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+329	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+330	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+331	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+332	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+333	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+334	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+336	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+337	wireless_charging	0	0	altroz	22	1	Wireless Smartphone Charger first listed at Accomplished S
+338	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+339	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+340	wireless_charging		0	altroz	22	0	Wireless Smartphone Charger first listed at Accomplished S
+335	wireless_charging	0	1	altroz	22	1	Accomplished S (in addition to Creative): Wireless Smartphone Charger- Qi Support
+342	wireless_charging	0	1	altroz	22	1	Accomplished S (in addition to Creative): Wireless Smartphone Charger- Qi Support
+343	wireless_charging	0	1	altroz	22	1	Accomplished S (in addition to Creative): Wireless Smartphone Charger- Qi Support
+344	wireless_charging		1	altroz	22	0	Accomplished S (in addition to Creative): Wireless Smartphone Charger- Qi Support
+559	cruise_control		1	victoris	16	0	Cruise Control: Vxi tick, Zxi / Zxi (O) tick
+563	cruise_control		1	victoris	16	0	Cruise Control: Vxi tick, Zxi / Zxi (O) tick
+565	cruise_control		1	victoris	16	0	Cruise Control: Vxi tick, Zxi / Zxi (O) tick
+568	cruise_control		1	victoris	16	0	Adaptive Cruise Control with all Speed Following (ACC): Zxi+ / Zxi+ (O) 6AT; AllGrip Select is 6AT in the powertrain table
+569	cruise_control		1	victoris	16	0	Adaptive Cruise Control with all Speed Following (ACC): Zxi+ / Zxi+ (O) 6AT; AllGrip Select is 6AT in the powertrain table
+572	cruise_control		1	victoris	16	0	Adaptive Cruise Control with all Speed Following (ACC): Zxi+ / Zxi+ (O) 6AT; AllGrip Select is 6AT in the powertrain table
+573	cruise_control		1	victoris	16	0	Adaptive Cruise Control with all Speed Following (ACC): Zxi+ / Zxi+ (O) 6AT; AllGrip Select is 6AT in the powertrain table
+751	cruise_control	0	0	syros	7	1	Cruise Control first listed at HTK+
+756	cruise_control		1	syros	7	0	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+758	cruise_control		1	syros	7	0	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+759	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+760	cruise_control		1	syros	7	0	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+761	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+762	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+764	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+765	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+766	cruise_control	0	1	syros	7	1	HTK+ [Features in addition to HTK(EX)]: Cruise Control with Manual Speed Limit Assist; higher trims add to it
+755	wireless_charging		0	syros	7	0	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+756	wireless_charging		0	syros	7	0	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+757	wireless_charging		0	syros	7	0	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+758	wireless_charging		0	syros	7	0	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+759	wireless_charging	0	0	syros	7	1	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+760	wireless_charging		0	syros	7	0	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+761	wireless_charging	0	0	syros	7	1	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]
+762	wireless_charging	0	0	syros	7	1	Smartphone Wireless Charger first listed at HTX [Features in addition to HTK+(O)]

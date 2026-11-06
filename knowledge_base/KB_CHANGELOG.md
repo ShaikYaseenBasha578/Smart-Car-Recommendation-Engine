@@ -118,14 +118,27 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - 40 of 82 CNG variants have no km/kg yet: item 8.
 **Prod SHA-1:** `acf32b47…` → `acf32b47…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/23 **Ranking-track line:** App only; no data change.
 
+## 10N — 2026-11-06 — Fill mileage, cruise control and wireless charging from brochures (first batch)
+**Why:** Many cars had blank or wrong mileage and feature values that the brochures on disk settle.
+**What changed:** 149 cells checked against 13 brochures: 70 blanks filled, 56 corrected, 23 confirmed; 55 quarantines released; 58 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Maruti Dzire VXi AMT: mileage 22.0 → 25.71 km/l (Dzire brochure, p5)
+- Maruti Ertiga VXi AT: mileage 18.69 → 20.3 km/l (Ertiga brochure, p7)
+- Maruti Victoris ZXI+ AT ADAS: cruise control blank → yes, adaptive (Victoris brochure, p16)
+**What app users now see:** 151 updated values for mileage, cruise control and wireless charging, including 2 editions that inherit from a changed base.
+**Not done / held:**
+- Most other gap cells (about 1,140, not recounted): not read yet, or the brochure is silent.
+- First validation failed for cruise control (87.5%); nothing was written until the table was fixed and a second blind check agreed 32 of 32.
+**Prod SHA-1:** `acf32b47…` → `758310ea…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/24 **Ranking-track line:** KB 10N: 126 mileage and feature cells changed from brochures; export re-run.
+
 ## Current state
-As of phase 10M (prod `acf32b47e19c711d9f8bdc332132c5df6510c489`).
-- **Active quarantines:** 1,378 (950 observations, 378 variant cells, 49 provenance rows, 1 safety applicability row(s)).
+As of phase 10N (prod `758310ea3ea1868dd94cebc9f9535b34719fd994`).
+- **Active quarantines:** 1,381 (950 observations, 323 variant cells, 107 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
-  - mileage km/l (non-CNG, non-EV): 449/713 = 63.0%
-  - km/kg on CNG variants: 42/82 = 51.2%
+  - mileage km/l (non-CNG, non-EV): 462/713 = 64.8%
+  - km/kg on CNG variants: 45/82 = 54.9%
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
-- **Open items:** 5 in [NEEDS_YOU.md](NEEDS_YOU.md).
+- **Open items:** 7 in [NEEDS_YOU.md](NEEDS_YOU.md).
