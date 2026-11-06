@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import json
 import sqlite3
 import time
@@ -12,12 +15,12 @@ from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve
 def run_production():
     print("STARTING TRANSACTIONAL PRODUCTION INGESTION...")
     manifest_path = "knowledge_base/sources/oem/brochure_manifest.json"
-    prod_db = "knowledge_base/carrec_kb.db"
+    prod_db = KB_PATH
     
     with open(manifest_path, 'r') as f:
         manifest = json.load(f)
         
-    conn = sqlite3.connect(prod_db)
+    conn = open_kb(prod_db)
     conn.row_factory = sqlite3.Row
     
     # Enable explicit transactions

@@ -1,6 +1,9 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 
-prod_conn = sqlite3.connect("knowledge_base/carrec_kb.db")
+prod_conn = open_kb(KB_PATH)
 prod_conn.row_factory = sqlite3.Row
 shadow_conn = sqlite3.connect("scratch/isolated_shadow_kb.db")
 shadow_conn.row_factory = sqlite3.Row

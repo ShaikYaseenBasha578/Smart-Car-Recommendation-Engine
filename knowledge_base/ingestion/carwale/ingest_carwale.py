@@ -4,10 +4,10 @@ import os
 import time
 from knowledge_base.ingestion.carwale.extractor_carwale import fetch_carwale_state, extract_variant
 from knowledge_base.ingestion.carwale.field_map_carwale import map_carwale_features, parse_version_name
-from knowledge_base.ingestion.common.resolver import resolve_variant
+from knowledge_base.ingestion.common.resolver import Resolution, resolve_variant
 from knowledge_base.ingestion.common.updater import update_canonical
+from knowledge_base.kb_db import open_kb
 
-DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'carrec_kb.db'))))
 CARWALE_SOURCE_ID = 4
 
 def ensure_source_registered(conn):
@@ -23,15 +23,21 @@ def ensure_source_registered(conn):
 def resolve_carwale_version(conn, make_slug, model_slug, v_name, v_slug, price=None):
     """Resolve one CarWale version. Fuel and transmission are parsed from the version name and must both be
     known; every candidate is then checked against them by validate_structured. Aliases come from CarWale's own
-    alias table only (never the 91wheels default). Returns (variant_id, status, base_variant_id)."""
+    alias table only (never the 91wheels default). Returns a Resolution."""
     fuel, trans = parse_version_name(v_name)
     if not fuel or not trans:
-        return None, 'unresolved', None
+        return Resolution(None, 'unresolved')
     return resolve_variant(conn, make_slug, model_slug, v_name, v_slug,
                            fuel=fuel, trans=trans, cc=None, price=price, source_name='carwale')
 
-def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug):
-    conn = sqlite3.connect(DB_PATH)
+def served_page_matches(requested_name, served_name):
+    """CarWale can serve a different version's page for a requested URL. Its features describe the served version."""
+    norm = lambda s: ' '.join((s or '').lower().split())
+    return bool(requested_name) and norm(requested_name) == norm(served_name)
+
+
+def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug, db_path):
+    conn = open_kb(db_path)
     conn.row_factory = sqlite3.Row
     ensure_source_registered(conn)
     
@@ -81,6 +87,12 @@ def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug):
             stats['unresolved'] += 1
             continue
             
+        # The page must be the version we asked for; otherwise its features belong to another variant.
+        if not served_page_matches(v_name, obs_data.get('v_variant_name')):
+            update_canonical(conn, None, CARWALE_SOURCE_ID, v_url, v_name, json.dumps(obs_data), 'page_mismatch', {})
+            stats['unresolved'] += 1
+            continue
+
         # Extract features
         mapped_feats = map_carwale_features(obs_data['features'])
         
@@ -89,19 +101,19 @@ def ingest_model_pilot(make_slug, model_slug_cw, canonical_model_slug):
         if price: normalized['price'] = price
         
         # Attempt Identity Resolution (fail-closed on fuel/transmission parsed from the version name)
-        target_variant_id, match_status, base_variant_id = resolve_carwale_version(
-            conn, make_slug, canonical_model_slug, v_name, v_slug, price
-        )
+        res = resolve_carwale_version(conn, make_slug, canonical_model_slug, v_name, v_slug, price)
+        target_variant_id, match_status, base_variant_id = res
         
         payload_dump = json.dumps(obs_data)
         
-        if not target_variant_id and match_status != 'edition_candidate':
-            update_canonical(conn, None, CARWALE_SOURCE_ID, v_url, v_name, payload_dump, 'unresolvable', {}, base_variant_id)
+        if not target_variant_id:
+            kept = match_status if match_status in ('needs_review', 'edition_candidate') else 'unresolvable'
+            update_canonical(conn, None, CARWALE_SOURCE_ID, v_url, v_name, payload_dump, kept, {}, base_variant_id)
             stats['unresolved'] += 1
             continue
-            
+
         stats['resolved'] += 1
-        obs_id, updates = update_canonical(conn, target_variant_id, CARWALE_SOURCE_ID, v_url, v_name, payload_dump, match_status, normalized, base_variant_id)
+        obs_id, updates = update_canonical(conn, target_variant_id, CARWALE_SOURCE_ID, v_url, v_name, payload_dump, match_status, normalized, base_variant_id, match_type=res.match_type)
         stats['new_fields'] += updates
         conn.commit()
         

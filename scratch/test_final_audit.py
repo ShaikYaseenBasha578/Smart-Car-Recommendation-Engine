@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import os
 import shutil
@@ -12,7 +15,7 @@ def setup_fresh_db():
     db_path = "scratch/test_final_audit.sqlite"
     if os.path.exists(db_path):
         os.remove(db_path)
-    shutil.copy("knowledge_base/carrec_kb.db", db_path)
+    shutil.copy(KB_PATH, db_path)
     
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row

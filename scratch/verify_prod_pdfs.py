@@ -1,10 +1,13 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import os
 import hashlib
 import fitz # PyMuPDF
 
-PROD_DB = "knowledge_base/carrec_kb.db"
-conn = sqlite3.connect(PROD_DB)
+PROD_DB = KB_PATH
+conn = open_kb(PROD_DB)
 rows = conn.execute("SELECT artifact_path, artifact_checksum FROM safety_test").fetchall()
 conn.close()
 

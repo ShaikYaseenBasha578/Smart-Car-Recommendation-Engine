@@ -10,24 +10,11 @@ def _norm_bool(v):
     if v is None: return None
     return str(v)
 
-def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, status, normalized_fields, base_variant_id=None):
+def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, status, normalized_fields, base_variant_id=None, match_type=None):
+    """Store the observation. Provenance is recorded only for status 'resolved' with match_type 'identity_exact'.
+    Values are written only from an OEM source (P2: aggregators only corroborate) and never onto an edition (P8);
+    a value that can't be written is recorded as 'pending'. Variants are never created here."""
     cur = conn.cursor()
-    if status == 'edition_candidate' and base_variant_id:
-        cur.execute("SELECT id FROM variant WHERE base_variant_id = ? AND name = ?", (base_variant_id, raw_name))
-        ex_edition = cur.fetchone()
-        if ex_edition:
-            variant_id = ex_edition['id']
-            status = 'resolved'
-        else:
-            cur.execute('''
-                INSERT INTO variant (base_variant_id, model_id, generation_id, powertrain_id, name, full_name, transmission, drivetrain, is_discontinued, edition_classification)
-                SELECT ?, model_id, generation_id, powertrain_id, ?, full_name || ' ' || ?, transmission, drivetrain, is_discontinued, 'UNRESOLVED_EDITION'
-                FROM variant WHERE id = ?
-            ''', (base_variant_id, raw_name, raw_name, base_variant_id))
-            variant_id = cur.lastrowid
-            status = 'resolved'
-
-    
     cur.execute('''
         SELECT id FROM source_observation 
         WHERE source_id = ? AND source_url = ? AND raw_name = ?
@@ -42,7 +29,7 @@ def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, st
     ''', (source_id, raw_name, json.dumps(raw_payload), url, variant_id, status))
     obs_id = cur.lastrowid
     
-    if not variant_id or status not in ['resolved', 'resolved_with_warning']:
+    if not variant_id or status != 'resolved' or match_type != 'identity_exact':
         return obs_id, 0
         
 
@@ -55,7 +42,14 @@ def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, st
         cur.execute('SELECT * FROM variant WHERE id = ?', (variant_id,))
         v_row = cur.fetchone()
     if not v_row: return obs_id, 0
-    
+
+    cur.execute('SELECT name FROM source WHERE id = ?', (source_id,))
+    src_row = cur.fetchone()
+    is_oem = bool(src_row) and src_row['name'].lower() == 'oem'
+    cur.execute('SELECT base_variant_id FROM variant WHERE id = ?', (variant_id,))
+    is_edition = cur.fetchone()['base_variant_id'] is not None
+    hold_reason = 'edition_not_written_P8' if is_edition else None if is_oem else 'aggregator_corroborates_only_P2'
+
     # Also fetch the RAW variant row to know what is ACTUALLY stored on the edition vs base
     cur.execute('SELECT * FROM variant WHERE id = ?', (variant_id,))
     raw_v_row = cur.fetchone()
@@ -133,7 +127,10 @@ def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, st
                         decision = 'rejected'
                         reason = 'conflict_no_field_authority'
 
-            
+
+        if decision == 'accepted' and hold_reason:
+            decision, reason = 'pending', hold_reason
+            canonical_updates.pop(field, None)
         cur.execute('''
             INSERT INTO field_provenance (variant_id, field_name, accepted_value, source_observation_id, decision, decision_reason)
             VALUES (?, ?, ?, ?, ?, ?)
@@ -202,7 +199,10 @@ def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, st
                             else:
                                 decision = 'rejected'
                                 reason = 'conflict_no_field_authority'
-                                
+
+                    if decision == 'accepted' and hold_reason:
+                        decision, reason = 'pending', hold_reason
+                        pt_updates.pop(field, None)
                     cur.execute('''
                         INSERT INTO field_provenance (variant_id, field_name, accepted_value, source_observation_id, decision, decision_reason)
                         VALUES (?, ?, ?, ?, ?, ?)
@@ -221,16 +221,5 @@ def update_canonical(conn, variant_id, source_id, url, raw_name, raw_payload, st
         values.append(variant_id)
         cur.execute(f"UPDATE variant SET {set_clause} WHERE id = ?", values)
         updates = len(canonical_updates)
-        
-    # Upgrade classification based on evidence
-    cur.execute("SELECT base_variant_id, edition_classification FROM variant WHERE id = ?", (variant_id,))
-    v_info = cur.fetchone()
-    if v_info and v_info['base_variant_id']:
-        if updates > 0:
-            cur.execute("UPDATE variant SET edition_classification = 'FEATURE_OR_SPEC_DIFFERENCE' WHERE id = ?", (variant_id,))
-        elif v_info['edition_classification'] == 'UNRESOLVED_EDITION':
-            # If no updates, it's just the same as base
-            cur.execute("UPDATE variant SET edition_classification = 'NO_MATERIAL_DIFFERENCE' WHERE id = ?", (variant_id,))
-
         
     return obs_id, updates

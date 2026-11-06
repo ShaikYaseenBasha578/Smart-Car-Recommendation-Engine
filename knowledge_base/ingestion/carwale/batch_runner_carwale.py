@@ -2,13 +2,15 @@ import sqlite3
 import json
 import os
 import time
+import argparse
 import traceback
-from knowledge_base.ingestion.carwale.ingest_carwale import ingest_model_pilot, DB_PATH
+from knowledge_base.ingestion.carwale.ingest_carwale import ingest_model_pilot
+from knowledge_base.kb_db import open_kb
 
 BATCH_STATE_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'carwale_batch_state.json'))
 
-def run_batch():
-    conn = sqlite3.connect(DB_PATH)
+def run_batch(db_path):
+    conn = open_kb(db_path)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
     
@@ -49,7 +51,7 @@ def run_batch():
         print(f"=============================================")
         
         try:
-            res = ingest_model_pilot(make_slug, cw_slug, canonical_slug)
+            res = ingest_model_pilot(make_slug, cw_slug, canonical_slug, db_path)
             if res:
                 state['results'][model_key] = res
                 for k in ['discovered', 'resolved', 'unresolved', 'new_fields']:
@@ -70,4 +72,6 @@ def run_batch():
         time.sleep(0.5)
 
 if __name__ == '__main__':
-    run_batch()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', required=True)
+    run_batch(parser.parse_args().db)

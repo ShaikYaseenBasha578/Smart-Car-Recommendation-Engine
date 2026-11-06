@@ -33,13 +33,17 @@ def test_resolve_and_update(tmp_path):
     
     # Test update canonical
     norm = {'boot_space_litres': 433.0}
-    obs_id, updates = update_canonical(conn, 1, 1, 'http://test', 'E', {'raw':'x'}, 'resolved', norm)
+    # 10I: an aggregator only corroborates (P2); the same evidence from an OEM source writes.
+    obs_id, updates = update_canonical(conn, 1, 1, 'http://test', 'E', {'raw':'x'}, 'resolved', norm, match_type='identity_exact')
+    assert updates == 0
+    conn.execute("INSERT INTO source VALUES (6, 'oem')")
+    obs_id, updates = update_canonical(conn, 1, 6, 'offline_brochure', 'E', {'raw':'x'}, 'resolved', norm, match_type='identity_exact')
     
     assert updates == 1
     cur = conn.cursor()
     row = cur.execute("SELECT boot_space_litres FROM variant WHERE id=1").fetchone()
     assert row['boot_space_litres'] == 433.0
     
-    prov = cur.execute("SELECT * FROM field_provenance WHERE variant_id=1").fetchone()
+    prov = cur.execute("SELECT * FROM field_provenance WHERE variant_id=1 ORDER BY id DESC").fetchone()
     assert prov['field_name'] == 'boot_space_litres'
     assert prov['decision'] == 'accepted'

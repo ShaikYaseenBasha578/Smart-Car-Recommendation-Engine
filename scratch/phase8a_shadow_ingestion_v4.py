@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 """
 Phase 8A — Bharat NCAP Corrected Shadow Ingestion
 """
@@ -9,7 +12,7 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-PROD_DB  = "knowledge_base/carrec_kb.db"
+PROD_DB  = KB_PATH
 SHADOW_DB = "scratch/carrec_kb_phase8a_shadow.db"
 RAW_JSON  = "scratch/bncap_raw_results.json"
 CSV_OUT   = "scratch/phase8a_bharat_ncap_coverage.csv"

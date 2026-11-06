@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 
 def snapshot(db_path):
@@ -12,7 +15,7 @@ def snapshot(db_path):
             data[t] = []
     return data
 
-pre = snapshot('knowledge_base/carrec_kb.db')
+pre = snapshot(KB_PATH)
 post = snapshot('scratch/carrec_kb_phase8a_shadow.db')
 
 for t in pre.keys():

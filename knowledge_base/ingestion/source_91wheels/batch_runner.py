@@ -2,7 +2,9 @@ import sqlite3
 import json
 import os
 import time
-from ingestion.ingest import ingest_model
+import argparse
+from knowledge_base.ingestion.source_91wheels.ingest_91wheels import ingest_model
+from knowledge_base.kb_db import open_kb
 
 STATE_FILE = 'knowledge_base/batch_state.json'
 
@@ -27,8 +29,8 @@ def save_state(state):
     with open(STATE_FILE, 'w') as f:
         json.dump(state, f)
 
-def run_batch():
-    conn = sqlite3.connect('knowledge_base/carrec_kb.db')
+def run_batch(db_path):
+    conn = open_kb(db_path)
     conn.row_factory = sqlite3.Row
     models = get_models_from_kb(conn)
     state = load_state()
@@ -60,4 +62,6 @@ def run_batch():
             break
 
 if __name__ == '__main__':
-    run_batch()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', required=True)
+    run_batch(parser.parse_args().db)

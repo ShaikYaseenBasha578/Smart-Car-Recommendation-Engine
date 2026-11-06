@@ -1,10 +1,13 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import json
 import shutil
 import os
 from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve_oem_generation
 
-db_prod = "knowledge_base/carrec_kb.db"
+db_prod = KB_PATH
 db_test = "scratch/phase6_dryrun.sqlite"
 if os.path.exists(db_test): os.remove(db_test)
 shutil.copy(db_prod, db_test)

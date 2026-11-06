@@ -1,9 +1,11 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)))))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import knowledge_base.ingestion.carwale.ingest_carwale as cw
-cw.DB_PATH = 'knowledge_base/carrec_kb.db'
 
 # Clear state
-conn = sqlite3.connect(cw.DB_PATH)
+conn = open_kb(KB_PATH)
 c = conn.cursor()
 c.execute("DELETE FROM field_provenance WHERE source_observation_id IN (SELECT id FROM source_observation WHERE source_id=4 AND source_url LIKE '%harrier%')")
 c.execute("DELETE FROM source_observation WHERE source_id=4 AND source_url LIKE '%harrier%'")
@@ -24,4 +26,4 @@ def mini_extract(*args):
         "https://www.carwale.com/tata-cars/harrier/adventure-x-plus-dark-edition-petrol-15l-turbo-manual/"
     ]
 cw.extract_all_model_urls = mini_extract
-cw.ingest_model_pilot('tata', 'harrier', 'harrier')
+cw.ingest_model_pilot('tata', 'harrier', 'harrier', KB_PATH)

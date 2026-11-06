@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import os
 import json
 import sqlite3
@@ -8,7 +11,7 @@ from knowledge_base.ingestion.oem.extractor.classifier import classify_layout
 from knowledge_base.ingestion.oem.extractor.extractor import OEMBrochureExtractor
 from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve_oem_generation
 
-PROD_DB = "knowledge_base/carrec_kb.db"
+PROD_DB = KB_PATH
 
 def get_snapshot(conn, tables):
     c = conn.cursor()
@@ -22,7 +25,7 @@ def run_production_ingestion():
     with open("knowledge_base/sources/oem/brochure_manifest.json", 'r') as f:
         manifest = json.load(f)
         
-    conn = sqlite3.connect(PROD_DB)
+    conn = open_kb(PROD_DB)
     conn.row_factory = sqlite3.Row
     conn.isolation_level = None # Autocommit off
     

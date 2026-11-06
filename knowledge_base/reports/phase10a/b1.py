@@ -1,5 +1,8 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..", "..", "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3,csv,collections,json
-c=sqlite3.connect('carrec_kb.db')
+c=open_kb(KB_PATH)
 rows=c.execute("""select fp.id,fp.variant_id,fp.field_name,s.name,fp.source_observation_id from field_provenance fp join source_observation so on so.id=fp.source_observation_id join source s on s.id=so.source_id
  where fp.decision='accepted' and fp.accepted_value='0' and so.source_id in (2,3) order by s.name,fp.id""").fetchall()
 out=[];cnt=collections.Counter();cur_changed=0
