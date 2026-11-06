@@ -1,0 +1,12 @@
+== pre-apply 2026-11-06T15:12:57Z
+COMMAND                          PID             USER   FD   TYPE DEVICE SIZE/OFF      NODE NAME
+com.apple.Virtualization.Virtua 4854 shaikyaseenbasha 2613r   REG   1,17 38977536 136286357 /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db
+sha1 9bf0bc7a23bc95508968abe2025ceae3787a1bed
+script sha1 5114ed1c814ad8dc477b4aca631611e70fcf3687
+COMMITTED; {"corrected": 8, "confirmed": 17, "amend": 8, "obs": 25, "fp": 25, "released": 25} active 1361
+== post-apply 2026-11-06T15:12:57Z
+integrity_check ok
+foreign_key_check 297
+checkpoint 0|0|0
+/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db
+2623fa7af76f02f846e5de8603cb5e2b14eafde2  /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db

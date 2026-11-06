@@ -68,14 +68,29 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Re-linking: waits for the resolver fix and re-ingestion (P15).
 **Prod SHA-1:** `8074a9dd…` → `9bf0bc7a…`. **App PR:** none. **Ranking-track line:** KB 10H-b: 3 more mislinks quarantined; no value changed.
 
+## 10J — 2026-11-06 — Settle the hidden values from each car's own brochure
+**Why:** 10H hid 47 values whose only evidence was linked to the wrong variant. Most could be settled from the brochures on disk, and some turned out wrong.
+**What changed:** 8 cells corrected, 17 confirmed unchanged, 25 quarantines released; 25 brochure observations added. Observations quarantined: 0. Schema: none.
+**Examples:**
+- Maruti Dzire ZXi MT: km/l 25.71 → 24.79 (Dzire brochure, p5)
+- VW Taigun Highline MT: cruise control yes → no (Taigun brochure, p10, "AT only")
+- Tata Harrier Pure X Diesel MT: sunroof no → yes (Harrier brochure, p18)
+**What app users now see:** 27 values on 18 catalogue rows are back, 8 of them corrected. The rest of the 10H values still show as "unverified".
+**Not done / held:**
+- HUD (5 cells) and XUV 3XO ventilated seats (5): the brochures don't mention them.
+- Baleno 252, Brezza 146 km/l: catalogue currency, the brochures are newer than the KB rows.
+- Innova Crysta 306, XUV 7XO 416 km/l: the brochures print no mileage.
+- Editions 821, 831, 832 (8 cells): edition cells are never written.
+**Prod SHA-1:** `9bf0bc7a…` → `2623fa7a…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/20 **Ranking-track line:** KB 10J: 25 hidden values settled from brochures, 8 corrected; export re-run.
+
 ## Current state
-As of phase 10H-b (prod `9bf0bc7a23bc95508968abe2025ceae3787a1bed`).
-- **Active quarantines:** 1,386 (950 observations, 403 variant cells, 30 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
+As of phase 10J (prod `2623fa7af76f02f846e5de8603cb5e2b14eafde2`).
+- **Active quarantines:** 1,361 (950 observations, 378 variant cells, 30 provenance rows, 2 warranty cells, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
-  - power: 825/832 = 99.2%%
-  - mileage km/l (non-CNG, non-EV): 446/713 = 62.6%%
-  - km/kg on CNG variants: 42/82 = 51.2%%
-  - safety stars (variants of models with a usable test): 363/832 = 43.6%%
+  - power: 825/832 = 99.2%
+  - mileage km/l (non-CNG, non-EV): 449/713 = 63.0%
+  - km/kg on CNG variants: 42/82 = 51.2%
+  - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 18 of 18; see the warranty entries for provenance and export status.
 - **Open items:** 4 in [NEEDS_YOU.md](NEEDS_YOU.md).
