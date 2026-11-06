@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "067f9accc3d018b68dca0751fe78198393b134b17c71e0ee869eaf5836f83640",
+  "catalogue_sha256": "45a23ecb4bd054d873c4e04a1a23d2404f171488fe5cbd33ed8e8c3a24138f8d",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -8,10 +8,10 @@
       "unverified": 0
     },
     "adas_available": {
-      "non_null": 828,
+      "non_null": 829,
       "not_applicable_blank": 0,
-      "quarantined": 2,
-      "unverified": 4
+      "quarantined": 1,
+      "unverified": 3
     },
     "airbags": {
       "non_null": 832,
@@ -56,10 +56,10 @@
       "unverified": 52
     },
     "cruise_control": {
-      "non_null": 542,
+      "non_null": 557,
       "not_applicable_blank": 0,
-      "quarantined": 101,
-      "unverified": 290
+      "quarantined": 86,
+      "unverified": 275
     },
     "drivetrain": {
       "non_null": 832,
@@ -134,10 +134,10 @@
       "unverified": 40
     },
     "mileage_kmpl": {
-      "non_null": 446,
+      "non_null": 449,
       "not_applicable_blank": 119,
-      "quarantined": 8,
-      "unverified": 267
+      "quarantined": 5,
+      "unverified": 264
     },
     "paddle_shifters": {
       "non_null": 456,
@@ -194,10 +194,10 @@
       "unverified": 0
     },
     "sunroof": {
-      "non_null": 826,
+      "non_null": 827,
       "not_applicable_blank": 0,
-      "quarantined": 5,
-      "unverified": 6
+      "quarantined": 4,
+      "unverified": 5
     },
     "torque_nm": {
       "non_null": 832,
@@ -206,10 +206,10 @@
       "unverified": 0
     },
     "tpms": {
-      "non_null": 789,
+      "non_null": 796,
       "not_applicable_blank": 0,
-      "quarantined": 17,
-      "unverified": 43
+      "quarantined": 10,
+      "unverified": 36
     },
     "ventilated_front_seats": {
       "non_null": 813,
@@ -236,7 +236,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-11-03T11:27:21Z",
+  "export_utc": "2026-11-06T15:13:26Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "10H",
-  "kb_sha256": "56c7d46717c0079a84e1f8f24f1bfe20509171cb0138b0f9b288f40446438ee4",
+  "kb_latest_phase": "10J",
+  "kb_sha256": "c7ef17f42216d5211fa2a97218f1ccea95a17c1d12b44ad532c1fa694762e78b",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
