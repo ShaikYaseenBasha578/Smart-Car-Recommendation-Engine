@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 """Phase 7 KB Coverage & Quality Audit — READ-ONLY"""
 import sqlite3, json, csv, os, sys
 from collections import defaultdict
 
-DB = "knowledge_base/carrec_kb.db"
+DB = KB_PATH
 conn = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
 conn.row_factory = sqlite3.Row
 

@@ -38,7 +38,7 @@ def setup_db(tmp_path):
     conn.commit()
     return conn
 
-def test_edition_resolution_and_creation(setup_db):
+def test_edition_candidate_goes_to_review_without_creating_a_variant(setup_db):
     conn = setup_db
     c = conn.cursor()
     
@@ -47,34 +47,16 @@ def test_edition_resolution_and_creation(setup_db):
     assert status == 'edition_candidate'
     assert base_id == 10
     
-    # Update canonical should CREATE the edition
+    # 10I: an edition candidate is stored for review; a variant is never created automatically (P8).
     obs_id, updates = update_canonical(conn, None, 1, 'http', 'Pure X Dark Edition MT', {}, 'edition_candidate', {'sunroof': 1}, base_variant_id=base_id)
-    
-    # Verify edition creation
+    assert updates == 0
     c.execute("SELECT * FROM variant WHERE base_variant_id = 10")
-    ed = c.fetchone()
-    assert ed is not None
-    assert ed['name'] == 'Pure X Dark Edition MT'
-    assert ed['edition_classification'] == 'FEATURE_OR_SPEC_DIFFERENCE'
-    assert ed['sunroof'] == 1
-    assert ed['transmission'] == 'Manual'
-    
+    assert c.fetchone() is None
+
     # Verify base variant is untouched
     c.execute("SELECT sunroof FROM variant WHERE id = 10")
-    bv = c.fetchone()
-    assert bv['sunroof'] == 0
-    
-    # Verify view
-    c.execute("""
-        CREATE VIEW v_effective_variant AS
-        SELECT v.id, v.name, v.base_variant_id, COALESCE(v.sunroof, bv.sunroof) as sunroof, COALESCE(v.boot_space_litres, bv.boot_space_litres) as boot_space_litres
-        FROM variant v LEFT JOIN variant bv ON v.base_variant_id = bv.id
-    """)
-    c.execute("SELECT sunroof, boot_space_litres FROM v_effective_variant WHERE id = ?", (ed['id'],))
-    eff = c.fetchone()
-    assert eff['sunroof'] == 1 # Overridden
-    assert eff['boot_space_litres'] == 425 # Inherited
-    
+    assert c.fetchone()['sunroof'] == 0
+
     # Test different transmission fails to map as edition
     t_id2, status2, base_id2 = resolve_variant(conn, 'Tata', 'Harrier', 'Pure X Dark Edition AT', 'pure-x-dark-at', 'Diesel', 'Torque Converter', 1956, None)
     # This should map to base_id 11 (Pure X AT), not 10!

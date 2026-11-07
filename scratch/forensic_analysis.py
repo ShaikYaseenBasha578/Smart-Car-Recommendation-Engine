@@ -1,7 +1,10 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import os
 
-prod_db = "knowledge_base/carrec_kb.db"
+prod_db = KB_PATH
 backup_db = "scratch/carrec_kb_production_backup.db"
 
 tables_to_check = ['manufacturer', 'model', 'generation', 'variant', 'source_observation', 'field_provenance']
@@ -46,7 +49,7 @@ for t in tables_to_check:
     print(f"{t}: PRE={pre_max_ids[t]}, POST={post_max_ids[t]}")
 
 # Let's inspect the exact new rows in source_observation and field_provenance
-conn = sqlite3.connect(prod_db)
+conn = open_kb(prod_db)
 conn.row_factory = sqlite3.Row
 c = conn.cursor()
 

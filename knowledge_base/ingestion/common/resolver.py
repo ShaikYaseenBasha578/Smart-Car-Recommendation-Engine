@@ -1,5 +1,9 @@
 import sqlite3
 
+from knowledge_base.ingestion.common.identity import (
+    HELD_VARIANT_IDS, apply_dual_tone, attributes_of, compatible, identity_of, kb_gear, narrow, same_identity,
+)
+
 EDITION_STRIP_HEURISTICS = [
     "dark edition", "knight edition", "special edition", 
     "black edition", "anniversary edition", "summer edition",
@@ -86,170 +90,122 @@ def normalize_engine_string(engine_str):
     s = s.replace('bi-fuel', '').replace('with hy-', '')
     return re.sub(r'\s+', ' ', s).strip()
 
+class Resolution(tuple):
+    """(variant_id, status, base_variant_id), plus .match_type, .reasons and .suggested_variant_id.
+
+    match_type: 'identity_exact' | 'fuzzy' | 'alias' | 'ambiguous' | 'held_edition' | 'edition_candidate' | 'none'.
+    Only an 'identity_exact' result carries a variant_id and may write evidence. Everything else goes to review."""
+    def __new__(cls, variant_id, status, base_variant_id=None, match_type='none', reasons=(), suggested_variant_id=None):
+        r = super().__new__(cls, (variant_id, status, base_variant_id))
+        r.match_type, r.reasons, r.suggested_variant_id = match_type, tuple(reasons), suggested_variant_id
+        return r
+
+
+def _fuzzy_suggestion(all_variants, variant_name, variant_slug, edition, norm_engine, fuel, trans, cc, price):
+    """The old best-match search. Scoring and thresholds are unchanged; the result only ranks a candidate for a reviewer."""
+    candidates = []
+    for c in all_variants:
+        if validate_structured(c, fuel, trans, cc, price): continue
+        test_name = variant_name
+        if edition and edition.lower() not in test_name.lower():
+            test_name = f"{test_name} {edition}".strip()
+        test_name_with_engine = f"{test_name} {norm_engine}".strip() if norm_engine else test_name
+        test_slug = (variant_slug or '').replace('-', ' ')
+        if edition and edition.lower() not in test_slug.lower():
+            test_slug = f"{test_slug} {edition}".strip()
+        score = max(compute_similarity(test_name, c['name']), compute_similarity(test_name_with_engine, c['name']),
+                    compute_similarity(test_slug, c['name']))
+        source_has_edition = bool(edition) or any(kw in test_name.lower() or kw in (variant_slug or '').lower() for kw in EDITION_STRIP_HEURISTICS)
+        is_canonical_edition = any(kw in c['name'].lower() for kw in EDITION_STRIP_HEURISTICS)
+        if source_has_edition != is_canonical_edition:
+            score = 0.0
+        if score > 0:
+            candidates.append((score, c))
+    if not candidates: return None
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    best_score, best = candidates[0]
+    if best_score <= 0.5: return None
+    if len(candidates) > 1 and (best_score - candidates[1][0]) < 0.05: return None
+    return best['id']
+
+
 def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fuel, trans, cc, price, generation_id=None, active_only=False, source_name=None, engine_name=None, edition=None):
+    """Auto-accept only a unique identity match (the 10C-2 policy, for every source). See Resolution."""
     cur = conn.cursor()
     cur.execute('''
-        SELECT m.id
+        SELECT m.id, m.name
         FROM model m
         JOIN manufacturer mfr ON m.manufacturer_id = mfr.id
         WHERE lower(replace(mfr.name, ' ', '-')) = ? AND lower(replace(m.name, ' ', '-')) = ?
     ''', (make_slug.lower(), model_slug.lower()))
     m_row = cur.fetchone()
-    if not m_row: return None, 'unresolved', None
-    model_id = m_row['id']
-    
+    if not m_row: return Resolution(None, 'unresolved')
+    model_id, model_name = m_row['id'], m_row['name']
+
     query = '''
-        SELECT v.id, v.name, pt.fuel_type, pt.engine_cc, pt.power_bhp, v.transmission, v.price_ex_showroom, v.base_variant_id
+        SELECT v.*, pt.fuel_type, pt.engine_cc, pt.power_bhp
         FROM variant v
         JOIN powertrain pt ON v.powertrain_id = pt.id
         WHERE v.model_id = ?
     '''
     params = [model_id]
-    
     if generation_id is not None:
         query += " AND v.generation_id = ?"
         params.append(generation_id)
-        
     if active_only:
         query += " AND v.is_discontinued = 0"
-        
     cur.execute(query, tuple(params))
     all_variants = cur.fetchall()
-    
-    if source_name:
-        cur.execute('''
-            SELECT va.variant_id, va.needs_review, va.is_verified
-            FROM variant_alias va
-            JOIN source s ON va.source_id = s.id
-            WHERE s.name = ? AND va.alias_name = ?
-        ''', (source_name, variant_slug))
-    else:
-        cur.execute('''
-            SELECT va.variant_id, va.needs_review, va.is_verified
-            FROM variant_alias va
-            JOIN source s ON va.source_id = s.id
-            WHERE s.name = '91wheels' AND va.alias_name = ?
-        ''', (variant_slug,))
+
+    test_name = variant_name or ''
+    if edition and edition.lower() not in test_name.lower():
+        test_name = f"{test_name} {edition}".strip()
+    attrs = attributes_of(test_name, variant_slug, fuel, trans, cc, engine_name)
+    src = identity_of(test_name, model_name)
+    usable = [c for c in all_variants if not validate_structured(c, fuel, trans, cc, price) and compatible(c, attrs)]
+
+    def auto_stated(c):
+        return attrs.gear == 'auto' or kb_gear(c['transmission']) == 'auto'
+
+    matches = [c for c in usable if same_identity(identity_of(c['name'], model_name), src, model_name, auto_stated(c))]
+    matches = apply_dual_tone(narrow(matches, attrs), attrs) if matches else []
+
+    suggestion = None
+    if len(matches) != 1:
+        suggestion = _fuzzy_suggestion(all_variants, variant_name or '', variant_slug, edition,
+                                       normalize_engine_string(engine_name) if engine_name else "", fuel, trans, cc, price)
+    if len(matches) == 1:
+        c = matches[0]
+        if c['id'] in HELD_VARIANT_IDS:
+            return Resolution(None, 'needs_review', None, 'held_edition', [f"held edition {c['id']}"], c['id'])
+        return Resolution(c['id'], 'resolved', None, 'identity_exact')
+    if len(matches) > 1:
+        ids = [c['id'] for c in matches]
+        return Resolution(None, 'needs_review', None, 'ambiguous', [f"candidates {ids}"], suggestion)
+
+    # The source names an edition the KB doesn't have: a candidate for review, attached to its base. Never auto-created.
+    if src.editions:
+        plain = src._replace(editions=frozenset())
+        bases = [c for c in usable if not identity_of(c['name'], model_name).editions
+                 and same_identity(identity_of(c['name'], model_name), plain, model_name, auto_stated(c))]
+        bases = narrow(bases, attrs)
+        non_dt = apply_dual_tone(bases, attrs._replace(dual_tone=False))
+        if len(non_dt) == 1:
+            return Resolution(None, 'edition_candidate', non_dt[0]['id'], 'edition_candidate', [f"editions {sorted(src.editions)}"])
+
+    # An alias or a fuzzy hit is only a hint for the reviewer.
+    alias_source = source_name or '91wheels'
+    cur.execute('''
+        SELECT va.variant_id, va.is_verified
+        FROM variant_alias va
+        JOIN source s ON va.source_id = s.id
+        WHERE s.name = ? AND va.alias_name = ?
+    ''', (alias_source, variant_slug))
     row = cur.fetchone()
-    
     if row:
-        c_id = row['variant_id']
-        cand = next((c for c in all_variants if c['id'] == c_id), None)
-        if cand:
-            warnings = validate_structured(cand, fuel, trans, cc, price)
-            if warnings:
-                # A fuel/transmission conflict discards the alias even when verified (fail closed).
-                if row['is_verified'] == 1 and not {'fuel_mismatch', 'transmission_mismatch'} & set(warnings):
-                    return c_id, 'resolved_with_warning', None
-                # Discard bad historical alias
-            else:
-                status = 'resolved' if row['is_verified'] else 'resolved_with_warning'
-                if row['needs_review']: status = 'resolved_with_warning'
-                return c_id, status, None
-                
-    # Normalize inputs
-    norm_engine = normalize_engine_string(engine_name) if engine_name else ""
-    
-    # 1. Exact Match Check First (Highest Priority)
-    for c in all_variants:
-        warnings = validate_structured(c, fuel, trans, cc, price)
-        if warnings: continue
-        
-        # If edition is explicitly passed, require it for an exact match
-        source_has_edition = bool(edition) or any(kw in variant_name.lower() or kw in variant_slug.lower() for kw in EDITION_STRIP_HEURISTICS)
-        is_canonical_edition = any(kw in c['name'].lower() for kw in EDITION_STRIP_HEURISTICS)
-        if source_has_edition != is_canonical_edition:
-            continue
-            
-        # Combine variant name with edition if we have a structured edition
-        test_name = variant_name
-        if edition and edition.lower() not in variant_name.lower():
-            test_name = f"{variant_name} {edition}".strip()
-            
-        if c['name'].lower() == test_name.lower() or c['name'].lower() == variant_slug.replace('-', ' ').lower():
-            return c['id'], 'resolved', None
-
-    # 2. Fuzzy Scoring with Margin Validation
-    candidates = []
-    for c in all_variants:
-        warnings = validate_structured(c, fuel, trans, cc, price)
-        if warnings: continue
-        
-        # Test 1: Just variant name
-        test_name = variant_name
-        if edition and edition.lower() not in test_name.lower():
-            test_name = f"{test_name} {edition}".strip()
-            
-        # Test 2: Variant name + Engine
-        test_name_with_engine = test_name
-        if norm_engine:
-            test_name_with_engine = f"{test_name} {norm_engine}".strip()
-            
-        test_slug = variant_slug.replace('-', ' ')
-        if edition and edition.lower() not in test_slug.lower():
-            test_slug = f"{test_slug} {edition}".strip()
-            
-        score = max(
-            compute_similarity(test_name, c['name']), 
-            compute_similarity(test_name_with_engine, c['name']),
-            compute_similarity(test_slug, c['name'])
-        )
-        
-        # Block cross-edition fuzzy matching
-        source_has_edition = bool(edition) or any(kw in test_name.lower() or kw in variant_slug.lower() for kw in EDITION_STRIP_HEURISTICS)
-        is_canonical_edition = any(kw in c['name'].lower() for kw in EDITION_STRIP_HEURISTICS)
-        if source_has_edition != is_canonical_edition:
-            score = 0.0
-
-        if score > 0:
-            candidates.append((score, c))
-            
-    if candidates:
-        candidates.sort(key=lambda x: x[0], reverse=True)
-        best_score, best_match = candidates[0]
-        
-        if best_score > 0.5:
-            # Enforce Minimum Margin
-            if len(candidates) > 1:
-                second_best_score = candidates[1][0]
-                if (best_score - second_best_score) < 0.05:
-                    best_match = None
-                    
-            if best_match:
-                warnings = validate_structured(best_match, fuel, trans, cc, price)
-                if warnings: return best_match['id'], 'needs_review', None
-                return best_match['id'], 'resolved', None
-
-    # EDITION FALLBACK
-
-    
-    lower_name = variant_name.lower()
-    has_heuristic = False
-    stripped_name = variant_name
-    for kw in EDITION_STRIP_HEURISTICS:
-        if kw in lower_name:
-            stripped_name = lower_name.replace(kw, '').strip()
-            has_heuristic = True
-            break
-            
-    if edition or has_heuristic:
-        best_sub_score = 0
-        best_sub_match = None
-        for c in all_variants:
-            # We only want to attach to base variants, not other editions ideally
-            is_c_edition = any(kw in c['name'].lower() for kw in EDITION_STRIP_HEURISTICS)
-            if is_c_edition: continue
-            
-            warnings = validate_structured(c, fuel, trans, cc, price)
-            if warnings: continue
-            
-            score = compute_similarity(stripped_name, c['name'])
-            if score > best_sub_score:
-                best_sub_score = score
-                best_sub_match = c
-                
-        if best_sub_match and best_sub_score > 0.6:
-            return None, 'edition_candidate', best_sub_match['id']
-                
-    return None, 'unresolved', None
-
+        cand = next((c for c in all_variants if c['id'] == row['variant_id']), None)
+        if cand and not validate_structured(cand, fuel, trans, cc, price):
+            return Resolution(None, 'needs_review', None, 'alias', ['alias hit without identity'], row['variant_id'])
+    if suggestion:
+        return Resolution(None, 'needs_review', None, 'fuzzy', ['fuzzy hit without identity'], suggestion)
+    return Resolution(None, 'unresolved')

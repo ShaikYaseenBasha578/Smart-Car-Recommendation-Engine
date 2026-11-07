@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)))))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import json
 import os
@@ -6,7 +9,7 @@ import hashlib
 import shutil
 import fitz  # PyMuPDF
 
-DB_PATH = "knowledge_base/carrec_kb.db"
+DB_PATH = KB_PATH
 MANIFEST_PATH = "knowledge_base/sources/oem/brochure_manifest.json"
 BASE_DIR = "knowledge_base/sources/oem"
 DOWNLOADS_DIR = os.path.expanduser("~/Downloads/Missing Brochures")
@@ -22,7 +25,7 @@ MANUAL_MAP = {
 }
 
 def get_models():
-    conn = sqlite3.connect(DB_PATH)
+    conn = open_kb(DB_PATH)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
     c.execute("""

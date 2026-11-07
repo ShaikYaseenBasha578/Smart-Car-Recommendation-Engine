@@ -1,7 +1,10 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3, json, os, sys, hashlib, shutil
 from collections import defaultdict
 
-PROD_DB = "knowledge_base/carrec_kb.db"
+PROD_DB = KB_PATH
 BACKUP_DB = "knowledge_base/backups/carrec_kb_phase8b_backup.db"
 ISOLATED_DB = "scratch/carrec_kb_phase8b_isolated.db"
 RAW_JSON = "scratch/bncap_raw_results.json"
@@ -234,7 +237,7 @@ def main():
         results = json.load(f)
 
     # 1. Capture BEFORE snapshot
-    conn = sqlite3.connect(PROD_DB, isolation_level=None)
+    conn = open_kb(PROD_DB, isolation_level=None)
     
     conn.row_factory = sqlite3.Row
     pre_counts = get_row_counts(conn, TABLES)

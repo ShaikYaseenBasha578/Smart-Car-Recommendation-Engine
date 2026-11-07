@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import os
 import json
 import sqlite3
@@ -10,7 +13,7 @@ from knowledge_base.ingestion.oem.extractor.classifier import classify_layout
 from knowledge_base.ingestion.oem.extractor.extractor import OEMBrochureExtractor
 from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve_oem_generation
 
-PROD_DB = "knowledge_base/carrec_kb.db"
+PROD_DB = KB_PATH
 
 def capture_db_state(db_path):
     conn = sqlite3.connect(db_path)

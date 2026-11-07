@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import json
 import os
@@ -5,7 +8,7 @@ import sys
 
 import scratch.phase8a_shadow_ingestion_v4 as shadow_v4
 
-PROD_DB = "knowledge_base/carrec_kb.db"
+PROD_DB = KB_PATH
 with open('scratch/backup_path.txt') as f:
     BACKUP_DB = f.read().strip()
 RAW_JSON = "scratch/bncap_raw_results.json"
@@ -46,7 +49,7 @@ def main():
         results = json.load(f)
 
     print("Connecting to PROD_DB...")
-    prod_conn = sqlite3.connect(PROD_DB)
+    prod_conn = open_kb(PROD_DB)
     prod_conn.row_factory = sqlite3.Row
     prod_conn.execute("PRAGMA foreign_keys = ON;")
     

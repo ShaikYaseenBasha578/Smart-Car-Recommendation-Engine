@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 
 import sqlite3
 import json
@@ -18,12 +21,12 @@ with open("scratch/backup_db_hash.txt") as f: backup_hash = f.read().split()[0]
 with open("scratch/final_db_hash.txt") as f: post_hash = f.read().split()[0]
 
 pre_counts = get_row_counts("scratch/carrec_kb_production_backup.db")
-post_counts = get_row_counts("knowledge_base/carrec_kb.db")
+post_counts = get_row_counts(KB_PATH)
 deltas = {t: post_counts[t] - pre_counts[t] for t in pre_counts}
 
 with open("knowledge_base/sources/oem/batch_report.json") as f: r = json.load(f)
 
-conn = sqlite3.connect("knowledge_base/carrec_kb.db")
+conn = open_kb(KB_PATH)
 conn.row_factory = sqlite3.Row
 c = conn.cursor()
 

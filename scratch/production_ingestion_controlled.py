@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 """
 PHASE 6 OEM CONTROLLED PRODUCTION INGESTION
 Authorized single-run production ingestion into knowledge_base/carrec_kb.db.
@@ -16,7 +19,7 @@ from knowledge_base.ingestion.oem.extractor.extractor import OEMBrochureExtracto
 from knowledge_base.ingestion.oem.extractor.profiler import profile_pdf
 from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve_oem_generation
 
-PROD_DB        = "knowledge_base/carrec_kb.db"
+PROD_DB        = KB_PATH
 BACKUP_DB      = "scratch/carrec_kb_phase6_final_preproduction_backup.db"
 IDEM_DB        = "scratch/carrec_kb_phase6_postproduction_idempotency.db"
 MANIFEST_PATH  = "knowledge_base/sources/oem/brochure_manifest.json"

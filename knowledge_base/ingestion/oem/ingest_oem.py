@@ -23,12 +23,13 @@ def process_oem_payload(conn, payload, make_slug, model_slug, source_id, generat
         edition = variant_data.get('edition')
         
         # 1. Resolve Identity - STRICT generation pinning
-        v_id, status, cand = resolve_variant(
+        res = resolve_variant(
             conn, make_slug, model_slug, v_name, v_name, 
             fuel, trans, cc, None, 
             generation_id=generation_id, active_only=False, source_name='oem',
             engine_name=engine_name, edition=edition
         )
+        v_id, status, cand = res
         
         results['processed'] += 1
         
@@ -38,7 +39,7 @@ def process_oem_payload(conn, payload, make_slug, model_slug, source_id, generat
             normalized = map_oem_fields(variant_data)
             obs_id, upd_count = update_canonical(
                 conn, v_id, source_id, 'offline_brochure', v_name, variant_data, 
-                status, normalized, base_variant_id=None
+                status, normalized, base_variant_id=None, match_type=res.match_type
             )
             results['updated'] += upd_count
         else:

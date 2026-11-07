@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import os
 import json
 import sqlite3
@@ -110,7 +113,7 @@ def run_pass(db_path, pass_num):
 
 def main():
     isolated_db = "scratch/isolated_auth_kb.db"
-    shutil.copy2("knowledge_base/carrec_kb.db", isolated_db)
+    shutil.copy2(KB_PATH, isolated_db)
     
     tables = ['manufacturer', 'model', 'generation', 'variant', 'powertrain', 'source_observation', 'field_provenance']
     

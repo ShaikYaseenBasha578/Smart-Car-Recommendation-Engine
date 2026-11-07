@@ -1,5 +1,8 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..", "..", "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3,csv,collections
-c=sqlite3.connect('carrec_kb.db')
+c=open_kb(KB_PATH)
 obs=c.execute("select id,raw_name,resolved_variant_id,resolution_status from source_observation where source_id=1 and source_url='offline_brochure' order by id").fetchall()
 fps=c.execute("""select fp.id,fp.variant_id,fp.field_name,fp.decision,fp.decision_reason,fp.accepted_value,fp.source_observation_id from field_provenance fp
  where fp.source_observation_id in (select id from source_observation where source_id=1 and source_url='offline_brochure') order by fp.id""").fetchall()

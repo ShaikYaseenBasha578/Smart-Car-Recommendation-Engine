@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 import shutil
 from knowledge_base.ingestion.oem.extractor.classifier import classify_layout
@@ -5,7 +8,7 @@ from knowledge_base.ingestion.oem.extractor.extractor import OEMBrochureExtracto
 from knowledge_base.ingestion.oem.ingest_oem import process_oem_payload, resolve_oem_generation
 
 # Setup isolated DB
-shutil.copy("knowledge_base/carrec_kb.db", "knowledge_base/test_aura.db")
+shutil.copy(KB_PATH, "knowledge_base/test_aura.db")
 db_path = "knowledge_base/test_aura.db"
 
 pdf_path = "knowledge_base/sources/oem/hyundai/aura/latest/brochures/Aura_Brochure.pdf"

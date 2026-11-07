@@ -8,8 +8,8 @@ from knowledge_base.ingestion.v3cars.field_map_v3cars import (
 )
 from knowledge_base.ingestion.common.resolver import resolve_variant
 from knowledge_base.ingestion.common.updater import update_canonical
+from knowledge_base.kb_db import open_kb
 
-DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'carrec_kb.db'))))
 V3CARS_SOURCE_ID = 3
 
 def ensure_source_registered(conn):
@@ -22,8 +22,8 @@ def ensure_source_registered(conn):
         """, (V3CARS_SOURCE_ID,))
         conn.commit()
 
-def ingest_model(make_slug, model_slug):
-    conn = sqlite3.connect(DB_PATH)
+def ingest_model(make_slug, model_slug, db_path):
+    conn = open_kb(db_path)
     conn.row_factory = sqlite3.Row
     ensure_source_registered(conn)
     
@@ -89,11 +89,12 @@ def ingest_model(make_slug, model_slug):
         canonical_model_id = model_row[0]
         
         # Attempt Identity Resolution
-        target_variant_id, match_status, base_variant_id = resolve_variant(conn, make_slug, model_slug, raw_name, "", fuel, trans, cc, price)
+        res = resolve_variant(conn, make_slug, model_slug, raw_name, "", fuel, trans, cc, price, source_name='v3cars')
+        target_variant_id, match_status, base_variant_id = res
         
-        if not target_variant_id and match_status != 'edition_candidate':
-            # Unresolvable - Variant missing / bad bounds
-            update_canonical(conn, None, V3CARS_SOURCE_ID, url, raw_name, payload_dump, 'unresolvable', {}, base_variant_id)
+        if not target_variant_id:
+            kept = match_status if match_status in ('needs_review', 'edition_candidate') else 'unresolvable'
+            update_canonical(conn, None, V3CARS_SOURCE_ID, url, raw_name, payload_dump, kept, {}, base_variant_id)
             stats['unresolved'] += 1
             continue
             
@@ -101,7 +102,7 @@ def ingest_model(make_slug, model_slug):
         
         # Update Canonical & Provenance
         obs_id, updates = update_canonical(
-            conn, target_variant_id, V3CARS_SOURCE_ID, url, raw_name, payload_dump, 'resolved', normalized
+            conn, target_variant_id, V3CARS_SOURCE_ID, url, raw_name, payload_dump, match_status, normalized, match_type=res.match_type
         )
         
         # Count stats
@@ -114,5 +115,7 @@ def ingest_model(make_slug, model_slug):
     return stats
 
 if __name__ == '__main__':
-    stats = ingest_model('hyundai', 'creta')
-    print("Ingestion Stats:", stats)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', required=True)
+    print("Ingestion Stats:", ingest_model('hyundai', 'creta', parser.parse_args().db))

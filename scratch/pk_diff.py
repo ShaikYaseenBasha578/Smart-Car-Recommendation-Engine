@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sqlite3
 
 def get_pk_data(db_path, table):
@@ -38,5 +41,5 @@ tables = [
     'safety_test', 'safety_test_applicability'
 ]
 print("--- TRUE PRIMARY-KEY DIFF (PROD vs PASS 1) ---")
-pk_diff('knowledge_base/carrec_kb.db', 'scratch/carrec_kb_phase8a_shadow.db', tables)
+pk_diff(KB_PATH, 'scratch/carrec_kb_phase8a_shadow.db', tables)
 

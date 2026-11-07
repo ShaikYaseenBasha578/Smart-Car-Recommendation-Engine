@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sys
 import os
 import json
@@ -14,7 +17,7 @@ with open("knowledge_base/sources/oem/batch_report.json", 'r') as f:
     
 failures = [r for r in report['reports'] if r.get('resolution_status') == 'UNRESOLVED']
 
-conn = sqlite3.connect("knowledge_base/carrec_kb.db")
+conn = open_kb(KB_PATH)
 conn.row_factory = sqlite3.Row
 
 print("Diagnostics for 23 RESOLUTION_FAILURE models:\n")

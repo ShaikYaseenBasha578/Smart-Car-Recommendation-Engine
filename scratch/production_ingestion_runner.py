@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import os
 import json
 import sqlite3
@@ -112,7 +115,7 @@ def snapshot_all(db_path):
     return {t: get_table_snapshot(db_path, t) for t in ['manufacturer', 'model', 'generation', 'variant', 'powertrain', 'source_observation', 'field_provenance']}
 
 if __name__ == "__main__":
-    prod_db = "knowledge_base/carrec_kb.db"
+    prod_db = KB_PATH
     
     snap_before = snapshot_all(prod_db)
     statuses_1 = run_ingestion(prod_db, "PRODUCTION INGESTION")

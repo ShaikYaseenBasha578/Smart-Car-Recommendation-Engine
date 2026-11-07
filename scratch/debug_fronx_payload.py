@@ -1,3 +1,6 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import sys
 import os
 import sqlite3
@@ -12,7 +15,7 @@ strategy = classify_layout(pdf_path, "Maruti Suzuki", "Fronx")
 extractor = OEMBrochureExtractor(strategy)
 payloads = extractor.execute(pdf_path)
 
-conn = sqlite3.connect("knowledge_base/carrec_kb.db")
+conn = open_kb(KB_PATH)
 gen_id = resolve_oem_generation(conn, "Maruti Suzuki", "Fronx", None)
 
 for p in payloads:

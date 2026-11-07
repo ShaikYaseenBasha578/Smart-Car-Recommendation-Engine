@@ -1,0 +1,9 @@
+class                  AUTO_SAME    AUTO_OTHER        REVIEW       EDITION    UNRESOLVED PAGE_MISMATCH
+OK                           745            23           119             1             7           209
+MISLINK_TARGET                 0           284            70             1            13           216
+MISLINK_NONE                   0             5            31            25            46            45
+EDITION_NOT_IN_KB              0             7             4            41             4             0
+REVIEW                         5             0             1             0             0             0
+all                          750           319           225            68            70           470 1902
+match types Counter({'identity_exact': 1069, 'page_mismatch': 470, 'ambiguous': 167, 'none': 70, 'edition_candidate': 68, 'fuzzy': 44, 'alias': 12, 'held_edition': 2})
+by source auto Counter({('91wheels', 'AUTO_SAME'): 359, ('v3cars', 'AUTO_SAME'): 258, ('carwale', 'AUTO_SAME'): 133, ('91wheels', 'AUTO_OTHER'): 131, ('carwale', 'AUTO_OTHER'): 113, ('v3cars', 'AUTO_OTHER'): 75})

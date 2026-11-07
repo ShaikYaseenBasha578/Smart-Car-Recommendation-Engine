@@ -6,6 +6,9 @@ Runs all validation checks against the migrated database.
 Usage:
     python3 knowledge_base/validate_migration.py
 """
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)), "..", "..")))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import csv
 import json
 import os
@@ -15,7 +18,7 @@ import math
 import random
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(PROJECT_ROOT, 'knowledge_base', 'carrec_kb.db')
+DB_PATH = os.path.join(PROJECT_ROOT, 'knowledge_base', KB_PATH)
 V6_CSV = os.path.join(PROJECT_ROOT, 'AG Datasets', 'carrec_recommendation_dataset_v6.csv')
 EXPECTED_VARIANT_COUNT = 812
 
@@ -52,7 +55,7 @@ def main():
         print(f"ERROR: Database not found at {DB_PATH}")
         sys.exit(1)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = open_kb(DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     v6_rows = load_v6()

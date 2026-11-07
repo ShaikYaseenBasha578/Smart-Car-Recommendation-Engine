@@ -3,17 +3,15 @@ import json
 import time
 import os
 import sys
+import argparse
 
-# Ensure ingest_v3cars is in path if run from root
-sys.path.append(os.path.join(os.path.dirname(__file__), 'ingestion'))
+from knowledge_base.ingestion.v3cars.ingest_v3cars import ingest_model
+from knowledge_base.kb_db import open_kb
 
-from ingest_v3cars import ingest_model
-
-DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'carrec_kb.db'))))
 STATE_FILE = os.path.join(os.path.dirname(__file__), 'v3cars_batch_state.json')
 
-def get_models():
-    conn = sqlite3.connect(DB_PATH)
+def get_models(db_path):
+    conn = open_kb(db_path)
     c = conn.cursor()
     c.execute("""
         SELECT ma.name as make, m.name as model
@@ -35,8 +33,8 @@ def save_state(state):
     with open(STATE_FILE, 'w') as f:
         json.dump(state, f, indent=2)
 
-def run_batch():
-    models = get_models()
+def run_batch(db_path):
+    models = get_models(db_path)
     state = load_state()
     
     total = len(models)
@@ -53,7 +51,7 @@ def run_batch():
             
         print(f"Processing {model_id}...")
         try:
-            stats = ingest_model(make_slug, model_slug)
+            stats = ingest_model(make_slug, model_slug, db_path)
             print(f"Stats for {model_id}: {stats}")
             state['completed'].append(model_id)
             state[model_id] = stats
@@ -66,4 +64,6 @@ def run_batch():
     print("Batch run complete.")
 
 if __name__ == '__main__':
-    run_batch()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', required=True)
+    run_batch(parser.parse_args().db)

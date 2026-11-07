@@ -76,7 +76,7 @@ def test_ambiguous_fails_closed(test_db):
     
     vid, status, cand = resolve_variant(test_db, 'hyundai', 'creta', 'SX', 'sx', 'Petrol', 'Manual', 1497, None)
     assert vid is None
-    assert status == 'unresolved'
+    assert status == 'needs_review'  # 10I: several identity matches go to review
 
 def test_explicit_edition(test_db):
     # 5. Explicit edition information survives into resolution

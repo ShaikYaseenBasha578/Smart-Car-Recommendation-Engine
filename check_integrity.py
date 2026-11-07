@@ -1,14 +1,17 @@
+import os as _kb_os, sys as _kb_sys
+_kb_sys.path.insert(0, _kb_os.path.abspath(_kb_os.path.join(_kb_os.path.dirname(_kb_os.path.abspath(__file__)))))  # repo root
+from knowledge_base.kb_db import KB_PATH, open_kb
 import json
 import os
 import sqlite3
 
 MANIFEST_PATH = "knowledge_base/sources/oem/brochure_manifest.json"
-DB_PATH = "knowledge_base/carrec_kb.db"
+DB_PATH = KB_PATH
 
 with open(MANIFEST_PATH, 'r') as f:
     manifest = json.load(f)
     
-conn = sqlite3.connect(DB_PATH)
+conn = open_kb(DB_PATH)
 c = conn.cursor()
 c.execute("""
     SELECT mk.name as manufacturer, m.name as model, m.id as model_id

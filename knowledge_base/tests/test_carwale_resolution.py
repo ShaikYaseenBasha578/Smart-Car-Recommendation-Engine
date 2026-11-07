@@ -106,7 +106,7 @@ def test_does_not_use_91wheels_alias(db):
 
 def test_verified_alias_fails_closed_on_fuel_or_transmission(db):
     # A VERIFIED CarWale alias pointing at a manual petrol variant must not win for an automatic / diesel name;
-    # a verified alias whose only conflict is price keeps the old resolved_with_warning behaviour.
+    # since 10I no alias is auto-accepted, not even a verified one whose only conflict is price.
     case = next(c for c in FX['cases'] if c['observation_id'] == 2820)
     make, model = slugs(case)
     target = db.execute("select v.id from variant v join model m on m.id=v.model_id join powertrain p on p.id=v.powertrain_id "
@@ -119,7 +119,7 @@ def test_verified_alias_fails_closed_on_fuel_or_transmission(db):
         assert vid != target
         price = db.execute('select price_ex_showroom from variant where id=?', (target,)).fetchone()[0]
         vid, status, _ = resolve_carwale_version(db, make, model, 'Zz Petrol Manual', 'zz-verified-alias', price=price + 1_000_000)
-        assert (vid, status) == (target, 'resolved_with_warning')
+        assert vid is None  # 10I: no alias is auto-accepted; this one also fails the price check
     finally:
         db.execute("delete from variant_alias where alias_name='zz-verified-alias'")
 
