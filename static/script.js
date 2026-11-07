@@ -397,7 +397,9 @@ function renderDetail(data, opts) {
             <div class="spec-groups">${specGroups}</div></section>
         <section class="detail-section"><h3>Safety</h3>${buildSafetySection(data)}</section>
         <section class="detail-section"><h3>Warranty</h3>${warranty ? specList(warranty.items) : ""}
-            <p class="detail-note">Warranty terms aren't in our verified data yet; check with the dealer.</p></section>
+            <p class="detail-note">${warranty && warranty.items.some(i => i.status === "ok")
+                ? "From the manufacturer's brochure. Confirm the terms with the dealer."
+                : "We couldn't verify this car's warranty from a brochure; check with the dealer."}</p></section>
         <footer class="detail-foot">
             ${buildDataStamp(data)}
             <div class="detail-actions">

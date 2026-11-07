@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "340fecedf60154d5ff175adfe1c3a3cee362bec79050a10fb274ffc9ed3c9cc1",
+  "catalogue_sha256": "7a46fefb4d905bb0fafa51cc89d76015a0f2f89fe052910a04dfadc3f6ec55b1",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -236,7 +236,7 @@
       "unverified": 368
     }
   },
-  "export_utc": "2026-11-06T15:18:21Z",
+  "export_utc": "2026-11-06T15:25:26Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "10K",
-  "kb_sha256": "017c90922d2cd1546eb203a00c217c29e196b9fc26dbf6ca045b5ec6b5b7275f",
+  "kb_latest_phase": "10L",
+  "kb_sha256": "b74b45469c46137ca795f70c4d55ad001181e9c40105cf310cd766702429ffc1",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
