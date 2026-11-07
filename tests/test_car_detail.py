@@ -120,7 +120,12 @@ def test_kmpl_not_applicable_on_cng():
     row = cng.iloc[0]
     d = get_car_detail(safe_slug(row["make"]), safe_slug(row["model"]), variant_id=int(row["variant_id"]))
     engine = {i["label"]: i for i in d["specs"][0]["items"]}
-    assert engine["Mileage (ARAI)"] == {"label": "Mileage (ARAI)", "value_display": None, "status": "not_applicable"}
+    assert engine["Mileage (ARAI)"] == {"label": "Mileage (ARAI)", "value_display": None, "status": "not_applicable",
+                                        "note": "Not applicable: CNG is rated in km/kg"}
+    known = cng[cng["mileage_km_per_kg"].notna()].iloc[0]
+    d = get_car_detail(safe_slug(known["make"]), safe_slug(known["model"]), variant_id=int(known["variant_id"]))
+    engine = {i["label"]: i for i in d["specs"][0]["items"]}
+    assert engine["CNG mileage (ARAI)"]["value_display"].endswith(" km/kg")
 
 
 def test_unverified_status_follows_unverified_fields():

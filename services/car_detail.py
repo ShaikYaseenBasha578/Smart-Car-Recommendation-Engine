@@ -121,6 +121,8 @@ def spec_item(row, col: str | None, label: str, kind: str) -> dict:
     value = row[col]
     if col == "mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
         value = None  # the KB's kmpl cell on CNG rows holds the CNG figure; not shown as kmpl
+    if col == "mileage_kmpl" and row["fuel_type"] == "cng":
+        return {"label": label, "value_display": None, "status": "not_applicable", "note": "Not applicable: CNG is rated in km/kg"}
     if _blank(value) or col in row["unverified_fields"]:
         return {"label": label, "value_display": None, "status": _status(row, col)}
     if kind == "bool":
