@@ -1,0 +1,13 @@
+arm	cache_create	cache_read	cells	correct	cost	input	invalid	is_error	missed	ms	output	page	parsed	qualifier_errors	recall	rep	review	total	truth_cells	turns	type	unknown	wrong
+extract	11668	6901	34	19	0.08946009999999999	4	0	False	0	24953	4209	syros_p7	1	0	1.0	1	{}	22782	19	5	text-layer grid	15	0
+extract	10441	8128	34	19	0.08081479999999999	4	0	False	0	22473	3823	syros_p7	1	0	1.0	2	{}	22396	19	5	text-layer grid	15	0
+verify	12392	7013	34	19	0.0907573	4	0	False	0	23035	4048	syros_p7	1	0	1.0	1	{'CORRECTED': 2}	23457	19	6	text-layer grid	15	0
+verify	13382	23401	34	19	0.0985701	6	0	False	0	23999	4269	syros_p7	1	0	1.0	2	{'CONFIRMED': 2}	41058	19	7	text-layer grid	15	0
+extract	13048	24802	63	28	0.1315942	6	0	False	0	42184	7691	victoris_p16	1	0	0.875	1	{}	45547	32	6	OCR / scrambled-layer page	31	4
+extract	12790	8129	84	28	0.1461209	4	0	False	0	48484	9414	victoris_p16	1	0	0.875	2	{}	30337	32	5	OCR / scrambled-layer page	31	4
+verify	16260	8353	63	32	0.1564133	4	0	False	0	47243	9053	victoris_p16	1	0	1.0	1	{'CONFIRMED': 15, 'CORRECTED': 2}	33670	32	6	OCR / scrambled-layer page	31	0
+verify	16548	28608	63	28	0.1658348	6	0	False	0	52130	9677	victoris_p16	1	0	0.875	2	{'CORRECTED': 7, 'CONFIRMED': 10}	54839	32	7	OCR / scrambled-layer page	31	4
+extract	9408	8128	57	16	0.1095528	4	0	False	0	36741	7110	venue_p20	1	0	1.0	1	{}	24650	16	5	tick-icon grid	41	0
+extract	9408	8128	57	16	0.10689280000000001	4	0	False	0	35705	6844	venue_p20	1	0	1.0	2	{}	24384	16	5	tick-icon grid	41	0
+verify	17037	8352	57	16	0.1648512	4	0	False	0	50120	9586	venue_p20	1	0	1.0	1	{'CONFIRMED': 38, 'CORRECTED': 1}	34979	16	6	tick-icon grid	41	0
+verify	17037	8352	57	16	0.1621612	4	0	False	0	48309	9317	venue_p20	1	0	1.0	2	{'CONFIRMED': 39}	34710	16	6	tick-icon grid	41	0

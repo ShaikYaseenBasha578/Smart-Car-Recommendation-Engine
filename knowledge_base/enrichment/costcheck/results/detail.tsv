@@ -1,0 +1,13 @@
+arm	field	got	page	qualifier	rep	truth	variant
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	1	1.0	zxi+ at adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	1	1.0	zxi+ (o) at adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	1	1.0	zxi+ at allgrip adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	1	1.0	zxi+ (o) at allgrip adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	2	1.0	zxi+ at adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	2	1.0	zxi+ (o) at adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	2	1.0	zxi+ at allgrip adas
+extract	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid only	2	1.0	zxi+ (o) at allgrip adas
+verify	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid	2	1.0	zxi+ at adas
+verify	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid	2	1.0	zxi+ (o) at adas
+verify	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid	2	1.0	zxi+ at allgrip adas
+verify	cruise_control	[0.0]	victoris_p16	MT & Strong Hybrid	2	1.0	zxi+ (o) at allgrip adas

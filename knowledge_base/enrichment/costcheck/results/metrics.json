@@ -1,0 +1,182 @@
+{
+ "overhead_baseline_total_tokens": 3282.0,
+ "overall": {
+  "ratio": 1.3093,
+  "saving_pct": -30.9,
+  "net_ratio": 1.3498,
+  "extract": {
+   "mean_total_tokens_summed": 85048.0,
+   "mean_output_tokens_summed": 19545.5,
+   "mean_net_tokens_summed": 75202.0,
+   "wall_s_mean_per_run": 35.09,
+   "cost_usd_mean_summed": 0.3322178,
+   "correct": 126,
+   "wrong": 8,
+   "missed": 0,
+   "unknown": 174,
+   "invalid": 0,
+   "qualifier_errors": 0,
+   "truth_cell_runs": 134,
+   "recall": 0.9403,
+   "runs": 6
+  },
+  "verify": {
+   "mean_total_tokens_summed": 111356.5,
+   "mean_output_tokens_summed": 22975.0,
+   "mean_net_tokens_summed": 101510.5,
+   "wall_s_mean_per_run": 40.806,
+   "cost_usd_mean_summed": 0.41929394999999997,
+   "correct": 130,
+   "wrong": 4,
+   "missed": 0,
+   "unknown": 174,
+   "invalid": 0,
+   "qualifier_errors": 0,
+   "truth_cell_runs": 134,
+   "recall": 0.9701,
+   "runs": 6
+  },
+  "conditions": {
+   "c1_tokens_le_60pct": false,
+   "c2_verify_wrong_zero": false,
+   "c3_recall_within_5pts": true,
+   "c4_qualifier_errors_le_extract": true
+  },
+  "all_met": false
+ },
+ "per_page": {
+  "syros_p7": {
+   "ratio": 1.428,
+   "saving_pct": -42.8,
+   "net_ratio": 1.5008,
+   "extract": {
+    "mean_total_tokens_summed": 22589.0,
+    "mean_output_tokens_summed": 4016.0,
+    "mean_net_tokens_summed": 19307.0,
+    "wall_s_mean_per_run": 23.713,
+    "cost_usd_mean_summed": 0.08513744999999999,
+    "correct": 38,
+    "wrong": 0,
+    "missed": 0,
+    "unknown": 30,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 38,
+    "recall": 1.0,
+    "runs": 2
+   },
+   "verify": {
+    "mean_total_tokens_summed": 32257.5,
+    "mean_output_tokens_summed": 4158.5,
+    "mean_net_tokens_summed": 28975.5,
+    "wall_s_mean_per_run": 23.517,
+    "cost_usd_mean_summed": 0.09466369999999999,
+    "correct": 38,
+    "wrong": 0,
+    "missed": 0,
+    "unknown": 30,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 38,
+    "recall": 1.0,
+    "runs": 2
+   },
+   "conditions": {
+    "c1_tokens_le_60pct": false,
+    "c2_verify_wrong_zero": true,
+    "c3_recall_within_5pts": true,
+    "c4_qualifier_errors_le_extract": true
+   },
+   "all_met": false
+  },
+  "victoris_p16": {
+   "ratio": 1.1664,
+   "saving_pct": -16.6,
+   "net_ratio": 1.1821,
+   "extract": {
+    "mean_total_tokens_summed": 37942.0,
+    "mean_output_tokens_summed": 8552.5,
+    "mean_net_tokens_summed": 34660.0,
+    "wall_s_mean_per_run": 45.334,
+    "cost_usd_mean_summed": 0.13885755,
+    "correct": 56,
+    "wrong": 8,
+    "missed": 0,
+    "unknown": 62,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 64,
+    "recall": 0.875,
+    "runs": 2
+   },
+   "verify": {
+    "mean_total_tokens_summed": 44254.5,
+    "mean_output_tokens_summed": 9365.0,
+    "mean_net_tokens_summed": 40972.5,
+    "wall_s_mean_per_run": 49.6865,
+    "cost_usd_mean_summed": 0.16112405000000002,
+    "correct": 60,
+    "wrong": 4,
+    "missed": 0,
+    "unknown": 62,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 64,
+    "recall": 0.9375,
+    "runs": 2
+   },
+   "conditions": {
+    "c1_tokens_le_60pct": false,
+    "c2_verify_wrong_zero": false,
+    "c3_recall_within_5pts": true,
+    "c4_qualifier_errors_le_extract": true
+   },
+   "all_met": false
+  },
+  "venue_p20": {
+   "ratio": 1.4212,
+   "saving_pct": -42.1,
+   "net_ratio": 1.4863,
+   "extract": {
+    "mean_total_tokens_summed": 24517.0,
+    "mean_output_tokens_summed": 6977.0,
+    "mean_net_tokens_summed": 21235.0,
+    "wall_s_mean_per_run": 36.223,
+    "cost_usd_mean_summed": 0.10822280000000001,
+    "correct": 32,
+    "wrong": 0,
+    "missed": 0,
+    "unknown": 82,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 32,
+    "recall": 1.0,
+    "runs": 2
+   },
+   "verify": {
+    "mean_total_tokens_summed": 34844.5,
+    "mean_output_tokens_summed": 9451.5,
+    "mean_net_tokens_summed": 31562.5,
+    "wall_s_mean_per_run": 49.2145,
+    "cost_usd_mean_summed": 0.1635062,
+    "correct": 32,
+    "wrong": 0,
+    "missed": 0,
+    "unknown": 82,
+    "invalid": 0,
+    "qualifier_errors": 0,
+    "truth_cell_runs": 32,
+    "recall": 1.0,
+    "runs": 2
+   },
+   "conditions": {
+    "c1_tokens_le_60pct": false,
+    "c2_verify_wrong_zero": true,
+    "c3_recall_within_5pts": true,
+    "c4_qualifier_errors_le_extract": true
+   },
+   "all_met": false
+  }
+ },
+ "decision": "ALL-CLAUDE"
+}
