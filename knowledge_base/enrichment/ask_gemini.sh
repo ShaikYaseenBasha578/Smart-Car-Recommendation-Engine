@@ -20,7 +20,7 @@ SCR="${ENRICH_SCRATCH:-$HOME/carrec_kb_scratch/enrich_flash}"
 CWD="$SCR/agy_cwd"
 CALLS="$SCR/calls"
 LOG="$SCR/conversation.log"
-CAP=80
+CAP=80; [ -n "${ENRICH_CAP:-}" ] && [ "$ENRICH_CAP" -lt 80 ] && CAP=$ENRICH_CAP   # a round may only lower the total cap
 AGY="$HOME/.local/bin/agy"
 SETTINGS='{"toolPermission":"strict","allowNonWorkspaceAccess":false,"enableTerminalSandbox":true}'
 
