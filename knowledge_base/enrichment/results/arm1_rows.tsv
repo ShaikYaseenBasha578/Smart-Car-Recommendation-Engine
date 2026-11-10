@@ -1,0 +1,36 @@
+row_id	call	page	model	source	printed_label	field	value	unit	quote	a_exact_quote	b_value_in_quote	c_label	status	quote_class	map_status	mapped_variants	verdict	verdict_diagnostic	truth_coverage	value_on_page
+007.1	007	d5a10fb1556e2ad77abd66a5747471bed3df5d2d_p7	Ertiga	ocr	Drive with a mileage of:	mileage_arai_kmpl	20.51	km/l	"Drive with a mileage of:
+20.51"	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+007.2	007	d5a10fb1556e2ad77abd66a5747471bed3df5d2d_p7	Ertiga	ocr	Drive with a mileage of:	mileage_arai_kmpl	20.3	km/l	20.30*	1	1	0	REJECTED	exact	NONE			UNATTRIBUTABLE	0/0	1
+007.3	007	d5a10fb1556e2ad77abd66a5747471bed3df5d2d_p7	Ertiga	ocr	Drive with a mileage of:	mileage_arai_km_per_kg	26.11	km/kg	26.11*	1	1	0	REJECTED	exact	NONE			UNATTRIBUTABLE	0/0	1
+006.1	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Fuel Efficiency	mileage_arai_kmpl	21.18	km/l	21.18 km/l (MT)	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.2	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Fuel Efficiency	mileage_arai_kmpl	21.06	km/l	21.06 km/l (AT)	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.3	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Fuel Efficiency	mileage_arai_kmpl	19.07	km/l	19.07 km/l (ALLGRIP AT)	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.4	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Fuel Efficiency	mileage_arai_km_per_kg	27.02	km/kg	27.02 k m/kg	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.5	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Fuel Efficiency	mileage_arai_kmpl	28.65	km/l	28.65 km/l (Strong Hybrid Petrol e-CVT)	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.6	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Cruise Control	cruise_control	0	bool	Cruise Control | -	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.7	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Paddle Shifters	paddle_shifters	0	bool	-	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.8	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Paddle Shifters	paddle_shifters	1	bool	6AT	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+006.9	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Adaptive Cruise Control with all Speed Following & Stop Keeping & Curve Speed Reduction (ACC)	cruise_control	0	bool	-	1	1	0	REJECTED	exact	NONE			UNATTRIBUTABLE	0/0	1
+006.10	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Adaptive Cruise Control with all Speed Following & Stop Keeping & Curve Speed Reduction (ACC)	cruise_control	1	bool	6AT	1	1	0	REJECTED	exact	NONE			UNATTRIBUTABLE	0/0	1
+006.11	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Drive with a mileage of:	mileage_arai_kmpl	21.18	km/l	"21.18
+km/l
+Petrol (MT"	0	1	0	REJECTED	relabelled	NONE			UNATTRIBUTABLE	0/0	1
+006.12	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Drive with a mileage of:	mileage_arai_kmpl	21.06	km/l	"21.06
+km/l
+Petrol (AT)"	0	1	0	REJECTED	relabelled	NONE			UNATTRIBUTABLE	0/0	1
+006.13	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Drive with a mileage of:	mileage_arai_km_per_kg	27.02	km/kg	"27.02
+km/kg"	1	1	0	REJECTED	exact	NONE			UNATTRIBUTABLE	0/0	1
+006.14	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Drive with a mileage of:	mileage_arai_kmpl	19.07	km/l	"19.07
+km/l
+Petrol (ALLORP AT"	0	1	0	REJECTED	relabelled	NONE			UNATTRIBUTABLE	0/0	1
+006.15	006	94f94973736c150efdf2cc5ae6c40845d8e856a3_p16	Victoris	ocr	Drive with a mileage of:	mileage_arai_kmpl	28.65	km/l	"28.65
+Strong Hybrid
+km/l"	0	1	0	REJECTED	relabelled	NONE			UNATTRIBUTABLE	0/0	1
+003.1	003	26706ff36f0263e155ea920e7fb0e8344643271b_p5	Dzire	ocr	Fuel Efficiency	mileage_arai_kmpl	24.79	km/l	Fuel Efficiency | 24.79 km/l MT 25.71 km/l AMT | 33.73 km/kg	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+003.2	003	26706ff36f0263e155ea920e7fb0e8344643271b_p5	Dzire	ocr	Fuel Efficiency	mileage_arai_kmpl	25.71	km/l	Fuel Efficiency | 24.79 km/l MT 25.71 km/l AMT | 33.73 km/kg	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+003.3	003	26706ff36f0263e155ea920e7fb0e8344643271b_p5	Dzire	ocr	Fuel Efficiency	mileage_arai_km_per_kg	33.73	km/kg	Fuel Efficiency | 24.79 km/l MT 25.71 km/l AMT | 33.73 km/kg	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+005.1	005	7622f531b207ff69ab9ae6e3844653594356dced_p7	Syros	text	Cruise Control with Manual Speed Limit Assist	cruise_control	1	bool	Cruise Control with Manual Speed Limit Assist	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+005.2	005	7622f531b207ff69ab9ae6e3844653594356dced_p7	Syros	text	Smartphone Wireless Charger	wireless_charging	1	bool	Smartphone Wireless Charger	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+004.1	004	5cbbf8b65224b23bb027ff078fe5e4721f793d25_p22	Altroz	text	Cruise control ***	cruise_control	1	bool	Cruise control ***	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1
+004.2	004	5cbbf8b65224b23bb027ff078fe5e4721f793d25_p22	Altroz	text	Wireless Smartphone Charger- Qi Support	wireless_charging	1	bool	Wireless Smartphone Charger- Qi Support	1	1	1	PASS	exact	NONE		UNATTRIBUTABLE	UNATTRIBUTABLE	0/0	1

@@ -1,0 +1,44 @@
+{
+ "arm": ".arm2",
+ "rows": 27,
+ "passing": 6,
+ "pass_rate": 0.2222,
+ "precision": 1.0,
+ "precision_attributable_only": 1.0,
+ "verdicts": {
+  "CORRECT": 6
+ },
+ "reject_reasons": {
+  "a1b1c0": 17,
+  "a0b1c1": 4
+ },
+ "quote_class": {
+  "exact": 23,
+  "relabelled": 4
+ },
+ "map_status_all": {
+  "TRIM": 15,
+  "MODEL": 9,
+  "NONE": 3
+ },
+ "unsure_labels": 1,
+ "wrong_values": 0,
+ "recall": 0.05,
+ "found": 2,
+ "found_model_level": 4,
+ "recall_text": "2/18",
+ "recall_ocr": "0/22",
+ "rejected_verdict_diagnostic": {
+  "CORRECT": 11,
+  "NO_TRUTH": 3,
+  "WRONG_VALUE_FOR_LABEL": 4,
+  "UNATTRIBUTABLE": 3
+ },
+ "calls": [
+  "012",
+  "011",
+  "008",
+  "010",
+  "009"
+ ]
+}

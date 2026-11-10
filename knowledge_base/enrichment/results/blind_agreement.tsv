@@ -1,0 +1,26 @@
+blind_id	row_id	arm	scorer_status	blind_status	scorer_verdict	blind_verdict	scorer_abc	blind_abc	agree	note
+B01	010.2	arm2	PASS	PASS	CORRECT	CORRECT	111	111	1	Row header of TABLE 1 HTX row; cell lists Smartphone Wireless Charger; HTX has it
+B02	006.11	arm1	REJECTED	REJECTED		-	010	010	1	Quote with line breaks (21.18 km/l Petrol (MT) not contiguous in page text
+B03	011.5	arm2	PASS	PASS	CORRECT	CORRECT	111	111	1	Label in quote; 28.65 km/l is the strong hybrid e-CVT figure
+B04	006.12	arm1	REJECTED	REJECTED		-	010	010	1	Quote (21.06 km/l Petrol (AT)) not contiguous in page text
+B05	005.1	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is a feature name
+B06	006.3	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is row header Fuel Efficiency (spec name)
+B07	005.2	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is a feature name
+B08	011.3	arm2	PASS	PASS	CORRECT	CORRECT	111	111	1	Label in quote; 19.07 km/l for ALLGRIP AT
+B09	006.14	arm1	REJECTED	REJECTED		-	010	010	1	Quote not contiguous in page text
+B10	011.4	arm2	REJECTED	REJECTED		-	110	110	1	Cell's column header (TABLE 1 col 3) is empty; PETROL/CNG is only part of the merged col 2 header, not in quote
+B11	006.6	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is a feature name; quote has stand-alone -
+B12	003.1	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is spec name Fuel Efficiency
+B13	006.2	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Row header Fuel Efficiency (spec name)
+B14	011.11	arm2	REJECTED	REJECTED		-	110	110	1	TABLE 2 first line (column headers) is FEATURE SPECIFICATIONS with empty cells; Zxi+ label is on line 2. If accepted: WRONG_VALUE_FOR_LABEL (paddles 6AT only)
+B15	010.1	arm2	PASS	PASS	CORRECT	CORRECT	111	111	1	Row header HTK+; cruise control listed outside Automatic Only list, so all HTK+
+B16	006.5	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Row header Fuel Efficiency (spec name)
+B17	006.8	arm1	PASS	REJECTED	UNATTRIBUTABLE	-	111	110	0	Row header is Keyless Entry Paddle Shifters, not Paddle Shifters; label not in quote
+B18	011.7	arm2	REJECTED	REJECTED		-	110	110	1	b via MT token; c fails as B14 (variant names on line 2 of TABLE 2). If accepted: WRONG_VALUE_FOR_LABEL (cruise MT & Strong Hybrid only, not AT)
+B19	003.3	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is spec name Fuel Efficiency
+B20	004.2	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is a feature name
+B21	003.2	arm1	PASS	PASS	UNATTRIBUTABLE	UNATTRIBUTABLE	111	111	1	Label is spec name Fuel Efficiency
+B22	012.3	arm2	REJECTED	REJECTED		-	110	110	1	Label not in quote and page has no [TABLE] structure (label is a nearby caption). If accepted: CORRECT
+B23	011.10	arm2	REJECTED	REJECTED		-	110	110	1	c fails as B14. If accepted: WRONG_VALUE_FOR_LABEL (paddles 6AT only)
+B24	011.16	arm2	REJECTED	REJECTED		-	011	011	1	Quote not contiguous in page text
+B25	011.15	arm2	REJECTED	REJECTED		-	110	110	1	Label UNSURE

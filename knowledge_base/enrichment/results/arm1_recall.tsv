@@ -1,0 +1,41 @@
+gold_id	source	pdf	field	variant	value	FOUND	found_row	FOUND_MODEL	model_row
+G01	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_kmpl	ZXi MT	20.51	0		0	
+G02	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_kmpl	ZXi+ MT	20.51	0		0	
+G03	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_kmpl	VXi AT	20.3	0		0	
+G04	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_kmpl	ZXi AT	20.3	0		0	
+G05	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_kmpl	ZXi+ AT	20.3	0		0	
+G06	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_km_per_kg	ZXi CNG	26.11	0		0	
+G07	ocr	maruti_suzuki_ertiga_brochure.pdf	mileage_arai_km_per_kg	VXi CNG	26.11	0		0	
+G08	ocr	maruti_suzuki_victoris_brochure.pdf	mileage_arai_kmpl	LXI MT	21.18	0		0	
+G09	ocr	maruti_suzuki_victoris_brochure.pdf	mileage_arai_kmpl	VXI AT	21.06	0		0	
+G10	ocr	maruti_suzuki_victoris_brochure.pdf	mileage_arai_kmpl	ZXI+ AT ALLGRIP ADAS	19.07	0		0	
+G11	ocr	maruti_suzuki_victoris_brochure.pdf	mileage_arai_kmpl	VXI Strong Hybrid e-CVT	28.65	0		0	
+G12	ocr	maruti_suzuki_victoris_brochure.pdf	mileage_arai_km_per_kg	LXI CNG MT	27.02	0		0	
+G13	ocr	maruti_suzuki_victoris_brochure.pdf	cruise_control	VXI AT	1	0		0	
+G14	ocr	maruti_suzuki_victoris_brochure.pdf	cruise_control	ZXI AT	1	0		0	
+G15	ocr	maruti_suzuki_victoris_brochure.pdf	cruise_control	ZXI+ AT ADAS	1	0		0	
+G16	ocr	maruti_suzuki_victoris_brochure.pdf	cruise_control	ZXI Strong Hybrid e-CVT	1	0		0	
+G17	ocr	maruti_suzuki_victoris_brochure.pdf	paddle_shifters	ZXI (O) MT	0	0		0	
+G18	ocr	maruti_suzuki_victoris_brochure.pdf	paddle_shifters	ZXI+ (O) MT	0	0		0	
+G19	ocr	maruti_suzuki_dzire_brochure.pdf	mileage_arai_kmpl	ZXi MT	24.79	0		0	
+G20	ocr	maruti_suzuki_dzire_brochure.pdf	mileage_arai_kmpl	ZXi AMT	25.71	0		0	
+G21	ocr	maruti_suzuki_dzire_brochure.pdf	mileage_arai_kmpl	VXi AMT	25.71	0		0	
+G22	ocr	maruti_suzuki_dzire_brochure.pdf	mileage_arai_km_per_kg	VXi CNG	33.73	0		0	
+G23	text	kia_syros_brochure.pdf	cruise_control	HTK+ Petrol DCT	1	0		0	
+G24	text	kia_syros_brochure.pdf	cruise_control	HTK+ Diesel Manual	1	0		0	
+G25	text	kia_syros_brochure.pdf	cruise_control	HTK+(O) Petrol Manual	1	0		0	
+G26	text	kia_syros_brochure.pdf	cruise_control	HTX Diesel Automatic	1	0		0	
+G27	text	kia_syros_brochure.pdf	cruise_control	HTE(O) Petrol Manual	0	0		0	
+G28	text	kia_syros_brochure.pdf	wireless_charging	HTK+ Petrol Manual	0	0		0	
+G29	text	kia_syros_brochure.pdf	wireless_charging	HTK+ Diesel Automatic	0	0		0	
+G30	text	kia_syros_brochure.pdf	wireless_charging	HTK+(O) Diesel Manual	0	0		0	
+G31	text	tata_altroz_brochure.pdf	cruise_control	Pure S	1	0		0	
+G32	text	tata_altroz_brochure.pdf	cruise_control	Pure Diesel	1	0		0	
+G33	text	tata_altroz_brochure.pdf	cruise_control	Accomplished S	1	0		0	
+G34	text	tata_altroz_brochure.pdf	cruise_control	Smart CNG	0	0		0	
+G35	text	tata_altroz_brochure.pdf	cruise_control	Pure AMT CNG	0	0		0	
+G36	text	tata_altroz_brochure.pdf	wireless_charging	Accomplished S	1	0		0	
+G37	text	tata_altroz_brochure.pdf	wireless_charging	Accomplished S Diesel	1	0		0	
+G38	text	tata_altroz_brochure.pdf	wireless_charging	Accomplished+ S DCA	1	0		0	
+G39	text	tata_altroz_brochure.pdf	wireless_charging	Smart	0	0		0	
+G40	text	tata_altroz_brochure.pdf	wireless_charging	Creative	0	0		0	
