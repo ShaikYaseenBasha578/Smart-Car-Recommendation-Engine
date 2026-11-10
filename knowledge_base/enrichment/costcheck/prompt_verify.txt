@@ -1,0 +1,3 @@
+TASK
+You are given candidate rows extracted from this page by a cheaper model (candidates.json; each row has an id, a trim label, the catalogue variants the label maps to, a field, a value, a unit, a qualifier and the quotes it used). The candidates may contain mistakes, or may have missed things.
+For each candidate row, mark CONFIRMED, REJECTED (with the reason) or CORRECTED (with the right value, variant or qualifier), checking the image. Check every qualifier explicitly. Then list any value on the page for these variants and fields that the candidates missed.

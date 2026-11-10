@@ -1,0 +1,145 @@
+{
+ "syros_p7": {
+  "type": "text-layer grid",
+  "pdf_sha1": "7622f531b207ff69ab9ae6e3844653594356dced",
+  "page": 7,
+  "flash_call": "018",
+  "fields": [
+   "cruise_control",
+   "wireless_charging"
+  ],
+  "variants": 17,
+  "candidates": 2,
+  "tiles": [
+   {
+    "file": "tile1.png",
+    "dpi": 140,
+    "px": [
+     1128,
+     1260
+    ],
+    "box": [
+     0,
+     0,
+     580,
+     648
+    ]
+   },
+   {
+    "file": "tile2.png",
+    "dpi": 140,
+    "px": [
+     1128,
+     1260
+    ],
+    "box": [
+     560,
+     0,
+     1140,
+     648
+    ]
+   },
+   {
+    "file": "tile3.png",
+    "dpi": 140,
+    "px": [
+     1112,
+     1260
+    ],
+    "box": [
+     1120,
+     0,
+     1692,
+     648
+    ]
+   }
+  ],
+  "page_text_sha1": "be754fa77a04da2be2f3c6e934739a6e41c85109",
+  "candidates_sha1": "87bdc1ce0a23fb8ebd8dd596a6cf93ec447995f7"
+ },
+ "victoris_p16": {
+  "type": "OCR / scrambled-layer page",
+  "pdf_sha1": "94f94973736c150efdf2cc5ae6c40845d8e856a3",
+  "page": 16,
+  "flash_call": "021",
+  "fields": [
+   "mileage_arai_kmpl",
+   "mileage_arai_km_per_kg",
+   "cruise_control",
+   "paddle_shifters"
+  ],
+  "variants": 21,
+  "candidates": 17,
+  "tiles": [
+   {
+    "file": "tile1.png",
+    "dpi": 150,
+    "px": [
+     1240,
+     1754
+    ],
+    "box": [
+     0,
+     0,
+     595.28,
+     841.89
+    ]
+   }
+  ],
+  "page_text_sha1": "10e65c39b7b3ab08b9f5af808094e4feac8347cd",
+  "candidates_sha1": "c74cf94b7c1f2515dbf278627aa623f82bea5cd7"
+ },
+ "venue_p20": {
+  "type": "tick-icon grid",
+  "pdf_sha1": "00eabf1c73ad06d076b7e3928d9ca54d9b4cb1c4",
+  "page": 20,
+  "flash_call": "013",
+  "fields": [
+   "cruise_control",
+   "paddle_shifters",
+   "wireless_charging"
+  ],
+  "variants": 19,
+  "candidates": 39,
+  "tiles": [
+   {
+    "file": "tile1.png",
+    "dpi": 100,
+    "px": [
+     1500,
+     1850
+    ],
+    "box": [
+     0,
+     0,
+     1080,
+     1332
+    ]
+   },
+   {
+    "file": "tile2.png",
+    "dpi": 115,
+    "px": [
+     1565,
+     767
+    ],
+    "stack": [
+     [
+      50,
+      85,
+      1030,
+      125
+     ],
+     [
+      50,
+      700,
+      1030,
+      1140
+     ]
+    ]
+   }
+  ],
+  "page_text_sha1": "bda35bbec805d3657d2bdce9e635945bc852097c",
+  "candidates_sha1": "fcec6ce625bdcffb21103192988815ee417bfc25"
+ }
+}

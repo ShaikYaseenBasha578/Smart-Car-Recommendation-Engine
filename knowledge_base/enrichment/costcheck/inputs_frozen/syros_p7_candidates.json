@@ -1,0 +1,34 @@
+[
+ {
+  "id": "018.1.1",
+  "trim_label": "HTK+",
+  "label_source": "ROW_HEADER",
+  "header_quote": "HTK+ [Features in addition to HTK(EX)]",
+  "mapped_variants": [
+   "HTK+ Petrol Manual",
+   "HTK+ Petrol DCT",
+   "HTK+ Diesel Manual",
+   "HTK+ Diesel Automatic"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "Cruise Control with Manual Speed Limit Assist"
+ },
+ {
+  "id": "018.2.1",
+  "trim_label": "HTX",
+  "label_source": "ROW_HEADER",
+  "header_quote": "HTX [Features in addition to HTK+ (O)]",
+  "mapped_variants": [
+   "HTX Petrol DCT",
+   "HTX Diesel Automatic"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "Smartphone Wireless Charger"
+ }
+]

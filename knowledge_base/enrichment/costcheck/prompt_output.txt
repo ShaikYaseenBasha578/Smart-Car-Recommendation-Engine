@@ -1,0 +1,9 @@
+OUTPUT (both tasks use this schema; reply with ONE JSON object and nothing else, no markdown fences):
+{"cells":[{"variant":"<name exactly as in variants.txt>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool>","qualifier":"<restriction printed with the value or its header, e.g. '6AT', 'DCT/AT only', '1.5 Diesel only', or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}],
+ "review":[{"candidate_id":"<id>","verdict":"CONFIRMED|REJECTED|CORRECTED","reason":"<short>"}]}
+Rules for "cells":
+- Give one cell for each catalogue variant and each listed field, except: mileage_arai_kmpl is for non-CNG variants only; mileage_arai_km_per_kg is for CNG variants only.
+- Features: value 1 if the page shows the feature fitted on that variant, 0 if shown absent. Apply restrictions: a feature marked "AT only" / "DCT/AT only" is 0 on manual variants and 1 (with the qualifier) on matching automatic variants; a feature restricted to certain engines is 1 only on those.
+- Mileage: the figure printed for that variant's gearbox/fuel; put gearbox or fuel restrictions in "qualifier".
+- If the page does not say, use value null and status NOT_ON_PAGE. Never guess.
+- For the extraction task, "review" must be []. For the verification task, "cells" is your FINAL answer after checking (confirmed, corrected and missed cells) and "review" has exactly one entry per candidate row.

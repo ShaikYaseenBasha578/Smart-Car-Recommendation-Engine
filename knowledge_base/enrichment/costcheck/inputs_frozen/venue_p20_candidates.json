@@ -1,0 +1,547 @@
+[
+ {
+  "id": "013.1.1",
+  "trim_label": "HX 2",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 2",
+  "mapped_variants": [
+   "HX2 1.2 Petrol MT",
+   "HX2 1.0 Turbo Petrol MT",
+   "HX2 1.5 Diesel MT"
+  ],
+  "field": "wireless_charging",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.2.1",
+  "trim_label": "HX 4",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 4",
+  "mapped_variants": [
+   "HX4 1.2 Petrol MT"
+  ],
+  "field": "wireless_charging",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.3.1",
+  "trim_label": "HX 5",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5",
+  "mapped_variants": [
+   "HX5 1.2 Petrol MT",
+   "HX5 1.0 Turbo Petrol MT",
+   "HX5 1.0 Turbo Petrol DCT",
+   "HX5 1.5 Diesel MT",
+   "HX5 1.5 Diesel AT"
+  ],
+  "field": "wireless_charging",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.4.1",
+  "trim_label": "HX 5 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5 Knight",
+  "mapped_variants": [],
+  "field": "wireless_charging",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.5.1",
+  "trim_label": "HX 5+",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5+",
+  "mapped_variants": [
+   "HX5+ 1.2 Petrol MT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.6.1",
+  "trim_label": "HX 6",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6",
+  "mapped_variants": [
+   "HX6 1.2 Petrol MT",
+   "HX6 1.0 Turbo Petrol DCT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.7.1",
+  "trim_label": "HX 6T",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T",
+  "mapped_variants": [
+   "HX6T 1.2 Petrol MT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.8.1",
+  "trim_label": "HX 6T Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T Knight",
+  "mapped_variants": [],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.9.1",
+  "trim_label": "HX 7",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 7",
+  "mapped_variants": [
+   "HX7 1.5 Diesel MT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.10.1",
+  "trim_label": "HX 8",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8",
+  "mapped_variants": [
+   "HX8 1.0 Turbo Petrol MT",
+   "HX8 1.0 Turbo Petrol DCT",
+   "HX8 1.5 Diesel AT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.11.1",
+  "trim_label": "HX 8 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8 Knight",
+  "mapped_variants": [],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.12.1",
+  "trim_label": "HX 10",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10",
+  "mapped_variants": [
+   "HX10 1.0 Turbo Petrol DCT",
+   "HX10 1.5 Diesel AT"
+  ],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.13.1",
+  "trim_label": "HX 10 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10 Knight",
+  "mapped_variants": [],
+  "field": "wireless_charging",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.14.1",
+  "trim_label": "HX 2",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 2",
+  "mapped_variants": [
+   "HX2 1.2 Petrol MT",
+   "HX2 1.0 Turbo Petrol MT",
+   "HX2 1.5 Diesel MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.15.1",
+  "trim_label": "HX 4",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 4",
+  "mapped_variants": [
+   "HX4 1.2 Petrol MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.16.1",
+  "trim_label": "HX 5",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5",
+  "mapped_variants": [
+   "HX5 1.0 Turbo Petrol DCT",
+   "HX5 1.5 Diesel AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "S^ - DCT/AT only",
+  "value_quote": "S^"
+ },
+ {
+  "id": "013.17.1",
+  "trim_label": "HX 5 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5 Knight",
+  "mapped_variants": [],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.18.1",
+  "trim_label": "HX 5+",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5+",
+  "mapped_variants": [
+   "HX5+ 1.2 Petrol MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.19.1",
+  "trim_label": "HX 6",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6",
+  "mapped_variants": [
+   "HX6 1.0 Turbo Petrol DCT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "S^ - DCT/AT only",
+  "value_quote": "S^"
+ },
+ {
+  "id": "013.20.1",
+  "trim_label": "HX 6T",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T",
+  "mapped_variants": [
+   "HX6T 1.2 Petrol MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.21.1",
+  "trim_label": "HX 6T Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T Knight",
+  "mapped_variants": [],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.22.1",
+  "trim_label": "HX 7",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 7",
+  "mapped_variants": [
+   "HX7 1.5 Diesel MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.23.1",
+  "trim_label": "HX 8",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8",
+  "mapped_variants": [
+   "HX8 1.0 Turbo Petrol DCT",
+   "HX8 1.5 Diesel AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "S^ - DCT/AT only",
+  "value_quote": "S^"
+ },
+ {
+  "id": "013.24.1",
+  "trim_label": "HX 8 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8 Knight",
+  "mapped_variants": [],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.25.1",
+  "trim_label": "HX 10",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10",
+  "mapped_variants": [
+   "HX10 1.0 Turbo Petrol DCT",
+   "HX10 1.5 Diesel AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.26.1",
+  "trim_label": "HX 10 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10 Knight",
+  "mapped_variants": [],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.27.1",
+  "trim_label": "HX 2",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 2",
+  "mapped_variants": [
+   "HX2 1.2 Petrol MT",
+   "HX2 1.0 Turbo Petrol MT",
+   "HX2 1.5 Diesel MT"
+  ],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.28.1",
+  "trim_label": "HX 4",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 4",
+  "mapped_variants": [
+   "HX4 1.2 Petrol MT"
+  ],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.29.1",
+  "trim_label": "HX 5",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5",
+  "mapped_variants": [
+   "HX5 1.0 Turbo Petrol MT",
+   "HX5 1.0 Turbo Petrol DCT",
+   "HX5 1.5 Diesel MT",
+   "HX5 1.5 Diesel AT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "S## - 1.0 Turbo Petrol & 1.5 Diesel only",
+  "value_quote": "S##"
+ },
+ {
+  "id": "013.30.1",
+  "trim_label": "HX 5 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5 Knight",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "1.5 DSL only",
+  "value_quote": "1.5 DSL only"
+ },
+ {
+  "id": "013.31.1",
+  "trim_label": "HX 5+",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 5+",
+  "mapped_variants": [
+   "HX5+ 1.2 Petrol MT"
+  ],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.32.1",
+  "trim_label": "HX 6",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6",
+  "mapped_variants": [
+   "HX6 1.0 Turbo Petrol DCT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "S^ - DCT/AT only",
+  "value_quote": "S^"
+ },
+ {
+  "id": "013.33.1",
+  "trim_label": "HX 6T",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T",
+  "mapped_variants": [
+   "HX6T 1.2 Petrol MT"
+  ],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.34.1",
+  "trim_label": "HX 6T Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 6T Knight",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "013.35.1",
+  "trim_label": "HX 7",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 7",
+  "mapped_variants": [
+   "HX7 1.5 Diesel MT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.36.1",
+  "trim_label": "HX 8",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8",
+  "mapped_variants": [
+   "HX8 1.0 Turbo Petrol MT",
+   "HX8 1.0 Turbo Petrol DCT",
+   "HX8 1.5 Diesel AT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.37.1",
+  "trim_label": "HX 8 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 8 Knight",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.38.1",
+  "trim_label": "HX 10",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10",
+  "mapped_variants": [
+   "HX10 1.0 Turbo Petrol DCT",
+   "HX10 1.5 Diesel AT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "Disclaimer: HX 10 will have Smart Cruise Control with Stop & Go (SCC with S&G) instead of Cruise control",
+  "value_quote": "S"
+ },
+ {
+  "id": "013.39.1",
+  "trim_label": "HX 10 Knight",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "HX 10 Knight",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "Disclaimer: HX 10 will have Smart Cruise Control with Stop & Go (SCC with S&G) instead of Cruise control",
+  "value_quote": "S"
+ }
+]

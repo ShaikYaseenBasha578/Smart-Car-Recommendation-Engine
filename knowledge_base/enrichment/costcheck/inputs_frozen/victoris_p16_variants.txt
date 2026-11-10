@@ -1,0 +1,21 @@
+LXI MT
+LXI CNG MT
+VXI MT
+VXI CNG MT
+VXI AT
+ZXI MT
+ZXI (O) MT
+ZXI CNG MT
+ZXI AT
+ZXI+ MT
+ZXI (O) AT
+ZXI+ (O) MT
+VXI Strong Hybrid e-CVT
+ZXI+ AT ADAS
+ZXI+ (O) AT ADAS
+ZXI Strong Hybrid e-CVT
+ZXI (O) Strong Hybrid e-CVT
+ZXI+ AT ALLGRIP ADAS
+ZXI+ (O) AT ALLGRIP ADAS
+ZXI+ Strong Hybrid e-CVT
+ZXI+ (O) Strong Hybrid e-CVT

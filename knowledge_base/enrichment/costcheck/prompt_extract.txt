@@ -1,0 +1,2 @@
+TASK
+Read the page image(s) and text. For every variant and every listed field, report the value printed for it, with unit, qualifier, and the exact header/line it comes from. If the page doesn't say, write NOT_ON_PAGE.

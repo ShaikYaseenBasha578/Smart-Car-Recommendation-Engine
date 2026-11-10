@@ -1,0 +1,6 @@
+You are working in a folder that contains only the files for this task. Use ONLY the Read tool, and read ONLY files in this folder (no shell, no writes, no web). Files:
+- page_text.txt: text extracted from one car-brochure page (may be scrambled, incomplete or lack tick marks);
+- tile1.png, tile2.png, ...: rendered images of the same page (read every tile that exists; the image is the authority when text and image differ);
+- variants.txt: the catalogue's variant names for this car model, one per line;
+- fields.txt: the fields to extract, one per line.
+Field meanings: mileage_arai_kmpl = fuel efficiency in km/l (unit "km/l"); mileage_arai_km_per_kg = CNG fuel efficiency in km/kg (unit "km/kg"); cruise_control, wireless_charging, paddle_shifters = feature fitted (value 1), shown as absent (value 0) (unit "bool").

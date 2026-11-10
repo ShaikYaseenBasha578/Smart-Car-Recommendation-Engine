@@ -1,0 +1,238 @@
+[
+ {
+  "id": "021.1.1",
+  "trim_label": "UNSURE",
+  "label_source": "ROW_HEADER",
+  "header_quote": "Fuel Efficiency",
+  "mapped_variants": [],
+  "field": "mileage_arai_kmpl",
+  "value": "21.18",
+  "unit": "km/l",
+  "qualifier": "MT",
+  "value_quote": "21.18 km/l (MT)"
+ },
+ {
+  "id": "021.2.1",
+  "trim_label": "UNSURE",
+  "label_source": "ROW_HEADER",
+  "header_quote": "Fuel Efficiency",
+  "mapped_variants": [],
+  "field": "mileage_arai_kmpl",
+  "value": "21.06",
+  "unit": "km/l",
+  "qualifier": "AT",
+  "value_quote": "21.06 km/l (AT)"
+ },
+ {
+  "id": "021.3.1",
+  "trim_label": "UNSURE",
+  "label_source": "ROW_HEADER",
+  "header_quote": "Fuel Efficiency",
+  "mapped_variants": [],
+  "field": "mileage_arai_kmpl",
+  "value": "19.07",
+  "unit": "km/l",
+  "qualifier": "ALLGRIP AT",
+  "value_quote": "19.07 km/l (ALLGRIP AT)"
+ },
+ {
+  "id": "021.4.1",
+  "trim_label": "UNSURE",
+  "label_source": "ROW_HEADER",
+  "header_quote": "Fuel Efficiency",
+  "mapped_variants": [],
+  "field": "mileage_arai_km_per_kg",
+  "value": "27.02",
+  "unit": "km/kg",
+  "qualifier": "",
+  "value_quote": "27.02 k m/kg"
+ },
+ {
+  "id": "021.5.1",
+  "trim_label": "UNSURE",
+  "label_source": "ROW_HEADER",
+  "header_quote": "Fuel Efficiency",
+  "mapped_variants": [],
+  "field": "mileage_arai_kmpl",
+  "value": "28.65",
+  "unit": "km/l",
+  "qualifier": "Strong Hybrid Petrol e-CVT",
+  "value_quote": "28.65 km/l (Strong Hybrid Petrol e-CVT)"
+ },
+ {
+  "id": "021.6.1",
+  "trim_label": "Lxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Lxi",
+  "mapped_variants": [
+   "LXI MT",
+   "LXI CNG MT"
+  ],
+  "field": "cruise_control",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "021.7.1",
+  "trim_label": "Vxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Vxi",
+  "mapped_variants": [
+   "VXI MT",
+   "VXI CNG MT",
+   "VXI AT",
+   "VXI Strong Hybrid e-CVT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": ""
+ },
+ {
+  "id": "021.8.1",
+  "trim_label": "Zxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi / Zxi (O)",
+  "mapped_variants": [
+   "ZXI MT",
+   "ZXI CNG MT",
+   "ZXI AT",
+   "ZXI Strong Hybrid e-CVT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": ""
+ },
+ {
+  "id": "021.9.1",
+  "trim_label": "Zxi (O)",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi / Zxi (O)",
+  "mapped_variants": [
+   "ZXI (O) MT",
+   "ZXI (O) AT",
+   "ZXI (O) Strong Hybrid e-CVT"
+  ],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": ""
+ },
+ {
+  "id": "021.10.1",
+  "trim_label": "Zxi+",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi+ / Zxi+ (O)",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "MT & Strong Hybrid",
+  "value_quote": "(MT & Strong Hybrid)"
+ },
+ {
+  "id": "021.11.1",
+  "trim_label": "Zxi+ (O)",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi+ / Zxi+ (O)",
+  "mapped_variants": [],
+  "field": "cruise_control",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "MT & Strong Hybrid",
+  "value_quote": "(MT & Strong Hybrid)"
+ },
+ {
+  "id": "021.12.1",
+  "trim_label": "Lxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Lxi",
+  "mapped_variants": [
+   "LXI MT",
+   "LXI CNG MT"
+  ],
+  "field": "paddle_shifters",
+  "value": "0",
+  "unit": "bool",
+  "qualifier": "",
+  "value_quote": "-"
+ },
+ {
+  "id": "021.13.1",
+  "trim_label": "Vxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Vxi",
+  "mapped_variants": [
+   "VXI AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "6AT",
+  "value_quote": "6AT"
+ },
+ {
+  "id": "021.14.1",
+  "trim_label": "Zxi",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi / Zxi (O)",
+  "mapped_variants": [
+   "ZXI AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "6AT",
+  "value_quote": "6AT"
+ },
+ {
+  "id": "021.15.1",
+  "trim_label": "Zxi (O)",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi / Zxi (O)",
+  "mapped_variants": [
+   "ZXI (O) AT"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "6AT",
+  "value_quote": "6AT"
+ },
+ {
+  "id": "021.16.1",
+  "trim_label": "Zxi+",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi+ / Zxi+ (O)",
+  "mapped_variants": [
+   "ZXI+ AT ADAS",
+   "ZXI+ AT ALLGRIP ADAS"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "6AT",
+  "value_quote": "6AT"
+ },
+ {
+  "id": "021.17.1",
+  "trim_label": "Zxi+ (O)",
+  "label_source": "COLUMN_HEADER",
+  "header_quote": "Zxi+ / Zxi+ (O)",
+  "mapped_variants": [
+   "ZXI+ (O) AT ADAS",
+   "ZXI+ (O) AT ALLGRIP ADAS"
+  ],
+  "field": "paddle_shifters",
+  "value": "1",
+  "unit": "bool",
+  "qualifier": "6AT",
+  "value_quote": "6AT"
+ }
+]

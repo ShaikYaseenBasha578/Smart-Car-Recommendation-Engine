@@ -1,0 +1,19 @@
+HX2 1.2 Petrol MT
+HX2 1.0 Turbo Petrol MT
+HX4 1.2 Petrol MT
+HX5 1.2 Petrol MT
+HX5 1.0 Turbo Petrol MT
+HX2 1.5 Diesel MT
+HX5+ 1.2 Petrol MT
+HX6 1.2 Petrol MT
+HX6T 1.2 Petrol MT
+HX5 1.0 Turbo Petrol DCT
+HX5 1.5 Diesel MT
+HX5 1.5 Diesel AT
+HX8 1.0 Turbo Petrol MT
+HX6 1.0 Turbo Petrol DCT
+HX7 1.5 Diesel MT
+HX8 1.0 Turbo Petrol DCT
+HX8 1.5 Diesel AT
+HX10 1.0 Turbo Petrol DCT
+HX10 1.5 Diesel AT
