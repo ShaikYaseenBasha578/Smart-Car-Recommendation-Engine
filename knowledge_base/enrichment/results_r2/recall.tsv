@@ -1,0 +1,81 @@
+gold_id	pdf	page	source	layout	field	variant	value	FOUND	row
+G01	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_kmpl	ZXi MT	20.51	0	
+G02	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_kmpl	ZXi+ MT	20.51	0	
+G03	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_kmpl	VXi AT	20.3	0	
+G04	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_kmpl	ZXi AT	20.3	0	
+G05	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_kmpl	ZXi+ AT	20.3	0	
+G06	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_km_per_kg	ZXi CNG	26.11	0	
+G07	maruti_suzuki_ertiga_brochure.pdf	7	ocr	spec	mileage_arai_km_per_kg	VXi CNG	26.11	0	
+G08	maruti_suzuki_victoris_brochure.pdf	16	ocr	spec	mileage_arai_kmpl	LXI MT	21.18	0	
+G09	maruti_suzuki_victoris_brochure.pdf	16	ocr	spec	mileage_arai_kmpl	VXI AT	21.06	0	
+G10	maruti_suzuki_victoris_brochure.pdf	16	ocr	spec	mileage_arai_kmpl	ZXI+ AT ALLGRIP ADAS	19.07	0	
+G11	maruti_suzuki_victoris_brochure.pdf	16	ocr	spec	mileage_arai_kmpl	VXI Strong Hybrid e-CVT	28.65	0	
+G12	maruti_suzuki_victoris_brochure.pdf	16	ocr	spec	mileage_arai_km_per_kg	LXI CNG MT	27.02	0	
+G13	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	VXI AT	1	0	
+G14	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI AT	1	0	
+G15	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI+ AT ADAS	1	0	
+G16	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI Strong Hybrid e-CVT	1	0	
+G17	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	paddle_shifters	ZXI (O) MT	0	0	
+G18	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	paddle_shifters	ZXI+ (O) MT	0	0	
+G19	maruti_suzuki_dzire_brochure.pdf	5	ocr	spec	mileage_arai_kmpl	ZXi MT	24.79	1	014.4.1
+G20	maruti_suzuki_dzire_brochure.pdf	5	ocr	spec	mileage_arai_kmpl	ZXi AMT	25.71	0	
+G21	maruti_suzuki_dzire_brochure.pdf	5	ocr	spec	mileage_arai_kmpl	VXi AMT	25.71	0	
+G22	maruti_suzuki_dzire_brochure.pdf	5	ocr	spec	mileage_arai_km_per_kg	VXi CNG	33.73	1	014.8.1
+G23	kia_syros_brochure.pdf	7	text	list	cruise_control	HTK+ Petrol DCT	1	0	
+G24	kia_syros_brochure.pdf	7	text	list	cruise_control	HTK+ Diesel Manual	1	0	
+G25	kia_syros_brochure.pdf	7	text	list	cruise_control	HTK+(O) Petrol Manual	1	0	
+G26	kia_syros_brochure.pdf	7	text	list	cruise_control	HTX Diesel Automatic	1	0	
+G27	kia_syros_brochure.pdf	7	text	list	cruise_control	HTE(O) Petrol Manual	0	0	
+G28	kia_syros_brochure.pdf	7	text	list	wireless_charging	HTK+ Petrol Manual	0	0	
+G29	kia_syros_brochure.pdf	7	text	list	wireless_charging	HTK+ Diesel Automatic	0	0	
+G30	kia_syros_brochure.pdf	7	text	list	wireless_charging	HTK+(O) Diesel Manual	0	0	
+G31	tata_altroz_brochure.pdf	22	text	list	cruise_control	Pure S	1	0	
+G32	tata_altroz_brochure.pdf	22	text	list	cruise_control	Pure Diesel	1	0	
+G33	tata_altroz_brochure.pdf	22	text	list	cruise_control	Accomplished S	1	0	
+G34	tata_altroz_brochure.pdf	22	text	list	cruise_control	Smart CNG	0	0	
+G35	tata_altroz_brochure.pdf	22	text	list	cruise_control	Pure AMT CNG	0	0	
+G36	tata_altroz_brochure.pdf	22	text	list	wireless_charging	Accomplished S	1	0	
+G37	tata_altroz_brochure.pdf	22	text	list	wireless_charging	Accomplished S Diesel	1	0	
+G38	tata_altroz_brochure.pdf	22	text	list	wireless_charging	Accomplished+ S DCA	1	0	
+G39	tata_altroz_brochure.pdf	22	text	list	wireless_charging	Smart	0	0	
+G40	tata_altroz_brochure.pdf	22	text	list	wireless_charging	Creative	0	0	
+G41	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI+ Strong Hybrid e-CVT	1	0	
+G42	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI (O) AT	1	0	
+G43	maruti_suzuki_victoris_brochure.pdf	16	ocr	matrix	cruise_control	ZXI+ (O) AT ADAS	1	0	
+G44	kia_syros_brochure.pdf	7	text	list	cruise_control	HTK+(O) Diesel Automatic	1	0	
+G45	kia_syros_brochure.pdf	7	text	list	wireless_charging	HTK+(O) Diesel Automatic	0	0	
+G46	hyundai_venue_brochure.pdf	20	ocr	matrix	paddle_shifters	HX5 1.5 Diesel MT	0	0	
+G47	hyundai_venue_brochure.pdf	20	ocr	matrix	cruise_control	HX4 1.2 Petrol MT	0	0	
+G48	hyundai_venue_brochure.pdf	20	ocr	matrix	cruise_control	HX5 1.2 Petrol MT	0	0	
+G49	hyundai_venue_brochure.pdf	20	ocr	matrix	cruise_control	HX8 1.0 Turbo Petrol MT	1	0	
+G50	hyundai_venue_brochure.pdf	20	ocr	matrix	cruise_control	HX6 1.0 Turbo Petrol DCT	1	1	013.32.1
+G51	hyundai_venue_brochure.pdf	20	ocr	matrix	wireless_charging	HX4 1.2 Petrol MT	0	0	
+G52	hyundai_venue_brochure.pdf	20	ocr	matrix	wireless_charging	HX5+ 1.2 Petrol MT	1	0	
+G53	hyundai_venue_brochure.pdf	20	ocr	matrix	wireless_charging	HX8 1.0 Turbo Petrol MT	1	0	
+G54	hyundai_venue_brochure.pdf	20	ocr	matrix	wireless_charging	HX10 1.5 Diesel AT	1	0	
+G55	volkswagen_taigun_brochure.pdf	10	ocr	matrix	paddle_shifters	GT Line Petrol 1.0L Turbo Manual	0	0	
+G56	volkswagen_taigun_brochure.pdf	10	ocr	matrix	cruise_control	Highline Petrol 1.0L Turbo Manual	0	0	
+G57	volkswagen_taigun_brochure.pdf	10	ocr	matrix	cruise_control	Highline Petrol 1.0L Turbo Automatic (TC)	1	1	022.9.1
+G58	volkswagen_taigun_brochure.pdf	10	ocr	matrix	cruise_control	Comfortline Petrol 1.0L Turbo Manual	0	0	
+G59	volkswagen_taigun_brochure.pdf	10	ocr	matrix	cruise_control	GT Line Petrol 1.0L Turbo Automatic (TC)	1	1	022.13.1
+G60	volkswagen_taigun_brochure.pdf	10	ocr	matrix	cruise_control	GT Plus Chrome Petrol 1.5L Turbo Automatic (DCT)	1	0	
+G61	Hyundai_Creta_Brochure_Official.pdf	14	ocr	matrix	paddle_shifters	EX Diesel 1.5L Turbo Manual	0	0	
+G62	Hyundai_Creta_Brochure_Official.pdf	14	ocr	matrix	paddle_shifters	SX Premium Petrol 1.5L Manual	0	0	
+G63	Hyundai_Creta_Brochure_Official.pdf	14	ocr	matrix	paddle_shifters	SX Premium Diesel 1.5L Turbo Manual	0	0	
+G64	honda_city_brochure.pdf	13	text	spec	mileage_arai_kmpl	V CVT	17.97	0	
+G65	honda_city_brochure.pdf	13	text	spec	mileage_arai_kmpl	ZX CVT	17.97	0	
+G66	honda_city_brochure.pdf	13	text	spec	mileage_arai_kmpl	ZX MT	17.77	0	
+G67	honda_city_brochure.pdf	13	text	spec	mileage_arai_kmpl	ZX+ MT	17.77	0	
+G68	honda_amaze_brochure.pdf	27	text	spec	mileage_arai_kmpl	ZX MT	18.65	0	
+G69	honda_amaze_brochure.pdf	27	text	spec	mileage_arai_kmpl	V CVT	19.46	0	
+G70	honda_amaze_brochure.pdf	27	text	spec	mileage_arai_kmpl	ZX CVT	19.46	0	
+G71	tata_harrier_brochure.pdf	18	text	list	cruise_control	Diesel Pure X MT	1	0	
+G72	tata_harrier_brochure.pdf	18	text	list	cruise_control	Diesel Adventure X Plus AT	1	0	
+G73	tata_harrier_brochure.pdf	18	text	list	cruise_control	Diesel Fearless X MT	1	0	
+G74	tata_harrier_brochure.pdf	18	text	list	cruise_control	Diesel Pure X AT	1	0	
+G75	tata_harrier_brochure.pdf	18	text	list	cruise_control	Petrol Fearless Ultra MT	1	0	
+G76	tata_harrier_brochure.pdf	19	text	list	wireless_charging	Diesel Smart MT	0	0	
+G77	tata_harrier_brochure.pdf	19	text	list	wireless_charging	Diesel Pure X AT	0	0	
+G78	tata_harrier_brochure.pdf	19	text	list	wireless_charging	Diesel Fearless X MT	1	0	
+G79	tata_harrier_brochure.pdf	19	text	list	wireless_charging	Diesel Fearless X AT	1	0	
+G80	tata_harrier_brochure.pdf	19	text	list	wireless_charging	Diesel Fearless Ultra MT	1	0	

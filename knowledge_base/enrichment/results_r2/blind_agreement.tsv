@@ -1,0 +1,31 @@
+blind_id	row_id	scorer_status	blind_status	scorer_verdict	blind_verdict	scorer_abcde	blind_abcde	agree	note
+B01	021.3.1	REJECTED	REJECTED		-	11001	11001	1	variant_label UNSURE
+B02	021.1.1	REJECTED	REJECTED		-	11001	11001	1	variant_label UNSURE
+B03	021.13.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	Vxi AT: Paddle Shifters row shows 6AT
+B04	022.13.1	PASS	PASS	CORRECT	CORRECT	11111	11111	1	GT Line TC: cruise shows (AT only)
+B05	018.2.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HTX Diesel AT + Petrol DCT: Smartphone Wireless Charger listed under HTX
+B06	013.38.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HX10 DCT + Diesel AT: cruise S; disclaimer says SCC with Stop&Go, which is still cruise control
+B07	015.2.1	REJECTED	REJECTED		-	11001	11001	1	variant_label UNSURE, header_quote empty
+B08	022.6.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	GT Line TC: paddle shows (AT only)
+B09	014.8.1	PASS	PASS	CORRECT	CORRECT	11111	11111	1	VXi CNG: CNG column 33.73 km/kg
+B10	013.9.1	REJECTED	PASS		CORRECT	11110	11111	0	HX7 Diesel MT: wireless charger row S under HX 7; e read on linked spans only
+B11	020.1.1	REJECTED	REJECTED		-	11101	11101	1	d: Wireless Charger sits in the FEARLESS X column, not FEARLESS X +
+B12	021.2.1	REJECTED	REJECTED		-	11001	11001	1	variant_label UNSURE
+B13	013.23.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HX8 DCT + Diesel AT (qualifier DCT/AT): paddle S^
+B14	014.6.1	REJECTED	REJECTED		-	11101	11101	1	d: ZXI+ header box does not overlap the 24.79 value box horizontally
+B15	022.9.1	PASS	PASS	CORRECT	CORRECT	11111	11111	1	Highline TC: cruise shows (AT only)
+B16	023.4.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	"S(O) Diesel AT (TC) by the trim rule (S(O) Petrol CVT trims to ""S (O) Speed""): paddle S*"
+B17	013.19.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HX6 DCT (qualifier DCT/AT): paddle S^
+B18	021.16.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	ZXI+ AT ADAS + ALLGRIP (6AT): paddle 6AT
+B19	023.7.1	PASS	PASS	AMBIGUOUS	AMBIGUOUS	11111	11111	1	trim rule leaves Speed in SX Premium CVT names, so SX Premium = manual variants only; qualifier IVT/AT/DCT leaves none
+B20	024.7.1	REJECTED	REJECTED		-	11001	11001	1	c: header_quote not in page text (header split across text lines)
+B21	021.15.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	ZXI (O) AT: paddle 6AT
+B22	013.16.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HX5 DCT + Diesel AT (qualifier DCT/AT): paddle S^
+B23	021.14.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	ZXI AT: paddle 6AT
+B24	013.29.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	HX5 Turbo DCT/MT + Diesel AT/MT (qualifier): cruise S##
+B25	022.11.1	PASS	REJECTED	UNKNOWN	-	11111	11110	0	"e: Topline column also holds ""● (AT only)"" (paddle row) and qualifier is empty"
+B26	022.12.1	REJECTED	REJECTED		-	11101	11100	1	d: GT Plus / Chrome header split over two lines, no trim occurrence
+B27	021.17.1	PASS	PASS	UNKNOWN	CORRECT	11111	11111	1	ZXI+ (O) AT ADAS + ALLGRIP (6AT): paddle 6AT
+B28	014.9.1	PASS	PASS	CORRECT	CORRECT	11111	11111	1	ZXi CNG: CNG column 33.73 km/kg
+B29	014.4.1	PASS	PASS	CORRECT	CORRECT	11111	11111	1	ZXi MT: Petrol 24.79 km/l MT
+B30	013.34.1	REJECTED	REJECTED		-	11100	11100	1	"d: ""HX 6T Knight"" header split over two OCR rows; not a catalogue trim"
