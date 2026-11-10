@@ -46,8 +46,10 @@ def run(db, phase, bro_table, cells, expect_counts=None, quarantine_contradicted
                 n["confirmed"] += 1
             path, sha1 = bro_table[x["bro"]]
             name = one("select full_name from variant where id=?", vid)[0]
-            payload = json.dumps({"phase": phase, "method": "human-verified brochure read, page rendered and read", "pdf_path": f"knowledge_base/sources/oem/{path}",
-                                  "pdf_sha1": sha1, "page": x["page"], "printed": x["printed"], "variant": name, "fields": {col: x["new"]}}, sort_keys=True)
+            pl = {"phase": phase, "method": x.get("method", "human-verified brochure read, page rendered and read"), "pdf_path": f"knowledge_base/sources/oem/{path}",
+                  "pdf_sha1": sha1, "page": x["page"], "printed": x["printed"], "variant": name, "fields": {col: x["new"]}}
+            if x.get("qualifier"): pl["qualifier"] = x["qualifier"]
+            payload = json.dumps(pl, sort_keys=True)
             if not one("select count(*) from source_observation where source_id=? and resolved_variant_id=? and raw_payload=?", OEM_SOURCE_ID, vid, payload)[0]:
                 oid = c.execute("insert into source_observation(source_id,raw_name,raw_payload,source_url,extraction_method,resolved_variant_id,resolution_status) values (?,?,?,?,?,?,'resolved')",
                                 (OEM_SOURCE_ID, name, payload, "offline_brochure", method, vid)).lastrowid; n["obs"] += 1
