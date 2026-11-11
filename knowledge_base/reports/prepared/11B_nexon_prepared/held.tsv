@@ -1,0 +1,29 @@
+vid	variant	field	cls	reason
+73	Smart Petrol 1.2L Turbo 5 Speed Manual	paddle_shifters	ABSENT_NOT_SHOWN	ABSENT_NOT_SHOWN
+75	Smart CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	ABSENT_NOT_SHOWN	ABSENT_NOT_SHOWN
+84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	PAGE_CONFLICT	PAGE_CONFLICT
+88	Creative Petrol 1.2L Turbo 6 Speed Manual	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+101	Creative Diesel 1.5L Turbo 6 Speed Manual	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	cruise_control	FOOTNOTE_REVIEW	0 rests on a footnote: Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA

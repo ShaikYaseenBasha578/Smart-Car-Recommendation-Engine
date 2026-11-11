@@ -113,18 +113,26 @@ def prep(a):
         meth = meth[0] if meth else 'text'
         txtf = f'{idx}/{sha}/p{pn}.txt' if meth == 'text' else f'{idx}/{sha}/p{pn}.ocr.txt'
         text = open(txtf).read()
+        if meth == 'text+ocr': text = open(f'{idx}/{sha}/p{pn}.txt').read() + '\n\n----- OCR of the same page -----\n' + text
         boxes = tiles_for(w, h)
+        # token saver: a text-layer page that never mentions a field's keyword cannot show it; skip that field for this page.
+        # Pages without a clean text layer (ocr, text+ocr) keep every field.
+        KW = {'mileage_arai_kmpl': r'km\s*/\s*l|kmpl|mileage|efficiency|arai', 'mileage_arai_km_per_kg': r'km\s*/\s*kg|mileage|efficiency|arai',
+              'cruise_control': r'cruise|\bscc\b|\bacc\b', 'wireless_charging': r'wireless\s+(?:smartphone\s+|phone\s+|mobile\s+|device\s+)?charg|\bqi\b',
+              'heads_up_display': r'head.?up|\bhud\b', 'ventilated_front_seats': r'ventilat|cooled\s+seat|seat\s+cool',
+              'paddle_shifters': r'paddle'}
+        pfields = fields if meth != 'text' else [f for f in fields if re.search(KW[f], text, re.I)]
         for arm in ('a',):
             d = f'{bd}/p{pn}/{arm}'; os.makedirs(d, exist_ok=True)
-            open(f'{d}/page_text.txt', 'w').write(text if meth == 'text' else f'(OCR text of a page without a clean text layer; may contain errors)\n{text}')
+            open(f'{d}/page_text.txt', 'w').write(text if meth == 'text' else f'(text of a page without a clean text layer: the layer may be scrambled and the OCR may contain errors)\n{text}')
             open(f'{d}/variants.txt', 'w').write('\n'.join(x[0] for x in vs) + '\n')
             open(f'{d}/variant_info.tsv', 'w').write('variant\tfuel\tgearbox\n' + '\n'.join(f'{x[0]}\t{x[1]}\t{x[2]}' for x in vs) + '\n')
-            open(f'{d}/fields.txt', 'w').write('\n'.join(fields) + '\n')
+            open(f'{d}/fields.txt', 'w').write('\n'.join(pfields) + '\n')
             for i, b in enumerate(boxes, 1):
                 s = DPI / 72
                 im = pg.render(scale=s).to_pil().crop(tuple(round(v * s) for v in b)).convert('RGB')
                 im.save(f'{d}/tile{i}.png')
-        man['pages'][pn] = dict(text_method=meth, size_pt=[round(w, 1), round(h, 1)], tile_boxes=[list(map(round, b)) for b in boxes])
+        man['pages'][pn] = dict(fields=pfields, text_method=meth, size_pt=[round(w, 1), round(h, 1)], tile_boxes=[list(map(round, b)) for b in boxes])
     json.dump(man, open(f'{bd}/manifest.json', 'w'), indent=1)
     print(json.dumps({p: len(v['tile_boxes']) for p, v in man['pages'].items()}), 'fields', fields, 'variants', len(vs))
 
@@ -169,7 +177,9 @@ def make_b(bd, man, sel_rows):
     import shutil
     for pn in man['pages']:
         rows = [r for r in sel_rows if r['page'] == pn]
-        d = f'{bd}/p{pn}/b'; shutil.rmtree(d, ignore_errors=True)
+        d = f'{bd}/p{pn}/b'
+        if os.path.exists(f'{d}/cells.json'): continue   # run b already done: keep its raw output
+        shutil.rmtree(d, ignore_errors=True)
         if not rows: continue
         os.makedirs(d)
         for f in os.listdir(f'{bd}/p{pn}/a'):

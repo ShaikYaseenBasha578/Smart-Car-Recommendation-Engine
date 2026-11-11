@@ -1,0 +1,319 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+38	73	Smart Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	73	Smart Petrol 1.2L Turbo 5 Speed Manual	paddle_shifters	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	SMART list has no paddle shifters; E-Shifter & Paddle Shifters* appears under SMART +
+38	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	75	Smart CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0					False	SMART list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	75	Smart CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		ABSENT_NOT_SHOWN	0					False	SMART list has no paddle shifters; E-Shifter & Paddle Shifters* appears under SMART +
+38	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0					False	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0					False	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	1					False	PURE + PS (Additional over Pure +S): Cruise Control◊
+38	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0					False	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	88	Creative Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	88	Creative Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0		0		True	True	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	1					False	PURE + PS (Additional over Pure +S): Cruise Control◊
+38	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	PAGE_CONFLICT	1					False	PURE + PS (Additional over Pure +S): Cruise Control◊
+38	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	1					False	PURE + PS (Additional over Pure +S): Cruise Control◊
+38	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS
+38	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	97	Creative Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	97	Creative Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	98	Creative CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+38	98	Creative CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	1					False	PURE + PS (Additional over Pure +S): Cruise Control◊
+38	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	101	Creative Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	101	Creative Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+38	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	105	Creative Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	105	Creative Diesel 1.5L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		NOT_ON_PAGE						False	
+38	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+38	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+38	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		NOT_ON_PAGE						False	
+38	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+38	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	NULL		NOT_ON_PAGE						False	
+38	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	paddle_shifters	NULL		NOT_ON_PAGE						False	
+38	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+38	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+38	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+39	73	Smart Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	73	Smart Petrol 1.2L Turbo 5 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	73	Smart Petrol 1.2L Turbo 5 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	75	Smart CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	75	Smart CNG 1.2L Turbo 6 Speed Manual	wireless_charging	NULL		FILL	0					False	Wireless Charger listed only under CREATIVE + PS
+39	75	Smart CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger listed only under CREATIVE + PS
+39	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	88	Creative Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	88	Creative Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	88	Creative Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	NULL		FILL	0					False	Wireless Charger listed only under CREATIVE + PS
+39	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	PAGE_CONFLICT	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); *Available in AMT / DCA
+39	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	97	Creative Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	97	Creative Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	97	Creative Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	98	Creative CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	98	Creative CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	98	Creative CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT	0	AMT / DCA only				False	Cruise Control* listed under CREATIVE (Additional over Pure +); not in lower tier
+39	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	101	Creative Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	101	Creative Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	101	Creative Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger
+39	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	105	Creative Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA
+39	105	Creative Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	105	Creative Diesel 1.5L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only under CREATIVE + PS
+39	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		FILL	0	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	wireless_charging	NULL		FILL	1		1		True	True	CREATIVE + PS: Wireless Charger
+39	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	CREATIVE + PS: Wireless Charger
+39	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	CREATIVE + PS: Wireless Charger (cumulative)
+39	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger
+39	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger
+39	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger
+39	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS
+39	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		FILL	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	wireless_charging	NULL		FILL	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	CREATIVE + PS: Wireless Charger (cumulative)
+39	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	NULL		FILL	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	wireless_charging	NULL		FILL	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	CORRECTION	0	AMT / DCA only	0	Available in AMT / DCA	True	True	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+39	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	cruise_control	UNVERIFIED	1	CONFIRM	1	AMT / DCA only				False	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA
+39	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	CREATIVE + PS: Wireless Charger (cumulative)
+39	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS + PS: Ventilated Driver & Co-Driver Seat
+40	73	Smart Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	74	Smart Plus Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	75	Smart CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	76	Smart Plus (S) Petrol 1.2L Turbo 5 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	77	Smart Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	78	Pure Plus Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	79	Smart Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	80	Smart Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	81	Pure Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	82	Smart Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	83	Smart Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	not available in CNG	0	Petrol & Diesel only	True	True	◊Cruise control is not available in CNG.
+40	84	Pure Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT						False	
+40	85	Pure Plus Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	86	Pure Plus CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	87	Pure Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	88	Creative Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	89	Pure Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	NULL		FILL	0	not available in CNG	0	Petrol & Diesel only	True	True	◊Cruise control is not available in CNG.
+40	90	Pure Plus Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	91	Pure Plus (PS) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT						False	
+40	92	Pure Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	93	Creative Plus (S) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	94	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	PAGE_CONFLICT	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	95	Pure Plus (PS) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	PAGE_CONFLICT						False	
+40	96	Pure Plus Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+40	97	Creative Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	98	Creative CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	99	Creative Plus (S) Petrol 1.2L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	100	Pure Plus (PS) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	PAGE_CONFLICT						False	
+40	101	Creative Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	102	Creative Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	103	Creative Plus (S) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	104	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	105	Creative Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	106	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	107	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		FILL	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	108	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	109	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+40	110	Creative Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	111	Creative Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	112	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	113	Fearless Plus (PS) Petrol 1.2L Turbo 6 Speed Manual Red Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	114	Creative Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	115	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dual Tone	cruise_control	NULL		FILL	0	not available in CNG	0	Petrol & Diesel only	True	True	◊Cruise control is not available in CNG.
+40	116	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	117	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	QUARANTINED	0	CONFIRM	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	118	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	cruise_control	NULL		FILL	0	not available in CNG				False	◊Cruise control is not available in CNG.
+40	119	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	120	Fearless Plus (PS) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	121	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	122	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	123	Fearless Plus A (PS) Petrol 1.2L Turbo Automatic (DCT) Red Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	124	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+40	125	Fearless Plus (PS) Diesel 1.5L Turbo Automatic (AMT) Dark Edition	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	

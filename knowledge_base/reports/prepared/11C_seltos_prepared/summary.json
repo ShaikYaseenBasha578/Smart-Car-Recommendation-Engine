@@ -1,0 +1,35 @@
+{
+ "cells": 240,
+ "unmapped": [],
+ "by_class": {
+  "FILL": 25,
+  "CONFIRM": 113,
+  "CORRECTION": 22,
+  "NOT_ON_PAGE": 40,
+  "ABSENT_NOT_SHOWN": 40,
+  "CONFLICT": 0,
+  "CONFIRM_V": 0,
+  "PAGE_CONFLICT": 0
+ },
+ "validated": 32,
+ "validated_agree": 32,
+ "selected": 32,
+ "page_columns": {
+  "10": {
+   "a": [
+    "HTE",
+    "HTK [In addition to HTE (O)]",
+    "HTX [In addition to HTK (O)]",
+    "GTX [In addition to HTX]",
+    "X-Line Styling Pack [X-Line/ X-Line (A)/ X-Line (O)]",
+    "HTE (O) [In addition to HTE] Convenience & Styling Pack",
+    "HTK (O) [In addition to HTK] Premium Pack",
+    "HTX (A) [In addition to HTX] ADAS Pack",
+    "GTX (A) [In addition to GTX] ADAS Pack",
+    "GTX (O) [In addition to GTX(A)] Hi-Tech Pack",
+    "Powertrain Options trims: HTE, HTE (O), HTK, HTK (O), HTX, HTX (A), GTX, X-Line, GTX (A), GTX (O), X-Line (A), X-Line (O)"
+   ],
+   "b": []
+  }
+ }
+}

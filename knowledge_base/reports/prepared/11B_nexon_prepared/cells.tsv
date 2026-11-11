@@ -1,0 +1,144 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+73	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+74	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+75	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART list has no cruise control; Cruise Control◊ appears only under PURE + PS		FILL
+76	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+77	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+78	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+79	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+80	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+81	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+82	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+83	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	SMART + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		FILL
+85	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+86	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+87	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+89	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		FILL
+90	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+92	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + S list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+96	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	38	PURE + list has no cruise control; Cruise Control◊ appears only under PURE + PS		CONFIRM
+73	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+73	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+74	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+74	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+75	wireless_charging		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		FILL
+75	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+76	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+76	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+77	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+77	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+78	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+78	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+79	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+79	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+80	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+80	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+81	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+81	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+82	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+82	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+83	wireless_charging		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		FILL
+83	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+84	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+84	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+85	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+85	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+86	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+86	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+87	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+87	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+88	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+88	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+89	wireless_charging		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		FILL
+89	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+90	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+90	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+91	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+91	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+92	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+92	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+93	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+93	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+94	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+94	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+95	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+95	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+96	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+96	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+97	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+97	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+97	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+98	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	CONFIRM
+98	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+98	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+99	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+99	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+99	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+100	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+100	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+101	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+101	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+102	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		CONFIRM
+102	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+103	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	CONFIRM
+103	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+103	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+104	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+104	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+105	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+105	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+105	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+106	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+106	wireless_charging	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Wireless Charger listed only under CREATIVE + PS		CONFIRM
+106	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+107	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	FILL
+107	wireless_charging		1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		FILL
+107	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+108	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	CONFIRM
+108	wireless_charging	0	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		CORRECTION
+108	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+109	wireless_charging	0	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CORRECTION
+109	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+110	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+110	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		CONFIRM
+110	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+111	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		CONFIRM
+111	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+112	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+112	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+113	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+113	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+114	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+114	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger		CONFIRM
+114	ventilated_front_seats	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Ventilated Driver & Co-Driver Seat listed only under FEARLESS + PS		CONFIRM
+115	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	FILL
+115	wireless_charging		1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		FILL
+115	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+116	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+116	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+117	cruise_control	0	0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	CONFIRM
+117	wireless_charging	0	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CORRECTION
+117	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+118	cruise_control		0	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	40	◊Cruise control is not available in CNG.	not available in CNG	FILL
+118	wireless_charging		1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		FILL
+118	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+119	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+119	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+119	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+120	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+120	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+121	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+121	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+121	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+122	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+122	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+122	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+123	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+123	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+123	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+124	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+124	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+124	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM
+125	cruise_control	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	Cruise Control* (CREATIVE, cumulative); *Disclaimer: Available in AMT / DCA	AMT / DCA only	CONFIRM
+125	wireless_charging	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	CREATIVE + PS: Wireless Charger (cumulative)		CONFIRM
+125	ventilated_front_seats	1	1	tata/nexon/latest/brochures/tata_nexon_brochure.pdf	4485b42444e6ec4ad332c34e53d3e4ec2c418820	39	FEARLESS + PS: Ventilated Driver & Co-Driver Seat	driver and co-driver	CONFIRM

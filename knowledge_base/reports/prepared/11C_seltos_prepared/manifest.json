@@ -1,0 +1,50 @@
+{
+ "pdf": "kia/seltos/latest/brochures/kia_seltos_brochure.pdf",
+ "pdf_sha1": "c254b2744cf6be5b8e91fe02e90e00e4696aa70c",
+ "model_id": 9,
+ "dpi": 140,
+ "pdf_meta": {
+  "Title": "",
+  "Producer": "Adobe Acrobat 26.1.21691",
+  "CreationDate": "D:20260629162644+05'30'",
+  "ModDate": "D:20260629163127+05'30'"
+ },
+ "prompt_sha1": "df36e651c582ac76385aa0681a149a4fe410768e",
+ "pages": {
+  "10": {
+   "fields": [
+    "mileage_arai_kmpl",
+    "cruise_control",
+    "wireless_charging",
+    "heads_up_display",
+    "ventilated_front_seats",
+    "paddle_shifters"
+   ],
+   "text_method": "text+ocr",
+   "size_pt": [
+    1692.3,
+    648.3
+   ],
+   "tile_boxes": [
+    [
+     0,
+     0,
+     580,
+     648
+    ],
+    [
+     560,
+     0,
+     1140,
+     648
+    ],
+    [
+     1120,
+     0,
+     1692,
+     648
+    ]
+   ]
+  }
+ }
+}

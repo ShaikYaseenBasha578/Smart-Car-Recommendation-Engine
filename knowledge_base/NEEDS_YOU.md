@@ -48,6 +48,17 @@ Empty cells among the 812 base variants: `drive_modes` 532, `fuel_tank_litres` 8
 - **Option A (recommended):** add `drive_modes` and `fuel_tank_litres` to the loop's scope in a later run: both are printed in most brochures' spec tables.
 - **Option B:** leave them.
 
+### N10. Nexon cruise control: which cars does "*Disclaimer: Available in AMT / DCA" cover? (G1)
+Nexon brochure p39 lists "Cruise Control*" under Creative, with a page-bottom "*Disclaimer: Available in AMT / DCA" that also serves other starred lines. Both extraction runs read it as "cruise control only on AMT/DCA", which would flip 10 manual cars from yes to no (plus 1 zero fill). The page does not tie the asterisk to the line. P6 (unclear is not invalid): not written. The harness now holds any 0 that rests only on a footnote.
+- **Option A (recommended):** leave those 11 cells as they are and check them against the Nexon iCNG/variant price sheet when one is on disk.
+- **Option B:** accept the AMT/DCA-only reading and write the 0s.
+- **Option C:** you tell me which items the asterisk covers.
+
+### N11. Seltos brochure shows trims the KB lacks (G1)
+Seltos p10 prints GTX (O) [Hi-Tech Pack, with Head-Up Display] and X-Line (O); the KB has neither. Adding variants is ingestion (G3), so I only wrote cells for trims the KB has. The 40 head-up-display cells stay unknown. 
+- **Option A (recommended):** note it for the re-ingestion plan; no action now.
+- **Option B:** add the two trims by hand from the brochure under a separate approved phase.
+
 ### N3. Out of this goal; need your input or ingestion
 - Resuming 10D.
 - GNCAP ingestion.

@@ -1,0 +1,161 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+167	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+168	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+169	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+170	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+171	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+172	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+173	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+174	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+175	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+176	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+177	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only); HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+178	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+179	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go; HTE: Cruise Control		CONFIRM
+180	cruise_control	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CORRECTION
+181	cruise_control	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go; HTE: Cruise Control		CORRECTION
+182	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+183	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+184	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+185	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+186	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+187	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only)		CONFIRM
+188	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+189	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go		CONFIRM
+190	cruise_control	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CORRECTION
+191	cruise_control	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go		CORRECTION
+192	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+193	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+194	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+195	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+196	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+197	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+198	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+199	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+200	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+201	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+202	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only)		CONFIRM
+203	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+204	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go		CONFIRM
+205	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE: Cruise Control with Manual Speed Limit Assist		CONFIRM
+206	cruise_control	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go		CONFIRM
+167	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack; not in HTE list		CONFIRM
+168	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack		CONFIRM
+169	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack		CONFIRM
+170	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK [In addition to HTE (O)] list has no wireless charger; it is in HTK (O) Premium Pack		CONFIRM
+171	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK [In addition to HTE (O)] list has no wireless charger; it is in HTK (O) Premium Pack		CONFIRM
+172	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+173	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+174	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+175	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+176	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+177	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+178	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+179	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX (A) [In addition to GTX]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+180	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited via GTX)		CORRECTION
+181	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited via GTX (A))		CORRECTION
+182	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack		CONFIRM
+183	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no wireless charger; it is in HTK (O) Premium Pack		CONFIRM
+184	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+185	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+186	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+187	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+188	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger		CORRECTION
+189	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CORRECTION
+190	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CORRECTION
+191	wireless_charging	0	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CORRECTION
+192	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack; not in HTE list		CONFIRM
+193	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack		CONFIRM
+194	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Smartphone Wireless Charger listed only from HTK (O) Premium Pack		CONFIRM
+195	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no wireless charger; it is in HTK (O) Premium Pack		CONFIRM
+196	wireless_charging	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no wireless charger; it is in HTK (O) Premium Pack		CONFIRM
+197	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+198	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+199	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+200	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+201	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+202	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+203	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger		CONFIRM
+204	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CONFIRM
+205	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CONFIRM
+206	wireless_charging	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)		CONFIRM
+167	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Front Ventilated Seats listed only from HTK (O) (Automatic only) and HTX; not in HTE list		CONFIRM
+168	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack has no ventilated seats		CONFIRM
+169	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack has no ventilated seats		CONFIRM
+170	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no ventilated seats		CONFIRM
+171	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no ventilated seats		CONFIRM
+172	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats	Automatic only	CONFIRM
+173	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats	Automatic only	CONFIRM
+174	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: 12.7 cm (5”) Touch Screen - Dual Zone Automatic Temperature Control, Front Ventilated Seats		CONFIRM
+175	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Dual Zone Automatic Temperature Control, Front Ventilated Seats		CONFIRM
+176	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+177	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+178	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (GTX in addition to HTX)		CONFIRM
+179	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+180	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+181	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+182	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack has no ventilated seats		CONFIRM
+183	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no ventilated seats		CONFIRM
+184	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats (iMT is not automatic)	Automatic only	CONFIRM
+185	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats	Automatic only	CONFIRM
+186	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+187	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+188	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+189	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+190	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+191	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+192	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	Front Ventilated Seats not in HTE list		CONFIRM
+193	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack has no ventilated seats		CONFIRM
+194	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack has no ventilated seats		CONFIRM
+195	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no ventilated seats		CONFIRM
+196	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK list has no ventilated seats		CONFIRM
+197	ventilated_front_seats	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats	Automatic only	CONFIRM
+198	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats	Automatic only	CONFIRM
+199	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+200	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+201	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+202	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats		CONFIRM
+203	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+204	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+205	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+206	ventilated_front_seats	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTX: Front Ventilated Seats (inherited)		CONFIRM
+167	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters	Automatic only	FILL
+168	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters	Automatic only	FILL
+169	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters	Automatic only	FILL
+170	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters (HTK is in addition to HTE (O))	Automatic only	FILL
+171	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters (HTK is in addition to HTE (O))	Automatic only	FILL
+172	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+173	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+174	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+175	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+176	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+177	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+178	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+179	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+180	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+181	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+182	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)	Automatic only	FILL
+183	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)	Automatic only	FILL
+184	paddle_shifters		0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)	Automatic only	FILL
+185	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+186	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+187	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+188	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+189	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+190	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+191	paddle_shifters		1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	FILL
+192	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+193	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+194	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+195	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+196	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+197	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+198	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+199	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+200	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+201	paddle_shifters	0	0	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+202	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+203	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+204	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+205	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM
+206	paddle_shifters	1	1	kia/seltos/latest/brochures/kia_seltos_brochure.pdf	c254b2744cf6be5b8e91fe02e90e00e4696aa70c	10	HTE (O) pack - Automatic only: Paddle Shifters	Automatic only	CONFIRM

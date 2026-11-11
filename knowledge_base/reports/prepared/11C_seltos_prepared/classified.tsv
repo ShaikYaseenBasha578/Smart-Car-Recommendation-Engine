@@ -1,0 +1,241 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+10	167	HTE 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	168	HTE(O) 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	169	HTE(O) 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	170	HTK 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	171	HTK 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	172	HTK(O) 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	173	HTK(O) 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	174	HTX 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	175	HTX 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	176	HTX(A) 1.5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	177	HTX(A) 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	178	GTX 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	179	GTX(A) 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	180	X-Line 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	181	X-Line(A) 1.5 Petrol IVT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	182	HTE(O) 1.5 Turbo Petrol iMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	183	HTK 1.5 Turbo Petrol iMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	184	HTK(O) 1.5 Turbo Petrol iMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	185	HTK(O) 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	186	HTX 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	187	HTX(A) 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	188	GTX 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	189	GTX(A) 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	190	X-Line 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	192	HTE 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	193	HTE(O) 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	194	HTE(O) 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	195	HTK 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	196	HTK 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	197	HTK(O) 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	198	HTK(O) 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	199	HTX 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	200	HTX 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	201	HTX(A) 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	202	HTX(A) 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	203	GTX 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	204	GTX(A) 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	205	X-Line 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	206	X-Line(A) 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	167	HTE 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	168	HTE(O) 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	169	HTE(O) 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	170	HTK 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	171	HTK 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	172	HTK(O) 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	173	HTK(O) 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	174	HTX 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	175	HTX 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	176	HTX(A) 1.5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	177	HTX(A) 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only); HTE: Cruise Control with Manual Speed Limit Assist
+10	178	GTX 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	179	GTX(A) 1.5 Petrol IVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go; HTE: Cruise Control
+10	180	X-Line 1.5 Petrol IVT	cruise_control	QUARANTINED	0	CORRECTION	1		1		True	True	HTE: Cruise Control with Manual Speed Limit Assist
+10	181	X-Line(A) 1.5 Petrol IVT	cruise_control	QUARANTINED	0	CORRECTION	1		1		True	True	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go; HTE: Cruise Control
+10	182	HTE(O) 1.5 Turbo Petrol iMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	183	HTK 1.5 Turbo Petrol iMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	184	HTK(O) 1.5 Turbo Petrol iMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	185	HTK(O) 1.5 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	186	HTX 1.5 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	187	HTX(A) 1.5 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only)
+10	188	GTX 1.5 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	189	GTX(A) 1.5 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go
+10	190	X-Line 1.5 Turbo Petrol DCT	cruise_control	QUARANTINED	0	CORRECTION	1		1		True	True	HTE: Cruise Control with Manual Speed Limit Assist
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	cruise_control	QUARANTINED	0	CORRECTION	1		1		True	True	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go
+10	192	HTE 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	193	HTE(O) 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	194	HTE(O) 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	195	HTK 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	196	HTK 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	197	HTK(O) 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	198	HTK(O) 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	199	HTX 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	200	HTX 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	201	HTX(A) 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	202	HTX(A) 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go (Automatic only)
+10	203	GTX 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	204	GTX(A) 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go
+10	205	X-Line 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	HTE: Cruise Control with Manual Speed Limit Assist
+10	206	X-Line(A) 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	GTX (A) ADAS Pack: Smart Cruise Control (SCC) with Stop and Go
+10	167	HTE 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack; not in HTE list
+10	168	HTE(O) 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack
+10	169	HTE(O) 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack
+10	170	HTK 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	HTK [In addition to HTE (O)] list has no wireless charger; it is in HTK (O) Premium Pack
+10	171	HTK 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	HTK [In addition to HTE (O)] list has no wireless charger; it is in HTK (O) Premium Pack
+10	172	HTK(O) 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	173	HTK(O) 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	174	HTX 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	175	HTX 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	176	HTX(A) 1.5 Petrol MT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	177	HTX(A) 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	178	GTX 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	179	GTX(A) 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	GTX (A) [In addition to GTX]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	180	X-Line 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited via GTX)
+10	181	X-Line(A) 1.5 Petrol IVT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited via GTX (A))
+10	182	HTE(O) 1.5 Turbo Petrol iMT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack
+10	183	HTK 1.5 Turbo Petrol iMT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	HTK list has no wireless charger; it is in HTK (O) Premium Pack
+10	184	HTK(O) 1.5 Turbo Petrol iMT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	185	HTK(O) 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	186	HTX 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	187	HTX(A) 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	188	GTX 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	189	GTX(A) 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	190	X-Line 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	wireless_charging	QUARANTINED	0	CORRECTION	1		1		True	True	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	192	HTE 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack; not in HTE list
+10	193	HTE(O) 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack
+10	194	HTE(O) 1.5 Diesel AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone Wireless Charger listed only from HTK (O) Premium Pack
+10	195	HTK 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	HTK list has no wireless charger; it is in HTK (O) Premium Pack
+10	196	HTK 1.5 Diesel AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	HTK list has no wireless charger; it is in HTK (O) Premium Pack
+10	197	HTK(O) 1.5 Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	198	HTK(O) 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTK (O) Premium Pack: Smartphone Wireless Charger
+10	199	HTX 1.5 Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	200	HTX 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	201	HTX(A) 1.5 Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	202	HTX(A) 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTX [In addition to HTK (O)]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	203	GTX 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	GTX [In addition to HTX]; HTK (O) Premium Pack: Smartphone Wireless Charger
+10	204	GTX(A) 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	205	X-Line 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	206	X-Line(A) 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	HTK (O) Premium Pack: Smartphone Wireless Charger (inherited)
+10	167	HTE 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	168	HTE(O) 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	169	HTE(O) 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	170	HTK 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	171	HTK 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	172	HTK(O) 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	173	HTK(O) 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	174	HTX 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	175	HTX 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	176	HTX(A) 1.5 Petrol MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	177	HTX(A) 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	178	GTX 1.5 Petrol IVT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	179	GTX(A) 1.5 Petrol IVT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	180	X-Line 1.5 Petrol IVT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	181	X-Line(A) 1.5 Petrol IVT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	182	HTE(O) 1.5 Turbo Petrol iMT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	183	HTK 1.5 Turbo Petrol iMT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	184	HTK(O) 1.5 Turbo Petrol iMT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	185	HTK(O) 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	186	HTX 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	187	HTX(A) 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	188	GTX 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	189	GTX(A) 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	190	X-Line 1.5 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	192	HTE 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	193	HTE(O) 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	194	HTE(O) 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	195	HTK 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	196	HTK 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	197	HTK(O) 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	198	HTK(O) 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	199	HTX 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	200	HTX 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	201	HTX(A) 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	202	HTX(A) 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	203	GTX 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	204	GTX(A) 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	205	X-Line 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	206	X-Line(A) 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0					False	Head-Up Display listed only under GTX (O) Hi-Tech Pack
+10	167	HTE 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats listed only from HTK (O) (Automatic only) and HTX; not in HTE list
+10	168	HTE(O) 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTE (O) pack has no ventilated seats
+10	169	HTE(O) 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTE (O) pack has no ventilated seats
+10	170	HTK 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTK list has no ventilated seats
+10	171	HTK 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTK list has no ventilated seats
+10	172	HTK(O) 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats
+10	173	HTK(O) 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats
+10	174	HTX 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: 12.7 cm (5”) Touch Screen - Dual Zone Automatic Temperature Control, Front Ventilated Seats
+10	175	HTX 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Dual Zone Automatic Temperature Control, Front Ventilated Seats
+10	176	HTX(A) 1.5 Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	177	HTX(A) 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	178	GTX 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (GTX in addition to HTX)
+10	179	GTX(A) 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	180	X-Line 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	181	X-Line(A) 1.5 Petrol IVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	182	HTE(O) 1.5 Turbo Petrol iMT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTE (O) pack has no ventilated seats
+10	183	HTK 1.5 Turbo Petrol iMT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTK list has no ventilated seats
+10	184	HTK(O) 1.5 Turbo Petrol iMT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats (iMT is not automatic)
+10	185	HTK(O) 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats
+10	186	HTX 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	187	HTX(A) 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	188	GTX 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	189	GTX(A) 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	190	X-Line 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	192	HTE 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats not in HTE list
+10	193	HTE(O) 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTE (O) pack has no ventilated seats
+10	194	HTE(O) 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTE (O) pack has no ventilated seats
+10	195	HTK 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTK list has no ventilated seats
+10	196	HTK 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	HTK list has no ventilated seats
+10	197	HTK(O) 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats
+10	198	HTK(O) 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTK (O) Premium Pack - Automatic only: Front Ventilated Seats
+10	199	HTX 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	200	HTX 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	201	HTX(A) 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	202	HTX(A) 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats
+10	203	GTX 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	204	GTX(A) 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	205	X-Line 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	206	X-Line(A) 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	HTX: Front Ventilated Seats (inherited)
+10	167	HTE 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters
+10	168	HTE(O) 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters
+10	169	HTE(O) 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) Convenience & Styling Pack - Automatic only: Paddle Shifters
+10	170	HTK 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters (HTK is in addition to HTE (O))
+10	171	HTK 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters (HTK is in addition to HTE (O))
+10	172	HTK(O) 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	173	HTK(O) 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	174	HTX 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	175	HTX 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	176	HTX(A) 1.5 Petrol MT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	177	HTX(A) 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	178	GTX 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	179	GTX(A) 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	180	X-Line 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	181	X-Line(A) 1.5 Petrol IVT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	182	HTE(O) 1.5 Turbo Petrol iMT	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)
+10	183	HTK 1.5 Turbo Petrol iMT	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)
+10	184	HTK(O) 1.5 Turbo Petrol iMT	paddle_shifters	NULL		FILL	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters (iMT is not automatic)
+10	185	HTK(O) 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	186	HTX 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	187	HTX(A) 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	188	GTX 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	189	GTX(A) 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	190	X-Line 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	191	X-Line(A) 1.5 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTE (O) pack - Automatic only: Paddle Shifters
+10	192	HTE 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	193	HTE(O) 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	194	HTE(O) 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	195	HTK 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	196	HTK 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	197	HTK(O) 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	198	HTK(O) 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	199	HTX 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	200	HTX 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	201	HTX(A) 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	202	HTX(A) 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	203	GTX 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	204	GTX(A) 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	205	X-Line 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
+10	206	X-Line(A) 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	Automatic only				False	HTE (O) pack - Automatic only: Paddle Shifters
