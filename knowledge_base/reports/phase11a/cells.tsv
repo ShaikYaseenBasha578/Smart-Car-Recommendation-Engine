@@ -1,0 +1,50 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+750	cruise_control	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE Comfort & Convenience list has no cruise control		CONFIRM
+752	cruise_control	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) in addition to HTE list has no cruise control		CONFIRM
+753	cruise_control	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) in addition to HTE(O) list has no cruise control		CONFIRM
+754	cruise_control	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) in addition to HTE(O) list has no cruise control		CONFIRM
+755	cruise_control	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ Comfort: Cruise Control with Manual Speed Limit Assist, Rear Defogger		CONFIRM
+763	cruise_control	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX in addition to HTK+ (O) (inherits HTK+ Cruise Control with Manual Speed Limit Assist)		CONFIRM
+750	wireless_charging	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE lists only wireless Android Auto/CarPlay; no wireless charger		CONFIRM
+751	wireless_charging	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no wireless charger		CONFIRM
+752	wireless_charging	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no wireless charger		CONFIRM
+753	wireless_charging	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no wireless charger		CONFIRM
+754	wireless_charging	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no wireless charger		CONFIRM
+763	wireless_charging	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Comfort: Smartphone Wireless Charger		CONFIRM
+764	wireless_charging	0	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Comfort: Smartphone Wireless Charger		CORRECTION
+765	wireless_charging	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Smartphone Wireless Charger)		CONFIRM
+766	wireless_charging	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Smartphone Wireless Charger)		CONFIRM
+750	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE list has no ventilated seats		CONFIRM
+751	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no ventilated seats		CONFIRM
+752	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no ventilated seats		CONFIRM
+753	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no ventilated seats		CONFIRM
+754	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no ventilated seats		CONFIRM
+755	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ cumulative list has no ventilated seats		CONFIRM
+756	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ cumulative list has no ventilated seats		CONFIRM
+757	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ cumulative list has no ventilated seats		CONFIRM
+758	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ cumulative list has no ventilated seats		CONFIRM
+759	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) cumulative list has no ventilated seats		CONFIRM
+760	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) cumulative list has no ventilated seats		CONFIRM
+761	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) cumulative list has no ventilated seats		CONFIRM
+762	ventilated_front_seats	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) cumulative list has no ventilated seats		CONFIRM
+763	ventilated_front_seats	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Comfort: Front Ventilated Seats		CONFIRM
+764	ventilated_front_seats	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Comfort: Front Ventilated Seats		CONFIRM
+765	ventilated_front_seats	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Front Ventilated Seats)		CONFIRM
+766	ventilated_front_seats	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Front Ventilated Seats)		CONFIRM
+750	paddle_shifters	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE list has no paddle shifters		CONFIRM
+751	paddle_shifters	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no paddle shifters		CONFIRM
+752	paddle_shifters	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTE (O) cumulative list has no paddle shifters		CONFIRM
+753	paddle_shifters	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no paddle shifters		CONFIRM
+754	paddle_shifters	0	0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK (EX) cumulative list has no paddle shifters		CONFIRM
+755	paddle_shifters		0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+756	paddle_shifters		1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+757	paddle_shifters		0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+758	paddle_shifters		1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+759	paddle_shifters		0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+760	paddle_shifters		1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+761	paddle_shifters		0	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+762	paddle_shifters		1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters	Automatic only	FILL
+763	paddle_shifters	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Technology: Paddle Shifters		CONFIRM
+764	paddle_shifters	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX Technology: Paddle Shifters		CONFIRM
+765	paddle_shifters	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Paddle Shifters)		CONFIRM
+766	paddle_shifters	1	1	kia/syros/latest/brochures/kia_syros_brochure.pdf	7622f531b207ff69ab9ae6e3844653594356dced	7	HTX (O) in addition to HTX (HTX lists Paddle Shifters)		CONFIRM

@@ -36,6 +36,18 @@ They affect no value. See [ORPHANS_PROPOSAL.md](reports/phase10o/ORPHANS_PROPOSA
 - **Option A (recommended):** keep them for now.
 - **Option B:** archive and delete them, batched with the schema changes, so `foreign_key_check` becomes clean.
 
+### N8. P11 side files block every write after the first batch (G5, deletion)
+After batch 11A the KB folder holds an empty `carrec_kb.db-wal` (0 bytes) and a 32 KB `carrec_kb.db-shm`. No process holds them (`lsof` finds none). This SQLite build (3.54.0) leaves them behind after any open, even a read-only query on a copy, so they come back after every write. P11 requires no `-wal`/`-shm` beside prod, and P17 forbids deleting files without your approval, so batch 2 onward cannot be applied.
+- **Option A (recommended):** amend P11: an empty `-wal` plus an `-shm` with no holder is allowed, because an empty WAL means the file hash describes the DB. I keep the SHA-1 recheck and integrity check.
+- **Option B:** approve deleting the empty side files when no process holds them, before each write.
+- **Option C:** you delete them by hand before each batch.
+Until you decide, I keep extracting, validating and dry-running batches on copies, so they are ready to apply in order.
+
+### N9. Other fields with large gaps (proposal, nothing extracted)
+Empty cells among the 812 base variants: `drive_modes` 532, `fuel_tank_litres` 87, `connected_car_features` 50, `boot_space_litres` 41 (`claimed_ev_range_km` is empty for non-EV by design). The loop does not touch them.
+- **Option A (recommended):** add `drive_modes` and `fuel_tank_litres` to the loop's scope in a later run: both are printed in most brochures' spec tables.
+- **Option B:** leave them.
+
 ### N3. Out of this goal; need your input or ingestion
 - Resuming 10D.
 - GNCAP ingestion.

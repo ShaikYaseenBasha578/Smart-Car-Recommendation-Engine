@@ -1,0 +1,103 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+7	750	HTE Petrol Manual	mileage_arai_kmpl	UNVERIFIED	18.2	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	751	HTE(O) Petrol Manual	mileage_arai_kmpl	UNVERIFIED	18.2	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	752	HTE(O) Diesel Manual	mileage_arai_kmpl	UNVERIFIED	20.75	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	753	HTK(EX) Petrol Manual	mileage_arai_kmpl	UNVERIFIED	18.2	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	754	HTK(EX) Diesel Manual	mileage_arai_kmpl	UNVERIFIED	20.75	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	755	HTK+ Petrol Manual	mileage_arai_kmpl	UNVERIFIED	18.2	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	756	HTK+ Petrol DCT	mileage_arai_kmpl	UNVERIFIED	17.68	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	757	HTK+ Diesel Manual	mileage_arai_kmpl	UNVERIFIED	20.75	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	758	HTK+ Diesel Automatic	mileage_arai_kmpl	UNVERIFIED	17.65	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	759	HTK+(O) Petrol Manual	mileage_arai_kmpl	UNVERIFIED	18.2	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	760	HTK+(O) Petrol DCT	mileage_arai_kmpl	UNVERIFIED	17.68	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	761	HTK+(O) Diesel Manual	mileage_arai_kmpl	UNVERIFIED	20.75	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	762	HTK+(O) Diesel Automatic	mileage_arai_kmpl	UNVERIFIED	17.65	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	763	HTX Petrol DCT	mileage_arai_kmpl	UNVERIFIED	17.68	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	764	HTX Diesel Automatic	mileage_arai_kmpl	UNVERIFIED	17.65	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	765	HTX(O) Petrol DCT	mileage_arai_kmpl	UNVERIFIED	17.68	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	766	HTX(O) Diesel Automatic	mileage_arai_kmpl	UNVERIFIED	17.65	NOT_ON_PAGE					True	False	no ARAI mileage printed on page
+7	750	HTE Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE Comfort & Convenience list has no cruise control
+7	751	HTE(O) Petrol Manual	cruise_control	VERIFIED	0	CONFIRM_V	0		0		True	False	HTE (O) in addition to HTE list has no cruise control
+7	752	HTE(O) Diesel Manual	cruise_control	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) in addition to HTE list has no cruise control
+7	753	HTK(EX) Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) in addition to HTE(O) list has no cruise control
+7	754	HTK(EX) Diesel Manual	cruise_control	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) in addition to HTE(O) list has no cruise control
+7	755	HTK+ Petrol Manual	cruise_control	UNVERIFIED	1	CONFIRM	1		1		True	False	HTK+ Comfort: Cruise Control with Manual Speed Limit Assist, Rear Defogger
+7	756	HTK+ Petrol DCT	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ Comfort: Cruise Control with Manual Speed Limit Assist, Rear Defogger
+7	757	HTK+ Diesel Manual	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ Comfort: Cruise Control with Manual Speed Limit Assist, Rear Defogger
+7	758	HTK+ Diesel Automatic	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ Comfort: Cruise Control with Manual Speed Limit Assist, Rear Defogger
+7	759	HTK+(O) Petrol Manual	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ (O) in addition to HTK+ (HTK+ lists Cruise Control with Manual Speed Limit Assist)
+7	760	HTK+(O) Petrol DCT	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ (O) in addition to HTK+ (HTK+ lists Cruise Control with Manual Speed Limit Assist)
+7	761	HTK+(O) Diesel Manual	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ (O) in addition to HTK+ (HTK+ lists Cruise Control with Manual Speed Limit Assist)
+7	762	HTK+(O) Diesel Automatic	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTK+ (O) in addition to HTK+ (HTK+ lists Cruise Control with Manual Speed Limit Assist)
+7	763	HTX Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX in addition to HTK+ (O) (inherits HTK+ Cruise Control with Manual Speed Limit Assist)
+7	764	HTX Diesel Automatic	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTX in addition to HTK+ (O) (inherits HTK+ Cruise Control with Manual Speed Limit Assist)
+7	765	HTX(O) Petrol DCT	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTX (O) in addition to HTX (inherits HTK+ Cruise Control with Manual Speed Limit Assist)
+7	766	HTX(O) Diesel Automatic	cruise_control	VERIFIED	1	CONFIRM_V	1		1		True	False	HTX (O) in addition to HTX (inherits HTK+ Cruise Control with Manual Speed Limit Assist)
+7	750	HTE Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE lists only wireless Android Auto/CarPlay; no wireless charger
+7	751	HTE(O) Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no wireless charger
+7	752	HTE(O) Diesel Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no wireless charger
+7	753	HTK(EX) Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no wireless charger
+7	754	HTK(EX) Diesel Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no wireless charger
+7	755	HTK+ Petrol Manual	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ cumulative list has no wireless charger
+7	756	HTK+ Petrol DCT	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ cumulative list has no wireless charger
+7	757	HTK+ Diesel Manual	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ cumulative list has no wireless charger
+7	758	HTK+ Diesel Automatic	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ cumulative list has no wireless charger
+7	759	HTK+(O) Petrol Manual	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ (O) cumulative list has no wireless charger
+7	760	HTK+(O) Petrol DCT	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ (O) cumulative list has no wireless charger
+7	761	HTK+(O) Diesel Manual	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ (O) cumulative list has no wireless charger
+7	762	HTK+(O) Diesel Automatic	wireless_charging	VERIFIED	0	CONFIRM_V	0		0		True	False	HTK+ (O) cumulative list has no wireless charger
+7	763	HTX Petrol DCT	wireless_charging	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX Comfort: Smartphone Wireless Charger
+7	764	HTX Diesel Automatic	wireless_charging	UNVERIFIED	0	CORRECTION	1		1		True	True	HTX Comfort: Smartphone Wireless Charger
+7	765	HTX(O) Petrol DCT	wireless_charging	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Smartphone Wireless Charger)
+7	766	HTX(O) Diesel Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Smartphone Wireless Charger)
+7	750	HTE Petrol Manual	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTE list has no head-up display
+7	751	HTE(O) Petrol Manual	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTE (O) cumulative list has no HUD
+7	752	HTE(O) Diesel Manual	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTE (O) cumulative list has no HUD
+7	753	HTK(EX) Petrol Manual	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTK (EX) cumulative list has no HUD
+7	754	HTK(EX) Diesel Manual	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTK (EX) cumulative list has no HUD
+7	755	HTK+ Petrol Manual	heads_up_display	NULL		ABSENT_NOT_SHOWN	0		0		True	False	HTK+ cumulative list has no HUD
+7	756	HTK+ Petrol DCT	heads_up_display	NULL		ABSENT_NOT_SHOWN	0		0		True	False	HTK+ cumulative list has no HUD
+7	757	HTK+ Diesel Manual	heads_up_display	NULL		ABSENT_NOT_SHOWN	0		0		True	False	HTK+ cumulative list has no HUD
+7	758	HTK+ Diesel Automatic	heads_up_display	NULL		ABSENT_NOT_SHOWN	0		0		True	False	HTK+ cumulative list has no HUD
+7	759	HTK+(O) Petrol Manual	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTK+ (O) cumulative list has no HUD
+7	760	HTK+(O) Petrol DCT	heads_up_display	NULL		ABSENT_NOT_SHOWN	0		0		True	False	HTK+ (O) cumulative list has no HUD
+7	761	HTK+(O) Diesel Manual	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTK+ (O) cumulative list has no HUD
+7	762	HTK+(O) Diesel Automatic	heads_up_display	QUARANTINED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTK+ (O) cumulative list has no HUD
+7	763	HTX Petrol DCT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTX cumulative list has no HUD (only 12.3" display instrument cluster is not HUD)
+7	764	HTX Diesel Automatic	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTX cumulative list has no HUD
+7	765	HTX(O) Petrol DCT	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTX (O) list has only a 12.3" display instrument cluster, no HUD
+7	766	HTX(O) Diesel Automatic	heads_up_display	UNVERIFIED	0	ABSENT_NOT_SHOWN	0		0		True	False	HTX (O) list has only a 12.3" display instrument cluster, no HUD
+7	750	HTE Petrol Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE list has no ventilated seats
+7	751	HTE(O) Petrol Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no ventilated seats
+7	752	HTE(O) Diesel Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no ventilated seats
+7	753	HTK(EX) Petrol Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no ventilated seats
+7	754	HTK(EX) Diesel Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no ventilated seats
+7	755	HTK+ Petrol Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ cumulative list has no ventilated seats
+7	756	HTK+ Petrol DCT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ cumulative list has no ventilated seats
+7	757	HTK+ Diesel Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ cumulative list has no ventilated seats
+7	758	HTK+ Diesel Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ cumulative list has no ventilated seats
+7	759	HTK+(O) Petrol Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ (O) cumulative list has no ventilated seats
+7	760	HTK+(O) Petrol DCT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ (O) cumulative list has no ventilated seats
+7	761	HTK+(O) Diesel Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ (O) cumulative list has no ventilated seats
+7	762	HTK+(O) Diesel Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK+ (O) cumulative list has no ventilated seats
+7	763	HTX Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX Comfort: Front Ventilated Seats
+7	764	HTX Diesel Automatic	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX Comfort: Front Ventilated Seats
+7	765	HTX(O) Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Front Ventilated Seats)
+7	766	HTX(O) Diesel Automatic	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Front Ventilated Seats)
+7	750	HTE Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE list has no paddle shifters
+7	751	HTE(O) Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no paddle shifters
+7	752	HTE(O) Diesel Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0		0		True	False	HTE (O) cumulative list has no paddle shifters
+7	753	HTK(EX) Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no paddle shifters
+7	754	HTK(EX) Diesel Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0		0		True	False	HTK (EX) cumulative list has no paddle shifters
+7	755	HTK+ Petrol Manual	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTK+ Technology: Automatic Only Features: Paddle Shifters
+7	756	HTK+ Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTK+ Technology: Automatic Only Features: Paddle Shifters
+7	757	HTK+ Diesel Manual	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTK+ Technology: Automatic Only Features: Paddle Shifters
+7	758	HTK+ Diesel Automatic	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTK+ Technology: Automatic Only Features: Paddle Shifters
+7	759	HTK+(O) Petrol Manual	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters
+7	760	HTK+(O) Petrol DCT	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters
+7	761	HTK+(O) Diesel Manual	paddle_shifters	NULL		FILL	0	Automatic only	0	Automatic only	True	True	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters
+7	762	HTK+(O) Diesel Automatic	paddle_shifters	NULL		FILL	1	Automatic only	1	Automatic only	True	True	HTK+ (O) Technology: Automatic Only Features: Paddle Shifters
+7	763	HTX Petrol DCT	paddle_shifters	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX Technology: Paddle Shifters
+7	764	HTX Diesel Automatic	paddle_shifters	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX Technology: Paddle Shifters
+7	765	HTX(O) Petrol DCT	paddle_shifters	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Paddle Shifters)
+7	766	HTX(O) Diesel Automatic	paddle_shifters	UNVERIFIED	1	CONFIRM	1		1		True	False	HTX (O) in addition to HTX (HTX lists Paddle Shifters)

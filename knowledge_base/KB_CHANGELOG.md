@@ -131,9 +131,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - First validation failed for cruise control (87.5%); nothing was written until the table was fixed and a second blind check agreed 32 of 32.
 **Prod SHA-1:** `acf32b47…` → `758310ea…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/24 **Ranking-track line:** KB 10N: 126 mileage and feature cells changed from brochures; export re-run.
 
+## 11A — 2026-11-11 — Syros: feature cells checked against the brochure
+**Why:** Many Syros feature cells were empty or unverified. The brochure's trim table settles most of them.
+**What changed:** 49 cells checked on one brochure page: 8 blanks filled, 1 corrected, 40 confirmed; 2 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Kia Syros HTX Diesel Automatic: wireless charging 0 → 1 (Syros brochure, p7)
+- Kia Syros HTK+ Petrol DCT: paddle shifters blank → yes (Syros brochure, p7)
+- Kia Syros HTK+ Petrol Manual: paddle shifters blank → no, "Automatic Only" (Syros brochure, p7)
+**What app users now see:** 9 Syros cells change in the next catalogue export; the confirmed cells show as brochure-checked.
+**Not done / held:**
+- Head-up display (17 cells): the page never shows it, so a 0 would be a guess.
+- Mileage km/l (17 cells): the Syros brochure prints none.
+**Prod SHA-1:** `758310ea…` → `795a1223…`. **App PR:** none yet (export after every 3 batches). **Ranking-track line:** KB 11A: 9 Syros feature cells changed from the brochure.
+
 ## Current state
-As of phase 10N (prod `758310ea3ea1868dd94cebc9f9535b34719fd994`).
-- **Active quarantines:** 1,381 (950 observations, 323 variant cells, 107 provenance rows, 1 safety applicability row(s)).
+As of phase 11A (prod `795a12233ee84147990f00e36816bfe841beb281`).
+- **Active quarantines:** 1,383 (950 observations, 323 variant cells, 109 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
@@ -141,4 +154,4 @@ As of phase 10N (prod `758310ea3ea1868dd94cebc9f9535b34719fd994`).
   - km/kg on CNG variants: 45/82 = 54.9%
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
-- **Open items:** 7 in [NEEDS_YOU.md](NEEDS_YOU.md).
+- **Open items:** 9 in [NEEDS_YOU.md](NEEDS_YOU.md).

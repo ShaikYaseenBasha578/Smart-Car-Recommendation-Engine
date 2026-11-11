@@ -1,8 +1,9 @@
 """One enrichment batch = one brochure. Read-only on brochures and on a prod COPY.
 
   prep     <batch_dir> <db_copy> <index_dir> <oem_root> <model_id> <pdf_rel> <page> [<page> ...]
-  run      <batch_dir>                      two independent headless Sonnet runs (a, b) per page
-  classify <batch_dir> <db_copy>            deterministic comparison with the KB -> classified.tsv, summary.json
+  run      <batch_dir> [a|b]                run a: every variant/field of the page; run b (after classify): ONLY the validated pairs, blind
+  classify <batch_dir> <db_copy>            deterministic comparison with the KB -> classified.tsv, summary.json; picks the validation pairs
+                                            (every CORRECTION + stratified >=20% of FILLs, min 10) and writes the run-b folders; re-run after run b to merge it
 
 Extraction prompt = costcheck common + GLOSSARY.md + costcheck EXTRACT + output schema (plus "page_columns").
 Each run: its own folder holding only that page's inputs; Read tool only, confined to that folder, Sonnet, no MCP,
@@ -43,6 +44,26 @@ Rules for "cells":
 - Features: value 1 if the page shows the feature fitted on that variant, 0 if shown absent. Apply restrictions: a feature marked "AT only" / "DCT/AT only" is 0 on manual variants and 1 (with the qualifier) on matching automatic variants; a feature restricted to certain engines is 1 only on those.
 - Mileage: the figure printed for that variant's gearbox/fuel; put gearbox or fuel restrictions in "qualifier".
 - If the page does not say, use value null and status NOT_ON_PAGE. Never guess.
+- Give "source" and "qualifier" only for cells with a value. For NOT_ON_PAGE cells use "source":"" and "qualifier":"".
+"""
+
+COMMON_B = """You are working in a folder that contains only the files for this task. Use ONLY the Read tool, and read ONLY files in this folder (no shell, no writes, no web). Files:
+- page_text.txt: text extracted from one car-brochure page (may be scrambled, incomplete or lack tick marks);
+- tile1.png, tile2.png, ...: rendered images of the same page (read every tile that exists; the image is the authority when text and image differ);
+- pairs.tsv: the variant/field pairs to answer, with each variant's fuel and gearbox from the catalogue (use them to apply gearbox and fuel qualifiers).
+FIELD GLOSSARY (authoritative; follow it exactly)
+"""
+TASK_B = """TASK
+Answer ONLY the variant/field pairs listed in pairs.tsv, nothing else. For each pair report the value printed for it, with unit, qualifier, and the exact header/line it comes from. If the page doesn't say, write NOT_ON_PAGE.
+"""
+OUTPUT_B = """OUTPUT (reply with ONE JSON object and nothing else, no markdown fences):
+{"cells":[{"variant":"<name exactly as in pairs.tsv>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool>","qualifier":"<restriction printed with the value or its header, or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}]}
+Rules for "cells":
+- Give exactly one cell for each pair in pairs.tsv, in any order.
+- Features: value 1 if the page shows the feature fitted on that variant, 0 if shown absent. Apply restrictions: a feature marked "AT only" / "DCT/AT only" is 0 on manual variants and 1 (with the qualifier) on matching automatic variants; a feature restricted to certain engines is 1 only on those.
+- Mileage: the figure printed for that variant's gearbox/fuel; put gearbox or fuel restrictions in "qualifier".
+- If the page does not say, use value null and status NOT_ON_PAGE. Never guess.
+- Give "source" and "qualifier" only for cells with a value. For NOT_ON_PAGE cells use "source":"" and "qualifier":"".
 """
 
 
@@ -93,7 +114,7 @@ def prep(a):
         txtf = f'{idx}/{sha}/p{pn}.txt' if meth == 'text' else f'{idx}/{sha}/p{pn}.ocr.txt'
         text = open(txtf).read()
         boxes = tiles_for(w, h)
-        for arm in ('a', 'b'):
+        for arm in ('a',):
             d = f'{bd}/p{pn}/{arm}'; os.makedirs(d, exist_ok=True)
             open(f'{d}/page_text.txt', 'w').write(text if meth == 'text' else f'(OCR text of a page without a clean text layer; may contain errors)\n{text}')
             open(f'{d}/variants.txt', 'w').write('\n'.join(x[0] for x in vs) + '\n')
@@ -124,12 +145,14 @@ def parse_result(txt):
 
 
 def run(a):
-    bd = a[0]; man = json.load(open(f'{bd}/manifest.json')); prompt = open(f'{bd}/prompt.txt').read()
-    jobs = [(f'{bd}/p{pn}/{arm}', prompt) for pn in man['pages'] for arm in ('a', 'b')]
+    bd = a[0]; arm = a[1] if len(a) > 1 else 'a'; man = json.load(open(f'{bd}/manifest.json'))
+    prompt = open(f'{bd}/prompt.txt' if arm == 'a' else f'{bd}/prompt_b.txt').read()
+    pages = [pn for pn in man['pages'] if os.path.isdir(f'{bd}/p{pn}/{arm}')]
+    jobs = [(f'{bd}/p{pn}/{arm}', prompt) for pn in pages]
     with ThreadPoolExecutor(2) as ex: list(ex.map(one_run, jobs))
     rows = ['page\tarm\ttotal_tokens\toutput_tokens\tcost_usd\tduration_ms\tis_error\tcells']
     for d, _ in jobs:
-        pn, arm = d.split('/')[-2:]
+        pn = d.split('/')[-2]
         try:
             o = json.load(open(f'{d}/out.json')); u = o['usage']
             tot = u['input_tokens'] + u['cache_creation_input_tokens'] + u['cache_read_input_tokens'] + u['output_tokens']
@@ -137,7 +160,24 @@ def run(a):
             rows.append(f"{pn}\t{arm}\t{tot}\t{u['output_tokens']}\t{o['total_cost_usd']:.4f}\t{o['duration_ms']}\t{o['is_error']}\t{len(res['cells'])}")
         except Exception as e:
             rows.append(f'{pn}\t{arm}\t\t\t\t\tPARSE_ERROR {e!r}\t')
-    open(f'{bd}/usage.tsv', 'w').write('\n'.join(rows) + '\n'); print('\n'.join(rows))
+    open(f'{bd}/usage_{arm}.tsv', 'w').write('\n'.join(rows) + '\n'); print('\n'.join(rows))
+
+
+def make_b(bd, man, sel_rows):
+    """Targeted blind run b: only the selected variant/field pairs, no run-a output, its own folder per page."""
+    open(f'{bd}/prompt_b.txt', 'w').write(COMMON_B + open(f'{HERE}/GLOSSARY.md').read() + '\n' + TASK_B + OUTPUT_B)
+    import shutil
+    for pn in man['pages']:
+        rows = [r for r in sel_rows if r['page'] == pn]
+        d = f'{bd}/p{pn}/b'; shutil.rmtree(d, ignore_errors=True)
+        if not rows: continue
+        os.makedirs(d)
+        for f in os.listdir(f'{bd}/p{pn}/a'):
+            if f == 'page_text.txt' or f.startswith('tile'): shutil.copy(f'{bd}/p{pn}/a/{f}', f'{d}/{f}')
+        info = {}
+        for l in open(f'{bd}/p{pn}/a/variant_info.tsv').read().splitlines()[1:]:
+            n, fu, g = l.split('\t'); info[n] = (fu, g)
+        open(f'{d}/pairs.tsv', 'w').write('variant\tfield\tfuel\tgearbox\n' + '\n'.join(f"{r['variant']}\t{r['field']}\t{info[r['variant']][0]}\t{info[r['variant']][1]}" for r in rows) + '\n')
 
 
 def same(x, y, f):
@@ -170,7 +210,7 @@ def classify(a):
             if f not in FIELDS: continue
             if f == 'mileage_arai_kmpl' and fuel in ('CNG', 'Electric'): continue
             if f == 'mileage_arai_km_per_kg' and fuel != 'CNG': continue
-            cb = cell['b'].get((vn, f), {})
+            cb = cell['b'].get((vn, f), {}); has_b = (vn, f) in cell['b']
             av = ca.get('value') if ca.get('status') == 'FOUND' else None
             bv = cb.get('value') if cb.get('status') == 'FOUND' else None
             kst = stored[vid][FIELDS.index(f)]; kcan = canon[vid][cc.index(f)]
@@ -183,7 +223,7 @@ def classify(a):
             else: cls = 'CORRECTION'
             out.append(dict(page=pn, vid=vid, variant=vn, field=f, kb_stored=kst, kb_status=status, cls=cls,
                             a=av, a_qual=ca.get('qualifier', ''), a_src=ca.get('source', ''), b=bv, b_qual=cb.get('qualifier', ''),
-                            agree=(av is None and bv is None) or (av is not None and bv is not None and same(av, bv, f))))
+                            has_b=has_b, agree=((av is None and bv is None) or (av is not None and bv is not None and same(av, bv, f))) if has_b else None))
     # absent-as-zero guard (10B lesson): a 0 on a page where the field is never shown fitted anywhere, with no explicit absence marker
     marker = re.compile(r"(^|[\s'\"(])[-\u2013\u2014x\u2717](?=$|[\s'\")])|dash|not available|not fitted|absent|cross", re.I)
     any1 = {(r['page'], r['field']) for r in out if r['a'] is not None and float(r['a']) == 1 and r['field'] not in UNIT}
@@ -211,15 +251,16 @@ def classify(a):
     picked += rest[:max(0, want - len(picked))]
     for r in picked: sel.add(id(r))
     for r in out: r['validate'] = id(r) in sel
+    make_b(bd, man, [r for r in out if r['validate']])
     keys = ['page', 'vid', 'variant', 'field', 'kb_status', 'kb_stored', 'cls', 'a', 'a_qual', 'b', 'b_qual', 'agree', 'validate', 'a_src']
     with open(f'{bd}/classified.tsv', 'w') as f:
         f.write('\t'.join(keys) + '\n')
         for r in out: f.write('\t'.join('' if r[k] is None else str(r[k]) for k in keys) + '\n')
-    vr = [r for r in out if r['validate']]
+    vr = [r for r in out if r['validate'] and r['agree'] is not None]
     cnt = lambda p: sum(1 for r in out if p(r))
     summ = dict(cells=len(out), unmapped=sorted(unmapped), by_class={c: cnt(lambda r, c=c: r['cls'] == c) for c in ('FILL', 'CONFIRM', 'CORRECTION', 'NOT_ON_PAGE', 'ABSENT_NOT_SHOWN', 'CONFLICT', 'CONFIRM_V', 'PAGE_CONFLICT')},
                 validated=len(vr), validated_agree=sum(1 for r in vr if r['agree']),
-                all_agree=cnt(lambda r: r['agree']), page_columns=cols)
+                selected=cnt(lambda r: r['validate']), page_columns=cols)
     json.dump(summ, open(f'{bd}/summary.json', 'w'), indent=1); print(json.dumps({k: v for k, v in summ.items() if k != 'page_columns'}))
 
 
