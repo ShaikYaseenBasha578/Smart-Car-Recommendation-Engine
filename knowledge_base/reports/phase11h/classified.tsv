@@ -1,0 +1,136 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+22	319	Smart	cruise_control	UNVERIFIED	0	CONFIRM	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE tier: Cruise control ***; not in the SMART list
+22	319	Smart	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless Smartphone Charger- Qi Support is listed only at Accomplished S; not in the SMART list
+22	319	Smart	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter** (Creative tier); not in the SMART list
+22	319	Smart	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	320	Pure	cruise_control	UNVERIFIED	1	CONFIRM	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	320	Pure	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	320	Pure	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter** (Creative tier); not at Pure
+22	320	Pure	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport # (SMART, carried into Pure)
+22	321	Smart CNG	cruise_control	VERIFIED	0	CONFIRM_V	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** is at the PURE tier; not in the SMART list
+22	321	Smart CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	321	Smart CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	321	Smart CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	322	Pure S	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	322	Pure S	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	322	Pure S	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	322	Pure S	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only	2	Petrol MT, AMT and Diesel MT only	True	True	Multi Drive Modes- Eco & Sport #
+22	323	Pure AMT	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	323	Pure AMT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	323	Pure AMT	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	323	Pure AMT	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	324	Pure S AMT	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	324	Pure S AMT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	324	Pure S AMT	paddle_shifters	NULL		FILL	0	Petrol DCA only	0	Petrol DCA only	True	True	Paddle shifter**
+22	324	Pure S AMT	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only	2	Petrol MT, AMT and Diesel MT only	True	True	Multi Drive Modes- Eco & Sport #
+22	325	Creative	cruise_control	UNVERIFIED	1	CONFIRM	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	325	Creative	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	325	Creative	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	325	Creative	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	326	Pure CNG	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	326	Pure CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	326	Pure CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only	0	Petrol DCA only	True	True	Paddle shifter**
+22	326	Pure CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	327	Pure Diesel	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	327	Pure Diesel	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	327	Pure Diesel	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	327	Pure Diesel	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	328	Creative S	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	328	Creative S	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	328	Creative S	paddle_shifters	NULL		FILL	0	Petrol DCA only	0	Petrol DCA only	True	True	Paddle shifter**
+22	328	Creative S	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	329	Pure S CNG	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	329	Pure S CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	329	Pure S CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	329	Pure S CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	330	Creative AMT	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	330	Creative AMT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	330	Creative AMT	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	330	Creative AMT	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	331	Pure AMT CNG	cruise_control	VERIFIED	0	CONFIRM_V	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** excludes CNG AMT
+22	331	Pure AMT CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	331	Pure AMT CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	331	Pure AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	332	Creative S AMT	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	332	Creative S AMT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	332	Creative S AMT	paddle_shifters	NULL		FILL	0	Petrol DCA only	0	Petrol DCA only	True	True	Paddle shifter**
+22	332	Creative S AMT	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	333	Pure S AMT CNG	cruise_control	VERIFIED	0	CONFIRM_V	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** excludes CNG AMT
+22	333	Pure S AMT CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	333	Pure S AMT CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	333	Pure S AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	334	Creative CNG	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	334	Creative CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	334	Creative CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	334	Creative CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	335	Accomplished S	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	335	Accomplished S	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support
+22	335	Accomplished S	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	335	Accomplished S	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	336	Creative S CNG	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	336	Creative S CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	336	Creative S CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	336	Creative S CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	337	Creative S Diesel	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	337	Creative S Diesel	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	337	Creative S Diesel	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	337	Creative S Diesel	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only				False	Multi Drive Modes- Eco & Sport #
+22	338	Creative S DCA	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	338	Creative S DCA	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	338	Creative S DCA	paddle_shifters	NULL		FILL	1	Petrol DCA only	1	Petrol DCA only	True	True	Paddle shifter**
+22	338	Creative S DCA	drive_modes	NULL		NOT_ON_PAGE						False	
+22	339	Creative AMT CNG	cruise_control	VERIFIED	0	CONFIRM_V	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** excludes CNG AMT
+22	339	Creative AMT CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	339	Creative AMT CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	339	Creative AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	340	Creative S AMT CNG	cruise_control	VERIFIED	0	CONFIRM_V	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** excludes CNG AMT
+22	340	Creative S AMT CNG	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Wireless charger listed only at Accomplished S
+22	340	Creative S AMT CNG	paddle_shifters	NULL		FILL	0	Petrol DCA only				False	Paddle shifter**
+22	340	Creative S AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+22	341	Accomplished S CNG	cruise_control	UNVERIFIED	1	CONFIRM	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	341	Accomplished S CNG	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support
+22	341	Accomplished S CNG	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Petrol DCA only				False	Paddle shifter**
+22	341	Accomplished S CNG	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+22	342	Accomplished S Diesel	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	342	Accomplished S Diesel	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support
+22	342	Accomplished S Diesel	paddle_shifters	NULL		FILL	0	Petrol DCA only	0	Petrol DCA only	True	True	Paddle shifter**
+22	342	Accomplished S Diesel	drive_modes	NULL		FILL	2	Petrol MT, AMT and Diesel MT only	2	Petrol MT, AMT and Diesel MT only	True	True	Multi Drive Modes- Eco & Sport #
+22	343	Accomplished S DCA	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	343	Accomplished S DCA	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support
+22	343	Accomplished S DCA	paddle_shifters	NULL		FILL	1	Petrol DCA only	1	Petrol DCA only	True	True	Paddle shifter**
+22	343	Accomplished S DCA	drive_modes	NULL		NOT_ON_PAGE						False	
+22	344	Accomplished+ S DCA	cruise_control	VERIFIED	1	CONFIRM_V	1	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	PURE: Cruise control ***
+22	344	Accomplished+ S DCA	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support (Accomplished+ S is in addition to Accomplished S)
+22	344	Accomplished+ S DCA	paddle_shifters	NULL		FILL	1	Petrol DCA only				False	Paddle shifter**
+22	344	Accomplished+ S DCA	drive_modes	NULL		NOT_ON_PAGE						False	
+22	345	Accomplished S AMT CNG	cruise_control	UNVERIFIED	0	CONFIRM	0	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only				False	Cruise control *** excludes CNG AMT
+22	345	Accomplished S AMT CNG	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support
+22	345	Accomplished S AMT CNG	paddle_shifters	UNVERIFIED	0	CONFIRM	0	Petrol DCA only				False	Paddle shifter**
+22	345	Accomplished S AMT CNG	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	319	Smart	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	320	Pure	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	321	Smart CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	322	Pure S	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	323	Pure AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	324	Pure S AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	325	Creative	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	326	Pure CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	327	Pure Diesel	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.5L Revotorq Diesel	37	1.5L Revotorq Diesel	True	True	Fuel Tank Capacity (Litre) 37L
+23	328	Creative S	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	329	Pure S CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	330	Creative AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	331	Pure AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	332	Creative S AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	333	Pure S AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	334	Creative CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	335	Accomplished S	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	336	Creative S CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	337	Creative S Diesel	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.5L Revotorq Diesel	37	1.5L Revotorq Diesel	True	True	Fuel Tank Capacity (Litre) 37L
+23	338	Creative S DCA	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	339	Creative AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	340	Creative S AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	341	Accomplished S CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)
+23	342	Accomplished S Diesel	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.5L Revotorq Diesel	37	1.5L Revotorq Diesel	True	True	Fuel Tank Capacity (Litre) 37L
+23	343	Accomplished S DCA	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	344	Accomplished+ S DCA	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L Revotron Petrol	37	1.2L Revotron Petrol	True	True	Fuel Tank Capacity (Litre) 37 L
+23	345	Accomplished S AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	37	1.2L iCNG, petrol tank	37	iCNG Petrol tank	True	True	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)

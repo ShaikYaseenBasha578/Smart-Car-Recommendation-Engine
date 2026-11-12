@@ -211,9 +211,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage, head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
 **Prod SHA-1:** `58d3ef0e…` → `e351341c…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/26 (covers 11E, 11F and 11G; based on app/kb-11d-export). **Ranking-track line:** KB 11G: 1 XUV 3XO cells changed from the brochure.
 
+## 11H — 2026-11-12 — Altroz: feature, fuel tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 74 cells checked on 2 brochure page(s): 38 blanks filled, 27 corrected, 9 confirmed; 0 old quarantines released; 27 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Tata Altroz Pure Diesel: fuel tank 60 L → 37 L (Altroz brochure, p23)
+- Tata Altroz Creative S DCA: paddle shifters blank → yes, Petrol DCA only (Altroz brochure, p22)
+- Tata Altroz Pure Petrol MT: drive modes blank → 2, Eco and Sport (Altroz brochure, p22)
+**What app users now see:** Altroz paddle-shifter cells fill in and 27 fuel-tank values correct (fuel tank is not shown in the app catalogue).
+**Not done / held:**
+- Mileage and head-up display: not on the pages read.
+- Drive modes on DCA and CNG variants: the row names other variants only.
+**Prod SHA-1:** `e351341c…` → `98a46dbd…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11H: 65 Altroz cells changed from the brochure.
+
 ## Current state
-As of phase 11G (prod `e351341cf8eaffb8164651fc7ed61f09d74a51fa`).
-- **Active quarantines:** 1,425 (950 observations, 307 variant cells, 167 provenance rows, 1 safety applicability row(s)).
+As of phase 11H (prod `98a46dbdb7e133f712c9df8072049cc89377bacb`).
+- **Active quarantines:** 1,452 (950 observations, 307 variant cells, 194 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

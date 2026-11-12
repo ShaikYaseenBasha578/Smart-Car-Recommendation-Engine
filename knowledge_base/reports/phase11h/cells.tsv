@@ -1,0 +1,75 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+319	cruise_control	0	0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	PURE tier: Cruise control ***; not in the SMART list	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only	CONFIRM
+319	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter** (Creative tier); not in the SMART list	Petrol DCA only	FILL
+319	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+320	cruise_control	1	1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	PURE: Cruise control ***	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only	CONFIRM
+320	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter** (Creative tier); not at Pure	Petrol DCA only	FILL
+320	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport # (SMART, carried into Pure)	Petrol MT, AMT and Diesel MT only	FILL
+321	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+322	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+322	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+323	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+323	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+324	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+324	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+325	cruise_control	1	1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	PURE: Cruise control ***	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only	CONFIRM
+325	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+325	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+326	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+327	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+327	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+328	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+328	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+329	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+330	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+330	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+331	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+332	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+332	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+333	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+334	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+335	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+335	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+336	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+337	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+337	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+338	paddle_shifters		1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+339	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+340	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+341	cruise_control	1	1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	PURE: Cruise control ***	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only	CONFIRM
+341	wireless_charging	1	1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support		CONFIRM
+341	paddle_shifters	0	0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	CONFIRM
+342	paddle_shifters		0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+342	drive_modes		2	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Multi Drive Modes- Eco & Sport #	Petrol MT, AMT and Diesel MT only	FILL
+343	paddle_shifters		1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+344	paddle_shifters		1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	FILL
+345	cruise_control	0	0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Cruise control *** excludes CNG AMT	Petrol MT, Petrol AMT, Petrol DCA, CNG MT, and Diesel only	CONFIRM
+345	wireless_charging	1	1	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	ACCOMPLISHED S: Wireless Smartphone Charger- Qi Support		CONFIRM
+345	paddle_shifters	0	0	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	22	Paddle shifter**	Petrol DCA only	CONFIRM
+319	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+320	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+321	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+322	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+323	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+324	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+325	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+326	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+327	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37L	1.5L Revotorq Diesel	CORRECTION
+328	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+329	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+330	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+331	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+332	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+333	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+334	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+335	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+336	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+337	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37L	1.5L Revotorq Diesel	CORRECTION
+338	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+339	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+340	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+341	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
+342	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37L	1.5L Revotorq Diesel	CORRECTION
+343	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+344	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) 37 L	1.2L Revotron Petrol	CORRECTION
+345	fuel_tank_litres	60.0	37	tata/altroz/latest/brochures/tata_altroz_brochure.pdf	5cbbf8b65224b23bb027ff078fe5e4721f793d25	23	Fuel Tank Capacity (Litre) Petrol: 37 L, CNG: 60L (Water Capacity)	1.2L iCNG, petrol tank	CORRECTION
