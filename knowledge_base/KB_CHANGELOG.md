@@ -276,9 +276,21 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Drive modes on 4x4 variants: the tick is printed for RWD only.
 **Prod SHA-1:** `28924082…` → `52711fd1…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11L: 21 Thar Roxx cells changed from the brochure.
 
+## 11M — 2026-11-12 — Venue: feature, fuel-tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 97 cells checked on 3 brochure page(s): 13 blanks filled, 1 corrected, 83 confirmed; 0 old quarantines released; 3 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Hyundai Venue HX7 1.5 Diesel MT: ventilated front seats yes → no (Venue brochure, p20)
+- Hyundai Venue HX 10 DCT: drive modes blank → 3, Eco, Normal and Sport (Venue brochure, p20)
+- Hyundai Venue HX 2 Petrol: drive modes blank → 0, dash printed (Venue brochure, p20)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage and head-up display: not on the pages read.
+**Prod SHA-1:** `52711fd1…` → `8039119b…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11M: 14 Venue cells changed from the brochure.
+
 ## Current state
-As of phase 11L (prod `52711fd11c87df56670f6970b7f733824d3455b8`).
-- **Active quarantines:** 1,499 (950 observations, 294 variant cells, 254 provenance rows, 1 safety applicability row(s)).
+As of phase 11M (prod `8039119ba0ba5e787025d198e1f2aad569c19c3a`).
+- **Active quarantines:** 1,502 (950 observations, 294 variant cells, 257 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

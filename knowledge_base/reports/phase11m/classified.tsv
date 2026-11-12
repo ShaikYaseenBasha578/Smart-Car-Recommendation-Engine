@@ -1,0 +1,324 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+18	148	HX2 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	149	HX2 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	150	HX4 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	151	HX5 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	152	HX5 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	153	HX2 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	154	HX5+ 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	155	HX6 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	156	HX6T 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	157	HX5 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	158	HX5 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	159	HX5 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	160	HX8 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	161	HX6 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	162	HX7 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	163	HX8 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	164	HX8 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	165	HX10 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+18	166	HX10 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	all				False	Fuel tank capacity (l) 45
+19	148	HX2 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	148	HX2 1.2 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	149	HX2 1.0 Turbo Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	cruise_control	VERIFIED	0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	wireless_charging	VERIFIED	0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	150	HX4 1.2 Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	cruise_control	VERIFIED	0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	151	HX5 1.2 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	152	HX5 1.0 Turbo Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	153	HX2 1.5 Diesel MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	cruise_control	VERIFIED	0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	wireless_charging	VERIFIED	1	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	154	HX5+ 1.2 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	cruise_control	VERIFIED	0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	155	HX6 1.2 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	cruise_control	VERIFIED	0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	156	HX6T 1.2 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	157	HX5 1.0 Turbo Petrol DCT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	158	HX5 1.5 Diesel MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	wireless_charging	VERIFIED	0	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	159	HX5 1.5 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	wireless_charging	VERIFIED	1	NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	160	HX8 1.0 Turbo Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	wireless_charging	VERIFIED	1	NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	161	HX6 1.0 Turbo Petrol DCT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	162	HX7 1.5 Diesel MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	wireless_charging	VERIFIED	1	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	163	HX8 1.0 Turbo Petrol DCT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	164	HX8 1.5 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G) - HX 10 column: S
+19	165	HX10 1.0 Turbo Petrol DCT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	165	HX10 1.0 Turbo Petrol DCT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G) - HX 10 column: S
+19	166	HX10 1.5 Diesel AT	wireless_charging	VERIFIED	1	NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+19	166	HX10 1.5 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+20	148	HX2 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	148	HX2 1.2 Petrol MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 2: -
+20	148	HX2 1.2 Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 2: -
+20	148	HX2 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	148	HX2 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 2: -
+20	148	HX2 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 2: -
+20	148	HX2 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	148	HX2 1.2 Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 2: -
+20	149	HX2 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	149	HX2 1.0 Turbo Petrol MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 2: -
+20	149	HX2 1.0 Turbo Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 2: -
+20	149	HX2 1.0 Turbo Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	149	HX2 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 2: -
+20	149	HX2 1.0 Turbo Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 2: -
+20	149	HX2 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	149	HX2 1.0 Turbo Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 2: -
+20	150	HX4 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	150	HX4 1.2 Petrol MT	cruise_control	VERIFIED	0	CONFIRM_V	0					False	Cruise control row, HX 4: -
+20	150	HX4 1.2 Petrol MT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Smartphone wireless charger*, HX 4: -
+20	150	HX4 1.2 Petrol MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+20	150	HX4 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 4: -
+20	150	HX4 1.2 Petrol MT	paddle_shifters	NULL		FILL	0		0		True	True	Paddle shifters, HX 4: -
+20	150	HX4 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	150	HX4 1.2 Petrol MT	drive_modes	NULL		FILL	0					False	Drive mode select (Eco, Normal, Sport), HX 4: -
+20	151	HX5 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	151	HX5 1.2 Petrol MT	cruise_control	VERIFIED	0	CONFIRM_V	0	1.0 Turbo Petrol & 1.5 Diesel only				False	Cruise control, HX 5: S## (1.0 Turbo Petrol & 1.5 Diesel only)
+20	151	HX5 1.2 Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 5: -
+20	151	HX5 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	151	HX5 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5: -
+20	151	HX5 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	DCT/AT only				False	Paddle shifters, HX 5: S^ (DCT/AT only)
+20	151	HX5 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	151	HX5 1.2 Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 5: -
+20	152	HX5 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	152	HX5 1.0 Turbo Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1	1.0 Turbo Petrol & 1.5 Diesel only				False	Cruise control, HX 5: S## (1.0 Turbo Petrol & 1.5 Diesel only)
+20	152	HX5 1.0 Turbo Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 5: -
+20	152	HX5 1.0 Turbo Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	152	HX5 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5: -
+20	152	HX5 1.0 Turbo Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	DCT/AT only				False	Paddle shifters, HX 5: S^ (DCT/AT only)
+20	152	HX5 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	152	HX5 1.0 Turbo Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 5: -
+20	153	HX2 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	153	HX2 1.5 Diesel MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 2: -
+20	153	HX2 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 2: -
+20	153	HX2 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	153	HX2 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 2: -
+20	153	HX2 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 2: -
+20	153	HX2 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	153	HX2 1.5 Diesel MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 2: -
+20	154	HX5+ 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	154	HX5+ 1.2 Petrol MT	cruise_control	VERIFIED	0	CONFIRM_V	0					False	Cruise control, HX 5+: -
+20	154	HX5+ 1.2 Petrol MT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	Smartphone wireless charger*, HX 5+: S
+20	154	HX5+ 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	154	HX5+ 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5+: -
+20	154	HX5+ 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 5+: -
+20	154	HX5+ 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	154	HX5+ 1.2 Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 5+: -
+20	155	HX6 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	155	HX6 1.2 Petrol MT	cruise_control	VERIFIED	0	CONFIRM_V	0	DCT/AT only				False	Cruise control, HX 6: S^ (DCT/AT only)
+20	155	HX6 1.2 Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger*, HX 6: S
+20	155	HX6 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	155	HX6 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 6: -
+20	155	HX6 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	DCT/AT only				False	Paddle shifters, HX 6: S^ (DCT/AT only)
+20	155	HX6 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	155	HX6 1.2 Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 6: -
+20	156	HX6T 1.2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	156	HX6T 1.2 Petrol MT	cruise_control	VERIFIED	0	CONFIRM_V	0					False	Cruise control, HX 6T: -
+20	156	HX6T 1.2 Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger*, HX 6T: S
+20	156	HX6T 1.2 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	156	HX6T 1.2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 6T: -
+20	156	HX6T 1.2 Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 6T: -
+20	156	HX6T 1.2 Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	156	HX6T 1.2 Petrol MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 6T: -
+20	157	HX5 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	157	HX5 1.0 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1	1.0 Turbo Petrol & 1.5 Diesel only				False	Cruise control, HX 5: S## (1.0 Turbo Petrol & 1.5 Diesel only)
+20	157	HX5 1.0 Turbo Petrol DCT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 5: -
+20	157	HX5 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	157	HX5 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5: -
+20	157	HX5 1.0 Turbo Petrol DCT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	DCT/AT only				False	Paddle shifters, HX 5: S^ (DCT/AT only)
+20	157	HX5 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	157	HX5 1.0 Turbo Petrol DCT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 5: -
+20	158	HX5 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	158	HX5 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1	1.0 Turbo Petrol & 1.5 Diesel only				False	Cruise control, HX 5: S## (1.0 Turbo Petrol & 1.5 Diesel only)
+20	158	HX5 1.5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger*, HX 5: -
+20	158	HX5 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	158	HX5 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5: -
+20	158	HX5 1.5 Diesel MT	paddle_shifters	VERIFIED	0	CONFIRM_V	0	DCT/AT only				False	Paddle shifters, HX 5: S^ (DCT/AT only)
+20	158	HX5 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	158	HX5 1.5 Diesel MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 5: -
+20	159	HX5 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	159	HX5 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	1.0 Turbo Petrol & 1.5 Diesel only				False	Cruise control, HX 5: S## (1.0 Turbo Petrol & 1.5 Diesel only)
+20	159	HX5 1.5 Diesel AT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	Smartphone wireless charger*, HX 5: -
+20	159	HX5 1.5 Diesel AT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+20	159	HX5 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 5: -
+20	159	HX5 1.5 Diesel AT	paddle_shifters	NULL		FILL	1	DCT/AT only	1	S^ - DCT/AT only	True	True	Paddle shifters, HX 5: S^ (DCT/AT only)
+20	159	HX5 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	159	HX5 1.5 Diesel AT	drive_modes	NULL		FILL	0		0		True	True	Drive mode select (Eco, Normal, Sport), HX 5: -
+20	160	HX8 1.0 Turbo Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	160	HX8 1.0 Turbo Petrol MT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	Cruise control, HX 8: S
+20	160	HX8 1.0 Turbo Petrol MT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	Smartphone wireless charger*, HX 8: S
+20	160	HX8 1.0 Turbo Petrol MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+20	160	HX8 1.0 Turbo Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats, HX 8: S
+20	160	HX8 1.0 Turbo Petrol MT	paddle_shifters	NULL		FILL	0	DCT/AT only	0	DCT/AT only	True	True	Paddle shifters, HX 8: S^ (DCT/AT only)
+20	160	HX8 1.0 Turbo Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	160	HX8 1.0 Turbo Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+20	161	HX6 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	161	HX6 1.0 Turbo Petrol DCT	cruise_control	VERIFIED	1	CONFIRM_V	1	DCT/AT only				False	Cruise control, HX 6: S^ (DCT/AT only)
+20	161	HX6 1.0 Turbo Petrol DCT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	Smartphone wireless charger*, HX 6: S
+20	161	HX6 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	161	HX6 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats, HX 6: -
+20	161	HX6 1.0 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	DCT/AT only				False	Paddle shifters, HX 6: S^ (DCT/AT only)
+20	161	HX6 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	161	HX6 1.0 Turbo Petrol DCT	drive_modes	NULL		FILL	0		0		True	True	Drive mode select (Eco, Normal, Sport), HX 6: -
+20	162	HX7 1.5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	162	HX7 1.5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control, HX 7: S
+20	162	HX7 1.5 Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger*, HX 7: S
+20	162	HX7 1.5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	162	HX7 1.5 Diesel MT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Front row ventilated seats, HX 7: -
+20	162	HX7 1.5 Diesel MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 7: -
+20	162	HX7 1.5 Diesel MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	162	HX7 1.5 Diesel MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport), HX 7: -
+20	163	HX8 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	163	HX8 1.0 Turbo Petrol DCT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	Cruise control, HX 8: S
+20	163	HX8 1.0 Turbo Petrol DCT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	Smartphone wireless charger*, HX 8: S
+20	163	HX8 1.0 Turbo Petrol DCT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+20	163	HX8 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats, HX 8: S
+20	163	HX8 1.0 Turbo Petrol DCT	paddle_shifters	NULL		FILL	1	DCT/AT only	1	DCT/AT only	True	True	Paddle shifters, HX 8: S^ (DCT/AT only)
+20	163	HX8 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	163	HX8 1.0 Turbo Petrol DCT	drive_modes	NULL		FILL	3	DCT/AT only	3	DCT/AT only	True	True	Drive mode select (Eco, Normal, Sport), HX 8: S^
+20	164	HX8 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	164	HX8 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control, HX 8: S
+20	164	HX8 1.5 Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger*, HX 8: S
+20	164	HX8 1.5 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	164	HX8 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats, HX 8: S
+20	164	HX8 1.5 Diesel AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	DCT/AT only				False	Paddle shifters, HX 8: S^ (DCT/AT only)
+20	164	HX8 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	164	HX8 1.5 Diesel AT	drive_modes	NULL		FILL	3	DCT/AT only	3	DCT/AT only	True	True	Drive mode select (Eco, Normal, Sport), HX 8: S^
+20	165	HX10 1.0 Turbo Petrol DCT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	165	HX10 1.0 Turbo Petrol DCT	cruise_control	UNVERIFIED	1	CONFIRM	1	SCC with Stop & Go				False	Cruise control, HX 10: S; Disclaimer: HX 10 has SCC with S&G instead of Cruise control
+20	165	HX10 1.0 Turbo Petrol DCT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger*, HX 10: S
+20	165	HX10 1.0 Turbo Petrol DCT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	165	HX10 1.0 Turbo Petrol DCT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats, HX 10: S
+20	165	HX10 1.0 Turbo Petrol DCT	paddle_shifters	UNVERIFIED	1	CONFIRM	1					False	Paddle shifters, HX 10: S
+20	165	HX10 1.0 Turbo Petrol DCT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	165	HX10 1.0 Turbo Petrol DCT	drive_modes	NULL		FILL	3		3		True	True	Drive mode select (Eco, Normal, Sport), HX 10: S
+20	166	HX10 1.5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+20	166	HX10 1.5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	SCC with Stop & Go				False	Cruise control, HX 10: S; Disclaimer: HX 10 has SCC with S&G instead of Cruise control
+20	166	HX10 1.5 Diesel AT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	Smartphone wireless charger*, HX 10: S
+20	166	HX10 1.5 Diesel AT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+20	166	HX10 1.5 Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats, HX 10: S
+20	166	HX10 1.5 Diesel AT	paddle_shifters	NULL		FILL	1		1		True	True	Paddle shifters, HX 10: S
+20	166	HX10 1.5 Diesel AT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+20	166	HX10 1.5 Diesel AT	drive_modes	NULL		FILL	3					False	Drive mode select (Eco, Normal, Sport), HX 10: S
