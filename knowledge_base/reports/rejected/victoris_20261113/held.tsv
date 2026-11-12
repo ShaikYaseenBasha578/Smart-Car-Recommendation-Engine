@@ -1,0 +1,9 @@
+vid	variant	field	cls	reason
+559	VXI AT	cruise_control	CONFLICT	CONFLICT
+560	ZXI MT	cruise_control	CORRECTION	runs disagree: a=0 b=1
+561	ZXI (O) MT	cruise_control	CORRECTION	runs disagree: a=0 b=1
+562	ZXI CNG MT	cruise_control	CORRECTION	runs disagree: a=0 b=1
+563	ZXI AT	cruise_control	CONFLICT	CONFLICT
+565	ZXI (O) AT	cruise_control	CONFLICT	CONFLICT
+570	ZXI Strong Hybrid e-CVT	cruise_control	CONFLICT	CONFLICT
+571	ZXI (O) Strong Hybrid e-CVT	cruise_control	CORRECTION	runs disagree: a=0 b=1

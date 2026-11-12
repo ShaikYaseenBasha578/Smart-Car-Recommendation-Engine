@@ -1,0 +1,31 @@
+{
+ "cells": 168,
+ "unmapped": [],
+ "by_class": {
+  "FILL": 26,
+  "CONFIRM": 80,
+  "CORRECTION": 16,
+  "NOT_ON_PAGE": 14,
+  "ABSENT_NOT_SHOWN": 0,
+  "CONFLICT": 4,
+  "CONFIRM_V": 28,
+  "PAGE_CONFLICT": 0
+ },
+ "validated": 26,
+ "validated_agree": 22,
+ "selected": 26,
+ "page_columns": {
+  "16": {
+   "a": [
+    "Lxi",
+    "Vxi",
+    "Zxi / Zxi (O)",
+    "Zxi+ / Zxi+ (O)",
+    "PETROL",
+    "PETROL/CNG",
+    "STRONG HYBRID"
+   ],
+   "b": []
+  }
+ }
+}

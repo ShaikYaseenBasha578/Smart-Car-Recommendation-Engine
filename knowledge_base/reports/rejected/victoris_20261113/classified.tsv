@@ -1,0 +1,169 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+16	555	LXI MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	557	VXI MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	559	VXI AT	mileage_arai_kmpl	VERIFIED	21.06	CONFIRM_V	21.06	Petrol (AT)				False	21.06 km/l Petrol (AT)
+16	560	ZXI MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	561	ZXI (O) MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	563	ZXI AT	mileage_arai_kmpl	VERIFIED	21.06	CONFIRM_V	21.06	Petrol (AT)				False	21.06 km/l Petrol (AT)
+16	564	ZXI+ MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	565	ZXI (O) AT	mileage_arai_kmpl	VERIFIED	21.06	CONFIRM_V	21.06	Petrol (AT)				False	21.06 km/l Petrol (AT)
+16	566	ZXI+ (O) MT	mileage_arai_kmpl	VERIFIED	21.18	CONFIRM_V	21.18	Petrol (MT)				False	21.18 km/l Petrol (MT)
+16	567	VXI Strong Hybrid e-CVT	mileage_arai_kmpl	VERIFIED	28.65	CONFIRM_V	28.65	Strong Hybrid Petrol e-CVT				False	28.65 km/l (Strong Hybrid Petrol e-CVT)
+16	568	ZXI+ AT ADAS	mileage_arai_kmpl	VERIFIED	21.06	CONFIRM_V	21.06	Petrol (AT)				False	21.06 km/l Petrol (AT)
+16	569	ZXI+ (O) AT ADAS	mileage_arai_kmpl	VERIFIED	21.06	CONFIRM_V	21.06	Petrol (AT)				False	21.06 km/l Petrol (AT)
+16	570	ZXI Strong Hybrid e-CVT	mileage_arai_kmpl	VERIFIED	28.65	CONFIRM_V	28.65	Strong Hybrid Petrol e-CVT				False	28.65 km/l (Strong Hybrid Petrol e-CVT)
+16	571	ZXI (O) Strong Hybrid e-CVT	mileage_arai_kmpl	VERIFIED	28.65	CONFIRM_V	28.65	Strong Hybrid Petrol e-CVT				False	28.65 km/l (Strong Hybrid Petrol e-CVT)
+16	572	ZXI+ AT ALLGRIP ADAS	mileage_arai_kmpl	VERIFIED	19.07	CONFIRM_V	19.07	Petrol (ALLGRIP AT)				False	19.07 km/l (ALLGRIP AT)
+16	573	ZXI+ (O) AT ALLGRIP ADAS	mileage_arai_kmpl	VERIFIED	19.07	CONFIRM_V	19.07	Petrol (ALLGRIP AT)				False	19.07 km/l (ALLGRIP AT)
+16	574	ZXI+ Strong Hybrid e-CVT	mileage_arai_kmpl	VERIFIED	28.65	CONFIRM_V	28.65	Strong Hybrid Petrol e-CVT				False	28.65 km/l (Strong Hybrid Petrol e-CVT)
+16	575	ZXI+ (O) Strong Hybrid e-CVT	mileage_arai_kmpl	VERIFIED	28.65	CONFIRM_V	28.65	Strong Hybrid Petrol e-CVT				False	28.65 km/l (Strong Hybrid Petrol e-CVT)
+16	556	LXI CNG MT	mileage_arai_km_per_kg	VERIFIED	27.02	CONFIRM_V	27.02	CNG				False	27.02 km/kg CNG
+16	558	VXI CNG MT	mileage_arai_km_per_kg	VERIFIED	27.02	CONFIRM_V	27.02	CNG				False	27.02 km/kg CNG
+16	562	ZXI CNG MT	mileage_arai_km_per_kg	VERIFIED	27.02	CONFIRM_V	27.02	CNG				False	27.02 km/kg CNG
+16	555	LXI MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row: Lxi -; ACC row: Lxi -
+16	556	LXI CNG MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row: Lxi -; ACC row: Lxi -
+16	557	VXI MT	cruise_control	UNVERIFIED	1	CORRECTION	0		0		True	True	Cruise Control row: Vxi -; ACC row: Vxi -
+16	558	VXI CNG MT	cruise_control	UNVERIFIED	1	CORRECTION	0		0		True	True	Cruise Control row: Vxi -; ACC row: Vxi -
+16	559	VXI AT	cruise_control	VERIFIED	1	CONFLICT	0					False	Cruise Control row: Vxi -; ACC row: Vxi -
+16	560	ZXI MT	cruise_control	UNVERIFIED	1	CORRECTION	0		1		False	True	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	561	ZXI (O) MT	cruise_control	UNVERIFIED	1	CORRECTION	0		1		False	True	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	562	ZXI CNG MT	cruise_control	UNVERIFIED	1	CORRECTION	0		1		False	True	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	563	ZXI AT	cruise_control	VERIFIED	1	CONFLICT	0					False	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	564	ZXI+ MT	cruise_control	UNVERIFIED	1	CONFIRM	1	MT & Strong Hybrid				False	Cruise Control (MT & Strong Hybrid) under Zxi+ / Zxi+ (O)
+16	565	ZXI (O) AT	cruise_control	VERIFIED	1	CONFLICT	0					False	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	566	ZXI+ (O) MT	cruise_control	UNVERIFIED	1	CONFIRM	1	MT & Strong Hybrid				False	Cruise Control (MT & Strong Hybrid) under Zxi+ / Zxi+ (O)
+16	567	VXI Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CORRECTION	0		0		True	True	Cruise Control row: Vxi -; ACC row: Vxi -
+16	568	ZXI+ AT ADAS	cruise_control	VERIFIED	1	CONFIRM_V	1	6AT				False	Adaptive Cruise Control with all Speed Following & Stop Resume - 6AT
+16	569	ZXI+ (O) AT ADAS	cruise_control	VERIFIED	1	CONFIRM_V	1	6AT				False	Adaptive Cruise Control with all Speed Following & Stop Resume - 6AT
+16	570	ZXI Strong Hybrid e-CVT	cruise_control	VERIFIED	1	CONFLICT	0					False	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	571	ZXI (O) Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CORRECTION	0		1		False	True	Cruise Control row: Zxi / Zxi (O) -; ACC row: -
+16	572	ZXI+ AT ALLGRIP ADAS	cruise_control	VERIFIED	1	CONFIRM_V	1	6AT				False	Adaptive Cruise Control with all Speed Following & Stop Resume - 6AT
+16	573	ZXI+ (O) AT ALLGRIP ADAS	cruise_control	VERIFIED	1	CONFIRM_V	1	6AT				False	Adaptive Cruise Control with all Speed Following & Stop Resume - 6AT
+16	574	ZXI+ Strong Hybrid e-CVT	cruise_control	VERIFIED	1	CONFIRM_V	1	MT & Strong Hybrid				False	Cruise Control (MT & Strong Hybrid) under Zxi+ / Zxi+ (O)
+16	575	ZXI+ (O) Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1	MT & Strong Hybrid				False	Cruise Control (MT & Strong Hybrid) under Zxi+ / Zxi+ (O)
+16	555	LXI MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger with Active Cooling: Lxi -
+16	556	LXI CNG MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger with Active Cooling: Lxi -
+16	557	VXI MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger with Active Cooling: Vxi -
+16	558	VXI CNG MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger with Active Cooling: Vxi -
+16	559	VXI AT	wireless_charging	NULL		FILL	0					False	Wireless Charger with Active Cooling: Vxi -
+16	560	ZXI MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	561	ZXI (O) MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	562	ZXI CNG MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	563	ZXI AT	wireless_charging	NULL		FILL	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	564	ZXI+ MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	565	ZXI (O) AT	wireless_charging	NULL		FILL	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	566	ZXI+ (O) MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	567	VXI Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger with Active Cooling: Vxi -
+16	568	ZXI+ AT ADAS	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	569	ZXI+ (O) AT ADAS	wireless_charging	NULL		FILL	1					False	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	570	ZXI Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	571	ZXI (O) Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi / Zxi (O) tick
+16	572	ZXI+ AT ALLGRIP ADAS	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	573	ZXI+ (O) AT ALLGRIP ADAS	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	574	ZXI+ Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	575	ZXI+ (O) Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger with Active Cooling: Zxi+ / Zxi+ (O) tick
+16	555	LXI MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Lxi -
+16	556	LXI CNG MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Lxi -
+16	557	VXI MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Vxi -
+16	558	VXI CNG MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Vxi -
+16	559	VXI AT	heads_up_display	NULL		FILL	0		0		True	True	Head Up Display: Vxi -
+16	560	ZXI MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Zxi / Zxi (O) -
+16	561	ZXI (O) MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Zxi / Zxi (O) -
+16	562	ZXI CNG MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Zxi / Zxi (O) -
+16	563	ZXI AT	heads_up_display	NULL		FILL	0					False	Head Up Display: Zxi / Zxi (O) -
+16	564	ZXI+ MT	heads_up_display	UNVERIFIED	0	CORRECTION	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	565	ZXI (O) AT	heads_up_display	NULL		FILL	0					False	Head Up Display: Zxi / Zxi (O) -
+16	566	ZXI+ (O) MT	heads_up_display	UNVERIFIED	0	CORRECTION	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	567	VXI Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Vxi -
+16	568	ZXI+ AT ADAS	heads_up_display	NULL		FILL	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	569	ZXI+ (O) AT ADAS	heads_up_display	NULL		FILL	1					False	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	570	ZXI Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Zxi / Zxi (O) -
+16	571	ZXI (O) Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display: Zxi / Zxi (O) -
+16	572	ZXI+ AT ALLGRIP ADAS	heads_up_display	NULL		FILL	1					False	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	573	ZXI+ (O) AT ALLGRIP ADAS	heads_up_display	NULL		FILL	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	574	ZXI+ Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CORRECTION	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	575	ZXI+ (O) Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CORRECTION	1		1		True	True	Head Up Display: Zxi+ / Zxi+ (O) tick
+16	555	LXI MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Lxi -
+16	556	LXI CNG MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Lxi -
+16	557	VXI MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Vxi -
+16	558	VXI CNG MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Vxi -
+16	559	VXI AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Vxi -
+16	560	ZXI MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	561	ZXI (O) MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	562	ZXI CNG MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	563	ZXI AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	564	ZXI+ MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	565	ZXI (O) AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	566	ZXI+ (O) MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	567	VXI Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Vxi -
+16	568	ZXI+ AT ADAS	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	569	ZXI+ (O) AT ADAS	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	570	ZXI Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	571	ZXI (O) Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver): Zxi / Zxi (O) -
+16	572	ZXI+ AT ALLGRIP ADAS	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	573	ZXI+ (O) AT ALLGRIP ADAS	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	574	ZXI+ Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	575	ZXI+ (O) Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver): Zxi+ / Zxi+ (O) tick
+16	555	LXI MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters: Lxi -
+16	556	LXI CNG MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters: Lxi -
+16	557	VXI MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	6AT				False	Paddle Shifters: Vxi 6AT
+16	558	VXI CNG MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	6AT				False	Paddle Shifters: Vxi 6AT
+16	559	VXI AT	paddle_shifters	NULL		FILL	1	6AT				False	Paddle Shifters: Vxi 6AT
+16	560	ZXI MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	6AT				False	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	561	ZXI (O) MT	paddle_shifters	VERIFIED	0	CONFIRM_V	0	6AT				False	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	562	ZXI CNG MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	6AT				False	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	563	ZXI AT	paddle_shifters	NULL		FILL	1	6AT				False	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	564	ZXI+ MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	6AT				False	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	565	ZXI (O) AT	paddle_shifters	NULL		FILL	1	6AT	1	6AT	True	True	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	566	ZXI+ (O) MT	paddle_shifters	VERIFIED	0	CONFIRM_V	0	6AT				False	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	567	VXI Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	1	CORRECTION	0	6AT	0	6AT	True	True	Paddle Shifters: Vxi 6AT
+16	568	ZXI+ AT ADAS	paddle_shifters	NULL		FILL	1	6AT				False	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	569	ZXI+ (O) AT ADAS	paddle_shifters	NULL		FILL	1	6AT				False	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	570	ZXI Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	1	CORRECTION	0	6AT	0	6AT	True	True	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	571	ZXI (O) Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	1	CORRECTION	0	6AT	0	6AT	True	True	Paddle Shifters: Zxi / Zxi (O) 6AT
+16	572	ZXI+ AT ALLGRIP ADAS	paddle_shifters	NULL		FILL	1	6AT	1	6AT	True	True	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	573	ZXI+ (O) AT ALLGRIP ADAS	paddle_shifters	NULL		FILL	1	6AT	1	6AT	True	True	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	574	ZXI+ Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	1	CORRECTION	0	6AT	0	6AT	True	True	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	575	ZXI+ (O) Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	1	CORRECTION	0	6AT	0	6AT	True	True	Paddle Shifters: Zxi+ / Zxi+ (O) 6AT
+16	555	LXI MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	556	LXI CNG MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol tank (CNG variant)				False	Petrol/CNG: Petrol: 45
+16	557	VXI MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	558	VXI CNG MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol tank (CNG variant)				False	Petrol/CNG: Petrol: 45
+16	559	VXI AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	560	ZXI MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	561	ZXI (O) MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	562	ZXI CNG MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol tank (CNG variant)				False	Petrol/CNG: Petrol: 45
+16	563	ZXI AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	564	ZXI+ MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	565	ZXI (O) AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	566	ZXI+ (O) MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	567	VXI Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Strong Hybrid				False	Fuel Tank Capacity (L) Strong Hybrid: 45
+16	568	ZXI+ AT ADAS	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	569	ZXI+ (O) AT ADAS	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	570	ZXI Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Strong Hybrid				False	Fuel Tank Capacity (L) Strong Hybrid: 45
+16	571	ZXI (O) Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Strong Hybrid				False	Fuel Tank Capacity (L) Strong Hybrid: 45
+16	572	ZXI+ AT ALLGRIP ADAS	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	573	ZXI+ (O) AT ALLGRIP ADAS	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Petrol				False	Fuel Tank Capacity (L) Petrol: 45
+16	574	ZXI+ Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Strong Hybrid				False	Fuel Tank Capacity (L) Strong Hybrid: 45
+16	575	ZXI+ (O) Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45	Strong Hybrid				False	Fuel Tank Capacity (L) Strong Hybrid: 45
+16	555	LXI MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Engine Drive Modes - Eco, Normal, Sport: Lxi -
+16	556	LXI CNG MT	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Engine Drive Modes - Eco, Normal, Sport: Lxi -
+16	557	VXI MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	558	VXI CNG MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	559	VXI AT	drive_modes	NULL		NOT_ON_PAGE						False	
+16	560	ZXI MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	561	ZXI (O) MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	562	ZXI CNG MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	563	ZXI AT	drive_modes	NULL		NOT_ON_PAGE						False	
+16	564	ZXI+ MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	565	ZXI (O) AT	drive_modes	NULL		NOT_ON_PAGE						False	
+16	566	ZXI+ (O) MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+16	567	VXI Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid				False	Engine Drive Modes - Eco, Normal, Sport: Vxi Strong Hybrid
+16	568	ZXI+ AT ADAS	drive_modes	NULL		NOT_ON_PAGE						False	
+16	569	ZXI+ (O) AT ADAS	drive_modes	NULL		NOT_ON_PAGE						False	
+16	570	ZXI Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Engine Drive Modes - Eco, Normal, Sport: Zxi Strong Hybrid
+16	571	ZXI (O) Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid				False	Engine Drive Modes - Eco, Normal, Sport: Zxi / Zxi (O) Strong Hybrid
+16	572	ZXI+ AT ALLGRIP ADAS	drive_modes	NULL		NOT_ON_PAGE						False	
+16	573	ZXI+ (O) AT ALLGRIP ADAS	drive_modes	NULL		NOT_ON_PAGE						False	
+16	574	ZXI+ Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid				False	Engine Drive Modes - Eco, Normal, Sport: Zxi+ Strong Hybrid
+16	575	ZXI+ (O) Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid				False	Engine Drive Modes - Eco, Normal, Sport: Zxi+ / Zxi+ (O) Strong Hybrid
