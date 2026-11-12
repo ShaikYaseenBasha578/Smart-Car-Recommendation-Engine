@@ -169,7 +169,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Mileage and fuel tank: not printed on the pages read.
 - Seltos (held, P7) and Carens Clavis (rejected at the validation gate, 34 of 38 agreed; re-run later).
-**Prod SHA-1:** `afad3a5f…` → `b653b3f8…`. **App PR:** see the next entry. **Ranking-track line:** KB 11D: 24 Creta feature cells changed from the brochure.
+**Prod SHA-1:** `afad3a5f…` → `b653b3f8…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/25 (covers 11A, 11B and 11D; based on app/kb-10n-export). **Ranking-track line:** KB 11D: 24 Creta feature cells changed from the brochure.
 
 ## Current state
 As of phase 11D (prod `b653b3f8d6858fe9080ecfe32c5883b6ec99ce3c`).
