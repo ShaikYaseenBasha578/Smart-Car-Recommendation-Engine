@@ -1,0 +1,85 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+6	58	LXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	59	VXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	60	VXi (O) Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	61	VXi Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	62	VXi (O) Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	64	ZXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	66	ZXi Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	67	ZXi Plus Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	68	ZXi Plus Petrol Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	70	ZXi Plus Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	71	ZXi Plus Petrol Automatic Dual Tone	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	Fuel Efficiency² 24.8 km/l (MT) & 25.75 km/l (AMT)
+6	63	VXi CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	Fuel Efficiency² 32.85 km/kg (MT)
+6	65	VXi (O) CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	Fuel Efficiency² 32.85 km/kg (MT)
+6	69	ZXi CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	Fuel Efficiency² 32.85 km/kg (MT)
+6	58	LXi Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, LXi 5MT: -
+6	59	VXi Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi 5MT/5AMT: -
+6	60	VXi (O) Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi (O): -
+6	61	VXi Petrol Automatic	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi 5MT/5AMT: -
+6	62	VXi (O) Petrol Automatic	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi (O): -
+6	63	VXi CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi CNG 5MT: -
+6	64	ZXi Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, ZXi: -
+6	65	VXi (O) CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, VXi (O) CNG 5MT: -
+6	66	ZXi Petrol Automatic	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, ZXi: -
+6	67	ZXi Plus Petrol Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, ZXi+ 5MT/5AMT: tick
+6	68	ZXi Plus Petrol Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, ZXi+ 5MT/5AMT: tick
+6	69	ZXi CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, ZXi CNG 5MT: -
+6	70	ZXi Plus Petrol Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, ZXi+ 5MT/5AMT: tick
+6	71	ZXi Plus Petrol Automatic Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, ZXi+ 5MT/5AMT: tick
+6	58	LXi Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, LXi 5MT: -
+6	59	VXi Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi: -
+6	60	VXi (O) Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi (O): -
+6	61	VXi Petrol Automatic	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi: -
+6	62	VXi (O) Petrol Automatic	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi (O): -
+6	63	VXi CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi CNG: -
+6	64	ZXi Petrol Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi: tick
+6	65	VXi (O) CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, VXi (O) CNG: -
+6	66	ZXi Petrol Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi: tick
+6	67	ZXi Plus Petrol Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi+: tick
+6	68	ZXi Plus Petrol Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi+: tick
+6	69	ZXi CNG Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi CNG: tick
+6	70	ZXi Plus Petrol Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi+: tick
+6	71	ZXi Plus Petrol Automatic Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, ZXi+: tick
+6	58	LXi Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	59	VXi Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	60	VXi (O) Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	61	VXi Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	62	VXi (O) Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	63	VXi CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	64	ZXi Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	65	VXi (O) CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	66	ZXi Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	67	ZXi Plus Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	68	ZXi Plus Petrol Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	69	ZXi CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	70	ZXi Plus Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	71	ZXi Plus Petrol Automatic Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+6	58	LXi Petrol Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	59	VXi Petrol Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	60	VXi (O) Petrol Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	61	VXi Petrol Automatic	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	62	VXi (O) Petrol Automatic	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	63	VXi CNG Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol tank	37	CNG variant, petrol tank	True	True	Petrol: 37; CNG: 55 (Water Filling Capacity)
+6	64	ZXi Petrol Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	65	VXi (O) CNG Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol tank	37	CNG variant, petrol tank	True	True	Petrol: 37; CNG: 55 (Water Filling Capacity)
+6	66	ZXi Petrol Automatic	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	67	ZXi Plus Petrol Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	68	ZXi Plus Petrol Manual Dual Tone	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	69	ZXi CNG Manual	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol tank	37	CNG variant, petrol tank	True	True	Petrol: 37; CNG: 55 (Water Filling Capacity)
+6	70	ZXi Plus Petrol Automatic	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+6	71	ZXi Plus Petrol Automatic Dual Tone	fuel_tank_litres	UNVERIFIED	55.0	CORRECTION	37	Petrol	37	Petrol	True	True	Fuel Tank Capacity (L) 37
+7	58	LXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	59	VXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	60	VXi (O) Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	61	VXi Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	AMT² (VXi, VXi(O), ZXi, ZXi+) 25.75 km/l
+7	62	VXi (O) Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	AMT² (VXi, VXi(O), ZXi, ZXi+) 25.75 km/l
+7	64	ZXi Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	66	ZXi Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	AMT² (VXi, VXi(O), ZXi, ZXi+) 25.75 km/l
+7	67	ZXi Plus Petrol Manual	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	68	ZXi Plus Petrol Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	24.8	CONFIRM	24.8	MT				False	MT² (LXi, VXi, VXi(O), ZXi, ZXi+) 24.8 km/l
+7	70	ZXi Plus Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	AMT² (VXi, VXi(O), ZXi, ZXi+) 25.75 km/l
+7	71	ZXi Plus Petrol Automatic Dual Tone	mileage_arai_kmpl	UNVERIFIED	25.75	CONFIRM	25.75	AMT				False	AMT² (VXi, VXi(O), ZXi, ZXi+) 25.75 km/l
+7	63	VXi CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	MT² (VXi, VXi(O), ZXi) 32.85 km/kg
+7	65	VXi (O) CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	MT² (VXi, VXi(O), ZXi) 32.85 km/kg
+7	69	ZXi CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	32.85	CONFIRM	32.85	MT				False	MT² (VXi, VXi(O), ZXi) 32.85 km/kg

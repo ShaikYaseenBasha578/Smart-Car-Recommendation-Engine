@@ -302,9 +302,21 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage, head-up display, ventilated seats, drive modes: not on the pages read.
 **Prod SHA-1:** `8039119b…` → `cd7bc920…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11N: 15 Exter cells changed from the brochure.
 
+## 11O — 2026-11-13 — Swift: mileage, feature and fuel-tank cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 56 cells checked on 2 brochure page(s): 0 blanks filled, 14 corrected, 42 confirmed; 0 old quarantines released; 14 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Maruti Swift LXi Petrol Manual: fuel tank 55 L → 37 L (Swift brochure, p6)
+- Maruti Swift ZXi CNG Manual: fuel tank 55 L → 37 L, the petrol tank (Swift brochure, p6)
+- Maruti Swift VXi CNG Manual: mileage 32.85 km/kg confirmed (Swift brochure, p7)
+**What app users now see:** No Swift catalogue cell changes except fuel tank (14 values 55 → 37); confirmed cells show as brochure-checked.
+**Not done / held:**
+- Head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
+**Prod SHA-1:** `cd7bc920…` → `2efefc4f…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11O: 14 Swift cells changed from the brochure.
+
 ## Current state
-As of phase 11N (prod `cd7bc92056b71d18831fd9b3eb7ba96461ea80c5`).
-- **Active quarantines:** 1,502 (950 observations, 294 variant cells, 257 provenance rows, 1 safety applicability row(s)).
+As of phase 11O (prod `2efefc4f30505f2d7961a77204b8d83f8d6a6b48`).
+- **Active quarantines:** 1,516 (950 observations, 294 variant cells, 271 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
