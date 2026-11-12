@@ -10,9 +10,10 @@ Questions and approvals only the owner can give. Each has options and a recommen
 - **Option B:** release the three so 821 is fully held as it was.
 
 ### N4. Exter editions 815 and 816 show another trim's price (G1)
-815 "HX 6 Petrol Manual Dual Tone" sits on base HX 2 and 816 "HX 10 Petrol Automatic Dual Tone" on base HX 3, so the app shows ₹5.80 lakh and ₹6.91 lakh (HX 6 is ₹7.95 lakh, HX 10 ₹9.42 lakh). The brochure says only "Dual Tone Option is available on select trims" (p11), so P8 forbids a re-base. P8 (hold) and P5 (a known-wrong value is quarantined) pull in opposite directions. No paper verdict flips.
-- **Option A (recommended):** allow a re-base when the edition's own name states the trim and the KB has exactly one such base, as an owner-approved exception to P8 for 815 and 816.
-- **Option B:** add the Exter price list or a brochure that names the DT trims.
+815 "HX 6 Petrol Manual Dual Tone" sits on base HX 2 and 816 "HX 10 Petrol Automatic Dual Tone" on base HX 3, so the app shows ₹5.80 lakh and ₹6.91 lakh (the KB's own HX 6 Petrol Manual is ₹7.95 lakh, HX 10 Petrol Automatic ₹9.42 lakh). P8 forbids a re-base without brochure evidence naming the trim.
+**Checked 2026-11-13 (phase 11N), still held.** The Exter brochure's variant tables (p10 and p11 header) list HX 2, HX 3, HX 4, HX 4+, HX 6, **HX 6 Knight**, HX 8, HX 10 and **HX 10 Knight**. It lists Knight columns, not "HX 6 Dual Tone" or "HX 10 Dual Tone"; its only Dual Tone line is the p11 note "DT-Dual Tone Option is available on select trims". So the brochure does not confirm 815/816 as trims, and nothing was re-based: before and after price are the same (815 ₹5.80 lakh, 816 ₹6.91 lakh).
+- **Option A (recommended):** add the Exter price list, or a brochure that names the Dual Tone trims, and re-base from that (P8).
+- **Option B:** treat 815/816 as the Knight editions (HX 6 Knight, HX 10 Knight) only if you can confirm that from a source; then re-base to HX 6 and HX 10 and rename.
 - **Option C:** keep holding; the wrong prices stay visible.
 
 ### N5. Schema proposal batch (G2, P16)
