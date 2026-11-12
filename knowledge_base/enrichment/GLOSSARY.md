@@ -54,5 +54,23 @@ A value is for ONE variant, read from that variant's own column, row or trim lis
 - The ARAI-certified CNG efficiency in km/kg. Never put a km/l figure here and never put a km/kg figure in the km/l field.
 - Petrol-only variants get no km/kg cell.
 
+## fuel_tank_litres (litres) — non-electric variants only
+- The fuel tank capacity in litres printed for the variant's engine (petrol, diesel, hybrid fuel tank). A figure per engine or per
+  gearbox applies to the variants of that engine or gearbox; put the label in `qualifier`.
+- CNG variants: the petrol tank capacity. NOT the CNG cylinder "water equivalent" capacity, NOT the AdBlue tank, NOT a range in km.
+- Electric variants have no fuel tank: do not report a cell for them.
+- A variant the page does not give a figure for is NOT_ON_PAGE. Never copy a figure from another engine.
+
+## drive_modes (count) — number of driver-selectable drive modes
+- The number of modes the page lists for the driver-selectable drive mode selector (for example "Eco / Normal / Sport" = 3,
+  "City / Sport" = 2). Count the modes as printed, report the list in `source`.
+- Terrain or traction modes (Sand / Mud / Snow), regen levels and "Eco" as an indicator-only light do not count; report null with
+  qualifier "terrain only" or "regen only" when that is all the page shows.
+- Absent is not zero (same rule as the features): unlisted = unknown, never "none". Report 0 only when the page states that the
+  variant has no drive modes with an explicit absence marker (a dash in a drive-mode row of a table that covers the variant). A
+  mode list printed for a higher trim only, with the variant's own tier silent, is NOT_ON_PAGE for the lower tiers.
+- A mode list restricted by a printed qualifier ("Petrol MT, AMT and Diesel MT only") applies to those variants only; other
+  variants of that trim are NOT_ON_PAGE unless the page shows them absent.
+
 ## Output units
-bool (1/0), km/l, km/kg. `value` is a number or null; `status` is FOUND or NOT_ON_PAGE.
+bool (1/0), km/l, km/kg, litres, count. `value` is a number or null; `status` is FOUND or NOT_ON_PAGE.

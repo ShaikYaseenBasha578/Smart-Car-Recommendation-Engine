@@ -25,9 +25,10 @@ These KB rules live in this repo-root `CLAUDE.md`. There is no `knowledge_base/C
 - P10. Every write: backup per these rules → one transactional script → dry run on a fresh scratch copy → full verification → idempotency re-run (must make 0 changes) → apply the identical script to prod → integrity_check → verify a byte copy of prod.
 - P11. Access. The read-only com.apple.Virtualization.VirtualMachine holder is pre-accepted for reads and writes, provided:
   - its FD mode is read-only
-  - no -wal/-shm files sit beside prod
+  - no -wal beside prod, or a 0-byte -wal; a -shm may sit beside prod. This is allowed only when `lsof` shows no holder (owner decision 2026-11-12: this SQLite build leaves an empty -wal and a -shm after any open). A non-empty -wal still means stop. Never delete these files.
   - the SHA-1 is rechecked immediately before the apply
   - integrity_check runs immediately after
+  - after every apply: `PRAGMA wal_checkpoint(TRUNCATE)`, then confirm the -wal is 0 bytes
   Any other holder → stop.
 - P12. Any classifier or heuristic that would decide more than 20 rows must be validated by a fresh subagent that never sees the classifier's code or labels, on a stratified sample. Agreement must be at least 95% in every class, or no write.
 - P13. Paper: any phase touching body_type, fuel, transmission, seats or price checks exposure on a byte copy of the frozen snapshot and records it in the report. If any paper verdict would flip → stop.
@@ -45,7 +46,7 @@ These KB rules live in this repo-root `CLAUDE.md`. There is no `knowledge_base/C
   3. no `-wal` and no `-shm` file exists for the DB;
   4. the `.db` SHA-1 is identical before and after you copy it.
   Anything else (another process, a `u`/`w` FD, a side file, a hash change): STOP and report the raw lsof output. (DB Browser for SQLite has held the DB open rw before. The virtualization service holds it `r` while the repo folder is shared into a VM; first seen 2026-11-02, PID 4854.)
-- Before any WRITE to production: P11 applies. The read-only reader above is pre-accepted on P11's conditions; any other holder means STOP. Do not kill the process or work around it.
+- Before any WRITE to production: P11 applies. The read-only reader above is pre-accepted on P11's conditions; any other holder, or a non-empty -wal, means STOP. A 0-byte -wal and a -shm with no holder are allowed. Do not kill the process, delete the side files or work around it.
 - Record `shasum -a 1` of `.db` and `-wal` (if present). A non-empty `-wal` means the file hash does not describe the DB.
 - Query a copy: `cp knowledge_base/carrec_kb.db{,-wal} /tmp/carrec_audit/prod/` (no -shm), then query the copy. Do **not** rely on `?immutable=1` when a -wal exists (it ignores WAL content). `?mode=ro` still writes -shm.
 - Re-check the SHA-1 after your work; if it changed outside a controlled write under the policy, stop and report.
@@ -62,7 +63,7 @@ These KB rules live in this repo-root `CLAUDE.md`. There is no `knowledge_base/C
 3. Apply to an isolated copy; produce a full per-table `EXCEPT` diff in both directions (not counts, not hash-set heuristics).
 4. Re-apply on the post-change copy → diff must be empty (idempotency).
 5. Apply to prod in ONE explicit transaction with `PRAGMA foreign_keys=ON`; invariant checks **before** COMMIT; no DDL outside the transaction.
-6. After: `integrity_check`; `foreign_key_check` (only the known 297 `field_provenance` orphans allowed); diff vs backup == isolated diff; `PRAGMA wal_checkpoint(TRUNCATE)`; record new SHA-1.
+6. After: `integrity_check`; `foreign_key_check` (only the known 297 `field_provenance` orphans allowed); diff vs backup == isolated diff; `PRAGMA wal_checkpoint(TRUNCATE)` and confirm the -wal is 0 bytes; record new SHA-1.
 7. Save the exact script and report in the repo and commit them on a `kb/*` branch (Phase 9A/9B scripts were lost — don't repeat that).
 
 ## Do not touch casually
@@ -102,6 +103,6 @@ Tag claims [VERIFIED] (query/file:line/hash) · [REPORTED-ONLY] · [CONTRADICTED
 
 ## Where things live
 - Reports: `knowledge_base/reports/` (phase reports PHASE3…PHASE9B; latest audit `CLAUDE_CODE_FULL_PROJECT_AUDIT.md`, `CLAUDE_CODE_SCRIPT_SAFETY_MAP.md`, notes in `audit_notes/`).
-- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0, pre_phase10b_w1_20260927T015904Z = pre-W1, pre_phase10b_w2_20260927T075058Z = pre-W2, pre_phase10b_w3_20260927T080046Z = pre-W3, pre_phase10b_w3b_20260927T080255Z = pre-W3b, pre_phase10b_w4_20260927T080859Z = pre-W4, pre_phase10b_w6_20260928T194755Z = pre-W6, pre_phase10e_20261101T231809Z = pre-10E (= 8592508), pre_phase10f_20261102T091906Z = pre-10F (= 57f31e4d), pre_phase10g_20261103T105041Z = pre-10G (= dedefb53), pre_phase10h_20261103T112654Z = pre-10H (= 52f00fc7), pre_phase10hb_20261106T145518Z, pre_phase10j_20261106T151256Z, pre_phase10k_20261106T151817Z, pre_phase10l_20261106T152248Z, pre_phase10n_20261106T154455Z, pre_phase11a_20261111T121749Z; copies of the 10B backups in Google Drive My Drive/CarRec_backups/). Paper snapshot (frozen, chmod 444): `~/carrec_kb_snapshots/carrec_kb_paper_v0_8592508.db`. Current prod SHA-1: `795a12233ee84147990f00e36816bfe841beb281` (after Phase 11A) — update after every authorised controlled write.
+- Backups: `knowledge_base/backups/` (pre_phase5_carwale — MISLABELLED: already contains the 297 orphans, not a pre-CarWale state; pre_phase8/phase8b = e752ebde, phase9b = c1e0647c, pre_phase10b_w0_20260927T012954Z = pre-W0, pre_phase10b_w1_20260927T015904Z = pre-W1, pre_phase10b_w2_20260927T075058Z = pre-W2, pre_phase10b_w3_20260927T080046Z = pre-W3, pre_phase10b_w3b_20260927T080255Z = pre-W3b, pre_phase10b_w4_20260927T080859Z = pre-W4, pre_phase10b_w6_20260928T194755Z = pre-W6, pre_phase10e_20261101T231809Z = pre-10E (= 8592508), pre_phase10f_20261102T091906Z = pre-10F (= 57f31e4d), pre_phase10g_20261103T105041Z = pre-10G (= dedefb53), pre_phase10h_20261103T112654Z = pre-10H (= 52f00fc7), pre_phase10hb_20261106T145518Z, pre_phase10j_20261106T151256Z, pre_phase10k_20261106T151817Z, pre_phase10l_20261106T152248Z, pre_phase10n_20261106T154455Z, pre_phase11a_20261111T121749Z, pre_phase11b_20261112T143457Z; copies of the 10B backups in Google Drive My Drive/CarRec_backups/). Paper snapshot (frozen, chmod 444): `~/carrec_kb_snapshots/carrec_kb_paper_v0_8592508.db`. Current prod SHA-1: `afad3a5fecefa98335cdb1db91c9f4528b8aab55` (after Phase 11B) — update after every authorised controlled write.
 - Schema: live `sqlite_master` is authoritative; `KB_SCHEMA.sql` is generated from it (documentation only). Pending schema proposals: `knowledge_base/reports/SCHEMA_PROPOSAL_20261106.md`.
 - Scratch: `/tmp/carrec_audit/` for DB copies and query output.

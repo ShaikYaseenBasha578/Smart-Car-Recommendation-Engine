@@ -144,9 +144,23 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage km/l (17 cells): the Syros brochure prints none.
 **Prod SHA-1:** `758310ea…` → `795a1223…`. **App PR:** none yet (export after every 3 batches). **Ranking-track line:** KB 11A: 9 Syros feature cells changed from the brochure.
 
+## 11B — 2026-11-12 — Nexon: feature cells checked against the brochure
+**Why:** Many Nexon feature cells were empty, unverified or quarantined. The persona pages settle most of them.
+**What changed:** 143 cells checked on three brochure pages: 12 blanks filled, 3 corrected, 128 confirmed; 14 old quarantines released; 3 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Tata Nexon Creative Plus (PS) CNG: wireless charging 0 → 1 (Nexon brochure, p39)
+- Tata Nexon Fearless Plus (PS) CNG: wireless charging 0 → 1 (Nexon brochure, p39)
+- Tata Nexon Creative Plus (PS) CNG Dual Tone: wireless charging blank → yes (Nexon brochure, p39)
+**What app users now see:** 15 Nexon cells change in the next catalogue export; the confirmed cells show as brochure-checked.
+**Not done / held:**
+- Cruise control on 11 Nexon cars: a footnote says "Available in AMT / DCA" but the page does not say which lines it covers (owner decision: held).
+- Cruise control on Pure + PS (15 cells): the persona pages disagree with each other.
+- Mileage and CNG km/kg: the brochure prints none.
+**Prod SHA-1:** `795a1223…` → `afad3a5f…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11B: 15 Nexon feature cells changed from the brochure.
+
 ## Current state
-As of phase 11A (prod `795a12233ee84147990f00e36816bfe841beb281`).
-- **Active quarantines:** 1,383 (950 observations, 323 variant cells, 109 provenance rows, 1 safety applicability row(s)).
+As of phase 11B (prod `afad3a5fecefa98335cdb1db91c9f4528b8aab55`).
+- **Active quarantines:** 1,372 (950 observations, 309 variant cells, 112 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
@@ -154,4 +168,4 @@ As of phase 11A (prod `795a12233ee84147990f00e36816bfe841beb281`).
   - km/kg on CNG variants: 45/82 = 54.9%
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
-- **Open items:** 9 in [NEEDS_YOU.md](NEEDS_YOU.md).
+- **Open items:** 7 in [NEEDS_YOU.md](NEEDS_YOU.md).

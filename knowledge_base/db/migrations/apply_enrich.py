@@ -13,7 +13,7 @@ METHOD = ("two independent headless Sonnet runs on rendered page tiles plus page
 
 def num(col, v):
     if v == "": return None
-    return float(v) if col.startswith("mileage") else int(float(v))
+    return float(v) if col.startswith("mileage") or col == "fuel_tank_litres" else int(float(v))
 
 
 def main():

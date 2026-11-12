@@ -12,7 +12,7 @@ import json, os, sqlite3, sys
 from collections import defaultdict
 
 FIELDS = ['mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'cruise_control', 'wireless_charging',
-          'heads_up_display', 'ventilated_front_seats', 'paddle_shifters']
+          'heads_up_display', 'ventilated_front_seats', 'paddle_shifters', 'fuel_tank_litres', 'drive_modes']
 # brochure folder (make/model) -> KB model id. Alternates are listed in BROCHURE_PICK.
 FOLDER_MODEL = {
     'honda/amaze': 19, 'honda/city': 20, 'honda/elevate': 50, 'hyundai/aura': 17, 'hyundai/creta': 1, 'hyundai/exter': 51,
@@ -30,10 +30,11 @@ FOLDER_MODEL = {
     'toyota/rumion': 43, 'toyota/urban_cruiser_hyryder': 38, 'toyota/urban_cruiser_taisor': 34,
     'volkswagen/taigun': 48, 'volkswagen/virtus': 49,
 }
-# Catalogue-currency holds (CLAUDE.md: Baleno, Brezza, Kylaq Sportline, WagonR 1.0 rows, Jimny "PRO" naming)
+# Catalogue-currency holds (CLAUDE.md: Baleno, Brezza, Kylaq Sportline, WagonR 1.0 rows, Jimny "PRO" naming, Seltos)
 P7_HOLD = {15: 'Baleno catalogue currency (10D audit)', 7: 'Brezza catalogue currency (10D audit)',
            52: 'Kylaq Sportline catalogue currency (10D audit)', 12: 'WagonR 1.0 rows predate the brochure (10F)',
-           44: 'Jimny rows are named "PRO"; naming/currency unresolved (10H obs 3302)'}
+           44: 'Jimny rows are named "PRO"; naming/currency unresolved (10H obs 3302)',
+           9: 'Seltos: the brochure prints trims the KB lacks (GTX(O), X-Line(O)) and wireless charging sits under an optional-pack header (owner decision 2026-11-12, NEEDS_YOU N11)'}
 
 
 def main():
@@ -59,6 +60,7 @@ def main():
         for f in FIELDS:
             if f == 'mileage_arai_kmpl' and fuel in ('CNG', 'Electric'): continue
             if f == 'mileage_arai_km_per_kg' and fuel != 'CNG': continue
+            if f == 'fuel_tank_litres' and fuel == 'Electric': continue
             cv = canon[vid][cc.index(f)]
             if f in verified[vid]: continue
             if f in q[vid] or '*' in q[vid]:

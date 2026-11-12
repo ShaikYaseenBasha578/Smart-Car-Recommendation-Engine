@@ -18,8 +18,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FIELDS = ['mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'cruise_control', 'wireless_charging',
-          'heads_up_display', 'ventilated_front_seats', 'paddle_shifters']
-UNIT = {'mileage_arai_kmpl': 'km/l', 'mileage_arai_km_per_kg': 'km/kg'}
+          'heads_up_display', 'ventilated_front_seats', 'paddle_shifters', 'fuel_tank_litres', 'drive_modes']
+UNIT = {'mileage_arai_kmpl': 'km/l', 'mileage_arai_km_per_kg': 'km/kg', 'fuel_tank_litres': 'litres', 'drive_modes': 'count'}
+NUMERIC = {'mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'fuel_tank_litres', 'drive_modes'}   # not 1/0 features
 DPI, TW, TH, OV = 140, 580, 650, 20
 FLAGS = ['--model', 'sonnet', '--output-format', 'json', '--restricted', '--tools', 'Read', '--strict-mcp-config',
          '--disable-slash-commands', '--setting-sources', '', '--no-session-persistence', '--permission-mode', 'dontAsk',
@@ -38,9 +39,9 @@ Read the page image(s) and text. For every variant and every listed field, repor
 """
 OUTPUT = """OUTPUT (reply with ONE JSON object and nothing else, no markdown fences):
 {"page_columns":["<every trim/variant column or row header the page's feature or spec table prints, as printed>"],
- "cells":[{"variant":"<name exactly as in variants.txt>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool>","qualifier":"<restriction printed with the value or its header, e.g. '6AT', 'DCT/AT only', '1.5 Diesel only', or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}]}
+ "cells":[{"variant":"<name exactly as in variants.txt>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool|litres|count>","qualifier":"<restriction printed with the value or its header, e.g. '6AT', 'DCT/AT only', '1.5 Diesel only', or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}]}
 Rules for "cells":
-- Give one cell for each catalogue variant and each listed field, except: mileage_arai_kmpl is for non-CNG, non-electric variants only; mileage_arai_km_per_kg is for CNG variants only.
+- Give one cell for each catalogue variant and each listed field, except: mileage_arai_kmpl is for non-CNG, non-electric variants only; mileage_arai_km_per_kg is for CNG variants only; fuel_tank_litres is for non-electric variants only.
 - Features: value 1 if the page shows the feature fitted on that variant, 0 if shown absent. Apply restrictions: a feature marked "AT only" / "DCT/AT only" is 0 on manual variants and 1 (with the qualifier) on matching automatic variants; a feature restricted to certain engines is 1 only on those.
 - Mileage: the figure printed for that variant's gearbox/fuel; put gearbox or fuel restrictions in "qualifier".
 - If the page does not say, use value null and status NOT_ON_PAGE. Never guess.
@@ -57,7 +58,7 @@ TASK_B = """TASK
 Answer ONLY the variant/field pairs listed in pairs.tsv, nothing else. For each pair report the value printed for it, with unit, qualifier, and the exact header/line it comes from. If the page doesn't say, write NOT_ON_PAGE.
 """
 OUTPUT_B = """OUTPUT (reply with ONE JSON object and nothing else, no markdown fences):
-{"cells":[{"variant":"<name exactly as in pairs.tsv>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool>","qualifier":"<restriction printed with the value or its header, or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}]}
+{"cells":[{"variant":"<name exactly as in pairs.tsv>","field":"<field>","value":<number or null>,"unit":"<km/l|km/kg|bool|litres|count>","qualifier":"<restriction printed with the value or its header, or ''>","source":"<the exact header or line the value comes from>","status":"FOUND|NOT_ON_PAGE"}]}
 Rules for "cells":
 - Give exactly one cell for each pair in pairs.tsv, in any order.
 - Features: value 1 if the page shows the feature fitted on that variant, 0 if shown absent. Apply restrictions: a feature marked "AT only" / "DCT/AT only" is 0 on manual variants and 1 (with the qualifier) on matching automatic variants; a feature restricted to certain engines is 1 only on those.
@@ -101,7 +102,8 @@ def prep(a):
     vs = db.execute("""select v.name, p.fuel_type, v.transmission from variant v left join powertrain p on p.id=v.powertrain_id
                        where v.model_id=? and v.base_variant_id is null order by v.id""", (mid,)).fetchall()
     fields = [f for f in FIELDS if not (f == 'mileage_arai_km_per_kg' and not any(x[1] == 'CNG' for x in vs))
-              and not (f == 'mileage_arai_kmpl' and not any(x[1] not in ('CNG', 'Electric') for x in vs))]
+              and not (f in ('mileage_arai_kmpl', 'fuel_tank_litres') and not any(x[1] not in ('CNG', 'Electric') for x in vs) and f == 'mileage_arai_kmpl')
+              and not (f == 'fuel_tank_litres' and not any(x[1] != 'Electric' for x in vs))]
     man = dict(pdf=rel, pdf_sha1=sha, model_id=mid, dpi=DPI, pdf_meta={k: str(v)[:60] for k, v in doc.get_metadata_dict().items()
                                                                           if k in ('CreationDate', 'ModDate', 'Title', 'Producer')},
                prompt_sha1=hashlib.sha1(build_prompt().encode()).hexdigest(), pages={})
@@ -120,7 +122,8 @@ def prep(a):
         KW = {'mileage_arai_kmpl': r'km\s*/\s*l|kmpl|mileage|efficiency|arai', 'mileage_arai_km_per_kg': r'km\s*/\s*kg|mileage|efficiency|arai',
               'cruise_control': r'cruise|\bscc\b|\bacc\b', 'wireless_charging': r'wireless\s+(?:smartphone\s+|phone\s+|mobile\s+|device\s+)?charg|\bqi\b',
               'heads_up_display': r'head.?up|\bhud\b', 'ventilated_front_seats': r'ventilat|cooled\s+seat|seat\s+cool',
-              'paddle_shifters': r'paddle'}
+              'paddle_shifters': r'paddle',
+              'fuel_tank_litres': r'fuel\s+tank|tank\s+capacity|fuel\s+capacity', 'drive_modes': r'drive\s*mode|driving\s*mode|multi.?drive|eco\b.{0,40}sport|sport\b.{0,40}eco'}
         pfields = fields if meth != 'text' else [f for f in fields if re.search(KW[f], text, re.I)]
         for arm in ('a',):
             d = f'{bd}/p{pn}/{arm}'; os.makedirs(d, exist_ok=True)
@@ -192,7 +195,7 @@ def make_b(bd, man, sel_rows):
 
 def same(x, y, f):
     if x is None or y is None: return x is y
-    return abs(float(x) - float(y)) < 0.005 if f.startswith('mileage') else int(float(x)) == int(float(y))
+    return abs(float(x) - float(y)) < (0.005 if f.startswith('mileage') else 0.05) if f in ('mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'fuel_tank_litres') else int(float(x)) == int(float(y))
 
 
 def classify(a):
@@ -220,6 +223,7 @@ def classify(a):
             if f not in FIELDS: continue
             if f == 'mileage_arai_kmpl' and fuel in ('CNG', 'Electric'): continue
             if f == 'mileage_arai_km_per_kg' and fuel != 'CNG': continue
+            if f == 'fuel_tank_litres' and fuel == 'Electric': continue
             cb = cell['b'].get((vn, f), {}); has_b = (vn, f) in cell['b']
             av = ca.get('value') if ca.get('status') == 'FOUND' else None
             bv = cb.get('value') if cb.get('status') == 'FOUND' else None
@@ -236,9 +240,9 @@ def classify(a):
                             has_b=has_b, agree=((av is None and bv is None) or (av is not None and bv is not None and same(av, bv, f))) if has_b else None))
     # absent-as-zero guard (10B lesson): a 0 on a page where the field is never shown fitted anywhere, with no explicit absence marker
     marker = re.compile(r"(^|[\s'\"(])[-\u2013\u2014x\u2717](?=$|[\s'\")])|dash|not available|not fitted|absent|cross", re.I)
-    any1 = {(r['page'], r['field']) for r in out if r['a'] is not None and float(r['a']) == 1 and r['field'] not in UNIT}
+    any1 = {(r['page'], r['field']) for r in out if r['a'] is not None and float(r['a']) >= 1 and r['field'] not in ('mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'fuel_tank_litres')}
     for r in out:
-        if r['field'] in UNIT or r['a'] is None or float(r['a']) != 0 or r['cls'] in ('NOT_ON_PAGE', 'CONFLICT', 'CONFIRM_V'): continue
+        if r['field'] in ('mileage_arai_kmpl', 'mileage_arai_km_per_kg', 'fuel_tank_litres') or r['a'] is None or float(r['a']) != 0 or r['cls'] in ('NOT_ON_PAGE', 'CONFLICT', 'CONFIRM_V'): continue
         if (r['page'], r['field']) not in any1 and not marker.search(r['a_src'] or ''): r['cls'] = 'ABSENT_NOT_SHOWN'
     # same cell on several pages must agree
     by = {}
