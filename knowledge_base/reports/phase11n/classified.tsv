@@ -1,0 +1,376 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+10	654	HX 10 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+10	654	HX 10 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	655	HX 2 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	656	HX 2 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	657	HX 3 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	658	HX 3 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	659	HX 3 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	660	HX 4 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	661	HX 4 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	662	HX 4 Plus Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	663	HX 6 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	664	HX 6 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	665	HX 6 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	666	HX 8 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	667	HX 8 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	668	HX 8 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	654	HX 10 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+11	656	HX 2 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+11	658	HX 3 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+11	659	HX 3 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+11	661	HX 4 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+11	662	HX 4 Plus Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+11	664	HX 6 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+11	665	HX 6 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+11	667	HX 8 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+11	668	HX 8 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+11	655	HX 2 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+11	657	HX 3 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+11	660	HX 4 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+11	663	HX 6 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+11	666	HX 8 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+11	654	HX 10 Petrol Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, HX 10: S
+11	655	HX 2 CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 2: -
+11	656	HX 2 Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 2: -
+11	657	HX 3 CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 3: -
+11	658	HX 3 Petrol Automatic	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 3: -
+11	659	HX 3 Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 3: -
+11	660	HX 4 CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 4: -
+11	661	HX 4 Petrol Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 4: -
+11	662	HX 4 Plus Petrol Automatic	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, HX 4+: -
+11	663	HX 6 CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	PL Only				False	Cruise control row, HX 6: PL Only
+11	664	HX 6 Petrol Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1	PL Only				False	Cruise control row, HX 6: PL Only
+11	665	HX 6 Petrol Manual	cruise_control	UNVERIFIED	1	CONFIRM	1	PL Only				False	Cruise control row, HX 6: PL Only
+11	666	HX 8 CNG Manual	cruise_control	UNVERIFIED	0	CONFIRM	0	PL Only				False	Cruise control row, HX 8: PL Only
+11	667	HX 8 Petrol Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1	PL Only				False	Cruise control row, HX 8: PL Only
+11	668	HX 8 Petrol Manual	cruise_control	UNVERIFIED	1	CONFIRM	1	PL Only				False	Cruise control row, HX 8: PL Only
+11	654	HX 10 Petrol Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger^^, HX 10: S
+11	655	HX 2 CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 2: -
+11	656	HX 2 Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 2: -
+11	657	HX 3 CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 3: -
+11	658	HX 3 Petrol Automatic	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 3: -
+11	659	HX 3 Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 3: -
+11	660	HX 4 CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 4: -
+11	661	HX 4 Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 4: -
+11	662	HX 4 Plus Petrol Automatic	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 4+: -
+11	663	HX 6 CNG Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 6: -
+11	664	HX 6 Petrol Automatic	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 6: -
+11	665	HX 6 Petrol Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger^^, HX 6: -
+11	666	HX 8 CNG Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger^^, HX 8: S
+11	667	HX 8 Petrol Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger^^, HX 8: S
+11	668	HX 8 Petrol Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger^^, HX 8: S
+11	654	HX 10 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	655	HX 2 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	656	HX 2 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	657	HX 3 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	658	HX 3 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	659	HX 3 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	660	HX 4 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	661	HX 4 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	662	HX 4 Plus Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	663	HX 6 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	664	HX 6 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	665	HX 6 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	666	HX 8 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	667	HX 8 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	668	HX 8 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	654	HX 10 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	655	HX 2 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	656	HX 2 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	657	HX 3 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	658	HX 3 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	659	HX 3 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	660	HX 4 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	661	HX 4 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	662	HX 4 Plus Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	663	HX 6 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	664	HX 6 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	665	HX 6 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	666	HX 8 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	667	HX 8 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	668	HX 8 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	654	HX 10 Petrol Automatic	paddle_shifters	UNVERIFIED	1	CONFIRM	1					False	Paddle shifters, HX 10: S
+11	655	HX 2 CNG Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 2: -
+11	656	HX 2 Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 2: -
+11	657	HX 3 CNG Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 3: -
+11	658	HX 3 Petrol Automatic	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 3: -
+11	659	HX 3 Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 3: -
+11	660	HX 4 CNG Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 4: -
+11	661	HX 4 Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 4: -
+11	662	HX 4 Plus Petrol Automatic	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters, HX 4+: -
+11	663	HX 6 CNG Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT Only				False	Paddle shifters, HX 6: AMT Only
+11	664	HX 6 Petrol Automatic	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT Only				False	Paddle shifters, HX 6: AMT Only
+11	665	HX 6 Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT Only				False	Paddle shifters, HX 6: AMT Only
+11	666	HX 8 CNG Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT Only				False	Paddle shifters, HX 8: AMT Only
+11	667	HX 8 Petrol Automatic	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT Only				False	Paddle shifters, HX 8: AMT Only
+11	668	HX 8 Petrol Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT Only				False	Paddle shifters, HX 8: AMT Only
+11	654	HX 10 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	655	HX 2 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	656	HX 2 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	657	HX 3 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	658	HX 3 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	659	HX 3 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	660	HX 4 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	661	HX 4 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	662	HX 4 Plus Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	663	HX 6 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	664	HX 6 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	665	HX 6 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	666	HX 8 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	667	HX 8 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	668	HX 8 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+11	654	HX 10 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	655	HX 2 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	656	HX 2 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	657	HX 3 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	658	HX 3 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	659	HX 3 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	660	HX 4 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	661	HX 4 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	662	HX 4 Plus Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	663	HX 6 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	664	HX 6 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	665	HX 6 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	666	HX 8 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	667	HX 8 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	668	HX 8 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	654	HX 10 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	655	HX 2 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	656	HX 2 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	657	HX 3 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	658	HX 3 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	659	HX 3 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	660	HX 4 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	661	HX 4 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	662	HX 4 Plus Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	663	HX 6 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	664	HX 6 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	665	HX 6 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	mileage_arai_km_per_kg	UNVERIFIED	27.1	NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	666	HX 8 CNG Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	667	HX 8 Petrol Automatic	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	mileage_arai_kmpl	UNVERIFIED	19.4	NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	fuel_tank_litres	NULL		NOT_ON_PAGE						False	
+14	668	HX 8 Petrol Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+12	654	HX 10 Petrol Automatic	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37
+12	655	HX 2 CNG Manual	fuel_tank_litres	NULL		FILL	37	Petrol tank (Bi-fuel)				False	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)
+12	656	HX 2 Petrol Manual	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37
+12	657	HX 3 CNG Manual	fuel_tank_litres	NULL		FILL	37	Petrol tank (Bi-fuel)	37	Bi-fuel Kappa petrol with CNG, petrol tank	True	True	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)
+12	658	HX 3 Petrol Automatic	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	659	HX 3 Petrol Manual	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37
+12	660	HX 4 CNG Manual	fuel_tank_litres	NULL		FILL	37	Petrol tank (Bi-fuel)	37	Bi-fuel Kappa petrol with CNG, petrol tank	True	True	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)
+12	661	HX 4 Petrol Manual	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	662	HX 4 Plus Petrol Automatic	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37
+12	663	HX 6 CNG Manual	fuel_tank_litres	NULL		FILL	37	Petrol tank (Bi-fuel)	37	Bi-fuel Kappa petrol with CNG, petrol tank	True	True	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)
+12	664	HX 6 Petrol Automatic	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	665	HX 6 Petrol Manual	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37
+12	666	HX 8 CNG Manual	fuel_tank_litres	NULL		FILL	37	Petrol tank (Bi-fuel)	37	Bi-fuel Kappa petrol with CNG, petrol tank	True	True	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)
+12	667	HX 8 Petrol Automatic	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	668	HX 8 Petrol Manual	fuel_tank_litres	NULL		FILL	37	1.2 l Kappa petrol	37	1.2 l Kappa petrol	True	True	Fuel tank capacity (l) 37

@@ -58,9 +58,12 @@ A value is for ONE variant, read from that variant's own column, row or trim lis
 - Petrol-only variants get no km/kg cell.
 
 ## fuel_tank_litres (litres) — non-electric variants only
-- The fuel tank capacity in litres printed for the variant's engine (petrol, diesel, hybrid fuel tank). A figure per engine or per
+- The capacity in litres of the LIQUID-fuel tank (petrol, diesel, hybrid fuel tank) printed for the variant's engine. The CNG cylinder's
+  water capacity never goes in this field, for any variant. A figure per engine or per
   gearbox applies to the variants of that engine or gearbox; put the label in `qualifier`.
-- CNG variants: the petrol tank capacity. NOT the CNG cylinder "water equivalent" capacity, NOT the AdBlue tank, NOT a range in km.
+- CNG variants: the petrol tank capacity (the liquid-fuel tank). NEVER the CNG cylinder "water equivalent" / "water capacity" figure (for
+  example "CNG tank 60 L (water capacity)"), NOT the AdBlue tank, NOT a range in km. If the page prints only the CNG water capacity for a
+  CNG variant, the cell is NOT_ON_PAGE.
 - Electric variants have no fuel tank: do not report a cell for them.
 - A variant the page does not give a figure for is NOT_ON_PAGE. Never copy a figure from another engine.
 

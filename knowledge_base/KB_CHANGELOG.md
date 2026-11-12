@@ -288,8 +288,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage and head-up display: not on the pages read.
 **Prod SHA-1:** `52711fd1…` → `8039119b…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/28 (covers 11K, 11L and 11M; based on app/kb-11j-export). **Ranking-track line:** KB 11M: 14 Venue cells changed from the brochure.
 
+## 11N — 2026-11-13 — Exter: feature and fuel-tank cells checked against the brochure; N4 checked
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 60 cells checked on 3 brochure page(s): 15 blanks filled, 0 corrected, 45 confirmed; 0 old quarantines released; 0 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Hyundai Exter HX 2 Petrol Manual: fuel tank blank → 37 L (Exter brochure, p12)
+- Hyundai Exter HX 6 CNG Manual: fuel tank blank → 37 L, the petrol tank (Exter brochure, p12)
+- Hyundai Exter HX 10 Petrol Automatic: cruise control yes confirmed (Exter brochure, p10 and p11)
+**What app users now see:** No Exter catalogue cell changes (confirmations and fuel tank fills); the confirmed cells show as brochure-checked.
+**Not done / held:**
+- Exter editions 815 and 816 stay held (P8): the brochure names Knight trims, not Dual Tone trims.
+- Exter CNG km/kg (27.1, unverified since 10F): the brochure prints no km/kg.
+- Mileage, head-up display, ventilated seats, drive modes: not on the pages read.
+**Prod SHA-1:** `8039119b…` → `cd7bc920…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11N: 15 Exter cells changed from the brochure.
+
 ## Current state
-As of phase 11M (prod `8039119ba0ba5e787025d198e1f2aad569c19c3a`).
+As of phase 11N (prod `cd7bc92056b71d18831fd9b3eb7ba96461ea80c5`).
 - **Active quarantines:** 1,502 (950 observations, 294 variant cells, 257 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
@@ -298,4 +312,4 @@ As of phase 11M (prod `8039119ba0ba5e787025d198e1f2aad569c19c3a`).
   - km/kg on CNG variants: 45/82 = 54.9%
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
-- **Open items:** 7 in [NEEDS_YOU.md](NEEDS_YOU.md).
+- **Open items:** 6 in [NEEDS_YOU.md](NEEDS_YOU.md).

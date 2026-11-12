@@ -1,0 +1,61 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+654	cruise_control	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 10: S		CONFIRM
+655	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 2: -		CONFIRM
+656	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 2: -		CONFIRM
+657	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 3: -		CONFIRM
+658	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 3: -		CONFIRM
+659	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 3: -		CONFIRM
+660	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 4: -		CONFIRM
+661	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 4: -		CONFIRM
+662	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 4+: -		CONFIRM
+663	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 6: PL Only	PL Only	CONFIRM
+664	cruise_control	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 6: PL Only	PL Only	CONFIRM
+665	cruise_control	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 6: PL Only	PL Only	CONFIRM
+666	cruise_control	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 8: PL Only	PL Only	CONFIRM
+667	cruise_control	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 8: PL Only	PL Only	CONFIRM
+668	cruise_control	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Cruise control row, HX 8: PL Only	PL Only	CONFIRM
+654	wireless_charging	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 10: S		CONFIRM
+655	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 2: -		CONFIRM
+656	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 2: -		CONFIRM
+657	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 3: -		CONFIRM
+658	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 3: -		CONFIRM
+659	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 3: -		CONFIRM
+660	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 4: -		CONFIRM
+661	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 4: -		CONFIRM
+662	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 4+: -		CONFIRM
+663	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 6: -		CONFIRM
+664	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 6: -		CONFIRM
+665	wireless_charging	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 6: -		CONFIRM
+666	wireless_charging	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 8: S		CONFIRM
+667	wireless_charging	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 8: S		CONFIRM
+668	wireless_charging	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Smartphone wireless charger^^, HX 8: S		CONFIRM
+654	paddle_shifters	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 10: S		CONFIRM
+655	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 2: -		CONFIRM
+656	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 2: -		CONFIRM
+657	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 3: -		CONFIRM
+658	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 3: -		CONFIRM
+659	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 3: -		CONFIRM
+660	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 4: -		CONFIRM
+661	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 4: -		CONFIRM
+662	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 4+: -		CONFIRM
+663	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 6: AMT Only	AMT Only	CONFIRM
+664	paddle_shifters	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 6: AMT Only	AMT Only	CONFIRM
+665	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 6: AMT Only	AMT Only	CONFIRM
+666	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 8: AMT Only	AMT Only	CONFIRM
+667	paddle_shifters	1	1	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 8: AMT Only	AMT Only	CONFIRM
+668	paddle_shifters	0	0	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	11	Paddle shifters, HX 8: AMT Only	AMT Only	CONFIRM
+654	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+655	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)	Petrol tank (Bi-fuel)	FILL
+656	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+657	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)	Petrol tank (Bi-fuel)	FILL
+658	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+659	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+660	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)	Petrol tank (Bi-fuel)	FILL
+661	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+662	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+663	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)	Petrol tank (Bi-fuel)	FILL
+664	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+665	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+666	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l): Petrol: 37 / CNG: 60 (Water equivalent)	Petrol tank (Bi-fuel)	FILL
+667	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL
+668	fuel_tank_litres		37	hyundai/exter/latest/brochures/hyundai_exter_brochure.pdf	19da8e83686ae02be56cf6200d604906bc2b3779	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	FILL

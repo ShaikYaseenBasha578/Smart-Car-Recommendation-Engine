@@ -4,11 +4,6 @@ Questions and approvals only the owner can give. Each has options and a recommen
 
 ## Open
 
-### N1. Delete the 0-byte `knowledge_base/ingestion/carrec_kb.db` (G5, deletion)
-It is untracked and git-ignored (`knowledge_base/.gitignore:1`), so the code PR can't remove it (decision 6).
-- **Option A (recommended):** you delete it after the DB-path fix merges: `rm "knowledge_base/ingestion/carrec_kb.db"`.
-- **Option B:** authorise me to delete it.
-
 ### N2. Brezza 821: three cell quarantines predate P8 (G1)
 10H quarantined 821's cruise control, HUD and sunroof, with your confirmation. P8 now says an edition with an identity contradiction is "fully held, never partially quarantined".
 - **Option A (recommended):** keep them. They hide values whose only evidence is mislinked, and P8 is applied going forward.
@@ -42,6 +37,9 @@ They affect no value. See [ORPHANS_PROPOSAL.md](reports/phase10o/ORPHANS_PROPOSA
 - New brands (Jeep, Citroën, BYD).
 
 ## Resolved
+### N1. Stray 0-byte ingestion/carrec_kb.db (resolved 2026-11-13)
+Owner approved. The file was untracked and git-ignored, 0 bytes, held by no process; deleted from the main checkout.
+
 ### N8. P11 side files (resolved 2026-11-12)
 Owner decision: a 0-byte `-wal` and a `-shm` are allowed before a write when `lsof` shows no holder; a non-empty `-wal` or any holder still means stop. After every apply: `PRAGMA wal_checkpoint(TRUNCATE)` and confirm the `-wal` is 0 bytes. The files are not deleted. P11 in CLAUDE.md and `write_phase.sh` amended.
 
