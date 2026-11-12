@@ -183,7 +183,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage: the pages read print no km/l.
 - Head-up display and paddle shifters: not shown on the pages (unknown, not zero).
 - Drive modes on petrol variants and Diesel 4WD: not on the page row.
-**Prod SHA-1:** `b653b3f8…` → `96356815…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11E: 77 Scorpio-N cells changed from the brochure.
+**Prod SHA-1:** `b653b3f8…` → `96356815…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/26 (covers 11E, 11F and 11G; based on app/kb-11d-export). **Ranking-track line:** KB 11E: 77 Scorpio-N cells changed from the brochure.
 
 ## 11F — 2026-11-12 — XUV 7XO: feature, fuel tank and drive-mode cells checked against the brochure
 **Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
@@ -196,7 +196,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Mileage, head-up display and paddle shifters: not shown on the pages read.
 - Drive modes on petrol variants: the row says diesel only, so unknown.
-**Prod SHA-1:** `96356815…` → `58d3ef0e…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11F: 17 XUV 7XO cells changed from the brochure.
+**Prod SHA-1:** `96356815…` → `58d3ef0e…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/26 (covers 11E, 11F and 11G; based on app/kb-11d-export). **Ranking-track line:** KB 11F: 17 XUV 7XO cells changed from the brochure.
 
 ## 11G — 2026-11-12 — XUV 3XO: cruise, wireless and fuel-tank cells checked against the brochure
 **Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
@@ -209,7 +209,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Wireless charging on MX3, MX3 Pro, AX5 and AX7 (14 cells, stored yes): held, the brochure's lists are not exhaustive (see above).
 - Mileage, head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
-**Prod SHA-1:** `58d3ef0e…` → `e351341c…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11G: 1 XUV 3XO cells changed from the brochure.
+**Prod SHA-1:** `58d3ef0e…` → `e351341c…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/26 (covers 11E, 11F and 11G; based on app/kb-11d-export). **Ranking-track line:** KB 11G: 1 XUV 3XO cells changed from the brochure.
 
 ## Current state
 As of phase 11G (prod `e351341cf8eaffb8164651fc7ed61f09d74a51fa`).
