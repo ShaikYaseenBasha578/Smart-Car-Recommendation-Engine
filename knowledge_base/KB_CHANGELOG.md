@@ -171,9 +171,23 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Seltos (held, P7) and Carens Clavis (rejected at the validation gate, 34 of 38 agreed; re-run later).
 **Prod SHA-1:** `afad3a5f…` → `b653b3f8…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/25 (covers 11A, 11B and 11D; based on app/kb-10n-export). **Ranking-track line:** KB 11D: 24 Creta feature cells changed from the brochure.
 
+## 11E — 2026-11-12 — Scorpio-N: feature, fuel tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 125 cells checked on 2 brochure page(s): 71 blanks filled, 6 corrected, 48 confirmed; 0 old quarantines released; 6 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Mahindra Scorpio-N Z8T Diesel MT: ventilated front seats no → yes, driver and co-driver (Scorpio-N brochure, p24)
+- Mahindra Scorpio-N Z4 Petrol MT: fuel tank 57 L confirmed (Scorpio-N brochure, p23)
+- Mahindra Scorpio-N Z8L Diesel 2WD AT: drive modes blank → 3, Zip-Zap-Zoom (Scorpio-N brochure, p24)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage: the pages read print no km/l.
+- Head-up display and paddle shifters: not shown on the pages (unknown, not zero).
+- Drive modes on petrol variants and Diesel 4WD: not on the page row.
+**Prod SHA-1:** `b653b3f8…` → `96356815…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11E: 77 Scorpio-N cells changed from the brochure.
+
 ## Current state
-As of phase 11D (prod `b653b3f8d6858fe9080ecfe32c5883b6ec99ce3c`).
-- **Active quarantines:** 1,403 (950 observations, 309 variant cells, 143 provenance rows, 1 safety applicability row(s)).
+As of phase 11E (prod `96356815f547d153183c37958f3e92d1ad6bdbf0`).
+- **Active quarantines:** 1,409 (950 observations, 309 variant cells, 149 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

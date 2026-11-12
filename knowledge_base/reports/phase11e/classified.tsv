@@ -1,0 +1,271 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+23	386	Scorpio-N Z2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	386	Scorpio-N Z2 Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	387	Scorpio-N Z2 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	387	Scorpio-N Z2 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	388	Scorpio-N Z4 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	388	Scorpio-N Z4 Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	389	Scorpio-N Z4 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	389	Scorpio-N Z4 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	390	Scorpio-N Z6 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	390	Scorpio-N Z6 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	391	Scorpio-N Z4 Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	391	Scorpio-N Z4 Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	392	Scorpio-N Z8 Select Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	392	Scorpio-N Z8 Select Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	393	Scorpio-N Z4 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	393	Scorpio-N Z4 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	394	Scorpio-N Z4 Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	394	Scorpio-N Z4 Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	395	Scorpio-N Z8 Select Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	395	Scorpio-N Z8 Select Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	396	Scorpio-N Z6 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	396	Scorpio-N Z6 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	397	Scorpio-N Z8 Select Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	397	Scorpio-N Z8 Select Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	398	Scorpio-N Z8 Select Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	398	Scorpio-N Z8 Select Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	399	Scorpio-N Z8 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	399	Scorpio-N Z8 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	400	Scorpio-N Z8T Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	400	Scorpio-N Z8T Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	401	Scorpio-N Z8T Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	401	Scorpio-N Z8T Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	402	Scorpio-N Z8L Petrol MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	402	Scorpio-N Z8L Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	403	Scorpio-N Z8 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	403	Scorpio-N Z8 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	404	Scorpio-N Z8T Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	404	Scorpio-N Z8T Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	405	Scorpio-N Z8L Diesel MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	405	Scorpio-N Z8L Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	406	Scorpio-N Z8T Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	406	Scorpio-N Z8T Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	407	Scorpio-N Z8L Petrol AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	407	Scorpio-N Z8L Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	408	Scorpio-N Z8T Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	408	Scorpio-N Z8T Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	409	Scorpio-N Z8L Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	409	Scorpio-N Z8L Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	410	Scorpio-N Z8L Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	410	Scorpio-N Z8L Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	411	Scorpio-N Z8T Diesel 4WD AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+23	411	Scorpio-N Z8T Diesel 4WD AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+23	412	Scorpio-N Z8L Diesel 4WD AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+23	412	Scorpio-N Z8L Diesel 4WD AT	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Fuel Tank Capacity 57 L
+24	386	Scorpio-N Z2 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	386	Scorpio-N Z2 Petrol MT	cruise_control	NULL		FILL	0					False	Steering Remote Controls: Z2 = Audio (no cruise)
+24	386	Scorpio-N Z2 Petrol MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z2 x
+24	386	Scorpio-N Z2 Petrol MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	386	Scorpio-N Z2 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z2 x
+24	386	Scorpio-N Z2 Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	386	Scorpio-N Z2 Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	386	Scorpio-N Z2 Petrol MT	drive_modes	NULL		FILL	0		0	Diesel	True	True	Drive Modes (Diesel) – Zip-Zap-Zoom: Z2 x
+24	387	Scorpio-N Z2 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	387	Scorpio-N Z2 Diesel MT	cruise_control	NULL		FILL	0					False	Steering Remote Controls: Z2 = Audio (no cruise)
+24	387	Scorpio-N Z2 Diesel MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z2 x
+24	387	Scorpio-N Z2 Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	387	Scorpio-N Z2 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z2 x
+24	387	Scorpio-N Z2 Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	387	Scorpio-N Z2 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	387	Scorpio-N Z2 Diesel MT	drive_modes	NULL		FILL	0					False	Drive Modes (Diesel) – Zip-Zap-Zoom: Z2 x
+24	388	Scorpio-N Z4 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	388	Scorpio-N Z4 Petrol MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z4 = Audio + Cruise
+24	388	Scorpio-N Z4 Petrol MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z4 x
+24	388	Scorpio-N Z4 Petrol MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	388	Scorpio-N Z4 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z4 x
+24	388	Scorpio-N Z4 Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	388	Scorpio-N Z4 Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	388	Scorpio-N Z4 Petrol MT	drive_modes	NULL		FILL	0		0	Diesel	True	True	Drive Modes (Diesel) – Zip-Zap-Zoom: Z4 x
+24	389	Scorpio-N Z4 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	389	Scorpio-N Z4 Diesel MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z4 = Audio + Cruise
+24	389	Scorpio-N Z4 Diesel MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z4 x
+24	389	Scorpio-N Z4 Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	389	Scorpio-N Z4 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z4 x
+24	389	Scorpio-N Z4 Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	389	Scorpio-N Z4 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	389	Scorpio-N Z4 Diesel MT	drive_modes	NULL		FILL	0					False	Drive Modes (Diesel) – Zip-Zap-Zoom: Z4 x
+24	390	Scorpio-N Z6 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	390	Scorpio-N Z6 Diesel MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z6 = Audio + Cruise
+24	390	Scorpio-N Z6 Diesel MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z6 x
+24	390	Scorpio-N Z6 Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	390	Scorpio-N Z6 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z6 x
+24	390	Scorpio-N Z6 Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	390	Scorpio-N Z6 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	390	Scorpio-N Z6 Diesel MT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	391	Scorpio-N Z4 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	391	Scorpio-N Z4 Petrol AT	cruise_control	NULL		FILL	1		1	Audio + Cruise	True	True	Steering Remote Controls: Z4 = Audio + Cruise
+24	391	Scorpio-N Z4 Petrol AT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z4 x
+24	391	Scorpio-N Z4 Petrol AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	391	Scorpio-N Z4 Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z4 x
+24	391	Scorpio-N Z4 Petrol AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	391	Scorpio-N Z4 Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	391	Scorpio-N Z4 Petrol AT	drive_modes	NULL		FILL	0					False	Drive Modes (Diesel) – Zip-Zap-Zoom: Z4 x
+24	392	Scorpio-N Z8 Select Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	392	Scorpio-N Z8 Select Petrol MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8S = Audio + Cruise
+24	392	Scorpio-N Z8 Select Petrol MT	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger (With Active Cooling)* Z8S x
+24	392	Scorpio-N Z8 Select Petrol MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	392	Scorpio-N Z8 Select Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8S x
+24	392	Scorpio-N Z8 Select Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	392	Scorpio-N Z8 Select Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	392	Scorpio-N Z8 Select Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	393	Scorpio-N Z4 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	393	Scorpio-N Z4 Diesel AT	cruise_control	NULL		FILL	1		1	Audio + Cruise	True	True	Steering Remote Controls: Z4 = Audio + Cruise
+24	393	Scorpio-N Z4 Diesel AT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z4 x
+24	393	Scorpio-N Z4 Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	393	Scorpio-N Z4 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z4 x
+24	393	Scorpio-N Z4 Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	393	Scorpio-N Z4 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	393	Scorpio-N Z4 Diesel AT	drive_modes	NULL		FILL	0					False	Drive Modes (Diesel) – Zip-Zap-Zoom: Z4 x
+24	394	Scorpio-N Z4 Diesel 4WD MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	394	Scorpio-N Z4 Diesel 4WD MT	cruise_control	NULL		FILL	1		1	Audio + Cruise	True	True	Steering Remote Controls: Z4 = Audio + Cruise
+24	394	Scorpio-N Z4 Diesel 4WD MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z4 x
+24	394	Scorpio-N Z4 Diesel 4WD MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	394	Scorpio-N Z4 Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z4 x
+24	394	Scorpio-N Z4 Diesel 4WD MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	394	Scorpio-N Z4 Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	394	Scorpio-N Z4 Diesel 4WD MT	drive_modes	NULL		FILL	0					False	Drive Modes (Diesel) – Zip-Zap-Zoom: Z4 x
+24	395	Scorpio-N Z8 Select Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	395	Scorpio-N Z8 Select Diesel MT	cruise_control	NULL		FILL	1		1	Audio + Cruise	True	True	Steering Remote Controls: Z8S = Audio + Cruise
+24	395	Scorpio-N Z8 Select Diesel MT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z8S x
+24	395	Scorpio-N Z8 Select Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	395	Scorpio-N Z8 Select Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8S x
+24	395	Scorpio-N Z8 Select Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	395	Scorpio-N Z8 Select Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	395	Scorpio-N Z8 Select Diesel MT	drive_modes	NULL		FILL	3	Diesel 2WD	3	Diesel 2WD	True	True	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	396	Scorpio-N Z6 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	396	Scorpio-N Z6 Diesel AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z6 = Audio + Cruise
+24	396	Scorpio-N Z6 Diesel AT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z6 x
+24	396	Scorpio-N Z6 Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	396	Scorpio-N Z6 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z6 x
+24	396	Scorpio-N Z6 Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	396	Scorpio-N Z6 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	396	Scorpio-N Z6 Diesel AT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	397	Scorpio-N Z8 Select Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	397	Scorpio-N Z8 Select Petrol AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8S = Audio + Cruise
+24	397	Scorpio-N Z8 Select Petrol AT	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger (With Active Cooling)* Z8S x
+24	397	Scorpio-N Z8 Select Petrol AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	397	Scorpio-N Z8 Select Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8S x
+24	397	Scorpio-N Z8 Select Petrol AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	397	Scorpio-N Z8 Select Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	397	Scorpio-N Z8 Select Petrol AT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	398	Scorpio-N Z8 Select Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	398	Scorpio-N Z8 Select Diesel AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8S = Audio + Cruise
+24	398	Scorpio-N Z8 Select Diesel AT	wireless_charging	NULL		FILL	0					False	Wireless Charger (With Active Cooling)* Z8S x
+24	398	Scorpio-N Z8 Select Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	398	Scorpio-N Z8 Select Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8S x
+24	398	Scorpio-N Z8 Select Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	398	Scorpio-N Z8 Select Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	398	Scorpio-N Z8 Select Diesel AT	drive_modes	NULL		FILL	3	Diesel 2WD	3	Diesel 2WD	True	True	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	399	Scorpio-N Z8 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	399	Scorpio-N Z8 Diesel MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8 = Audio + Cruise
+24	399	Scorpio-N Z8 Diesel MT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8 ✓
+24	399	Scorpio-N Z8 Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	399	Scorpio-N Z8 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8 x
+24	399	Scorpio-N Z8 Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	399	Scorpio-N Z8 Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	399	Scorpio-N Z8 Diesel MT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	400	Scorpio-N Z8T Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	400	Scorpio-N Z8T Petrol MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8T = Audio + Cruise
+24	400	Scorpio-N Z8T Petrol MT	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger (With Active Cooling)* Z8T ✓
+24	400	Scorpio-N Z8T Petrol MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	400	Scorpio-N Z8T Petrol MT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	400	Scorpio-N Z8T Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	400	Scorpio-N Z8T Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	400	Scorpio-N Z8T Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	401	Scorpio-N Z8T Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	401	Scorpio-N Z8T Diesel MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8T = Audio + Cruise
+24	401	Scorpio-N Z8T Diesel MT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8T ✓
+24	401	Scorpio-N Z8T Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	401	Scorpio-N Z8T Diesel MT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	401	Scorpio-N Z8T Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	401	Scorpio-N Z8T Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	401	Scorpio-N Z8T Diesel MT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	402	Scorpio-N Z8L Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	402	Scorpio-N Z8L Petrol MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8L = Audio + Cruise; Adaptive Cruise Control with Stop & Go [AT variant only]
+24	402	Scorpio-N Z8L Petrol MT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8L ✓
+24	402	Scorpio-N Z8L Petrol MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	402	Scorpio-N Z8L Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	402	Scorpio-N Z8L Petrol MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	402	Scorpio-N Z8L Petrol MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	402	Scorpio-N Z8L Petrol MT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	403	Scorpio-N Z8 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	403	Scorpio-N Z8 Diesel AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8 = Audio + Cruise
+24	403	Scorpio-N Z8 Diesel AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8 ✓
+24	403	Scorpio-N Z8 Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	403	Scorpio-N Z8 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver & Co-Driver) Z8 x
+24	403	Scorpio-N Z8 Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	403	Scorpio-N Z8 Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	403	Scorpio-N Z8 Diesel AT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	404	Scorpio-N Z8T Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	404	Scorpio-N Z8T Petrol AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8T = Audio + Cruise
+24	404	Scorpio-N Z8T Petrol AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8T ✓
+24	404	Scorpio-N Z8T Petrol AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	404	Scorpio-N Z8T Petrol AT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	404	Scorpio-N Z8T Petrol AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	404	Scorpio-N Z8T Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	404	Scorpio-N Z8T Petrol AT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	405	Scorpio-N Z8L Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	405	Scorpio-N Z8L Diesel MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8L = Audio + Cruise
+24	405	Scorpio-N Z8L Diesel MT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8L ✓
+24	405	Scorpio-N Z8L Diesel MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	405	Scorpio-N Z8L Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	405	Scorpio-N Z8L Diesel MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	405	Scorpio-N Z8L Diesel MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	405	Scorpio-N Z8L Diesel MT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	406	Scorpio-N Z8T Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	406	Scorpio-N Z8T Diesel AT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8T = Audio + Cruise
+24	406	Scorpio-N Z8T Diesel AT	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger (With Active Cooling)* Z8T ✓
+24	406	Scorpio-N Z8T Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	406	Scorpio-N Z8T Diesel AT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	406	Scorpio-N Z8T Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	406	Scorpio-N Z8T Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	406	Scorpio-N Z8T Diesel AT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	407	Scorpio-N Z8L Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	407	Scorpio-N Z8L Petrol AT	cruise_control	NULL		FILL	1	AT variant only	1	Audio + Cruise; Adaptive Cruise Control with Stop & Go [AT variant only]	True	True	Adaptive Cruise Control with Stop & Go [AT variant only] Z8L ✓
+24	407	Scorpio-N Z8L Petrol AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8L ✓
+24	407	Scorpio-N Z8L Petrol AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	407	Scorpio-N Z8L Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	407	Scorpio-N Z8L Petrol AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	407	Scorpio-N Z8L Petrol AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	407	Scorpio-N Z8L Petrol AT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	408	Scorpio-N Z8T Diesel 4WD MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	408	Scorpio-N Z8T Diesel 4WD MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8T = Audio + Cruise
+24	408	Scorpio-N Z8T Diesel 4WD MT	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger (With Active Cooling)* Z8T ✓
+24	408	Scorpio-N Z8T Diesel 4WD MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	408	Scorpio-N Z8T Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	408	Scorpio-N Z8T Diesel 4WD MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	408	Scorpio-N Z8T Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	408	Scorpio-N Z8T Diesel 4WD MT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	409	Scorpio-N Z8L Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	409	Scorpio-N Z8L Diesel AT	cruise_control	NULL		FILL	1	AT variant only				False	Adaptive Cruise Control with Stop & Go [AT variant only] Z8L ✓
+24	409	Scorpio-N Z8L Diesel AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8L ✓
+24	409	Scorpio-N Z8L Diesel AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	409	Scorpio-N Z8L Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	409	Scorpio-N Z8L Diesel AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	409	Scorpio-N Z8L Diesel AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	409	Scorpio-N Z8L Diesel AT	drive_modes	NULL		FILL	3	Diesel 2WD				False	Drive Modes (Diesel) – Zip-Zap-Zoom ✓ (Diesel 2WD)
+24	410	Scorpio-N Z8L Diesel 4WD MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	410	Scorpio-N Z8L Diesel 4WD MT	cruise_control	NULL		FILL	1					False	Steering Remote Controls: Z8L = Audio + Cruise
+24	410	Scorpio-N Z8L Diesel 4WD MT	wireless_charging	NULL		FILL	1		1		True	True	Wireless Charger (With Active Cooling)* Z8L ✓
+24	410	Scorpio-N Z8L Diesel 4WD MT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	410	Scorpio-N Z8L Diesel 4WD MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	410	Scorpio-N Z8L Diesel 4WD MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	410	Scorpio-N Z8L Diesel 4WD MT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	410	Scorpio-N Z8L Diesel 4WD MT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	411	Scorpio-N Z8T Diesel 4WD AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	411	Scorpio-N Z8T Diesel 4WD AT	cruise_control	NULL		FILL	1		1	Audio + Cruise	True	True	Steering Remote Controls: Z8T = Audio + Cruise
+24	411	Scorpio-N Z8T Diesel 4WD AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8T ✓
+24	411	Scorpio-N Z8T Diesel 4WD AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	411	Scorpio-N Z8T Diesel 4WD AT	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1	driver and co-driver	1	driver and co-driver	True	True	Ventilated Seats (Driver & Co-Driver) Z8T ✓
+24	411	Scorpio-N Z8T Diesel 4WD AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	411	Scorpio-N Z8T Diesel 4WD AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	411	Scorpio-N Z8T Diesel 4WD AT	drive_modes	NULL		NOT_ON_PAGE						False	
+24	412	Scorpio-N Z8L Diesel 4WD AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+24	412	Scorpio-N Z8L Diesel 4WD AT	cruise_control	NULL		FILL	1	AT variant only				False	Adaptive Cruise Control with Stop & Go [AT variant only] Z8L ✓
+24	412	Scorpio-N Z8L Diesel 4WD AT	wireless_charging	NULL		FILL	1					False	Wireless Charger (With Active Cooling)* Z8L ✓
+24	412	Scorpio-N Z8L Diesel 4WD AT	heads_up_display	NULL		NOT_ON_PAGE						False	
+24	412	Scorpio-N Z8L Diesel 4WD AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver & Co-Driver) Z8L ✓
+24	412	Scorpio-N Z8L Diesel 4WD AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+24	412	Scorpio-N Z8L Diesel 4WD AT	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+24	412	Scorpio-N Z8L Diesel 4WD AT	drive_modes	NULL		NOT_ON_PAGE						False	
