@@ -1,0 +1,433 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	687	AX3 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	691	AX7 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	694	AX7 L 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	695	MX1 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	696	MX1 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	697	MX3 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	698	MX3 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	NULL		NOT_ON_PAGE						False	
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	699	MX3 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	700	MX5 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	701	MX5 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	702	MX5 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	703	MX5 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	CONFIRM	57	all				False	Brake / Steering / Fuel Tank Capacity: 57 L
+1	704	MX5 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Adaptive Cruise Control (ACC) with Stop & Go, AX5L column
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Adaptive Cruise Control (ACC) with Stop & Go, AX5L column
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1	AT variants				False	Adaptive Cruise Control (ACC) with Stop & Go, AX7L column: AT variants
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1	AT variants				False	Adaptive Cruise Control (ACC) with Stop & Go, AX7L column: AT variants
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1	AT variants				False	Adaptive Cruise Control (ACC) with Stop & Go, AX7L column: AT variants
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, AX3L column (x)
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX5L column
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX5L column
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX7L column
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX7L column
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX7L column
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX7L column
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charging, AX7L column
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charging, MX1 column (x)
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charging, MX1 column (x)
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, MX3 column (x)
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charging, MX3 column (x)
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charging, MX3 column (x)
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, MX5 column (x)
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, MX5 column (x)
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, MX5 column (x)
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charging, MX5 column (x)
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charging, MX5 column (x)
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	NULL		NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+2	687	AX3 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	691	AX7 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	694	AX7 L 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	695	MX1 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	696	MX1 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	697	MX3 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	698	MX3 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	699	MX3 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	700	MX5 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	701	MX5 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	702	MX5 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+2	703	MX5 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+2	704	MX5 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX3L
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / AX3L (cross)
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	687	AX3 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		FILL	2		2		True	True	Drive Modes (Zip & Zoom) / AX3L
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX5L
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / AX5L (cross)
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	688	AX5 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		FILL	2	RWD				False	Drive Modes (Zip & Zoom) ✓(RWD) / AX5L
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX5L
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / AX5L (cross)
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	689	AX5 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX7L
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front Ventilated Seats / AX7L
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	690	AX7 L 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		FILL	2	RWD	2	RWD	True	True	Drive Modes (Zip & Zoom) ✓(RWD) / AX7L
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX7L
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front Ventilated Seats / AX7L
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	691	AX7 L 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		FILL	2	RWD	2	RWD	True	True	Drive Modes (Zip & Zoom) ✓(RWD) / AX7L
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX7L
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front Ventilated Seats / AX7L
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	692	AX7 L 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		FILL	2	RWD				False	Drive Modes (Zip & Zoom) ✓(RWD) / AX7L
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX7L
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front Ventilated Seats / AX7L
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	693	AX7 L 4WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / AX7L
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front Ventilated Seats / AX7L
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	694	AX7 L 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	cruise_control	QUARANTINED	0	CONFIRM	0					False	Cruise Control / MX1 (cross)
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX1 (cross)
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	695	MX1 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		FILL	0		0		True	True	Drive Modes (Zip & Zoom) / MX1 (cross)
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	cruise_control	QUARANTINED	0	CONFIRM	0					False	Cruise Control / MX1 (cross)
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX1 (cross)
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	696	MX1 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		FILL	0		0		True	True	Drive Modes (Zip & Zoom) / MX1 (cross)
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise Control / MX3
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX3 (cross)
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	697	MX3 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		FILL	2					False	Drive Modes (Zip & Zoom) / MX3
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX3
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX3 (cross)
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	698	MX3 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		FILL	2		2		True	True	Drive Modes (Zip & Zoom) / MX3
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX3
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX3 (cross)
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	NULL		NOT_ON_PAGE						False	
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	699	MX3 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		FILL	2		2		True	True	Drive Modes (Zip & Zoom) / MX3
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX5
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX5 (cross)
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	700	MX5 2WD Diesel 2.2L Turbo Automatic	drive_modes	NULL		FILL	2	RWD	2	RWD	True	True	Drive Modes (Zip & Zoom) ✓(RWD) / MX5
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX5
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX5 (cross)
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	701	MX5 2WD Diesel 2.2L Turbo Manual	drive_modes	NULL		FILL	2	RWD	2	RWD	True	True	Drive Modes (Zip & Zoom) ✓(RWD) / MX5
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX5
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX5 (cross)
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	702	MX5 2WD Petrol 2.0L Turbo Automatic	drive_modes	NULL		FILL	2	RWD				False	Drive Modes (Zip & Zoom) ✓(RWD) / MX5
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	12.4	NOT_ON_PAGE						False	
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX5
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX5 (cross)
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	703	MX5 2WD Petrol 2.0L Turbo Manual	drive_modes	NULL		FILL	2	RWD	2	RWD	True	True	Drive Modes (Zip & Zoom) ✓(RWD) / MX5
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	15.2	NOT_ON_PAGE						False	
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control / MX5
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front Ventilated Seats / MX5 (cross)
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	paddle_shifters	NULL		NOT_ON_PAGE						False	
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	57.0	NOT_ON_PAGE						False	
+3	704	MX5 4WD Diesel 2.2L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	

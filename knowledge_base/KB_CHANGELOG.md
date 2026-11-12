@@ -263,9 +263,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Pass over any further pages (fuel tank 45 L was confirmed from the matrix).
 **Prod SHA-1:** `ff444f4a…` → `28924082…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11K: 14 Grand Vitara cells changed from the brochure.
 
+## 11L — 2026-11-12 — Thar Roxx: feature, fuel-tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 86 cells checked on 3 brochure page(s): 14 blanks filled, 7 corrected, 65 confirmed; 7 old quarantines released; 17 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Mahindra Thar Roxx MX5 2WD Petrol AT: wireless charging yes → no (Thar Roxx brochure, p2)
+- Mahindra Thar Roxx MX3 2WD Diesel AT: cruise control no → yes (Thar Roxx brochure, p3)
+- Mahindra Thar Roxx MX5 2WD Diesel MT: drive modes blank → 2, Zip and Zoom, RWD (Thar Roxx brochure, p3)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage, head-up display and paddle shifters: not on the pages read.
+- Drive modes on 4x4 variants: the tick is printed for RWD only.
+**Prod SHA-1:** `28924082…` → `52711fd1…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11L: 21 Thar Roxx cells changed from the brochure.
+
 ## Current state
-As of phase 11K (prod `289240826f50c972373f5b9f70138f895c42df06`).
-- **Active quarantines:** 1,489 (950 observations, 301 variant cells, 237 provenance rows, 1 safety applicability row(s)).
+As of phase 11L (prod `52711fd11c87df56670f6970b7f733824d3455b8`).
+- **Active quarantines:** 1,499 (950 observations, 294 variant cells, 254 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
