@@ -1,0 +1,497 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+13	1	E Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	1	E Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	2	EX Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	3	E Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	4	EX (O) Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	5	EX Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	6	S (O) Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	7	S (O) Knight Petrol 1.5L Manual Knight Edition	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	9	EX (O) Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	10	SX Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	11	SX Petrol 1.5L Manual Dual Tone	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	13	S (O) Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	15	SX Premium Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	16	SX Premium Petrol 1.5L Manual Dual Tone	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	17	King Edition Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	17	King Edition Petrol 1.5L Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	18	S (O) Diesel 1.5L Turbo Automatic (TC)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	19	King Edition Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	19	King Edition Petrol 1.5L Manual Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	21	SX Premium Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	paddle_shifters	VERIFIED	0	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King Knight = S*
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	26	King Edition Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	26	King Edition Diesel 1.5L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	28	King Edition Diesel 1.5L Turbo Automatic (TC)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	mileage_arai_kmpl	UNVERIFIED	18.4	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	29	King Edition Petrol 1.5L Automatic (DCT)	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	29	King Edition Petrol 1.5L Automatic (DCT)	drive_modes	NULL		NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	mileage_arai_kmpl	UNVERIFIED	18.4	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Smart Cruise Control with Stop & Go (SCC with S&G): King = S*
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+13	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+14	1	E Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	1	E Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, E column: -
+14	1	E Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, E column: -
+14	1	E Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	1	E Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, E column: -
+14	1	E Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, E column: -
+14	1	E Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	1	E Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, E column: -
+14	2	EX Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	2	EX Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, EX column: -
+14	2	EX Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, EX column: -
+14	2	EX Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	2	EX Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, EX column: -
+14	2	EX Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, EX column: -
+14	2	EX Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	2	EX Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, EX column: -
+14	3	E Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	3	E Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, E column: -
+14	3	E Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, E column: -
+14	3	E Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	3	E Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, E column: -
+14	3	E Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, E column: -
+14	3	E Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	3	E Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, E column: -
+14	4	EX (O) Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	4	EX (O) Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, EX(O) column: -
+14	4	EX (O) Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, EX(O) column: -
+14	4	EX (O) Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	4	EX (O) Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, EX(O) column: -
+14	4	EX (O) Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, EX(O) column: -
+14	4	EX (O) Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	4	EX (O) Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, EX(O) column: -
+14	5	EX Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	5	EX Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, EX column: -
+14	5	EX Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, EX column: -
+14	5	EX Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	5	EX Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, EX column: -
+14	5	EX Diesel 1.5L Turbo Manual	paddle_shifters	VERIFIED	0	CONFIRM_V	0					False	Paddle shifters row, EX column: -
+14	5	EX Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	5	EX Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, EX column: -
+14	6	S (O) Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	6	S (O) Petrol 1.5L Manual	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, S(O) column: S
+14	6	S (O) Petrol 1.5L Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) column: -
+14	6	S (O) Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	6	S (O) Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) column: -
+14	6	S (O) Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, S(O) column: S*; * iVT/AT/DCT only
+14	6	S (O) Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	6	S (O) Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, S(O) Knight column: S
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) Knight column: -
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) Knight column: -
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, S(O) Knight column: S*; * iVT/AT/DCT only
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	7	S (O) Knight Petrol 1.5L Manual Knight Edition	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, EX(O) column: -
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, EX(O) column: -
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, EX(O) column: -
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	CORRECTION	0		0		True	True	Paddle shifters row, EX(O) column: -
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	8	EX (O) Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, EX(O) column: -
+14	9	EX (O) Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	9	EX (O) Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, EX(O) column: -
+14	9	EX (O) Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, EX(O) column: -
+14	9	EX (O) Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	9	EX (O) Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, EX(O) column: -
+14	9	EX (O) Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, EX(O) column: -
+14	9	EX (O) Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	9	EX (O) Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, EX(O) column: -
+14	10	SX Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	10	SX Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX column: S
+14	10	SX Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX column: S
+14	10	SX Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	10	SX Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, SX column: -
+14	10	SX Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, SX column: -
+14	10	SX Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	10	SX Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, SX column: -
+14	11	SX Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	11	SX Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX column: S
+14	11	SX Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX column: S
+14	11	SX Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	11	SX Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, SX column: -
+14	11	SX Petrol 1.5L Manual Dual Tone	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle shifters row, SX column: -
+14	11	SX Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	11	SX Petrol 1.5L Manual Dual Tone	drive_modes	UNVERIFIED	0	CONFIRM	0					False	Drive mode select (Eco, Normal, Sport) row, SX column: -
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, S(O) column: S
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) column: -
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) column: -
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, S(O) column: S*; * iVT/AT/DCT only
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	12	S (O) Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, S(O) column; * iVT/AT/DCT only
+14	13	S (O) Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	13	S (O) Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, S(O) column: S
+14	13	S (O) Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) column: -
+14	13	S (O) Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	13	S (O) Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) column: -
+14	13	S (O) Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, S(O) column: S*; * iVT/AT/DCT only
+14	13	S (O) Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	13	S (O) Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, S(O) Knight column: S
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) Knight column: -
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) Knight column: -
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, S(O) Knight column: S*; * iVT/AT/DCT only
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	14	S (O) Knight Diesel 1.5L Turbo Manual Knight Edition	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	15	SX Premium Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	15	SX Premium Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX Premium column: S
+14	15	SX Premium Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	15	SX Premium Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	15	SX Premium Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	15	SX Premium Petrol 1.5L Manual	paddle_shifters	VERIFIED	0	CONFIRM_V	0	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	15	SX Premium Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	15	SX Premium Petrol 1.5L Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX Premium column: S
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	paddle_shifters	VERIFIED	0	CONFIRM_V	0	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	16	SX Premium Petrol 1.5L Manual Dual Tone	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	17	King Edition Petrol 1.5L Manual	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	17	King Edition Petrol 1.5L Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	17	King Edition Petrol 1.5L Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	17	King Edition Petrol 1.5L Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	17	King Edition Petrol 1.5L Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	17	King Edition Petrol 1.5L Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	17	King Edition Petrol 1.5L Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	17	King Edition Petrol 1.5L Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, S(O) column: S
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Smartphone wireless charger** row, S(O) column: -
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Front row ventilated seats row, S(O) column: -
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, S(O) column: S*; * iVT/AT/DCT only
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	18	S (O) Diesel 1.5L Turbo Automatic (TC)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, S(O) column; * iVT/AT/DCT only
+14	19	King Edition Petrol 1.5L Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.4	NOT_ON_PAGE						False	
+14	19	King Edition Petrol 1.5L Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	19	King Edition Petrol 1.5L Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	19	King Edition Petrol 1.5L Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	19	King Edition Petrol 1.5L Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	19	King Edition Petrol 1.5L Manual Dual Tone	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	19	King Edition Petrol 1.5L Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	19	King Edition Petrol 1.5L Manual Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX Premium column: S
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	20	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, SX Premium column; * iVT/AT/DCT only
+14	21	SX Premium Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	21	SX Premium Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, SX Premium column: S
+14	21	SX Premium Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	21	SX Premium Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	21	SX Premium Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	21	SX Premium Diesel 1.5L Turbo Manual	paddle_shifters	VERIFIED	0	CONFIRM_V	0	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	21	SX Premium Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	21	SX Premium Diesel 1.5L Turbo Manual	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, SX Premium column: S
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	22	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, SX Premium column; * iVT/AT/DCT only
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	Cruise control row, SX Premium column: S
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, SX Premium column: S
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	ventilated_front_seats	UNVERIFIED	0	CORRECTION	1		1		True	True	Front row ventilated seats row, SX Premium column: S
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	paddle_shifters	VERIFIED	0	CONFIRM_V	0	iVT/AT/DCT only				False	Paddle shifters row, SX Premium column: S*; * iVT/AT/DCT only
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	23	SX Premium Diesel 1.5L Turbo Manual Dual Tone	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	24	King Edition Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King column; * iVT/AT/DCT only
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	mileage_arai_kmpl	UNVERIFIED	17.7	NOT_ON_PAGE						False	
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King Knight column: S
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King Knight column: S
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King Knight column: S
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King Knight column: S*; * iVT/AT/DCT only
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	25	King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King Knight column; * iVT/AT/DCT only
+14	26	King Edition Diesel 1.5L Turbo Manual	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	26	King Edition Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	26	King Edition Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	26	King Edition Diesel 1.5L Turbo Manual	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	26	King Edition Diesel 1.5L Turbo Manual	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	26	King Edition Diesel 1.5L Turbo Manual	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	26	King Edition Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	26	King Edition Diesel 1.5L Turbo Manual	drive_modes	NULL		NOT_ON_PAGE						False	
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	mileage_arai_kmpl	UNVERIFIED	21.8	NOT_ON_PAGE						False	
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	paddle_shifters	UNVERIFIED	0	CONFIRM	0	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	27	King Edition Diesel 1.5L Turbo Manual Dual Tone	drive_modes	NULL		NOT_ON_PAGE						False	
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	28	King Edition Diesel 1.5L Turbo Automatic (TC)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King column; * iVT/AT/DCT only
+14	29	King Edition Petrol 1.5L Automatic (DCT)	mileage_arai_kmpl	UNVERIFIED	18.4	NOT_ON_PAGE						False	
+14	29	King Edition Petrol 1.5L Automatic (DCT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	29	King Edition Petrol 1.5L Automatic (DCT)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	29	King Edition Petrol 1.5L Automatic (DCT)	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	29	King Edition Petrol 1.5L Automatic (DCT)	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	29	King Edition Petrol 1.5L Automatic (DCT)	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	29	King Edition Petrol 1.5L Automatic (DCT)	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	29	King Edition Petrol 1.5L Automatic (DCT)	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King column; * iVT/AT/DCT only
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	mileage_arai_kmpl	UNVERIFIED	19.1	NOT_ON_PAGE						False	
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	30	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King column; * iVT/AT/DCT only
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	mileage_arai_kmpl	UNVERIFIED	18.4	NOT_ON_PAGE						False	
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, King column: S
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Smartphone wireless charger** row, King column: S
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	Front row ventilated seats row, King column: S
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	paddle_shifters	UNVERIFIED	1	CONFIRM	1	iVT/AT/DCT only				False	Paddle shifters row, King column: S*; * iVT/AT/DCT only
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	fuel_tank_litres	UNVERIFIED	50.0	NOT_ON_PAGE						False	
+14	31	King Edition Petrol 1.5L Turbo Automatic (DCT) Dual Tone	drive_modes	NULL		FILL	3	iVT/AT/DCT only	3	iVT/AT/DCT only	True	True	Drive mode select (Eco, Normal, Sport) S*, King column; * iVT/AT/DCT only

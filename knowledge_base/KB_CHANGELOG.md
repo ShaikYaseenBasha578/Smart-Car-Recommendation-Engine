@@ -158,9 +158,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Mileage and CNG km/kg: the brochure prints none.
 **Prod SHA-1:** `795a1223…` → `afad3a5f…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11B: 15 Nexon feature cells changed from the brochure.
 
+## 11D — 2026-11-12 — Creta: feature and drive-mode cells checked against the brochure
+**Why:** Many Creta feature cells were unverified and some were wrong. The brochure's feature matrix settles them.
+**What changed:** 138 cells checked on two brochure pages: 10 blanks filled, 14 corrected, 114 confirmed; 31 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Hyundai Creta S(O) Petrol Manual: cruise control no → yes (Creta brochure, p14)
+- Hyundai Creta SX Premium Petrol Manual: ventilated front seats no → yes (Creta brochure, p14)
+- Hyundai Creta EX(O) Petrol CVT: paddle shifters yes → no (Creta brochure, p14)
+**What app users now see:** 24 Creta cells change in the next catalogue export; the confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage and fuel tank: not printed on the pages read.
+- Seltos (held, P7) and Carens Clavis (rejected at the validation gate, 34 of 38 agreed; re-run later).
+**Prod SHA-1:** `afad3a5f…` → `b653b3f8…`. **App PR:** see the next entry. **Ranking-track line:** KB 11D: 24 Creta feature cells changed from the brochure.
+
 ## Current state
-As of phase 11B (prod `afad3a5fecefa98335cdb1db91c9f4528b8aab55`).
-- **Active quarantines:** 1,372 (950 observations, 309 variant cells, 112 provenance rows, 1 safety applicability row(s)).
+As of phase 11D (prod `b653b3f8d6858fe9080ecfe32c5883b6ec99ce3c`).
+- **Active quarantines:** 1,403 (950 observations, 309 variant cells, 143 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

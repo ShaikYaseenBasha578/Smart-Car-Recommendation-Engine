@@ -23,6 +23,9 @@ A value is for ONE variant, read from that variant's own column, row or trim lis
   adaptive cruise control (ACC), smart cruise control (SCC, SCC with Stop and Go), intelligent cruise control.
   Adaptive-only cruise counts as 1. A page can list "Cruise Control (MT & Strong Hybrid)" for one trim and
   "Adaptive Cruise Control (6AT)" for the same trim. Read both rows; the automatic variants of that trim are 1.
+- Several cruise rows on one page (plain cruise control, adaptive/smart cruise control): the value is 1 if ANY of them is fitted on the
+  variant. A variant shown absent (dash) in an adaptive/smart-cruise row, when the page has no plain-cruise row, is NOT_ON_PAGE,
+  not 0: the plain cruise control may be listed on another page. 0 needs every cruise row the page shows to be absent.
 - "Speed limiter" or "speed limit assist" alone is not cruise control.
 - "Cruise control" in a driving-mode, marketing or lifestyle paragraph with no trim table is not evidence for a trim.
 
@@ -69,8 +72,10 @@ A value is for ONE variant, read from that variant's own column, row or trim lis
 - Absent is not zero (same rule as the features): unlisted = unknown, never "none". Report 0 only when the page states that the
   variant has no drive modes with an explicit absence marker (a dash in a drive-mode row of a table that covers the variant). A
   mode list printed for a higher trim only, with the variant's own tier silent, is NOT_ON_PAGE for the lower tiers.
-- A mode list restricted by a printed qualifier ("Petrol MT, AMT and Diesel MT only") applies to those variants only; other
-  variants of that trim are NOT_ON_PAGE unless the page shows them absent.
+- A mode list restricted by a printed qualifier ("7DCT/AT", "Petrol MT, AMT and Diesel MT only") applies to those variants only;
+  the other variants of that trim are NOT_ON_PAGE unless the page shows them absent with an explicit marker. For drive_modes the
+  general rule above ("a restricted feature is 0 on the variants the restriction excludes") does NOT apply: a manual car whose
+  trim lists "Drive Mode Select (7DCT/AT)" is NOT_ON_PAGE, not 0 (owner rule: unlisted = unknown, never "none").
 
 ## Output units
 bool (1/0), km/l, km/kg, litres, count. `value` is a number or null; `status` is FOUND or NOT_ON_PAGE.

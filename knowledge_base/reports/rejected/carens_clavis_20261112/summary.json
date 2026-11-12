@@ -1,0 +1,48 @@
+{
+ "cells": 296,
+ "unmapped": [],
+ "by_class": {
+  "FILL": 176,
+  "CONFIRM": 46,
+  "CORRECTION": 0,
+  "NOT_ON_PAGE": 74,
+  "ABSENT_NOT_SHOWN": 0,
+  "CONFLICT": 0,
+  "CONFIRM_V": 0,
+  "PAGE_CONFLICT": 0
+ },
+ "validated": 38,
+ "validated_agree": 34,
+ "selected": 38,
+ "page_columns": {
+  "8": {
+   "a": [
+    "HTE",
+    "HTE (O)",
+    "HTE EX",
+    "HTK+",
+    "HTK+ (O)",
+    "HTX",
+    "HTX (O)",
+    "GTX",
+    "HTX (O) A",
+    "HTX+",
+    "GTX+",
+    "X-Line",
+    "HTE",
+    "HTE (O)",
+    "HTE (EX)",
+    "HTK+",
+    "HTK+(O)",
+    "HTX",
+    "HTX (O)",
+    "GTX",
+    "HTX (O) A",
+    "HTX+",
+    "GTX+",
+    "X-Line"
+   ],
+   "b": []
+  }
+ }
+}
