@@ -1,0 +1,23 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+366	cruise_control	0	0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XM tier		CONFIRM
+367	cruise_control	0	0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier		CONFIRM
+368	cruise_control	0	0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier		CONFIRM
+369	cruise_control	0	0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier		CONFIRM
+370	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier		FILL
+371	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier		FILL
+372	cruise_control	0	1	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only)	petrol only	CORRECTION
+373	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier		FILL
+374	cruise_control	1	1	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only); XZ+ Lux is features over XZ+	petrol only	CONFIRM
+375	cruise_control	1	1	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only)	petrol only	CONFIRM
+376	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier		FILL
+377	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only)	petrol only	FILL
+378	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only)	petrol only	FILL
+379	cruise_control		0	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	18	XZ+ Features over XZ: Cruise Control (petrol only)	petrol only	FILL
+366	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+367	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+368	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+369	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+371	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+372	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+374	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION
+375	fuel_tank_litres	60.0	35	tata/tigor/latest/brochures/tata_tigor_brochure.pdf	1867cdf175b0ea07d327c5874117e36f32f5308e	19	Fuel Tank Capacity (litres): Tigor 35L	Tigor (petrol)	CORRECTION

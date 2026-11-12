@@ -1,0 +1,127 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+18	366	XM	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XM tier
+18	367	XT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier
+18	368	XTA AMT	cruise_control	QUARANTINED	0	CONFIRM	0					False	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier
+18	369	XZ	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier
+18	370	XT CNG	cruise_control	NULL		FILL	0		0		True	True	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XT tier
+18	371	XZA AMT	cruise_control	NULL		FILL	0		0		True	True	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier
+18	372	XZ+	cruise_control	UNVERIFIED	0	CORRECTION	1	petrol only	1	petrol only	True	True	XZ+ Features over XZ: Cruise Control (petrol only)
+18	373	XZ CNG	cruise_control	NULL		FILL	0		0		True	True	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier
+18	374	XZ+ Lux	cruise_control	UNVERIFIED	1	CONFIRM	1	petrol only				False	XZ+ Features over XZ: Cruise Control (petrol only); XZ+ Lux is features over XZ+
+18	375	XZA+ AMT	cruise_control	UNVERIFIED	1	CONFIRM	1	petrol only				False	XZ+ Features over XZ: Cruise Control (petrol only)
+18	376	XZA AMT CNG	cruise_control	NULL		FILL	0		0		True	True	Cruise Control (petrol only) is listed under XZ+ 'Features over XZ'; not in XZ tier
+18	377	XZ+ CNG	cruise_control	NULL		FILL	0	petrol only	0	petrol only	True	True	XZ+ Features over XZ: Cruise Control (petrol only)
+18	378	XZ+ Lux CNG	cruise_control	NULL		FILL	0	petrol only	0	petrol only	True	True	XZ+ Features over XZ: Cruise Control (petrol only)
+18	379	XZA+ AMT CNG	cruise_control	NULL		FILL	0	petrol only	0	petrol only	True	True	XZ+ Features over XZ: Cruise Control (petrol only)
+19	366	XM	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+19	366	XM	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	366	XM	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	366	XM	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	366	XM	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	366	XM	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	366	XM	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	366	XM	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	367	XT	mileage_arai_kmpl	UNVERIFIED	19.2	NOT_ON_PAGE						False	
+19	367	XT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	367	XT	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	367	XT	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	367	XT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	367	XT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	367	XT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	367	XT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	368	XTA AMT	mileage_arai_kmpl	UNVERIFIED	19.6	NOT_ON_PAGE						False	
+19	368	XTA AMT	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+19	368	XTA AMT	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	368	XTA AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	368	XTA AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	368	XTA AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	368	XTA AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	368	XTA AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	369	XZ	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	369	XZ	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	369	XZ	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	369	XZ	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	369	XZ	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	369	XZ	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	369	XZ	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	369	XZ	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	371	XZA AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	371	XZA AMT	cruise_control	NULL		NOT_ON_PAGE						False	
+19	371	XZA AMT	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	371	XZA AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	371	XZA AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	371	XZA AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	371	XZA AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	371	XZA AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	372	XZ+	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	372	XZ+	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	372	XZ+	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	372	XZ+	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	372	XZ+	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	372	XZ+	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	372	XZ+	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	372	XZ+	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	374	XZ+ Lux	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+19	374	XZ+ Lux	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	374	XZ+ Lux	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	374	XZ+ Lux	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	374	XZ+ Lux	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	374	XZ+ Lux	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	374	XZ+ Lux	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	374	XZ+ Lux	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	375	XZA+ AMT	mileage_arai_kmpl	UNVERIFIED	19.6	NOT_ON_PAGE						False	
+19	375	XZA+ AMT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	375	XZA+ AMT	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	375	XZA+ AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	375	XZA+ AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	375	XZA+ AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	375	XZA+ AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Tigor (petrol)	35	Tigor petrol	True	True	Fuel Tank Capacity (litres): Tigor 35L
+19	375	XZA+ AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	370	XT CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	370	XT CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	370	XT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	373	XZ CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	373	XZ CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	373	XZ CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	376	XZA AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	377	XZ+ CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	377	XZ+ CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	377	XZ+ CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	378	XZ+ Lux CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	cruise_control	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	wireless_charging	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	paddle_shifters	NULL		NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+19	379	XZA+ AMT CNG	drive_modes	NULL		NOT_ON_PAGE						False	

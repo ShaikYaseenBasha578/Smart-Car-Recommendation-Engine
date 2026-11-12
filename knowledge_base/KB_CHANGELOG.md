@@ -314,9 +314,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
 **Prod SHA-1:** `cd7bc920…` → `2efefc4f…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11O: 14 Swift cells changed from the brochure.
 
+## 11P — 2026-11-13 — Tigor: cruise-control and fuel-tank cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 22 cells checked on 2 brochure page(s): 7 blanks filled, 9 corrected, 6 confirmed; 1 old quarantines released; 9 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Tata Tigor XM: fuel tank 60 L → 35 L (Tigor brochure, p19)
+- Tata Tigor XZ+ petrol: cruise control no → yes, petrol only (Tigor brochure, p18)
+- Tata Tigor XZ+ iCNG: cruise control 0 by the "(petrol only)" restriction (Tigor brochure, p18)
+**What app users now see:** Cruise control changes on one Tigor variant (fuel tank is also corrected on 8).
+**Not done / held:**
+- Mileage, wireless charging, head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
+- iCNG fuel tank: the page prints 35 L and a 70 L water capacity in one column; left unknown.
+**Prod SHA-1:** `2efefc4f…` → `b174b0ac…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11P: 16 Tigor cells changed from the brochure.
+
 ## Current state
-As of phase 11O (prod `2efefc4f30505f2d7961a77204b8d83f8d6a6b48`).
-- **Active quarantines:** 1,516 (950 observations, 294 variant cells, 271 provenance rows, 1 safety applicability row(s)).
+As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
+- **Active quarantines:** 1,524 (950 observations, 293 variant cells, 280 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
