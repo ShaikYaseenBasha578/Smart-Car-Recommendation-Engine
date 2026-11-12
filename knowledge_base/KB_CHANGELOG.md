@@ -198,9 +198,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Drive modes on petrol variants: the row says diesel only, so unknown.
 **Prod SHA-1:** `96356815…` → `58d3ef0e…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11F: 17 XUV 7XO cells changed from the brochure.
 
+## 11G — 2026-11-12 — XUV 3XO: cruise, wireless and fuel-tank cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 56 cells checked on 2 brochure page(s): 0 blanks filled, 1 corrected, 55 confirmed; 2 old quarantines released; 1 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Mahindra XUV 3XO AX5 Diesel AT: cruise control no → yes (XUV 3XO brochure, p13)
+- Mahindra XUV 3XO MX1 Petrol: fuel tank 42 L confirmed (XUV 3XO brochure, p14)
+- Mahindra XUV 3XO AX5 Luxury Petrol MT: wireless charging yes confirmed (XUV 3XO brochure, p13)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Wireless charging on MX3, MX3 Pro, AX5 and AX7 (14 cells, stored yes): held, the brochure's lists are not exhaustive (see above).
+- Mileage, head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
+**Prod SHA-1:** `58d3ef0e…` → `e351341c…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11G: 1 XUV 3XO cells changed from the brochure.
+
 ## Current state
-As of phase 11F (prod `58d3ef0ef0ea641e852e1438cc023378b8ae0822`).
-- **Active quarantines:** 1,426 (950 observations, 309 variant cells, 166 provenance rows, 1 safety applicability row(s)).
+As of phase 11G (prod `e351341cf8eaffb8164651fc7ed61f09d74a51fa`).
+- **Active quarantines:** 1,425 (950 observations, 307 variant cells, 167 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

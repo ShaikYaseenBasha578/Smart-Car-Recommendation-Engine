@@ -1,0 +1,14 @@
+== pre-apply 2026-11-12T14:56:15Z
+
+sha1 58d3ef0ef0ea641e852e1438cc023378b8ae0822
+script sha1 6b7d2367b74fb3c07a966c4c8a017be4c797a4c3
+COMMITTED; {"corrected": 1, "confirmed": 55, "amend": 1, "obs": 56, "fp": 56, "released": 2, "quar": 1} active 1425
+== post-apply 2026-11-12T14:56:17Z
+integrity_check ok
+foreign_key_check 297
+checkpoint 0|0|0
+wal bytes        0
+/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db
+/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db-shm
+/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db-wal
+e351341cf8eaffb8164651fc7ed61f09d74a51fa  /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/carrec_kb.db

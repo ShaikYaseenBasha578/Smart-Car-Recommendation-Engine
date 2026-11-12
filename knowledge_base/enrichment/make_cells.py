@@ -12,8 +12,14 @@ W, H = [], []
 # one cell can appear on several pages. Choose a page whose reading does not rest on a footnote; a 0 that rests only on a footnote
 # (Nexon "*Disclaimer: Available in AMT / DCA") is held for any class: the same model reads the same footnote the same way in both
 # runs, so agreement proves nothing. P6: unclear is recorded, not written.
+# tier absence alone never flips a stored 1 to 0 (XUV 3XO: the AX7 list "adds to AX5" and re-lists other AX5 LUXURY items but not the
+# wireless charger, so "not listed" is not evidence of absence). A 1 -> 0 correction needs an explicit marker in the row/column (dash, x,
+# "not available") or a printed restriction in the qualifier.
+MARK = re.compile(r"(?:^|[\s:(=])(?:-|\u2013|\u2014|x|\u2717)(?:$|[\s).,;])|not available|not fitted|absent", re.I)
 groups = {}
 for r in R:
+    if r['cls'] == 'CORRECTION' and r['kb_stored'] in ('1', '1.0') and r['a'] in ('0', '0.0') and not r['a_qual'].strip() and not MARK.search(r['a_src']):
+        H.append(dict(vid=r['vid'], variant=r['variant'], field=r['field'], cls='TIER_ABSENCE_CORRECTION', reason=f"1->0 from tier absence only: {r['a_src'][:80]}")); continue
     if r['cls'] in ('FILL', 'CONFIRM', 'CORRECTION') and (r['validate'] != 'True' or r['agree'] == 'True'):
         groups.setdefault((r['vid'], r['field']), []).append(r)
     elif r['cls'] in ('FILL', 'CONFIRM', 'CORRECTION'):

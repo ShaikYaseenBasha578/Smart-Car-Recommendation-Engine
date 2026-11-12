@@ -1,0 +1,2 @@
+page	arm	total_tokens	output_tokens	cost_usd	duration_ms	is_error	cells
+p13	b	33389	2227	0.0512	16893	False	15

@@ -1,0 +1,15 @@
+vid	variant	field	cls	reason
+36	MX3 Petrol 1.2L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+38	MX3 Pro Petrol 1.2L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+41	AX5 Petrol 1.2L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+42	MX3 Diesel 1.5L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+43	MX3 Pro Diesel 1.5L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+44	MX3 Petrol 1.2L Turbo Automatic (TC)	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+45	MX3 Pro Petrol 1.2L Turbo Automatic (TC)	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+46	MX3 Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+48	AX5 Diesel 1.5L Turbo Manual	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+49	AX5 Petrol 1.2L Turbo Automatic (TC)	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: Wireless Charger is listed only under AX5 LUXURY
+52	AX7 Petrol 1.2L Turbo Manual Dual Tone	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+54	AX7 Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+56	AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+57	AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone	wireless_charging	TIER_ABSENCE_CORRECTION	1->0 from tier absence only: AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY

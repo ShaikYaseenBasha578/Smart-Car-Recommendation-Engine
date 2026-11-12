@@ -1,0 +1,79 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+13	32	MX1 Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control is listed under MX3 (adds to MX2), not at MX1
+13	32	MX1 Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY, not at MX1
+13	33	REVX M Petrol 1.2L Turbo Manual	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+13	33	REVX M Petrol 1.2L Turbo Manual	wireless_charging	NULL		NOT_ON_PAGE						False	
+13	34	REVX M (O) Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	34	REVX M (O) Petrol 1.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+13	35	MX2 Pro Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	MX2 PRO (adds to MX2) does not list Cruise Control; it is listed under MX3
+13	35	MX2 Pro Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY
+13	36	MX3 Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3: Cruise Control
+13	36	MX3 Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	37	MX2 Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	MX2 does not list Cruise Control; it is listed under MX3
+13	37	MX2 Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY
+13	38	MX3 Pro Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3 PRO adds to MX3: Cruise Control
+13	38	MX3 Pro Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	39	MX2 Pro Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	0	CONFIRM	0					False	MX2 PRO does not list Cruise Control; it is listed under MX3
+13	39	MX2 Pro Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY
+13	40	MX2 Pro Petrol 1.2L Turbo Automatic (TC)	cruise_control	UNVERIFIED	0	CONFIRM	0					False	MX2 PRO does not list Cruise Control; it is listed under MX3
+13	40	MX2 Pro Petrol 1.2L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY
+13	41	AX5 Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX5 adds to MX3 PRO, which includes MX3 Cruise Control
+13	41	AX5 Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	42	MX3 Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3: Cruise Control
+13	42	MX3 Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	43	MX3 Pro Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3 PRO adds to MX3: Cruise Control
+13	43	MX3 Pro Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	44	MX3 Petrol 1.2L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3: Cruise Control
+13	44	MX3 Petrol 1.2L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	45	MX3 Pro Petrol 1.2L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3 PRO adds to MX3: Cruise Control
+13	45	MX3 Pro Petrol 1.2L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	46	MX3 Diesel 1.5L Turbo Automatic (AMT)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	MX3: Cruise Control
+13	46	MX3 Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	47	REVX A Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+13	47	REVX A Petrol 1.2L Turbo Manual	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+13	48	AX5 Diesel 1.5L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX5 adds to MX3 PRO, which includes MX3 Cruise Control
+13	48	AX5 Diesel 1.5L Turbo Manual	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	49	AX5 Petrol 1.2L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX5 adds to MX3 PRO, which includes MX3 Cruise Control
+13	49	AX5 Petrol 1.2L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger is listed only under AX5 LUXURY
+13	50	AX5L Petrol 1.2L Turbo Manual	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX5 LUXURY adds to AX5, which includes MX3 Cruise Control
+13	50	AX5L Petrol 1.2L Turbo Manual	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX5 LUXURY: Wireless Charger
+13	51	AX5 Diesel 1.5L Turbo Automatic (AMT)	cruise_control	QUARANTINED	0	CORRECTION	1		1		True	True	AX5 adds to MX3 PRO, which includes MX3 Cruise Control
+13	51	AX5 Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger is listed only under AX5 LUXURY
+13	52	AX7 Petrol 1.2L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX7 adds to AX5, which includes MX3 Cruise Control
+13	52	AX7 Petrol 1.2L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+13	53	REVX A Petrol 1.2L Turbo Automatic (TC)	cruise_control	QUARANTINED	0	NOT_ON_PAGE						False	
+13	53	REVX A Petrol 1.2L Turbo Automatic (TC)	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+13	54	AX7 Diesel 1.5L Turbo Manual Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX7 adds to AX5, which includes MX3 Cruise Control
+13	54	AX7 Diesel 1.5L Turbo Manual Dual Tone	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+13	55	AX5L Petrol 1.2L Turbo Automatic (TC)	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX5 LUXURY adds to AX5, which includes MX3 Cruise Control
+13	55	AX5L Petrol 1.2L Turbo Automatic (TC)	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX5 LUXURY: Wireless Charger
+13	56	AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX7 adds to AX5, which includes MX3 Cruise Control
+13	56	AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+13	57	AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX7 adds to AX5, which includes MX3 Cruise Control
+13	57	AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	AX7 adds to AX5; Wireless Charger is listed only under AX5 LUXURY
+14	32	MX1 Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	33	REVX M Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	34	REVX M (O) Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	35	MX2 Pro Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	36	MX3 Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	37	MX2 Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	38	MX3 Pro Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	39	MX2 Pro Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	40	MX2 Pro Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	41	AX5 Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	42	MX3 Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	43	MX3 Pro Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	44	MX3 Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	45	MX3 Pro Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	46	MX3 Diesel 1.5L Turbo Automatic (AMT)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	47	REVX A Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	48	AX5 Diesel 1.5L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	49	AX5 Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	50	AX5L Petrol 1.2L Turbo Manual	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	51	AX5 Diesel 1.5L Turbo Automatic (AMT)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	52	AX7 Petrol 1.2L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	53	REVX A Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	54	AX7 Diesel 1.5L Turbo Manual Dual Tone	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	55	AX5L Petrol 1.2L Turbo Automatic (TC)	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	56	AX7 Petrol 1.2L Turbo Automatic (TC) Dual Tone	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42
+14	57	AX7 Diesel 1.5L Turbo Automatic (AMT) Dual Tone	fuel_tank_litres	UNVERIFIED	42.0	CONFIRM	42	all				False	Fuel Tank (L) 42

@@ -1,0 +1,57 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+32	cruise_control	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Cruise Control is listed under MX3 (adds to MX2), not at MX1		CONFIRM
+32	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY, not at MX1		CONFIRM
+35	cruise_control	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX2 PRO (adds to MX2) does not list Cruise Control; it is listed under MX3		CONFIRM
+35	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY		CONFIRM
+36	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3: Cruise Control		CONFIRM
+37	cruise_control	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX2 does not list Cruise Control; it is listed under MX3		CONFIRM
+37	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY		CONFIRM
+38	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3 PRO adds to MX3: Cruise Control		CONFIRM
+39	cruise_control	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX2 PRO does not list Cruise Control; it is listed under MX3		CONFIRM
+39	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY		CONFIRM
+40	cruise_control	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX2 PRO does not list Cruise Control; it is listed under MX3		CONFIRM
+40	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY		CONFIRM
+41	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 adds to MX3 PRO, which includes MX3 Cruise Control		CONFIRM
+42	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3: Cruise Control		CONFIRM
+43	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3 PRO adds to MX3: Cruise Control		CONFIRM
+44	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3: Cruise Control		CONFIRM
+45	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3 PRO adds to MX3: Cruise Control		CONFIRM
+46	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	MX3: Cruise Control		CONFIRM
+48	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 adds to MX3 PRO, which includes MX3 Cruise Control		CONFIRM
+49	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 adds to MX3 PRO, which includes MX3 Cruise Control		CONFIRM
+50	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 LUXURY adds to AX5, which includes MX3 Cruise Control		CONFIRM
+50	wireless_charging	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 LUXURY: Wireless Charger		CONFIRM
+51	cruise_control	0	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 adds to MX3 PRO, which includes MX3 Cruise Control		CORRECTION
+51	wireless_charging	0	0	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	Wireless Charger is listed only under AX5 LUXURY		CONFIRM
+52	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX7 adds to AX5, which includes MX3 Cruise Control		CONFIRM
+54	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX7 adds to AX5, which includes MX3 Cruise Control		CONFIRM
+55	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 LUXURY adds to AX5, which includes MX3 Cruise Control		CONFIRM
+55	wireless_charging	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX5 LUXURY: Wireless Charger		CONFIRM
+56	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX7 adds to AX5, which includes MX3 Cruise Control		CONFIRM
+57	cruise_control	1	1	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	13	AX7 adds to AX5, which includes MX3 Cruise Control		CONFIRM
+32	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+33	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+34	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+35	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+36	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+37	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+38	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+39	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+40	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+41	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+42	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+43	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+44	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+45	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+46	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+47	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+48	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+49	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+50	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+51	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+52	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+53	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+54	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+55	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+56	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
+57	fuel_tank_litres	42.0	42	mahindra/xuv_3xo/latest/brochures/mahindra_xuv_3xo_brochure.pdf	73015a758e9bba7e3961bcdea749b62603d682e5	14	Fuel Tank (L) 42	all	CONFIRM
