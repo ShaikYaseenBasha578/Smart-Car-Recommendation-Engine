@@ -185,9 +185,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Drive modes on petrol variants and Diesel 4WD: not on the page row.
 **Prod SHA-1:** `b653b3f8…` → `96356815…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11E: 77 Scorpio-N cells changed from the brochure.
 
+## 11F — 2026-11-12 — XUV 7XO: feature, fuel tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 124 cells checked on 2 brochure page(s): 16 blanks filled, 1 corrected, 107 confirmed; 0 old quarantines released; 17 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Mahindra XUV 7XO AX7 Tech Petrol AT: wireless charging no → yes, front charger with active cooling (XUV 7XO brochure, p28)
+- Mahindra XUV 7XO AX Diesel MT: drive modes blank → 4, Zip/Zap/Zoom/Custom (XUV 7XO brochure, p28)
+- Mahindra XUV 7XO AX3 Petrol MT: fuel tank 60 L confirmed (XUV 7XO brochure, p30)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage, head-up display and paddle shifters: not shown on the pages read.
+- Drive modes on petrol variants: the row says diesel only, so unknown.
+**Prod SHA-1:** `96356815…` → `58d3ef0e…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11F: 17 XUV 7XO cells changed from the brochure.
+
 ## Current state
-As of phase 11E (prod `96356815f547d153183c37958f3e92d1ad6bdbf0`).
-- **Active quarantines:** 1,409 (950 observations, 309 variant cells, 149 provenance rows, 1 safety applicability row(s)).
+As of phase 11F (prod `58d3ef0ef0ea641e852e1438cc023378b8ae0822`).
+- **Active quarantines:** 1,426 (950 observations, 309 variant cells, 166 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

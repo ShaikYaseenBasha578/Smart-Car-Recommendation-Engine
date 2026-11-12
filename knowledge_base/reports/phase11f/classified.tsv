@@ -1,0 +1,433 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+28	413	AX Petrol MT	mileage_arai_kmpl	UNVERIFIED	15.0	NOT_ON_PAGE						False	
+28	413	AX Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control
+28	413	AX Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier, not in AX tier
+28	413	AX Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	413	AX Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	413	AX Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	413	AX Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	413	AX Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	414	AX Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	414	AX Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control
+28	414	AX Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier, not in AX tier
+28	414	AX Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	414	AX Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	414	AX Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	414	AX Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	414	AX Diesel MT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	415	AX3 Petrol MT	mileage_arai_kmpl	UNVERIFIED	15.0	NOT_ON_PAGE						False	
+28	415	AX3 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX3 in addition to AX)
+28	415	AX3 Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	415	AX3 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	415	AX3 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	415	AX3 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	415	AX3 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	415	AX3 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	416	AX3 Diesel MT	mileage_arai_kmpl	QUARANTINED	17.0	NOT_ON_PAGE						False	
+28	416	AX3 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX3 in addition to AX)
+28	416	AX3 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	416	AX3 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	416	AX3 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	416	AX3 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	416	AX3 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	416	AX3 Diesel MT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	417	AX3 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	417	AX3 Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX3 in addition to AX)
+28	417	AX3 Petrol AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	417	AX3 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	417	AX3 Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	417	AX3 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	417	AX3 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	417	AX3 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	418	AX5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	418	AX5 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX5 in addition to AX3)
+28	418	AX5 Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	418	AX5 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	418	AX5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	418	AX5 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	418	AX5 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	418	AX5 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	419	AX3 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	419	AX3 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX3 in addition to AX)
+28	419	AX3 Diesel AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	419	AX3 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	419	AX3 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	419	AX3 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	419	AX3 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	419	AX3 Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	420	AX5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	420	AX5 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX5 in addition to AX3)
+28	420	AX5 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	420	AX5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	420	AX5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	420	AX5 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	420	AX5 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	420	AX5 Diesel MT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	421	AX7 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	421	AX7 Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 in addition to AX5)
+28	421	AX7 Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	421	AX7 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	421	AX7 Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	421	AX7 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	421	AX7 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	421	AX7 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	422	AX7 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	422	AX7 Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 in addition to AX5)
+28	422	AX7 Diesel MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	422	AX7 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	422	AX7 Diesel MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	422	AX7 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	422	AX7 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	422	AX7 Diesel MT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	423	AX5 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	423	AX5 Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX5 in addition to AX3)
+28	423	AX5 Petrol AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	423	AX5 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	423	AX5 Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	423	AX5 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	423	AX5 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	423	AX5 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	424	AX5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	424	AX5 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX5 in addition to AX3)
+28	424	AX5 Diesel AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	424	AX5 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	424	AX5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	424	AX5 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	424	AX5 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	424	AX5 Diesel AT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	425	AX7 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	425	AX7 Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 in addition to AX5)
+28	425	AX7 Petrol AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	425	AX7 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	425	AX7 Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	425	AX7 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	425	AX7 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	425	AX7 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	426	AX7 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	426	AX7 Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 in addition to AX5)
+28	426	AX7 Diesel AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Front Wireless Charger listed at AX7 TECH tier only
+28	426	AX7 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	426	AX7 Diesel AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Front Seats listed at AX7 TECH only
+28	426	AX7 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	426	AX7 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	426	AX7 Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	427	AX7T Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	427	AX7T Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 TECH in addition to AX7)
+28	427	AX7T Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	427	AX7T Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	427	AX7T Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	427	AX7T Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	427	AX7T Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	427	AX7T Diesel MT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	428	AX7T 6 Seater Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	428	AX7T 6 Seater Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 TECH in addition to AX7)
+28	428	AX7T 6 Seater Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	428	AX7T 6 Seater Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	428	AX7T 6 Seater Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	428	AX7T 6 Seater Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	428	AX7T 6 Seater Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	428	AX7T 6 Seater Diesel MT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	429	AX7T Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	429	AX7T Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	429	AX7T Petrol AT	wireless_charging	UNVERIFIED	0	CORRECTION	1		1		True	True	AX7 TECH: Front Wireless Charger with Active Cooling
+28	429	AX7T Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	429	AX7T Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	429	AX7T Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	429	AX7T Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	429	AX7T Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	430	AX7T 6 Seater Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	430	AX7T 6 Seater Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	430	AX7T 6 Seater Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	430	AX7T 6 Seater Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	430	AX7T 6 Seater Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	430	AX7T 6 Seater Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	430	AX7T 6 Seater Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	430	AX7T 6 Seater Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	431	AX7T Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	431	AX7T Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	431	AX7T Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	431	AX7T Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	431	AX7T Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	431	AX7T Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	431	AX7T Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	431	AX7T Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	432	AX7L Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	432	AX7L Diesel MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	AX: Cruise Control (AX7 LUXURY in addition to AX7 TECH)
+28	432	AX7L Diesel MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	432	AX7L Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	432	AX7L Diesel MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	432	AX7L Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	432	AX7L Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	432	AX7L Diesel MT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	433	AX7T 6 Seater Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	433	AX7T 6 Seater Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	433	AX7T 6 Seater Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	433	AX7T 6 Seater Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	433	AX7T 6 Seater Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	433	AX7T 6 Seater Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	433	AX7T 6 Seater Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	433	AX7T 6 Seater Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	434	AX7T Diesel AWD AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	434	AX7T Diesel AWD AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	434	AX7T Diesel AWD AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger with Active Cooling
+28	434	AX7T Diesel AWD AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	434	AX7T Diesel AWD AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	434	AX7T Diesel AWD AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	434	AX7T Diesel AWD AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	434	AX7T Diesel AWD AT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	435	AX7L Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	435	AX7L Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	435	AX7L Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	435	AX7L Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	435	AX7L Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	435	AX7L Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	435	AX7L Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	435	AX7L Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	436	AX7L 6 Seater Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	436	AX7L 6 Seater Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	436	AX7L 6 Seater Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	436	AX7L 6 Seater Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	436	AX7L 6 Seater Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	436	AX7L 6 Seater Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	436	AX7L 6 Seater Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	436	AX7L 6 Seater Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	437	AX7L Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	437	AX7L Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	437	AX7L Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	437	AX7L Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	437	AX7L Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	437	AX7L Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	437	AX7L Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	437	AX7L Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	438	AX7L 6 Seater Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	438	AX7L 6 Seater Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	438	AX7L 6 Seater Diesel AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	438	AX7L 6 Seater Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	438	AX7L 6 Seater Diesel AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	438	AX7L 6 Seater Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	438	AX7L 6 Seater Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	438	AX7L 6 Seater Diesel AT	drive_modes	NULL		FILL	4	Diesel Only	4	Diesel Only	True	True	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+28	439	AX7L Diesel AWD AT	mileage_arai_kmpl	UNVERIFIED	17.0	NOT_ON_PAGE						False	
+28	439	AX7L Diesel AWD AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AT Only				False	AX7 TECH: Adaptive Cruise Control (AT Only); AX: Cruise Control
+28	439	AX7L Diesel AWD AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Front Wireless Charger; AX7 LUXURY: Rear Wireless charger with Active Cooling
+28	439	AX7L Diesel AWD AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	439	AX7L Diesel AWD AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1					False	AX7 TECH: Ventilated Front Seats
+28	439	AX7L Diesel AWD AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	439	AX7L Diesel AWD AT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	439	AX7L Diesel AWD AT	drive_modes	NULL		FILL	4	Diesel Only				False	AX: Drive Modes - Zip, Zap, Zoom & Custom Mode (Diesel Only)
+30	413	AX Petrol MT	mileage_arai_kmpl	UNVERIFIED	15.0	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	413	AX Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	413	AX Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	414	AX Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	414	AX Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	414	AX Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	mileage_arai_kmpl	UNVERIFIED	15.0	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	415	AX3 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	415	AX3 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	mileage_arai_kmpl	QUARANTINED	17.0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	416	AX3 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	416	AX3 Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	417	AX3 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	417	AX3 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	418	AX5 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	418	AX5 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	419	AX3 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	419	AX3 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	420	AX5 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	420	AX5 Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	421	AX7 Petrol MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	421	AX7 Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	422	AX7 Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	422	AX7 Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	423	AX5 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	423	AX5 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	424	AX5 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	424	AX5 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	425	AX7 Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	425	AX7 Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	426	AX7 Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	426	AX7 Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	427	AX7T Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	427	AX7T Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	428	AX7T 6 Seater Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	428	AX7T 6 Seater Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Tech Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	429	AX7T Petrol AT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	429	AX7T Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	429	AX7T Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Tech Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	430	AX7T 6 Seater Petrol AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	430	AX7T 6 Seater Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	430	AX7T 6 Seater Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Tech Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	431	AX7T Diesel AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	431	AX7T Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	431	AX7T Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	432	AX7L Diesel MT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	432	AX7L Diesel MT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Tech Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	433	AX7T 6 Seater Diesel AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	433	AX7T 6 Seater Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	433	AX7T 6 Seater Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Tech Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	434	AX7T Diesel AWD AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	434	AX7T Diesel AWD AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	434	AX7T Diesel AWD AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Luxury Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	435	AX7L Petrol AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	435	AX7L Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	435	AX7L Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Luxury Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	436	AX7L 6 Seater Petrol AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	436	AX7L 6 Seater Petrol AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	436	AX7L 6 Seater Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Luxury Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	437	AX7L Diesel AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	437	AX7L Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	437	AX7L Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Luxury Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	438	AX7L 6 Seater Diesel AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	438	AX7L 6 Seater Diesel AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	438	AX7L 6 Seater Diesel AT	drive_modes	NULL		NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	mileage_arai_kmpl	UNVERIFIED	17.0	NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	cruise_control	UNVERIFIED	1	CONFIRM	1	AX7 Luxury Automatic only				False	Smart Pilot Assist and Adaptive Cruise Control are available only on AX7 Tech Automatic and AX7 Luxury Automatic
+30	439	AX7L Diesel AWD AT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	ventilated_front_seats	UNVERIFIED	1	NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+30	439	AX7L Diesel AWD AT	fuel_tank_litres	UNVERIFIED	60.0	CONFIRM	60					False	FUEL TANK CAPACITY: 60L
+30	439	AX7L Diesel AWD AT	drive_modes	NULL		NOT_ON_PAGE						False	
