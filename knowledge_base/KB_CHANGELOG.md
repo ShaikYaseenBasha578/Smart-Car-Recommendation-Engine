@@ -250,9 +250,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - One CNG AMT cruise-control zero held by the footnote guard.
 **Prod SHA-1:** `39f913e6…` → `ff444f4a…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/27 (covers 11H, 11I and 11J; based on app/kb-11g-export). **Ranking-track line:** KB 11J: 43 Tiago cells changed from the brochure.
 
+## 11K — 2026-11-12 — Grand Vitara: feature, mileage, fuel-tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 134 cells checked on 1 brochure page(s): 5 blanks filled, 9 corrected, 120 confirmed; 0 old quarantines released; 14 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Maruti Grand Vitara Zeta Petrol MT: ventilated front seats yes → no (Grand Vitara brochure, p15)
+- Maruti Grand Vitara Alpha(O) AllGrip Petrol AT: mileage 20.58 → 19.20 km/l (Grand Vitara brochure, p15)
+- Maruti Grand Vitara Delta+ Strong Hybrid: wireless charging yes → no (Grand Vitara brochure, p15)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- CNG km/kg: the Grand Vitara brochure has no CNG data (still unverified).
+- Pass over any further pages (fuel tank 45 L was confirmed from the matrix).
+**Prod SHA-1:** `ff444f4a…` → `28924082…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11K: 14 Grand Vitara cells changed from the brochure.
+
 ## Current state
-As of phase 11J (prod `ff444f4a23d6d2f12cd980fac5e123bd8d335c9f`).
-- **Active quarantines:** 1,475 (950 observations, 301 variant cells, 223 provenance rows, 1 safety applicability row(s)).
+As of phase 11K (prod `289240826f50c972373f5b9f70138f895c42df06`).
+- **Active quarantines:** 1,489 (950 observations, 301 variant cells, 237 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

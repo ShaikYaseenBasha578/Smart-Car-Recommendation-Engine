@@ -1,0 +1,153 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+15	536	Sigma Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	537	Delta Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	538	Delta Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CONFIRM	20.58	AT				False	Fuel Efficiency (km/l) 20.58 (AT)
+15	539	Zeta Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	540	Zeta Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CONFIRM	20.58	AT				False	Fuel Efficiency (km/l) 20.58 (AT)
+15	541	Zeta (O) Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	542	Zeta (O) Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CONFIRM	20.58	AT				False	Fuel Efficiency (km/l) 20.58 (AT)
+15	543	Alpha Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	544	Alpha Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CONFIRM	20.58	AT				False	Fuel Efficiency (km/l) 20.58 (AT)
+15	545	Alpha (O) Petrol MT	mileage_arai_kmpl	UNVERIFIED	21.11	CONFIRM	21.11	MT				False	Fuel Efficiency (km/l) 21.11 (MT)
+15	546	Alpha (O) Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CONFIRM	20.58	AT				False	Fuel Efficiency (km/l) 20.58 (AT)
+15	547	Alpha (O) ALLGRIP Petrol AT	mileage_arai_kmpl	UNVERIFIED	20.58	CORRECTION	19.2	ALLGRIP AT	19.2	ALLGRIP AT	True	True	Fuel Efficiency (km/l) 19.20 (ALLGRIP AT)
+15	550	Delta+ Strong Hybrid e-CVT	mileage_arai_kmpl	UNVERIFIED	27.97	CONFIRM	27.97	e-CVT Strong Hybrid				False	Fuel Efficiency (km/l) 27.97 (e-CVT)
+15	551	Zeta+ Strong Hybrid e-CVT	mileage_arai_kmpl	UNVERIFIED	27.97	CONFIRM	27.97	e-CVT Strong Hybrid				False	Fuel Efficiency (km/l) 27.97 (e-CVT)
+15	552	Zeta+ (O) Strong Hybrid e-CVT	mileage_arai_kmpl	UNVERIFIED	27.97	CONFIRM	27.97	e-CVT Strong Hybrid				False	Fuel Efficiency (km/l) 27.97 (e-CVT)
+15	553	Alpha+ Strong Hybrid e-CVT	mileage_arai_kmpl	UNVERIFIED	27.97	CONFIRM	27.97	e-CVT Strong Hybrid				False	Fuel Efficiency (km/l) 27.97 (e-CVT)
+15	554	Alpha+ (O) Strong Hybrid e-CVT	mileage_arai_kmpl	UNVERIFIED	27.97	CONFIRM	27.97	e-CVT Strong Hybrid				False	Fuel Efficiency (km/l) 27.97 (e-CVT)
+15	548	Delta CNG MT	mileage_arai_km_per_kg	UNVERIFIED	26.6	NOT_ON_PAGE						False	
+15	549	Zeta CNG MT	mileage_arai_km_per_kg	UNVERIFIED	26.6	NOT_ON_PAGE						False	
+15	536	Sigma Petrol MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control row, Sigma column: —
+15	537	Delta Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Delta column
+15	538	Delta Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Delta column
+15	539	Zeta Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta/Zeta(O) column
+15	540	Zeta Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta/Zeta(O) column
+15	541	Zeta (O) Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta/Zeta(O) column
+15	542	Zeta (O) Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta/Zeta(O) column
+15	543	Alpha Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha column
+15	544	Alpha Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha column
+15	545	Alpha (O) Petrol MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha column
+15	546	Alpha (O) Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha column
+15	547	Alpha (O) ALLGRIP Petrol AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha/ALLGRIP column
+15	548	Delta CNG MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Delta column
+15	549	Zeta CNG MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta/Zeta(O) column
+15	550	Delta+ Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Delta+ column
+15	551	Zeta+ Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta+ column
+15	552	Zeta+ (O) Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Zeta+(O) column
+15	553	Alpha+ Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha+ column
+15	554	Alpha+ (O) Strong Hybrid e-CVT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise Control row, Alpha+(O) column
+15	536	Sigma Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, Sigma: —
+15	537	Delta Petrol MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, Delta: —
+15	538	Delta Petrol AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, Delta: —
+15	539	Zeta Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta/Zeta(O)
+15	540	Zeta Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta/Zeta(O)
+15	541	Zeta (O) Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta/Zeta(O)
+15	542	Zeta (O) Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta/Zeta(O)
+15	543	Alpha Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha
+15	544	Alpha Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha
+15	545	Alpha (O) Petrol MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha
+15	546	Alpha (O) Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha
+15	547	Alpha (O) ALLGRIP Petrol AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha/ALLGRIP
+15	548	Delta CNG MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger row, Delta: —
+15	549	Zeta CNG MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta/Zeta(O)
+15	550	Delta+ Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CORRECTION	0		0		True	True	Wireless Charger row, Delta+: —
+15	551	Zeta+ Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta+
+15	552	Zeta+ (O) Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Zeta+(O)
+15	553	Alpha+ Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha+
+15	554	Alpha+ (O) Strong Hybrid e-CVT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Charger row, Alpha+(O)
+15	536	Sigma Petrol MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Sigma: —
+15	537	Delta Petrol MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Delta: —
+15	538	Delta Petrol AT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Delta: —
+15	539	Zeta Petrol MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta/Zeta(O): —
+15	540	Zeta Petrol AT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta/Zeta(O): —
+15	541	Zeta (O) Petrol MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta/Zeta(O): —
+15	542	Zeta (O) Petrol AT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta/Zeta(O): —
+15	543	Alpha Petrol MT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha
+15	544	Alpha Petrol AT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha
+15	545	Alpha (O) Petrol MT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha
+15	546	Alpha (O) Petrol AT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha
+15	547	Alpha (O) ALLGRIP Petrol AT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha/ALLGRIP
+15	548	Delta CNG MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Delta: —
+15	549	Zeta CNG MT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta/Zeta(O): —
+15	550	Delta+ Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Delta+: —
+15	551	Zeta+ Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta+: —
+15	552	Zeta+ (O) Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	0	CONFIRM	0					False	Head Up Display row, Zeta+(O): —
+15	553	Alpha+ Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha+
+15	554	Alpha+ (O) Strong Hybrid e-CVT	heads_up_display	UNVERIFIED	1	CONFIRM	1					False	Head Up Display row, Alpha+(O)
+15	536	Sigma Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver) row, Sigma: —
+15	537	Delta Petrol MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver) row, Delta: —
+15	538	Delta Petrol AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver) row, Delta: —
+15	539	Zeta Petrol MT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta/Zeta(O): —
+15	540	Zeta Petrol AT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta/Zeta(O): —
+15	541	Zeta (O) Petrol MT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta/Zeta(O): —
+15	542	Zeta (O) Petrol AT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta/Zeta(O): —
+15	543	Alpha Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha
+15	544	Alpha Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha
+15	545	Alpha (O) Petrol MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha
+15	546	Alpha (O) Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha
+15	547	Alpha (O) ALLGRIP Petrol AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha/ALLGRIP
+15	548	Delta CNG MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver) row, Delta: —
+15	549	Zeta CNG MT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta/Zeta(O): —
+15	550	Delta+ Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	Ventilated Seats (Driver + Co-Driver) row, Delta+: —
+15	551	Zeta+ Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta+: —
+15	552	Zeta+ (O) Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CORRECTION	0		0		True	True	Ventilated Seats (Driver + Co-Driver) row, Zeta+(O): —
+15	553	Alpha+ Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha+
+15	554	Alpha+ (O) Strong Hybrid e-CVT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	Ventilated Seats (Driver + Co-Driver) row, Alpha+(O)
+15	536	Sigma Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Sigma: —
+15	537	Delta Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Delta: ✓ (AT only)
+15	538	Delta Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Delta: ✓ (AT only)
+15	539	Zeta Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Zeta/Zeta(O): ✓ (AT only)
+15	540	Zeta Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Zeta/Zeta(O): ✓ (AT only)
+15	541	Zeta (O) Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Zeta/Zeta(O): ✓ (AT only)
+15	542	Zeta (O) Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Zeta/Zeta(O): ✓ (AT only)
+15	543	Alpha Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Alpha: ✓ (AT only)
+15	544	Alpha Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Alpha: ✓ (AT only)
+15	545	Alpha (O) Petrol MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Alpha: ✓ (AT only)
+15	546	Alpha (O) Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Alpha: ✓ (AT only)
+15	547	Alpha (O) ALLGRIP Petrol AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT only				False	Paddle Shifters row, Alpha/ALLGRIP: ✓ (AT only)
+15	548	Delta CNG MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Delta: ✓ (AT only)
+15	549	Zeta CNG MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	Paddle Shifters row, Zeta/Zeta(O): ✓ (AT only)
+15	550	Delta+ Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Delta+: —
+15	551	Zeta+ Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Zeta+: —
+15	552	Zeta+ (O) Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Zeta+(O): —
+15	553	Alpha+ Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Alpha+: —
+15	554	Alpha+ (O) Strong Hybrid e-CVT	paddle_shifters	UNVERIFIED	0	CONFIRM	0					False	Paddle Shifters row, Alpha+(O): —
+15	536	Sigma Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	537	Delta Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	538	Delta Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	539	Zeta Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	540	Zeta Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	541	Zeta (O) Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	542	Zeta (O) Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	543	Alpha Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	544	Alpha Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	545	Alpha (O) Petrol MT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	546	Alpha (O) Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	547	Alpha (O) ALLGRIP Petrol AT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	548	Delta CNG MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+15	549	Zeta CNG MT	fuel_tank_litres	UNVERIFIED	45.0	NOT_ON_PAGE						False	
+15	550	Delta+ Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	551	Zeta+ Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	552	Zeta+ (O) Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	553	Alpha+ Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	554	Alpha+ (O) Strong Hybrid e-CVT	fuel_tank_litres	UNVERIFIED	45.0	CONFIRM	45					False	Fuel Tank Capacity (L) 45
+15	536	Sigma Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	537	Delta Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	538	Delta Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	539	Zeta Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	540	Zeta Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	541	Zeta (O) Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	542	Zeta (O) Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	543	Alpha Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	544	Alpha Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	545	Alpha (O) Petrol MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	546	Alpha (O) Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	547	Alpha (O) ALLGRIP Petrol AT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE		terrain only				False	
+15	548	Delta CNG MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	549	Zeta CNG MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+15	550	Delta+ Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Driving Mode: ECO+Normal+Power
+15	551	Zeta+ Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Driving Mode: ECO+Normal+Power
+15	552	Zeta+ (O) Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Driving Mode: ECO+Normal+Power
+15	553	Alpha+ Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Driving Mode: ECO+Normal+Power
+15	554	Alpha+ (O) Strong Hybrid e-CVT	drive_modes	NULL		FILL	3	Strong Hybrid	3	Strong Hybrid	True	True	Driving Mode: ECO+Normal+Power
