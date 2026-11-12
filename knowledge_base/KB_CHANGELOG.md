@@ -222,7 +222,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Mileage and head-up display: not on the pages read.
 - Drive modes on DCA and CNG variants: the row names other variants only.
-**Prod SHA-1:** `e351341c…` → `98a46dbd…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11H: 65 Altroz cells changed from the brochure.
+**Prod SHA-1:** `e351341c…` → `98a46dbd…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/27 (covers 11H, 11I and 11J; based on app/kb-11g-export). **Ranking-track line:** KB 11H: 65 Altroz cells changed from the brochure.
 
 ## 11I — 2026-11-12 — Harrier: feature, fuel tank and drive-mode cells checked against the brochure
 **Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
@@ -235,7 +235,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Mileage and head-up display: not on the pages read.
 - The two Dark editions: editions inherit from their base (P8).
-**Prod SHA-1:** `98a46dbd…` → `39f913e6…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11I: 14 Harrier cells changed from the brochure.
+**Prod SHA-1:** `98a46dbd…` → `39f913e6…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/27 (covers 11H, 11I and 11J; based on app/kb-11g-export). **Ranking-track line:** KB 11I: 14 Harrier cells changed from the brochure.
 
 ## 11J — 2026-11-12 — Tiago: feature and fuel-tank cells checked against the brochure
 **Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
@@ -248,7 +248,7 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 **Not done / held:**
 - Mileage, head-up display and drive modes: not on the pages read (drive modes were not listed).
 - One CNG AMT cruise-control zero held by the footnote guard.
-**Prod SHA-1:** `39f913e6…` → `ff444f4a…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11J: 43 Tiago cells changed from the brochure.
+**Prod SHA-1:** `39f913e6…` → `ff444f4a…`. **App PR:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/27 (covers 11H, 11I and 11J; based on app/kb-11g-export). **Ranking-track line:** KB 11J: 43 Tiago cells changed from the brochure.
 
 ## Current state
 As of phase 11J (prod `ff444f4a23d6d2f12cd980fac5e123bd8d335c9f`).
