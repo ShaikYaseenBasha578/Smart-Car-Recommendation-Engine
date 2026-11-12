@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "6cec30bdc89892e9f92fcdacff9b7e3ca5439284553b2b805f725f661a9ba622",
+  "catalogue_sha256": "8cc18b9375319e558687d6267c648f42b6bda9d1f497915d0579b705d875e4db",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -56,10 +56,10 @@
       "unverified": 52
     },
     "cruise_control": {
-      "non_null": 621,
+      "non_null": 649,
       "not_applicable_blank": 0,
-      "quarantined": 55,
-      "unverified": 211
+      "quarantined": 54,
+      "unverified": 183
     },
     "drivetrain": {
       "non_null": 832,
@@ -230,13 +230,13 @@
       "unverified": 0
     },
     "wireless_charging": {
-      "non_null": 536,
+      "non_null": 564,
       "not_applicable_blank": 0,
-      "quarantined": 93,
-      "unverified": 296
+      "quarantined": 92,
+      "unverified": 268
     }
   },
-  "export_utc": "2026-11-12T14:47:08Z",
+  "export_utc": "2026-11-12T14:56:33Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "11D",
-  "kb_sha256": "f529aaf3c2e52d63d2f2652a6f48fa0a796c44c86be418d2f260ea51e8e58fa6",
+  "kb_latest_phase": "11G",
+  "kb_sha256": "ae5d1074a3737fc5bc53626933f0e75c4c0bc953f0c5f344366e465c8112f9c4",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
