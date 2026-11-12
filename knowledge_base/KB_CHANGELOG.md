@@ -237,9 +237,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - The two Dark editions: editions inherit from their base (P8).
 **Prod SHA-1:** `98a46dbd…` → `39f913e6…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11I: 14 Harrier cells changed from the brochure.
 
+## 11J — 2026-11-12 — Tiago: feature and fuel-tank cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 77 cells checked on 2 brochure page(s): 17 blanks filled, 26 corrected, 34 confirmed; 6 old quarantines released; 26 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Tata Tiago Smart Petrol: fuel tank 60 L → 35 L (Tiago brochure, p27)
+- Tata Tiago Pure+ Petrol MT: cruise control no → yes (Tiago brochure, p28)
+- Tata Tiago Creative+ Petrol MT: wireless charging no → yes (Tiago brochure, p28)
+**What app users now see:** Cruise control and wireless charging change on 6 Tiago variants (fuel tank is not shown in the app catalogue).
+**Not done / held:**
+- Mileage, head-up display and drive modes: not on the pages read (drive modes were not listed).
+- One CNG AMT cruise-control zero held by the footnote guard.
+**Prod SHA-1:** `39f913e6…` → `ff444f4a…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11J: 43 Tiago cells changed from the brochure.
+
 ## Current state
-As of phase 11I (prod `39f913e6f93d301ed7e1a84100ff78c2d1713947`).
-- **Active quarantines:** 1,455 (950 observations, 307 variant cells, 197 provenance rows, 1 safety applicability row(s)).
+As of phase 11J (prod `ff444f4a23d6d2f12cd980fac5e123bd8d335c9f`).
+- **Active quarantines:** 1,475 (950 observations, 301 variant cells, 223 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

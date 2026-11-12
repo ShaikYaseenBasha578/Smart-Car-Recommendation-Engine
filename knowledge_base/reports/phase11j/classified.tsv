@@ -1,0 +1,181 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+27	346	Smart	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	347	Pure	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	348	Smart CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	349	Pure AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	350	Pure+	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	351	Pure CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	352	Pure+ A	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	353	Pure+ AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	354	Creative	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	355	Pure+ CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	356	Pure CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	357	Pure+ A AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	358	Creative+	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	359	Pure+ A CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	360	Creative AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	361	Pure+ CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	362	Creative+ AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	Petrol	35	Petrol	True	True	Fuel Tank Capacity (Litres): Petrol- 35L
+27	363	Creative CNG	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	364	Pure+ A CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+27	365	Creative CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	CORRECTION	35	iCNG petrol tank	35	iCNG petrol tank	True	True	Fuel Tank Capacity (Litres): Petrol- 35L (iCNG column; CNG Tank 60L water capacity excluded)
+28	346	Smart	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control* is listed under PURE+ (cumulative tiers), not in SMART
+28	347	Pure	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control* is listed under PURE+ (cumulative tiers), not in PURE
+28	348	Smart CNG	cruise_control	QUARANTINED	0	CONFIRM	0					False	Cruise Control* is listed under PURE+ (cumulative tiers), not in SMART
+28	349	Pure AMT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise Control* is listed under PURE+ (cumulative tiers), not in PURE
+28	351	Pure CNG	cruise_control	NULL		FILL	0					False	Cruise Control* is listed under PURE+ (cumulative tiers), not in PURE
+28	356	Pure CNG AMT	cruise_control	QUARANTINED	0	CONFIRM	0					False	Cruise Control* is listed under PURE+ only; footnote: Cruise control is not available in CNG AMT
+28	350	Pure+	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	PURE+: Cruise Control*
+28	353	Pure+ AMT	cruise_control	UNVERIFIED	0	CORRECTION	1		1	petrol AMT; not available in CNG AMT	True	True	PURE+: Cruise Control*
+28	355	Pure+ CNG	cruise_control	NULL		FILL	1					False	PURE+: Cruise Control*
+28	361	Pure+ CNG AMT	cruise_control	NULL		FILL	0	not available in CNG AMT	0	not available in CNG AMT	True	True	*Cruise control is not available in CNG AMT
+28	352	Pure+ A	cruise_control	UNVERIFIED	0	CORRECTION	1		1		True	True	PURE+: Cruise Control* (PURE+ A is in addition to Pure+)
+28	357	Pure+ A AMT	cruise_control	UNVERIFIED	0	CORRECTION	1		1	petrol AMT; not available in CNG AMT	True	True	PURE+: Cruise Control* (PURE+ A is in addition to Pure+)
+28	359	Pure+ A CNG	cruise_control	NULL		FILL	1		1	CNG manual (only CNG AMT excluded)	True	True	PURE+: Cruise Control* (PURE+ A is in addition to Pure+)
+28	364	Pure+ A CNG AMT	cruise_control	VERIFIED	0	CONFIRM_V	0	not available in CNG AMT				False	*Cruise control is not available in CNG AMT
+28	354	Creative	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE+: Cruise Control* (cumulative to CREATIVE)
+28	360	Creative AMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE+: Cruise Control* (cumulative to CREATIVE)
+28	363	Creative CNG	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE+: Cruise Control* (cumulative to CREATIVE)
+28	365	Creative CNG AMT	cruise_control	VERIFIED	0	CONFIRM_V	0	not available in CNG AMT				False	*Cruise control is not available in CNG AMT
+28	358	Creative+	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE+: Cruise Control* (cumulative to CREATIVE+)
+28	362	Creative+ AMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE+: Cruise Control* (cumulative to CREATIVE+)
+28	346	Smart	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	347	Pure	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	348	Smart CNG	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	349	Pure AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	350	Pure+	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	351	Pure CNG	wireless_charging	NULL		FILL	0					False	Wireless Charger listed only at CREATIVE+
+28	352	Pure+ A	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	353	Pure+ AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	354	Creative	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	355	Pure+ CNG	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger listed only at CREATIVE+
+28	356	Pure CNG AMT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	357	Pure+ A AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	358	Creative+	wireless_charging	UNVERIFIED	0	CORRECTION	1		1		True	True	CREATIVE+: Dual Smartphone Deck with Wireless Charger
+28	359	Pure+ A CNG	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger listed only at CREATIVE+
+28	360	Creative AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	361	Pure+ CNG AMT	wireless_charging	NULL		FILL	0		0		True	True	Wireless Charger listed only at CREATIVE+
+28	362	Creative+ AMT	wireless_charging	UNVERIFIED	0	CORRECTION	1		1		True	True	CREATIVE+: Dual Smartphone Deck with Wireless Charger
+28	363	Creative CNG	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	364	Pure+ A CNG AMT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	365	Creative CNG AMT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Charger listed only at CREATIVE+
+28	346	Smart	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	347	Pure	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	348	Smart CNG	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+28	349	Pure AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	350	Pure+	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	351	Pure CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	352	Pure+ A	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	353	Pure+ AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	354	Creative	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	355	Pure+ CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	356	Pure CNG AMT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+28	357	Pure+ A AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	358	Creative+	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	359	Pure+ A CNG	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	360	Creative AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	361	Pure+ CNG AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	362	Creative+ AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+28	363	Creative CNG	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+28	364	Pure+ A CNG AMT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+28	365	Creative CNG AMT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+28	346	Smart	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	347	Pure	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	348	Smart CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	349	Pure AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	350	Pure+	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	351	Pure CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	352	Pure+ A	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	353	Pure+ AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	354	Creative	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	355	Pure+ CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	356	Pure CNG AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	357	Pure+ A AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	358	Creative+	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	359	Pure+ A CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	360	Creative AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	361	Pure+ CNG AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	362	Creative+ AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	363	Creative CNG	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	364	Pure+ A CNG AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	365	Creative CNG AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	346	Smart	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	347	Pure	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	348	Smart CNG	paddle_shifters	NULL		FILL	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	349	Pure AMT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	350	Pure+	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	351	Pure CNG	paddle_shifters	NULL		FILL	0	AMT only	0	AMT only	True	True	PURE: Quick Response Paddle Shifters (AMT only)
+28	352	Pure+ A	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	353	Pure+ AMT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	354	Creative	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	355	Pure+ CNG	paddle_shifters	NULL		FILL	0	AMT only	0	AMT only	True	True	PURE: Quick Response Paddle Shifters (AMT only)
+28	356	Pure CNG AMT	paddle_shifters	NULL		FILL	1	AMT only	1	AMT only	True	True	PURE: Quick Response Paddle Shifters (AMT only)
+28	357	Pure+ A AMT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	358	Creative+	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	359	Pure+ A CNG	paddle_shifters	NULL		FILL	0	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	360	Creative AMT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	361	Pure+ CNG AMT	paddle_shifters	NULL		FILL	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	362	Creative+ AMT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	363	Creative CNG	paddle_shifters	NULL		FILL	0	AMT only	0	AMT only	True	True	PURE: Quick Response Paddle Shifters (AMT only)
+28	364	Pure+ A CNG AMT	paddle_shifters	NULL		FILL	1	AMT only	1	AMT only	True	True	PURE: Quick Response Paddle Shifters (AMT only)
+28	365	Creative CNG AMT	paddle_shifters	NULL		FILL	1	AMT only				False	PURE: Quick Response Paddle Shifters (AMT only)
+28	346	Smart	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	347	Pure	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	349	Pure AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	350	Pure+	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	352	Pure+ A	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	353	Pure+ AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	354	Creative	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	357	Pure+ A AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	358	Creative+	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	360	Creative AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	362	Creative+ AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+28	348	Smart CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	351	Pure CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	355	Pure+ CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	356	Pure CNG AMT	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	359	Pure+ A CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	361	Pure+ CNG AMT	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	363	Creative CNG	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	364	Pure+ A CNG AMT	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	365	Creative CNG AMT	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+28	346	Smart	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	347	Pure	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	348	Smart CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	349	Pure AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	350	Pure+	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	351	Pure CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	352	Pure+ A	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	353	Pure+ AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	354	Creative	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	355	Pure+ CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	356	Pure CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	357	Pure+ A AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	358	Creative+	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	359	Pure+ A CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	360	Creative AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	361	Pure+ CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	362	Creative+ AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	363	Creative CNG	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	364	Pure+ A CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	365	Creative CNG AMT	fuel_tank_litres	UNVERIFIED	60.0	NOT_ON_PAGE						False	
+28	346	Smart	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	347	Pure	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	348	Smart CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+28	349	Pure AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	350	Pure+	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	351	Pure CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+28	352	Pure+ A	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	353	Pure+ AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	354	Creative	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	355	Pure+ CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+28	356	Pure CNG AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+28	357	Pure+ A AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	358	Creative+	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	359	Pure+ A CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+28	360	Creative AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	361	Pure+ CNG AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+28	362	Creative+ AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+28	363	Creative CNG	drive_modes	NULL		NOT_ON_PAGE						False	
+28	364	Pure+ A CNG AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+28	365	Creative CNG AMT	drive_modes	NULL		NOT_ON_PAGE						False	
