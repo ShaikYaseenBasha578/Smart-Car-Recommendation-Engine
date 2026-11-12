@@ -1,0 +1,86 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+440	cruise_control	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	SMART list has no cruise control; 'Cruise Control' is listed under PURE X (Features over Smart)		CONFIRM
+440	paddle_shifters	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT); Smart is MT	AT only	CONFIRM
+441	cruise_control	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X (Features over Smart): Cruise Control		CONFIRM
+441	paddle_shifters	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	CONFIRM
+442	cruise_control	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Cruise Control (carried to Adventure X)		CONFIRM
+442	paddle_shifters	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	CONFIRM
+442	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+443	cruise_control	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Cruise Control (carried to Adventure X+)		CONFIRM
+443	paddle_shifters	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	CONFIRM
+443	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+444	cruise_control	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Cruise Control (carried to Adventure X)		CONFIRM
+444	paddle_shifters	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT	CONFIRM
+444	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+451	cruise_control	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	SMART list has no cruise control; 'Cruise Control' is listed under PURE X (Features over Smart)		CONFIRM
+451	paddle_shifters		0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT); Smart is MT	AT only	FILL
+452	paddle_shifters		0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	FILL
+453	paddle_shifters		0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	FILL
+453	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+454	cruise_control	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Cruise Control (carried to Adventure X+)		CONFIRM
+454	paddle_shifters		0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT only	FILL
+454	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+455	paddle_shifters		1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT	FILL
+456	paddle_shifters		1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT	FILL
+456	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+457	paddle_shifters		1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	PURE X: Paddle Shifters (AT)	AT	FILL
+457	drive_modes		3	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	18	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)		FILL
+440	wireless_charging	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier		CONFIRM
+441	wireless_charging	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier		CONFIRM
+442	wireless_charging	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier		CONFIRM
+443	wireless_charging	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier		CONFIRM
+444	wireless_charging	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier		CONFIRM
+445	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Wireless Charger		CONFIRM
+446	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Wireless Charger		CONFIRM
+447	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Wireless Charger		CONFIRM
+448	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger		CONFIRM
+449	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Wireless Charger		CONFIRM
+450	wireless_charging	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger		CONFIRM
+440	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+441	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+442	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+443	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+444	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+445	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)	driver and co-driver	CONFIRM
+446	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)	driver and co-driver	CONFIRM
+447	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+448	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+449	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+450	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+451	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+452	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+453	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+454	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+455	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+456	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+457	ventilated_front_seats	0	0	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier		CONFIRM
+458	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)	driver and co-driver	CONFIRM
+459	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)	driver and co-driver	CONFIRM
+460	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+461	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+462	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+463	ventilated_front_seats	1	1	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	19	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats	driver and co-driver	CONFIRM
+440	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+441	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+442	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+443	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+444	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+445	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+446	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+447	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+448	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+449	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+450	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+451	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+452	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+453	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+454	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+455	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+456	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+457	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+458	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+459	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+460	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+461	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+462	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM
+463	fuel_tank_litres	50.0	50	tata/harrier/latest/brochures/tata_harrier_brochure.pdf	93f7bf425f168db0f7a2a4b65b981ad21c7dd135	20	TANK CAPACITY Fuel Tank (L) 50		CONFIRM

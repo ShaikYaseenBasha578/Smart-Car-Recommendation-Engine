@@ -224,9 +224,22 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - Drive modes on DCA and CNG variants: the row names other variants only.
 **Prod SHA-1:** `e351341c…` → `98a46dbd…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11H: 65 Altroz cells changed from the brochure.
 
+## 11I — 2026-11-12 — Harrier: feature, fuel tank and drive-mode cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 85 cells checked on 3 brochure page(s): 14 blanks filled, 0 corrected, 71 confirmed; 0 old quarantines released; 3 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Tata Harrier Pure X Diesel AT: paddle shifters blank → yes, AT only (Harrier brochure, p18)
+- Tata Harrier Adventure X Petrol MT: drive modes blank → 3, City, Sports and Eco (Harrier brochure, p18)
+- Tata Harrier Fearless X Diesel MT: wireless charging yes confirmed (Harrier brochure, p19)
+**What app users now see:** The changed cells appear in the next catalogue export; confirmed cells show as brochure-checked.
+**Not done / held:**
+- Mileage and head-up display: not on the pages read.
+- The two Dark editions: editions inherit from their base (P8).
+**Prod SHA-1:** `98a46dbd…` → `39f913e6…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11I: 14 Harrier cells changed from the brochure.
+
 ## Current state
-As of phase 11H (prod `98a46dbdb7e133f712c9df8072049cc89377bacb`).
-- **Active quarantines:** 1,452 (950 observations, 307 variant cells, 194 provenance rows, 1 safety applicability row(s)).
+As of phase 11I (prod `39f913e6f93d301ed7e1a84100ff78c2d1713947`).
+- **Active quarantines:** 1,455 (950 observations, 307 variant cells, 197 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%

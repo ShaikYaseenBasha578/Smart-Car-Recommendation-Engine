@@ -1,0 +1,193 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+18	440	Petrol Smart MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART list has no cruise control; 'Cruise Control' is listed under PURE X (Features over Smart)
+18	440	Petrol Smart MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	PURE X: Paddle Shifters (AT); Smart is MT
+18	440	Petrol Smart MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+18	441	Petrol Pure X MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE X (Features over Smart): Cruise Control
+18	441	Petrol Pure X MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	PURE X: Paddle Shifters (AT)
+18	441	Petrol Pure X MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+18	442	Petrol Adventure X MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE X: Cruise Control (carried to Adventure X)
+18	442	Petrol Adventure X MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	PURE X: Paddle Shifters (AT)
+18	442	Petrol Adventure X MT	drive_modes	NULL		FILL	3		3		True	True	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	443	Petrol Adventure X Plus MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE X: Cruise Control (carried to Adventure X+)
+18	443	Petrol Adventure X Plus MT	paddle_shifters	UNVERIFIED	0	CONFIRM	0	AT only				False	PURE X: Paddle Shifters (AT)
+18	443	Petrol Adventure X Plus MT	drive_modes	NULL		FILL	3					False	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	444	Petrol Adventure X AT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE X: Cruise Control (carried to Adventure X)
+18	444	Petrol Adventure X AT	paddle_shifters	UNVERIFIED	1	CONFIRM	1	AT				False	PURE X: Paddle Shifters (AT)
+18	444	Petrol Adventure X AT	drive_modes	NULL		FILL	3		3		True	True	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	445	Petrol Fearless X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	445	Petrol Fearless X MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+18	445	Petrol Fearless X MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	446	Petrol Fearless X AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	446	Petrol Fearless X AT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	446	Petrol Fearless X AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	447	Petrol Fearless X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	447	Petrol Fearless X Plus MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+18	447	Petrol Fearless X Plus MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	448	Petrol Fearless Ultra MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+18	448	Petrol Fearless Ultra MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+18	448	Petrol Fearless Ultra MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	449	Petrol Fearless X Plus AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	449	Petrol Fearless X Plus AT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	449	Petrol Fearless X Plus AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	450	Petrol Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	450	Petrol Fearless Ultra AT	paddle_shifters	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	450	Petrol Fearless Ultra AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	451	Diesel Smart MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	SMART list has no cruise control; 'Cruise Control' is listed under PURE X (Features over Smart)
+18	451	Diesel Smart MT	paddle_shifters	NULL		FILL	0	AT only	0	AT	True	True	PURE X: Paddle Shifters (AT); Smart is MT
+18	451	Diesel Smart MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	452	Diesel Pure X MT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	PURE X (Features over Smart): Cruise Control
+18	452	Diesel Pure X MT	paddle_shifters	NULL		FILL	0	AT only	0	AT	True	True	PURE X: Paddle Shifters (AT)
+18	452	Diesel Pure X MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	453	Diesel Adventure X MT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	PURE X: Cruise Control (carried to Adventure X)
+18	453	Diesel Adventure X MT	paddle_shifters	NULL		FILL	0	AT only	0	AT	True	True	PURE X: Paddle Shifters (AT)
+18	453	Diesel Adventure X MT	drive_modes	NULL		FILL	3					False	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	454	Diesel Adventure X Plus MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	PURE X: Cruise Control (carried to Adventure X+)
+18	454	Diesel Adventure X Plus MT	paddle_shifters	NULL		FILL	0	AT only	0	AT	True	True	PURE X: Paddle Shifters (AT)
+18	454	Diesel Adventure X Plus MT	drive_modes	NULL		FILL	3					False	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	455	Diesel Pure X AT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	PURE X (Features over Smart): Cruise Control
+18	455	Diesel Pure X AT	paddle_shifters	NULL		FILL	1	AT	1	AT	True	True	PURE X: Paddle Shifters (AT)
+18	455	Diesel Pure X AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	456	Diesel Adventure X AT	cruise_control	VERIFIED	1	CONFIRM_V	1					False	PURE X: Cruise Control (carried to Adventure X)
+18	456	Diesel Adventure X AT	paddle_shifters	NULL		FILL	1	AT				False	PURE X: Paddle Shifters (AT)
+18	456	Diesel Adventure X AT	drive_modes	NULL		FILL	3		3		True	True	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	457	Diesel Adventure X Plus AT	cruise_control	VERIFIED	1	CONFIRM_V	1	AT (ADAS Adaptive Cruise Control)				False	ADVENTURE X+: ADAS with Adaptive Cruise Control (AT); also PURE X: Cruise Control
+18	457	Diesel Adventure X Plus AT	paddle_shifters	NULL		FILL	1	AT	1	AT	True	True	PURE X: Paddle Shifters (AT)
+18	457	Diesel Adventure X Plus AT	drive_modes	NULL		FILL	3		3		True	True	ADVENTURE X: Multi Drive Modes (City, Sports & Eco)
+18	458	Diesel Fearless X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+18	458	Diesel Fearless X MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	458	Diesel Fearless X MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	459	Diesel Fearless X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+18	459	Diesel Fearless X AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	459	Diesel Fearless X AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	460	Diesel Fearless X Plus MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+18	460	Diesel Fearless X Plus MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	460	Diesel Fearless X Plus MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	461	Diesel Fearless Ultra MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	461	Diesel Fearless Ultra MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	461	Diesel Fearless Ultra MT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	462	Diesel Fearless X Plus AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+18	462	Diesel Fearless X Plus AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	462	Diesel Fearless X Plus AT	drive_modes	NULL		NOT_ON_PAGE						False	
+18	463	Diesel Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+18	463	Diesel Fearless Ultra AT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+18	463	Diesel Fearless Ultra AT	drive_modes	NULL		NOT_ON_PAGE						False	
+19	440	Petrol Smart MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	441	Petrol Pure X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	442	Petrol Adventure X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	443	Petrol Adventure X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	444	Petrol Adventure X AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	445	Petrol Fearless X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	446	Petrol Fearless X AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	447	Petrol Fearless X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	448	Petrol Fearless Ultra MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	449	Petrol Fearless X Plus AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	450	Petrol Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	451	Diesel Smart MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+19	452	Diesel Pure X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	453	Diesel Adventure X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	454	Diesel Adventure X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	455	Diesel Pure X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	456	Diesel Adventure X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	457	Diesel Adventure X Plus AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	458	Diesel Fearless X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	459	Diesel Fearless X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	460	Diesel Fearless X Plus MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	461	Diesel Fearless Ultra MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	462	Diesel Fearless X Plus AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+19	463	Diesel Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+19	440	Petrol Smart MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	441	Petrol Pure X MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	442	Petrol Adventure X MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	443	Petrol Adventure X Plus MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	444	Petrol Adventure X AT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	445	Petrol Fearless X MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS X: Wireless Charger
+19	446	Petrol Fearless X AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS X: Wireless Charger
+19	447	Petrol Fearless X Plus MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS X + (Features over Fearless X): inherits Wireless Charger
+19	448	Petrol Fearless Ultra MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger
+19	449	Petrol Fearless X Plus AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS X + (Features over Fearless X): inherits Wireless Charger
+19	450	Petrol Fearless Ultra AT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger
+19	451	Diesel Smart MT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	452	Diesel Pure X MT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	453	Diesel Adventure X MT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	454	Diesel Adventure X Plus MT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	455	Diesel Pure X AT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	456	Diesel Adventure X AT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	457	Diesel Adventure X Plus AT	wireless_charging	VERIFIED	0	CONFIRM_V	0					False	FEARLESS X (Features over Adventure X +): Wireless Charger; not at lower tier
+19	458	Diesel Fearless X MT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS X: Wireless Charger
+19	459	Diesel Fearless X AT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS X: Wireless Charger
+19	460	Diesel Fearless X Plus MT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS X + (Features over Fearless X): inherits Wireless Charger
+19	461	Diesel Fearless Ultra MT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger
+19	462	Diesel Fearless X Plus AT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS X + (Features over Fearless X): inherits Wireless Charger
+19	463	Diesel Fearless Ultra AT	wireless_charging	VERIFIED	1	CONFIRM_V	1					False	FEARLESS ULTRA (Features over Fearless X +): inherits Wireless Charger
+19	440	Petrol Smart MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	441	Petrol Pure X MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	442	Petrol Adventure X MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	443	Petrol Adventure X Plus MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	444	Petrol Adventure X AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	445	Petrol Fearless X MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)
+19	446	Petrol Fearless X AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)
+19	447	Petrol Fearless X Plus MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats
+19	448	Petrol Fearless Ultra MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats
+19	449	Petrol Fearless X Plus AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats
+19	450	Petrol Fearless Ultra AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats
+19	451	Diesel Smart MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	452	Diesel Pure X MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	453	Diesel Adventure X MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	454	Diesel Adventure X Plus MT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	455	Diesel Pure X AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	456	Diesel Adventure X AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	457	Diesel Adventure X Plus AT	ventilated_front_seats	UNVERIFIED	0	CONFIRM	0					False	FEARLESS X (Features over Adventure X +): Ventilated Front Row Seats; not at lower tier
+19	458	Diesel Fearless X MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)
+19	459	Diesel Fearless X AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X: Ventilated Front Row Seats (Driver & Co-Driver)
+19	460	Diesel Fearless X Plus MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats
+19	461	Diesel Fearless Ultra MT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats
+19	462	Diesel Fearless X Plus AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS X + (Features over Fearless X): inherits Ventilated Front Row Seats
+19	463	Diesel Fearless Ultra AT	ventilated_front_seats	UNVERIFIED	1	CONFIRM	1	driver and co-driver				False	FEARLESS ULTRA (Features over Fearless X +): inherits Ventilated Front Row Seats
+20	440	Petrol Smart MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	440	Petrol Smart MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	441	Petrol Pure X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	441	Petrol Pure X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	442	Petrol Adventure X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	442	Petrol Adventure X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	443	Petrol Adventure X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	443	Petrol Adventure X Plus MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	444	Petrol Adventure X AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	444	Petrol Adventure X AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	445	Petrol Fearless X MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	445	Petrol Fearless X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	446	Petrol Fearless X AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	446	Petrol Fearless X AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	447	Petrol Fearless X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	447	Petrol Fearless X Plus MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	448	Petrol Fearless Ultra MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	448	Petrol Fearless Ultra MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	449	Petrol Fearless X Plus AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	449	Petrol Fearless X Plus AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	450	Petrol Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	450	Petrol Fearless Ultra AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	451	Diesel Smart MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+20	451	Diesel Smart MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	452	Diesel Pure X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	452	Diesel Pure X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	453	Diesel Adventure X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	453	Diesel Adventure X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	454	Diesel Adventure X Plus MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	454	Diesel Adventure X Plus MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	455	Diesel Pure X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	455	Diesel Pure X AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	456	Diesel Adventure X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	456	Diesel Adventure X AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	457	Diesel Adventure X Plus AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	457	Diesel Adventure X Plus AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	458	Diesel Fearless X MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	458	Diesel Fearless X MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	459	Diesel Fearless X AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	459	Diesel Fearless X AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	460	Diesel Fearless X Plus MT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	460	Diesel Fearless X Plus MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	461	Diesel Fearless Ultra MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	461	Diesel Fearless Ultra MT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	462	Diesel Fearless X Plus AT	cruise_control	VERIFIED	1	NOT_ON_PAGE						False	
+20	462	Diesel Fearless X Plus AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
+20	463	Diesel Fearless Ultra AT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+20	463	Diesel Fearless Ultra AT	fuel_tank_litres	UNVERIFIED	50.0	CONFIRM	50					False	TANK CAPACITY Fuel Tank (L) 50
