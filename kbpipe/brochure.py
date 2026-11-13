@@ -608,6 +608,7 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
     vinfo = [{"name": v["name"], "fuel": v["fields_cw"].get("fuel_type"), "transmission": v["fields_cw"].get("transmission")}
              for v in versions]
     by_name = {v["name"]: v for v in versions}
+    summ["kb_linked"] = {n: r["id"] for n, r in links.items()}
     backed = oem_backed(conn)
     brochures = locate_disk(item, cfg, log) if item.get("in_kb") else locate_new(item, bundle, cfg, fetcher, log)
     if not brochures:
