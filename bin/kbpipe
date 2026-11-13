@@ -1,0 +1,10 @@
+#!/bin/bash
+# kbpipe launcher: uses the project's own virtualenv; creates it on first use.
+set -e
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+if [ ! -x "$ROOT/.venv-kbpipe/bin/python" ]; then
+  python3 -m venv "$ROOT/.venv-kbpipe"
+  "$ROOT/.venv-kbpipe/bin/pip" install -q --disable-pip-version-check -r "$ROOT/kbpipe/requirements.txt"
+fi
+cd "$ROOT"
+exec "$ROOT/.venv-kbpipe/bin/python" -m kbpipe "$@"

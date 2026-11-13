@@ -279,3 +279,11 @@ archive/scraping_reproducibility/
 # Local scratch copies (audit/DB copies live in /tmp, never in the repo)
 /tmp/
 tmp/
+
+# kbpipe
+.venv-kbpipe/
+knowledge_base/runs/*/before.db
+knowledge_base/runs/*/staging.db
+knowledge_base/runs/*/*/before.db
+knowledge_base/runs/*/*/staging.db
+kbpipe.config.json
