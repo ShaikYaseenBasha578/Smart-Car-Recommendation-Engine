@@ -1,0 +1,377 @@
+{
+ "run": "2026-11-13_2",
+ "version": "1.0",
+ "started": "2026-11-13T20:56:09Z",
+ "full": true,
+ "stopped": null,
+ "write": {
+  "sha1_before": "64ac467b33a6c69e4d4ff8114ffaced0a3861f67",
+  "sha1_after": "6011504064a4d6ba894f26bc6c1556b7f14ccccf",
+  "backup": "/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_20261113_2_20261113T210607Z.db",
+  "history_tag": "kb-run-2026-11-13_2",
+  "integrity_check": "ok",
+  "prod_equals_staging": true,
+  "rows": 25955
+ },
+ "stage": {
+  "ops": 22798,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 0a0b2f5a1ef2, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "3243 of 3243 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 77176->98967",
+     "generation 90->92",
+     "manufacturer 12->12",
+     "model 90->92",
+     "powertrain 214->216",
+     "safety_rating 27->27",
+     "safety_test 37->37",
+     "safety_test_applicability 23->23",
+     "source 8->8",
+     "source_observation 7460->8415"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "23164 changed rows, all in the run log"
+    ]
+   }
+  },
+  "log_rows": 25955,
+  "idempotent": true,
+  "error": null
+ },
+ "verify_batches": [
+  {
+   "batch": 1,
+   "error": "every backend for this role is out of quota: groq: HTTP 429 {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6vry2nke7xvs6e2qvnfqskr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199412, Requested 977. Please try again in 2m48.048s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+  },
+  {
+   "batch": 2,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 3,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 4,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 5,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 6,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 7,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 8,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 9,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 10,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 11,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 12,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 13,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 14,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 15,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 16,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 17,
+   "error": "every backend for this role is out of quota: None"
+  },
+  {
+   "batch": 18,
+   "error": "every backend for this role is out of quota: None"
+  }
+ ],
+ "stopped_groups": {},
+ "llm": {
+  "calls": 23,
+  "by_model": {
+   "gemini-3.5-flash-lite": 2,
+   "openai/gpt-oss-120b": 21
+  },
+  "seconds": 15.0,
+  "cost_inr": 0
+ },
+ "sha1_before": "64ac467b33a6c69e4d4ff8114ffaced0a3861f67",
+ "coverage_before": {
+  "makes": 12,
+  "models": 90,
+  "variants": 1447,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 14,
+    "variants": 174
+   },
+   "MPV": {
+    "models": 10,
+    "variants": 121
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 55,
+    "variants": 1029
+   },
+   "Sedan": {
+    "models": 9,
+    "variants": 116
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 33113,
+  "cells_possible": 52092,
+  "provenance_rows": 77176,
+  "observations": 7460,
+  "cells_with_url_evidence": 23252
+ },
+ "discovery": {
+  "NOT_ON_SALE": 289,
+  "UPCOMING": 85,
+  "EXISTING": 89,
+  "REVIEW_MODEL": 1,
+  "NEW_MODEL": 18,
+  "OUT_OF_SCOPE": 11,
+  "ONE_SITE_ONLY": 14,
+  "DISCONTINUED_CANDIDATE": 1
+ },
+ "processed": 107,
+ "skipped_unchanged": 0,
+ "deferred": [],
+ "stats": {
+  "variants_not_added": 420,
+  "editions_skipped": 23,
+  "cells_null_NO_SOURCE": 597,
+  "cells_null_SINGLE_SOURCE": 894,
+  "variants_added": 17,
+  "cells_written": 3243,
+  "models_added": 2,
+  "variants_matched": 1226,
+  "cells_confirmed": 19536,
+  "cells_for_review": 1174,
+  "powertrain_differences": 469,
+  "high_conflicts": 245,
+  "variants_for_review": 56,
+  "kb_variants_not_listed": 187,
+  "cells_null_CONFLICT": 2
+ },
+ "coverage_after": {
+  "makes": 12,
+  "models": 92,
+  "variants": 1464,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 14,
+    "variants": 174
+   },
+   "MPV": {
+    "models": 10,
+    "variants": 121
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 57,
+    "variants": 1046
+   },
+   "Sedan": {
+    "models": 9,
+    "variants": 116
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 36333,
+  "cells_possible": 52704,
+  "provenance_rows": 98967,
+  "observations": 8415,
+  "cells_with_url_evidence": 26495
+ },
+ "planted": {
+  "error": "every backend for this role is out of quota: None"
+ },
+ "verify": {
+  "overall": {
+   "n": 23,
+   "match": 23,
+   "mismatch": 0,
+   "unreachable": 0,
+   "verifier_error": 0,
+   "accuracy": 1.0
+  },
+  "by_group": {
+   "price": {
+    "n": 1,
+    "match": 1,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "engine": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "drivetrain": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "capacity": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "comfort": {
+    "n": 13,
+    "match": 13,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   }
+  },
+  "by_source_class": {
+   "aggregator": {
+    "n": 23,
+    "match": 23,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   }
+  },
+  "by_group_and_class": {
+   "price/aggregator": {
+    "n": 1,
+    "match": 1,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "engine/aggregator": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "drivetrain/aggregator": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "capacity/aggregator": {
+    "n": 3,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "comfort/aggregator": {
+    "n": 13,
+    "match": 13,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   }
+  }
+ },
+ "verify_audit_only": {
+  "overall": {
+   "n": 0,
+   "match": 0,
+   "mismatch": 0,
+   "unreachable": 0,
+   "verifier_error": 0,
+   "accuracy": null
+  },
+  "by_group": {},
+  "by_source_class": {},
+  "by_group_and_class": {}
+ },
+ "fetch": {
+  "network": 47,
+  "cache": 1509,
+  "failed": 0,
+  "bytes": 35044341
+ },
+ "runtime_seconds": 603.2,
+ "review_items": 320,
+ "conflicts": 591
+}
