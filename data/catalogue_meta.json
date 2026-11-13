@@ -1,5 +1,5 @@
 {
-  "catalogue_sha256": "71a19073f371ea85868387287dee3322a8e162cb26d43331f39189f707d8c685",
+  "catalogue_sha256": "582b2fc71d4e3aabd627a103f423a345d8a0f7b024c20c28d8d378b9af3bd023",
   "columns": {
     "abs": {
       "non_null": 832,
@@ -56,10 +56,10 @@
       "unverified": 52
     },
     "cruise_control": {
-      "non_null": 654,
+      "non_null": 664,
       "not_applicable_blank": 0,
-      "quarantined": 53,
-      "unverified": 178
+      "quarantined": 50,
+      "unverified": 168
     },
     "drivetrain": {
       "non_null": 832,
@@ -86,10 +86,10 @@
       "unverified": 0
     },
     "fuel_tank_litres": {
-      "non_null": 741,
+      "non_null": 758,
       "not_applicable_blank": 37,
       "quarantined": 0,
-      "unverified": 54
+      "unverified": 37
     },
     "ground_clearance_mm": {
       "non_null": 832,
@@ -140,10 +140,10 @@
       "unverified": 251
     },
     "paddle_shifters": {
-      "non_null": 505,
+      "non_null": 511,
       "not_applicable_blank": 0,
       "quarantined": 5,
-      "unverified": 327
+      "unverified": 321
     },
     "power_bhp": {
       "non_null": 825,
@@ -230,13 +230,13 @@
       "unverified": 0
     },
     "wireless_charging": {
-      "non_null": 573,
+      "non_null": 578,
       "not_applicable_blank": 0,
-      "quarantined": 87,
-      "unverified": 259
+      "quarantined": 82,
+      "unverified": 254
     }
   },
-  "export_utc": "2026-11-12T15:04:19Z",
+  "export_utc": "2026-11-12T19:41:46Z",
   "fuel_type_distribution": {
     "cng": 82,
     "diesel": 167,
@@ -244,8 +244,8 @@
     "hybrid": 20,
     "petrol": 526
   },
-  "kb_latest_phase": "11J",
-  "kb_sha256": "3d71724df1da2909c589b2ee1a6c5db36761ce905bd97a63a93eebbe9d8e0fe9",
+  "kb_latest_phase": "11P",
+  "kb_sha256": "9fbf552ca7bb2170dd60b874fbd6f47c300b3e215ccdf20942612f8541ca786d",
   "kb_wal_nonempty": false,
   "row_count": 832,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
