@@ -84,10 +84,14 @@ def trim_tokens(name, model=""):
     t = re.sub(r"\b\d\.\d\s*l?\b", " ", t)
     t = re.sub(r"\b\d\s*speed\b", " ", t)
     t = re.sub(r"[^a-z0-9]+", " ", t)
+    t = re.sub(r"([a-z])(\d)", r"\1 \2", t)          # "HX2" and "HX 2", "45kWh" and "45 kWh" are the same words
+    t = re.sub(r"(\d)([a-z])", r"\1 \2", t)
     t = re.sub(r"\bdt\b", "dual tone", t)
     t = re.sub(r"\b(\d)\s*(str|seater|s)\b", r"\1", t)
     t = re.sub(r"\bopt\b|\boptional\b", "o", t)
-    drop = set(_STOP) | set(re.sub(r"[^a-z0-9]+", " ", (model or "").lower()).split())
+    mw = re.sub(r"[^a-z0-9]+", " ", (model or "").lower())
+    mw = re.sub(r"(\d)([a-z])", r"\1 \2", re.sub(r"([a-z])(\d)", r"\1 \2", mw))
+    drop = set(_STOP) | set(mw.split())
     return frozenset(w for w in t.split() if w not in drop)
 
 
