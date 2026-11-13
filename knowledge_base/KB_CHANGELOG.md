@@ -338,3 +338,10 @@ As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
   - safety stars (variants of models with a usable test): 363/832 = 43.6%
   - warranty: 832/832 = 100.0%; rows 21 of 21; see the warranty entries for provenance and export status.
 - **Open items:** 6 in [NEEDS_YOU.md](NEEDS_YOU.md).
+
+## kbpipe 2026-11-13 — 2026-11-13 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 28 models and 615 variants added; 12605 cells written from two agreeing sites; 9880 existing cells given confirming evidence. Schema: none.
+**Verifier:** 97.0% (517 of 533; 11 unreachable, 185 verifier errors).
+**Not done / held:** 322 review item(s) in runs/2026-11-13/REVIEW_2026-11-13.md.
+**Prod SHA-1:** `7c0de89b…` → `64ac467b…`. Backup `pre_kbpipe_20261113_20261113T185116Z.db`, history tag `kb-run-2026-11-13`.

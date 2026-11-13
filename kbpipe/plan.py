@@ -39,8 +39,10 @@ def _cands(v, field, obs):
 
 
 def kb_variants(conn, model_id):
-    rows = conn.execute("select v.*, p.fuel_type, p.engine_cc, p.power_bhp, p.torque_nm from variant v "
-                        "left join powertrain p on p.id=v.powertrain_id where v.model_id=?", (model_id,)).fetchall()
+    rows = conn.execute("select v.*, p.fuel_type, p.engine_cc, p.power_bhp, p.torque_nm, "
+                        "(v.v6_row_index is null and not exists (select 1 from source_observation o where o.resolved_variant_id=v.id "
+                        " and (o.extraction_method is null or o.extraction_method not like 'kbpipe%'))) as kbpipe_row "
+                        "from variant v left join powertrain p on p.id=v.powertrain_id where v.model_id=?", (model_id,)).fetchall()
     return [dict(r) for r in rows]
 
 
@@ -102,6 +104,11 @@ def plan_model(item, bundle, conn, cfg, P):
                                       "value": F.norm(fld, cur), "expect_old": F.norm(fld, cur), "reason": "AGGREGATORS_CONFIRM",
                                       "evidence": [dict(e, decision="confirmed") for e in d["evidence"]]})
                     bump("cells_confirmed")
+                elif rt == "REVIEW_FILL" and hit["kbpipe_row"] and not held and F.FIELDS[fld][0] == "variant":
+                    # a row kbpipe itself created has no earlier value to protect: a blank is filled like on a new row (D5)
+                    model_ops.append({"op": "cell", "make": make, "model": model, "variant": hit["name"], "field": fld,
+                                      "value": d["value"], "expect_old": None, "reason": d["reason"], "evidence": d["evidence"]})
+                    bump("cells_written")
                 elif rt in ("REVIEW_CHANGE", "REVIEW_FILL"):
                     if F.FIELDS[fld][0] == "powertrain":
                         bump("powertrain_differences")

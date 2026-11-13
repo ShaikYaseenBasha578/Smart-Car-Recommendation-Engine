@@ -1,0 +1,1672 @@
+{
+ "run": "2026-11-13",
+ "version": "1.0",
+ "started": "2026-11-13T17:05:44Z",
+ "full": false,
+ "stopped": null,
+ "write": {
+  "sha1_before": "7c0de89b902e105492345db28366e526d29bc3b6",
+  "sha1_after": "64ac467b33a6c69e4d4ff8114ffaced0a3861f67",
+  "backup": "/Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_20261113_20261113T185116Z.db",
+  "history_tag": "kb-run-2026-11-13",
+  "integrity_check": "ok",
+  "prod_equals_staging": true,
+  "rows": 48290
+ },
+ "stage": {
+  "ops": 20214,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 0a0b2f5a1ef2, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "9456 of 9456 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 38104->77176",
+     "generation 62->90",
+     "manufacturer 12->12",
+     "model 62->90",
+     "powertrain 131->214",
+     "safety_rating 27->27",
+     "safety_test 37->37",
+     "safety_test_applicability 23->23",
+     "source 8->8",
+     "source_observation 5110->7460"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "42176 changed rows, all in the run log"
+    ]
+   }
+  },
+  "log_rows": 48290,
+  "idempotent": true,
+  "error": null
+ },
+ "verify_batches": [
+  {
+   "batch": 1,
+   "cells_new": 742,
+   "sampled": 34,
+   "overall": {
+    "n": 34,
+    "match": 34,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 6,
+     "match": 6,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 11,
+     "match": 11,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 2,
+   "cells_new": 1049,
+   "sampled": 37,
+   "overall": {
+    "n": 37,
+    "match": 36,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.973
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 6,
+     "match": 5,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8333
+    },
+    "drivetrain": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 11,
+     "match": 11,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 3,
+   "cells_new": 675,
+   "sampled": 36,
+   "overall": {
+    "n": 36,
+    "match": 36,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 6,
+     "match": 6,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 6,
+     "match": 6,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 12,
+     "match": 12,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 4,
+   "cells_new": 64,
+   "sampled": 34,
+   "overall": {
+    "n": 34,
+    "match": 33,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.9706
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 6,
+     "match": 5,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8333
+    },
+    "drivetrain": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 11,
+     "match": 11,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 5,
+   "cells_new": 201,
+   "sampled": 32,
+   "overall": {
+    "n": 32,
+    "match": 27,
+    "mismatch": 4,
+    "unreachable": 1,
+    "verifier_error": 0,
+    "accuracy": 0.871
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 2,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.6667
+    },
+    "engine": {
+     "n": 6,
+     "match": 6,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 3,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.75
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 7,
+     "match": 5,
+     "mismatch": 1,
+     "unreachable": 1,
+     "verifier_error": 0,
+     "accuracy": 0.8333
+    },
+    "comfort": {
+     "n": 9,
+     "match": 8,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8889
+    }
+   }
+  },
+  {
+   "batch": 6,
+   "cells_new": 344,
+   "sampled": 35,
+   "overall": {
+    "n": 35,
+    "match": 32,
+    "mismatch": 3,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.9143
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 6,
+     "match": 5,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8333
+    },
+    "drivetrain": {
+     "n": 3,
+     "match": 2,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.6667
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 9,
+     "match": 8,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8889
+    }
+   }
+  },
+  {
+   "batch": 7,
+   "cells_new": 1246,
+   "sampled": 42,
+   "overall": {
+    "n": 42,
+    "match": 39,
+    "mismatch": 3,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.9286
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 8,
+     "match": 7,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.875
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 3,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.75
+    },
+    "capacity": {
+     "n": 3,
+     "match": 2,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.6667
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 10,
+     "match": 10,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 11,
+     "match": 11,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 8,
+   "cells_new": 3142,
+   "sampled": 94,
+   "overall": {
+    "n": 94,
+    "match": 87,
+    "mismatch": 4,
+    "unreachable": 3,
+    "verifier_error": 0,
+    "accuracy": 0.956
+   },
+   "by_group": {
+    "price": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 17,
+     "match": 16,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.9412
+    },
+    "drivetrain": {
+     "n": 9,
+     "match": 8,
+     "mismatch": 1,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.8889
+    },
+    "capacity": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 26,
+     "match": 23,
+     "mismatch": 0,
+     "unreachable": 3,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "comfort": {
+     "n": 34,
+     "match": 32,
+     "mismatch": 2,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 0.9412
+    }
+   }
+  },
+  {
+   "batch": 9,
+   "cells_new": 70,
+   "sampled": 32,
+   "overall": {
+    "n": 32,
+    "match": 31,
+    "mismatch": 0,
+    "unreachable": 1,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 9,
+     "match": 9,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 13,
+     "match": 12,
+     "mismatch": 0,
+     "unreachable": 1,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 10,
+   "cells_new": 608,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 29,
+    "mismatch": 0,
+    "unreachable": 4,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 12,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 4,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 11,
+   "cells_new": 124,
+   "sampled": 32,
+   "overall": {
+    "n": 32,
+    "match": 31,
+    "mismatch": 0,
+    "unreachable": 1,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 9,
+     "match": 9,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 13,
+     "match": 12,
+     "mismatch": 0,
+     "unreachable": 1,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 12,
+   "cells_new": 329,
+   "sampled": 34,
+   "overall": {
+    "n": 34,
+    "match": 34,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 10,
+     "match": 10,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 5,
+     "match": 5,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 10,
+     "match": 10,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 13,
+   "cells_new": 168,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 32,
+    "mismatch": 0,
+    "unreachable": 1,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 10,
+     "match": 10,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 5,
+     "match": 5,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 9,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 1,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 14,
+   "cells_new": 265,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 33,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "engine": {
+     "n": 8,
+     "match": 8,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 4,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "safety": {
+     "n": 12,
+     "match": 12,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    }
+   }
+  },
+  {
+   "batch": 15,
+   "cells_new": 359,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 3,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 30,
+    "accuracy": 1.0
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 8,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 8,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 5,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 5,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 3,
+     "match": 3,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 0,
+     "accuracy": 1.0
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 11,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 11,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 16,
+   "cells_new": 366,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 33,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 8,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 8,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 4,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 12,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 12,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 17,
+   "cells_new": 13,
+   "sampled": 13,
+   "overall": {
+    "n": 13,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 13,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 4,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 4,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 2,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 2,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 5,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 5,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 18,
+   "cells_new": 665,
+   "sampled": 33,
+   "overall": {
+    "n": 33,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 33,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 9,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 9,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 5,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 5,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "efficiency": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 12,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 12,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 19,
+   "cells_new": 101,
+   "sampled": 31,
+   "overall": {
+    "n": 31,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 31,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 11,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 11,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 5,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 5,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 9,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 9,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 20,
+   "cells_new": 277,
+   "sampled": 32,
+   "overall": {
+    "n": 32,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 32,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 8,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 8,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 4,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 4,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "efficiency": {
+     "n": 3,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 3,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 11,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 11,
+     "accuracy": null
+    }
+   }
+  },
+  {
+   "batch": 21,
+   "cells_new": 13,
+   "sampled": 13,
+   "overall": {
+    "n": 13,
+    "match": 0,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 13,
+    "accuracy": null
+   },
+   "by_group": {
+    "price": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "engine": {
+     "n": 4,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 4,
+     "accuracy": null
+    },
+    "drivetrain": {
+     "n": 2,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 2,
+     "accuracy": null
+    },
+    "capacity": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "efficiency": {
+     "n": 1,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 1,
+     "accuracy": null
+    },
+    "safety": {
+     "n": 4,
+     "match": 0,
+     "mismatch": 0,
+     "unreachable": 0,
+     "verifier_error": 4,
+     "accuracy": null
+    }
+   }
+  }
+ ],
+ "stopped_groups": {
+  "comfort": "batch 8: 32 of 34 matched"
+ },
+ "llm": {
+  "calls": 544,
+  "by_model": {
+   "haiku": 317,
+   "openai/gpt-oss-120b": 227
+  },
+  "seconds": 1548.6,
+  "cost_inr": 0
+ },
+ "sha1_before": "7c0de89b902e105492345db28366e526d29bc3b6",
+ "coverage_before": {
+  "makes": 12,
+  "models": 62,
+  "variants": 832,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 10,
+    "variants": 122
+   },
+   "MPV": {
+    "models": 9,
+    "variants": 100
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 33,
+    "variants": 522
+   },
+   "Sedan": {
+    "models": 8,
+    "variants": 81
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 25792,
+  "cells_possible": 29952,
+  "provenance_rows": 38104,
+  "observations": 5110,
+  "cells_with_url_evidence": 5728
+ },
+ "discovery": {
+  "NOT_ON_SALE": 289,
+  "UPCOMING": 85,
+  "EXISTING": 61,
+  "REVIEW_MODEL": 1,
+  "NEW_MODEL": 46,
+  "OUT_OF_SCOPE": 11,
+  "ONE_SITE_ONLY": 14,
+  "DISCONTINUED_CANDIDATE": 1
+ },
+ "processed": 101,
+ "skipped_unchanged": 0,
+ "deferred": [
+  "Tata Sierra EV",
+  "Tata Tigor EV",
+  "Toyota Camry",
+  "Toyota Fortuner Legender",
+  "Toyota Urban Cruiser Ebella",
+  "Volkswagen Tayron"
+ ],
+ "stats": {
+  "variants_not_added": 406,
+  "cells_null_SINGLE_SOURCE": 7506,
+  "cells_null_NO_SOURCE": 5458,
+  "variants_added": 615,
+  "cells_written": 12605,
+  "cells_null_CONFLICT": 173,
+  "models_added": 28,
+  "editions_skipped": 23,
+  "variants_matched": 611,
+  "cells_confirmed": 9880,
+  "cells_for_review": 1174,
+  "powertrain_differences": 434,
+  "high_conflicts": 93,
+  "variants_for_review": 56,
+  "kb_variants_not_listed": 187
+ },
+ "coverage_after": {
+  "makes": 12,
+  "models": 90,
+  "variants": 1447,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 14,
+    "variants": 174
+   },
+   "MPV": {
+    "models": 10,
+    "variants": 121
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 55,
+    "variants": 1029
+   },
+   "Sedan": {
+    "models": 9,
+    "variants": 116
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 33113,
+  "cells_possible": 52092,
+  "provenance_rows": 77176,
+  "observations": 7460,
+  "cells_with_url_evidence": 23252
+ },
+ "planted": {
+  "planted": 20,
+  "judged": 0,
+  "caught": 0,
+  "missed": 0
+ },
+ "verify": {
+  "overall": {
+   "n": 729,
+   "match": 517,
+   "mismatch": 16,
+   "unreachable": 11,
+   "verifier_error": 185,
+   "accuracy": 0.97
+  },
+  "by_group": {
+   "price": {
+    "n": 60,
+    "match": 42,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 17,
+    "accuracy": 0.9767
+   },
+   "engine": {
+    "n": 167,
+    "match": 110,
+    "mismatch": 5,
+    "unreachable": 0,
+    "verifier_error": 52,
+    "accuracy": 0.9565
+   },
+   "drivetrain": {
+    "n": 85,
+    "match": 54,
+    "mismatch": 4,
+    "unreachable": 0,
+    "verifier_error": 27,
+    "accuracy": 0.931
+   },
+   "capacity": {
+    "n": 60,
+    "match": 45,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 14,
+    "accuracy": 0.9783
+   },
+   "efficiency": {
+    "n": 35,
+    "match": 24,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 11,
+    "accuracy": 1.0
+   },
+   "safety": {
+    "n": 214,
+    "match": 138,
+    "mismatch": 1,
+    "unreachable": 11,
+    "verifier_error": 64,
+    "accuracy": 0.9928
+   },
+   "comfort": {
+    "n": 108,
+    "match": 104,
+    "mismatch": 4,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.963
+   }
+  },
+  "by_source_class": {
+   "aggregator": {
+    "n": 729,
+    "match": 517,
+    "mismatch": 16,
+    "unreachable": 11,
+    "verifier_error": 185,
+    "accuracy": 0.97
+   }
+  },
+  "by_group_and_class": {
+   "price/aggregator": {
+    "n": 60,
+    "match": 42,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 17,
+    "accuracy": 0.9767
+   },
+   "engine/aggregator": {
+    "n": 167,
+    "match": 110,
+    "mismatch": 5,
+    "unreachable": 0,
+    "verifier_error": 52,
+    "accuracy": 0.9565
+   },
+   "drivetrain/aggregator": {
+    "n": 85,
+    "match": 54,
+    "mismatch": 4,
+    "unreachable": 0,
+    "verifier_error": 27,
+    "accuracy": 0.931
+   },
+   "capacity/aggregator": {
+    "n": 60,
+    "match": 45,
+    "mismatch": 1,
+    "unreachable": 0,
+    "verifier_error": 14,
+    "accuracy": 0.9783
+   },
+   "efficiency/aggregator": {
+    "n": 35,
+    "match": 24,
+    "mismatch": 0,
+    "unreachable": 0,
+    "verifier_error": 11,
+    "accuracy": 1.0
+   },
+   "safety/aggregator": {
+    "n": 214,
+    "match": 138,
+    "mismatch": 1,
+    "unreachable": 11,
+    "verifier_error": 64,
+    "accuracy": 0.9928
+   },
+   "comfort/aggregator": {
+    "n": 108,
+    "match": 104,
+    "mismatch": 4,
+    "unreachable": 0,
+    "verifier_error": 0,
+    "accuracy": 0.963
+   }
+  }
+ },
+ "verify_audit_only": {
+  "overall": {
+   "n": 0,
+   "match": 0,
+   "mismatch": 0,
+   "unreachable": 0,
+   "verifier_error": 0,
+   "accuracy": null
+  },
+  "by_group": {},
+  "by_source_class": {},
+  "by_group_and_class": {}
+ },
+ "fetch": {
+  "network": 58,
+  "cache": 1509,
+  "failed": 0,
+  "bytes": 55254317
+ },
+ "runtime_seconds": 6376.0,
+ "review_items": 322,
+ "conflicts": 589
+}

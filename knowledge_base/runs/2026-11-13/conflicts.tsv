@@ -1,0 +1,590 @@
+make	model	variant	field	kind	high	kb_value	values	resolution
+Hyundai	Alcazar	Prestige Petrol 1.5L Turbo 6 Speed Manual 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Hyundai	Alcazar	Corporate Diesel 1.5L Turbo 6 Speed Manual 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Hyundai	Alcazar	Prestige Petrol 1.5L Turbo Automatic (DCT) 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Hyundai	Alcazar	Corporate Diesel 1.5L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Corporate Diesel 1.5L Turbo Automatic (TC) 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Knight Diesel 1.5L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 7 STR Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 6 STR Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Lounge Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Lounge Edition	sunroof	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Dual Tone Lounge Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Dual Tone Lounge Edition	sunroof	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Hyundai	i20	Magna Petrol Manual	rear_ac_vents	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Hyundai	i20 N Line	N6 Petrol Turbo Manual	automatic_climate_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Kia	Sonet	HTE (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sonet	HTE (O) Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	1		carwale=18.6; cardekho=24.1	left null
+Kia	Sonet	HTK Plus (O) Petrol 1.0L Turbo Clutchless Manual (IMT)	automatic_climate_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Kia	Sonet	HTK (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sonet	HTK (O) Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	1		carwale=18.6; cardekho=24.1	left null
+Kia	Sonet	HTK Plus Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sonet	HTK Plus (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sonet	HTK Plus (O) Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	1		carwale=18.6; cardekho=24.1	left null
+Kia	Sonet	HTX Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sonet	HTX Diesel 1.5L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	1		carwale=18.6; cardekho=19.0	left null
+Kia	Sorento	HTE 2WD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTE 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTE(O) 2WD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTE(O) 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK 2WD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK 2WD Diesel 2.2L Turbo Automatic (DCT) 6 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Diesel 2.2L Turbo Automatic (DCT) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Diesel 2.2L Turbo Automatic (DCT) 6 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Diesel 2.2L Turbo Automatic (DCT) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTK(A) 2WD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Diesel 2.2L Turbo Automatic (DCT) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Diesel 2.2L Turbo Automatic (DCT) 6 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Diesel 2.2L Turbo Automatic (DCT) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Diesel 2.2L Turbo Automatic (DCT) 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Diesel 2.2L Turbo Automatic (DCT) 6 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Diesel 2.2L Turbo Automatic (DCT) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Diesel 2.2L Turbo Automatic (DCT) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 7 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Sorento	HTX (A) AWD Hybrid (Electric + Petrol) 1.6L Turbo Automatic (TC) 6 STR Black Line	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+MG	Majestor	Savvy 2WD Diesel 2.0L Turbo Automatic 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+MG	Majestor	Savvy 2WD Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+MG	Majestor	Savvy 4WD Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Bolero Neo	N4 Diesel Turbo Manual	power_bhp	aggregator_vs_aggregator	0		carwale=100.0; cardekho=98.56	left null
+Mahindra	Bolero Neo	N8 Diesel Turbo Manual	power_bhp	aggregator_vs_aggregator	0		carwale=100.0; cardekho=98.56	left null
+Mahindra	Bolero Neo	N10 (R) Diesel Turbo Manual	power_bhp	aggregator_vs_aggregator	0		carwale=100.0; cardekho=98.56	left null
+Mahindra	Bolero Neo	N11 Diesel Turbo Manual	power_bhp	aggregator_vs_aggregator	0		carwale=100.0; cardekho=98.56	left null
+Mahindra	Bolero Neo	N10 (O) Diesel Turbo Manual	power_bhp	aggregator_vs_aggregator	0		carwale=100.0; cardekho=98.56	left null
+Mahindra	Bolero Neo Plus	P4 Diesel 2.2L Turbo Manual	rear_camera	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Mahindra	Bolero Neo Plus	P10 Diesel 2.2L Turbo Manual	rear_camera	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Mahindra	XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Maruti Suzuki	Celerio	LXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	LXi Petrol Manual	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	VXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	VXi Petrol Manual	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	VXi Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0		carwale=25.24; cardekho=24.97	left null
+Maruti Suzuki	Celerio	VXi Petrol Automatic	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	VXi Petrol Automatic	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	VXi Petrol Automatic	mileage_arai_kmpl	aggregator_vs_aggregator	1		carwale=26.68; cardekho=26.0	left null
+Maruti Suzuki	Celerio	ZXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	ZXi Petrol Manual	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	ZXi Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0		carwale=25.24; cardekho=24.97	left null
+Maruti Suzuki	Celerio	ZXi Petrol Automatic	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	ZXi Petrol Automatic	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	ZXi Plus Petrol Manual	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	ZXi Plus Petrol Manual	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Maruti Suzuki	Celerio	ZXi Plus Petrol Automatic	power_bhp	aggregator_vs_aggregator	1		carwale=66.0; cardekho=67.58	left null
+Maruti Suzuki	Celerio	ZXi Plus Petrol Automatic	torque_nm	aggregator_vs_aggregator	1		carwale=89.0; cardekho=91.1	left null
+Nissan	Tekton	Visia Plus Petrol 1.0L Turbo Manual T160	rear_camera	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Nissan	Tekton	Visia Plus Petrol 1.0L Turbo Manual T160	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Nissan	Tekton	Visia Plus Petrol 1.0L Turbo Manual T160	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Nissan	Tekton	N-Connecta Petrol 1.0L Turbo Manual T160	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	N-Connecta Petrol 1.3L Turbo Manual T280	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Petrol 1.0L Turbo Manual T160	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Petrol 1.0L Turbo Manual T160	cruise_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Petrol 1.3L Turbo Manual T280	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Petrol 1.3L Turbo Manual T280	cruise_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	N-Connecta Petrol 1.3L Turbo Automatic (DCT) T280	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Plus Petrol 1.0L Turbo Manual T160	cruise_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Nissan	Tekton	Tekna Petrol 1.3L Turbo Automatic (DCT) T280	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Kiger	Evolution Petrol Manual	rear_ac_vents	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Kiger	Evolution Petrol Automatic (AMT)	rear_ac_vents	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Kwid	Evolution Petrol Manual	torque_nm	aggregator_vs_aggregator	0		carwale=91.0; cardekho=92.5	left null
+Renault	Kwid	Evolution Petrol Automatic	torque_nm	aggregator_vs_aggregator	0		carwale=91.0; cardekho=92.5	left null
+Renault	Kwid	Climber Petrol Manual	torque_nm	aggregator_vs_aggregator	0		carwale=91.0; cardekho=92.5	left null
+Renault	Kwid	Climber Petrol Automatic	torque_nm	aggregator_vs_aggregator	0		carwale=91.0; cardekho=92.5	left null
+Skoda	Kodiaq	Lounge Petrol Turbo Automatic 5 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Skoda	Kodiaq	Lounge Petrol Turbo Automatic 5 STR	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Skoda	Kodiaq	Lounge Petrol Turbo Automatic 5 STR	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Skoda	Kodiaq	Sportline Petrol Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Skoda	Kodiaq	Sportline Petrol Turbo Automatic 7 STR	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Skoda	Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=DCT; cardekho=Automatic	specific label kept
+Skoda	Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Skoda	Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	camera_360	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Skoda	Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Smart CNG Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure Petrol Automatic (AMT)	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure Petrol Automatic (AMT)	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure CNG Manual	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure CNG Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure CNG Automatic (AMT)	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Aeris	Pure CNG Automatic (AMT)	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Curvv	Smart X Petrol 1.2L Turbo Manual	rear_ac_vents	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Curvv	Smart X Petrol 1.2L Turbo Manual	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Curvv	Smart X Petrol 1.2L Turbo Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh No Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=235.0	left null
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh No Charger	torque_nm	aggregator_vs_aggregator	1		carwale=504.0; cardekho=315.0	left null
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh 7.2kW Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=235.0	left null
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh 7.2kW Charger	torque_nm	aggregator_vs_aggregator	1		carwale=504.0; cardekho=315.0	left null
+Tata	Harrier EV	Empowered AWD 75.0 kWh No Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=390.0	left null
+Tata	Harrier EV	Empowered AWD 75.0 kWh 7.2kW Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=390.0	left null
+Tata	Harrier EV	Empowered Stealth Edition AWD 75.0 kWh No Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=390.0	left null
+Tata	Harrier EV	Empowered Stealth Edition AWD 75.0 kWh 7.2kW Charger	power_bhp	aggregator_vs_aggregator	1		carwale=313.0; cardekho=390.0	left null
+Tata	Punch	Pure Plus CNG Automatic	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Punch	Adventure CNG Automatic	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Punch	Adventure (S) CNG Automatic	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Punch	Accomplished Plus (S) CNG Automatic	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Safari	Pure X Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Pure X Dark Edition Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Pure X Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Adventure X Plus  Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Pure X Dark Edition Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Adventure X Plus Dark Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Adventure X Plus  Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Adventure X Plus Dark Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Dark Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 7 STR Dark Edition	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Safari	Accomplished X Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Plus  Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Dark Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Safari	Accomplished X Plus Dark Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR Dark Edition	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Manual 7 STR	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 7 STR Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Red Dark Petrol 1.5L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Plus  Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished X Plus Dark Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR Dark Edition	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Pure L (O) Petrol 1.5L Manual	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Petrol 1.5L Manual Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Petrol 1.5L Automatic (DCT)	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Manual	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Petrol 1.5L Automatic (DCT) Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Manual Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC)	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC) Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Sierra	Pure Plus L Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Pure Plus L Diesel 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Adventure Plus Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Adventure Plus Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Adventure Plus L Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Adventure Plus L Diesel 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished  Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished  Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished  Diesel 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished Plus Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished Plus Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Sierra	Accomplished Plus Diesel 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Honda	Amaze	VX Petrol Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Honda	Amaze	ZX Petrol Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Honda	Amaze	VX Petrol Automatic	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Honda	Amaze	ZX Petrol Automatic	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Hyundai	Creta	EX (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Creta	SX Premium Petrol 1.5L Manual	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	SX Premium Petrol 1.5L Manual Dual Tone	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	S (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Creta	SX Premium Petrol 1.5L CVT Speed Automatic (CVT)	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	SX Premium Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	SX Premium Diesel 1.5L Turbo Manual	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	SX Premium Diesel 1.5L Turbo Manual Dual Tone	camera_360	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Hyundai	Creta	King Edition Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Creta	King Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Creta	King Lounge Edition Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Creta	King Lounge Edition Diesel 1.5L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 5 Petrol 1.0L Turbo Automatic (DCT)	cruise_control	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Hyundai	Venue	HX 5 Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 8 Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 8 Diesel 1.5L Turbo Automatic (TC) Knight Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 8 Diesel 1.5L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 8 Diesel 1.5L Turbo Automatic (TC) Dual Tone Knight Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 10 Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Venue	HX 10 Diesel 1.5L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Hyundai	Verna	HX 10 Petrol 1.5L Automatic (CVT)	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Hyundai	Verna	HX 10 Petrol 1.5L Automatic (CVT) Dual Tone	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Kia	Carens Clavis	HTK Plus Diesel 1.5L Turbo Manual 7 STR	sunroof	aggregator_vs_aggregator	1	False	carwale=0; cardekho=1	left null
+Kia	Carens Clavis	HTK Plus Petrol 1.5L Turbo Automatic (DCT) 7 STR	sunroof	aggregator_vs_aggregator	1	False	carwale=0; cardekho=1	left null
+Kia	Carens Clavis	HTK Plus Diesel 1.5L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	HTE (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	HTK Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	HTK (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	HTX Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	HTX (A) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	GTX Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	GTX (A) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	X-Line (A) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	GTX (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Seltos	X-Line (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Syros	HTK Plus Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Syros	HTK Plus (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Syros	HTX Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Kia	Syros	HTX (O) Diesel 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+MG	Hector	Style Petrol Turbo Manual	android_auto	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+MG	Hector	Style Petrol Turbo Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+MG	Hector	Snowstorm Petrol Turbo Automatic (CVT)	transmission	generic_vs_specific	0		carwale=CVT; cardekho=Automatic	specific label kept
+MG	Hector	Blackstorm Petrol Turbo Automatic (CVT)	transmission	generic_vs_specific	0		carwale=CVT; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z4 2WD Petrol 2.0L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z4 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z4 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	torque_nm	aggregator_vs_aggregator	1		carwale=370.0; cardekho=400.0	left null
+Mahindra	Scorpio-N	Z8 S 2WD Petrol 2.0L Turbo Manual 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Mahindra	Scorpio-N	Z4 4WD Diesel 2.2L Turbo Manual 7 STR	torque_nm	aggregator_vs_aggregator	1		carwale=400.0; cardekho=370.0	left null
+Mahindra	Scorpio-N	Z6 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 S 2WD Petrol 2.0L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 S 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	Scorpio-N	Z8 T 2WD Petrol 2.0L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 T 2WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 L 2WD Petrol 2.0L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 L 2WD Petrol 2.0L Turbo Automatic (TC) 6 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Scorpio-N	Z8 T 4WD Diesel 2.2L Turbo Automatic (TC) 7 STR	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	MX5 2WD Petrol 2.0L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	Thar Roxx	MX5 2WD Diesel 2.2L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	Thar Roxx	MX5 2WD Petrol 2.0L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	MX5 2WD Petrol 2.0L Turbo Automatic	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	Thar Roxx	MX5 2WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	MX5 2WD Diesel 2.2L Turbo Automatic	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	Thar Roxx	Star Edition 2WD Petrol 2.0L Turbo Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	AX5 L 2WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	Star Edition 2WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	AX7 L 2WD Petrol 2.0L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	AX7 L 2WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	AX5 L 4WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	Thar Roxx	AX7 L 4WD Diesel 2.2L Turbo Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Manual	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Manual	cruise_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Manual	android_auto	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Manual	rear_camera	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Manual	cruise_control	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Manual	android_auto	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Manual	apple_carplay	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Mahindra	XUV 3XO	REVX M (O) Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	AX5 Petrol 1.2L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	REVX EDGE Petrol 1.2L Turbo Automatic (TC)	torque_nm	aggregator_vs_aggregator	1		carwale=230.0; cardekho=200.0	left null
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	REVX EDGE (O) Petrol 1.2L Turbo Automatic (TC)	torque_nm	aggregator_vs_aggregator	1		carwale=230.0; cardekho=200.0	left null
+Mahindra	XUV 3XO	REVX A Petrol 1.2L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	AX5 Diesel 1.5L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	AX5 Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	AX5 Petrol 1.2L Turbo Automatic (TC)	wireless_charging	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	AX5 Diesel 1.5L Turbo Automatic (AMT)	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	REVX A Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 3XO	REVX A Petrol 1.2L Turbo Automatic (TC)	wireless_charging	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Mahindra	XUV 3XO	AX5L Petrol 1.2L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX3 2WD Petrol 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX3 2WD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX5 2WD Petrol 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX5 2WD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 2WD Petrol 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 2WD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 T 2WD Petrol 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 T 2WD Petrol 2.0L Turbo Automatic 6 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 T 2WD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 T 2WD Diesel 2.2L Turbo Automatic 6 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 T AWD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 L 2WD Petrol 2.0L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 L 2WD Petrol 2.0L Turbo Automatic 6 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 L 2WD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 L 2WD Diesel 2.2L Turbo Automatic 6 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Mahindra	XUV 7XO	AX7 L AWD Diesel 2.2L Turbo Automatic 7 STR	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Alto K10	VXi (O) Petrol Automatic 5 STR	transmission	generic_vs_specific	0		carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Alto K10	VXi Plus (O) Petrol Automatic 5 STR	transmission	generic_vs_specific	0		carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Brezza	Vxi Petrol 1.5L Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Brezza	Zxi Petrol 1.5L Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Brezza	Zxi Petrol 1.5L Automatic Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Brezza	Zxi Plus Petrol 1.5L Automatic	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Brezza	Zxi Plus Petrol 1.5L Automatic Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Dzire	LXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	LXi Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0	24.79	carwale=24.79; cardekho=25.15	left null
+Maruti Suzuki	Dzire	VXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	VXi Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0	24.79	carwale=24.79; cardekho=25.15	left null
+Maruti Suzuki	Dzire	VXi Petrol Automatic (AMT)	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	VXi Petrol Automatic (AMT)	mileage_arai_kmpl	aggregator_vs_aggregator	0	25.71	carwale=25.71; cardekho=26.13	left null
+Maruti Suzuki	Dzire	ZXi Petrol Manual	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	ZXi Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0	24.79	carwale=24.79; cardekho=25.15	left null
+Maruti Suzuki	Dzire	ZXi Petrol Automatic (AMT)	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	ZXi Plus Petrol Manual	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	ZXi Plus Petrol Manual	mileage_arai_kmpl	aggregator_vs_aggregator	0	24.79	carwale=24.7; cardekho=25.15	left null
+Maruti Suzuki	Dzire	ZXi Plus Petrol Automatic (AMT)	power_bhp	aggregator_vs_aggregator	1	80.46	carwale=80.0; cardekho=81.8	left null
+Maruti Suzuki	Dzire	ZXi Plus Petrol Automatic (AMT)	mileage_arai_kmpl	aggregator_vs_aggregator	0	25.71	carwale=25.71; cardekho=26.13	left null
+Maruti Suzuki	Ertiga	Lxi Petrol Manual Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	VXi Petrol Manual Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	ZXi Petrol Manual Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	VXi Petrol Automatic Smart Hybrid	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Ertiga	VXi Petrol Automatic Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	ZXi Plus Petrol Manual Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	ZXi Petrol Automatic Smart Hybrid	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Ertiga	ZXi Petrol Automatic Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Ertiga	ZXi Plus Petrol Automatic Smart Hybrid	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Ertiga	ZXi Plus Petrol Automatic Smart Hybrid	torque_nm	aggregator_vs_aggregator	0	136.8	carwale=136.8; cardekho=139.0	left null
+Maruti Suzuki	Fronx	Zeta Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Fronx	Alpha Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Fronx	Alpha Petrol 1.0L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Delta 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta (O) 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Delta Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha (O) 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha AWD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha AWD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha (O) AWD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Zeta Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha (O) AWD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Grand Vitara	Alpha Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=CVT	specific label kept
+Maruti Suzuki	Jimny	Zeta Petrol Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Jimny	Alpha Petrol Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Jimny	Alpha Petrol Automatic Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	S-Presso	STD (O) Petrol Manual 5 STR	torque_nm	aggregator_vs_aggregator	1	89.0	carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	S-Presso	LXi (O) Petrol Manual 5 STR	torque_nm	aggregator_vs_aggregator	1		carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	S-Presso	VXi (O) Petrol Manual 5 STR	torque_nm	aggregator_vs_aggregator	1		carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	S-Presso	VXi (O) Petrol Automatic 5 STR	transmission	generic_vs_specific	0		carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	S-Presso	VXi (O) Petrol Automatic 5 STR	torque_nm	aggregator_vs_aggregator	1		carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	S-Presso	VXi Plus (O) Petrol Manual 5 STR	torque_nm	aggregator_vs_aggregator	1		carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	S-Presso	VXi Plus (O) Petrol Automatic 5 STR	transmission	generic_vs_specific	0		carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	S-Presso	VXi Plus (O) Petrol Automatic 5 STR	torque_nm	aggregator_vs_aggregator	1		carwale=91.1; cardekho=89.0	left null
+Maruti Suzuki	Victoris	VXi 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi (O) 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	VXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	VXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	VXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi Plus 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi Plus AWD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus AWD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) AWD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) AWD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi Plus 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1		carwale=91.0; cardekho=114.0	left null
+Maruti Suzuki	Victoris	ZXi Plus (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=122.0; cardekho=141.0	left null
+Maruti Suzuki	WagonR	LXi Petrol 1.0L Manual	power_bhp	aggregator_vs_aggregator	1	64.37	carwale=66.0; cardekho=67.6	left null
+Maruti Suzuki	WagonR	VXi Petrol 1.0L Manual	power_bhp	aggregator_vs_aggregator	1	64.37	carwale=66.0; cardekho=67.6	left null
+Maruti Suzuki	WagonR	VXi Petrol 1.0L Automatic	transmission	generic_vs_specific	0	AMT	carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	WagonR	VXi Petrol 1.0L Automatic	power_bhp	aggregator_vs_aggregator	1	64.37	carwale=66.0; cardekho=67.6	left null
+Maruti Suzuki	WagonR	ZXi Petrol 1.2L Automatic	transmission	generic_vs_specific	0	AMT	carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	WagonR	ZXi Plus Petrol 1.2L Automatic	transmission	generic_vs_specific	0	AMT	carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	WagonR	ZXi Plus Petrol 1.2L Automatic Dual Tone	transmission	generic_vs_specific	0		carwale=AMT; cardekho=Automatic	specific label kept
+Maruti Suzuki	XL6	Alpha Petrol Manual Smart Hybrid	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Maruti Suzuki	XL6	Zeta Petrol Automatic Smart Hybrid	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	XL6	Zeta Petrol Automatic Smart Hybrid	power_bhp	aggregator_vs_aggregator	1	101.65	carwale=99.0; cardekho=101.64	left null
+Maruti Suzuki	XL6	Alpha Plus Petrol Automatic Smart Hybrid	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	XL6	Alpha Plus Petrol Automatic Smart Hybrid	power_bhp	aggregator_vs_aggregator	1	101.65	carwale=99.0; cardekho=101.64	left null
+Maruti Suzuki	XL6	Alpha Plus Petrol Automatic Dual Tone Smart Hybrid	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Maruti Suzuki	XL6	Alpha Plus Petrol Automatic Dual Tone Smart Hybrid	power_bhp	aggregator_vs_aggregator	1		carwale=99.0; cardekho=101.64	left null
+Nissan	Magnite	Tekna Petrol Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Nissan	Magnite	Tekna Plus Petrol Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Renault	Duster	Evolution Petrol 1.0L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Duster	Evolution Petrol 1.3L Turbo Manual	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Duster	Evolution Petrol 1.3L Turbo Automatic (DCT)	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Duster	Evolution Hybrid (Electric + Petrol) 1.8L Automatic	power_bhp	aggregator_vs_aggregator	0		carwale=160.0; cardekho=157.81	left null
+Renault	Duster	Evolution Hybrid (Electric + Petrol) 1.8L Automatic	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Renault	Duster	Techno Hybrid (Electric + Petrol) 1.8L Automatic	power_bhp	aggregator_vs_aggregator	0		carwale=160.0; cardekho=157.81	left null
+Renault	Duster	Emotion Hybrid (Electric + Petrol) 1.8L Automatic	power_bhp	aggregator_vs_aggregator	0		carwale=160.0; cardekho=157.81	left null
+Skoda	Kushaq	Classic Plus Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kushaq	Signature  Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kushaq	Sportline  Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kushaq	Prestige  Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kushaq	Monte Carlo Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Classic Plus Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Signature Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Signature Plus Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Sportline Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Prestige Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Kylaq	Prestige Plus Petrol Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Slavia	Classic Plus Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Slavia	Signature Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Slavia	Sportline Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Slavia	Prestige Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Skoda	Slavia	Monte Carlo Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Altroz	Pure CNG 1.2L Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Altroz	Pure S CNG 1.2L Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Altroz	Creative CNG 1.2L Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Altroz	Creative S CNG 1.2L Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Altroz	Accomplished S CNG 1.2L Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Petrol 1.5L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Plus  Petrol 1.5L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Dark Edition Petrol 1.5L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Pure X Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Plus  Dark Edition Petrol 1.5L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Pure X Dark Edition Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Diesel 2.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Petrol 1.5L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Plus  Diesel 2.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Tata	Harrier	Pure X Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Dark Edition Diesel 2.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Plus  Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Plus  Petrol 1.5L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Dark Edition Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Dark Edition Petrol 1.5L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Pure X Dark Edition Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Diesel 2.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Dark Edition Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Dark Edition Diesel 2.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Adventure X Plus  Dark Edition Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Adventure X Plus  Dark Edition Diesel 2.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Harrier	Fearless X Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Dark Edition Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Manual Dark Edition	airbags	aggregator_vs_aggregator	1		carwale=6; cardekho=7	left null
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Manual Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Manual Dark Edition	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Harrier	Fearless X Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Dark Edition Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Automatic (TC)	airbags	aggregator_vs_aggregator	1	7	carwale=6; cardekho=7	left null
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Automatic (TC)	ventilated_front_seats	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Tata	Harrier	Fearless X Plus  Petrol 1.5L Turbo Automatic (TC)	wireless_charging	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Tata	Harrier	Fearless X Plus  Dark Edition Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Petrol 1.5L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Plus  Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Red Dark Petrol 1.5L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless X Plus  Dark Edition Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Diesel 2.0L Turbo Automatic (TC) Dark Edition	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Harrier	Fearless Ultra Red Dark Diesel 2.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Tata	Nexon	Pure Plus (PS) CNG 1.2L Turbo 6 Speed Manual	cruise_control	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Tata	Nexon	Creative Plus (S) Diesel 1.5L Turbo Automatic (AMT) Camo	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Tata	Nexon	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Camo	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Camo	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Creative Plus (PS) CNG 1.2L Turbo 6 Speed Manual Dark Edition	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Fearless Plus (PS) Petrol 1.2L Turbo Automatic (DCT) Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Tata	Nexon	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Red Dark Edition	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Red Dark Edition	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Tata	Nexon	Fearless Plus (PS) CNG 1.2L Turbo 6 Speed Manual Red Dark Edition	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Toyota	Fortuner	4x2 2WD Petrol 2.7L Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Fortuner	4x2 2WD Diesel 2.8L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Fortuner	Leader Edition 2WD Diesel 2.8L Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Fortuner	GR-S 4WD Diesel 2.8L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Glanza	S Petrol Manual	rear_ac_vents	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Toyota	Glanza	S Petrol Automatic (AMT)	rear_ac_vents	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Toyota	Glanza	S CNG Manual	rear_ac_vents	aggregator_vs_aggregator	1	0	carwale=0; cardekho=1	left null
+Toyota	Glanza	S CNG Automatic (AMT)	rear_ac_vents	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Toyota	Glanza	V Petrol Manual	cruise_control	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Toyota	Glanza	V Petrol Automatic (AMT)	cruise_control	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Toyota	Hilux	GX 2WD Diesel Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Hilux	GX 4WD Diesel Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Hilux	VX 4WD Diesel Turbo Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	GX Petrol Automatic (CVT) 7 STR	transmission	generic_vs_specific	0	CVT	carwale=CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	GX Petrol Automatic (CVT) 7 STR	rear_parking_sensors	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Toyota	Innova Hycross	GX Petrol Automatic (CVT) 8 STR	transmission	generic_vs_specific	0	CVT	carwale=CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	GX Petrol Automatic (CVT) 8 STR	rear_parking_sensors	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Toyota	Innova Hycross	GX (O) Petrol Automatic (CVT) 8 STR	transmission	generic_vs_specific	0	CVT	carwale=CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	GX (O) Petrol Automatic (CVT) 8 STR	power_bhp	aggregator_vs_aggregator	1	173.0	carwale=173.0; cardekho=169.0	left null
+Toyota	Innova Hycross	GX (O) Petrol Automatic (CVT) 8 STR	torque_nm	aggregator_vs_aggregator	1	205.0	carwale=209.0; cardekho=204.0	left null
+Toyota	Innova Hycross	GX (O) Petrol Automatic (CVT) 7 STR	transmission	generic_vs_specific	0	CVT	carwale=CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	VX Hybrid (Electric + Petrol) Automatic (e-CVT) 7 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	VX Hybrid (Electric + Petrol) Automatic (e-CVT) 8 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	VX (O) Hybrid (Electric + Petrol) Automatic (e-CVT) 7 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	VX (O) Hybrid (Electric + Petrol) Automatic (e-CVT) 8 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	ZX Hybrid (Electric + Petrol) Automatic (e-CVT) 7 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Innova Hycross	ZX (O) Hybrid (Electric + Petrol) Automatic (e-CVT) 7 STR	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Rumion	E Petrol Manual	rear_ac_vents	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Toyota	Rumion	S Petrol Manual	torque_nm	aggregator_vs_aggregator	0		carwale=139.0; cardekho=136.8	left null
+Toyota	Rumion	S Petrol Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Rumion	S Petrol Automatic	torque_nm	aggregator_vs_aggregator	0		carwale=139.0; cardekho=136.8	left null
+Toyota	Rumion	V Petrol Manual	torque_nm	aggregator_vs_aggregator	0		carwale=139.0; cardekho=136.8	left null
+Toyota	Rumion	G Petrol Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Rumion	G Petrol Automatic	torque_nm	aggregator_vs_aggregator	0		carwale=139.0; cardekho=136.8	left null
+Toyota	Rumion	V Petrol Automatic	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Rumion	V Petrol Automatic	torque_nm	aggregator_vs_aggregator	0		carwale=139.0; cardekho=136.8	left null
+Toyota	Urban Cruiser Hyryder	S 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	G 2WD CNG 1.5L Manual	wireless_charging	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	S 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	S 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1	113.99	carwale=114.0; cardekho=91.18	left null
+Toyota	Urban Cruiser Hyryder	S 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=141.0; cardekho=122.0	left null
+Toyota	Urban Cruiser Hyryder	V 2WD Petrol 1.5L Automatic (TC)	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	V 2WD Petrol 1.5L Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1	113.99	carwale=114.0; cardekho=91.18	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=141.0; cardekho=122.0	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	ventilated_front_seats	aggregator_vs_aggregator	1	1	carwale=1; cardekho=0	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=114.0; cardekho=91.18	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=141.0; cardekho=122.0	left null
+Toyota	Urban Cruiser Hyryder	G (O) 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	ventilated_front_seats	aggregator_vs_aggregator	1		carwale=1; cardekho=0	left null
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	transmission	generic_vs_specific	0	e-CVT	carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	power_bhp	aggregator_vs_aggregator	1	113.99	carwale=114.0; cardekho=91.18	left null
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT)	torque_nm	aggregator_vs_aggregator	1	122.0	carwale=141.0; cardekho=122.0	left null
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	transmission	generic_vs_specific	0		carwale=e-CVT; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	power_bhp	aggregator_vs_aggregator	1		carwale=114.0; cardekho=91.18	left null
+Toyota	Urban Cruiser Hyryder	V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Dual Tone	torque_nm	aggregator_vs_aggregator	1		carwale=141.0; cardekho=122.0	left null
+Toyota	Urban Cruiser Taisor	G Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Taisor	V Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Toyota	Urban Cruiser Taisor	V Petrol 1.0L Turbo Automatic (TC) Dual Tone	transmission	generic_vs_specific	0		carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Taigun	Highline Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Taigun	Highline Plus Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Taigun	GT Line Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Taigun	Topline Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Virtus	Comfortline Petrol 1.0L Turbo Manual	mileage_arai_kmpl	aggregator_vs_aggregator	1	20.19	carwale=20.8; cardekho=20.19	left null
+Volkswagen	Virtus	Comfortline Petrol 1.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Manual	mileage_arai_kmpl	aggregator_vs_aggregator	1	20.19	carwale=20.8; cardekho=18.7	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Manual	automatic_climate_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Volkswagen	Virtus	Highline Plus Petrol 1.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	GT Line Petrol 1.0L Turbo Manual	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	0	18.45	carwale=18.45; cardekho=18.12	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	Highline Petrol 1.0L Turbo Automatic (TC)	automatic_climate_control	aggregator_vs_aggregator	1	0	carwale=1; cardekho=0	left null
+Volkswagen	Virtus	Highline Plus Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Virtus	Highline Plus Petrol 1.0L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	0	18.45	carwale=18.45; cardekho=18.7	left null
+Volkswagen	Virtus	Highline Plus Petrol 1.0L Turbo Automatic (TC)	hill_assist	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	Highline Plus Petrol 1.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	GT Line Petrol 1.0L Turbo Automatic (TC)	transmission	generic_vs_specific	0	Torque Converter	carwale=Torque Converter; cardekho=Automatic	specific label kept
+Volkswagen	Virtus	GT Line Petrol 1.0L Turbo Automatic (TC)	mileage_arai_kmpl	aggregator_vs_aggregator	0	18.45	carwale=18.45; cardekho=18.7	left null
+Volkswagen	Virtus	GT Line Petrol 1.0L Turbo Automatic (TC)	hill_assist	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	GT Line Petrol 1.0L Turbo Automatic (TC)	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1	1	carwale=0; cardekho=1	left null
+Volkswagen	Virtus	GT Plus Petrol 1.5L Turbo Automatic (DCT) Sport	tyre_pressure_monitoring_system	aggregator_vs_aggregator	1		carwale=0; cardekho=1	left null
