@@ -46,8 +46,8 @@ DEFAULTS = {
     # LLM backends: name -> settings. "extract" and "verify" pick one each; they should differ.
     "llm": {
         "extract": ["gemini", "gemini_alt"],          # brochure pages (first that answers is used)
-        "verify": ["gemini_alt", "groq"],             # web sources (text)
-        "verify_image": ["gemini_alt", "gemini"],     # brochure pages (image)
+        "verify": ["gemini_alt", "claude_haiku", "groq"],   # web sources (text)
+        "verify_image": ["gemini_alt", "claude_haiku"],     # brochure pages (image)
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},
             "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 3000},
@@ -55,6 +55,7 @@ DEFAULTS = {
                      "key_env": "GROQ_API_KEY", "rpm": 3, "daily_calls": 900},
             "ollama": {"kind": "ollama", "base_url": "http://localhost:11434", "model": "llama3.2", "rpm": 600, "daily_calls": 100000},
             "claude_cli": {"kind": "claude_cli", "model": "sonnet", "rpm": 30, "daily_calls": 500},
+            "claude_haiku": {"kind": "claude_cli", "model": "haiku", "rpm": 60, "daily_calls": 4000},
             "mock": {"kind": "mock"}
         }
     },

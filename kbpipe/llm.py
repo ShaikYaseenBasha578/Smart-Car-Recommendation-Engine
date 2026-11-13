@@ -82,8 +82,9 @@ class Backend:
                 body = e.read().decode("utf-8", "replace")[:400]
                 last_err = "HTTP %s %s" % (e.code, body)
                 if e.code == 429:
-                    if "per day" in body.lower() or "daily" in body.lower() or "PerDay" in body:
-                        raise QuotaExhausted("%s: %s" % (self.name, last_err))
+                    self._429 = getattr(self, "_429", 0) + 1
+                    if "per day" in body.lower() or "daily" in body.lower() or "PerDay" in body or "quota" in body.lower() or self._429 >= 3:
+                        raise QuotaExhausted("%s: %s" % (self.name, last_err))   # give way to the next backend instead of waiting
                     ra = e.headers.get("Retry-After")
                     time.sleep(min(90, float(ra) if ra and ra.replace(".", "").isdigit() else 20 * (attempt + 1)))
                 elif e.code in (500, 502, 503, 504):
@@ -139,8 +140,10 @@ class Backend:
         if self.kind == "claude_cli":
             if images:
                 prompt += "\nRead these image files first: " + ", ".join(images)
-            r = subprocess.run(["claude", "-p", prompt, "--model", self.model, "--output-format", "json", "--tools", "Read",
-                                "--no-session-persistence"], capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=900)
+            r = subprocess.run(["claude", "-p", prompt, "--model", self.model, "--output-format", "json",
+                                "--tools", "Read" if images else "", "--strict-mcp-config", "--disable-slash-commands",
+                                "--setting-sources", "", "--no-session-persistence"],
+                               capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=300, cwd=os.path.expanduser("~/carrec_kb_cache"))
             if r.returncode != 0:
                 raise LLMError("claude cli: %s" % r.stderr[:300])
             out = json.loads(r.stdout)
