@@ -165,6 +165,10 @@ def write_summary(cfg, run_dir, R, P, items, sheet):
         L += ["", "By field type and source class:", "", "| Stratum | Accuracy | Checked |", "|---|---|---|"]
         for k, a in sorted(v["by_group_and_class"].items()):
             L.append("| %s | %s | %d |" % (k, "n/a" if a["accuracy"] is None else "%.1f%%" % (100 * a["accuracy"]), a["match"] + a["mismatch"]))
+        pl = R.get("planted") or {}
+        if pl.get("planted"):
+            L += ["", "Planted-error control (%s): %d values the verifier had confirmed were re-submitted with a wrong value; it called %d of %d a mismatch." % (
+                src("verify/planted.jsonl"), pl["planted"], pl["caught"], pl["judged"])]
         L += ["", "Human agreement sheet: %s. Fill the last column, then run `kbpipe agreement <file>`." % (src("human_check.csv") if sheet else "not produced (no checked cells)"), ""]
     if P:
         cf = P.get("conflicts", [])

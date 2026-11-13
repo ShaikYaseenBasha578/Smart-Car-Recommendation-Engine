@@ -339,3 +339,40 @@ def summarise(rows):
                 if r2:
                     out["by_group_and_class"]["%s/%s" % (g, c)] = acc(r2)
     return out
+
+
+# ---------- planted-error control: does the verifier actually catch wrong values? ----------
+def _perturb(field, value):
+    kind = F.FIELDS[field][1]
+    if kind == "bool":
+        return 1 - int(value)
+    if field in ("airbags", "seating_capacity", "drive_modes"):
+        return int(value) + 2
+    if kind in ("int", "num"):
+        v = float(value) * 1.08
+        return int(round(v)) if kind == "int" else round(v, 1)
+    pool = sorted({"transmission": F.TRANSMISSIONS, "drivetrain": F.DRIVETRAINS, "fuel_type": F.FUELS}.get(field, set()) - {value})
+    swap = {"Manual": "CVT", "Petrol": "Diesel", "Diesel": "Petrol", "FWD": "RWD"}
+    return swap.get(value) or (pool[0] if pool else None)
+
+
+def planted(cells, verdicts, n, cfg, fetcher, backends, out_dir, log, legacy_lookup=None):
+    """Re-check n cells the verifier called a match, each with a deliberately wrong value. Written to planted.jsonl.
+    A good verifier answers mismatch every time. This never touches results.jsonl or the accuracy numbers."""
+    ok = {(r["variant_id"], r["field"]) for r in verdicts if r["verdict"] == "match"}
+    pool = sorted([c for c in cells if (c["variant_id"], c["field_name"]) in ok], key=lambda c: (str(c["variant_id"]), c["field_name"]))
+    random.Random(cfg["seed"] + 7).shuffle(pool)
+    path = os.path.join(out_dir, "planted.jsonl")
+    out = []
+    with open(path, "a") as f:
+        for c in pool[:n]:
+            wrong = _perturb(c["field_name"], c["value"])
+            if wrong is None:
+                continue
+            r = check_cell(dict(c, value=wrong), cfg, fetcher, backends, legacy_lookup)
+            r["true_value"], r["planted_value"] = c["value"], wrong
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+            out.append(r)
+    caught = sum(r["verdict"] == "mismatch" for r in out)
+    judged = sum(r["verdict"] in ("match", "mismatch") for r in out)
+    return {"planted": len(out), "judged": judged, "caught": caught, "missed": judged - caught}

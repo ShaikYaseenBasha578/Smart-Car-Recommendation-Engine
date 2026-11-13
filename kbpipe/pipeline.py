@@ -206,6 +206,7 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
     aconn = kb.ro(after_db)
     R["coverage_after"] = report.coverage(aconn)
     do_audit = audit if audit is not None else ("full" if (first_run or full) else "changed")
+    cells, lookup = [], None
     if vt and do_audit != "none":
         pop = verify.population(aconn, only_run_methods=(do_audit == "changed"))
         if do_audit == "changed":
@@ -222,6 +223,14 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
             R["audit_incomplete"] = str(e)
             log("verify", "audit stopped early: %s. Run `kbpipe audit --resume %s` tomorrow." % (e, run_id))
     rows = verify.load(vdir)
+    if vt and rows and cfg.get("planted_errors", 20):
+        try:
+            allc = (cells if (do_audit != "none") else []) + _planned_cells(P["ops"], P["obs"], 0)
+            R["planted"] = verify.planted(allc, rows, cfg.get("planted_errors", 20), cfg, fetcher, vt, vdir, log,
+                                          legacy_lookup=lookup if do_audit != "none" else None)
+            log("verify", "planted-error control: %s" % json.dumps(R["planted"]))
+        except llm.QuotaExhausted as e:
+            R["planted"] = {"error": str(e)}
     R["verify"] = verify.summarise(rows)
     R["verify_audit_only"] = verify.summarise([r for r in rows if r.get("batch") == "audit"])
     sheet = report.human_sheet(run_dir, rows, cfg)

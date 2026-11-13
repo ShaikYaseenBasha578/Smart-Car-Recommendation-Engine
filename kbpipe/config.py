@@ -35,12 +35,13 @@ DEFAULTS = {
     "numeric_tolerance": 0.02,          # relative disagreement above this is a conflict
     # verification
     "verify_every_models": 5,
-    "verify_batch_fraction": 0.10,
+    "verify_batch_fraction": 0.03,
     "verify_batch_min": 30,
     "verify_bar": 0.95,
     "verify_stop_min_n": 20,
     "audit_per_stratum": 25,
     "human_sheet_n": 30,
+    "planted_errors": 20,
     "seed": 20261113,
     # LLM backends: name -> settings. "extract" and "verify" pick one each; they should differ.
     "llm": {
@@ -49,7 +50,7 @@ DEFAULTS = {
         "verify_image": ["gemini_alt", "gemini"],     # brochure pages (image)
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},
-            "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 900},
+            "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 3000},
             "groq": {"kind": "openai", "base_url": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b",
                      "key_env": "GROQ_API_KEY", "rpm": 3, "daily_calls": 900},
             "ollama": {"kind": "ollama", "base_url": "http://localhost:11434", "model": "llama3.2", "rpm": 600, "daily_calls": 100000},

@@ -13,6 +13,11 @@ M_CW = "kbpipe/%s carwale_model_page_json" % __version__
 M_CD = "kbpipe/%s cardekho_variant_page_json" % __version__
 
 
+def _page_name(s):
+    """Name used for the page check; CarDekho writes 'Maruti Suzuki X' in lists and 'Maruti X' on pages."""
+    return " ".join(w for w in c.norm_name(s).split() if w != "suzuki")
+
+
 def fingerprint(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True, default=str).encode()).hexdigest()[:16]
 
@@ -63,7 +68,7 @@ def model_bundle(item, cfg, fetcher, log, state):
             pv = cd.parse_variant(vp) if vp else None
             if not pv:
                 problems.append("CarDekho variant page unreadable: %s" % hit["url"])
-            elif c.norm_name(pv["name"]) != c.norm_name(hit["name"]):
+            elif _page_name(pv["name"]) != _page_name(hit["name"]):
                 problems.append("CarDekho served %r for %r; not used" % (pv["name"], hit["name"]))   # page check
             else:
                 fields = dict(pv["fields"])
