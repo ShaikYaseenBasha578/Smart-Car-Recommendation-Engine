@@ -1,0 +1,51 @@
+id	make	model	a_site	a_name	a_fuel	a_gearbox	a_price	b_site	b_name	b_fuel	b_gearbox	b_price
+L01	Hyundai	Venue	CarWale	HX 2 Petrol 1.2L 5 Speed Manual	Petrol	Manual	799900	Catalogue	HX2 1.2 Petrol MT	Petrol	Manual	
+L02	Skoda	Kylaq	CarWale	Prestige Plus Petrol Turbo Automatic (TC)	Petrol	Torque Converter	1309000	Catalogue	Prestige Plus Petrol Turbo Automatic	Petrol	Torque Converter	
+L03	Hyundai	Venue	CarWale	HX 8 Diesel 1.5L Turbo Automatic (TC) Dual Tone Knight Edition	Diesel	Torque Converter	1409500	CarDekho	Hyundai Venue HX 8 Knight Diesel AT DT	Diesel	Automatic	1409500
+L04	Tata	Nexon	CarWale	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	Diesel	Manual	1161990	Catalogue	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual	Diesel	Manual	
+L05	Maruti Suzuki	Grand Vitara	CarWale	Alpha (O) 2WD Petrol 1.5L Manual	Petrol	Manual	1538700	CarDekho	Maruti Suzuki Grand Vitara Alpha Opt	Petrol	Manual	1538700
+L06	Skoda	Slavia	CarWale	Sportline Petrol 1.0L Turbo Automatic (TC)	Petrol	Torque Converter	1534000	Catalogue	Sportline Petrol 1.0L Turbo Automatic (TC)	Petrol	Torque Converter	
+L07	Kia	Seltos	CarWale	GTX Petrol 1.5L Automatic (CVT)	Petrol	CVT	1871900	Catalogue	GTX 1.5 Petrol IVT	Petrol	CVT	
+L08	Kia	Carens Clavis	CarWale	HTK Plus (O) Petrol 1.5L Turbo Manual 7 STR	Petrol	Manual	1641883	Catalogue	HTK+(O) 7 Seater 1.5 Turbo Petrol Manual	Petrol	Manual	
+L09	Kia	Seltos	CarWale	HTK Petrol 1.5L Automatic (CVT)	Petrol	CVT	1471900	Catalogue	HTK 1.5 Petrol IVT	Petrol	CVT	
+L10	Tata	Nexon EV	CarWale	Creative 45.0 kWh	Electric	Automatic	1166500	Catalogue	Creative 45	Electric	Automatic	
+L11	Kia	Sonet	CarWale	HTK Plus Diesel 1.5L Turbo 6 Speed Manual	Diesel	Manual	1064900	CarDekho	Kia Sonet HTK Plus Diesel	Diesel	Manual	1064900
+L12	Tata	Aeris	CarWale	Accomplished Petrol Manual	Petrol	Manual	819990	CarDekho	Tata Aeris Accomplished Petrol MT	Petrol	Manual	819990
+L13	Hyundai	Verna	CarWale	HX 6 Petrol 1.5L Automatic (CVT)	Petrol	CVT	1446200	CarDekho	Hyundai Verna HX6 iVT	Petrol	CVT	1446200
+L14	Hyundai	Exter	CarWale	HX 2 Petrol Manual	Petrol	Manual	580600	CarDekho	Hyundai Exter HX2	Petrol	Manual	580600
+L15	Tata	Nexon	CarWale	Creative Plus (S) Diesel 1.5L Turbo 6 Speed Manual Dark Edition	Diesel	Manual	1206990	CarDekho	Tata Nexon Creative Plus S Dark Diesel	Diesel	Manual	1206990
+L16	Skoda	Slavia	CarWale	Prestige Petrol 1.5L Turbo Automatic (DCT)	Petrol	DCT	1859000	Catalogue	Prestige Petrol 1.5L Turbo Automatic (DCT)	Petrol	DCT	
+L17	Hyundai	Grand i10 Nios	CarWale	Asta Petrol Automatic	Petrol	AMT	809000	CarDekho	Hyundai Grand i10 Nios Asta AMT	Petrol	AMT	809000
+L18	Mahindra	Thar	CarWale	AXT 2WD Diesel 1.5L Turbo Manual	Diesel	Manual	1032000	Catalogue	AXT 2WD Diesel 1.5L Turbo Manual	Diesel	Manual	
+L19	Maruti Suzuki	WagonR	CarWale	ZXi Petrol 1.2L Automatic	Petrol	AMT	643400	Catalogue	ZXi AGS	Petrol	AMT	
+L20	Tata	Punch	CarWale	Pure Plus (S) Petrol Automatic	Petrol	AMT	809990	CarDekho	Tata Punch Pure Plus S AMT	Petrol	AMT	809990
+L21	Mahindra	Thar Roxx	CarWale	AX3 L 2WD Diesel 2.2L Turbo Manual	Diesel	Manual	1740000	Catalogue	AX3 L 2WD Diesel 2.2L Turbo Manual	Diesel	Manual	
+L22	Toyota	Glanza	CarWale	E Petrol Manual	Petrol	Manual	699000	Catalogue	E Petrol MT	Petrol	Manual	
+L23	Toyota	Innova Hycross	CarWale	GX Petrol Automatic (CVT) 8 STR	Petrol	CVT	1958000	CarDekho	Toyota Innova Hycross GX 8STR	Petrol	Automatic	1958000
+L24	Kia	Sonet	CarWale	X Line Petrol 1.0L Turbo Automatic (DCT)	Petrol	DCT	1388900	CarDekho	Kia Sonet X-line Turbo DCT	Petrol	DCT	1388900
+L25	Toyota	Urban Cruiser Taisor	CarWale	V Petrol 1.0L Turbo Automatic (TC) Dual Tone	Petrol	Torque Converter	1294000	CarDekho	Toyota Taisor V Turbo AT Dual Tone	Petrol	Automatic	1294000
+L26	Maruti Suzuki	Fronx	CarWale	Delta Petrol 1.2L Manual	Petrol	Manual	774900	Catalogue	Delta 1.2 Petrol MT	Petrol	Manual	
+L27	Toyota	Glanza	CarWale	S Petrol Manual	Petrol	Manual	771000	CarDekho	Toyota Glanza S Petrol MT	Petrol	Manual	771000
+L28	Kia	Syros	CarWale	HTX Diesel 1.5L Turbo Automatic (TC)	Diesel	Torque Converter	1481899	Catalogue	HTX Diesel Automatic	Diesel	Torque Converter	
+L29	Hyundai	Venue	CarWale	HX 8 Petrol 1.0L Turbo Automatic (DCT)	Petrol	DCT	1302900	Catalogue	HX8 1.0 Turbo Petrol DCT	Petrol	DCT	
+L30	Hyundai	Creta	CarWale	SX Petrol 1.5L Manual	Petrol	Manual	1504400	Catalogue	SX Petrol 1.5L Manual	Petrol	Manual	
+L31	Tata	Altroz	CarWale	Accomplished S CNG 1.2L Automatic (AMT)	CNG	AMT	1089990	CarDekho	Tata Altroz Accomplished S AMT CNG	CNG	AMT	1089990
+L32	Tata	Harrier	CarWale	Adventure X Dark Edition Petrol 1.5L Turbo Manual	Petrol	Manual	1779990	CarDekho	Tata Harrier Petrol Adventure X DARK	Petrol	Manual	1779990
+L33	Toyota	Innova Hycross	CarWale	VX Hybrid (Electric + Petrol) Automatic (e-CVT) 8 STR	Petrol Hybrid	e-CVT	2681000	Catalogue	VX 8 Seater Hybrid e-CVT	Petrol Hybrid	e-CVT	
+L34	Maruti Suzuki	Brezza	CarWale	Lxi CNG 1.5L Manual	CNG	Manual	939900	CarDekho	Maruti Suzuki Brezza LXi CNG	CNG	Manual	939900
+L35	Renault	Kiger	CarWale	Emotion Petrol Turbo Automatic (CVT) Dual Tone	Petrol	CVT	1040000	CarDekho	Renault Kiger Emotion Turbo DT CVT	Petrol	CVT	1040000
+L36	Tata	Harrier	CarWale	Fearless Ultra Red Dark Petrol 1.5L Turbo Automatic (TC)	Petrol	Torque Converter	2494990	CarDekho	Tata Harrier Petrol Fearless Ultra Red DARK AT	Petrol	Automatic	2494990
+L37	Hyundai	Verna	CarWale	HX 10 Petrol 1.5L Turbo Automatic (DCT)	Petrol	DCT	1831200	Catalogue	HX10 1.5 Turbo DCT	Petrol	DCT	
+L38	Tata	Curvv	CarWale	Pure Plus X Diesel 1.5L Turbo Manual Dark Edition	Diesel	Manual	1329990	CarDekho	Tata Curvv Pure X Plus Dark Diesel	Diesel	Manual	1329990
+L39	Honda	City	CarWale	V Petrol Automatic (CVT)	Petrol	CVT	1454700	CarDekho	Honda City V CVT	Petrol	CVT	1450700
+L40	Maruti Suzuki	Dzire	CarWale	ZXi CNG Automatic (AMT)	CNG	AMT	953700	CarDekho	Maruti Dzire ZXI CNG AMT	CNG	AMT	953700
+L41	Nissan	Gravite	CarWale	Tekna Petrol 1.0L Manual	Petrol	Manual	808000	Catalogue	Tekna MT	Petrol	Manual	
+L42	Tata	Tiago	CarWale	Pure Plus A CNG Automatic	CNG	AMT	811990	Catalogue	Pure+ A CNG AMT	CNG	AMT	
+L43	Toyota	Innova Crysta	CarWale	VX Diesel Turbo Manual 7 STR	Diesel	Manual	2524000	Catalogue	VX 7 Seater	Diesel	Manual	
+L44	Renault	Duster	CarWale	Evolution Petrol 1.0L Turbo Manual	Petrol	Manual	1169000	CarDekho	Renault Duster Evolution 1.0 Turbo	Petrol	Manual	1169000
+L45	Hyundai	Creta	CarWale	E Petrol 1.5L Manual	Petrol	Manual	1090700	Catalogue	E Petrol 1.5L Manual	Petrol	Manual	
+L46	Kia	Seltos	CarWale	GTX (A) Petrol 1.5L Automatic (CVT)	Petrol	CVT	1981900	Catalogue	GTX(A) 1.5 Petrol IVT	Petrol	CVT	
+L47	Renault	Kiger	CarWale	Evolution Plus Petrol Manual	Petrol	Manual	703000	CarDekho	Renault Kiger Evolution Plus	Petrol	Manual	703000
+L48	Honda	Elevate	CarWale	SV  Petrol Manual	Petrol	Manual	1184050	CarDekho	Honda Elevate SV	Petrol	Manual	1180000
+L49	Tata	Sierra	CarWale	Pure Plus L Petrol 1.5L Manual	Petrol	Manual	1499000	CarDekho	Tata Sierra Pure Plus L	Petrol	Manual	1499000
+L50	Maruti Suzuki	Fronx	CarWale	Zeta Petrol 1.0L Turbo Automatic (TC)	Petrol	Torque Converter	1103900	Catalogue	Zeta 1.0 Turbo AT	Petrol	Torque Converter	
