@@ -39,6 +39,9 @@ def fuel(s, name=""):
     if "flex" in t:
         return "Flex Fuel"
     if "petrol" in t:
+        # a site may write plain "Petrol" for a strong hybrid and say "Hybrid" only in the variant name
+        if " hybrid " in re.sub(r"[^a-z]+", " ", n) + " " and not re.search(r"\b(mild|smart)\b", n):
+            return "Petrol Hybrid"
         return "Petrol"
     return None
 

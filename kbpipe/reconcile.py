@@ -29,6 +29,25 @@ def agree(field, a, b, tol):
     return a == b
 
 
+SPECIFIC_AUTOMATICS = {"AMT", "CVT", "DCT", "Torque Converter", "e-CVT"}
+
+
+def merge(field, a, b):
+    """The value two sources jointly support when one is a generic label for the other, else None.
+    Gearbox only: "Automatic" is a generic label for any specific automatic type, and "CVT" for "e-CVT". Both sources say the
+    car is an automatic; the specific type comes from the source that names it, and the pair is logged as a conflict of
+    kind generic_vs_specific so it stays visible."""
+    if field != "transmission":
+        return None
+    a, b = F.norm(field, a), F.norm(field, b)
+    for x, y in ((a, b), (b, a)):
+        if x == "Automatic" and y in SPECIFIC_AUTOMATICS:
+            return y
+        if x == "CVT" and y == "e-CVT":
+            return y
+    return None
+
+
 def rel_gap(field, a, b):
     a, b = F.norm(field, a), F.norm(field, b)
     if F.FIELDS[field][1] in ("num", "int") and a is not None and b is not None and max(abs(a), abs(b)) > 0:
@@ -77,6 +96,14 @@ def decide(field, candidates, cfg):
         return {"status": "NULL", "value": None, "reason": "SINGLE_SOURCE", "evidence": [],
                 "conflict": None, "single": {"source": sources[0]["source"], "value": F.norm(field, sources[0]["value"])}}
     first = sources[0]
+    if len(sources) == 2 and merge(field, sources[0]["value"], sources[1]["value"]):
+        val = merge(field, sources[0]["value"], sources[1]["value"])
+        cf = conflict("generic_vs_specific", val)
+        cf["high"] = False
+        ev = [{"obs": c["obs"], "decision": "accepted" if F.norm(field, c["value"]) == val else "confirmed",
+               "value": F.norm(field, c["value"])} for c in sources]
+        ev.sort(key=lambda e: e["decision"] != "accepted")
+        return {"status": "VALUE", "value": val, "reason": "AGGREGATOR_AGREED_UNVERIFIED", "evidence": ev, "conflict": cf}
     if all(agree(field, first["value"], c["value"], agree_tol) for c in sources[1:]):
         val = F.norm(field, first["value"])
         ev = [{"obs": first["obs"], "decision": "accepted", "value": val}]

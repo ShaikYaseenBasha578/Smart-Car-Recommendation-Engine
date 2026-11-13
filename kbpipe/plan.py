@@ -60,12 +60,13 @@ def plan_model(item, bundle, conn, cfg, P):
     def log_conflict(v, d, kb_value=None, resolution=None):
         cf = dict(d["conflict"])
         cf.update({"make": make, "model": model, "variant": v["name"], "kb_value": kb_value,
-                   "resolution": resolution or ("precedence: brochure" if cf["kind"] == "oem_over_aggregator" else "left null")})
+                   "resolution": resolution or {"oem_over_aggregator": "precedence: brochure",
+                                                "generic_vs_specific": "specific label kept"}.get(cf["kind"], "left null")})
         P["conflicts"].append(cf)
 
     for v in bundle["versions"]:
-        if v["special"]:
-            bump("editions_skipped")
+        if v["special"] or any(x["name"] == v["name"] and x["base_variant_id"] is not None for x in kbv):
+            bump("editions_skipped")          # the listing's own special versions, and names the KB holds as editions (P8)
             continue
         f = v["fields_cw"]
         tgt = {"name": v["name"], "fuel": f.get("fuel_type"), "transmission": f.get("transmission"),

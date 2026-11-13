@@ -71,3 +71,18 @@ def test_routing():
     assert R.route(conflict, False, None, "sunroof") == "REVIEW_CONFLICT"
     single = R.decide("airbags", [A(6)], CFG)
     assert R.route(single, False, None, "airbags") == "FLAG_NULL"
+
+
+def test_generic_automatic_supports_a_specific_gearbox_and_is_logged():
+    d = R.decide("transmission", [A("Torque Converter"), B("Automatic")], CFG)
+    assert d["status"] == "VALUE" and d["value"] == "Torque Converter"
+    assert d["conflict"]["kind"] == "generic_vs_specific" and d["conflict"]["high"] is False
+    assert [e["decision"] for e in d["evidence"]] == ["accepted", "confirmed"]
+    assert R.decide("transmission", [A("Automatic"), B("DCT")], CFG)["value"] == "DCT"
+    assert R.decide("transmission", [A("e-CVT"), B("CVT")], CFG)["value"] == "e-CVT"
+
+
+def test_real_gearbox_disagreements_are_still_conflicts():
+    assert R.decide("transmission", [A("Manual"), B("Automatic")], CFG)["status"] == "NULL"
+    assert R.decide("transmission", [A("DCT"), B("CVT")], CFG)["status"] == "NULL"
+    assert R.decide("transmission", [A("AMT"), B("Manual")], CFG)["conflict"]["high"] is True
