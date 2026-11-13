@@ -138,16 +138,38 @@ class Backend:
             out = self._post(s["base_url"].rstrip("/") + "/api/generate", body, {})
             return out.get("response", ""), {"in": out.get("prompt_eval_count"), "out": out.get("eval_count")}
         if self.kind == "claude_cli":
-            if images:
-                prompt += "\nRead these image files first: " + ", ".join(images)
-            r = subprocess.run(["claude", "-p", prompt, "--model", self.model, "--output-format", "json",
-                                "--tools", "Read" if images else "", "--strict-mcp-config", "--disable-slash-commands",
-                                "--setting-sources", "", "--no-session-persistence"],
-                               capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=300, cwd=os.path.expanduser("~/carrec_kb_cache"))
+            # Images: the CLI may only Read files under its working directory, so copy them into a private temp folder
+            # and run there; the prompt names them by their short file names.
+            import shutil
+            import tempfile
+            work = None
+            try:
+                if images:
+                    work = tempfile.mkdtemp(prefix="kbpipe_img_")
+                    names = []
+                    for i, p in enumerate(images, 1):
+                        n = "img%d.png" % i
+                        shutil.copyfile(p, os.path.join(work, n))
+                        names.append(n)
+                    prompt += "\nRead these image files first (use the Read tool): " + ", ".join(names)
+                r = subprocess.run(["claude", "-p", prompt, "--model", self.model, "--output-format", "json",
+                                    "--tools", "Read" if images else "", "--strict-mcp-config", "--disable-slash-commands",
+                                    "--setting-sources", "", "--no-session-persistence"],
+                                   capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=600,
+                                   cwd=work or os.path.expanduser("~/carrec_kb_cache"))
+            finally:
+                if work:
+                    shutil.rmtree(work, ignore_errors=True)
             if r.returncode != 0:
                 raise LLMError("claude cli: %s" % r.stderr[:300])
             out = json.loads(r.stdout)
-            return out.get("result", ""), {"in": None, "out": None}
+            if out.get("is_error"):
+                raise LLMError("claude cli: %s" % str(out.get("result"))[:300])
+            if out.get("permission_denials"):
+                raise LLMError("claude cli: tool use denied: %s" % json.dumps(out["permission_denials"])[:300])
+            u = out.get("usage") or {}
+            return out.get("result", ""), {"in": (u.get("input_tokens") or 0) + (u.get("cache_read_input_tokens") or 0)
+                                           + (u.get("cache_creation_input_tokens") or 0), "out": u.get("output_tokens")}
         raise LLMError("unknown backend kind %r" % self.kind)
 
 

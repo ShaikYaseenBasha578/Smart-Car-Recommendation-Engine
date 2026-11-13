@@ -45,7 +45,7 @@ DEFAULTS = {
     "seed": 20261113,
     # LLM backends: name -> settings. "extract" and "verify" pick one each; they should differ.
     "llm": {
-        "extract": ["gemini", "gemini_alt"],          # brochure pages (first that answers is used)
+        "extract": ["claude_sonnet", "gemini", "gemini_alt"],   # brochure pages (first that answers is used)
         "verify": ["gemini_alt", "claude_haiku", "groq"],   # web sources (text)
         "verify_image": ["gemini_alt", "claude_haiku"],     # brochure pages (image)
         "backends": {
@@ -54,11 +54,14 @@ DEFAULTS = {
             "groq": {"kind": "openai", "base_url": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b",
                      "key_env": "GROQ_API_KEY", "rpm": 3, "daily_calls": 900},
             "ollama": {"kind": "ollama", "base_url": "http://localhost:11434", "model": "llama3.2", "rpm": 600, "daily_calls": 100000},
+            "claude_sonnet": {"kind": "claude_cli", "model": "sonnet", "rpm": 20, "daily_calls": 1000},
             "claude_cli": {"kind": "claude_cli", "model": "sonnet", "rpm": 30, "daily_calls": 500},
             "claude_haiku": {"kind": "claude_cli", "model": "haiku", "rpm": 60, "daily_calls": 4000},
             "mock": {"kind": "mock"}
         }
     },
+    # brochure layer (kbpipe/brochure.py); see DEFAULTS there for the remaining keys
+    "brochure": {"enabled": True, "max_pages_per_brochure": 6, "max_page_reads_per_run": 400},
     "schema_sha256": None,              # pinned by `kbpipe pin-schema`; the schema gate compares against it
 }
 

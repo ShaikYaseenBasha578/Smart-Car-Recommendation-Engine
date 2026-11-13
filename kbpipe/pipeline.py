@@ -6,7 +6,7 @@ import random
 import time
 from datetime import datetime, timezone
 
-from . import __version__, discover, extract, fetch, gates, kb, llm, plan, report, verify, write
+from . import __version__, brochure, discover, extract, fetch, gates, kb, llm, plan, report, verify, write
 from . import fields as F
 
 
@@ -123,6 +123,7 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
             continue
         n_ops = len(P["ops"])
         kept = {g for g in R["stopped_groups"]}
+        brochure.enrich(it, b, conn, cfg, fetcher, log, run_dir)   # OEM brochure evidence onto each version's "brochure" list
         plan.plan_model(it, b, conn, cfg, P)
         for g in kept:   # a stopped field group is not extracted any further
             _drop_group(P, P["ops"][n_ops:], g, "verification fell below the bar earlier in this run")

@@ -16,7 +16,10 @@ ORDER = ["fuel_type", "transmission"] + [f for f in F.FIELDS if f not in ("fuel_
 
 
 def okey(obs):
-    return hashlib.sha256(json.dumps([obs["source"], obs["url"], obs["raw_name"], obs["method"]], sort_keys=True).encode()).hexdigest()[:20]
+    key = [obs["source"], obs["url"], obs["raw_name"], obs["method"]]
+    if obs["source"] == "oem" and isinstance(obs.get("payload"), dict) and obs["payload"].get("page") is not None:
+        key.append(obs["payload"]["page"])      # two cells of one variant from different brochure pages are different observations
+    return hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()[:20]
 
 
 def _cands(v, field, obs):

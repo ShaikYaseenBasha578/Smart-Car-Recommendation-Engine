@@ -18,6 +18,7 @@ def main(argv=None):
     r.add_argument("--no-write", action="store_true", help="stage and gate, but never touch the KB")
     r.add_argument("--no-verify", action="store_true", help="skip the verifier (no accuracy number)")
     r.add_argument("--audit", choices=["full", "changed", "none"], help="final audit scope (default: full on the first run, else changed)")
+    r.add_argument("--no-brochure", action="store_true", help="skip the brochure layer (no OEM brochure pages are read)")
     r.add_argument("--label", help="name of the run folder (default: today's date)")
     a = sub.add_parser("apply-review", help="apply the items ticked in a REVIEW_<run>.md")
     a.add_argument("review_file")
@@ -29,6 +30,8 @@ def main(argv=None):
     args = ap.parse_args(argv)
     cfg = config.load(args.config)
     if args.cmd == "run":
+        if args.no_brochure:
+            cfg.setdefault("brochure", {})["enabled"] = False
         R = pipeline.run(cfg, full=args.full, max_models=args.max_models, only=args.only, no_write=args.no_write,
                          no_verify=args.no_verify, audit=args.audit, label=args.label,
                          echo=lambda line: print(line, flush=True))
