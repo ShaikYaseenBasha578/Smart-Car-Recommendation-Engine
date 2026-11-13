@@ -30,7 +30,8 @@ def main(argv=None):
     cfg = config.load(args.config)
     if args.cmd == "run":
         R = pipeline.run(cfg, full=args.full, max_models=args.max_models, only=args.only, no_write=args.no_write,
-                         no_verify=args.no_verify, audit=args.audit, label=args.label)
+                         no_verify=args.no_verify, audit=args.audit, label=args.label,
+                         echo=lambda line: print(line, flush=True))
         return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in (R.get("stopped") or "")) else 0
     if args.cmd == "apply-review":
         print(json.dumps(review.apply(cfg, args.review_file, no_write=args.no_write), indent=1, default=str))

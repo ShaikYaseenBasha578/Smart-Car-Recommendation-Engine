@@ -38,6 +38,23 @@ These KB rules live in this repo-root `CLAUDE.md`. There is no `knowledge_base/C
 - P17. Never write in sources/oem/. Never delete files without owner approval. Never force-push. Never merge PRs. The only change allowed to paper/v0 is a fast-forward merge of a kb/* branch, with a baseline check proving every uncommitted file is unchanged.
 - P18. After every applied phase, append to knowledge_base/KB_CHANGELOG.md.
 
+## kbpipe (owner-approved 2026-11-13; plan: `knowledge_base/reports/KBPIPE_DESIGN_SPEC.md`, decisions D1–D8)
+`kbpipe/` is a standalone tool the owner runs from a terminal (`bin/kbpipe run`); see `kbpipe/README.md`. It is the only code allowed to write prod outside a hand-run phase, and only through `kbpipe/write.py` (P10 and P11 done by code).
+
+### Amendments that apply to kbpipe runs only
+- P2 (D5): existing values are never changed by aggregators. On NEW rows a value may be written when two aggregators agree for the same variant, with `decision_reason = AGGREGATOR_AGREED_UNVERIFIED`. One aggregator alone writes nothing. When both agree with an existing value, confirming provenance rows are added (`AGGREGATORS_CONFIRM`). A differing or filling value on an existing row is written only after the owner approves the review item (`AGGREGATOR_AGREED_OWNER_APPROVED`).
+- P12 (D7): the blind check is the tool's verifier (`kbpipe/verify.py`): a different model, given only the field definition, the KB value and the source. A field type below 95% on at least 20 samples in a batch stops extraction of that type for the run.
+- P14 (D7): kbpipe makes no app export and opens no PR.
+- P15 (D7): kbpipe does not use the old ingesters or `resolver.py`. Its own linker (`kbpipe/match.py`) requires equal identity. The blind link check is recorded in `knowledge_base/reports/kbpipe/`.
+- P17, P18 (D7): kbpipe writes new brochures only under `knowledge_base/sources/oem_kbpipe/` and appends its own entry to `KB_CHANGELOG.md`.
+- P7, P8 unchanged: held models and editions are never written by a run; they go to the review file.
+
+### Build-session policy (Claude Code working on kbpipe)
+- Decide and log: implementation details, standard-library and listed-dependency choices, retry logic, file layout.
+- `NEEDS_YOU.md` and continue: source or legal uncertainty, schema questions, anything that changes scope, a backend or field type below 95%.
+- Hard stops: deleting KB data; any DDL; any paid service; touching `main`, the remote or the deploy; the same failure 3 times; any holder other than P11's; a non-empty `-wal`.
+- Timebox: 3 sessions; stop at the end of session 2 if the pilot fails its gates.
+
 ## Production DB — read-only by default
 - Never open `knowledge_base/carrec_kb.db` for writing except through a controlled write under the KB decision policy (P10, P11).
 - Before any read: run `lsof knowledge_base/carrec_kb.db knowledge_base/carrec_kb.db-wal knowledge_base/carrec_kb.db-shm` and resolve each holder's full name with `lsof +c 0` or `ps -o comm= -p <PID>`; never judge by PID. A holder is allowed for a READ only if ALL of these hold:

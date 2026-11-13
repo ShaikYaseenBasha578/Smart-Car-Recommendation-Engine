@@ -58,6 +58,7 @@ def cell(url="https://ok/punch/#vid=7"):
 
 
 def backend(reply):
+    verify._MEMO.clear()
     b = llm.Backend("mock", {"kind": "mock"})
     seen = {}
     def mock(prompt, images):

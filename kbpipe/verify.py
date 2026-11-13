@@ -84,10 +84,16 @@ def _lines(o, out, depth=0):
             _lines(v, out, depth + 1)
 
 
+_MEMO = {}   # url -> page, for the life of one process: the verifier downloads each source once per run, itself
+
+
 def read_web_source(url, fetcher):
-    """(content_text, problem). Fetches the page again, bypassing the cache, and returns only the part for this variant."""
+    """(content_text, problem). Fetches the page again (not the extractor's cached copy; once per run) and returns only
+    the part for this variant."""
     base, _, frag = url.partition("#")
-    page, meta = fetcher.get(base, max_age_days=0)
+    if base not in _MEMO:
+        _MEMO[base] = fetcher.get(base, max_age_days=0)[0]
+    page = _MEMO[base]
     if not page:
         return None, "fetch failed"
     out = []
