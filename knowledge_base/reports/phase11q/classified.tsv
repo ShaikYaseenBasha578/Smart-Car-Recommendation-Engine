@@ -1,0 +1,222 @@
+page	vid	variant	field	kb_status	kb_stored	cls	a	a_qual	b	b_qual	agree	validate	a_src
+10	255	Era MT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+10	256	Magna MT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+10	257	Corporate MT	mileage_arai_kmpl	UNVERIFIED	18.0	NOT_ON_PAGE						False	
+10	258	Magna AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	261	Corporate AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	264	Asta MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+10	255	Era MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	cruise_control	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	258	Magna AMT	cruise_control	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	261	Corporate AMT	cruise_control	NULL		NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	cruise_control	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	264	Asta MT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	cruise_control	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	cruise_control	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	255	Era MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	wireless_charging	QUARANTINED	0	NOT_ON_PAGE						False	
+10	258	Magna AMT	wireless_charging	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	wireless_charging	NULL		NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	wireless_charging	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	264	Asta MT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	wireless_charging	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	wireless_charging	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	wireless_charging	UNVERIFIED	1	NOT_ON_PAGE						False	
+10	255	Era MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+10	258	Magna AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	heads_up_display	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	264	Asta MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	heads_up_display	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	255	Era MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	258	Magna AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	259	Sportz MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	263	Sportz AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	264	Asta MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	267	Asta AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	255	Era MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+10	258	Magna AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	paddle_shifters	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	264	Asta MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	paddle_shifters	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	255	Era MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	256	Magna MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	257	Corporate MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	258	Magna AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	259	Sportz MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	263	Sportz AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	264	Asta MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	267	Asta AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+10	255	Era MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	256	Magna MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	257	Corporate MT	drive_modes	NULL		NOT_ON_PAGE						False	
+10	258	Magna AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+10	259	Sportz MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	260	Sportz (O) MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	261	Corporate AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+10	262	Magna Hy-CNG Duo	drive_modes	NULL		NOT_ON_PAGE						False	
+10	263	Sportz AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	264	Asta MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	265	Sportz (O) AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+10	266	Sportz Hy-CNG Duo	drive_modes	NULL		NOT_ON_PAGE						False	
+10	267	Asta AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	255	Era MT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+11	256	Magna MT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+11	257	Corporate MT	mileage_arai_kmpl	UNVERIFIED	18.0	NOT_ON_PAGE						False	
+11	258	Magna AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	259	Sportz MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	261	Corporate AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	263	Sportz AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	264	Asta MT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	mileage_arai_kmpl	NULL		NOT_ON_PAGE						False	
+11	267	Asta AMT	mileage_arai_kmpl	UNVERIFIED	21.0	NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	mileage_arai_km_per_kg	NULL		NOT_ON_PAGE						False	
+11	255	Era MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, Era: -
+11	256	Magna MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, Magna: -
+11	257	Corporate MT	cruise_control	UNVERIFIED	0	CONFIRM	0					False	Cruise control row, Corporate: -
+11	258	Magna AMT	cruise_control	NULL		FILL	0		0		True	True	Cruise control row, Magna: -
+11	259	Sportz MT	cruise_control	UNVERIFIED	1	CONFIRM	1	PL only				False	Cruise control row, Sportz: PL only
+11	260	Sportz (O) MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, Sportz (O): S
+11	261	Corporate AMT	cruise_control	NULL		FILL	0		0		True	True	Cruise control row, Corporate: -
+11	262	Magna Hy-CNG Duo	cruise_control	NULL		FILL	0		0		True	True	Cruise control row, Magna: -
+11	263	Sportz AMT	cruise_control	UNVERIFIED	1	CONFIRM	1	PL only				False	Cruise control row, Sportz: PL only
+11	264	Asta MT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, Asta: S
+11	265	Sportz (O) AMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, Sportz (O): S
+11	266	Sportz Hy-CNG Duo	cruise_control	NULL		FILL	0	PL only	0	PL only	True	True	Cruise control row, Sportz: PL only (petrol only; CNG excluded)
+11	267	Asta AMT	cruise_control	UNVERIFIED	1	CONFIRM	1					False	Cruise control row, Asta: S
+11	255	Era MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Era: -
+11	256	Magna MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Magna: -
+11	257	Corporate MT	wireless_charging	QUARANTINED	0	CONFIRM	0					False	Wireless Phone Charger# row, Corporate: -
+11	258	Magna AMT	wireless_charging	NULL		FILL	0		0		True	True	Wireless Phone Charger# row, Magna: -
+11	259	Sportz MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Sportz: -
+11	260	Sportz (O) MT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Sportz (O): -
+11	261	Corporate AMT	wireless_charging	NULL		FILL	0		0		True	True	Wireless Phone Charger# row, Corporate: -
+11	262	Magna Hy-CNG Duo	wireless_charging	NULL		FILL	0		0		True	True	Wireless Phone Charger# row, Magna: -
+11	263	Sportz AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Sportz: -
+11	264	Asta MT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Phone Charger# row, Asta: S
+11	265	Sportz (O) AMT	wireless_charging	UNVERIFIED	0	CONFIRM	0					False	Wireless Phone Charger# row, Sportz (O): -
+11	266	Sportz Hy-CNG Duo	wireless_charging	NULL		FILL	0		0		True	True	Wireless Phone Charger# row, Sportz: -
+11	267	Asta AMT	wireless_charging	UNVERIFIED	1	CONFIRM	1					False	Wireless Phone Charger# row, Asta: S
+11	255	Era MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	256	Magna MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	257	Corporate MT	heads_up_display	QUARANTINED	0	NOT_ON_PAGE						False	
+11	258	Magna AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+11	259	Sportz MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	261	Corporate AMT	heads_up_display	NULL		NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	heads_up_display	NULL		NOT_ON_PAGE						False	
+11	263	Sportz AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	264	Asta MT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	heads_up_display	NULL		NOT_ON_PAGE						False	
+11	267	Asta AMT	heads_up_display	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	255	Era MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	256	Magna MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	257	Corporate MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	258	Magna AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	259	Sportz MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	261	Corporate AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	263	Sportz AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	264	Asta MT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	267	Asta AMT	ventilated_front_seats	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	255	Era MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	256	Magna MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	257	Corporate MT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+11	258	Magna AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+11	259	Sportz MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	261	Corporate AMT	paddle_shifters	NULL		NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	paddle_shifters	NULL		NOT_ON_PAGE						False	
+11	263	Sportz AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	264	Asta MT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	paddle_shifters	NULL		NOT_ON_PAGE						False	
+11	267	Asta AMT	paddle_shifters	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	255	Era MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	256	Magna MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	257	Corporate MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	258	Magna AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	259	Sportz MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	261	Corporate AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	263	Sportz AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	264	Asta MT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	267	Asta AMT	fuel_tank_litres	UNVERIFIED	37.0	NOT_ON_PAGE						False	
+11	255	Era MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	256	Magna MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	257	Corporate MT	drive_modes	NULL		NOT_ON_PAGE						False	
+11	258	Magna AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+11	259	Sportz MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	260	Sportz (O) MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	261	Corporate AMT	drive_modes	NULL		NOT_ON_PAGE						False	
+11	262	Magna Hy-CNG Duo	drive_modes	NULL		NOT_ON_PAGE						False	
+11	263	Sportz AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	264	Asta MT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	265	Sportz (O) AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+11	266	Sportz Hy-CNG Duo	drive_modes	NULL		NOT_ON_PAGE						False	
+11	267	Asta AMT	drive_modes	UNVERIFIED	0	NOT_ON_PAGE						False	
+12	255	Era MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	256	Magna MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	257	Corporate MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	258	Magna AMT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	259	Sportz MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	260	Sportz (O) MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	261	Corporate AMT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	262	Magna Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Bi-Fuel, petrol tank				False	Fuel tank capacity (l) Petrol: 37 / CNG: 60 (Water equivalent)
+12	263	Sportz AMT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	264	Asta MT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	265	Sportz (O) AMT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37
+12	266	Sportz Hy-CNG Duo	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Bi-Fuel, petrol tank				False	Fuel tank capacity (l) Petrol: 37 / CNG: 60 (Water equivalent)
+12	267	Asta AMT	fuel_tank_litres	UNVERIFIED	37.0	CONFIRM	37	1.2 l Kappa petrol				False	Fuel tank capacity (l) 37

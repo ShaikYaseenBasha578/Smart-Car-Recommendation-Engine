@@ -1,0 +1,40 @@
+vid	col	old	new	pdf_rel	pdf_sha1	page	printed	qualifier	cls
+255	cruise_control	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Era: -		CONFIRM
+256	cruise_control	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Magna: -		CONFIRM
+257	cruise_control	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Corporate: -		CONFIRM
+258	cruise_control		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Magna: -		FILL
+259	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Sportz: PL only	PL only	CONFIRM
+260	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Sportz (O): S		CONFIRM
+261	cruise_control		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Corporate: -		FILL
+262	cruise_control		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Magna: -		FILL
+263	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Sportz: PL only	PL only	CONFIRM
+264	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Asta: S		CONFIRM
+265	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Sportz (O): S		CONFIRM
+266	cruise_control		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Sportz: PL only (petrol only; CNG excluded)	PL only	FILL
+267	cruise_control	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Cruise control row, Asta: S		CONFIRM
+255	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Era: -		CONFIRM
+256	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Magna: -		CONFIRM
+257	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Corporate: -		CONFIRM
+258	wireless_charging		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Magna: -		FILL
+259	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Sportz: -		CONFIRM
+260	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Sportz (O): -		CONFIRM
+261	wireless_charging		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Corporate: -		FILL
+262	wireless_charging		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Magna: -		FILL
+263	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Sportz: -		CONFIRM
+264	wireless_charging	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Asta: S		CONFIRM
+265	wireless_charging	0	0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Sportz (O): -		CONFIRM
+266	wireless_charging		0	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Sportz: -		FILL
+267	wireless_charging	1	1	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	11	Wireless Phone Charger# row, Asta: S		CONFIRM
+255	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+256	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+257	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+258	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+259	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+260	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+261	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+262	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) Petrol: 37 / CNG: 60 (Water equivalent)	1.2 l Bi-Fuel, petrol tank	CONFIRM
+263	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+264	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+265	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM
+266	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) Petrol: 37 / CNG: 60 (Water equivalent)	1.2 l Bi-Fuel, petrol tank	CONFIRM
+267	fuel_tank_litres	37.0	37	hyundai/grand_i10_nios/latest/brochures/Grand_i10_Nios_Brochure.pdf	352bd5977f225145e35687450ee4635e0d7416aa	12	Fuel tank capacity (l) 37	1.2 l Kappa petrol	CONFIRM

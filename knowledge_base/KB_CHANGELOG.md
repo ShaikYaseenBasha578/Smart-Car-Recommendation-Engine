@@ -327,9 +327,21 @@ Plain-language record of every applied KB phase. Full evidence is in `knowledge_
 - iCNG fuel tank: the page prints 35 L and a 70 L water capacity in one column; left unknown.
 **Prod SHA-1:** `2efefc4f…` → `b174b0ac…`. **App PR:** #29 (export commit added for 11N, 11O and 11P). **Ranking-track line:** KB 11P: 16 Tigor cells changed from the brochure.
 
+## 11Q — 2026-11-13 — Grand i10 Nios: cruise, wireless and fuel-tank cells checked against the brochure
+**Why:** Many cells for this model were empty, unverified or wrong. The brochure settles them.
+**What changed:** 39 cells checked on 3 brochure page(s): 8 blanks filled, 0 corrected, 31 confirmed; 1 old quarantines released; 0 contradicted provenance rows quarantined. Schema: none.
+**Examples:**
+- Hyundai Grand i10 Nios Magna AMT: cruise control blank → no, dash printed (Nios brochure, p10)
+- Hyundai Grand i10 Nios Sportz Hy-CNG Duo: wireless charging blank → no, dash printed (Nios brochure, p11)
+- Hyundai Grand i10 Nios Era Petrol: fuel tank 37 L confirmed (Nios brochure, p12)
+**What app users now see:** No Nios catalogue cell changes except 8 cruise/wireless blanks filled with an explicit no.
+**Not done / held:**
+- Mileage, head-up display, ventilated seats, paddle shifters, drive modes: not on the pages read.
+**Prod SHA-1:** `b174b0ac…` → `7c0de89b…`. **App PR:** none yet (export after every 3 applied batches). **Ranking-track line:** KB 11Q: 8 Grand i10 Nios cells changed from the brochure.
+
 ## Current state
-As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
-- **Active quarantines:** 1,524 (950 observations, 293 variant cells, 280 provenance rows, 1 safety applicability row(s)).
+As of phase 11Q (prod `7c0de89b902e105492345db28366e526d29bc3b6`).
+- **Active quarantines:** 1,523 (950 observations, 292 variant cells, 280 provenance rows, 1 safety applicability row(s)).
 - **Variants / models / makes:** 832 / 62 / 12.
 - **Coverage:**
   - power: 825/832 = 99.2%
