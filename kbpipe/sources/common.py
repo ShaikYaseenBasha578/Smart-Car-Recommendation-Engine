@@ -74,25 +74,50 @@ def trans_class(kb_transmission):
 
 
 _STOP = {"petrol", "diesel", "cng", "electric", "hybrid", "manual", "automatic", "mt", "at", "amt", "cvt", "dct", "ivt",
-         "imt", "tc", "ags", "dsg", "dca", "speed", "turbo", "str", "seater", "kwh", "the", "l", "e", "icng", "ev",
-         "clutchless", "edition", "suzuki", "maruti"}
+         "imt", "tc", "ags", "dsg", "dca", "speed", "turbo", "str", "seater", "kwh", "the", "icng", "ev",
+         "clutchless", "edition", "suzuki", "maruti", "smart", "mild", "strong"}
 
 
 def trim_tokens(name, model=""):
-    """Identity tokens of a variant name: what is left after fuel, gearbox and engine words are removed."""
-    t = (name or "").lower().replace("+", " plus ").replace("(o)", " o ").replace("(s)", " s ")
+    """Identity tokens of a variant name: what is left after fuel, gearbox and engine words are removed.
+    Spelling differences between sites that do not change identity are folded: "HX2"/"HX 2", "(O)"/"Opt",
+    "DT"/"Dual Tone", "7 STR"/"7Str", "59.0 kWh"/"59kWh", the default two-wheel drive ("2WD", "RWD", "4X2": dropped),
+    four-wheel drive ("4WD", "4X4", "AWD", "QWD": one token), and a bundled AC charger ("7.2kW Charger", "ACFC")."""
+    t = (name or "").lower()
+    t = re.sub(r"\(\s*electric\s*\+\s*(petrol|diesel)\s*\)", " ", t)
+    t = t.replace("+", " plus ").replace("(o)", " o ").replace("(s)", " s ")
+    t = re.sub(r"\be[\s-]?cvt\b", " ", t)
+    t = re.sub(r"\b\d(\.\d)?\s*-?\s*lit(re|er)\b", " ", t)
+    t = re.sub(r"\bno charger\b", " ", t)
+    t = re.sub(r"\b\d+(\.\d+)?\s*kw\s*(ac\s*)?(fast\s*)?charger\b|\bacfc\b|\bac fast charger\b", " acfc ", t)
+    t = re.sub(r"\b(\d+)(\.\d+)?\s*kwh\b", lambda m: " %s%s " % (m.group(1), "" if m.group(2) in (None, ".0") else m.group(2).replace(".", "p")), t)
+    t = re.sub(r"\b(2wd|rwd|fwd|4\s*x\s*2)\b", " ", t)
+    t = re.sub(r"\b(4wd|awd|qwd|4\s*x\s*4)\b", " fourwd ", t)
     t = re.sub(r"\b\d\.\d\s*l?\b", " ", t)
     t = re.sub(r"\b\d\s*speed\b", " ", t)
     t = re.sub(r"[^a-z0-9]+", " ", t)
-    t = re.sub(r"([a-z])(\d)", r"\1 \2", t)          # "HX2" and "HX 2", "45kWh" and "45 kWh" are the same words
+    t = re.sub(r"\b(\d)\s*(str|seater)\b", r"\1", t)
+    t = re.sub(r"([a-z])(\d)", r"\1 \2", t)          # "HX2" and "HX 2" are the same words
     t = re.sub(r"(\d)([a-z])", r"\1 \2", t)
     t = re.sub(r"\bdt\b", "dual tone", t)
-    t = re.sub(r"\b(\d)\s*(str|seater|s)\b", r"\1", t)
     t = re.sub(r"\bopt\b|\boptional\b", "o", t)
     mw = re.sub(r"[^a-z0-9]+", " ", (model or "").lower())
     mw = re.sub(r"(\d)([a-z])", r"\1 \2", re.sub(r"([a-z])(\d)", r"\1 \2", mw))
     drop = set(_STOP) | set(mw.split())
     return frozenset(w for w in t.split() if w not in drop)
+
+
+def common_prefix(names):
+    """Leading words shared by every name in a list (a site's own spelling of make and model), as a string."""
+    rows = [n.split() for n in names if n]
+    if len(rows) < 2:
+        return ""
+    out = []
+    for words in zip(*rows):
+        if len({w.lower() for w in words}) != 1:
+            break
+        out.append(words[0])
+    return " ".join(out)
 
 
 def norm_name(s):

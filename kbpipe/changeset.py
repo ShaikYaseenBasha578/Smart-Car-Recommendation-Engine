@@ -155,7 +155,7 @@ def apply(db_path, cs, check=None):
                     # powertrain fields: the value lives on the powertrain row made by add_variant; only provenance is added
                     cur = _one(c, 'select p."%s" from variant v join powertrain p on p.id=v.powertrain_id where v.id=?' % field, vid)
                     if not F.same(field, cur, op["value"]):
-                        raise ApplyError("%s.%s: powertrain has %r, change-set says %r" % (vid, field, cur, op["value"]))
+                        continue      # the variant sits on an existing powertrain row with another value: no evidence is attached
                 _provenance(c, cs, op, vid, log)
             elif kind == "discontinue":
                 vid = _variant(c, op)

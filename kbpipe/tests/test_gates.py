@@ -85,3 +85,24 @@ def test_discontinue_marks_and_never_deletes(kbfile, tmp_path, cfg):
     c = sqlite3.connect(after)
     assert c.execute("select count(*), sum(is_discontinued) from variant").fetchone() == (2, 1)
     assert gates.gate_rows(kbfile, after, cfg)[0] and gates.gate_explained(kbfile, after, log, cfg)[0]
+
+
+def test_new_variant_on_an_existing_powertrain_with_other_torque(kbfile, tmp_path, cfg):
+    cs = good_changeset()
+    for op in cs["ops"]:
+        op["model"] = "Nexon" if "model" in op else op.get("model")
+    cs["ops"] = [op for op in cs["ops"] if op["op"] != "add_model"]
+    cs["ops"][0]["powertrain"] = {"fuel_type": "Petrol", "engine_cc": 1199, "power_bhp": 118, "torque_nm": 152.0}   # KB row says 170
+    for op in cs["ops"]:
+        if op.get("field") == "power_bhp":
+            op["value"] = 118
+            for e in op["evidence"]:
+                e["value"] = 118
+        if op.get("field") == "torque_nm":
+            op["value"] = 152.0
+    after, log = staged(kbfile, tmp_path, cs)
+    c = sqlite3.connect(after)
+    assert c.execute("select count(*) from powertrain").fetchone()[0] == 1                       # reused, not duplicated
+    assert c.execute("select torque_nm from powertrain").fetchone()[0] == 170                    # and not overwritten
+    assert c.execute("select count(*) from field_provenance where field_name='torque_nm'").fetchone()[0] == 0
+    assert gates.run_all(kbfile, after, log, cfg)[0]

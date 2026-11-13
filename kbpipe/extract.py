@@ -37,9 +37,11 @@ def model_bundle(item, cfg, fetcher, log, state):
     if not m2:
         problems.append("CarDekho model page unreadable: %s" % item["cd"]["url"])
     cd_vars = []
-    for v in (m2 or {}).get("variants", []):
-        if v["status"] != "CURRENT":
-            continue
+    cur = [v for v in (m2 or {}).get("variants", []) if v["status"] == "CURRENT"]
+    site_model = c.common_prefix([v["name"] for v in cur]) or (item["cd"].get("name") or "")   # CarDekho's own spelling
+    for v in cur:
+        if v["fuel"] == "Petrol" and "hybrid" in v["name"].lower() and not any(w in v["name"].lower() for w in ("mild", "smart")):
+            v["fuel"] = "Petrol Hybrid"
         cd_vars.append({"name": v["name"], "fuel": v["fuel"], "transmission": c.transmission(v["sub"], v["name"], v["fuel"]),
                         "price": v["price"], "engine_cc": c.num(v["sub"]) if "cc" in v["sub"] else None, "url": v["url"]})
     fp = fingerprint([[v["id"], v["name"], v["status"], v["fields"]] for v in m["versions"]] +
@@ -60,7 +62,7 @@ def model_bundle(item, cfg, fetcher, log, state):
         target = {"name": v["name"], "fuel": f.get("fuel_type"), "transmission": f.get("transmission"),
                   "price": f.get("price_ex_showroom"), "engine_cc": f.get("engine_cc")}
         pool = [x for x in cd_vars if x["url"] not in used]
-        hit, why = match.link(target, pool, item["make"] + " " + item["model"], need_price=True, price_tol=cfg.get("link_price_tolerance", 0.005))
+        hit, why = match.link(target, pool, " ".join([item["make"], item["model"], site_model]), need_price=True, price_tol=cfg.get("link_price_tolerance", 0.005))
         rec["link_reason"] = why
         if hit:
             used.add(hit["url"])

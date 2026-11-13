@@ -51,7 +51,8 @@ def changed_cells(before, after):
         for f in F.VARIANT_FIELDS:
             if f in cols and r[f] is not None and (o is None or not F.same(f, o[f], r[f])):
                 out.append((r["id"], f, r[f]))
-        if o is None and r["powertrain_id"] is not None:
+        if o is None and r["powertrain_id"] is not None and not b.execute(
+                "select 1 from powertrain where id=?", (r["powertrain_id"],)).fetchone():      # only powertrain rows this run created
             p = a.execute("select * from powertrain where id=?", (r["powertrain_id"],)).fetchone()
             for f in F.POWERTRAIN_FIELDS:
                 if p[f] is not None:
