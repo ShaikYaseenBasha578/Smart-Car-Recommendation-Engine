@@ -82,7 +82,8 @@ def plan_model(item, bundle, conn, cfg, P):
                            "cardekho_gearbox": (v.get("fields_cd") or {}).get("transmission"),
                            "kb_variant": hit["name"] if hit else "", "kb_variant_id": hit["id"] if hit else "",
                            "kb_fuel": hit["fuel_type"] if hit else "", "kb_gearbox": hit["transmission"] if hit else "",
-                           "site_link_reason": v["link_reason"]})
+                           "site_link_reason": v["link_reason"], "carwale_url": v["obs_cw"]["url"],
+                           "cardekho_url": (v.get("obs_cd") or {}).get("url") or ""})
         if hit:                                                   # ---- variant already in the KB
             matched.add(hit["id"])
             bump("variants_matched")

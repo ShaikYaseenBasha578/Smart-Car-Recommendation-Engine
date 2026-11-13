@@ -85,6 +85,7 @@ def trim_tokens(name, model=""):
     t = re.sub(r"\b\d\s*speed\b", " ", t)
     t = re.sub(r"[^a-z0-9]+", " ", t)
     t = re.sub(r"\bdt\b", "dual tone", t)
+    t = re.sub(r"\b(\d)\s*(str|seater|s)\b", r"\1", t)
     t = re.sub(r"\bopt\b|\boptional\b", "o", t)
     drop = set(_STOP) | set(re.sub(r"[^a-z0-9]+", " ", (model or "").lower()).split())
     return frozenset(w for w in t.split() if w not in drop)
@@ -92,3 +93,8 @@ def trim_tokens(name, model=""):
 
 def norm_name(s):
     return re.sub(r"[^a-z0-9]+", " ", (s or "").lower().replace("+", " plus ")).strip()
+
+
+def seat_only(tokens):
+    """True when every token is a bare seat count (one site writes '7 STR', the other leaves the default out)."""
+    return all(re.match(r"^\d$", t) for t in tokens)

@@ -95,3 +95,13 @@ def test_results_file_is_append_only_read_only_and_drives_the_numbers(cfg, tmp_p
     assert len(rows) == 1 and not os.access(os.path.join(out, "results.jsonl"), os.W_OK)
     s = verify.summarise(rows)
     assert s["overall"]["accuracy"] == 0.0 and s["by_group"]["safety"]["mismatch"] == 1
+
+
+def test_implied_seat_count_links_only_with_exact_price_and_one_candidate():
+    pool = [{"name": "Hyundai Alcazar Executive", "fuel": "Petrol", "transmission": "Manual", "price": 1450700},
+            {"name": "Hyundai Alcazar Executive 6Str", "fuel": "Petrol", "transmission": "Manual", "price": 1460700}]
+    t = {"name": "Executive Petrol 1.5L Turbo 6 Speed Manual 7 STR", "fuel": "Petrol", "transmission": "Manual", "price": 1450700}
+    assert match.link(t, pool, "Hyundai Alcazar", need_price=True)[0] is pool[0]
+    assert match.link(dict(t, price=1455000), pool, "Hyundai Alcazar", need_price=True)[0] is None
+    six = {"name": "Executive Petrol 1.5L Turbo 6 Speed Manual 6 STR", "fuel": "Petrol", "transmission": "Manual", "price": 1460700}
+    assert match.link(six, pool, "Hyundai Alcazar", need_price=True)[0] is pool[1]

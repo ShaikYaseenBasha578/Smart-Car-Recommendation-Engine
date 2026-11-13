@@ -26,6 +26,13 @@ def link(target, candidates, model, need_price=False, price_tol=0.0):
     if target.get("engine_cc") and any(x.get("engine_cc") for x in pool):
         pool = [x for x in pool if not x.get("engine_cc") or abs(x["engine_cc"] - target["engine_cc"]) <= 2]
     if not pool:
+        # one site may leave out the default seat count; then fuel, gearbox class, the other trim words AND the exact
+        # price must all agree, and only one candidate may qualify
+        near = [x for x in candidates if x.get("fuel") == tid[0] and c.trans_class(x.get("transmission")) == tid[1]
+                and (c.trim_tokens(x["name"], model) ^ tid[2]) and c.seat_only(c.trim_tokens(x["name"], model) ^ tid[2])
+                and target.get("price") and x.get("price") and abs(x["price"] - target["price"]) <= price_tol * target["price"]]
+        if len(near) == 1:
+            return near[0], "identity (seat count implied) + price"
         return None, "no candidate with the same identity"
 
     def price_ok(x):

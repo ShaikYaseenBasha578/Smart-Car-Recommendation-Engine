@@ -149,6 +149,9 @@ def write_summary(cfg, run_dir, R, P, items, sheet):
               "- Overall: %s. Sample size %d." % (_acc(v["overall"]), v["overall"]["n"])]
         if R.get("audit_incomplete"):
             L.append("- **The audit did not finish:** %s" % R["audit_incomplete"])
+        al = R.get("audit_legacy")
+        if al:
+            L.append("- Legacy values (June 2026 import, no URL on record): %d cells, of which %d belong to a variant linked to a current page and could be sampled. They are checked against today's page, so a mismatch can also mean the car changed." % (al["cells"], al["with_current_page"]))
         for c, a in v["by_source_class"].items():
             L.append("- Source class %s: %s." % (c, _acc(a)))
         L += ["", "| Field type | Accuracy | Checked | Match | Mismatch | Unreachable | Verifier errors |", "|---|---|---|---|---|---|---|"]

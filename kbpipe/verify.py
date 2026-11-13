@@ -171,7 +171,7 @@ def population(conn, only_run_methods=False, variant_ids=None):
          "o.raw_payload, o.raw_name, s.name source, v.full_name, v.name vname, m.name model, mk.name make "
          "from field_provenance p join source_observation o on o.id=p.source_observation_id join source s on s.id=o.source_id "
          "join variant v on v.id=p.variant_id join model m on m.id=v.model_id join manufacturer mk on mk.id=m.manufacturer_id "
-         "where p.decision='accepted' and v.base_variant_id is null "
+         "where p.decision in ('accepted','confirmed') and v.base_variant_id is null "
          "and not exists (select 1 from v_active_quarantine q where q.target_table='field_provenance' and q.target_id=p.id) "
          "and not exists (select 1 from v_active_quarantine q where q.target_table='source_observation' and q.target_id=o.id) "
          "order by p.id")
@@ -205,12 +205,15 @@ def population(conn, only_run_methods=False, variant_ids=None):
     return out
 
 
-def sample(pop, per_stratum, seed, exclude=()):
-    """Stratified random sample: `per_stratum` cells from every (field group x source class) that has any."""
+def sample(pop, per_stratum, seed, exclude=(), legacy_lookup=None):
+    """Stratified random sample: `per_stratum` cells from every (field group x source class) that has any.
+    Legacy cells have no URL of their own, so only those whose variant is linked to a current page can be drawn."""
     rng = random.Random(seed)
     strata = {}
     for r in pop:
         if (r["variant_id"], r["field_name"]) in exclude:
+            continue
+        if r["cls"] == "legacy" and legacy_lookup is not None and not any(legacy_lookup(r)):
             continue
         strata.setdefault((r["group"], r["cls"]), []).append(r)
     out = []
@@ -239,14 +242,18 @@ def check_cell(cell, cfg, fetcher, backends, legacy_lookup=None):
         kind = "text layer of the brochure page; the page image is attached and is the authority"
         be = backends["image"]
     elif cell["cls"] == "legacy":
-        url = legacy_lookup(cell) if legacy_lookup else None
-        if not url:
+        urls = [u for u in (legacy_lookup(cell) if legacy_lookup else []) if u]
+        if not urls:
             res.update(verdict="unreachable", note="the KB records no URL for this value and no current page is linked to this variant")
             return res
-        res["source_ref"] = url
-        res["note"] = "no original URL on record; checked against the current page"
-        content, problem = read_web_source(url, fetcher)
-        be = backends["text"]
+        last = None
+        for url in urls:                      # the two sites carry different fields; try each until one states this field
+            last = check_cell(dict(cell, cls="aggregator", source_url=url), cfg, fetcher, backends)
+            if last["verdict"] in ("match", "mismatch"):
+                break
+        last.update(source_class="legacy", source=cell["source"],
+                    note=("no original URL on record; checked against the current page. " + last["note"]).strip())
+        return last
     else:
         content, problem = read_web_source(cell["source_url"], fetcher)
         be = backends["text"]

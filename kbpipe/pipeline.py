@@ -130,8 +130,6 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
         since += 1
         new_done += it["kind"] == "NEW_MODEL"
         bundles_meta[key] = {"fingerprint": b["fingerprint"], "processed_at": fetch.now_iso(), "applied": False}
-        for v in b["versions"]:
-            legacy_url[(it["make"], it["model"], v["name"])] = (v["obs_cd"] or v["obs_cw"])["url"]
         log("extract", "%s %s: %d versions, %d linked on both sites" % (
             it["make"], it["model"], len(b["versions"]), sum(1 for v in b["versions"] if v["fields_cd"])))
         if vt and since >= cfg["verify_every_models"]:
@@ -211,11 +209,14 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
         pop = verify.population(aconn, only_run_methods=(do_audit == "changed"))
         if do_audit == "changed":
             pop = [r for r in pop if str(r["extraction_method"]).endswith("_json") and R["write"]]
-        cells, strata = verify.sample(pop, cfg["audit_per_stratum"], cfg["seed"])
-        R["audit_scope"], R["audit_strata"] = do_audit, strata
+        by_kb = {l["kb_variant_id"]: [l["cardekho_url"], l["carwale_url"]] for l in P["links"] if l["kb_variant_id"] != ""}
 
         def lookup(cell):
-            return legacy_url.get((cell["make"], cell["model"], cell["vname"]))
+            return by_kb.get(cell["variant_id"], [])
+        cells, strata = verify.sample(pop, cfg["audit_per_stratum"], cfg["seed"], legacy_lookup=lookup)
+        leg = [r for r in pop if r["cls"] == "legacy"]
+        R["audit_scope"], R["audit_strata"] = do_audit, strata
+        R["audit_legacy"] = {"cells": len(leg), "with_current_page": sum(1 for r in leg if any(lookup(r)))}
         log("verify", "final audit: %d cells from %d strata (population %d)" % (len(cells), len(strata), len(pop)))
         try:
             verify.run(cells, cfg, fetcher, vt, vdir, log, legacy_lookup=lookup, batch="audit")
