@@ -69,6 +69,13 @@ def gate_provenance(before, after, cfg):
             "select p.accepted_value, o.source_url, o.observed_at, o.extraction_method from field_provenance p "
             "join source_observation o on o.id=p.source_observation_id "
             "where p.variant_id=? and p.field_name=? and p.decision='accepted'", (vid, f)).fetchall()
+        if F.FIELDS[f][0] == "powertrain":
+            # an engine row is shared by several variants: the value needs kbpipe evidence on at least one of them
+            rows = a.execute(
+                "select p.accepted_value, o.source_url, o.observed_at, o.extraction_method from field_provenance p "
+                "join source_observation o on o.id=p.source_observation_id join variant v on v.id=p.variant_id "
+                "where v.powertrain_id=(select powertrain_id from variant where id=?) and p.field_name=? and p.decision='accepted'",
+                (vid, f)).fetchall()
         ok = any(F.same(f, r[0], val) and r[1] and r[2] and r[3] and str(r[3]).startswith("kbpipe") for r in rows)
         if not ok:
             bad.append("variant %s %s=%r has no kbpipe provenance with url, date and method" % (vid, f, val))
