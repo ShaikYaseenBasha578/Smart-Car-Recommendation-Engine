@@ -92,3 +92,57 @@ class Fetcher:
                 time.sleep(5 * (attempt + 1))
         self.stats["failed"] += 1
         return None, None
+
+
+# ---- polite mode for the review layers: robots.txt obeyed, one attempt, a block is recorded and never retried ----
+import urllib.robotparser as _rp
+
+
+def _robots(self, host_url):
+    """Parsed robots.txt for the site of host_url (cached for the life of the Fetcher and on disk for a day)."""
+    scheme_host = "/".join(host_url.split("/")[:3])
+    cache = self.__dict__.setdefault("_robots_cache", {})
+    if scheme_host in cache:
+        return cache[scheme_host]
+    body, meta = self.get(scheme_host + "/robots.txt", max_age_days=1)
+    rp = _rp.RobotFileParser()
+    if body is None:
+        cache[scheme_host] = None          # unreadable robots file: fail closed (nothing is fetched from this site)
+    else:
+        rp.parse(body.splitlines())
+        cache[scheme_host] = rp
+    return cache[scheme_host]
+
+
+def robots_ok(self, url):
+    rp = self._robots(url)
+    return bool(rp and rp.can_fetch("*", url) and rp.can_fetch(self.ua, url))
+
+
+def get_polite(self, url, max_age_days=None):
+    """(body, meta, reason). reason is None on success, else 'robots', 'blocked:<code>', 'unreachable' or 'captcha'.
+    One attempt only: a 403/429/captcha is recorded in self.blocks and the page is never retried around."""
+    self.__dict__.setdefault("blocks", [])
+    if not self.robots_ok(url):
+        self.blocks.append((url, "robots"))
+        return None, None, "robots"
+    seen = []
+    old_retries, old_log = self.retries, self.log
+    self.retries, self.log = 0, (lambda *a: seen.append(" ".join(str(x) for x in a)))
+    try:
+        body, meta = self.get(url, max_age_days=max_age_days)
+    finally:
+        self.retries, self.log = old_retries, old_log
+    if body is None:
+        code = next((s.split("HTTP ")[1].split()[0] for s in seen if "HTTP " in s), None)
+        reason = "blocked:%s" % code if code in ("403", "429", "401", "503") else ("unreachable" if code is None else "http:%s" % code)
+        self.blocks.append((url, reason))
+        return None, None, reason
+    low = body[:6000].lower()
+    if any(w in low for w in ("captcha", "access denied", "are you a robot", "unusual traffic")) and len(body) < 20000:
+        self.blocks.append((url, "captcha"))
+        return None, None, "captcha"
+    return body, meta, None
+
+
+Fetcher._robots, Fetcher.robots_ok, Fetcher.get_polite = _robots, robots_ok, get_polite

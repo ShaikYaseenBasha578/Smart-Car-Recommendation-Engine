@@ -287,3 +287,4 @@ knowledge_base/runs/*/staging.db
 knowledge_base/runs/*/*/before.db
 knowledge_base/runs/*/*/staging.db
 kbpipe.config.json
+kbpipe/tests/fixtures/reviews/
