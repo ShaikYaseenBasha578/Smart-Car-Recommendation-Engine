@@ -243,34 +243,39 @@ def test_unrated_ordering_5_over_4_over_unrated_over_1(body):
     assert o["Rated5"] > o["Rated4"] > o["Unrated"] > o["Rated1"], o
 
 
-def test_unrated_prior_is_the_segment_median_and_still_unknown_for_coverage():
+def test_unrated_prior_is_one_star_below_the_median_and_still_unknown_for_coverage():
     df, vid = _two_segment_frame()
     table, _ = _star_scores(df, vid, "suv")
     crit = compute_criteria(df)
     uid, r4 = vid["suv-Unrated"], vid["suv-Rated4"]
-    # median 4 -> the unrated car's safety value equals the 4-star twin's (prior = 4/5)
-    assert crit.values.loc[uid, "safety"] == pytest.approx(crit.values.loc[r4, "safety"])
-    # ... but the star field is still unknown (3 of 10 of the safety field weight), and the car is flagged
+    # median 4 -> prior would be 3 stars: the unrated car's safety value is below the 4-star twin's
+    assert crit.values.loc[uid, "safety"] < crit.values.loc[r4, "safety"]
+    # ... and the star field is still unknown (3 of 10 of the safety field weight), and the car is flagged
     assert crit.unknown_frac.loc[uid, "safety"] == pytest.approx(0.3)
     assert table.loc[uid, "partial_unknown"]["safety"] == pytest.approx(0.3)
     assert table.loc[uid, "coverage"] < table.loc[r4, "coverage"]
     assert "unrated_safety" in table.loc[uid, "flags"]
     # nothing displays or implies a rating: the detail carries no star score for the unrated car
     star = next(d for d in crit.detail[uid]["safety"] if d["field"] == "safety_stars_adult")
-    assert star["raw"] is None and star["score"] is None and star["prior_score"] == pytest.approx(0.8)
+    assert star["raw"] is None and star["score"] is None and star["prior_score"] == pytest.approx(0.6)
 
 
-@pytest.mark.parametrize("body,median_stars", [("suv", 4), ("estate", 5)])
-def test_coverage_charge_puts_unrated_strictly_below_a_car_rated_at_the_median(body, median_stars):
-    """When the segment median is 4 or higher the prior ties (or beats) a 4-star car before the coverage charge;
-    the charge must make the unrated car strictly lower than a car rated at the median."""
+@pytest.mark.parametrize("body,prior", [("suv", 0.6), ("hatchback", 0.6), ("estate", 0.8)])
+def test_prior_is_one_star_below_the_median_with_a_floor_of_three(body, prior):
+    """median 4 -> 3 stars; median 3 -> 2 floored to 3; median 5 -> 4 (equal to a 4-star car before the charge)."""
     df, vid = _two_segment_frame()
+    crit = compute_criteria(df)
+    star = next(d for d in crit.detail[vid[f"{body}-Unrated"]]["safety"] if d["field"] == "safety_stars_adult")
+    assert star["prior_score"] == pytest.approx(prior)
     table, o = _star_scores(df, vid, body)
-    at_median = {4: "Rated4", 5: "Rated5"}[median_stars]
-    assert o["Unrated"] < o[at_median]
-    assert o["Unrated"] > o["Rated1"]
-    # raw (before the charge) the two are equal at the median
-    assert table.loc[vid[f"{body}-Unrated"], "spec"] == pytest.approx(table.loc[vid[f"{body}-{at_median}"], "spec"])
+    assert o["Rated5"] > o["Rated4"] > o["Unrated"] > o["Rated1"]
+
+
+def test_estate_unrated_is_equal_to_the_4_star_car_before_the_coverage_charge_and_below_after():
+    df, vid = _two_segment_frame()
+    table, o = _star_scores(df, vid, "estate")
+    assert table.loc[vid["estate-Unrated"], "spec"] == pytest.approx(table.loc[vid["estate-Rated4"], "spec"])
+    assert o["Unrated"] < o["Rated4"]
 
 
 def test_unrated_prior_uses_only_the_crash_rating_field():
@@ -290,8 +295,8 @@ def test_whole_catalogue_median_for_a_tiny_segment():
     df = make_frame(rows)
     crit = compute_criteria(df)
     star = next(d for d in crit.detail[len(rows)]["safety"] if d["field"] == "safety_stars_adult")
-    # the coupe segment has no rated model: falls back to the whole catalogue (median 4)
-    assert star["prior_score"] == pytest.approx(0.8)
+    # the coupe segment has no rated model: falls back to the whole catalogue (median 4, prior 3 stars)
+    assert star["prior_score"] == pytest.approx(0.6)
 
 
 def test_one_star_versus_unrated_numbers():
@@ -307,3 +312,39 @@ def test_fully_unknown_criterion_stays_fully_unknown():
     assert "comfort_features" in table.loc[1, "unknown_criteria"]
     assert "comfort_features" not in table.loc[1, "partial_unknown"]
     assert crit.unknown_frac.loc[1, "comfort_features"] == 1.0
+
+
+# ------------------------------------------------------------------ real catalogue: crash-rating ordering per segment
+
+def real_segment_scores(body):
+    """Four copies of one real variant of segment `body` (identical in every cell except the crash rating), scored
+    against the real catalogue's reference on a safety-weighted query. Returns ({label: overall}, segment median)."""
+    from services.catalogue import get_catalogue
+    from services.recsys.criteria import catalogue_reference
+    cat = get_catalogue()
+    seg = cat[cat["body_type"] == body]
+    base = seg.sort_values("variant_id").iloc[len(seg) // 2].copy()
+    rows = []
+    for k, (label, stars) in enumerate([("5", 5.0), ("4", 4.0), ("unrated", float("nan")), ("1", 1.0)]):
+        r = base.copy()
+        r["safety_stars_adult"] = stars
+        r["variant_id"] = 900000 + k
+        r["model"] = f"Probe-{label}"
+        r.name = 900000 + k
+        rows.append(r)
+    cands = pd.DataFrame(rows)
+    table, _ = score_candidates(cands, intent(**SAFETY_QUERY), evidence=NO_EVIDENCE, reference=catalogue_reference(cat))
+    per_model = seg.groupby(["make", "model"])["safety_stars_adult"].first().dropna().astype(float)
+    return {lab: float(table.loc[900000 + k, "overall"]) for k, lab in enumerate(["5", "4", "unrated", "1"])}, per_model
+
+
+def _rated_segments():
+    from services.catalogue import get_catalogue
+    cat = get_catalogue()
+    return sorted(b for b, g in cat.groupby("body_type") if g["safety_stars_adult"].notna().any())
+
+
+@pytest.mark.parametrize("body", _rated_segments())
+def test_real_catalogue_ordering_5_over_4_over_unrated_over_1(body):
+    o, known = real_segment_scores(body)
+    assert o["5"] > o["4"] > o["unrated"] > o["1"], (body, o, "segment median of known ratings:", known.median())

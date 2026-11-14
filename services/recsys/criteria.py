@@ -13,8 +13,8 @@ Method, stated once:
       - boolean field  -> 1.0 if True, 0.0 if known False. These are absolute (a feature either
         is there or not); relative scaling of a yes/no makes no sense.
       - price          -> 1 - segment percentile of the ex-showroom price (lower is better).
-      - crash stars    -> stars / 5 when rated (absolute). Unrated: the segment median of the known ratings stands
-        in as a neutral prior (value only; the star still counts as unknown for coverage, nothing shows a rating).
+      - crash stars    -> stars / 5 when rated (absolute). Unrated: one star below the segment median of the known
+        ratings (floor 3 stars) stands in as a prior (value only; the star still counts as unknown for coverage, nothing shows a rating).
   * A *criterion value* is the weighted mean of its KNOWN field scores. It is None only when no
     field is known. A blank is never 0 and never "absent". Each criterion also returns its
     *unknown fraction*: the share of its applicable field weight that is unknown for the row. score.py
@@ -260,9 +260,13 @@ def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -
     known = (stars / 5.0).clip(0, 1)
     # unrated: the value in the criterion is the segment median of the known crash ratings (neutral prior), but the
     # star still counts as unknown for the coverage factor, and no rating is shown or implied anywhere
-    prior = ref.median("stars", seg, allc).where(known.isna())
+    # prior = ONE STAR BELOW the segment median of known ratings, floored at 3 stars (config), so an unrated car never
+    # outranks an otherwise identical rated car at the median
+    med = ref.median("stars", seg, allc) * 5.0
+    prior = ((med - config.CRASH_PRIOR_STARS_BELOW_MEDIAN).clip(lower=config.CRASH_PRIOR_FLOOR_STARS) / 5.0
+             ).where(known.isna())
     fields.append(("safety_stars_adult", stars, known.fillna(prior), 3.0,
-                   "absolute (stars/5); unrated = segment median as a neutral prior, still unknown for coverage",
+                   "absolute (stars/5); unrated = one star below the segment median (floor 3) as a prior, still unknown for coverage",
                    None, prior.notna()))
     airbags = df["airbags"].map(num)
     fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None, None))

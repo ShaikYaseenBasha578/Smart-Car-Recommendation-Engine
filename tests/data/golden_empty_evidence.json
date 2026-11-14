@@ -6,18 +6,18 @@
     "performance": 0.2463,
     "price": 0.9853,
     "running_cost": 0.6042,
-    "safety": 0.903,
+    "safety": 0.843,
     "space_practicality": 0.3207,
     "tech_assist": 0.1905,
     "value_for_budget": 0.9722
    },
-   "ranking_score": 86.4,
+   "ranking_score": 86.14,
    "scores": {
     "coverage": 0.9871,
     "expert": null,
-    "overall": 0.864,
+    "overall": 0.8614,
     "owner": null,
-    "spec": 0.8657
+    "spec": 0.8631
    },
    "variant_id": 816
   },
@@ -27,18 +27,18 @@
     "performance": 0.0725,
     "price": 0.9591,
     "running_cost": 0.7021,
-    "safety": 0.903,
+    "safety": 0.843,
     "space_practicality": 0.346,
     "tech_assist": 0.2353,
     "value_for_budget": 0.9113
    },
-   "ranking_score": 85.32,
+   "ranking_score": 85.06,
    "scores": {
     "coverage": 0.9763,
     "expert": null,
-    "overall": 0.8532,
+    "overall": 0.8506,
     "owner": null,
-    "spec": 0.8562
+    "spec": 0.8536
    },
    "variant_id": 717
   },
@@ -48,18 +48,18 @@
     "performance": 0.2833,
     "price": 0.9287,
     "running_cost": 0.9938,
-    "safety": 0.803,
+    "safety": 0.743,
     "space_practicality": 0.2879,
     "tech_assist": 0.1905,
     "value_for_budget": 0.5179
    },
-   "ranking_score": 80.61,
+   "ranking_score": 80.36,
    "scores": {
     "coverage": 0.9871,
     "expert": null,
-    "overall": 0.8061,
+    "overall": 0.8036,
     "owner": null,
-    "spec": 0.8077
+    "spec": 0.8051
    },
    "variant_id": 498
   },
@@ -69,18 +69,18 @@
     "performance": 0.3629,
     "price": 0.906,
     "running_cost": 0.9812,
-    "safety": 0.803,
+    "safety": 0.743,
     "space_practicality": 0.2879,
     "tech_assist": 0.2353,
     "value_for_budget": 0.4548
    },
-   "ranking_score": 78.74,
+   "ranking_score": 78.49,
    "scores": {
     "coverage": 0.9763,
     "expert": null,
-    "overall": 0.7874,
+    "overall": 0.7849,
     "owner": null,
-    "spec": 0.7902
+    "spec": 0.7877
    },
    "variant_id": 488
   },
@@ -233,27 +233,6 @@
   {
    "criteria": {
     "comfort_features": 1.0,
-    "performance": 0.6084,
-    "price": 0.1371,
-    "running_cost": 0.875,
-    "safety": 0.903,
-    "space_practicality": 0.5303,
-    "tech_assist": 0.9048,
-    "value_for_budget": 0.8886
-   },
-   "ranking_score": 83.01,
-   "scores": {
-    "coverage": 0.9567,
-    "expert": null,
-    "overall": 0.8301,
-    "owner": null,
-    "spec": 0.8355
-   },
-   "variant_id": 26
-  },
-  {
-   "criteria": {
-    "comfort_features": 1.0,
     "performance": 0.8441,
     "price": 0.0701,
     "safety": 0.9924,
@@ -290,6 +269,27 @@
     "spec": 0.8411
    },
    "variant_id": 427
+  },
+  {
+   "criteria": {
+    "comfort_features": 1.0,
+    "performance": 0.6084,
+    "price": 0.1371,
+    "running_cost": 0.875,
+    "safety": 0.843,
+    "space_practicality": 0.5303,
+    "tech_assist": 0.9048,
+    "value_for_budget": 0.8886
+   },
+   "ranking_score": 82.06,
+   "scores": {
+    "coverage": 0.9567,
+    "expert": null,
+    "overall": 0.8206,
+    "owner": null,
+    "spec": 0.826
+   },
+   "variant_id": 26
   },
   {
    "criteria": {
@@ -338,18 +338,18 @@
     "comfort_features": 1.0,
     "performance": 0.7002,
     "price": 0.0689,
-    "safety": 0.903,
+    "safety": 0.843,
     "space_practicality": 0.5013,
     "tech_assist": 0.7895,
     "value_for_budget": 0.7628
    },
-   "ranking_score": 75.97,
+   "ranking_score": 74.87,
    "scores": {
     "coverage": 0.7987,
     "expert": null,
-    "overall": 0.7597,
+    "overall": 0.7487,
     "owner": null,
-    "spec": 0.7833
+    "spec": 0.772
    },
    "variant_id": 405
   }
@@ -403,18 +403,18 @@
     "performance": 0.4192,
     "price": 0.1597,
     "running_cost": 0.6528,
-    "safety": 0.903,
+    "safety": 0.843,
     "space_practicality": 0.6843,
     "tech_assist": 0.9048,
     "value_for_budget": 0.7936
    },
-   "ranking_score": 75.75,
+   "ranking_score": 74.76,
    "scores": {
     "coverage": 0.8939,
     "expert": null,
-    "overall": 0.7575,
+    "overall": 0.7476,
     "owner": null,
-    "spec": 0.7698
+    "spec": 0.7597
    },
    "variant_id": 130
   },
@@ -445,18 +445,18 @@
     "performance": 0.6528,
     "price": 0.2674,
     "running_cost": 0.4861,
-    "safety": 0.8889,
+    "safety": 0.8289,
     "space_practicality": 0.7269,
     "tech_assist": 0.4118,
     "value_for_budget": 0.7043
    },
-   "ranking_score": 66.07,
+   "ranking_score": 65.08,
    "scores": {
     "coverage": 0.9075,
     "expert": null,
-    "overall": 0.6607,
+    "overall": 0.6508,
     "owner": null,
-    "spec": 0.67
+    "spec": 0.6599
    },
    "variant_id": 803
   },
@@ -466,18 +466,18 @@
     "performance": 0.5486,
     "price": 0.031,
     "running_cost": 0.125,
-    "safety": 0.91,
+    "safety": 0.85,
     "space_practicality": 0.3917,
     "tech_assist": 0.6471,
     "value_for_budget": 0.8511
    },
-   "ranking_score": 60.65,
+   "ranking_score": 59.65,
    "scores": {
     "coverage": 0.9284,
     "expert": null,
-    "overall": 0.6065,
+    "overall": 0.5965,
     "owner": null,
-    "spec": 0.6131
+    "spec": 0.603
    },
    "variant_id": 743
   }
@@ -590,27 +590,6 @@
   {
    "criteria": {
     "comfort_features": 1.0,
-    "performance": 0.4274,
-    "price": 0.4601,
-    "running_cost": 0.8958,
-    "safety": 0.903,
-    "space_practicality": 0.5265,
-    "tech_assist": 0.4118,
-    "value_for_budget": 0.8389
-   },
-   "ranking_score": 75.04,
-   "scores": {
-    "coverage": 0.888,
-    "expert": null,
-    "overall": 0.7504,
-    "owner": null,
-    "spec": 0.7632
-   },
-   "variant_id": 529
-  },
-  {
-   "criteria": {
-    "comfort_features": 1.0,
     "performance": 0.6811,
     "price": 0.4429,
     "running_cost": 0.625,
@@ -628,6 +607,27 @@
     "spec": 0.7452
    },
    "variant_id": 764
+  },
+  {
+   "criteria": {
+    "comfort_features": 1.0,
+    "performance": 0.4274,
+    "price": 0.4601,
+    "running_cost": 0.8958,
+    "safety": 0.843,
+    "space_practicality": 0.5265,
+    "tech_assist": 0.4118,
+    "value_for_budget": 0.8389
+   },
+   "ranking_score": 73.6,
+   "scores": {
+    "coverage": 0.888,
+    "expert": null,
+    "overall": 0.736,
+    "owner": null,
+    "spec": 0.7485
+   },
+   "variant_id": 529
   },
   {
    "criteria": {
@@ -674,27 +674,6 @@
   },
   {
    "criteria": {
-    "comfort_features": 0.6875,
-    "performance": 0.6067,
-    "price": 0.7732,
-    "running_cost": 0.9437,
-    "safety": 0.803,
-    "space_practicality": 0.2879,
-    "tech_assist": 0.7143,
-    "value_for_budget": 0.9937
-   },
-   "ranking_score": 79.97,
-   "scores": {
-    "coverage": 0.9634,
-    "expert": null,
-    "overall": 0.7997,
-    "owner": null,
-    "spec": 0.8041
-   },
-   "variant_id": 505
-  },
-  {
-   "criteria": {
     "comfort_features": 1.0,
     "performance": 0.7044,
     "price": 0.6794,
@@ -716,24 +695,24 @@
   },
   {
    "criteria": {
-    "comfort_features": 1.0,
-    "performance": 0.912,
-    "price": 0.149,
-    "running_cost": 0.875,
-    "safety": 0.8889,
-    "space_practicality": 0.7269,
-    "tech_assist": 1.0,
-    "value_for_budget": 0.6068
+    "comfort_features": 0.6875,
+    "performance": 0.6067,
+    "price": 0.7732,
+    "running_cost": 0.9437,
+    "safety": 0.743,
+    "space_practicality": 0.2879,
+    "tech_assist": 0.7143,
+    "value_for_budget": 0.9937
    },
-   "ranking_score": 79.03,
+   "ranking_score": 79.24,
    "scores": {
-    "coverage": 0.9479,
+    "coverage": 0.9634,
     "expert": null,
-    "overall": 0.7903,
+    "overall": 0.7924,
     "owner": null,
-    "spec": 0.7966
+    "spec": 0.7968
    },
-   "variant_id": 807
+   "variant_id": 505
   },
   {
    "criteria": {
@@ -759,23 +738,23 @@
   {
    "criteria": {
     "comfort_features": 1.0,
-    "performance": 0.6084,
-    "price": 0.1371,
+    "performance": 0.912,
+    "price": 0.149,
     "running_cost": 0.875,
-    "safety": 0.903,
-    "space_practicality": 0.5303,
-    "tech_assist": 0.9048,
-    "value_for_budget": 0.7771
+    "safety": 0.8289,
+    "space_practicality": 0.7269,
+    "tech_assist": 1.0,
+    "value_for_budget": 0.6068
    },
-   "ranking_score": 77.04,
+   "ranking_score": 78.31,
    "scores": {
-    "coverage": 0.9634,
+    "coverage": 0.9479,
     "expert": null,
-    "overall": 0.7704,
+    "overall": 0.7831,
     "owner": null,
-    "spec": 0.7746
+    "spec": 0.7892
    },
-   "variant_id": 26
+   "variant_id": 807
   },
   {
    "criteria": {
@@ -800,22 +779,43 @@
   },
   {
    "criteria": {
+    "comfort_features": 1.0,
+    "performance": 0.6084,
+    "price": 0.1371,
+    "running_cost": 0.875,
+    "safety": 0.843,
+    "space_practicality": 0.5303,
+    "tech_assist": 0.9048,
+    "value_for_budget": 0.7771
+   },
+   "ranking_score": 76.31,
+   "scores": {
+    "coverage": 0.9634,
+    "expert": null,
+    "overall": 0.7631,
+    "owner": null,
+    "spec": 0.7673
+   },
+   "variant_id": 26
+  },
+  {
+   "criteria": {
     "comfort_features": 0.6154,
     "performance": 0.6547,
     "price": 0.7279,
     "running_cost": 0.9229,
-    "safety": 0.803,
+    "safety": 0.743,
     "space_practicality": 0.2879,
     "tech_assist": 0.6471,
     "value_for_budget": 0.8562
    },
-   "ranking_score": 76.01,
+   "ranking_score": 75.28,
    "scores": {
     "coverage": 0.9326,
     "expert": null,
-    "overall": 0.7601,
+    "overall": 0.7528,
     "owner": null,
-    "spec": 0.7679
+    "spec": 0.7605
    },
    "variant_id": 493
   },
@@ -885,47 +885,6 @@
   {
    "criteria": {
     "comfort_features": 1.0,
-    "performance": 0.912,
-    "price": 0.149,
-    "running_cost": 0.875,
-    "safety": 0.8889,
-    "space_practicality": 0.7269,
-    "tech_assist": 1.0,
-    "value_for_budget": 0.6068
-   },
-   "ranking_score": 80.61,
-   "scores": {
-    "coverage": 0.9371,
-    "expert": null,
-    "overall": 0.8061,
-    "owner": null,
-    "spec": 0.8138
-   },
-   "variant_id": 807
-  },
-  {
-   "criteria": {
-    "comfort_features": 1.0,
-    "performance": 0.9635,
-    "price": 0.0333,
-    "safety": 0.9875,
-    "space_practicality": 0.7604,
-    "tech_assist": 0.9048,
-    "value_for_budget": 0.6145
-   },
-   "ranking_score": 80.05,
-   "scores": {
-    "coverage": 0.8418,
-    "expert": null,
-    "overall": 0.8005,
-    "owner": null,
-    "spec": 0.8199
-   },
-   "variant_id": 288
-  },
-  {
-   "criteria": {
-    "comfort_features": 1.0,
     "performance": 0.9133,
     "price": 0.1391,
     "safety": 0.903,
@@ -946,6 +905,27 @@
   {
    "criteria": {
     "comfort_features": 1.0,
+    "performance": 0.912,
+    "price": 0.149,
+    "running_cost": 0.875,
+    "safety": 0.8289,
+    "space_practicality": 0.7269,
+    "tech_assist": 1.0,
+    "value_for_budget": 0.6068
+   },
+   "ranking_score": 79.54,
+   "scores": {
+    "coverage": 0.9371,
+    "expert": null,
+    "overall": 0.7954,
+    "owner": null,
+    "spec": 0.803
+   },
+   "variant_id": 807
+  },
+  {
+   "criteria": {
+    "comfort_features": 1.0,
     "performance": 0.6886,
     "price": 0.4508,
     "safety": 0.903,
@@ -962,6 +942,26 @@
     "spec": 0.8063
    },
    "variant_id": 165
+  },
+  {
+   "criteria": {
+    "comfort_features": 1.0,
+    "performance": 0.9635,
+    "price": 0.0333,
+    "safety": 0.9275,
+    "space_practicality": 0.7604,
+    "tech_assist": 0.9048,
+    "value_for_budget": 0.6145
+   },
+   "ranking_score": 78.85,
+   "scores": {
+    "coverage": 0.8418,
+    "expert": null,
+    "overall": 0.7885,
+    "owner": null,
+    "spec": 0.8077
+   },
+   "variant_id": 288
   },
   {
    "criteria": {
@@ -1012,18 +1012,18 @@
     "comfort_features": 0.6875,
     "performance": 0.7569,
     "price": 0.4179,
-    "safety": 0.91,
+    "safety": 0.85,
     "space_practicality": 0.5167,
     "tech_assist": 0.2857,
     "value_for_budget": 0.982
    },
-   "ranking_score": 71.76,
+   "ranking_score": 70.59,
    "scores": {
     "coverage": 0.7821,
     "expert": null,
-    "overall": 0.7176,
+    "overall": 0.7059,
     "owner": null,
-    "spec": 0.7418
+    "spec": 0.7298
    },
    "variant_id": 264
   },
@@ -1032,18 +1032,18 @@
     "comfort_features": 0.4375,
     "performance": 0.4958,
     "price": 0.3345,
-    "safety": 0.91,
+    "safety": 0.85,
     "space_practicality": 0.4583,
     "tech_assist": 0.6842,
     "value_for_budget": 0.9962
    },
-   "ranking_score": 69.79,
+   "ranking_score": 68.62,
    "scores": {
     "coverage": 0.7715,
     "expert": null,
-    "overall": 0.6979,
+    "overall": 0.6862,
     "owner": null,
-    "spec": 0.7226
+    "spec": 0.7105
    },
    "variant_id": 362
   },
@@ -1073,18 +1073,18 @@
     "performance": 0.6375,
     "price": 0.3239,
     "running_cost": 0.9688,
-    "safety": 0.81,
+    "safety": 0.75,
     "space_practicality": 0.525,
     "tech_assist": 0.3333,
     "value_for_budget": 0.8076
    },
-   "ranking_score": 66.25,
+   "ranking_score": 65.25,
    "scores": {
     "coverage": 0.9338,
     "expert": null,
-    "overall": 0.6625,
+    "overall": 0.6525,
     "owner": null,
-    "spec": 0.6691
+    "spec": 0.6591
    },
    "variant_id": 66
   },
@@ -1113,18 +1113,18 @@
     "comfort_features": 0.0,
     "performance": 0.7972,
     "price": 0.5753,
-    "safety": 0.9,
+    "safety": 0.8333,
     "space_practicality": 0.65,
     "tech_assist": 0.2353,
     "value_for_budget": 0.7159
    },
-   "ranking_score": 56.98,
+   "ranking_score": 55.69,
    "scores": {
     "coverage": 0.7231,
     "expert": null,
-    "overall": 0.5698,
+    "overall": 0.5569,
     "owner": null,
-    "spec": 0.5944
+    "spec": 0.581
    },
    "variant_id": 231
   },
@@ -1134,18 +1134,18 @@
     "performance": 0.7458,
     "price": 0.3434,
     "running_cost": 0.5938,
-    "safety": 0.81,
+    "safety": 0.75,
     "space_practicality": 0.7583,
     "tech_assist": 0.1905,
     "value_for_budget": 0.6627
    },
-   "ranking_score": 56.47,
+   "ranking_score": 55.47,
    "scores": {
     "coverage": 0.9497,
     "expert": null,
-    "overall": 0.5647,
+    "overall": 0.5547,
     "owner": null,
-    "spec": 0.569
+    "spec": 0.5589
    },
    "variant_id": 478
   },
@@ -1155,18 +1155,18 @@
     "performance": 0.5208,
     "price": 0.8146,
     "running_cost": 0.9062,
-    "safety": 0.71,
+    "safety": 0.65,
     "space_practicality": 0.375,
     "tech_assist": 0.1905,
     "value_for_budget": 0.7987
    },
-   "ranking_score": 56.2,
+   "ranking_score": 55.2,
    "scores": {
     "coverage": 0.9497,
     "expert": null,
-    "overall": 0.562,
+    "overall": 0.552,
     "owner": null,
-    "spec": 0.5663
+    "spec": 0.5562
    },
    "variant_id": 514
   },
@@ -1176,18 +1176,18 @@
     "performance": 0.3792,
     "price": 0.7896,
     "running_cost": 0.7812,
-    "safety": 0.81,
+    "safety": 0.75,
     "space_practicality": 0.1917,
     "tech_assist": 0.1905,
     "value_for_budget": 0.796
    },
-   "ranking_score": 52.12,
+   "ranking_score": 51.12,
    "scores": {
     "coverage": 0.9497,
     "expert": null,
-    "overall": 0.5212,
+    "overall": 0.5112,
     "owner": null,
-    "spec": 0.5252
+    "spec": 0.5151
    },
    "variant_id": 522
   }
@@ -1299,26 +1299,6 @@
   {
    "criteria": {
     "comfort_features": 1.0,
-    "performance": 0.9635,
-    "price": 0.0333,
-    "safety": 0.9875,
-    "space_practicality": 0.7604,
-    "tech_assist": 0.9048,
-    "value_for_budget": 0.6145
-   },
-   "ranking_score": 80.97,
-   "scores": {
-    "coverage": 0.7877,
-    "expert": null,
-    "overall": 0.8097,
-    "owner": null,
-    "spec": 0.8363
-   },
-   "variant_id": 288
-  },
-  {
-   "criteria": {
-    "comfort_features": 1.0,
     "performance": 0.6185,
     "price": 0.6945,
     "running_cost": 0.6833,
@@ -1340,21 +1320,41 @@
   {
    "criteria": {
     "comfort_features": 1.0,
+    "performance": 0.9635,
+    "price": 0.0333,
+    "safety": 0.9275,
+    "space_practicality": 0.7604,
+    "tech_assist": 0.9048,
+    "value_for_budget": 0.6145
+   },
+   "ranking_score": 78.49,
+   "scores": {
+    "coverage": 0.7877,
+    "expert": null,
+    "overall": 0.7849,
+    "owner": null,
+    "spec": 0.8107
+   },
+   "variant_id": 288
+  },
+  {
+   "criteria": {
+    "comfort_features": 1.0,
     "performance": 0.912,
     "price": 0.149,
     "running_cost": 0.875,
-    "safety": 0.8889,
+    "safety": 0.8289,
     "space_practicality": 0.7269,
     "tech_assist": 1.0,
     "value_for_budget": 0.6068
    },
-   "ranking_score": 79.49,
+   "ranking_score": 77.22,
    "scores": {
     "coverage": 0.8719,
     "expert": null,
-    "overall": 0.7949,
+    "overall": 0.7722,
     "owner": null,
-    "spec": 0.8105
+    "spec": 0.7874
    },
    "variant_id": 807
   }

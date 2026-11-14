@@ -18,6 +18,11 @@ OWNER_NO_COUNT_SCALE = 0.5
 REQUIRED_ITEM_WEIGHT = 0.10
 MISSING_MULTIPLIER = 2.0
 
+# unknown crash rating: the safety criterion uses a prior of (segment median of known ratings - this many stars),
+# never below the floor; the field still counts as unknown for coverage and is never shown as a rating
+CRASH_PRIOR_STARS_BELOW_MEDIAN = 1.0
+CRASH_PRIOR_FLOOR_STARS = 3.0
+
 # price criterion (value = 1 - price percentile inside the car's segment; lower price is better), weight as a share of
 # the spec class. No budget in the query: PRICE_DEFAULT_WEIGHT. Cheap / value wording ("cheapest", "paisa vasool"):
 # PRICE_CHEAP_WEIGHT. A stated budget without cheap wording: 0 (value_for_budget already scores price vs the budget).
