@@ -148,6 +148,18 @@ MODEL_ALIASES = {
     "hycross": ["Innova Hycross"],
 }
 
+# Price-priority wording ("cheapest", "value for money", "paisa vasool", "sabse sasti", "kifayati" and close
+# variants). The ONE list: it sets intent["cheap_intent"] (price gets a large weight in the recommender) and is also
+# the "budget" use case below. A bare "budget" counts only as an adjective ("budget car", "budget friendly"), never
+# as the budget cue of "budget 12 lakh" / "my budget is".
+CHEAP_INTENT_PATTERN = (
+    r"cheap(?:est|er|ish|ly)?|inexpensive|low[- ]?(?:cost|price[ds]?)|affordable|economy\s*car|pocket[- ]friendly"
+    r"|wallet[- ]friendly|value[- ]?(?:for|4)[- ]?(?:money|mony|moneys)|vfm|paisa[- ]?vasool|paise[- ]?vasool"
+    r"|sast(?:i|a|e|ha|hi)|sabse\s*sast(?:i|a|e)|kam\s*(?:daam|dam|keemat|kimat|price)(?:\s*(?:ki|ka|wali|wala))?"
+    r"|kifayati|kifayat|budget[- ]?(?:friendly|car|cars|suv|suvs|hatchback|sedan|option|options|segment|wali|wala|gaadi|vehicle)"
+    r"|(?:lowest|least|minimum)\s*(?:price|priced|cost)"
+)
+
 # First match wins; same label set as the ML use_case model (minus "general").
 USE_CASE_PATTERNS = [
     ("premium", r"luxury|luxurious|premium"),
@@ -155,7 +167,7 @@ USE_CASE_PATTERNS = [
     ("family", r"family|families|parivar|ghar\s*wal(?:e|on)"),
     ("highway", r"highway|long\s*drives?|road\s*trips?|touring|outstation"),
     ("student", r"students?|college|first\s*car"),
-    ("budget", r"cheap|cheapest|affordable|low\s*cost|sasti|budget[- ]friendly|value\s*for\s*money"),
+    ("budget", CHEAP_INTENT_PATTERN),
     ("commute", r"commute|commuting|office|daily\s*(?:use|drive|driving)"),
     ("city", r"city|traffic|shehar"),
     ("enthusiast", r"enthusiast|performance|sporty|fun\s*to\s*drive|driving\s*pleasure"),
@@ -652,6 +664,7 @@ def _classify_content(out: dict) -> tuple[bool, bool]:
     has_content = (
         any(out[f] for f in _CONTENT_LIST_FIELDS)
         or any(out[f] is not None for f in _CONTENT_SCALAR_FIELDS)
+        or out["cheap_intent"]
         or out["budget"]["min"] is not None or out["budget"]["max"] is not None
         or bool(trans["family"] or trans["include_types"] or trans["exclude_types"])
     )
@@ -689,6 +702,7 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
         "max_mileage_kmpl": None,
         "max_mileage_km_per_kg": None,
         "use_case": None,
+        "cheap_intent": False,
         "exclude_features": [],
         "exclude_makes": [],
         "exclude_fuel_types": [],
@@ -758,6 +772,11 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
             out["use_case"] = label
             trace.append(f"use_case={label} <- rule '{m.group(0).strip()}'")
             break
+
+    cheap = next(iter(_find(CHEAP_INTENT_PATTERN, use_case_text)), None)
+    if cheap:
+        out["cheap_intent"] = True
+        trace.append(f"cheap_intent <- rule '{cheap.group(0).strip()}'")
 
     out["vague"], out["unsupported_only"] = _classify_content(out)
 

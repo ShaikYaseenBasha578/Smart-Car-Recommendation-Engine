@@ -90,7 +90,9 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     weights = weights or build_weights(intent)
     evidence = evidence if evidence is not None else get_evidence()
     budget = budget if budget is not None else _intent_get(intent, "budget", None)
-    criteria = criteria or compute_criteria(cands, budget, reference)
+    # cheap wording and no body type named: candidates span segments, so price is ranked across the whole catalogue
+    cheap_across = bool(_intent_get(intent, "cheap_intent", False)) and not _intent_get(intent, "body_types", [])
+    criteria = criteria or compute_criteria(cands, budget, reference, price_whole_catalogue=cheap_across)
     cols = ["overall", "spec", "expert", "owner", "coverage", "unknown_share", "values", "weights",
             "required", "flags", "unknown_criteria", "partial_unknown"]
     if len(cands) == 0:

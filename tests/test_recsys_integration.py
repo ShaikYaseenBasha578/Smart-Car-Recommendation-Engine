@@ -52,7 +52,7 @@ def test_non_vague_query_is_not_flagged():
 
 
 def _assumed_intent(**assumed):
-    base = recommend("budget car under 12 lakh", evidence=NO_EVIDENCE)["intent"]
+    base = recommend("car under 12 lakh", evidence=NO_EVIDENCE)["intent"]   # not "budget car": that wording now means cheap intent
     return dict(base, assumed={"body_types": [], "fuel_types": [], **assumed})
 
 

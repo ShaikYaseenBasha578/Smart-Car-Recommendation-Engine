@@ -211,6 +211,9 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "violations": violations,
         "match_label": ex["match_label"],
         "flags": list(srow["flags"]),
+        # requested features this variant is not known to have (named so the user sees what the cheapest fit lacks)
+        "missing_features": [item.split(":", 1)[1] for item, st in srow["required"].items()
+                             if item.startswith("feature:") and st != "met"],
     }
 
 
@@ -290,6 +293,7 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         table["overall"] = [None if is_unknown(o) else min(1.0, float(o) + config.ASSUMED_BOOST * bool(matches[i]))
                             for i, o in table["overall"].items()]
     scored = cands.join(table)
+    scored["assumed_match"] = pd.Series({i: bool(m) for i, m in matches.items()}).reindex(scored.index).fillna(False)
     variant_counts = cands["model"].value_counts()
     chosen = diversify(scored, intent)
 

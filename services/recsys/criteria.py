@@ -12,6 +12,7 @@ Method, stated once:
         everyone else under min-max, and percentile needs no hand-set point values.
       - boolean field  -> 1.0 if True, 0.0 if known False. These are absolute (a feature either
         is there or not); relative scaling of a yes/no makes no sense.
+      - price          -> 1 - segment percentile of the ex-showroom price (lower is better).
       - crash stars    -> stars / 5 when rated (absolute). Unrated: the segment median of the known ratings stands
         in as a neutral prior (value only; the star still counts as unknown for coverage, nothing shows a rating).
   * A *criterion value* is the weighted mean of its KNOWN field scores. It is None only when no
@@ -40,7 +41,7 @@ from services.recsys.common import is_unknown, num, pct_rank
 
 SPEC_CRITERIA = [
     "value_for_budget", "safety", "running_cost", "comfort_features",
-    "space_practicality", "performance", "tech_assist",
+    "space_practicality", "performance", "tech_assist", "price",
 ]
 SPEC_LABELS = {
     "value_for_budget": "Value for money",
@@ -50,6 +51,7 @@ SPEC_LABELS = {
     "space_practicality": "Space & practicality",
     "performance": "Performance",
     "tech_assist": "Tech & driver assist",
+    "price": "Price (lower is better)",
 }
 
 # boolean columns (catalogue name -> weight inside the criterion)
@@ -152,6 +154,8 @@ def _slot_inputs(df: pd.DataFrame) -> Dict[str, Tuple[pd.Series, pd.Series, pd.S
     _, p2w, power_only = _p2w(df)
     out["p2w"], out["power_only"] = (p2w, seg, allc), (power_only, seg, allc)
     out["fpr"] = (_fpr(df), seg, allc)
+    out["price"] = (df["price_ex_showroom"].map(num).astype(float), seg, allc)
+    out["price_all"] = (df["price_ex_showroom"].map(num).astype(float), allc, allc)
     out["stars"] = ((df["safety_stars_adult"].map(num).astype(float) / 5.0).clip(0, 1), seg, allc)
     _, rc_raw = _running_cost_raw(df)
     out["running_cost"] = (rc_raw, seg + "|" + df["fuel_type"].astype(str), df["fuel_type"].astype(str))
@@ -360,8 +364,19 @@ def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[d
     return fields
 
 
+def _price(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference, whole_catalogue: bool = False) -> List[Field]:
+    """Price relative to the car's segment (same reference populations): 1 - percentile, so the cheapest variant
+    of a segment scores near 1 and the dearest near 0. Not a budget fit; weights.py decides how much it counts.
+    `whole_catalogue` (cheap wording and no body type named, so the candidates span segments): the percentile is
+    taken over the whole catalogue, so "cheapest car" ranks by absolute price, not by rank inside each body type."""
+    price = df["price_ex_showroom"].map(num).astype(float)
+    slot, basis = ("price_all", "whole-catalogue") if whole_catalogue else ("price", "segment")
+    return [("price_ex_showroom", price, 1.0 - ref.percentile(slot, price, seg, allc), 1.0,
+             f"1 - {basis} percentile of price (lower is better)", None, None)]
+
+
 def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
-                     reference: Optional[Reference] = None) -> CriteriaResult:
+                     reference: Optional[Reference] = None, price_whole_catalogue: bool = False) -> CriteriaResult:
     """Spec criteria for every row of `df`. Percentiles come from `reference` (the full-catalogue populations;
     api.py always passes it). Without one, the populations are built from `df` itself (hand-built frames)."""
     index = df.index
@@ -380,6 +395,7 @@ def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
         "space_practicality": _space(df, seg, allc, ref),
         "performance": _performance(df, seg, allc, ref),
         "tech_assist": _tech(df),
+        "price": _price(df, seg, allc, ref, price_whole_catalogue),
     }
     values = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
     unknown_frac = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)

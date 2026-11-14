@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
+from services.recsys import config
 from services.recsys.criteria import SPEC_CRITERIA, SPEC_LABELS
 from services.recsys.evidence import EXPERT_CRITERIA, OWNER_CRITERIA, criterion_label
 
@@ -106,6 +107,17 @@ def _signals(intent: Any) -> List[tuple]:
     return out
 
 
+def price_share(intent: Any) -> float:
+    """Weight of the price criterion as a share of the spec class (config): large with cheap/value wording, small by
+    default when no budget is stated, 0 when a budget is stated (value_for_budget already scores price vs it)."""
+    if _get(intent, "cheap_intent", False):
+        return config.PRICE_CHEAP_WEIGHT
+    budget = _get(intent, "budget", {}) or {}
+    if budget.get("min") is not None or budget.get("max") is not None:
+        return 0.0
+    return config.PRICE_DEFAULT_WEIGHT
+
+
 def label_for(criterion: str) -> str:
     return LABELS.get(criterion, criterion)
 
@@ -124,6 +136,12 @@ def build_weights(intent: Any, weight_overrides: Optional[Dict[str, Any]] = None
         for crit, m in boosts.items():
             mult[crit] = min(MAX_MULTIPLIER, mult[crit] * m)
             why[crit].append(reason)
+    pshare = price_share(intent)
+    if _get(intent, "cheap_intent", False):
+        drivers.append("asked for a low price: price prioritised")
+        why["price"].append("asked for a low price: price prioritised")
+    elif pshare > 0:
+        why["price"].append("no budget given: small default weight")
 
     off = set()
     for crit, val in (weight_overrides or {}).items():
@@ -134,20 +152,36 @@ def build_weights(intent: Any, weight_overrides: Optional[Dict[str, Any]] = None
             why[crit].append("switched off")
         elif val is True or val is None:
             continue
+        elif crit == "price":
+            mult[crit] = min(MAX_MULTIPLIER, float(val))
+            pshare = min(0.9, (pshare or config.PRICE_DEFAULT_WEIGHT) * float(val))
+            why[crit].append("set by you")
         else:
             mult[crit] = min(MAX_MULTIPLIER, float(val))
             why[crit].append("set by you")
+    if "price" in off:
+        pshare = 0.0
 
-    raw = {c: (0.0 if c in off else mult[c] * NEUTRAL_BASE.get(c, 1.0)) for c in ALL_CRITERIA}
+    # price keeps a fixed share of the spec class; the other spec criteria share the rest
+    raw = {c: (0.0 if c in off or c == "price" else mult[c] * NEUTRAL_BASE.get(c, 1.0)) for c in ALL_CRITERIA}
+    raw["price"] = pshare
     totals: Dict[str, float] = {}
     for c, w in raw.items():
-        totals[CRITERION_CLASS[c]] = totals.get(CRITERION_CLASS[c], 0.0) + w
+        if c != "price":
+            totals[CRITERION_CLASS[c]] = totals.get(CRITERION_CLASS[c], 0.0) + w
     criteria = {}
     for c in ALL_CRITERIA:
         total = totals[CRITERION_CLASS[c]]
+        if c == "price":
+            weight = pshare
+        elif CRITERION_CLASS[c] == "spec":
+            weight = (raw[c] / total) * (1.0 - pshare) if total > 0 else 0.0
+        else:
+            weight = (raw[c] / total) if total > 0 else 0.0
         criteria[c] = {
             "class": CRITERION_CLASS[c], "label": label_for(c), "multiplier": round(mult[c], 4),
-            "weight": (raw[c] / total) if total > 0 else 0.0, "active": c not in off, "why": why[c],
+            "weight": weight, "active": c not in off,
+            "why": why[c],
         }
     profile = _get(intent, "use_case") if _get(intent, "use_case") in USE_CASE_PROFILES else "neutral"
     return {"profile": profile, "drivers": drivers, "raw": raw, "criteria": criteria}

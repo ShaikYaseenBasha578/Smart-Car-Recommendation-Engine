@@ -93,6 +93,15 @@ def _spec_reason(crit: str, row: pd.Series, value: float, intent: Any) -> Option
                     "fields": ["price_ex_showroom"]}
         return {"text": f"Priced at {format_rupees(p)} with a good feature count for that money",
                 "fields": ["price_ex_showroom"]}
+    if crit == "price":
+        p = num(row["price_ex_showroom"])
+        if p is None:
+            return None
+        pct = int(round(value * 100))
+        cheap = bool(intent.get("cheap_intent") if isinstance(intent, dict) else getattr(intent, "cheap_intent", False))
+        lead = "Price prioritised, as you asked: " if cheap else ""
+        return {"text": f"{lead}{format_rupees(p)}, cheaper than about {pct}% of similar {row['body_type']} cars here",
+                "fields": ["price_ex_showroom", "body_type"]}
     if crit == "comfort_features":
         have = _true_features(row, COMFORT_BOOLS)
         return {"text": "Comfort: " + ", ".join(BOOL_LABELS[c] for c in have), "fields": have} if have else None
@@ -176,7 +185,9 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
             r = _spec_reason(crit, row, value, intent)
             if r:
                 r.update(evidence_class="spec", source_url=None)
-                candidates.append((w * value, r))
+                cheap = intent.get("cheap_intent") if isinstance(intent, dict) else getattr(intent, "cheap_intent", False)
+                # when price was asked for it leads the reasons (after the features the car has)
+                candidates.append((5e8 if crit == "price" and cheap else w * value, r))
         else:
             r = _evidence_reason(crit, row["make"], row["model"], value, evidence)
             if r:

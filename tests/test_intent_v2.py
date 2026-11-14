@@ -36,6 +36,7 @@ def expected(**fields):
         "max_mileage_kmpl": None,
         "max_mileage_km_per_kg": None,
         "use_case": None,
+        "cheap_intent": False,
         "exclude_features": [],
         "exclude_makes": [],
         "exclude_fuel_types": [],

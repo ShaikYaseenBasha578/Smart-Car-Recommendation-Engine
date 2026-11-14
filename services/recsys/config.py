@@ -9,6 +9,13 @@ COVERAGE_PENALTY = 0.15
 REQUIRED_ITEM_WEIGHT = 0.10
 MISSING_MULTIPLIER = 2.0
 
+# price criterion (value = 1 - price percentile inside the car's segment; lower price is better), weight as a share of
+# the spec class. No budget in the query: PRICE_DEFAULT_WEIGHT. Cheap / value wording ("cheapest", "paisa vasool"):
+# PRICE_CHEAP_WEIGHT. A stated budget without cheap wording: 0 (value_for_budget already scores price vs the budget).
+# Chosen by the 2026-11-15 sweep (docs/V3_REVIEW_2026-11-14.md): the design start values were 0.08 / 0.35.
+PRICE_DEFAULT_WEIGHT = 0.25
+PRICE_CHEAP_WEIGHT = 0.65
+
 # criteria.py
 MIN_SEGMENT_MODELS = 8        # a segment with fewer models than this (with a known value) -> compare against the whole catalogue
 MIN_FEATURE_KNOWN_SHARE = 0.5  # features-per-rupee needs at least this share of feature cells known

@@ -1,7 +1,10 @@
 """One variant per model, then MMR across models (plan section 7).
 
-1. best_variant_per_model: for each (make, model) the best-scoring variant that passed the filter
-   (ties: lower price, then lower variant_id), not the lowest id.
+1. displayed_variant_per_model: for each (make, model) the LOWEST-PRICED variant among those that passed the filter
+   (so every hard constraint holds) and have every feature the query asked for (known present). When no variant has
+   them all, the one with the most of them, the cheapest among those (the missing ones are named on the card).
+   Ties: lower variant_id. The model's score is that variant's own score, so score and shown price agree.
+   (best_variant_per_model, the best-scoring variant, is kept for callers that want it.)
 2. mmr_select: Maximal Marginal Relevance over the models. relevance = overall score min-max scaled to
    [0, 1] across the models; similarity(a, b) = SIM_WEIGHTS . (same make, same body type,
    1 - min(1, |ln(price_a / price_b)| / ln 2)), so cars twice the price apart are fully dissimilar.
@@ -31,6 +34,24 @@ def best_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
     df = df.sort_values(["_o", "price_ex_showroom", "variant_id"], ascending=[False, True, True])
     best = df.drop_duplicates(subset=["make", "model"], keep="first")
     return best.drop(columns="_o").sort_values(["overall", "variant_id"], ascending=[False, True])
+
+
+def _features_met(required: Any) -> int:
+    if not isinstance(required, dict):
+        return 0
+    return sum(1 for k, v in required.items() if k.startswith("feature:") and v == "met")
+
+
+def displayed_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
+    """One row per model: most requested features met, then (only when the ML assumed a body/fuel) a variant that
+    matches the assumed one, then lowest price, then lowest variant_id."""
+    met = scored["required"].map(_features_met) if "required" in scored.columns else pd.Series(0, index=scored.index)
+    assumed = scored["assumed_match"].map(bool) if "assumed_match" in scored.columns else pd.Series(False, index=scored.index)
+    df = scored.assign(_met=met.to_numpy(), _as=assumed.to_numpy(),
+                       _price=scored["price_ex_showroom"].astype(float).fillna(float("inf")))
+    df = df.sort_values(["_met", "_as", "_price", "variant_id"], ascending=[False, False, True, True])
+    best = df.drop_duplicates(subset=["make", "model"], keep="first")
+    return best.drop(columns=["_met", "_as", "_price"]).sort_values(["overall", "variant_id"], ascending=[False, True])
 
 
 def similarity(a: pd.Series, b: pd.Series) -> float:
@@ -93,7 +114,7 @@ def diversify(scored: pd.DataFrame, intent: Any, max_models: int = config.MAX_MO
     Returns the chosen rows sorted by overall score descending, each with `selection_order` set."""
     if scored.empty:
         return []
-    models = best_variant_per_model(scored)
+    models = displayed_variant_per_model(scored)
     if named_make_or_model(intent):
         picked = score_order_select(models, max_models, use_twins)
     else:
