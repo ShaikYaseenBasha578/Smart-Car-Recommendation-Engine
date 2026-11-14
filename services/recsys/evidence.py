@@ -137,6 +137,13 @@ def owner_theme_value(rows: pd.DataFrame) -> Optional[Dict[str, Any]]:
     return {"value": acc / total_posts, "rows": rows}
 
 
+def owner_scale_for_count(count: Optional[float]) -> float:
+    """count / (count + OWNER_SAMPLE_K); OWNER_NO_COUNT_SCALE when no count is available."""
+    if count is None or not count > 0:
+        return config.OWNER_NO_COUNT_SCALE
+    return float(count) / (float(count) + config.OWNER_SAMPLE_K)
+
+
 class Evidence:
     """Holds both frames and answers per-model criterion lookups."""
 
@@ -155,6 +162,46 @@ class Evidence:
             res = owner_theme_value(g)
             if res is not None:
                 self._owner[(make, model, theme)] = res
+
+    # -- how much evidence a car has (scales the class weights in score.py) ---------------------------------
+    @staticmethod
+    def _source_key(row: pd.Series) -> str:
+        return (str(row.get("source_name") or "").strip() or str(row.get("source_url") or "").strip() or "anonymous")
+
+    def expert_scale(self, make: str, model: str, relevant_aspects: List[str]) -> Optional[float]:
+        """scale in [0, 1] for the expert class weight of one model, or None when it has no expert row.
+        (relevant aspects the model has a value for / relevant aspects) x n_sources / (n_sources + EXPERT_SOURCE_K),
+        n_sources = distinct sources behind those covered aspects."""
+        covered = [a for a in relevant_aspects if (make, model, a) in self._expert]
+        if not any((make, model, a) in self._expert for a in ASPECTS):
+            return None
+        if not covered or not relevant_aspects:
+            return 0.0
+        sources = {self._source_key(r) for a in covered for _, r in self._expert[(make, model, a)]["rows"].iterrows()}
+        n = len(sources)
+        return (len(covered) / len(relevant_aspects)) * (n / (n + config.EXPERT_SOURCE_K))
+
+    def owner_sample(self, make: str, model: str) -> Optional[int]:
+        """Number of posts behind the model's owner themes: the largest per-theme sum of posts_sampled (themes of
+        one sample repeat the same posts), or None when no count is available."""
+        best: Optional[int] = None
+        for t in THEMES:
+            hit = self._owner.get((make, model, t))
+            if hit is None:
+                continue
+            col = "posts_sampled" if "posts_sampled" in hit["rows"].columns else "rating_count"
+            if col not in hit["rows"].columns:
+                continue
+            total = pd.to_numeric(hit["rows"][col], errors="coerce").dropna().sum()
+            if total > 0:
+                best = max(best or 0, int(total))
+        return best
+
+    def owner_scale(self, make: str, model: str) -> Optional[float]:
+        """scale in [0, 1] for the owner class weight (count / (count + OWNER_SAMPLE_K)), None without owner rows."""
+        if not any((make, model, t) in self._owner for t in THEMES):
+            return None
+        return owner_scale_for_count(self.owner_sample(make, model))
 
     @classmethod
     def load(cls, assessments_path: Any = None, owner_path: Any = None) -> "Evidence":

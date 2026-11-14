@@ -14,6 +14,10 @@
                       unknown_frac; e.g. no crash rating = 3 of 10 safety weight) times the criterion weight
                       is added too, so partial gaps are not free.
   overall           = overall_raw x (1 - COVERAGE_PENALTY x unknown_share)
+Thin evidence counts for less (class_weights below): per car the expert / owner class weight (after redistribution
+over the classes the car has) is multiplied by Evidence.expert_scale / owner_scale (config EXPERT_SOURCE_K,
+OWNER_SAMPLE_K) and the freed weight goes to the spec class, so the class weights of a car always sum to 1. A car with
+no evidence in a class has that class redistributed as before; a car with no expert/owner evidence is unchanged.
 No brand or model bonuses anywhere. A required feature that is unknown keeps the car in and flags it.
 """
 
@@ -94,7 +98,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     cheap_across = bool(_intent_get(intent, "cheap_intent", False)) and not _intent_get(intent, "body_types", [])
     criteria = criteria or compute_criteria(cands, budget, reference, price_whole_catalogue=cheap_across)
     cols = ["overall", "spec", "expert", "owner", "coverage", "unknown_share", "values", "weights",
-            "required", "flags", "unknown_criteria", "partial_unknown"]
+            "required", "flags", "unknown_criteria", "partial_unknown", "class_weights"]
     if len(cands) == 0:
         return pd.DataFrame(columns=cols), criteria
 
@@ -106,6 +110,11 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     global_w = {c: (config.CLASS_WEIGHTS[CRITERION_CLASS[c]] / total_cw) * norm_w[c]
                 if CRITERION_CLASS[c] in active else 0.0 for c in ALL_CRITERIA}
 
+    # aspects the query cares about: the expert aspects its profile boosts (all active aspects when none is boosted)
+    active_aspects = [c for c in EXPERT_CRITERIA if weights["criteria"][c]["active"]]
+    boosted = [c for c in active_aspects if weights["criteria"][c]["multiplier"] > 1.0]
+    relevant_aspects = [c[len("expert_"):] for c in (boosted or active_aspects)]
+
     records = []
     for idx, row in cands.iterrows():
         v = values.loc[idx]
@@ -115,7 +124,18 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             wsum = sum(norm_w[c] for c in cs)
             subs[cls] = sum(norm_w[c] * v[c] for c in cs) / wsum if cs and wsum > 0 else None
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
-        raw = sum(used[c] * subs[c] for c in used) / sum(used.values()) if used else None
+        cw = {c: used[c] / sum(used.values()) for c in used}
+        if subs["spec"] is not None and len(used) > 1:
+            scale = {"expert": evidence.expert_scale(row["make"], row["model"], relevant_aspects),
+                     "owner": evidence.owner_scale(row["make"], row["model"])}
+            for c in ("expert", "owner"):
+                if c in cw:
+                    cw[c] *= 1.0 if scale[c] is None else scale[c]
+            cw["spec"] = 1.0 - sum(v for c, v in cw.items() if c != "spec")
+        if list(used) == ["spec"]:
+            raw = subs["spec"]
+        else:
+            raw = sum(cw[c] * subs[c] for c in cw) if used else None
 
         unknown_crit = [c for c in ALL_CRITERIA if global_w[c] > 0 and np.isnan(v[c])]
         # partly unknown criteria: {criterion: unknown fraction of its field weight}, only where a value exists
@@ -143,7 +163,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             "coverage": 1.0 - unknown_share, "unknown_share": unknown_share,
             "values": {c: (None if np.isnan(v[c]) else float(v[c])) for c in ALL_CRITERIA},
             "weights": dict(global_w), "required": items, "flags": flags, "unknown_criteria": unknown_crit,
-            "partial_unknown": partial,
+            "partial_unknown": partial, "class_weights": cw,
         })
     table = pd.DataFrame(records, index=cands.index, columns=cols)
     table["_vid"] = cands["variant_id"].to_numpy()

@@ -4,6 +4,15 @@
 CLASS_WEIGHTS = {"spec": 0.60, "expert": 0.25, "owner": 0.15}
 # overall = raw x (1 - COVERAGE_PENALTY x share of weight that is unknown)
 COVERAGE_PENALTY = 0.15
+# thin evidence counts for less: a car's expert / owner class weight is multiplied by a scale in [0, 1] and the freed
+# weight returns to the spec class (a class with no evidence for the car is redistributed as before).
+#   expert scale = (aspects covered / aspects relevant to the query) x n_sources / (n_sources + EXPERT_SOURCE_K)
+#   owner  scale = count / (count + OWNER_SAMPLE_K), count = posts sampled (rating_count if that is what the file has);
+#                  OWNER_NO_COUNT_SCALE when no count is available
+EXPERT_SOURCE_K = 1.0
+OWNER_SAMPLE_K = 50
+OWNER_NO_COUNT_SCALE = 0.5
+
 # weight of one required item (feature / minimum) relative to the whole criterion pool (= 1.0).
 # a known-missing required item (only seen when relaxed) counts MISSING_MULTIPLIER times as unknown.
 REQUIRED_ITEM_WEIGHT = 0.10
