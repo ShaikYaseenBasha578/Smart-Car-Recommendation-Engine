@@ -288,3 +288,5 @@ knowledge_base/runs/*/*/before.db
 knowledge_base/runs/*/*/staging.db
 kbpipe.config.json
 kbpipe/tests/fixtures/reviews/
+knowledge_base/runs/*/text_audit.jsonl
+knowledge_base/runs/*/idempotency.db*

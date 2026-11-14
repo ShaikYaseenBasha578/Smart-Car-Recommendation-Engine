@@ -1,0 +1,83 @@
+{
+ "run": "reviews_pilot_2026-11-14",
+ "started": "2026-11-14T17:41:05Z",
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 163,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "0 of 0 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->98967",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 0->78",
+     "owner_theme 0->5",
+     "powertrain 216->216",
+     "professional_assessment 0->80",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "163 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "163 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 163,
+  "idempotent": true,
+  "error": null
+ },
+ "models": {},
+ "text": {
+  "carwale": {
+   "verified": 5,
+   "ok": 5,
+   "accuracy": 1.0
+  }
+ },
+ "sha1_before": "6011504064a4d6ba894f26bc6c1556b7f14ccccf",
+ "llm_calls": 8,
+ "text_models": {
+  "extractors": [
+   "gemini-3.5-flash-lite",
+   "openai/gpt-oss-120b"
+  ],
+  "verifiers": [
+   "openai/gpt-oss-120b"
+  ],
+  "independent": false
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 28,
+  "failed": 0,
+  "bytes": 0
+ },
+ "blocks": [],
+ "runtime_seconds": 130.4
+}

@@ -1,0 +1,4 @@
+{"backend": "gemini_alt", "model": "gemini-3.5-flash-lite", "label": "autocar_notes Amaze", "seconds": 2.12, "tokens_in": 1096, "tokens_out": 461, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_notes Creta", "seconds": 5.8, "tokens_in": 1400, "tokens_out": 2485, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_themes Creta", "seconds": 6.12, "tokens_in": 3112, "tokens_out": 2609, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_verify Creta", "seconds": 2.25, "tokens_in": 2150, "tokens_out": 764, "ok": true}

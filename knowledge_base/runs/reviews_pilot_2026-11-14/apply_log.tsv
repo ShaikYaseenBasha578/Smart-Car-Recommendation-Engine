@@ -1,0 +1,164 @@
+table	rowid	action	detail
+professional_assessment	1	insert	Amaze.overall
+professional_assessment	2	insert	Amaze.Exterior Design And Engineering
+professional_assessment	3	insert	Amaze.Interior Space And Comfort
+professional_assessment	4	insert	Amaze.Performance And Refinement
+professional_assessment	5	insert	Amaze.Mileage / Range And Efficiency
+professional_assessment	6	insert	Amaze.Ride Comfort And Handling
+professional_assessment	7	insert	Amaze.Features And Safety
+professional_assessment	8	insert	Amaze.Value For Money
+owner_rating	1	insert	Amaze.overall
+owner_rating	2	insert	Amaze.Design and Styling
+owner_rating	3	insert	Amaze.Comfort and Space
+owner_rating	4	insert	Amaze.Performance
+owner_rating	5	insert	Amaze.Fuel Economy
+owner_rating	6	insert	Amaze.Value for Money
+owner_rating	7	insert	Amaze.Features and Technology
+owner_rating	8	insert	Amaze.After Sales Cost and Experience
+professional_assessment	9	insert	Creta.overall
+professional_assessment	10	insert	Creta.Exterior Design And Engineering
+professional_assessment	11	insert	Creta.Interior Space And Comfort
+professional_assessment	12	insert	Creta.Performance And Refinement
+professional_assessment	13	insert	Creta.Mileage / Range And Efficiency
+professional_assessment	14	insert	Creta.Ride Comfort And Handling
+professional_assessment	15	insert	Creta.Features And Safety
+professional_assessment	16	insert	Creta.Value For Money
+owner_rating	9	insert	Creta.overall
+owner_rating	10	insert	Creta.Design and Styling
+owner_rating	11	insert	Creta.Comfort and Space
+owner_rating	12	insert	Creta.Performance
+owner_rating	13	insert	Creta.Fuel Economy
+owner_rating	14	insert	Creta.Value for Money
+owner_rating	15	insert	Creta.Features and Technology
+owner_rating	16	insert	Creta.After Sales Cost and Experience
+owner_theme	1	insert	Creta.satisfaction
+owner_theme	2	insert	Creta.real_world_mileage
+owner_theme	3	insert	Creta.service_experience
+owner_theme	4	insert	Creta.service_cost
+owner_theme	5	insert	Creta.reliability
+professional_assessment	17	insert	Seltos.overall
+professional_assessment	18	insert	Seltos.Exterior Design And Engineering
+professional_assessment	19	insert	Seltos.Interior Space And Comfort
+professional_assessment	20	insert	Seltos.Performance And Refinement
+professional_assessment	21	insert	Seltos.Mileage / Range And Efficiency
+professional_assessment	22	insert	Seltos.Ride Comfort And Handling
+professional_assessment	23	insert	Seltos.Features And Safety
+professional_assessment	24	insert	Seltos.Value For Money
+owner_rating	17	insert	Seltos.overall
+owner_rating	18	insert	Seltos.Design and Styling
+owner_rating	19	insert	Seltos.Comfort and Space
+owner_rating	20	insert	Seltos.Performance
+owner_rating	21	insert	Seltos.Value for Money
+owner_rating	22	insert	Seltos.Features and Technology
+owner_rating	23	insert	Seltos.After Sales Cost and Experience
+professional_assessment	25	insert	Syros.overall
+professional_assessment	26	insert	Syros.Exterior Design And Engineering
+professional_assessment	27	insert	Syros.Interior Space And Comfort
+professional_assessment	28	insert	Syros.Performance And Refinement
+professional_assessment	29	insert	Syros.Mileage / Range And Efficiency
+professional_assessment	30	insert	Syros.Ride Comfort And Handling
+professional_assessment	31	insert	Syros.Features And Safety
+professional_assessment	32	insert	Syros.Value For Money
+owner_rating	24	insert	Syros.overall
+owner_rating	25	insert	Syros.Design and Styling
+owner_rating	26	insert	Syros.Comfort and Space
+owner_rating	27	insert	Syros.Performance
+owner_rating	28	insert	Syros.Value for Money
+owner_rating	29	insert	Syros.Features and Technology
+owner_rating	30	insert	Syros.After Sales Cost and Experience
+professional_assessment	33	insert	XUV 3XO.overall
+professional_assessment	34	insert	XUV 3XO.Exterior Design And Engineering
+professional_assessment	35	insert	XUV 3XO.Interior Space And Comfort
+professional_assessment	36	insert	XUV 3XO.Performance And Refinement
+professional_assessment	37	insert	XUV 3XO.Mileage / Range And Efficiency
+professional_assessment	38	insert	XUV 3XO.Ride Comfort And Handling
+professional_assessment	39	insert	XUV 3XO.Features And Safety
+professional_assessment	40	insert	XUV 3XO.Value For Money
+owner_rating	31	insert	XUV 3XO.overall
+owner_rating	32	insert	XUV 3XO.Design and Styling
+owner_rating	33	insert	XUV 3XO.Comfort and Space
+owner_rating	34	insert	XUV 3XO.Performance
+owner_rating	35	insert	XUV 3XO.Fuel Economy
+owner_rating	36	insert	XUV 3XO.Value for Money
+owner_rating	37	insert	XUV 3XO.Features and Technology
+owner_rating	38	insert	XUV 3XO.After Sales Cost and Experience
+professional_assessment	41	insert	Ertiga.overall
+professional_assessment	42	insert	Ertiga.Exterior Design And Engineering
+professional_assessment	43	insert	Ertiga.Interior Space And Comfort
+professional_assessment	44	insert	Ertiga.Performance And Refinement
+professional_assessment	45	insert	Ertiga.Mileage / Range And Efficiency
+professional_assessment	46	insert	Ertiga.Ride Comfort And Handling
+professional_assessment	47	insert	Ertiga.Features And Safety
+professional_assessment	48	insert	Ertiga.Value For Money
+owner_rating	39	insert	Ertiga.overall
+owner_rating	40	insert	Ertiga.Design and Styling
+owner_rating	41	insert	Ertiga.Comfort and Space
+owner_rating	42	insert	Ertiga.Performance
+owner_rating	43	insert	Ertiga.Fuel Economy
+owner_rating	44	insert	Ertiga.Value for Money
+owner_rating	45	insert	Ertiga.Features and Technology
+owner_rating	46	insert	Ertiga.After Sales Cost and Experience
+professional_assessment	49	insert	Swift.overall
+professional_assessment	50	insert	Swift.Exterior Design And Engineering
+professional_assessment	51	insert	Swift.Interior Space And Comfort
+professional_assessment	52	insert	Swift.Performance And Refinement
+professional_assessment	53	insert	Swift.Mileage / Range And Efficiency
+professional_assessment	54	insert	Swift.Ride Comfort And Handling
+professional_assessment	55	insert	Swift.Features And Safety
+professional_assessment	56	insert	Swift.Value For Money
+owner_rating	47	insert	Swift.overall
+owner_rating	48	insert	Swift.Design and Styling
+owner_rating	49	insert	Swift.Comfort and Space
+owner_rating	50	insert	Swift.Performance
+owner_rating	51	insert	Swift.Fuel Economy
+owner_rating	52	insert	Swift.Value for Money
+owner_rating	53	insert	Swift.Features and Technology
+owner_rating	54	insert	Swift.After Sales Cost and Experience
+professional_assessment	57	insert	Kylaq.overall
+professional_assessment	58	insert	Kylaq.Exterior Design And Engineering
+professional_assessment	59	insert	Kylaq.Interior Space And Comfort
+professional_assessment	60	insert	Kylaq.Performance And Refinement
+professional_assessment	61	insert	Kylaq.Mileage / Range And Efficiency
+professional_assessment	62	insert	Kylaq.Ride Comfort And Handling
+professional_assessment	63	insert	Kylaq.Features And Safety
+professional_assessment	64	insert	Kylaq.Value For Money
+owner_rating	55	insert	Kylaq.overall
+owner_rating	56	insert	Kylaq.Design and Styling
+owner_rating	57	insert	Kylaq.Comfort and Space
+owner_rating	58	insert	Kylaq.Performance
+owner_rating	59	insert	Kylaq.Fuel Economy
+owner_rating	60	insert	Kylaq.Value for Money
+owner_rating	61	insert	Kylaq.Features and Technology
+owner_rating	62	insert	Kylaq.After Sales Cost and Experience
+professional_assessment	65	insert	Nexon.overall
+professional_assessment	66	insert	Nexon.Exterior Design And Engineering
+professional_assessment	67	insert	Nexon.Interior Space And Comfort
+professional_assessment	68	insert	Nexon.Performance And Refinement
+professional_assessment	69	insert	Nexon.Mileage / Range And Efficiency
+professional_assessment	70	insert	Nexon.Ride Comfort And Handling
+professional_assessment	71	insert	Nexon.Features And Safety
+professional_assessment	72	insert	Nexon.Value For Money
+owner_rating	63	insert	Nexon.overall
+owner_rating	64	insert	Nexon.Design and Styling
+owner_rating	65	insert	Nexon.Comfort and Space
+owner_rating	66	insert	Nexon.Performance
+owner_rating	67	insert	Nexon.Fuel Economy
+owner_rating	68	insert	Nexon.Value for Money
+owner_rating	69	insert	Nexon.Features and Technology
+owner_rating	70	insert	Nexon.After Sales Cost and Experience
+professional_assessment	73	insert	Innova Hycross.overall
+professional_assessment	74	insert	Innova Hycross.Exterior Design And Engineering
+professional_assessment	75	insert	Innova Hycross.Interior Space And Comfort
+professional_assessment	76	insert	Innova Hycross.Performance And Refinement
+professional_assessment	77	insert	Innova Hycross.Mileage / Range And Efficiency
+professional_assessment	78	insert	Innova Hycross.Ride Comfort And Handling
+professional_assessment	79	insert	Innova Hycross.Features And Safety
+professional_assessment	80	insert	Innova Hycross.Value For Money
+owner_rating	71	insert	Innova Hycross.overall
+owner_rating	72	insert	Innova Hycross.Design and Styling
+owner_rating	73	insert	Innova Hycross.Comfort and Space
+owner_rating	74	insert	Innova Hycross.Performance
+owner_rating	75	insert	Innova Hycross.Fuel Economy
+owner_rating	76	insert	Innova Hycross.Value for Money
+owner_rating	77	insert	Innova Hycross.Features and Technology
+owner_rating	78	insert	Innova Hycross.After Sales Cost and Experience
