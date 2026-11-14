@@ -115,6 +115,14 @@ def generate_moves(intent: dict, allow_seats: bool = False, fallback: bool = Fal
     if intent.get("reference_models"):
         moves.append(Move("like_model", 6.0, "drop 'similar to' requirement",
                           lambda it: _with(it, reference_models=[])))
+    # constraints the parser may add (exclusions and upper bounds); handled generically when present
+    for f in intent.get("exclude_features") or []:
+        moves.append(Move(f"exclude_feature:{f}", 2.0, f"allow {f.replace('_', ' ')}",
+                          (lambda it, f=f: _with(it, exclude_features=[x for x in it["exclude_features"] if x != f]))))
+    for key in sorted(k for k in intent if k.startswith("max_") and intent[k] is not None):
+        moves.append(Move(key, 2.0, f"drop {key.replace('_', ' ')}", (lambda it, key=key: _with(it, **{key: None}))))
+    if intent.get("exclude_makes"):
+        moves.append(Move("exclude_makes", 6.0, "allow excluded makes", lambda it: _with(it, exclude_makes=[])))
     if fallback and (budget.get("max") is not None):
         moves.append(Move("budget_dropped", 8.0, "no maximum budget",
                           lambda it: _with(it, budget={**(it.get("budget") or {}), "max": None})))
@@ -251,6 +259,8 @@ def violations_for(row: pd.Series, original: dict, keys: List[str]) -> List[Dict
             add(key, f"{row['model']}, not the model you named")
         elif key == "like_model":
             add(key, "outside the size/price range of the model you named")
+        elif key.startswith("exclude_feature:") or key.startswith("max_") or key == "exclude_makes":
+            add(key, "breaks a limit you set: " + key.replace("exclude_feature:", "no ").replace("_", " "))
         elif key == "seats" and original.get("seats_min") is not None:
             s = num(row["seats"])
             if s is not None and s < original["seats_min"]:

@@ -34,5 +34,6 @@ MAX_NEAREST_VARIANTS = 400
 
 # explain.py
 MAX_REASONS = 4
-MATCH_LEVELS = [(0.65, "Strong match"), (0.55, "Good match"), (0.45, "Fair match")]
+# percentile-based spec scores centre near 0.5-0.65, so the bars sit above that
+MATCH_LEVELS = [(0.75, "Strong match"), (0.65, "Good match"), (0.55, "Fair match")]
 MATCH_FLOOR_LABEL = "Partial match"
