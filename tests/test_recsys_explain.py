@@ -68,7 +68,7 @@ def test_nothing_is_cited_that_the_row_lacks():
 def test_unknowns_listed_plainly():
     df = make_frame([dict(model="U", safety_stars_adult=np.nan, sunroof=None, mileage_kmpl=np.nan)] + background())
     ex, srow, _ = run(df, intent(required_features=["sunroof"]))
-    assert "Crash rating: not tested yet" in ex["unknowns"]
+    assert "Crash rating: not available" in ex["unknowns"]
     assert "Sunroof: not confirmed in our data" in ex["unknowns"]
     assert "Running cost: no mileage or range figure on record" in ex["unknowns"]
     assert ex["n_unknown"] == len(ex["unknowns"]) and f"{ex['n_unknown']} things unknown" in ex["match_label"]

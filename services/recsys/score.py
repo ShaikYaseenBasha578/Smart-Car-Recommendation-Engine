@@ -10,6 +10,9 @@
                       the candidate set; an empty review file therefore penalises nobody).
                       A required item known to be missing (possible only in relaxed results) counts
                       MISSING_MULTIPLIER times as an unknown one, so a blank never beats a known "no".
+                      Inside a known criterion, the share of its field weight that is unknown (criteria.py
+                      unknown_frac; e.g. no crash rating = 3 of 10 safety weight) times the criterion weight
+                      is added too, so partial gaps are not free.
   overall           = overall_raw x (1 - COVERAGE_PENALTY x unknown_share)
 No brand or model bonuses anywhere. A required feature that is unknown keeps the car in and flags it.
 """
@@ -89,7 +92,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     budget = budget if budget is not None else _intent_get(intent, "budget", None)
     criteria = criteria or compute_criteria(cands, budget)
     cols = ["overall", "spec", "expert", "owner", "coverage", "unknown_share", "values", "weights",
-            "required", "flags", "unknown_criteria"]
+            "required", "flags", "unknown_criteria", "partial_unknown"]
     if len(cands) == 0:
         return pd.DataFrame(columns=cols), criteria
 
@@ -113,7 +116,14 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         raw = sum(used[c] * subs[c] for c in used) / sum(used.values()) if used else None
 
         unknown_crit = [c for c in ALL_CRITERIA if global_w[c] > 0 and np.isnan(v[c])]
-        unknown_w = sum(global_w[c] for c in unknown_crit)
+        # partly unknown criteria: {criterion: unknown fraction of its field weight}, only where a value exists
+        partial = {}
+        if criteria.unknown_frac is not None:
+            for c in SPEC_CRITERIA:
+                f = criteria.unknown_frac.loc[idx, c]
+                if global_w[c] > 0 and not np.isnan(v[c]) and f > 1e-12:
+                    partial[c] = float(f)
+        unknown_w = sum(global_w[c] for c in unknown_crit) + sum(global_w[c] * f for c, f in partial.items())
         items = required_items(row, intent)
         item_unknown = sum(1.0 if s == "unknown" else config.MISSING_MULTIPLIER if s == "missing" else 0.0
                            for s in items.values())
@@ -131,6 +141,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             "coverage": 1.0 - unknown_share, "unknown_share": unknown_share,
             "values": {c: (None if np.isnan(v[c]) else float(v[c])) for c in ALL_CRITERIA},
             "weights": dict(global_w), "required": items, "flags": flags, "unknown_criteria": unknown_crit,
+            "partial_unknown": partial,
         })
     table = pd.DataFrame(records, index=cands.index, columns=cols)
     table["_vid"] = cands["variant_id"].to_numpy()

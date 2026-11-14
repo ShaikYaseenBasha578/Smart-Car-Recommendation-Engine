@@ -3,7 +3,7 @@ import pytest
 
 from services.intent_v2 import USE_CASE_PATTERNS, SOFT_PREFERENCES
 from services.recsys import config
-from services.recsys.criteria import COMFORT_BOOLS, SAFETY_BOOLS, TECH_BOOLS
+from services.recsys.criteria import COMFORT_BOOLS, SAFETY_BOOLS, TECH_BOOLS, compute_criteria
 from services.recsys.evidence import ASSESSMENT_COLS, OWNER_COLS, Evidence
 from services.recsys.score import score_candidates
 from services.recsys.weights import (ALL_CRITERIA, CRITERION_CLASS, SOFT_PREFERENCE_PROFILES,
@@ -171,3 +171,63 @@ def test_scores_are_deterministic_and_in_range():
     assert a["overall"].tolist() == b["overall"].tolist() and list(a.index) == list(b.index)
     assert a["overall"].between(0, 1).all()
     assert abs(sum(a.iloc[0]["weights"].values()) - 1) < 1e-9
+
+
+# ------------------------------------------------------------------ unknown inside a criterion stays unknown
+
+def _star_cars():
+    """Four otherwise identical cars on a varied background: 5-star, 4-star, 1-star and unrated."""
+    same = dict(esc=True, abs=True, tpms=True, hill_assist=True)
+    cars = [dict(model="Rated5", safety_stars_adult=5.0, **same), dict(model="Rated4", safety_stars_adult=4.0, **same),
+            dict(model="Rated1", safety_stars_adult=1.0, **same), dict(model="Unrated", safety_stars_adult=float("nan"), **same)]
+    return make_frame(cars + spread_cars()), {c["model"]: i for i, c in enumerate(cars, start=1)}
+
+
+SAFETY_QUERY = dict(use_case="family", soft_preferences=["safety"])
+
+
+def _overall(df, vid, drop_partial=False):
+    crit = compute_criteria(df)
+    if drop_partial:
+        crit.unknown_frac = None   # the pre-fix behaviour: only wholly unknown criteria reach the coverage factor
+    table, _ = score_candidates(df, intent(**SAFETY_QUERY), evidence=NO_EVIDENCE, criteria=crit)
+    return table, {m: float(table.loc[v, "overall"]) for m, v in vid.items()}
+
+
+def test_unrated_car_does_not_outscore_the_5_star_car_on_a_safety_query():
+    df, vid = _star_cars()
+    table, o = _overall(df, vid)
+    assert o["Unrated"] < o["Rated5"]
+    # the unknown share of safety (stars = 3 of 10 field weight) reaches the coverage factor
+    assert abs(table.loc[vid["Unrated"], "partial_unknown"]["safety"] - 0.3) < 1e-9
+    assert table.loc[vid["Unrated"], "coverage"] < table.loc[vid["Rated4"], "coverage"]
+    assert "safety" not in table.loc[vid["Rated4"], "partial_unknown"]
+    assert "unrated_safety" in table.loc[vid["Unrated"], "flags"]
+
+
+def test_unrated_versus_4_star_gap_is_narrowed_but_not_closed_by_the_formula():
+    """Documented, not tuned: the unrated safety value is the mean of its OTHER safety fields (0.9286 here vs
+    0.89 for the 4-star twin), and the coverage factor charges 0.15 x 0.3 x safety weight for the missing star.
+    The charge is slightly smaller than the value gap, so the unrated car still edges the 4-star one."""
+    df, vid = _star_cars()
+    _, new = _overall(df, vid)
+    _, old = _overall(df, vid, drop_partial=True)
+    assert new["Unrated"] - new["Rated4"] < old["Unrated"] - old["Rated4"]     # the gap shrank (0.0206 -> 0.0065)
+    assert 0 < new["Unrated"] - new["Rated4"] < 0.01
+
+
+def test_one_star_versus_unrated_numbers():
+    """The formula's answer, safety-weighted query: 1-star 0.6231, unrated 0.7255 (4-star 0.719, 5-star 0.751)."""
+    df, vid = _star_cars()
+    table, o = _overall(df, vid)
+    assert o["Rated1"] == pytest.approx(0.6231, abs=5e-4)
+    assert o["Unrated"] == pytest.approx(0.7255, abs=5e-4)
+    assert o["Rated1"] < o["Unrated"]    # a known 1-star is still worse than an unknown rating
+
+
+def test_fully_unknown_criterion_stays_fully_unknown():
+    df = make_frame([dict(model="A")] + spread_cars())
+    table, crit = score_candidates(df, intent(), evidence=NO_EVIDENCE)
+    assert "comfort_features" in table.loc[1, "unknown_criteria"]
+    assert "comfort_features" not in table.loc[1, "partial_unknown"]
+    assert crit.unknown_frac.loc[1, "comfort_features"] == 1.0

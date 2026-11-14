@@ -143,7 +143,7 @@ def unknowns_for(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], 
             label = FEATURE_COLUMNS[item.split(":", 1)[1]][1] if item.startswith("feature:") else item
             out.append(f"{label[0].upper() + label[1:]}: not confirmed in our data")
     if is_unknown(row["safety_stars_adult"]) and weights["criteria"]["safety"]["active"]:
-        out.append("Crash rating: not tested yet")
+        out.append("Crash rating: not available")
     for crit in score_row["unknown_criteria"]:
         if crit in UNKNOWN_TEXT:
             out.append(UNKNOWN_TEXT[crit])
