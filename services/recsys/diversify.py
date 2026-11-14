@@ -1,10 +1,11 @@
 """One variant per model, then MMR across models (plan section 7).
 
-1. displayed_variant_per_model: for each (make, model) the LOWEST-PRICED variant among those that passed the filter
-   (so every hard constraint holds) and have every feature the query asked for (known present). When no variant has
-   them all, the one with the most of them, the cheapest among those (the missing ones are named on the card).
-   Ties: lower variant_id. The model's score is that variant's own score, so score and shown price agree.
-   (best_variant_per_model, the best-scoring variant, is kept for callers that want it.)
+1. displayed_variant_per_model: for each (make, model) the BEST-SCORING variant among those that passed the filter
+   (so every hard constraint holds); the variant score includes the price criterion, so price trades off against
+   equipment inside the utility. Variants within TIE_BAND (0.005) of the best score: the cheaper one, then lower
+   variant_id. Score and shown price come from the same variant. Each row also carries `cheapest_variant_id`: the
+   lowest-priced variant that meets every hard constraint and every explicitly requested feature (NaN when none
+   does); the card shows it as "also available from" when it is cheaper than the shown one.
 2. mmr_select: Maximal Marginal Relevance over the models. relevance = overall score min-max scaled to
    [0, 1] across the models; similarity(a, b) = SIM_WEIGHTS . (same make, same body type,
    1 - min(1, |ln(price_a / price_b)| / ln 2)), so cars twice the price apart are fully dissimilar.
@@ -28,30 +29,40 @@ from services.recsys import config
 from services.twins import complete_twin_pairs
 
 
+TIE_BAND = 0.005
+
+
 def best_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
-    """`scored` has overall (+ make, model, price_ex_showroom, variant_id). One best row per model."""
+    """`scored` has overall (+ make, model, price_ex_showroom, variant_id). One best row per model (exact ties: cheaper)."""
     df = scored.assign(_o=scored["overall"].astype(float).fillna(-1.0))
     df = df.sort_values(["_o", "price_ex_showroom", "variant_id"], ascending=[False, True, True])
     best = df.drop_duplicates(subset=["make", "model"], keep="first")
     return best.drop(columns="_o").sort_values(["overall", "variant_id"], ascending=[False, True])
 
 
-def _features_met(required: Any) -> int:
+def _features_ok(required: Any) -> bool:
+    """Every explicitly requested feature is known present (vacuously true with none requested)."""
     if not isinstance(required, dict):
-        return 0
-    return sum(1 for k, v in required.items() if k.startswith("feature:") and v == "met")
+        return True
+    return all(v == "met" for k, v in required.items() if k.startswith("feature:"))
 
 
 def displayed_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
-    """One row per model: most requested features met, then (only when the ML assumed a body/fuel) a variant that
-    matches the assumed one, then lowest price, then lowest variant_id."""
-    met = scored["required"].map(_features_met) if "required" in scored.columns else pd.Series(0, index=scored.index)
-    assumed = scored["assumed_match"].map(bool) if "assumed_match" in scored.columns else pd.Series(False, index=scored.index)
-    df = scored.assign(_met=met.to_numpy(), _as=assumed.to_numpy(),
+    """`scored` has overall (+ make, model, price_ex_showroom, variant_id, required). One row per model: the best-scoring
+    variant (ties within TIE_BAND: cheaper, then lower variant_id), plus `cheapest_variant_id`."""
+    ok = scored["required"].map(_features_ok) if "required" in scored.columns else pd.Series(True, index=scored.index)
+    df = scored.assign(_o=scored["overall"].astype(float).fillna(-1.0), _ok=ok.to_numpy(),
                        _price=scored["price_ex_showroom"].astype(float).fillna(float("inf")))
-    df = df.sort_values(["_met", "_as", "_price", "variant_id"], ascending=[False, False, True, True])
-    best = df.drop_duplicates(subset=["make", "model"], keep="first")
-    return best.drop(columns=["_met", "_as", "_price"]).sort_values(["overall", "variant_id"], ascending=[False, True])
+    rows, alt = [], {}
+    for key, g in df.groupby(["make", "model"], sort=False):
+        top = g["_o"].max()
+        near = g[g["_o"] >= top - TIE_BAND].sort_values(["_price", "variant_id"])
+        rows.append(near.index[0])
+        q = g[g["_ok"] & g["_price"].lt(float("inf"))].sort_values(["_price", "variant_id"])
+        alt[near.index[0]] = float(q["variant_id"].iloc[0]) if len(q) else float("nan")
+    best = df.loc[rows].drop(columns=["_o", "_ok", "_price"])
+    best["cheapest_variant_id"] = pd.Series(alt)
+    return best.sort_values(["overall", "variant_id"], ascending=[False, True])
 
 
 def similarity(a: pd.Series, b: pd.Series) -> float:

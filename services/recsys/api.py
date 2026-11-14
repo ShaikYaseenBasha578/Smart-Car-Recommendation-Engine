@@ -168,6 +168,21 @@ def _round(value: Optional[float]) -> Optional[float]:
     return None if value is None or is_unknown(value) else round(float(value), SCORE_DECIMALS)
 
 
+def _also_from(car: pd.Series, cands: pd.DataFrame) -> Optional[dict]:
+    """Lowest-priced variant meeting every hard constraint and every requested feature, when cheaper than the shown one."""
+    vid = car.get("cheapest_variant_id") if "cheapest_variant_id" in car.index else None
+    if vid is None or is_unknown(vid) or int(vid) == int(car["variant_id"]):
+        return None
+    alt = cands[cands["variant_id"] == int(vid)]
+    if alt.empty:
+        return None
+    alt = alt.iloc[0]
+    p, shown = _num_or_none(alt["price_ex_showroom"]), _num_or_none(car["price_ex_showroom"])
+    if p is None or (shown is not None and p >= shown):
+        return None
+    return {"variant_id": int(vid), "variant": alt["variant"], "Ex-Showroom_Price": p}
+
+
 def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, app_root: str,
           violations: List[dict]) -> dict:
     unverified = list(car["unverified"]) if "unverified" in car.index and isinstance(car["unverified"], list) else []
@@ -212,7 +227,7 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "violations": violations,
         "match_label": ex["match_label"],
         "flags": list(srow["flags"]),
-        # requested features this variant is not known to have (named so the user sees what the cheapest fit lacks)
+        # requested features this variant is not known to have
         "missing_features": [item.split(":", 1)[1] for item, st in srow["required"].items()
                              if item.startswith("feature:") and st != "met"],
     }
@@ -305,6 +320,7 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         viol = violations_for(car, intent, relaxed_keys) if relaxation else []
         card = _card(car, srow, ex, variant_counts, app_root, viol)
         card["assumed_match"] = matches.get(car.name, [])
+        card["also_available_from"] = _also_from(car, cands)
         if vague:
             card["match_label"] = VAGUE_LABEL
             card["personalised"] = False

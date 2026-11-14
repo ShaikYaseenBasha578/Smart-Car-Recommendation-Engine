@@ -118,31 +118,52 @@ def _scored(rows):
     return df.join(table)
 
 
-def test_displayed_variant_is_cheapest_with_all_requested_features_not_the_top_trim():
+def test_displayed_variant_is_the_best_scoring_one_and_cheaper_qualifying_is_exposed():
+    """with the small default price weight the well-equipped top trim still wins; the cheapest trim that has the
+    requested sunroof is exposed separately."""
     s = _scored([
         dict(model="A", variant="base", price_ex_showroom=8 * LAKH, sunroof=False),
         dict(model="A", variant="mid", price_ex_showroom=10 * LAKH, sunroof=True),
         dict(model="A", variant="top", price_ex_showroom=14 * LAKH, sunroof=True, adas_available=True, camera_360=True),
     ])
     out = displayed_variant_per_model(s)
-    assert list(out["variant"]) == ["mid"]
+    assert list(out["variant"]) == [s.loc[s["overall"].idxmax(), "variant"]] == ["top"]
+    alt = s[s["variant_id"] == out["cheapest_variant_id"].iloc[0]].iloc[0]
+    assert alt["variant"] == "mid"
 
 
-def test_displayed_variant_without_requested_features_is_simply_the_cheapest():
-    df = make_frame([dict(model="A", variant="top", price_ex_showroom=14 * LAKH, adas_available=True),
-                     dict(model="A", variant="base", price_ex_showroom=8 * LAKH, adas_available=False)])
-    table, _ = score_candidates(df, intent(), evidence=NO_EVIDENCE)
-    assert list(displayed_variant_per_model(df.join(table))["variant"]) == ["base"]
+def test_displayed_variant_within_tie_band_takes_the_cheaper():
+    s = _scored([dict(model="A", variant="dear", price_ex_showroom=10 * LAKH, sunroof=True),
+                 dict(model="A", variant="cheap", price_ex_showroom=9 * LAKH, sunroof=True)])
+    s["overall"] = [0.700, 0.697]
+    assert list(displayed_variant_per_model(s)["variant"]) == ["cheap"]
+    s["overall"] = [0.700, 0.690]
+    assert list(displayed_variant_per_model(s)["variant"]) == ["dear"]
 
 
-def test_displayed_variant_with_two_features_none_has_both_takes_most_then_cheapest():
-    df = make_frame([
-        dict(model="A", variant="v1", price_ex_showroom=9 * LAKH, sunroof=True, adas_available=None),
-        dict(model="A", variant="v2", price_ex_showroom=8 * LAKH, sunroof=True, adas_available=None),
-        dict(model="A", variant="v3", price_ex_showroom=7 * LAKH, sunroof=None, adas_available=None),
-    ])
-    table, _ = score_candidates(df, intent(required_features=["sunroof", "adas"]), evidence=NO_EVIDENCE)
-    assert list(displayed_variant_per_model(df.join(table))["variant"]) == ["v2"]
+def test_cheap_intent_makes_the_cheap_variant_win_through_the_utility():
+    df = make_frame([dict(model="A", variant="top", price_ex_showroom=14 * LAKH, adas_available=True, camera_360=True),
+                     dict(model="A", variant="base", price_ex_showroom=8 * LAKH, adas_available=False)]
+                    + [dict(model=f"F{i}", price_ex_showroom=(6 + i) * LAKH) for i in range(8)])
+    pick = lambda it: list(displayed_variant_per_model(df.join(score_candidates(df, it, evidence=NO_EVIDENCE)[0]))
+                           .query("model == 'A'")["variant"])
+    assert pick(intent(cheap_intent=True)) == ["base"]
+
+
+def test_equal_variants_show_the_cheaper_and_no_alt_when_it_is_the_shown_one():
+    df = make_frame([dict(model="A", variant="v1", price_ex_showroom=9 * LAKH, sunroof=True),
+                     dict(model="A", variant="v2", price_ex_showroom=8 * LAKH, sunroof=True)])
+    table, _ = score_candidates(df, intent(required_features=["sunroof"]), evidence=NO_EVIDENCE)
+    out = displayed_variant_per_model(df.join(table))
+    assert list(out["variant"]) == ["v2"]
+    assert out["cheapest_variant_id"].iloc[0] == out["variant_id"].iloc[0]
+
+
+def test_no_variant_with_the_requested_feature_means_no_cheapest_qualifying():
+    df = make_frame([dict(model="A", variant="v1", price_ex_showroom=9 * LAKH, sunroof=None),
+                     dict(model="A", variant="v2", price_ex_showroom=8 * LAKH, sunroof=False)])
+    table, _ = score_candidates(df, intent(required_features=["sunroof"]), evidence=NO_EVIDENCE)
+    assert pd.isna(displayed_variant_per_model(df.join(table))["cheapest_variant_id"].iloc[0])
 
 
 # ------------------------------------------------------------------ integration on the real catalogue
@@ -152,33 +173,37 @@ def _cheapest_models_by_min_price():
     return c.groupby(["make", "model"])["price_ex_showroom"].min().sort_values()
 
 
-def test_sunroof_under_15_lakh_shows_the_cheapest_qualifying_variant_per_model():
+def test_sunroof_under_15_lakh_shows_the_best_variant_and_exposes_the_cheapest_qualifying():
     r = recommend("SUV with sunroof under 15 lakh", evidence=NO_EVIDENCE)
     cat = get_catalogue()
     assert r["recommendations"]
+    exposed = 0
     for card in r["recommendations"]:
         qual = cat[(cat["make"] == card["Make"]) & (cat["model"] == card["Model"]) & (cat["body_type"] == "suv")
                    & (cat["sunroof"] == True) & (cat["price_ex_showroom"] <= 15 * LAKH)]  # noqa: E712
-        assert card["Ex-Showroom_Price"] == qual["price_ex_showroom"].min(), card["Model"]
+        # shown variant is a qualifying one (score and shown price come from the same variant)
+        assert card["variant_id"] in set(qual["variant_id"]) and card["Ex-Showroom_Price"] <= 15 * LAKH
         assert "sunroof" in card["matched_features"] and card["missing_features"] == []
-        # score and shown price come from the same variant
-        assert card["variant_id"] in set(qual["variant_id"])
-        assert card["Ex-Showroom_Price"] <= 15 * LAKH
-    # not the dearest trim: at least one model has a dearer qualifying variant than the one shown
-    assert any(
-        cat[(cat["make"] == c["Make"]) & (cat["model"] == c["Model"]) & (cat["sunroof"] == True)
-            & (cat["price_ex_showroom"] <= 15 * LAKH)]["price_ex_showroom"].max() > c["Ex-Showroom_Price"]  # noqa: E712
-        for c in r["recommendations"])
+        lo = qual["price_ex_showroom"].min()
+        alt = card["also_available_from"]
+        if card["Ex-Showroom_Price"] > lo:
+            assert alt and alt["Ex-Showroom_Price"] == lo and alt["variant_id"] in set(qual["variant_id"])
+            exposed += 1
+        else:
+            assert alt is None
+    assert exposed >= 1
 
 
-def test_budget_query_without_cheap_intent_keeps_weights_and_shows_cheapest_variants():
+def test_budget_query_without_cheap_intent_keeps_weights_and_shows_the_best_variants():
     r = recommend("petrol SUV under 12 lakh", evidence=NO_EVIDENCE)
     assert r["weights"]["price"]["weight"] == 0.0
     cat = get_catalogue()
     for card in r["recommendations"]:
         qual = cat[(cat["make"] == card["Make"]) & (cat["model"] == card["Model"]) & (cat["fuel_type"] == "petrol")
                    & (cat["body_type"] == "suv") & (cat["price_ex_showroom"] <= 12 * LAKH)]
-        assert card["Ex-Showroom_Price"] == qual["price_ex_showroom"].min()
+        assert card["variant_id"] in set(qual["variant_id"])
+        alt = card["also_available_from"]
+        assert alt is None or alt["Ex-Showroom_Price"] == qual["price_ex_showroom"].min() < card["Ex-Showroom_Price"]
 
 
 def test_cheapest_car_returns_the_lowest_priced_cars_first():
