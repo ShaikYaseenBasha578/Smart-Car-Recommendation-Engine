@@ -1,1 +1,824 @@
-make,model,aspect,rating,quote,source_name,source_url,published_on,variant_scope
+model,aspect,value,source,url,published_on,n_sources,raw_score,scale_max,source_aspect
+Alcazar,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,8,10,Exterior Design And Engineering
+Alcazar,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,7,10,Performance And Refinement
+Alcazar,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,9,10,Features And Safety
+Alcazar,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,8,10,Interior Space And Comfort
+Alcazar,handling,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,7,10,Ride Comfort And Handling
+Alcazar,overall,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,8,10,overall
+Alcazar,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,6,10,Mileage / Range And Efficiency
+Alcazar,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,8,10,Interior Space And Comfort
+Alcazar,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,7,10,Performance And Refinement
+Alcazar,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,7,10,Ride Comfort And Handling
+Alcazar,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/alcazar/expert-reviews,2025-10-27,1,8,10,Value For Money
+Alto K10,build_quality,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,6,10,Exterior Design And Engineering
+Alto K10,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,8,10,Performance And Refinement
+Alto K10,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,6,10,Features And Safety
+Alto K10,front_space,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,6,10,Interior Space And Comfort
+Alto K10,handling,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,7,10,Ride Comfort And Handling
+Alto K10,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,8,10,overall
+Alto K10,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,8,10,Mileage / Range And Efficiency
+Alto K10,rear_seat_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,6,10,Interior Space And Comfort
+Alto K10,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,8,10,Performance And Refinement
+Alto K10,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,7,10,Ride Comfort And Handling
+Alto K10,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/alto-k10/expert-reviews,2025-06-17,1,7,10,Value For Money
+Altroz,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,8,10,Exterior Design And Engineering
+Altroz,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,6,10,Performance And Refinement
+Altroz,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,9,10,Features And Safety
+Altroz,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,7,10,Interior Space And Comfort
+Altroz,handling,0.9,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,9,10,Ride Comfort And Handling
+Altroz,overall,0.7,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,7,10,overall
+Altroz,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,7,10,Mileage / Range And Efficiency
+Altroz,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,7,10,Interior Space And Comfort
+Altroz,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,6,10,Performance And Refinement
+Altroz,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,9,10,Ride Comfort And Handling
+Altroz,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/altroz/expert-reviews,2025-09-17,1,8,10,Value For Money
+Amaze,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Exterior Design And Engineering
+Amaze,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Performance And Refinement
+Amaze,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Features And Safety
+Amaze,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Interior Space And Comfort
+Amaze,handling,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Ride Comfort And Handling
+Amaze,overall,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,overall
+Amaze,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,7,10,Mileage / Range And Efficiency
+Amaze,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Interior Space And Comfort
+Amaze,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Performance And Refinement
+Amaze,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Ride Comfort And Handling
+Amaze,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/honda/amaze/expert-reviews,2025-06-11,1,8,10,Value For Money
+Astor,build_quality,0.6,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,6,10,Exterior Design And Engineering
+Astor,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,Performance And Refinement
+Astor,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,8,10,Features And Safety
+Astor,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,8,10,Interior Space And Comfort
+Astor,handling,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,Ride Comfort And Handling
+Astor,overall,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,overall
+Astor,real_world_mileage,0.5,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,5,10,Mileage / Range And Efficiency
+Astor,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,8,10,Interior Space And Comfort
+Astor,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,Performance And Refinement
+Astor,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,Ride Comfort And Handling
+Astor,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/mg/astor/expert-reviews,2025-06-17,1,7,10,Value For Money
+Aura,build_quality,0.6,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,6,10,Exterior Design And Engineering
+Aura,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Performance And Refinement
+Aura,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Features And Safety
+Aura,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Interior Space And Comfort
+Aura,handling,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Ride Comfort And Handling
+Aura,overall,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,overall
+Aura,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,8,10,Mileage / Range And Efficiency
+Aura,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Interior Space And Comfort
+Aura,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Performance And Refinement
+Aura,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Ride Comfort And Handling
+Aura,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/aura/expert-reviews,2025-08-06,1,7,10,Value For Money
+Baleno,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,7,10,Exterior Design And Engineering
+Baleno,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Performance And Refinement
+Baleno,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,9,10,Features And Safety
+Baleno,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Interior Space And Comfort
+Baleno,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Baleno,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,overall
+Baleno,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,9,10,Mileage / Range And Efficiency
+Baleno,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Interior Space And Comfort
+Baleno,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Performance And Refinement
+Baleno,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Baleno,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/baleno/expert-reviews,2025-07-04,1,8,10,Value For Money
+Bolero,build_quality,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,5,10,Exterior Design And Engineering
+Bolero,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,6,10,Performance And Refinement
+Bolero,features_tech,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,5,10,Features And Safety
+Bolero,front_space,0.4,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,4,10,Interior Space And Comfort
+Bolero,handling,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,5,10,Ride Comfort And Handling
+Bolero,overall,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,6,10,overall
+Bolero,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,7,10,Mileage / Range And Efficiency
+Bolero,rear_seat_comfort,0.4,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,4,10,Interior Space And Comfort
+Bolero,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,6,10,Performance And Refinement
+Bolero,ride_comfort,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,5,10,Ride Comfort And Handling
+Bolero,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero/expert-reviews,2025-10-06,1,7,10,Value For Money
+Bolero Neo,build_quality,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Exterior Design And Engineering
+Bolero Neo,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,7,10,Performance And Refinement
+Bolero Neo,features_tech,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,5,10,Features And Safety
+Bolero Neo,front_space,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Interior Space And Comfort
+Bolero Neo,handling,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Ride Comfort And Handling
+Bolero Neo,overall,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,overall
+Bolero Neo,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,7,10,Mileage / Range And Efficiency
+Bolero Neo,rear_seat_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Interior Space And Comfort
+Bolero Neo,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,7,10,Performance And Refinement
+Bolero Neo,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Ride Comfort And Handling
+Bolero Neo,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/bolero-neo/expert-reviews,2025-10-07,1,6,10,Value For Money
+Brezza,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,7,10,Exterior Design And Engineering
+Brezza,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Brezza,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,7,10,Features And Safety
+Brezza,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Brezza,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Brezza,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,overall
+Brezza,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,9,10,Mileage / Range And Efficiency
+Brezza,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Brezza,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Brezza,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Brezza,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/brezza/expert-reviews,2025-09-02,1,8,10,Value For Money
+Carens,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,7,10,Exterior Design And Engineering
+Carens,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Performance And Refinement
+Carens,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,9,10,Features And Safety
+Carens,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,9,10,Interior Space And Comfort
+Carens,handling,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Ride Comfort And Handling
+Carens,overall,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,overall
+Carens,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Mileage / Range And Efficiency
+Carens,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,9,10,Interior Space And Comfort
+Carens,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Performance And Refinement
+Carens,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Ride Comfort And Handling
+Carens,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens/expert-reviews,2025-08-08,1,8,10,Value For Money
+Carens Clavis,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,8,10,Exterior Design And Engineering
+Carens Clavis,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,7,10,Performance And Refinement
+Carens Clavis,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,9,10,Features And Safety
+Carens Clavis,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,8,10,Interior Space And Comfort
+Carens Clavis,handling,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,7,10,Ride Comfort And Handling
+Carens Clavis,overall,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,8,10,overall
+Carens Clavis,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,8,10,Mileage / Range And Efficiency
+Carens Clavis,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,8,10,Interior Space And Comfort
+Carens Clavis,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,7,10,Performance And Refinement
+Carens Clavis,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,7,10,Ride Comfort And Handling
+Carens Clavis,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/kia/carens-clavis/expert-reviews,2025-08-11,1,7,10,Value For Money
+Celerio,build_quality,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,6,10,Exterior Design And Engineering
+Celerio,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,8,10,Performance And Refinement
+Celerio,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,7,10,Features And Safety
+Celerio,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,8,10,Interior Space And Comfort
+Celerio,handling,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,7,10,Ride Comfort And Handling
+Celerio,overall,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,7,10,overall
+Celerio,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,8,10,Mileage / Range And Efficiency
+Celerio,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,8,10,Interior Space And Comfort
+Celerio,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,8,10,Performance And Refinement
+Celerio,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,7,10,Ride Comfort And Handling
+Celerio,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/celerio/expert-reviews,2025-07-08,1,7,10,Value For Money
+City,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,7,10,Exterior Design And Engineering
+City,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,7,10,Performance And Refinement
+City,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,7,10,Features And Safety
+City,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,8,10,Interior Space And Comfort
+City,handling,0.8,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,8,10,Ride Comfort And Handling
+City,overall,0.7,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,7,10,overall
+City,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,8,10,Mileage / Range And Efficiency
+City,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,8,10,Interior Space And Comfort
+City,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,7,10,Performance And Refinement
+City,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,8,10,Ride Comfort And Handling
+City,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/honda/city/expert-reviews,2025-08-19,1,6,10,Value For Money
+Creta,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,8,10,Exterior Design And Engineering
+Creta,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,8,10,Performance And Refinement
+Creta,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,9,10,Features And Safety
+Creta,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,9,10,Interior Space And Comfort
+Creta,handling,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,8,10,Ride Comfort And Handling
+Creta,overall,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,9,10,overall
+Creta,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,7,10,Mileage / Range And Efficiency
+Creta,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,9,10,Interior Space And Comfort
+Creta,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,8,10,Performance And Refinement
+Creta,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,8,10,Ride Comfort And Handling
+Creta,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/creta/expert-reviews,2025-10-09,1,9,10,Value For Money
+Curvv,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,8,10,Exterior Design And Engineering
+Curvv,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,6,10,Performance And Refinement
+Curvv,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,9,10,Features And Safety
+Curvv,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,7,10,Interior Space And Comfort
+Curvv,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Curvv,overall,0.6,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,6,10,overall
+Curvv,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,7,10,Mileage / Range And Efficiency
+Curvv,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,7,10,Interior Space And Comfort
+Curvv,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,6,10,Performance And Refinement
+Curvv,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Curvv,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/tata/curvv/expert-reviews,2025-10-03,1,6,10,Value For Money
+Curvv EV,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,8,10,Exterior Design And Engineering
+Curvv EV,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,Performance And Refinement
+Curvv EV,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,9,10,Features And Safety
+Curvv EV,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,Interior Space And Comfort
+Curvv EV,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Curvv EV,overall,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,overall
+Curvv EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,8,10,Mileage / Range And Efficiency
+Curvv EV,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,Interior Space And Comfort
+Curvv EV,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,Performance And Refinement
+Curvv EV,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Curvv EV,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/tata/curvv-ev/expert-reviews,2025-10-08,1,7,10,Value For Money
+Duster,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Exterior Design And Engineering
+Duster,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Performance And Refinement
+Duster,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,8,10,Features And Safety
+Duster,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,8,10,Interior Space And Comfort
+Duster,handling,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Ride Comfort And Handling
+Duster,overall,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,overall
+Duster,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+Duster,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,8,10,Interior Space And Comfort
+Duster,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Performance And Refinement
+Duster,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Ride Comfort And Handling
+Duster,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/renault/duster/expert-reviews,,1,9,10,Value For Money
+Dzire,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,8,10,Exterior Design And Engineering
+Dzire,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,7,10,Performance And Refinement
+Dzire,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,9,10,Features And Safety
+Dzire,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,8,10,Interior Space And Comfort
+Dzire,handling,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,9,10,Ride Comfort And Handling
+Dzire,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,8,10,overall
+Dzire,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,8,10,Mileage / Range And Efficiency
+Dzire,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,8,10,Interior Space And Comfort
+Dzire,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,7,10,Performance And Refinement
+Dzire,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,9,10,Ride Comfort And Handling
+Dzire,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/dzire/expert-reviews,2025-07-04,1,9,10,Value For Money
+Elevate,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Exterior Design And Engineering
+Elevate,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Performance And Refinement
+Elevate,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Features And Safety
+Elevate,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Interior Space And Comfort
+Elevate,handling,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Ride Comfort And Handling
+Elevate,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+Elevate,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Interior Space And Comfort
+Elevate,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Performance And Refinement
+Elevate,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Ride Comfort And Handling
+Elevate,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/honda/elevate/expert-reviews,,1,8,10,Value For Money
+Ertiga,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,7,10,Exterior Design And Engineering
+Ertiga,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,7,10,Performance And Refinement
+Ertiga,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,6,10,Features And Safety
+Ertiga,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,9,10,Interior Space And Comfort
+Ertiga,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,8,10,Ride Comfort And Handling
+Ertiga,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,8,10,overall
+Ertiga,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,8,10,Mileage / Range And Efficiency
+Ertiga,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,9,10,Interior Space And Comfort
+Ertiga,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,7,10,Performance And Refinement
+Ertiga,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,8,10,Ride Comfort And Handling
+Ertiga,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/ertiga/expert-reviews,2025-09-01,1,9,10,Value For Money
+Fortuner,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,8,10,Exterior Design And Engineering
+Fortuner,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Fortuner,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,Features And Safety
+Fortuner,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Fortuner,handling,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,6,10,Ride Comfort And Handling
+Fortuner,overall,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,overall
+Fortuner,real_world_mileage,0.5,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,5,10,Mileage / Range And Efficiency
+Fortuner,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Fortuner,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Fortuner,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,6,10,Ride Comfort And Handling
+Fortuner,value_for_money,0.5,Autocar India,https://www.autocarindia.com/cars/toyota/fortuner/expert-reviews,2025-09-02,1,5,10,Value For Money
+Fronx,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,9,10,Exterior Design And Engineering
+Fronx,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Performance And Refinement
+Fronx,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,7,10,Features And Safety
+Fronx,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Interior Space And Comfort
+Fronx,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Ride Comfort And Handling
+Fronx,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,overall
+Fronx,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Mileage / Range And Efficiency
+Fronx,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Interior Space And Comfort
+Fronx,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Performance And Refinement
+Fronx,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Ride Comfort And Handling
+Fronx,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/fronx/expert-reviews,2025-08-20,1,8,10,Value For Money
+Grand Vitara,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Exterior Design And Engineering
+Grand Vitara,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Performance And Refinement
+Grand Vitara,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Features And Safety
+Grand Vitara,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,7,10,Interior Space And Comfort
+Grand Vitara,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Ride Comfort And Handling
+Grand Vitara,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,overall
+Grand Vitara,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,9,10,Mileage / Range And Efficiency
+Grand Vitara,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,7,10,Interior Space And Comfort
+Grand Vitara,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Performance And Refinement
+Grand Vitara,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Ride Comfort And Handling
+Grand Vitara,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/grand-vitara/expert-reviews,2025-06-30,1,8,10,Value For Money
+Grand i10 Nios,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,7,10,Exterior Design And Engineering
+Grand i10 Nios,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,Performance And Refinement
+Grand i10 Nios,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,7,10,Features And Safety
+Grand i10 Nios,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,Interior Space And Comfort
+Grand i10 Nios,handling,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,7,10,Ride Comfort And Handling
+Grand i10 Nios,overall,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,overall
+Grand i10 Nios,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,Mileage / Range And Efficiency
+Grand i10 Nios,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,Interior Space And Comfort
+Grand i10 Nios,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,8,10,Performance And Refinement
+Grand i10 Nios,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,7,10,Ride Comfort And Handling
+Grand i10 Nios,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/grand-i10-nios/expert-reviews,2025-06-11,1,7,10,Value For Money
+Gravite,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,8,10,Exterior Design And Engineering
+Gravite,engine_performance,0.5,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,5,10,Performance And Refinement
+Gravite,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,8,10,Features And Safety
+Gravite,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,9,10,Interior Space And Comfort
+Gravite,handling,0.7,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,7,10,Ride Comfort And Handling
+Gravite,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+Gravite,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,9,10,Interior Space And Comfort
+Gravite,refinement,0.5,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,5,10,Performance And Refinement
+Gravite,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,7,10,Ride Comfort And Handling
+Gravite,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/gravite/expert-reviews,,1,8,10,Value For Money
+Harrier,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,9,10,Exterior Design And Engineering
+Harrier,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Harrier,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,9,10,Features And Safety
+Harrier,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,9,10,Interior Space And Comfort
+Harrier,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Harrier,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,overall
+Harrier,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,7,10,Mileage / Range And Efficiency
+Harrier,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,9,10,Interior Space And Comfort
+Harrier,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Harrier,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Harrier,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier/expert-reviews,2025-10-03,1,8,10,Value For Money
+Harrier EV,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,7,10,Exterior Design And Engineering
+Harrier EV,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,9,10,Performance And Refinement
+Harrier EV,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,Features And Safety
+Harrier EV,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,Interior Space And Comfort
+Harrier EV,handling,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,9,10,Ride Comfort And Handling
+Harrier EV,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,overall
+Harrier EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,Mileage / Range And Efficiency
+Harrier EV,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,Interior Space And Comfort
+Harrier EV,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,9,10,Performance And Refinement
+Harrier EV,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,9,10,Ride Comfort And Handling
+Harrier EV,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/harrier-ev/expert-reviews,2025-07-22,1,8,10,Value For Money
+Hector,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,7,10,Exterior Design And Engineering
+Hector,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,7,10,Performance And Refinement
+Hector,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,8,10,Features And Safety
+Hector,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,8,10,Interior Space And Comfort
+Hector,handling,0.6,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,6,10,Ride Comfort And Handling
+Hector,overall,0.7,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,7,10,overall
+Hector,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,6,10,Mileage / Range And Efficiency
+Hector,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,8,10,Interior Space And Comfort
+Hector,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,7,10,Performance And Refinement
+Hector,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,6,10,Ride Comfort And Handling
+Hector,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mg/hector/expert-reviews,2025-10-29,1,8,10,Value For Money
+Hilux,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Exterior Design And Engineering
+Hilux,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,9,10,Performance And Refinement
+Hilux,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Features And Safety
+Hilux,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Hilux,handling,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Ride Comfort And Handling
+Hilux,overall,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,overall
+Hilux,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,8,10,Mileage / Range And Efficiency
+Hilux,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Hilux,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,9,10,Performance And Refinement
+Hilux,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Ride Comfort And Handling
+Hilux,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/hilux/expert-reviews,2025-09-02,1,7,10,Value For Money
+Innova Crysta,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,7,10,Exterior Design And Engineering
+Innova Crysta,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,6,10,Performance And Refinement
+Innova Crysta,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,6,10,Features And Safety
+Innova Crysta,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,8,10,Interior Space And Comfort
+Innova Crysta,handling,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,7,10,Ride Comfort And Handling
+Innova Crysta,overall,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,7,10,overall
+Innova Crysta,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,7,10,Mileage / Range And Efficiency
+Innova Crysta,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,8,10,Interior Space And Comfort
+Innova Crysta,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,6,10,Performance And Refinement
+Innova Crysta,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,7,10,Ride Comfort And Handling
+Innova Crysta,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/innova-crysta/expert-reviews,2025-10-13,1,6,10,Value For Money
+Innova Hycross,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,7,10,Exterior Design And Engineering
+Innova Hycross,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Performance And Refinement
+Innova Hycross,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Features And Safety
+Innova Hycross,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,9,10,Interior Space And Comfort
+Innova Hycross,handling,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Innova Hycross,overall,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,overall
+Innova Hycross,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Mileage / Range And Efficiency
+Innova Hycross,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,9,10,Interior Space And Comfort
+Innova Hycross,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Performance And Refinement
+Innova Hycross,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Innova Hycross,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/innova-hycross/expert-reviews,2025-07-04,1,7,10,Value For Money
+Jimny,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,8,10,Exterior Design And Engineering
+Jimny,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Performance And Refinement
+Jimny,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,7,10,Features And Safety
+Jimny,front_space,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Interior Space And Comfort
+Jimny,handling,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,7,10,Ride Comfort And Handling
+Jimny,overall,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,overall
+Jimny,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Mileage / Range And Efficiency
+Jimny,rear_seat_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Interior Space And Comfort
+Jimny,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Performance And Refinement
+Jimny,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,7,10,Ride Comfort And Handling
+Jimny,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/jimny/expert-reviews,2025-09-01,1,6,10,Value For Money
+Kiger,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,7,10,Exterior Design And Engineering
+Kiger,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Performance And Refinement
+Kiger,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Features And Safety
+Kiger,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Interior Space And Comfort
+Kiger,handling,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Kiger,overall,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,overall
+Kiger,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,7,10,Mileage / Range And Efficiency
+Kiger,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Interior Space And Comfort
+Kiger,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Performance And Refinement
+Kiger,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Kiger,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kiger/expert-reviews,2025-10-08,1,7,10,Value For Money
+Kodiaq,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,7,10,Exterior Design And Engineering
+Kodiaq,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Performance And Refinement
+Kodiaq,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Features And Safety
+Kodiaq,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Interior Space And Comfort
+Kodiaq,handling,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Ride Comfort And Handling
+Kodiaq,overall,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,overall
+Kodiaq,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,6,10,Mileage / Range And Efficiency
+Kodiaq,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Interior Space And Comfort
+Kodiaq,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Performance And Refinement
+Kodiaq,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,8,10,Ride Comfort And Handling
+Kodiaq,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kodiaq/expert-reviews,2025-09-22,1,7,10,Value For Money
+Kushaq,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,8,10,Exterior Design And Engineering
+Kushaq,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Kushaq,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,8,10,Features And Safety
+Kushaq,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Kushaq,handling,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Ride Comfort And Handling
+Kushaq,overall,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,overall
+Kushaq,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Mileage / Range And Efficiency
+Kushaq,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Interior Space And Comfort
+Kushaq,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Kushaq,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Ride Comfort And Handling
+Kushaq,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kushaq/expert-reviews,2025-09-02,1,7,10,Value For Money
+Kwid,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Exterior Design And Engineering
+Kwid,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Kwid,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,6,10,Features And Safety
+Kwid,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Kwid,handling,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Kwid,overall,0.6,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,6,10,overall
+Kwid,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Mileage / Range And Efficiency
+Kwid,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Kwid,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Kwid,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Kwid,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/renault/kwid/expert-reviews,2025-09-02,1,7,10,Value For Money
+Kylaq,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Exterior Design And Engineering
+Kylaq,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Performance And Refinement
+Kylaq,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Features And Safety
+Kylaq,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,7,10,Interior Space And Comfort
+Kylaq,handling,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Ride Comfort And Handling
+Kylaq,overall,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,overall
+Kylaq,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,7,10,Mileage / Range And Efficiency
+Kylaq,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,7,10,Interior Space And Comfort
+Kylaq,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Performance And Refinement
+Kylaq,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,8,10,Ride Comfort And Handling
+Kylaq,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/kylaq/expert-reviews,2025-08-06,1,7,10,Value For Money
+Magnite,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Exterior Design And Engineering
+Magnite,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Performance And Refinement
+Magnite,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Features And Safety
+Magnite,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Interior Space And Comfort
+Magnite,handling,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Ride Comfort And Handling
+Magnite,overall,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,overall
+Magnite,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Mileage / Range And Efficiency
+Magnite,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Interior Space And Comfort
+Magnite,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Performance And Refinement
+Magnite,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,8,10,Ride Comfort And Handling
+Magnite,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/magnite/expert-reviews,2025-08-07,1,9,10,Value For Money
+Majestor,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,8,10,Exterior Design And Engineering
+Majestor,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,7,10,Performance And Refinement
+Majestor,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,9,10,Features And Safety
+Majestor,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,9,10,Interior Space And Comfort
+Majestor,handling,0.8,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,8,10,Ride Comfort And Handling
+Majestor,overall,0.8,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,8,10,overall
+Majestor,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,6,10,Mileage / Range And Efficiency
+Majestor,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,9,10,Interior Space And Comfort
+Majestor,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,7,10,Performance And Refinement
+Majestor,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,8,10,Ride Comfort And Handling
+Majestor,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mg/majestor/expert-reviews,,1,8,10,Value For Money
+Nexon,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Exterior Design And Engineering
+Nexon,engine_performance,0.6,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,6,10,Performance And Refinement
+Nexon,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Features And Safety
+Nexon,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,7,10,Interior Space And Comfort
+Nexon,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Nexon,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,overall
+Nexon,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Mileage / Range And Efficiency
+Nexon,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,7,10,Interior Space And Comfort
+Nexon,refinement,0.6,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,6,10,Performance And Refinement
+Nexon,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Ride Comfort And Handling
+Nexon,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon/expert-reviews,2025-07-04,1,8,10,Value For Money
+Nexon EV,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Exterior Design And Engineering
+Nexon EV,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Performance And Refinement
+Nexon EV,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Features And Safety
+Nexon EV,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,7,10,Interior Space And Comfort
+Nexon EV,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Ride Comfort And Handling
+Nexon EV,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,overall
+Nexon EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Mileage / Range And Efficiency
+Nexon EV,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,7,10,Interior Space And Comfort
+Nexon EV,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Performance And Refinement
+Nexon EV,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Ride Comfort And Handling
+Nexon EV,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/nexon-ev/expert-reviews,2025-08-28,1,8,10,Value For Money
+Punch,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,Exterior Design And Engineering
+Punch,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,Performance And Refinement
+Punch,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,9,10,Features And Safety
+Punch,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,Interior Space And Comfort
+Punch,handling,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,9,10,Ride Comfort And Handling
+Punch,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,overall
+Punch,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,7,10,Mileage / Range And Efficiency
+Punch,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,Interior Space And Comfort
+Punch,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,8,10,Performance And Refinement
+Punch,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,9,10,Ride Comfort And Handling
+Punch,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/tata/punch/expert-reviews,2025-06-27,1,7,10,Value For Money
+Punch EV,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,8,10,Exterior Design And Engineering
+Punch EV,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Performance And Refinement
+Punch EV,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Features And Safety
+Punch EV,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,7,10,Interior Space And Comfort
+Punch EV,handling,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Ride Comfort And Handling
+Punch EV,overall,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,overall
+Punch EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,8,10,Mileage / Range And Efficiency
+Punch EV,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,7,10,Interior Space And Comfort
+Punch EV,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Performance And Refinement
+Punch EV,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Ride Comfort And Handling
+Punch EV,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/tata/punch-ev/expert-reviews,2025-09-19,1,9,10,Value For Money
+Rumion,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,7,10,Exterior Design And Engineering
+Rumion,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Rumion,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,6,10,Features And Safety
+Rumion,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,9,10,Interior Space And Comfort
+Rumion,handling,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Rumion,overall,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,8,10,overall
+Rumion,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,8,10,Mileage / Range And Efficiency
+Rumion,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,9,10,Interior Space And Comfort
+Rumion,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Rumion,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Rumion,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/rumion/expert-reviews,2025-09-02,1,9,10,Value For Money
+S-Presso,build_quality,0.4,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,4,10,Exterior Design And Engineering
+S-Presso,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,8,10,Performance And Refinement
+S-Presso,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,6,10,Features And Safety
+S-Presso,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,7,10,Interior Space And Comfort
+S-Presso,handling,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,6,10,Ride Comfort And Handling
+S-Presso,overall,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,6,10,overall
+S-Presso,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,8,10,Mileage / Range And Efficiency
+S-Presso,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,7,10,Interior Space And Comfort
+S-Presso,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,8,10,Performance And Refinement
+S-Presso,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,6,10,Ride Comfort And Handling
+S-Presso,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/s-presso/expert-reviews,2025-09-01,1,8,10,Value For Money
+Safari,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,9,10,Exterior Design And Engineering
+Safari,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,8,10,Performance And Refinement
+Safari,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,9,10,Features And Safety
+Safari,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,9,10,Interior Space And Comfort
+Safari,handling,0.7,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,7,10,Ride Comfort And Handling
+Safari,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,8,10,overall
+Safari,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,7,10,Mileage / Range And Efficiency
+Safari,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,9,10,Interior Space And Comfort
+Safari,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,8,10,Performance And Refinement
+Safari,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,7,10,Ride Comfort And Handling
+Safari,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/safari/expert-reviews,2025-08-29,1,8,10,Value For Money
+Scorpio Classic,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,7,10,Exterior Design And Engineering
+Scorpio Classic,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,7,10,Performance And Refinement
+Scorpio Classic,features_tech,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,5,10,Features And Safety
+Scorpio Classic,front_space,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,6,10,Interior Space And Comfort
+Scorpio Classic,handling,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,5,10,Ride Comfort And Handling
+Scorpio Classic,overall,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,6,10,overall
+Scorpio Classic,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,7,10,Mileage / Range And Efficiency
+Scorpio Classic,rear_seat_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,6,10,Interior Space And Comfort
+Scorpio Classic,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,7,10,Performance And Refinement
+Scorpio Classic,ride_comfort,0.5,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,5,10,Ride Comfort And Handling
+Scorpio Classic,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-classic/expert-reviews,2025-08-08,1,6,10,Value For Money
+Scorpio-N,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,Exterior Design And Engineering
+Scorpio-N,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,Performance And Refinement
+Scorpio-N,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,Features And Safety
+Scorpio-N,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,7,10,Interior Space And Comfort
+Scorpio-N,handling,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,7,10,Ride Comfort And Handling
+Scorpio-N,overall,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,overall
+Scorpio-N,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,7,10,Mileage / Range And Efficiency
+Scorpio-N,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,7,10,Interior Space And Comfort
+Scorpio-N,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,Performance And Refinement
+Scorpio-N,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,7,10,Ride Comfort And Handling
+Scorpio-N,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/scorpio-n/expert-reviews,2025-09-10,1,8,10,Value For Money
+Seltos,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,7,10,Exterior Design And Engineering
+Seltos,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Performance And Refinement
+Seltos,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Features And Safety
+Seltos,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,7,10,Interior Space And Comfort
+Seltos,handling,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Ride Comfort And Handling
+Seltos,overall,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,overall
+Seltos,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Mileage / Range And Efficiency
+Seltos,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,7,10,Interior Space And Comfort
+Seltos,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Performance And Refinement
+Seltos,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Ride Comfort And Handling
+Seltos,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/kia/seltos/expert-reviews,2025-10-16,1,8,10,Value For Money
+Sierra,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,9,10,Exterior Design And Engineering
+Sierra,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,Performance And Refinement
+Sierra,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,9,10,Features And Safety
+Sierra,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,9,10,Interior Space And Comfort
+Sierra,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,Ride Comfort And Handling
+Sierra,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,overall
+Sierra,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+Sierra,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,9,10,Interior Space And Comfort
+Sierra,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,Performance And Refinement
+Sierra,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,Ride Comfort And Handling
+Sierra,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra/expert-reviews,,1,8,10,Value For Money
+Sierra EV,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,9,10,Exterior Design And Engineering
+Sierra EV,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,Performance And Refinement
+Sierra EV,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,9,10,Features And Safety
+Sierra EV,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,7,10,Interior Space And Comfort
+Sierra EV,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,Ride Comfort And Handling
+Sierra EV,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,overall
+Sierra EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,Mileage / Range And Efficiency
+Sierra EV,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,7,10,Interior Space And Comfort
+Sierra EV,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,Performance And Refinement
+Sierra EV,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,8,10,Ride Comfort And Handling
+Sierra EV,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/tata/sierra-ev/expert-reviews,,1,7,10,Value For Money
+Slavia,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Exterior Design And Engineering
+Slavia,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Performance And Refinement
+Slavia,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,9,10,Features And Safety
+Slavia,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Interior Space And Comfort
+Slavia,handling,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Ride Comfort And Handling
+Slavia,overall,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,overall
+Slavia,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+Slavia,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Interior Space And Comfort
+Slavia,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Performance And Refinement
+Slavia,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Ride Comfort And Handling
+Slavia,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/skoda/slavia/expert-reviews,,1,8,10,Value For Money
+Sonet,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,Exterior Design And Engineering
+Sonet,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,Performance And Refinement
+Sonet,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,9,10,Features And Safety
+Sonet,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,7,10,Interior Space And Comfort
+Sonet,handling,0.6,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,6,10,Ride Comfort And Handling
+Sonet,overall,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,overall
+Sonet,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,Mileage / Range And Efficiency
+Sonet,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,7,10,Interior Space And Comfort
+Sonet,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,Performance And Refinement
+Sonet,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,6,10,Ride Comfort And Handling
+Sonet,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/kia/sonet/expert-reviews,2025-08-12,1,8,10,Value For Money
+Swift,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Exterior Design And Engineering
+Swift,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Performance And Refinement
+Swift,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Features And Safety
+Swift,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Interior Space And Comfort
+Swift,handling,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,9,10,Ride Comfort And Handling
+Swift,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,overall
+Swift,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,9,10,Mileage / Range And Efficiency
+Swift,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Interior Space And Comfort
+Swift,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,8,10,Performance And Refinement
+Swift,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,9,10,Ride Comfort And Handling
+Swift,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/swift/expert-reviews,2025-10-16,1,7,10,Value For Money
+Syros,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,7,10,Exterior Design And Engineering
+Syros,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Syros,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,9,10,Features And Safety
+Syros,front_space,1,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,10,10,Interior Space And Comfort
+Syros,handling,0.8,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Syros,overall,0.9,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,9,10,overall
+Syros,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,6,10,Mileage / Range And Efficiency
+Syros,rear_seat_comfort,1,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,10,10,Interior Space And Comfort
+Syros,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Syros,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,8,10,Ride Comfort And Handling
+Syros,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/kia/syros/expert-reviews,2025-10-03,1,8,10,Value For Money
+Taigun,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,7,10,Exterior Design And Engineering
+Taigun,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,8,10,Performance And Refinement
+Taigun,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,6,10,Features And Safety
+Taigun,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,7,10,Interior Space And Comfort
+Taigun,handling,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,8,10,Ride Comfort And Handling
+Taigun,overall,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,7,10,overall
+Taigun,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,6,10,Mileage / Range And Efficiency
+Taigun,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,7,10,Interior Space And Comfort
+Taigun,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,8,10,Performance And Refinement
+Taigun,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,8,10,Ride Comfort And Handling
+Taigun,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/volkswagen/taigun/expert-reviews,2025-07-18,1,6,10,Value For Money
+Tayron,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Exterior Design And Engineering
+Tayron,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,9,10,Performance And Refinement
+Tayron,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Features And Safety
+Tayron,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Interior Space And Comfort
+Tayron,handling,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Ride Comfort And Handling
+Tayron,overall,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,overall
+Tayron,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,6,10,Mileage / Range And Efficiency
+Tayron,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Interior Space And Comfort
+Tayron,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,9,10,Performance And Refinement
+Tayron,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Ride Comfort And Handling
+Tayron,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/tayron/expert-reviews,,1,8,10,Value For Money
+Tekton,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,9,10,Exterior Design And Engineering
+Tekton,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,7,10,Performance And Refinement
+Tekton,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,9,10,Features And Safety
+Tekton,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,8,10,Interior Space And Comfort
+Tekton,handling,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,9,10,Ride Comfort And Handling
+Tekton,overall,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,8,10,overall
+Tekton,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,6,10,Mileage / Range And Efficiency
+Tekton,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,8,10,Interior Space And Comfort
+Tekton,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,7,10,Performance And Refinement
+Tekton,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,9,10,Ride Comfort And Handling
+Tekton,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/nissan/tekton/expert-reviews,,1,8,10,Value For Money
+Thar Roxx,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,8,10,Exterior Design And Engineering
+Thar Roxx,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,9,10,Performance And Refinement
+Thar Roxx,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,9,10,Features And Safety
+Thar Roxx,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,7,10,Interior Space And Comfort
+Thar Roxx,handling,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,7,10,Ride Comfort And Handling
+Thar Roxx,overall,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,8,10,overall
+Thar Roxx,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,6,10,Mileage / Range And Efficiency
+Thar Roxx,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,7,10,Interior Space And Comfort
+Thar Roxx,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,9,10,Performance And Refinement
+Thar Roxx,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,7,10,Ride Comfort And Handling
+Thar Roxx,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/thar-roxx/expert-reviews,2025-08-05,1,8,10,Value For Money
+Tiago,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,9,10,Exterior Design And Engineering
+Tiago,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Tiago,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,9,10,Features And Safety
+Tiago,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Tiago,handling,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Tiago,overall,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,overall
+Tiago,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Mileage / Range And Efficiency
+Tiago,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Tiago,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,7,10,Performance And Refinement
+Tiago,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Tiago,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago/expert-reviews,2025-09-02,1,8,10,Value For Money
+Tiago EV,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,7,10,Exterior Design And Engineering
+Tiago EV,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Performance And Refinement
+Tiago EV,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Features And Safety
+Tiago EV,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Interior Space And Comfort
+Tiago EV,handling,0.9,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,9,10,Ride Comfort And Handling
+Tiago EV,overall,0.9,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,9,10,overall
+Tiago EV,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Mileage / Range And Efficiency
+Tiago EV,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Interior Space And Comfort
+Tiago EV,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Performance And Refinement
+Tiago EV,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,9,10,Ride Comfort And Handling
+Tiago EV,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/tata/tiago-ev/expert-reviews,2025-08-27,1,8,10,Value For Money
+Triber,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Exterior Design And Engineering
+Triber,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Performance And Refinement
+Triber,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Features And Safety
+Triber,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,9,10,Interior Space And Comfort
+Triber,handling,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Triber,overall,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,overall
+Triber,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Mileage / Range And Efficiency
+Triber,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,9,10,Interior Space And Comfort
+Triber,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Performance And Refinement
+Triber,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,8,10,Ride Comfort And Handling
+Triber,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/renault/triber/expert-reviews,2025-10-08,1,9,10,Value For Money
+Urban Cruiser Hyryder,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Exterior Design And Engineering
+Urban Cruiser Hyryder,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Performance And Refinement
+Urban Cruiser Hyryder,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Features And Safety
+Urban Cruiser Hyryder,front_space,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,7,10,Interior Space And Comfort
+Urban Cruiser Hyryder,handling,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Ride Comfort And Handling
+Urban Cruiser Hyryder,overall,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,overall
+Urban Cruiser Hyryder,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,9,10,Mileage / Range And Efficiency
+Urban Cruiser Hyryder,rear_seat_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,7,10,Interior Space And Comfort
+Urban Cruiser Hyryder,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Performance And Refinement
+Urban Cruiser Hyryder,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Ride Comfort And Handling
+Urban Cruiser Hyryder,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-hyryder/expert-reviews,2025-07-18,1,8,10,Value For Money
+Urban Cruiser Taisor,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,9,10,Exterior Design And Engineering
+Urban Cruiser Taisor,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Performance And Refinement
+Urban Cruiser Taisor,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,7,10,Features And Safety
+Urban Cruiser Taisor,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Interior Space And Comfort
+Urban Cruiser Taisor,handling,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Ride Comfort And Handling
+Urban Cruiser Taisor,overall,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,overall
+Urban Cruiser Taisor,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Mileage / Range And Efficiency
+Urban Cruiser Taisor,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Interior Space And Comfort
+Urban Cruiser Taisor,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Performance And Refinement
+Urban Cruiser Taisor,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Ride Comfort And Handling
+Urban Cruiser Taisor,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/toyota/urban-cruiser-taisor/expert-reviews,2025-06-24,1,8,10,Value For Money
+Venue,build_quality,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,9,10,Exterior Design And Engineering
+Venue,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Venue,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,9,10,Features And Safety
+Venue,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Interior Space And Comfort
+Venue,handling,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,7,10,Ride Comfort And Handling
+Venue,overall,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,overall
+Venue,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Mileage / Range And Efficiency
+Venue,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Interior Space And Comfort
+Venue,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Performance And Refinement
+Venue,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,7,10,Ride Comfort And Handling
+Venue,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/venue/expert-reviews,2025-10-03,1,8,10,Value For Money
+Victoris,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Exterior Design And Engineering
+Victoris,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,7,10,Performance And Refinement
+Victoris,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,9,10,Features And Safety
+Victoris,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Interior Space And Comfort
+Victoris,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Ride Comfort And Handling
+Victoris,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,overall
+Victoris,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,9,10,Mileage / Range And Efficiency
+Victoris,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Interior Space And Comfort
+Victoris,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,7,10,Performance And Refinement
+Victoris,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Ride Comfort And Handling
+Victoris,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/victoris/expert-reviews,2025-10-15,1,8,10,Value For Money
+Virtus,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Exterior Design And Engineering
+Virtus,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Performance And Refinement
+Virtus,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Features And Safety
+Virtus,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Virtus,handling,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Virtus,overall,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,overall
+Virtus,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,7,10,Mileage / Range And Efficiency
+Virtus,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Interior Space And Comfort
+Virtus,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Performance And Refinement
+Virtus,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,8,10,Ride Comfort And Handling
+Virtus,value_for_money,0.7,Autocar India,https://www.autocarindia.com/cars/volkswagen/virtus/expert-reviews,2025-09-02,1,7,10,Value For Money
+XEV 9S,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Exterior Design And Engineering
+XEV 9S,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,9,10,Performance And Refinement
+XEV 9S,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,9,10,Features And Safety
+XEV 9S,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Interior Space And Comfort
+XEV 9S,handling,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Ride Comfort And Handling
+XEV 9S,overall,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,9,10,overall
+XEV 9S,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Mileage / Range And Efficiency
+XEV 9S,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Interior Space And Comfort
+XEV 9S,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,9,10,Performance And Refinement
+XEV 9S,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,8,10,Ride Comfort And Handling
+XEV 9S,value_for_money,1,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9s/expert-reviews,,1,10,10,Value For Money
+XEV 9e,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,7,10,Exterior Design And Engineering
+XEV 9e,engine_performance,1,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,10,10,Performance And Refinement
+XEV 9e,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,9,10,Features And Safety
+XEV 9e,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,8,10,Interior Space And Comfort
+XEV 9e,handling,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,9,10,Ride Comfort And Handling
+XEV 9e,overall,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,8,10,overall
+XEV 9e,real_world_mileage,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,9,10,Mileage / Range And Efficiency
+XEV 9e,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,8,10,Interior Space And Comfort
+XEV 9e,refinement,1,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,10,10,Performance And Refinement
+XEV 9e,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,9,10,Ride Comfort And Handling
+XEV 9e,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xev-9e/expert-reviews,2025-10-03,1,8,10,Value For Money
+XL6,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,8,10,Exterior Design And Engineering
+XL6,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,7,10,Performance And Refinement
+XL6,features_tech,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,6,10,Features And Safety
+XL6,front_space,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,9,10,Interior Space And Comfort
+XL6,handling,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,8,10,Ride Comfort And Handling
+XL6,overall,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,8,10,overall
+XL6,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,7,10,Mileage / Range And Efficiency
+XL6,rear_seat_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,9,10,Interior Space And Comfort
+XL6,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,7,10,Performance And Refinement
+XL6,ride_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,8,10,Ride Comfort And Handling
+XL6,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/xl6/expert-reviews,2025-07-21,1,9,10,Value For Money
+XUV 3XO,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,7,10,Exterior Design And Engineering
+XUV 3XO,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Performance And Refinement
+XUV 3XO,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,9,10,Features And Safety
+XUV 3XO,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Interior Space And Comfort
+XUV 3XO,handling,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,9,10,Ride Comfort And Handling
+XUV 3XO,overall,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,overall
+XUV 3XO,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Mileage / Range And Efficiency
+XUV 3XO,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Interior Space And Comfort
+XUV 3XO,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Performance And Refinement
+XUV 3XO,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,9,10,Ride Comfort And Handling
+XUV 3XO,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-3xo/expert-reviews,2025-08-19,1,8,10,Value For Money
+XUV 7XO,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,8,10,Exterior Design And Engineering
+XUV 7XO,engine_performance,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Performance And Refinement
+XUV 7XO,features_tech,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Features And Safety
+XUV 7XO,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,8,10,Interior Space And Comfort
+XUV 7XO,handling,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Ride Comfort And Handling
+XUV 7XO,overall,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,overall
+XUV 7XO,real_world_mileage,0.7,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,7,10,Mileage / Range And Efficiency
+XUV 7XO,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,8,10,Interior Space And Comfort
+XUV 7XO,refinement,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Performance And Refinement
+XUV 7XO,ride_comfort,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Ride Comfort And Handling
+XUV 7XO,value_for_money,0.9,Autocar India,https://www.autocarindia.com/cars/mahindra/xuv-7xo/expert-reviews,,1,9,10,Value For Money
+e VITARA,build_quality,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,7,10,Exterior Design And Engineering
+e VITARA,engine_performance,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,7,10,Performance And Refinement
+e VITARA,features_tech,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,7,10,Features And Safety
+e VITARA,front_space,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,Interior Space And Comfort
+e VITARA,handling,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,Ride Comfort And Handling
+e VITARA,overall,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,overall
+e VITARA,real_world_mileage,0.8,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,8,10,Mileage / Range And Efficiency
+e VITARA,rear_seat_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,Interior Space And Comfort
+e VITARA,refinement,0.7,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,7,10,Performance And Refinement
+e VITARA,ride_comfort,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,Ride Comfort And Handling
+e VITARA,value_for_money,0.6,Autocar India,https://www.autocarindia.com/cars/maruti-suzuki/e-vitara/expert-reviews,,1,6,10,Value For Money
+i20,build_quality,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Exterior Design And Engineering
+i20,engine_performance,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Performance And Refinement
+i20,features_tech,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Features And Safety
+i20,front_space,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Interior Space And Comfort
+i20,handling,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,7,10,Ride Comfort And Handling
+i20,overall,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,overall
+i20,real_world_mileage,0.6,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,6,10,Mileage / Range And Efficiency
+i20,rear_seat_comfort,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Interior Space And Comfort
+i20,refinement,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Performance And Refinement
+i20,ride_comfort,0.7,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,7,10,Ride Comfort And Handling
+i20,value_for_money,0.8,Autocar India,https://www.autocarindia.com/cars/hyundai/i20/expert-reviews,2025-10-27,1,8,10,Value For Money
