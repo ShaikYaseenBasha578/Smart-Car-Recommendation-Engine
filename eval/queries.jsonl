@@ -25,10 +25,10 @@
 {"id": "plain-25", "query": "automatic MPV under 20 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "body_include": ["mpv"], "budget_max": 2000000}}
 {"id": "plain-26", "query": "Kia SUV under 20 lakh", "category": "plain_english", "expect": {"makes_include": ["Kia"], "body_include": ["suv"], "budget_max": 2000000}}
 {"id": "plain-27", "query": "petrol SUV with heads up display", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "body_include": ["suv"], "required_features": ["heads_up_display"]}}
-{"id": "plain-28", "query": "DCT petrol under 15 lakh", "category": "plain_english", "expect": {"transmission_include": ["dct"], "fuel_include": ["petrol"], "budget_max": 1500000}}
-{"id": "plain-29", "query": "AMT hatchback under 7 lakh", "category": "plain_english", "expect": {"transmission_include": ["amt"], "body_include": ["hatchback"], "budget_max": 700000}}
+{"id": "plain-28", "query": "DCT petrol under 15 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "transmission_include": ["dct"], "fuel_include": ["petrol"], "budget_max": 1500000}}
+{"id": "plain-29", "query": "AMT hatchback under 7 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "transmission_include": ["amt"], "body_include": ["hatchback"], "budget_max": 700000}}
 {"id": "plain-30", "query": "SUV with sunroof and 6 airbags under 15 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["sunroof"], "numeric_min": {"airbags": 6}, "budget_max": 1500000}}
-{"id": "plain-31", "query": "turbo petrol DCT SUV", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "transmission_include": ["dct"], "body_include": ["suv"]}}
+{"id": "plain-31", "query": "turbo petrol DCT SUV", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "transmission_family": "automatic", "transmission_include": ["dct"], "body_include": ["suv"]}}
 {"id": "plain-32", "query": "Maruti Suzuki automatic hatchback", "category": "plain_english", "expect": {"makes_include": ["Maruti Suzuki"], "transmission_family": "automatic", "body_include": ["hatchback"]}}
 {"id": "plain-33", "query": "diesel automatic 7 seater", "category": "plain_english", "expect": {"fuel_include": ["diesel"], "transmission_family": "automatic", "seats_min": 7}}
 {"id": "plain-34", "query": "SUV between 12 and 18 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "budget_min": 1200000, "budget_max": 1800000}}
@@ -64,7 +64,7 @@
 {"id": "hing-24", "query": "360 camera aur sunroof dono chahiye", "category": "hinglish", "expect": {"required_features": ["camera_360", "sunroof"]}}
 {"id": "hing-25", "query": "manual gaadi chahiye 6 lakh se kam", "category": "hinglish", "expect": {"transmission_family": "manual", "budget_max": 600000}}
 {"id": "hing-26", "query": "Kia ya Hyundai ki SUV, 18 lakh tak", "category": "hinglish", "expect": {"makes_include": ["Kia", "Hyundai"], "body_include": ["suv"], "budget_max": 1800000}}
-{"id": "hing-27", "query": "DCT wali gaadi chahiye", "category": "hinglish", "expect": {"transmission_include": ["dct"]}}
+{"id": "hing-27", "query": "DCT wali gaadi chahiye", "category": "hinglish", "expect": {"transmission_family": "automatic", "transmission_include": ["dct"]}}
 {"id": "hing-28", "query": "Toyota ki hybrid SUV", "category": "hinglish", "expect": {"makes_include": ["Toyota"], "fuel_include": ["hybrid"], "body_include": ["suv"]}}
 {"id": "hing-29", "query": "electric nahi chahiye, petrol chahiye", "category": "hinglish", "expect": {"fuel_include": ["petrol"], "fuel_exclude": ["electric"]}}
 {"id": "hing-30", "query": "sedan nahi chahiye, SUV chahiye", "category": "hinglish", "expect": {"body_include": ["suv"], "body_exclude": ["sedan"]}}

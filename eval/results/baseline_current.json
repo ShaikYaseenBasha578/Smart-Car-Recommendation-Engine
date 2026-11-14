@@ -318,14 +318,14 @@
     "exact_match": 1.0
    },
    "transmission_family": {
-    "tp": 30,
-    "fp": 4,
+    "tp": 34,
+    "fp": 0,
     "fn": 0,
     "active": 34,
-    "exact": 30,
-    "precision": 0.8823529411764706,
+    "exact": 34,
+    "precision": 1.0,
     "recall": 1.0,
-    "exact_match": 0.8823529411764706
+    "exact_match": 1.0
    },
    "transmission_include": {
     "tp": 4,
@@ -2306,6 +2306,7 @@
    "query": "DCT petrol under 15 lakh",
    "category": "plain_english",
    "expect": {
+    "transmission_family": "automatic",
     "transmission_include": [
      "dct"
     ],
@@ -2361,6 +2362,7 @@
    "query": "AMT hatchback under 7 lakh",
    "category": "plain_english",
    "expect": {
+    "transmission_family": "automatic",
     "transmission_include": [
      "amt"
     ],
@@ -2482,6 +2484,7 @@
     "fuel_include": [
      "petrol"
     ],
+    "transmission_family": "automatic",
     "transmission_include": [
      "dct"
     ],
@@ -4440,6 +4443,7 @@
    "query": "DCT wali gaadi chahiye",
    "category": "hinglish",
    "expect": {
+    "transmission_family": "automatic",
     "transmission_include": [
      "dct"
     ]
