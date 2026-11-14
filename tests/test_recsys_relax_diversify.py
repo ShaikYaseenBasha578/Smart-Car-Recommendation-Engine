@@ -95,14 +95,74 @@ def test_single_preferred_over_pair_and_nothing_relaxed_unnamed():
     assert r["intent"]["required_features"] == ["sunroof"]
 
 
-def test_prefers_relaxation_that_returns_enough_models(monkeypatch):
+def test_enough_models_is_only_a_tie_break_within_half_a_cost_point(monkeypatch):
     monkeypatch.setattr(config, "MIN_MODELS_FOR_RELAXATION", 3)
-    df = cars(dict(price_ex_showroom=9.3 * LAKH), dict(price_ex_showroom=9.9 * LAKH),
-              dict(price_ex_showroom=9.4 * LAKH, fuel_type="diesel"), dict(price_ex_showroom=9.6 * LAKH, fuel_type="diesel"),
-              dict(price_ex_showroom=9.7 * LAKH, fuel_type="diesel"))
-    it = base_intent(budget={"min": None, "max": 9 * LAKH}, fuel_types=["petrol"])
+    # budget +5% (cost 1.0) gives 1 model, +10% (cost 1.1) gives 3: within 0.5, so the larger result wins
+    df = cars(dict(price_ex_showroom=9.3 * LAKH), dict(price_ex_showroom=9.8 * LAKH),
+              dict(price_ex_showroom=9.85 * LAKH))
+    r = find_relaxation(base_intent(budget={"min": None, "max": 9 * LAKH}), df)
+    assert r["keys"] == ["budget"] and r["moves"][0]["step"] == 0.10 and len(r["candidates"]) == 3
+
+
+def test_cheaper_relaxation_wins_even_with_fewer_models_when_cost_differs_by_more_than_the_tie(monkeypatch):
+    monkeypatch.setattr(config, "MIN_MODELS_FOR_RELAXATION", 3)
+    # fuel change (5.0) would give 3 models, budget +5% (1.0) gives 1: costs differ by 4, cheapest wins
+    df = cars(dict(price_ex_showroom=9.3 * LAKH), dict(price_ex_showroom=9.0 * LAKH, fuel_type="diesel"),
+              dict(price_ex_showroom=8.9 * LAKH, fuel_type="diesel"), dict(price_ex_showroom=8.8 * LAKH, fuel_type="diesel"))
+    it = base_intent(budget={"min": None, "max": 9 * LAKH}, fuel_types=["petrol"], body_types=["suv"])
+    df.loc[df["model"] == "M0", "body_type"] = "suv"
     r = find_relaxation(it, df)
-    assert r["n_constraints"] in (1, 2) and len(r["candidates"]["model"].unique()) >= 3
+    assert r["keys"] == ["budget"]
+
+
+def test_total_cost_beats_fewer_constraints():
+    """budget +5% and one dropped feature (1.0 + 2.0 = 3.0) is preferred over switching fuel (5.0)."""
+    # A: petrol, 9.4L, no sunroof -> needs budget +5% and the feature dropped (3.0)
+    # B: diesel, 8L, with sunroof -> needs only the fuel switch (5.0)
+    df = cars(dict(price_ex_showroom=9.4 * LAKH, sunroof=False),
+              dict(price_ex_showroom=8.0 * LAKH, fuel_type="diesel", sunroof=True))
+    it = base_intent(budget={"min": None, "max": 9 * LAKH}, fuel_types=["petrol"], required_features=["sunroof"])
+    r = find_relaxation(it, df)
+    assert sorted(r["keys"]) == ["budget", "feature:sunroof"]
+    assert sum(m["cost"] for m in r["moves"]) == pytest.approx(3.0)
+
+
+def test_far_flag_when_more_than_three_constraints_relaxed():
+    df = cars(dict(price_ex_showroom=30 * LAKH, sunroof=False, adas_available=False, camera_360=False,
+                   cruise_control=False, body_type="sedan", fuel_type="diesel"))
+    it = base_intent(budget={"min": None, "max": 5 * LAKH}, body_types=["suv"], fuel_types=["petrol"],
+                     required_features=["sunroof", "adas", "camera_360", "cruise_control"])
+    r = find_relaxation(it, df)
+    assert r["cumulative"] and r["far"] and len(r["keys"]) > 3
+    assert "nothing close" in r["message"].lower() and "nearest" in r["message"].lower()
+
+
+def test_not_far_when_small_relaxation_works():
+    df = cars(dict(price_ex_showroom=9.3 * LAKH))
+    r = find_relaxation(base_intent(budget={"min": None, "max": 9 * LAKH}), df)
+    assert r["far"] is False
+
+
+def test_exclusions_and_upper_bounds_are_relaxable_with_truthful_violations():
+    df = cars(dict(sunroof=True, make="Acme"), dict(sunroof=False, make="Other", ground_clearance_mm=210.0))
+    it = base_intent(exclude_features=["sunroof"], exclude_makes=["Other"], max_ground_clearance_mm=200.0)
+    # M1 breaks the make and the clearance bound, M0 the sunroof exclusion; nothing passes the original intent
+    from services.filter_v2 import filter_candidates
+    assert filter_candidates(it, df).empty
+    r = find_relaxation(it, df)
+    assert r is not None and set(r["keys"]) <= {"exclude_feature:sunroof", "exclude_makes", "max_ground_clearance_mm"}
+    for _, row in r["candidates"].iterrows():
+        viol = violations_for(row, it, r["keys"])
+        named = {v["constraint"] for v in viol}
+        broken = set()
+        if row["sunroof"] is True:
+            broken.add("exclude_feature:sunroof")
+        if row["make"] == "Other":
+            broken.add("exclude_makes")
+        if row["ground_clearance_mm"] > 200:
+            broken.add("max_ground_clearance_mm")
+        assert named == broken & set(r["keys"])
+        assert all(v["text"] for v in viol)
 
 
 def test_seats_not_lowered_unless_nothing_else_works():
@@ -185,6 +245,20 @@ def test_mmr_reduces_same_make_runs():
     assert _run_len(mmr) < _run_len(base)
     assert mmr.count("X") < base.count("X")
     assert mmr[0] == "X"  # the best car is still first
+
+
+def test_display_is_sorted_by_score_while_mmr_decides_the_selection():
+    specs = [dict(make="X", model=f"X{i}", _s=0.95 - 0.01 * i, price_ex_showroom=(10 + 0.1 * i) * LAKH) for i in range(6)]
+    specs += [dict(make=f"Y{i}", model=f"Y{i}", _s=0.90 - 0.005 * i, price_ex_showroom=(10 + i) * LAKH) for i in range(5)]
+    specs.append(dict(make="Z", model="Z0", _s=0.30, price_ex_showroom=30 * LAKH))
+    out = diversify(sframe(specs), base_intent())
+    scores = [float(r["overall"]) for r in out]
+    assert scores == sorted(scores, reverse=True)
+    # MMR pulled a lower-scored car into the selection ahead of a higher-scored one ...
+    order = [int(r["selection_order"]) for r in out]
+    assert sorted(order) == list(range(1, len(out) + 1)) and order != sorted(order)
+    # ... but the display still never shows a weaker match above a stronger one
+    assert out[0]["selection_order"] == 1
 
 
 def test_mmr_skipped_when_make_named():

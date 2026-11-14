@@ -10,10 +10,12 @@ Candidate relaxations ("moves") each carry a cost that encodes the order of will
     named make / like-model    6.0, named model 6.5
     budget dropped entirely    8.0     (fallback only)
     seats_min lowered by k     9.0 + k (last resort only; never lowered unless nothing else works)
-All single moves are tried, then all pairs of moves on different constraints. Among results, relaxations
-with fewer constraints come first, then lower total cost; one that returns at least
-MIN_MODELS_FOR_RELAXATION models is preferred over one that returns fewer. If no single or pair works, seats
-moves are allowed (and the response says so); if still nothing, moves are applied cumulatively in cost order.
+All single moves and all pairs of moves on different constraints are tried. Selection: lowest total cost
+(a pair costs the sum of its two moves) first. Among relaxations whose cost is within RELAX_COST_TIE (0.5) of
+the cheapest one that works, one returning at least MIN_MODELS_FOR_RELAXATION models is preferred; then lowest
+cost, then fewer constraints, then more models. If no single or pair works, seats moves are allowed (and the
+response says so); if still nothing, moves are applied cumulatively in cost order, and when more than
+FAR_CONSTRAINTS constraints were needed the relaxation is flagged `far`.
 The filter itself is never re-implemented: every attempt calls filter_v2.filter_candidates on a modified intent.
 """
 
@@ -26,7 +28,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 import pandas as pd
 
-from services.filter_v2 import AUTOMATIC_TYPES, FEATURE_COLUMNS, MIN_COLUMNS, filter_candidates
+from services.filter_v2 import AUTOMATIC_TYPES, FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, filter_candidates
 from services.recsys import config
 from services.recsys.common import is_unknown, num
 
@@ -152,25 +154,32 @@ def _n_models(cands: pd.DataFrame) -> int:
 
 
 def _search(intent: dict, df: pd.DataFrame, moves: List[Move], must_include: Optional[str] = None):
-    """Best (combo, intent, candidates) over singles then pairs, or None."""
-    fallback_hit = None
+    """Best (combo, intent, candidates) over singles and pairs, or None. See the module docstring for the rule."""
     combos = [c for size in (1, 2) for c in _combos(moves, size)
               if must_include is None or any(m.key == must_include for m in c)]
-    combos.sort(key=lambda c: (len(c), sum(m.cost for m in c), [m.key for m in c], [m.label for m in c]))
+    combos.sort(key=lambda c: (sum(m.cost for m in c), len(c), [m.key for m in c], [m.label for m in c]))
+    hits = []  # (cost, n_constraints, n_models, combo, relaxed, cands)
     for combo in combos:
+        cost = sum(m.cost for m in combo)
+        if hits and cost >= hits[0][0] + config.RELAX_COST_TIE:
+            break  # sorted by cost: nothing later can be within the tie window
         relaxed = _apply(intent, combo)
         cands = filter_candidates(relaxed, df)
         n = _n_models(cands)
-        if n >= config.MIN_MODELS_FOR_RELAXATION:
-            return combo, relaxed, cands
-        if n >= 1 and fallback_hit is None:
-            fallback_hit = (combo, relaxed, cands)
-    return fallback_hit
+        if n >= 1:
+            hits.append((cost, len(combo), n, combo, relaxed, cands))
+    if not hits:
+        return None
+    window = [h for h in hits if h[0] < hits[0][0] + config.RELAX_COST_TIE]
+    enough = [h for h in window if h[2] >= config.MIN_MODELS_FOR_RELAXATION]
+    best = min(enough or window, key=lambda h: (h[0], h[1], -h[2]))
+    return best[3], best[4], best[5]
 
 
 def find_relaxation(intent: dict, df: pd.DataFrame) -> Optional[Dict[str, Any]]:
     """The smallest named relaxation that returns cars, or None if nothing works at all."""
     note = None
+    far = False
     hit = _search(intent, df, generate_moves(intent))
     seats_relaxed = False
     if hit is None and intent.get("seats_min") is not None:
@@ -191,6 +200,7 @@ def find_relaxation(intent: dict, df: pd.DataFrame) -> Optional[Dict[str, Any]]:
                 hit = (tuple(chosen), relaxed, cands)
                 seats_relaxed = "seats" in used
                 note = "No single or paired relaxation works, so several constraints were relaxed together."
+                far = len(chosen) > config.FAR_CONSTRAINTS
                 break
     if hit is None:
         return None
@@ -199,12 +209,16 @@ def find_relaxation(intent: dict, df: pd.DataFrame) -> Optional[Dict[str, Any]]:
     message = "No cars match all your requirements. Showing the closest, with " + labels + "."
     if seats_relaxed:
         message += " Seating was lowered because nothing else gave results."
-    if note:
+    if far:
+        message = ("No cars match all your requirements. Nothing close to your request exists in the catalogue; these "
+                   f"are only the nearest cars on the constraints that remain, after relaxing {len(combo)} of them: "
+                   + labels + ".")
+    elif note:
         message += " " + note
     return {
         "moves": [m.describe() for m in combo], "keys": [m.key for m in combo], "intent": relaxed,
         "candidates": cands, "n_constraints": len(combo), "seats_relaxed": seats_relaxed,
-        "cumulative": note is not None, "message": message,
+        "cumulative": note is not None, "far": far, "message": message,
     }
 
 
@@ -259,8 +273,18 @@ def violations_for(row: pd.Series, original: dict, keys: List[str]) -> List[Dict
             add(key, f"{row['model']}, not the model you named")
         elif key == "like_model":
             add(key, "outside the size/price range of the model you named")
-        elif key.startswith("exclude_feature:") or key.startswith("max_") or key == "exclude_makes":
-            add(key, "breaks a limit you set: " + key.replace("exclude_feature:", "no ").replace("_", " "))
+        elif key.startswith("exclude_feature:"):
+            f = key.split(":", 1)[1]
+            col, label = FEATURE_COLUMNS[f]
+            if row[col] is True:
+                add(key, f"has {label}, which you excluded")
+        elif key in MAX_COLUMNS:
+            col, label = MAX_COLUMNS[key]
+            v, t = num(row[col]), original.get(key)
+            if v is not None and t is not None and v > t and not (col == "mileage_kmpl" and row["fuel_type"] == "cng"):
+                add(key, f"{label} {v:g} vs at most {t:g} wanted", v - t, col)
+        elif key == "exclude_makes" and row["make"] in (original.get("exclude_makes") or []):
+            add(key, f"{row['make']}, which you excluded")
         elif key == "seats" and original.get("seats_min") is not None:
             s = num(row["seats"])
             if s is not None and s < original["seats_min"]:

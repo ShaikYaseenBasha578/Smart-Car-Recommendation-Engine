@@ -30,7 +30,12 @@ USE_TWINS = True
 # relax.py
 BUDGET_STEPS = (0.05, 0.10, 0.20)
 MIN_MODELS_FOR_RELAXATION = 3  # prefer a relaxation that returns at least this many models
+RELAX_COST_TIE = 0.5           # costs closer than this are a tie (then prefer >= MIN_MODELS_FOR_RELAXATION models)
+FAR_CONSTRAINTS = 3            # cumulative fallback relaxing more constraints than this is flagged far
 MAX_NEAREST_VARIANTS = 400
+
+# api.py
+ASSUMED_BOOST = 0.03           # added to the overall score (0-1) of a car matching an ML-assumed body/fuel; never filters
 
 # explain.py
 MAX_REASONS = 4
