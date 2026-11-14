@@ -140,7 +140,7 @@ class FakeChain:
         if self.fail:
             raise self.fail
         self.n += 1
-        self.calls.append({"model": self.model, "label": label})
+        self.calls.append({"backend": self.name, "model": self.model, "label": label})
         return json.dumps(self.handler(prompt))
 
 
@@ -431,7 +431,7 @@ def test_writer_and_checker_must_differ_and_haiku_is_refused(cfg, tmp_path):
         RT.Engine(cfg, str(tmp_path), writer=same, checker=FakeChain("other", "sonnet", checker_handler))
     with pytest.raises(ValueError, match="Haiku"):
         RT.Engine(cfg, str(tmp_path), writer=FakeChain("claude_haiku", "haiku", writer_handler), checker=FakeChain("g", "gem", checker_handler))
-    assert cfg["llm"]["reviews_write"] == ["claude_sonnet"] and cfg["llm"]["reviews_check"] == ["gemini_alt", "groq"]
+    assert cfg["llm"]["reviews_write"] == ["claude_sonnet"] and cfg["llm"]["reviews_check"] == ["claude_opus", "gemini_alt", "groq"]
 
 
 def test_checker_quota_stops_cleanly_resumes_with_no_new_writer_calls_and_never_uses_writer(monkeypatch, cfg, tmp_path):

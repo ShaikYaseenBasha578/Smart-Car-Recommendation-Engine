@@ -50,7 +50,7 @@ DEFAULTS = {
         "verify_image": ["gemini_alt"],
         # review layers (kbpipe/reviews.py, review_text.py): Claude Sonnet writes, the free chain checks. Never the same backend, never Haiku.
         "reviews_write": ["claude_sonnet"],
-        "reviews_check": ["gemini_alt", "groq"],
+        "reviews_check": ["claude_opus", "gemini_alt", "groq"],
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},
             "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 3000},
@@ -59,6 +59,7 @@ DEFAULTS = {
             "ollama": {"kind": "ollama", "base_url": "http://localhost:11434", "model": "llama3.2", "rpm": 600, "daily_calls": 100000},
             "claude_sonnet": {"kind": "claude_cli", "model": "sonnet", "rpm": 20, "daily_calls": 1000},
             "claude_cli": {"kind": "claude_cli", "model": "sonnet", "rpm": 30, "daily_calls": 500},
+            "claude_opus": {"kind": "claude_cli", "model": "claude-opus-5-5", "rpm": 20, "daily_calls": 1000},
             "claude_haiku": {"kind": "claude_cli", "model": "haiku", "rpm": 60, "daily_calls": 4000},
             "mock": {"kind": "mock"}
         }

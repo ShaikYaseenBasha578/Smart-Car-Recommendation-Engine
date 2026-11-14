@@ -176,7 +176,7 @@ class Engine:
         except llm.LLMError as e:
             raise TextFail("%s call failed: %s" % (role, str(e)[:200]))
         self.stats[role + "_calls"] += 1
-        model = chain.calls[-1]["model"] if chain.calls else chain.model
+        model = ("%s:%s" % (chain.calls[-1]["backend"], chain.calls[-1]["model"])) if chain.calls else chain.model
         try:
             data = llm.parse_json(text)
         except ValueError as e:
