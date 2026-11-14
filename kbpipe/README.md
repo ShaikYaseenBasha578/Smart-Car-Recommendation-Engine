@@ -50,6 +50,7 @@ ln -s ~/carrec_worktrees/kb-kbpipe/bin/kbpipe /usr/local/bin/kbpipe
 | `kbpipe run --audit full\|changed\|none` | Scope of the final audit. Default: `full` on the first run and with `--full`, otherwise `changed`. |
 | `kbpipe apply-review <REVIEW file>` | Apply the review items you ticked. |
 | `kbpipe agreement <human_check.csv>` | Your agreement with the verifier, from the sheet you filled in. |
+| `kbpipe reviews` | Review layers: Autocar India expert scores (out of 10), CarWale owner ratings (out of 5), short notes and owner themes. See below. |
 | `kbpipe status` | KB hash, whether anything holds the file, recent runs. |
 
 Tests:
@@ -160,3 +161,32 @@ To undo a write, restore the backup named in the summary (`knowledge_base/backup
 - Brochure extraction for new models is not part of this version. Brochure-backed values already in the KB are audited (the verifier renders the cited page).
 - Aggregators copy from each other, so "two sites agree" is weaker than two independent sources. Values accepted this way are tagged `AGGREGATOR_AGREED_UNVERIFIED`.
 - The site terms of use have not been reviewed. The tool fetches public pages at one request every four seconds per site and caches them.
+
+
+## Review layers (`kbpipe reviews`)
+
+Plan: `knowledge_base/reports/REVIEW_LAYERS_PLAN.md` (section 9a wins). Page findings: `knowledge_base/reports/kbpipe/REVIEW_PAGE_INSPECTION.md`.
+
+```bash
+./bin/kbpipe reviews --no-write --label reviews_pilot --only "Hyundai Creta" --only "Tata Nexon" --verify-all
+```
+
+| Flag | Meaning |
+|---|---|
+| `--only NAME` | A model name or `Make Model` (repeatable). |
+| `--max-models N` | Stop after N models (most variants first). |
+| `--no-write` | Stage and gate on a scratch copy; the KB is not touched. A missing review schema is added to the copy only. |
+| `--no-text` | Numbers only; no LLM calls. |
+| `--verify-all` | Verify every note and theme (default: 25%; the pilot uses all). |
+| `--label NAME` | Run folder `knowledge_base/runs/<label>/`: `RUN_SUMMARY.md`, `reviews_rows.tsv`, `flags.tsv`, `changeset.json`, `run.log`. |
+| `--import-saved FOLDER` | Read Team-BHP pages you saved in a browser (local files only, nothing is fetched) into `owner_theme`. |
+| `--teambhp-links` | Write `teambhp_links.html` (one search link per model, most popular first). Fetches nothing. |
+
+How it works:
+- Fetching goes through `Fetcher.get_polite`: robots.txt is read first and obeyed, one request per 4 s per site, cached, one attempt only. A 403, 429 or captcha is recorded in `flags.tsv` and the model is skipped; there is no retry around a block. Only autocarindia.com and carwale.com are contacted; Team-BHP never.
+- Numbers come from the pages by parsers (`sources/autocar_reviews.py`, `sources/carwale_ratings.py`); no LLM writes a score. The page must be for the requested make and model, scores must be in range, and all seven aspect labels must be present, or the model is left out and flagged.
+- Text: an LLM (free chain in `llm.reviews_extract`) writes one short note per Autocar aspect (own words, 25 words at most, optional exact-substring quote) and owner themes from CarWale reviews (at least 3 mentions in at least 20 reviews sampled). A different model (`llm.reviews_verify`) must confirm each sampled item against the page text with a supporting line found in that text. Unsupported items are dropped and flagged. Below 95% supported, that source's text is not written; its numbers still are. Run cap: `reviews.max_llm_calls`.
+- Rows are refreshed after 90 days (`reviews.refresh_days`). A changed score inserts a new row and marks the old one `superseded`; nothing is deleted.
+- Off switch: `reviews.sources.autocar.enabled` (false: Autocar is neither fetched nor written).
+- Writing needs the tables from `kbpipe/migrations/reviews_tables.py`, which creates `professional_assessment`, `owner_rating`, `owner_theme` and three `source` rows. It is DDL, so the owner approves it (P16) and runs it with `--prod` once; it refuses the production file otherwise. `reviews` refuses to write while the production KB lacks the tables, and the schema pin (`kbpipe pin-schema`) must be refreshed after the migration.
+- Team-BHP: save a thread in your browser into `~/carrec_saved_pages/teambhp/`, then `kbpipe reviews --import-saved ~/carrec_saved_pages/teambhp --no-write`. The model and thread URL are read from the saved page (a `saved from url` comment, the canonical link or the title); an unknown model is asked for. The saved files stay local and are never committed or exported. Read Team-BHP's terms in a browser first; that risk is yours.
