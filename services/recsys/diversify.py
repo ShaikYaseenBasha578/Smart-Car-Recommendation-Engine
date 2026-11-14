@@ -7,7 +7,10 @@
    1 - min(1, |ln(price_a / price_b)| / ln 2)), so cars twice the price apart are fully dissimilar.
    pick argmax  lambda x relevance - (1 - lambda) x max similarity to the already picked.
    Skipped (pure score order) when the user named a make or model.
-3. twins (services.twins): when both models of a confirmed twin pair are picked the limit grows by one.
+3. Display order: MMR only decides WHICH models are shown. The chosen rows are returned sorted by overall
+   score, descending (ties: lower variant_id), so a weaker match never appears above a stronger one. Each row
+   carries `selection_order` (1 = picked first by MMR).
+4. twins (services.twins): when both models of a confirmed twin pair are picked the limit grows by one.
    Behind use_twins, default on. Max MAX_MODELS models otherwise.
 """
 
@@ -86,10 +89,18 @@ def named_make_or_model(intent: Any) -> bool:
 
 def diversify(scored: pd.DataFrame, intent: Any, max_models: int = config.MAX_MODELS, lam: float = config.MMR_LAMBDA,
               use_twins: bool = config.USE_TWINS) -> List[pd.Series]:
-    """`scored`: candidate rows joined with the score table (column `overall`). Returns chosen rows in order."""
+    """`scored`: candidate rows joined with the score table (column `overall`).
+    Returns the chosen rows sorted by overall score descending, each with `selection_order` set."""
     if scored.empty:
         return []
     models = best_variant_per_model(scored)
     if named_make_or_model(intent):
-        return score_order_select(models, max_models, use_twins)
-    return mmr_select(models, max_models, lam, use_twins)
+        picked = score_order_select(models, max_models, use_twins)
+    else:
+        picked = mmr_select(models, max_models, lam, use_twins)
+    out = []
+    for i, row in enumerate(picked, start=1):
+        row = row.copy()
+        row["selection_order"] = i
+        out.append(row)
+    return sorted(out, key=lambda r: (-(float(r["overall"]) if not pd.isna(r["overall"]) else -1.0), r["variant_id"]))
