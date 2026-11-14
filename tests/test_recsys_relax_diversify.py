@@ -285,3 +285,18 @@ def test_twins_flag():
     assert len(diversify(df, base_intent(makes=["Toyota", "Maruti Suzuki"], ), use_twins=True)) == 9
     assert len(diversify(df, base_intent(makes=["Toyota", "Maruti Suzuki"]), use_twins=False)) == 8
     assert len(diversify(df, base_intent(), use_twins=False)) == 8
+
+
+def test_relaxed_labels_name_only_stated_constraints_synthetic_frame():
+    """Regression: a figure with a measurement unit used to become a phantom budget minimum, so the relaxed result
+    named a violation of something the user never asked for. On a hand-built frame the relaxation must name exactly
+    the constraint that is really broken (here: the stated fuel)."""
+    from tests.recsys_frames import make_frame
+    from services.recsys.api import recommend
+    frame = make_frame([dict(model="A", fuel_type="petrol", fuel_raw="Petrol", price_ex_showroom=900000.0),
+                        dict(model="B", fuel_type="petrol", fuel_raw="Petrol", price_ex_showroom=1100000.0)])
+    r = recommend("diesel car under 12 lakh, we drive about 60 km a day", catalogue=frame)
+    assert r["intent"]["budget"]["min"] is None and r["intent"]["budget"]["max"] == 1_200_000
+    assert r.get("relaxation") and r["relaxation"]["keys"] == ["fuel"]
+    for car in r["recommendations"]:
+        assert [v["constraint"] for v in car["violations"]] == ["fuel"]

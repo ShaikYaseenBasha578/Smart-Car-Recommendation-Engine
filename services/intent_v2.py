@@ -253,14 +253,20 @@ def _rupees(number: str, unit: str | None, cue: bool) -> int | None:
     return None
 
 
+# a number that is followed by a currency word is a price, never a clearance / boot figure ("clearance under 8 lakh")
+NOT_MONEY = r"(?!\d|\.\d|\s*(?:lakhs?|lacs?|lkh|crores?|cr|thousand)(?![a-z]))"
+# a bare number followed by one of these is a measurement, never a budget ("about 40 km", "minimum 200 mm")
+MEASURE_AFTER = re.compile(r"\s*(?:mm|cm|kms?|kmpl|kpl|kg|ltrs?|litres?|liters?|seats?|seaters?|airbags?|stars?|bhp|ps|hp|cc|nm"
+                           r"|people|persons|years?|yrs?|months?|days?|hours?|hrs?|minutes?)(?![a-z])")
+
 UPPER_PREFIX = r"(?:under|below|less\s*than|at\s*most|no\s*more\s*than|not\s*more\s*than|max(?:imum)?|upto|up\s*to)"
 # (intent field, patterns with ONE number group each). Mileage upper bounds are handled with the mileage code below.
 UPPER_BOUND_SPECS = [
     ("max_ev_range_km", [rf"(?:ev\s*)?range\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM})\s*km",
                          rf"{UPPER_PREFIX}\s*({NUM})\s*km\s*(?:of\s*)?(?:real\s*|claimed\s*|battery\s*)?range"]),
-    ("max_ground_clearance_mm", [rf"(?:ground\s*)?clearance\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM})\s*(?:mm)?",
+    ("max_ground_clearance_mm", [rf"(?:ground\s*)?clearance\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:mm)?",
                                  rf"{UPPER_PREFIX}\s*({NUM})\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance"]),
-    ("max_boot_space_litres", [rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?{UPPER_PREFIX}\s*({NUM})\s*(?:l|litres?|liters?|ltrs?)?",
+    ("max_boot_space_litres", [rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?",
                                rf"{UPPER_PREFIX}\s*({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk)"]),
 ]
 
@@ -277,10 +283,10 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
         ("min_ev_range_km", int, r"(\d+)\s*\+?\s*km\s*(?:of\s*)?(?:real\s*|claimed\s*|battery\s*)?range"
                                  r"|range\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*)?(\d+)\s*\+?\s*km"),
         ("min_ground_clearance_mm", int, r"(\d+)\s*\+?\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance|(\d+)\s*mm\s*gc"
-                                         r"|(?:ground\s*)?clearance\s*(?:of\s*)?(?:at\s*least\s*|above\s*)?(\d+)\s*(?:mm)?"),
+                                         rf"|(?:ground\s*)?clearance\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|min(?:imum)?\s*)?(\d+){NOT_MONEY}\s*(?:mm)?"),
         ("min_boot_space_litres", int, r"(\d+)\s*\+?\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk|dickey|dikki)"
-                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*)?"
-                                       r"(\d+)\s*(?:l|litres?|liters?|ltrs?)?"),
+                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|min(?:imum)?\s*)?"
+                                       rf"(\d+){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?"),
     ]
     # upper bounds first, so the lower-bound patterns below can't read "under 190 mm ground clearance" as a minimum
     for field, patterns in UPPER_BOUND_SPECS:
@@ -373,7 +379,7 @@ def _parse_budget(text: str, out: dict, trace: list) -> str:
             groups = [g for g in m.groups()]
             number, unit = (groups[0], groups[1]) if groups[0] else (groups[2], groups[3])
             value = _rupees(number, unit, cue=True)
-            if value is None:
+            if value is None or (not unit and number and MEASURE_AFTER.match(text, m.end())):
                 continue
             record(kind, m, value if kind != "max" else None, value if kind == "max" else None)
 

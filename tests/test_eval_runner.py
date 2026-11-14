@@ -65,3 +65,17 @@ def test_engine_seam_accepts_a_modified_catalogue(engine):
         assert not hit or any("sunroof" in u.lower() for u in hit[0]["unverified"] + [x if isinstance(x, str) else str(x) for x in hit[0]["unknowns"]])
     from services.catalogue import get_catalogue
     assert get_catalogue()["sunroof"].notna().sum() == cat["sunroof"].notna().sum()  # the real catalogue untouched
+
+
+def test_label_truthfulness_body_derived_from_reference_model():
+    cat = E.get_catalogue()
+    ref = cat[cat["body_type"] == "suv"].iloc[0]["model"]
+    mpv = cat[(cat["body_type"] == "mpv") & cat["price_ex_showroom"].notna()].iloc[0]
+    car = {"variant_id": int(mpv["variant_id"]), "Model": mpv["model"], "Variant": mpv["variant"],
+           "violations": [{"constraint": "body_type"}]}
+    expect = {"reference_models": [ref]}   # the user stated no body type
+    assert E.label_truthfulness([car], expect)["truthful"]            # naming it is true: an MPV is not the SUV's body
+    same = cat[(cat["body_type"] == "suv") & cat["price_ex_showroom"].notna()].iloc[1]
+    liar = {"variant_id": int(same["variant_id"]), "Model": same["model"], "Variant": same["variant"],
+            "violations": [{"constraint": "body_type"}]}
+    assert not E.label_truthfulness([liar], expect)["truthful"]       # naming it for a same-body car is still wrong

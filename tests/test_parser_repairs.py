@@ -151,3 +151,33 @@ def test_vague_query_is_flagged_and_still_returns_the_default_list(client, monke
     assert "budget" in data["message"]
     specific = predict(client, monkeypatch, "petrol hatchback under 8 lakh")
     assert specific["vague"] is False
+
+
+# ---- measurement figures are never read as prices, prices never as measurements (regression: false hard constraints
+# ---- made relaxed responses name violations the user never stated). Synthetic wordings, general classes.
+import pytest as _pytest
+from services.intent_v2 import parse_intent as _parse
+
+
+@_pytest.mark.parametrize("q", ["about 35 km every day, diesel, under 15 lakh", "around 40 mm lift, petrol",
+                                "minimum 180 mm ground clearance, hatchback", "at least 5 seats, about 8 lakh"])
+def test_bare_number_with_measure_unit_is_not_a_budget(q):
+    out = _parse(q, use_ml=False)
+    assert out["budget"]["min"] is None or q.endswith("8 lakh")   # only the last query states a (around) budget
+    if not q.endswith("8 lakh"):
+        assert out["budget"]["min"] is None
+
+
+def test_clearance_and_price_in_one_query():
+    out = _parse("sedan with 190 mm ground clearance under 9 lakh", use_ml=False)
+    assert out["budget"]["max"] == 900_000 and out["min_ground_clearance_mm"] == 190
+    assert out["max_ground_clearance_mm"] is None
+    out = _parse("minimum 200 mm ground clearance, around 10 lakh", use_ml=False)
+    assert out["min_ground_clearance_mm"] == 200 and out["budget"] == {"min": 850_000, "max": 1_150_000}
+    out = _parse("boot space minimum 450 litres, below 12 lakh", use_ml=False)
+    assert out["min_boot_space_litres"] == 450 and out["budget"]["max"] == 1_200_000
+
+
+def test_money_after_clearance_cue_is_a_budget_not_a_clearance():
+    out = _parse("clearance under 8 lakh suv", use_ml=False)
+    assert out["max_ground_clearance_mm"] is None and out["budget"]["max"] == 800_000

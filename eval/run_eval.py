@@ -358,12 +358,20 @@ def label_truthfulness(cars: list[dict], expect: dict) -> dict:
     """Every hard constraint a car really breaks (catalogue check) must be named in its `violations`, and nothing
     else may be named. Returns {"truthful": bool, "cars": [problem, ...]}."""
     problems = []
+    # "like X": the engine derives a body-type filter from X. The label states no body, but the engine may name it as
+    # broken, and that is truthful when the car's body really differs from X's. Judge it against the derived body.
+    derived_body = set()
+    if expect.get("reference_models") and not expect.get("body_include") and not expect.get("body_exclude"):
+        cat = get_catalogue()
+        derived_body = set(cat[cat["model"].isin(expect["reference_models"])]["body_type"])
     for car in cars:
         row = catalogue_row(car)
         if row is None:
             problems.append({"car": f"{car.get('Model')} {car.get('Variant')}", "missing": ["not in catalogue"], "extra": []})
             continue
         actual = {c for c in map(canonical_actual, violations(row, expect)) if c}
+        if derived_body and row["body_type"] not in derived_body:
+            actual.add("body")
         named = {c for c in (canonical_named(v["constraint"]) for v in car.get("violations") or []) if c}
         missing, extra = sorted(actual - named), sorted(named - actual)
         if missing or extra:
