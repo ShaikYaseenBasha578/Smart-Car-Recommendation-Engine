@@ -81,7 +81,7 @@ def active_classes(values: pd.DataFrame, norm_w: Dict[str, float]) -> List[str]:
 
 def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[str, Any]] = None,
                      evidence: Optional[Evidence] = None, budget: Optional[dict] = None,
-                     criteria: Optional[CriteriaResult] = None) -> Tuple[pd.DataFrame, CriteriaResult]:
+                     criteria: Optional[CriteriaResult] = None, reference: Any = None) -> Tuple[pd.DataFrame, CriteriaResult]:
     """Score every candidate row. Returns (table, criteria result).
 
     table columns: overall, spec, expert, owner, coverage, unknown_share, values {criterion: value|None},
@@ -90,7 +90,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     weights = weights or build_weights(intent)
     evidence = evidence if evidence is not None else get_evidence()
     budget = budget if budget is not None else _intent_get(intent, "budget", None)
-    criteria = criteria or compute_criteria(cands, budget)
+    criteria = criteria or compute_criteria(cands, budget, reference)
     cols = ["overall", "spec", "expert", "owner", "coverage", "unknown_share", "values", "weights",
             "required", "flags", "unknown_criteria", "partial_unknown"]
     if len(cands) == 0:

@@ -149,3 +149,41 @@ def test_owner_theme_formula_and_minimum_sample():
     small = Evidence(owner_themes=_owner([dict(posts_sampled=str(config.OWNER_MIN_POSTS - 1), mentions="5")]))
     assert small.owner("Acme", "M0", "reliability") is None
     assert np.isnan(small.values_for(_suvs(1)).iloc[0]["owner_reliability"])
+
+
+# ---------------------------------------------------------------- reference populations (segment-relative, stable)
+
+def test_criterion_scores_do_not_move_with_an_unrelated_budget_filter():
+    from services.catalogue import get_catalogue
+    from services.recsys.criteria import catalogue_reference
+    cat = get_catalogue()
+    ref = catalogue_reference(cat)
+    suvs = cat[cat["body_type"] == "suv"]
+    cheap = suvs[suvs["price_ex_showroom"] <= 1_200_000]
+    assert 0 < len(cheap) < len(suvs)
+    a = compute_criteria(suvs, None, ref).values.loc[cheap.index]
+    b = compute_criteria(cheap, None, ref).values
+    pd.testing.assert_frame_equal(a, b)
+    assert catalogue_reference(cat) is ref        # built once per catalogue load, then reused
+
+
+def test_each_model_weighs_one_in_the_reference_not_each_variant():
+    # model X has 30 variants at 10 kmpl, 9 other models have 1 variant each at 20 kmpl.
+    # By variants X would hold 30 of 39 entries; per model it is 1 of 10.
+    rows = [dict(model="X", variant=f"v{i}", mileage_kmpl=10.0) for i in range(30)]
+    rows += [dict(model=f"Y{i}", mileage_kmpl=20.0) for i in range(9)]
+    df = make_frame(rows)
+    rc = compute_criteria(df).values["running_cost"]
+    assert rc.iloc[0] == pytest.approx(0.05)      # (0 below + 0.5 x 1 equal) / 10 models
+    assert rc.iloc[30] == pytest.approx(0.55)     # (1 below + 0.5 x 9 equal) / 10 models
+
+
+def test_small_segment_falls_back_to_whole_reference_below_min_models():
+    rows = [dict(model=f"H{i}", body_type="hatchback", power_bhp=50 + i) for i in range(config.MIN_SEGMENT_MODELS - 1)]
+    rows += [dict(model=f"S{i}", power_bhp=100 + 10 * i) for i in range(config.MIN_SEGMENT_MODELS)]
+    res = compute_criteria(make_frame(rows))
+    f = {d["field"]: d for d in res.detail[1]["performance"]}
+    assert f["power_to_weight_bhp_per_tonne"]["score"] < 0.2    # whole population, where hatchbacks are the weakest
+
+
+import pytest  # noqa: E402

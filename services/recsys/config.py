@@ -10,7 +10,7 @@ REQUIRED_ITEM_WEIGHT = 0.10
 MISSING_MULTIPLIER = 2.0
 
 # criteria.py
-MIN_GROUP_SIZE = 5            # fewer rows in a segment -> compare against all candidates instead
+MIN_SEGMENT_MODELS = 8        # a segment with fewer models than this (with a known value) -> compare against the whole catalogue
 MIN_FEATURE_KNOWN_SHARE = 0.5  # features-per-rupee needs at least this share of feature cells known
 BUDGET_FULL_FIT_FROM = 0.70    # price/max >= this uses the budget fully (fit 1.0)
 BUDGET_FIT_FLOOR = 0.50        # fit of a car priced at ~0 of the budget (not rewarded for being cheap)

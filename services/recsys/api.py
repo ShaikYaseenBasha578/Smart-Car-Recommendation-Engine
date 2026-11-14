@@ -20,6 +20,7 @@ from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent_ex
 from services.recsys import config, llm_parse
 from services.recsys.common import is_unknown, num, to_jsonable
+from services.recsys.criteria import catalogue_reference
 from services.recsys.diversify import diversify
 from services.recsys.evidence import Evidence, get_evidence
 from services.recsys.explain import explain
@@ -282,7 +283,8 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
     # vague query: neutral default weights, no overrides, no assumed boost: the list is explicitly not personalised
     weights = build_weights({} if vague else intent, None if vague else weight_overrides)
     # scored against the ORIGINAL intent: a relaxed car's overshoot / missing feature stays visible to the score
-    table, _ = score_candidates(cands, intent, weights, ev, budget=intent.get("budget"))
+    table, _ = score_candidates(cands, intent, weights, ev, budget=intent.get("budget"),
+                                reference=catalogue_reference(df))
     matches = _assumed_matches(cands, {} if vague else assumed)
     if any(matches.values()):
         table["overall"] = [None if is_unknown(o) else min(1.0, float(o) + config.ASSUMED_BOOST * bool(matches[i]))

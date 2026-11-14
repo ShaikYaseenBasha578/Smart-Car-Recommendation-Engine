@@ -2,11 +2,14 @@
 
 Method, stated once:
   * A *field score* is either
-      - numeric field  -> mid-rank percentile within the row's segment (same body_type; for
-        running_cost the same fuel_type as well, and never across fuel types). A segment with
-        fewer than MIN_GROUP_SIZE known values falls back to all candidates (running_cost: all
-        candidates of the same fuel). Percentile, not min-max: outliers (a 600 bhp car) would
-        squash everyone else under min-max, and percentile needs no hand-set point values.
+      - numeric field  -> mid-rank percentile in a REFERENCE population: the same body_type over the whole
+        catalogue (running_cost: the same body_type and fuel_type; never across fuel types), built once
+        per catalogue load (Reference), cached, and used for every query, so a variant's score does not
+        move when a filter is added. The population has one entry per model per distinct value, each model
+        weighing 1 in total, so a model with 40 variants does not dominate. A segment with fewer than
+        MIN_SEGMENT_MODELS models with a known value falls back to the whole catalogue (running_cost: all
+        models of the same fuel). Percentile, not min-max: outliers (a 600 bhp car) would squash
+        everyone else under min-max, and percentile needs no hand-set point values.
       - boolean field  -> 1.0 if True, 0.0 if known False. These are absolute (a feature either
         is there or not); relative scaling of a yes/no makes no sense.
       - crash stars    -> stars / 5 when rated (absolute).
@@ -77,19 +80,115 @@ def _bool_score(series: pd.Series) -> pd.Series:
     return series.map(lambda v: np.nan if is_unknown(v) else (1.0 if v is True or v == 1 else 0.0)).astype(float)
 
 
-def _segment_percentile(values: pd.Series, groups: pd.Series, fallback: pd.Series) -> pd.Series:
-    """Percentile of each known value within its group (fallback group when < MIN_GROUP_SIZE known)."""
-    values = values.astype(float)
-    out = pd.Series(np.nan, index=values.index, dtype=float)
-    known = values.notna()
-    by_group = {g: values[(groups == g) & known].tolist() for g in groups.unique()}
-    by_fb = {g: values[(fallback == g) & known].tolist() for g in fallback.unique()}
-    for idx in values.index[known]:
-        peers = by_group[groups[idx]]
-        if len(peers) < config.MIN_GROUP_SIZE:
-            peers = by_fb[fallback[idx]]
-        out[idx] = pct_rank(values[idx], peers)
+class _Pop:
+    """Weighted sorted values of one reference group (one weight-1 share per model)."""
+
+    def __init__(self, values: np.ndarray, weights: np.ndarray, n_models: int):
+        order = np.argsort(values, kind="stable")
+        self.values = values[order]
+        self.cum = np.concatenate([[0.0], np.cumsum(weights[order])])
+        self.total = float(self.cum[-1])
+        self.n_models = n_models
+
+    def rank(self, x: np.ndarray) -> np.ndarray:
+        """Mid-rank percentile: (weight below + half the weight equal) / total weight."""
+        if self.total <= 0:
+            return np.full(len(x), 0.5)
+        lo = np.searchsorted(self.values, x, side="left")
+        hi = np.searchsorted(self.values, x, side="right")
+        return (self.cum[lo] + 0.5 * (self.cum[hi] - self.cum[lo])) / self.total
+
+
+def _make_pops(raw: pd.Series, groups: pd.Series, models: pd.Series) -> Dict[Any, _Pop]:
+    known = raw.notna()
+    frame = pd.DataFrame({"g": groups[known].astype(str), "m": models[known], "v": raw[known].astype(float)})
+    frame = frame.drop_duplicates()                     # one entry per model per distinct value
+    frame["w"] = 1.0 / frame.groupby(["g", "m"])["v"].transform("size")   # every model weighs 1 in total
+    return {g: _Pop(sub["v"].to_numpy(), sub["w"].to_numpy(), int(sub["m"].nunique()))
+            for g, sub in frame.groupby("g")}
+
+
+def _fpr(df: pd.DataFrame) -> pd.Series:
+    """Known-true feature count per lakh of price, only when enough feature cells are known."""
+    price = df["price_ex_showroom"].map(num)
+    present = [c for c in VALUE_FEATURES if c in df.columns]
+    flags = df[present].apply(lambda col: col.map(lambda v: np.nan if is_unknown(v) else (1.0 if v is True else 0.0)))
+    known_share = flags.notna().mean(axis=1)
+    true_count = flags.fillna(0.0).sum(axis=1)
+    return (true_count / (price / 100000.0)).where(price.notna() & (price > 0) & (known_share >= config.MIN_FEATURE_KNOWN_SHARE))
+
+
+def _running_cost_raw(df: pd.DataFrame) -> Tuple[List[Optional[str]], pd.Series]:
+    cols, raw = [], []
+    for _, row in df.iterrows():
+        c, v = _running_cost_column(row)
+        cols.append(c)
+        raw.append(v)
+    return cols, pd.Series(raw, index=df.index, dtype=float)
+
+
+def _p2w(df: pd.DataFrame) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    power = df["power_bhp"].map(num)
+    weight = df["kerb_weight_kg"].map(num)
+    p2w = (power / weight * 1000.0).where(power.notna() & weight.notna())  # bhp per tonne
+    # when kerb weight is unknown fall back to raw power, so a missing weight does not hide the car's power
+    return power, p2w, power.where(p2w.isna())
+
+
+def _slot_inputs(df: pd.DataFrame) -> Dict[str, Tuple[pd.Series, pd.Series, pd.Series]]:
+    """{slot: (raw values, segment group, fallback group)} for every percentile-scored field."""
+    seg = df["body_type"].astype(str)
+    allc = pd.Series("all", index=df.index)
+    out = {}
+    for col in ("airbags", "boot_space_litres", "wheelbase_mm", "seats", "ground_clearance_mm", "torque_nm"):
+        out[col] = (df[col].map(num).astype(float), seg, allc)
+    _, p2w, power_only = _p2w(df)
+    out["p2w"], out["power_only"] = (p2w, seg, allc), (power_only, seg, allc)
+    out["fpr"] = (_fpr(df), seg, allc)
+    _, rc_raw = _running_cost_raw(df)
+    out["running_cost"] = (rc_raw, seg + "|" + df["fuel_type"].astype(str), df["fuel_type"].astype(str))
     return out
+
+
+class Reference:
+    """Percentile reference populations, per slot and segment (plan section 5: relative to the segment).
+
+    Built once from the full catalogue and reused for every query; see the module docstring."""
+
+    def __init__(self, df: pd.DataFrame):
+        models = df["make"].astype(str) + " " + df["model"].astype(str)
+        self.pops: Dict[str, Dict[str, Dict[Any, _Pop]]] = {}
+        for slot, (raw, seg, fb) in _slot_inputs(df).items():
+            self.pops[slot] = {"seg": _make_pops(raw, seg, models), "fb": _make_pops(raw, fb, models)}
+
+    def percentile(self, slot: str, values: pd.Series, groups: pd.Series, fallback: pd.Series) -> pd.Series:
+        """Percentile of each known value in its segment population (fallback population when the segment has
+        fewer than MIN_SEGMENT_MODELS models); NaN stays NaN."""
+        values = values.astype(float)
+        out = pd.Series(np.nan, index=values.index, dtype=float)
+        known = values.notna()
+        if not known.any():
+            return out
+        pops = self.pops[slot]
+        frame = pd.DataFrame({"v": values[known], "g": groups[known].astype(str), "f": fallback[known].astype(str)})
+        for (g, f), sub in frame.groupby(["g", "f"]):
+            pop = pops["seg"].get(g)
+            if pop is None or pop.n_models < config.MIN_SEGMENT_MODELS:
+                pop = pops["fb"].get(f)
+            out[sub.index] = pop.rank(sub["v"].to_numpy()) if pop is not None else 0.5
+        return out
+
+
+_REFERENCE_CACHE: Dict[int, Tuple[pd.DataFrame, Reference]] = {}
+
+
+def catalogue_reference(catalogue: pd.DataFrame) -> Reference:
+    """The Reference of a catalogue frame, built on first use and cached (one build per catalogue load)."""
+    hit = _REFERENCE_CACHE.get(id(catalogue))
+    if hit is None or hit[0] is not catalogue:
+        hit = (catalogue, Reference(catalogue))
+        _REFERENCE_CACHE[id(catalogue)] = hit
+    return hit[1]
 
 
 def _weighted_mean(fields: List[Field], index: pd.Index) -> Tuple[pd.Series, pd.Series, Dict[Any, List[dict]]]:
@@ -123,12 +222,12 @@ def _weighted_mean(fields: List[Field], index: pd.Index) -> Tuple[pd.Series, pd.
 # criteria
 # ---------------------------------------------------------------------------
 
-def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series) -> List[Field]:
+def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
     fields: List[Field] = []
     stars = df["safety_stars_adult"].map(num)
     fields.append(("safety_stars_adult", stars, (stars / 5.0).clip(0, 1), 3.0, "absolute (stars/5); unrated = unknown", None))
     airbags = df["airbags"].map(num)
-    fields.append(("airbags", airbags, _segment_percentile(airbags, seg, allc), 2.0, "segment percentile", None))
+    fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None))
     for col, w in SAFETY_BOOLS.items():
         fields.append((col, df[col], _bool_score(df[col]), w, "absolute (has it = 1)", None))
     return fields
@@ -147,17 +246,12 @@ def _running_cost_column(row) -> Tuple[Optional[str], Optional[float]]:
     return col, num(row[col])
 
 
-def _running_cost(df: pd.DataFrame, fuel_group: pd.Series) -> List[Field]:
+def _running_cost(df: pd.DataFrame, ref: Reference) -> List[Field]:
     """km/l (petrol/diesel/hybrid), km/kg (CNG), range (EV): percentile inside the same fuel only.
-    Segment = body_type + fuel_type; fallback = same fuel_type across all candidates; never other fuels."""
-    cols, raw = [], []
-    for _, row in df.iterrows():
-        c, v = _running_cost_column(row)
-        cols.append(c)
-        raw.append(v)
-    raw_s = pd.Series(raw, index=df.index, dtype=float)
-    seg = df["body_type"].astype(str) + "|" + df["fuel_type"].astype(str)
-    score = _segment_percentile(raw_s, seg, fuel_group)
+    Segment = body_type + fuel_type; fallback = same fuel_type across the catalogue; never other fuels."""
+    cols, raw_s = _running_cost_raw(df)
+    inputs = _slot_inputs_rc(df)
+    score = ref.percentile("running_cost", raw_s, *inputs)
     named = pd.Series([c or "mileage_kmpl" for c in cols], index=df.index)
     # field name differs per fuel, so keep one field per distinct column
     fields: List[Field] = []
@@ -168,6 +262,10 @@ def _running_cost(df: pd.DataFrame, fuel_group: pd.Series) -> List[Field]:
     return fields
 
 
+def _slot_inputs_rc(df: pd.DataFrame) -> Tuple[pd.Series, pd.Series]:
+    return df["body_type"].astype(str) + "|" + df["fuel_type"].astype(str), df["fuel_type"].astype(str)
+
+
 def _comfort(df: pd.DataFrame) -> List[Field]:
     return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None) for c, w in COMFORT_BOOLS.items()]
 
@@ -176,30 +274,26 @@ def _tech(df: pd.DataFrame) -> List[Field]:
     return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None) for c, w in TECH_BOOLS.items()]
 
 
-def _space(df: pd.DataFrame, seg: pd.Series, allc: pd.Series) -> List[Field]:
+def _space(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
     fields: List[Field] = []
     for col, w in (("boot_space_litres", 2.0), ("wheelbase_mm", 2.0), ("seats", 1.0), ("ground_clearance_mm", 1.0)):
         raw = df[col].map(num)
-        fields.append((col, raw, _segment_percentile(raw, seg, allc), w, "segment percentile", None))
+        fields.append((col, raw, ref.percentile(col, raw, seg, allc), w, "segment percentile", None))
     return fields
 
 
-def _performance(df: pd.DataFrame, seg: pd.Series, allc: pd.Series) -> List[Field]:
-    power = df["power_bhp"].map(num)
-    weight = df["kerb_weight_kg"].map(num)
-    p2w = (power / weight * 1000.0).where(power.notna() & weight.notna())  # bhp per tonne
-    p2w_score = _segment_percentile(p2w, seg, allc)
-    # when kerb weight is unknown fall back to raw power, so a missing weight does not hide the car's power
-    power_only = power.where(p2w.isna())
+def _performance(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
+    power, p2w, power_only = _p2w(df)
+    p2w_score = ref.percentile("p2w", p2w, seg, allc)
     torque = df["torque_nm"].map(num)
     gear = df["transmission_type"].map(lambda t: GEARBOX_SCORE.get(t, np.nan) if not is_unknown(t) else np.nan)
     # power-to-weight and raw power are one slot: raw power stands in only when kerb weight is unknown
     p2w_applies = ~(p2w.isna() & power.notna())
     return [
         ("power_to_weight_bhp_per_tonne", p2w, p2w_score, 3.0, "segment percentile", p2w_applies),
-        ("power_bhp", power_only, _segment_percentile(power_only, seg, allc), 3.0, "segment percentile (weight unknown)",
+        ("power_bhp", power_only, ref.percentile("power_only", power_only, seg, allc), 3.0, "segment percentile (weight unknown)",
          power_only.notna()),
-        ("torque_nm", torque, _segment_percentile(torque, seg, allc), 2.0, "segment percentile", None),
+        ("torque_nm", torque, ref.percentile("torque_nm", torque, seg, allc), 2.0, "segment percentile", None),
         ("transmission_type", df["transmission_type"], gear.astype(float), 1.0, "fixed ordinal by gearbox type", None),
     ]
 
@@ -219,7 +313,7 @@ def budget_fit(price: Optional[float], budget_max: Optional[float]) -> Optional[
     return config.BUDGET_FIT_FLOOR + (1.0 - config.BUDGET_FIT_FLOOR) * (r / config.BUDGET_FULL_FIT_FROM)
 
 
-def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[dict]) -> List[Field]:
+def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[dict], ref: Reference) -> List[Field]:
     price = df["price_ex_showroom"].map(num)
     fields: List[Field] = []
     bmax = (budget or {}).get("max")
@@ -227,32 +321,30 @@ def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[d
         fit = price.map(lambda p: np.nan if is_unknown(p) else budget_fit(p, bmax))
         fields.append(("price_vs_budget", price, fit.astype(float), 1.0, "price / stated maximum budget", None))
     # features per rupee: known-true count per lakh, only when enough feature cells are known
-    present = [c for c in VALUE_FEATURES if c in df.columns]
-    flags = df[present].apply(lambda col: col.map(lambda v: np.nan if is_unknown(v) else (1.0 if v is True else 0.0)))
-    known_share = flags.notna().mean(axis=1)
-    true_count = flags.fillna(0.0).sum(axis=1)
-    fpr = (true_count / (price / 100000.0)).where(price.notna() & (price > 0) & (known_share >= config.MIN_FEATURE_KNOWN_SHARE))
-    fields.append(("features_per_lakh", fpr, _segment_percentile(fpr, seg, allc), 1.0, "segment percentile", None))
+    fpr = _fpr(df)
+    fields.append(("features_per_lakh", fpr, ref.percentile("fpr", fpr, seg, allc), 1.0, "segment percentile", None))
     return fields
 
 
-def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None) -> CriteriaResult:
-    """Spec criteria for every row of `df` (the comparison set = these candidates)."""
+def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
+                     reference: Optional[Reference] = None) -> CriteriaResult:
+    """Spec criteria for every row of `df`. Percentiles come from `reference` (the full-catalogue populations;
+    api.py always passes it). Without one, the populations are built from `df` itself (hand-built frames)."""
     index = df.index
     if len(df) == 0:
         empty = pd.DataFrame(columns=SPEC_CRITERIA, dtype=float)
         return CriteriaResult(empty, {}, empty.copy())
     seg = df["body_type"].astype(str)
     allc = pd.Series("all", index=index)
-    fuel_group = df["fuel_type"].astype(str)
+    ref = reference if reference is not None else Reference(df)
 
     builders: Dict[str, List[Field]] = {
-        "value_for_budget": _value(df, seg, allc, budget),
-        "safety": _safety(df, seg, allc),
-        "running_cost": _running_cost(df, fuel_group),
+        "value_for_budget": _value(df, seg, allc, budget, ref),
+        "safety": _safety(df, seg, allc, ref),
+        "running_cost": _running_cost(df, ref),
         "comfort_features": _comfort(df),
-        "space_practicality": _space(df, seg, allc),
-        "performance": _performance(df, seg, allc),
+        "space_practicality": _space(df, seg, allc, ref),
+        "performance": _performance(df, seg, allc, ref),
         "tech_assist": _tech(df),
     }
     values = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
