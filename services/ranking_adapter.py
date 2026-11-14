@@ -17,7 +17,6 @@ import math
 
 import pandas as pd
 
-from ranking_engine import rank_cars
 
 SOFT_BOOST_SHARE = 0.10
 SOFT_PREFERENCE_NAMES = {"mileage", "space", "performance", "comfort", "safety", "features"}
@@ -159,6 +158,8 @@ def rank_candidates(intent: dict, candidates: pd.DataFrame) -> tuple[pd.DataFram
     length_band = candidates.attrs.get("reference_length_band")
     if candidates.empty:
         return candidates.assign(ranking_score=[], match_reasons=[]), filters
+
+    from ranking_engine import rank_cars  # lazy: importing filter_v2 / the v3 path must not load the legacy engine
 
     ranked = rank_cars(
         filtered_df=to_legacy_frame(candidates),
