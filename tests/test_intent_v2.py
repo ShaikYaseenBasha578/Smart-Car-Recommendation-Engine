@@ -236,3 +236,39 @@ def test_rules_only_mode_has_no_ml_trace():
     out = parse_intent("family ke liye 7 seater diesel", use_ml=False)
     assert out["use_case"] == "family"
     assert not any(" <- ml " in t for t in out["trace"])
+
+
+# ---------------------------------------------------------------- negated ceilings and boot-space minimums
+
+@pytest.mark.parametrize("query", [
+    "I can't go above 8 lakh", "cannot go above 8 lakh", "can't exceed 8 lakh", "I can't go over 8 lakh",
+    "I won't spend more than 8 lakh", "not more than 8 lakh", "no more than 8 lakh",
+    "8 lakh se upar nahi ja sakta", "8 lakh se upar nahi jaunga", "8 lakh se zyada nahi chahiye",
+    "8 lakh se kam",
+])
+def test_negated_or_ceiling_phrasings_set_a_maximum_never_a_minimum(query):
+    budget = parse_intent(query)["budget"]
+    assert budget == {"min": None, "max": 8 * L}
+
+
+@pytest.mark.parametrize("query", ["above 8 lakh", "more than 8 lakh", "8 lakh se upar", "at least 8 lakh"])
+def test_plain_lower_bound_words_are_still_a_minimum(query):
+    assert parse_intent(query)["budget"] == {"min": 8 * L, "max": None}
+
+
+@pytest.mark.parametrize("query,litres", [
+    ("500 litres se zyada boot", 500), ("500 litre se zyada ka boot", 500), ("boot 400 litre se zyada", 400),
+    ("boot space more than 450 litres", 450), ("at least 400 L boot", 400), ("boot space at least 450 litres", 450),
+])
+def test_boot_space_minimum_is_parsed(query, litres):
+    out = parse_intent(query)
+    assert out["min_boot_space_litres"] == litres
+    assert out["max_boot_space_litres"] is None
+    assert out["budget"] == {"min": None, "max": None}     # the litres are not read as a price
+
+
+def test_boot_space_se_kam_is_a_maximum_and_ceiling_plus_boot_combine():
+    out = parse_intent("boot 400 litre se kam")
+    assert out["max_boot_space_litres"] == 400 and out["min_boot_space_litres"] is None
+    out = parse_intent("can't go above 8 lakh, boot space more than 450 litres")
+    assert out["budget"] == {"min": None, "max": 8 * L} and out["min_boot_space_litres"] == 450

@@ -48,28 +48,28 @@ def c(field, value, evidence):
 def test_unexplained_rule():
     assert L.unexplained_tokens(rules("petrol automatic hatchback under 9 lakh chahiye")[1]) == []
     assert L.unexplained_tokens(rules("comfortable family car, good mileage, batao yaar")[1]) == []  # soft / use-case words
-    assert "500" in L.unexplained_tokens(rules("500 litres se zyada boot space wali sedan chahiye")[1])
-    assert "can't" in L.unexplained_tokens(rules("a car I can't go above 8 lakh for")[1])
+    assert "500" in L.unexplained_tokens(rules("boot mein kam se kam 500 litres wali sedan chahiye")[1])
+    assert "can't" in L.unexplained_tokens(rules("a car I can't live without for 8 lakh")[1])
     assert L.unexplained_tokens(rules("cheapest suv")[1]) == []  # "cheap" inside a word must not leave "est"
     assert L.unexplained_tokens("") == [] and L.unexplained_tokens(None) == []
 
 
 # ------------------------------------------------------------------ validate (pure)
 
-Q = "need something with a rear camera mount and 500 litres se zyada boot space, no CVT"
+Q = "need something with a rear camera mount and boot mein kam se kam 500 litres, no CVT"
 
 
 def test_accepts_grounded_numeric_and_merges():
-    q = "500 litres se zyada boot space wali sedan chahiye"
-    out, info, cl = run(q, {"constraints": [c("min_boot_space_litres", 500, "500 litres se zyada boot space")]})
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
+    out, info, cl = run(q, {"constraints": [c("min_boot_space_litres", 500, "boot mein kam se kam 500 litres")]})
     assert out["min_boot_space_litres"] == 500 and out["body_types"] == ["sedan"]
     assert info["used"] and info["accepted"] == ["min_boot_space_litres=500"] and info["rejected"] == 0
     assert out["vague"] is False and any(t.startswith("llm:") for t in out["trace"])
 
 
 def test_evidence_must_be_substring_case_insensitive():
-    q = "500 litres se zyada boot space wali sedan chahiye"
-    out, info, _ = run(q, {"constraints": [c("min_boot_space_litres", 500, "500 LITRES SE   ZYADA")]})
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
+    out, info, _ = run(q, {"constraints": [c("min_boot_space_litres", 500, "BOOT MEIN  KAM SE KAM 500 LITRES")]})
     assert out["min_boot_space_litres"] == 500
     L.clear_cache()
     out, info, _ = run(q, {"constraints": [c("min_boot_space_litres", 500, "at least five hundred litres")]})
@@ -118,11 +118,11 @@ def test_vocabulary_and_schema():
 
 
 def test_contradiction_with_rules_rules_win():
-    q = "no diesel please, bhai 500 litres se zyada boot"
+    q = "no diesel please, bhai boot mein kam se kam 500 litres"
     intent, residual = rules(q)
     assert intent["exclude_fuel_types"] == ["diesel"]
     out, info = L.refine(q, intent, residual, client=Fake({"constraints": [
-        c("fuel_include", "diesel", "diesel"), c("min_boot_space_litres", 500, "500 litres se zyada")]}))
+        c("fuel_include", "diesel", "diesel"), c("min_boot_space_litres", 500, "500 litres")]}))
     assert out["fuel_types"] == [] and out["exclude_fuel_types"] == ["diesel"]
     assert out["min_boot_space_litres"] == 500
     assert info["rejected"] == 1 and info["rejected_detail"][0]["reason"] == "contradicts_rules"
@@ -202,7 +202,7 @@ def test_merge_transmission_and_lists_use_canonical_order():
     (Fake(answer={"constraints": "nope"}), "validation_failed"),
 ])
 def test_fallback_keeps_rule_intent(client, reason):
-    q = "bhai 500 litres se zyada boot space wali sedan chahiye"
+    q = "bhai boot mein kam se kam 500 litres wali sedan chahiye"
     intent, residual = rules(q)
     out, info = L.refine(q, intent, residual, client=client)
     assert out is intent and not info["used"] and info["reason"] == reason
@@ -213,14 +213,14 @@ def test_unexpected_exception_is_a_fallback_too():
     class Boom:
         def complete(self, *a):
             raise RuntimeError("boom")
-    q = "bhai 500 litres se zyada boot sedan"
+    q = "bhai boot mein kam se kam 500 litres sedan"
     intent, residual = rules(q)
     out, info = L.refine(q, intent, residual, client=Boom())
     assert out is intent and info["reason"] == "internal_error"
 
 
 def test_json_in_code_fence_is_accepted():
-    q = "500 litres se zyada boot space wali sedan chahiye"
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
     text = "```json\n" + json.dumps({"constraints": [c("min_boot_space_litres", 500, "500 litres")]}) + "\n```"
     out, info, _ = run(q, client=Fake(text=text))
     assert out["min_boot_space_litres"] == 500
@@ -231,7 +231,7 @@ def test_json_in_code_fence_is_accepted():
 def test_off_by_default_zero_calls(monkeypatch):
     called = []
     monkeypatch.setattr(L, "make_client", lambda: called.append(1) or Fake({}))
-    q = "500 litres se zyada boot space wali sedan chahiye"
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
     intent, residual = rules(q)
     out, info = L.refine(q, intent, residual)
     assert out is intent and info["reason"] == "off" and called == []
@@ -254,19 +254,19 @@ def test_on_but_query_fully_explained_makes_no_call(monkeypatch):
 def test_on_without_key_falls_back(monkeypatch):
     monkeypatch.setenv("LLM_PARSER", "on")
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
-    q = "500 litres se zyada boot space wali sedan chahiye"
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
     intent, residual = rules(q)
     out, info = L.refine(q, intent, residual)
     assert out is intent and info["reason"] == "no_key" and L.stats()["fallbacks"] == {"no_key": 1}
 
 
 def test_cache_hit_in_memory_normalised_key():
-    q = "500 litres se zyada boot space wali sedan chahiye"
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
     ans = {"constraints": [c("min_boot_space_litres", 500, "500 litres")]}
     cl = Fake(ans)
     intent, residual = rules(q)
     L.refine(q, intent, residual, client=cl)
-    out, info = L.refine("  500 LITRES se   zyada boot space wali SEDAN chahiye ", intent, residual, client=cl)
+    out, info = L.refine("  BOOT mein   kam se kam 500 litres wali SEDAN chahiye ", intent, residual, client=cl)
     assert cl.calls == 1 and info["cached"] and out["min_boot_space_litres"] == 500
     s = L.stats()
     assert s["llm_called"] == 1 and s["cache_hits"] == 1
@@ -275,7 +275,7 @@ def test_cache_hit_in_memory_normalised_key():
 def test_disk_cache_survives_clear(monkeypatch, tmp_path):
     path = tmp_path / "cache.json"
     monkeypatch.setenv("LLM_PARSER_CACHE_FILE", str(path))
-    q = "500 litres se zyada boot space wali sedan chahiye"
+    q = "boot mein kam se kam 500 litres wali sedan chahiye"
     intent, residual = rules(q)
     L.refine(q, intent, residual, client=Fake({"constraints": [c("min_boot_space_litres", 500, "500 litres")]}))
     assert json.loads(path.read_text())[L.normalise_query(q)]["raw"]["constraints"]
@@ -412,11 +412,11 @@ def test_api_response_has_llm_block_and_never_fails(monkeypatch):
     assert r["llm"]["used"] is False and r["llm"]["reason"] == "off" and "corrections" in r
     monkeypatch.setenv("LLM_PARSER", "on")
     monkeypatch.setattr(L, "make_client", lambda: Fake(error=L.LLMError("timeout")))
-    r = recommend("500 litres se zyada boot space wali sedan chahiye")
+    r = recommend("boot mein kam se kam 500 litres wali sedan chahiye")
     assert r["recommendations"] and r["llm"]["reason"] == "timeout" and r["llm"]["used"] is False
-    monkeypatch.setattr(L, "make_client", lambda: Fake({"constraints": [c("min_boot_space_litres", 500, "500 litres se zyada")]}))
+    monkeypatch.setattr(L, "make_client", lambda: Fake({"constraints": [c("min_boot_space_litres", 500, "500 litres")]}))
     L.clear_cache()
-    r = recommend("500 litres se zyada boot space wali sedan chahiye")
+    r = recommend("boot mein kam se kam 500 litres wali sedan chahiye")
     assert r["llm"]["used"] and r["llm"]["accepted"] == ["min_boot_space_litres=500"]
     assert r["intent"]["min_boot_space_litres"] == 500
     assert all((car["boot_space_litres"] or 500) >= 500 for car in r["recommendations"])

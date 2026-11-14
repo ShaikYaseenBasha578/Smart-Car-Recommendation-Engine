@@ -267,7 +267,9 @@ UPPER_BOUND_SPECS = [
     ("max_ground_clearance_mm", [rf"(?:ground\s*)?clearance\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:mm)?",
                                  rf"{UPPER_PREFIX}\s*({NUM})\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance"]),
     ("max_boot_space_litres", [rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?",
-                               rf"{UPPER_PREFIX}\s*({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk)"]),
+                               rf"{UPPER_PREFIX}\s*({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk)",
+                               rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*kam|ke\s*neeche)",
+                               rf"({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*kam|ke\s*neeche)\s*(?:ka\s*|wala\s*|wali\s*|ki\s*)?(?:boot|luggage|trunk|dickey|dikki)"]),
 ]
 
 
@@ -284,9 +286,10 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
                                  r"|range\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*)?(\d+)\s*\+?\s*km"),
         ("min_ground_clearance_mm", int, r"(\d+)\s*\+?\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance|(\d+)\s*mm\s*gc"
                                          rf"|(?:ground\s*)?clearance\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|min(?:imum)?\s*)?(\d+){NOT_MONEY}\s*(?:mm)?"),
-        ("min_boot_space_litres", int, r"(\d+)\s*\+?\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk|dickey|dikki)"
-                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|min(?:imum)?\s*)?"
-                                       rf"(\d+){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?"),
+        ("min_boot_space_litres", int, r"(\d+)\s*\+?\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*(?:zyada|jyada|zyaada|upar|oopar)\s*(?:ka\s*|wala\s*|wali\s*|ki\s*)?)?"
+                                       r"(?:of\s*)?(?:boot|luggage|trunk|dickey|dikki)"
+                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|more\s*than\s*|greater\s*than\s*|min(?:imum)?\s*)?"
+                                       rf"(\d+){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?(?:\s*se\s*(?:zyada|jyada|zyaada|upar|oopar))?"),
     ]
     # upper bounds first, so the lower-bound patterns below can't read "under 190 mm ground clearance" as a minimum
     for field, patterns in UPPER_BOUND_SPECS:
@@ -343,8 +346,14 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
 def _parse_budget(text: str, out: dict, trace: list) -> str:
     budget = out["budget"]
     cue = r"(?:budget|price|priced|cost(?:ing)?|under|below|within|upto|up\s*to)"
-    max_pre = r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than|<|budget\s*(?:is|of)?)"
-    max_post = r"(?:tak|ke\s*andar|ke\s*under|se\s*kam|ke\s*neeche|or\s*less|or\s*below|and\s*below|max(?:imum)?)"
+    # "can't go above 8 lakh", "cannot exceed", "won't spend more than": a stated ceiling, never a floor
+    cant = (r"(?:can'?t|cannot|can\s*not|won'?t|wont|will\s*not|don'?t|dont|do\s*not)\s*"
+            r"(?:go|spend|pay|stretch|exceed|afford|cross)?\s*(?:above|over|beyond|past|more\s*than)?")
+    max_pre = (r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than|<|budget\s*(?:is|of)?"
+               + "|exceed(?:ing)?|" + cant + ")")
+    # "8 lakh se upar nahi ja sakta": Hindi ceiling
+    max_post = (r"(?:tak|ke\s*andar|ke\s*under|se\s*kam|ke\s*neeche|or\s*less|or\s*below|and\s*below|max(?:imum)?"
+                r"|se\s*(?:upar|oopar|zyada|jyada|zyaada)\s*nahi(?:\s*(?:ja\s*sak\w*|jaun\w*|jan\w*|jayeg\w*|chahiye|chaiye|chalega|chalegi))?)")
     min_pre = r"(?:above|over|more\s*than|at\s*least|min(?:imum)?|starting|>)"
     min_post = r"(?:se\s*upar|se\s*zyada|and\s*above|or\s*more|plus|\+)"
     around_pre = r"(?:around|about|approx(?:imately)?\.?|roughly|near|~|lagbhag)"
