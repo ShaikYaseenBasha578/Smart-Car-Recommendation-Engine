@@ -12,7 +12,8 @@ Method, stated once:
         everyone else under min-max, and percentile needs no hand-set point values.
       - boolean field  -> 1.0 if True, 0.0 if known False. These are absolute (a feature either
         is there or not); relative scaling of a yes/no makes no sense.
-      - crash stars    -> stars / 5 when rated (absolute).
+      - crash stars    -> stars / 5 when rated (absolute). Unrated: the segment median of the known ratings stands
+        in as a neutral prior (value only; the star still counts as unknown for coverage, nothing shows a rating).
   * A *criterion value* is the weighted mean of its KNOWN field scores. It is None only when no
     field is known. A blank is never 0 and never "absent". Each criterion also returns its
     *unknown fraction*: the share of its applicable field weight that is unknown for the row. score.py
@@ -64,9 +65,10 @@ VALUE_FEATURES = sorted(set(COMFORT_BOOLS) | set(TECH_BOOLS) | {"esc", "rear_cam
 GEARBOX_SCORE = {"dct": 1.0, "single_speed_ev": 1.0, "torque_converter": 0.9, "manual": 0.6, "imt": 0.6,
                  "e_cvt": 0.4, "cvt": 0.4, "amt": 0.2}
 
-# name, raw, score (NaN unknown), weight, basis, applicable (None = every row). A field that does not apply to
-# a row (e.g. the km/kg field of a petrol car) is neither known nor unknown for it.
-Field = Tuple[str, pd.Series, pd.Series, float, str, Optional[pd.Series]]
+# name, raw, score (NaN unknown), weight, basis, applicable (None = every row), prior (rows whose score is a neutral
+# prior, not evidence: they feed the criterion value but still count as unknown; None = no prior).
+# A field that does not apply to a row (e.g. the km/kg field of a petrol car) is neither known nor unknown for it.
+Field = Tuple[str, pd.Series, pd.Series, float, str, Optional[pd.Series], Optional[pd.Series]]
 
 
 @dataclass
@@ -89,6 +91,11 @@ class _Pop:
         self.cum = np.concatenate([[0.0], np.cumsum(weights[order])])
         self.total = float(self.cum[-1])
         self.n_models = n_models
+
+    def median(self) -> float:
+        """Weighted (lower) median: the smallest value with at least half the total weight at or below it."""
+        i = int(np.searchsorted(self.cum[1:], 0.5 * self.total - 1e-12, side="left"))
+        return float(self.values[min(i, len(self.values) - 1)])
 
     def rank(self, x: np.ndarray) -> np.ndarray:
         """Mid-rank percentile: (weight below + half the weight equal) / total weight."""
@@ -145,6 +152,7 @@ def _slot_inputs(df: pd.DataFrame) -> Dict[str, Tuple[pd.Series, pd.Series, pd.S
     _, p2w, power_only = _p2w(df)
     out["p2w"], out["power_only"] = (p2w, seg, allc), (power_only, seg, allc)
     out["fpr"] = (_fpr(df), seg, allc)
+    out["stars"] = ((df["safety_stars_adult"].map(num).astype(float) / 5.0).clip(0, 1), seg, allc)
     _, rc_raw = _running_cost_raw(df)
     out["running_cost"] = (rc_raw, seg + "|" + df["fuel_type"].astype(str), df["fuel_type"].astype(str))
     return out
@@ -179,6 +187,21 @@ class Reference:
         return out
 
 
+    def median(self, slot: str, groups: pd.Series, fallback: pd.Series) -> pd.Series:
+        """Median of the known values of the row's segment population (fallback population for a segment with
+        fewer than MIN_SEGMENT_MODELS models); NaN when neither population has a value."""
+        out = pd.Series(np.nan, index=groups.index, dtype=float)
+        pops = self.pops[slot]
+        frame = pd.DataFrame({"g": groups.astype(str), "f": fallback.astype(str)})
+        for (g, f), sub in frame.groupby(["g", "f"]):
+            pop = pops["seg"].get(g)
+            if pop is None or pop.n_models < config.MIN_SEGMENT_MODELS:
+                pop = pops["fb"].get(f)
+            if pop is not None and pop.total > 0:
+                out[sub.index] = pop.median()
+        return out
+
+
 _REFERENCE_CACHE: Dict[int, Tuple[pd.DataFrame, Reference]] = {}
 
 
@@ -198,23 +221,28 @@ def _weighted_mean(fields: List[Field], index: pd.Index) -> Tuple[pd.Series, pd.
     den = pd.Series(0.0, index=index)
     applicable_w = pd.Series(0.0, index=index)
     detail: Dict[Any, List[dict]] = {i: [] for i in index}
-    for name, raw, score, weight, basis, applicable in fields:
+    known_den = pd.Series(0.0, index=index)   # weight of fields known from evidence (priors excluded)
+    for name, raw, score, weight, basis, applicable, prior in fields:
         known = score.notna()
         applies = pd.Series(True, index=index) if applicable is None else applicable.astype(bool)
         known = known & applies
+        is_prior = pd.Series(False, index=index) if prior is None else (prior.astype(bool) & known)
         num_sum[known] += weight * score[known]
         den[known] += weight
+        known_den[known & ~is_prior] += weight
         applicable_w[applies] += weight
         for i in index:
             detail[i].append({
                 "field": name,
                 "raw": None if is_unknown(raw[i]) else raw[i],
-                "score": None if is_unknown(score[i]) else float(score[i]),
+                "score": None if is_unknown(score[i]) or is_prior[i] else float(score[i]),
                 "weight": weight,
                 "basis": basis,
+                **({"prior_score": float(score[i])} if is_prior[i] else {}),
             })
-    value = (num_sum / den).where(den > 0)
-    unknown_frac = (1.0 - den / applicable_w).where(applicable_w > 0, 1.0).where(den > 0, 1.0).clip(0.0, 1.0)
+    # a prior alone never makes a criterion known
+    value = (num_sum / den).where(known_den > 0)
+    unknown_frac = (1.0 - known_den / applicable_w).where(applicable_w > 0, 1.0).where(known_den > 0, 1.0).clip(0.0, 1.0)
     return value, unknown_frac, detail
 
 
@@ -224,12 +252,18 @@ def _weighted_mean(fields: List[Field], index: pd.Index) -> Tuple[pd.Series, pd.
 
 def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
     fields: List[Field] = []
-    stars = df["safety_stars_adult"].map(num)
-    fields.append(("safety_stars_adult", stars, (stars / 5.0).clip(0, 1), 3.0, "absolute (stars/5); unrated = unknown", None))
+    stars = df["safety_stars_adult"].map(num).astype(float)
+    known = (stars / 5.0).clip(0, 1)
+    # unrated: the value in the criterion is the segment median of the known crash ratings (neutral prior), but the
+    # star still counts as unknown for the coverage factor, and no rating is shown or implied anywhere
+    prior = ref.median("stars", seg, allc).where(known.isna())
+    fields.append(("safety_stars_adult", stars, known.fillna(prior), 3.0,
+                   "absolute (stars/5); unrated = segment median as a neutral prior, still unknown for coverage",
+                   None, prior.notna()))
     airbags = df["airbags"].map(num)
-    fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None))
+    fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None, None))
     for col, w in SAFETY_BOOLS.items():
-        fields.append((col, df[col], _bool_score(df[col]), w, "absolute (has it = 1)", None))
+        fields.append((col, df[col], _bool_score(df[col]), w, "absolute (has it = 1)", None, None))
     return fields
 
 
@@ -258,7 +292,7 @@ def _running_cost(df: pd.DataFrame, ref: Reference) -> List[Field]:
     for col in ("mileage_kmpl", "mileage_km_per_kg", "ev_range_km"):
         mask = named == col
         if mask.any():
-            fields.append((col, raw_s.where(mask), score.where(mask), 1.0, "percentile within same fuel type", mask))
+            fields.append((col, raw_s.where(mask), score.where(mask), 1.0, "percentile within same fuel type", mask, None))
     return fields
 
 
@@ -267,18 +301,18 @@ def _slot_inputs_rc(df: pd.DataFrame) -> Tuple[pd.Series, pd.Series]:
 
 
 def _comfort(df: pd.DataFrame) -> List[Field]:
-    return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None) for c, w in COMFORT_BOOLS.items()]
+    return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None, None) for c, w in COMFORT_BOOLS.items()]
 
 
 def _tech(df: pd.DataFrame) -> List[Field]:
-    return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None) for c, w in TECH_BOOLS.items()]
+    return [(c, df[c], _bool_score(df[c]), w, "absolute (has it = 1)", None, None) for c, w in TECH_BOOLS.items()]
 
 
 def _space(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
     fields: List[Field] = []
     for col, w in (("boot_space_litres", 2.0), ("wheelbase_mm", 2.0), ("seats", 1.0), ("ground_clearance_mm", 1.0)):
         raw = df[col].map(num)
-        fields.append((col, raw, ref.percentile(col, raw, seg, allc), w, "segment percentile", None))
+        fields.append((col, raw, ref.percentile(col, raw, seg, allc), w, "segment percentile", None, None))
     return fields
 
 
@@ -290,11 +324,11 @@ def _performance(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Referen
     # power-to-weight and raw power are one slot: raw power stands in only when kerb weight is unknown
     p2w_applies = ~(p2w.isna() & power.notna())
     return [
-        ("power_to_weight_bhp_per_tonne", p2w, p2w_score, 3.0, "segment percentile", p2w_applies),
+        ("power_to_weight_bhp_per_tonne", p2w, p2w_score, 3.0, "segment percentile", p2w_applies, None),
         ("power_bhp", power_only, ref.percentile("power_only", power_only, seg, allc), 3.0, "segment percentile (weight unknown)",
-         power_only.notna()),
-        ("torque_nm", torque, ref.percentile("torque_nm", torque, seg, allc), 2.0, "segment percentile", None),
-        ("transmission_type", df["transmission_type"], gear.astype(float), 1.0, "fixed ordinal by gearbox type", None),
+         power_only.notna(), None),
+        ("torque_nm", torque, ref.percentile("torque_nm", torque, seg, allc), 2.0, "segment percentile", None, None),
+        ("transmission_type", df["transmission_type"], gear.astype(float), 1.0, "fixed ordinal by gearbox type", None, None),
     ]
 
 
@@ -319,10 +353,10 @@ def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[d
     bmax = (budget or {}).get("max")
     if bmax is not None:
         fit = price.map(lambda p: np.nan if is_unknown(p) else budget_fit(p, bmax))
-        fields.append(("price_vs_budget", price, fit.astype(float), 1.0, "price / stated maximum budget", None))
+        fields.append(("price_vs_budget", price, fit.astype(float), 1.0, "price / stated maximum budget", None, None))
     # features per rupee: known-true count per lakh, only when enough feature cells are known
     fpr = _fpr(df)
-    fields.append(("features_per_lakh", fpr, ref.percentile("fpr", fpr, seg, allc), 1.0, "segment percentile", None))
+    fields.append(("features_per_lakh", fpr, ref.percentile("fpr", fpr, seg, allc), 1.0, "segment percentile", None, None))
     return fields
 
 

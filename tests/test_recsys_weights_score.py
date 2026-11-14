@@ -205,24 +205,100 @@ def test_unrated_car_does_not_outscore_the_5_star_car_on_a_safety_query():
     assert "unrated_safety" in table.loc[vid["Unrated"], "flags"]
 
 
-def test_unrated_versus_4_star_gap_is_narrowed_but_not_closed_by_the_formula():
-    """Documented, not tuned: the unrated safety value is the mean of its OTHER safety fields (0.9286 here vs
-    0.89 for the 4-star twin), and the coverage factor charges 0.15 x 0.3 x safety weight for the missing star.
-    The charge is slightly smaller than the value gap, so the unrated car still edges the 4-star one."""
-    df, vid = _star_cars()
-    _, new = _overall(df, vid)
-    _, old = _overall(df, vid, drop_partial=True)
-    assert new["Unrated"] - new["Rated4"] < old["Unrated"] - old["Rated4"]     # the gap shrank (0.0206 -> 0.0065)
-    assert 0 < new["Unrated"] - new["Rated4"] < 0.01
+# ------------------------------------------------------------------ unknown crash rating gets a neutral prior (design change 1)
+
+def _segment_cars(body, bg_stars):
+    """The four star cars (5, 4, 1, unrated) in segment `body`, plus rated background models with the given stars
+    (varied otherwise, so the percentile fields have something to compare with)."""
+    same = dict(esc=True, abs=True, tpms=True, hill_assist=True, body_type=body)
+    cars = [dict(model=f"{body}-Rated5", safety_stars_adult=5.0, **same),
+            dict(model=f"{body}-Rated4", safety_stars_adult=4.0, **same),
+            dict(model=f"{body}-Rated1", safety_stars_adult=1.0, **same),
+            dict(model=f"{body}-Unrated", safety_stars_adult=float("nan"), **same)]
+    bg = [dict(model=f"{body}-B{i}", body_type=body, safety_stars_adult=float(st), power_bhp=70 + 12 * i,
+               mileage_kmpl=14 + i % 6, boot_space_litres=300 + 30 * i, airbags=2 + i % 5,
+               price_ex_showroom=800000 + 50000 * i) for i, st in enumerate(bg_stars)]
+    return cars + bg
+
+
+def _two_segment_frame():
+    """suv segment: known stars {5, 4, 1, 4x5, 3, 5, 2} -> median 4. hatchback: background all 3 -> median 3.
+    estate: background all 5 -> median 5."""
+    rows = (_segment_cars("suv", [4, 4, 4, 4, 4, 3, 5, 2]) + _segment_cars("hatchback", [3] * 8)
+            + _segment_cars("estate", [5] * 8))
+    return make_frame(rows), {r["model"]: i for i, r in enumerate(rows, start=1)}
+
+
+def _star_scores(df, vid, body):
+    table, _ = score_candidates(df, intent(**SAFETY_QUERY), evidence=NO_EVIDENCE)
+    return table, {k.split("-", 1)[1]: float(table.loc[v, "overall"]) for k, v in vid.items()
+                   if k.startswith(body + "-") and k.split("-", 1)[1] in ("Rated5", "Rated4", "Rated1", "Unrated")}
+
+
+@pytest.mark.parametrize("body", ["suv", "hatchback"])
+def test_unrated_ordering_5_over_4_over_unrated_over_1(body):
+    """Safety-weighted query, otherwise identical cars, segment median 4 (suv) and 3 (hatchback)."""
+    df, vid = _two_segment_frame()
+    table, o = _star_scores(df, vid, body)
+    assert o["Rated5"] > o["Rated4"] > o["Unrated"] > o["Rated1"], o
+
+
+def test_unrated_prior_is_the_segment_median_and_still_unknown_for_coverage():
+    df, vid = _two_segment_frame()
+    table, _ = _star_scores(df, vid, "suv")
+    crit = compute_criteria(df)
+    uid, r4 = vid["suv-Unrated"], vid["suv-Rated4"]
+    # median 4 -> the unrated car's safety value equals the 4-star twin's (prior = 4/5)
+    assert crit.values.loc[uid, "safety"] == pytest.approx(crit.values.loc[r4, "safety"])
+    # ... but the star field is still unknown (3 of 10 of the safety field weight), and the car is flagged
+    assert crit.unknown_frac.loc[uid, "safety"] == pytest.approx(0.3)
+    assert table.loc[uid, "partial_unknown"]["safety"] == pytest.approx(0.3)
+    assert table.loc[uid, "coverage"] < table.loc[r4, "coverage"]
+    assert "unrated_safety" in table.loc[uid, "flags"]
+    # nothing displays or implies a rating: the detail carries no star score for the unrated car
+    star = next(d for d in crit.detail[uid]["safety"] if d["field"] == "safety_stars_adult")
+    assert star["raw"] is None and star["score"] is None and star["prior_score"] == pytest.approx(0.8)
+
+
+@pytest.mark.parametrize("body,median_stars", [("suv", 4), ("estate", 5)])
+def test_coverage_charge_puts_unrated_strictly_below_a_car_rated_at_the_median(body, median_stars):
+    """When the segment median is 4 or higher the prior ties (or beats) a 4-star car before the coverage charge;
+    the charge must make the unrated car strictly lower than a car rated at the median."""
+    df, vid = _two_segment_frame()
+    table, o = _star_scores(df, vid, body)
+    at_median = {4: "Rated4", 5: "Rated5"}[median_stars]
+    assert o["Unrated"] < o[at_median]
+    assert o["Unrated"] > o["Rated1"]
+    # raw (before the charge) the two are equal at the median
+    assert table.loc[vid[f"{body}-Unrated"], "spec"] == pytest.approx(table.loc[vid[f"{body}-{at_median}"], "spec"])
+
+
+def test_unrated_prior_uses_only_the_crash_rating_field():
+    """Other unknown safety fields stay unknown: no prior for airbags or ESC."""
+    rows = _segment_cars("suv", [4] * 8)
+    rows[3]["airbags"] = float("nan")
+    rows[3]["esc"] = None
+    df = make_frame(rows)
+    crit = compute_criteria(df)
+    uid = 4
+    # stars (3) + airbags (2) + esc (2) unknown of 10 field weight -> 0.7 unknown
+    assert crit.unknown_frac.loc[uid, "safety"] == pytest.approx(0.7)
+
+
+def test_whole_catalogue_median_for_a_tiny_segment():
+    rows = _segment_cars("suv", [4] * 8) + [dict(model="Lonely", body_type="coupe", safety_stars_adult=float("nan"))]
+    df = make_frame(rows)
+    crit = compute_criteria(df)
+    star = next(d for d in crit.detail[len(rows)]["safety"] if d["field"] == "safety_stars_adult")
+    # the coupe segment has no rated model: falls back to the whole catalogue (median 4)
+    assert star["prior_score"] == pytest.approx(0.8)
 
 
 def test_one_star_versus_unrated_numbers():
-    """The formula's answer, safety-weighted query: 1-star 0.6231, unrated 0.7255 (4-star 0.719, 5-star 0.751)."""
+    """Safety-weighted query on the single-segment frame: 5-star > 4-star > unrated > 1-star."""
     df, vid = _star_cars()
     table, o = _overall(df, vid)
-    assert o["Rated1"] == pytest.approx(0.6231, abs=5e-4)
-    assert o["Unrated"] == pytest.approx(0.7255, abs=5e-4)
-    assert o["Rated1"] < o["Unrated"]    # a known 1-star is still worse than an unknown rating
+    assert o["Rated5"] > o["Rated4"] > o["Unrated"] > o["Rated1"], o
 
 
 def test_fully_unknown_criterion_stays_fully_unknown():
