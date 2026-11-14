@@ -1,10 +1,10 @@
 {
  "run": "reviews_text_pilot_2026-11-15",
- "started": "2026-11-14T20:19:00Z",
+ "started": "2026-11-14T20:21:33Z",
  "stopped": "--no-write: staged and gated, the KB was not touched",
  "write": null,
  "stage": {
-  "ops": 16,
+  "ops": 158,
   "gates": {
    "schema": {
     "ok": true,
@@ -38,65 +38,76 @@
    "explained": {
     "ok": true,
     "detail": [
-     "0 changed rows, all in the run log"
+     "64 changed rows, all in the run log"
     ]
    },
    "reviews": {
     "ok": true,
     "detail": [
-     "0 new or changed review rows have provenance"
+     "64 new or changed review rows have provenance"
     ]
    }
   },
-  "log_rows": 0,
+  "log_rows": 64,
   "idempotent": true,
   "error": null
  },
  "models": {},
- "text": {},
- "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
- "numbers_check": {},
- "not_reached": [
-  "Hyundai Creta",
-  "Kia Seltos",
-  "Kia Syros",
-  "Mahindra XUV 3XO",
-  "Maruti Suzuki Ertiga",
-  "Maruti Suzuki Swift",
-  "Skoda Kylaq",
-  "Tata Nexon",
-  "Toyota Innova Hycross"
- ],
- "text_stopped": {
-  "role": "checker",
-  "why": "every backend for this role is out of quota: groq: HTTP 429 {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6vry2nke7xvs6e2qvnfqskr` service tier `on_de",
-  "at": "Honda Amaze"
+ "text": {
+  "autocar": {
+   "verified": 66,
+   "ok": 64,
+   "unchecked": 0,
+   "accuracy": 0.9697
+  },
+  "carwale": {
+   "verified": 44,
+   "ok": 40,
+   "unchecked": 0,
+   "accuracy": 0.9091,
+   "withheld": true
+  }
  },
- "llm_calls": 0,
+ "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
+ "numbers_check": {
+  "autocar": {
+   "checked": 80,
+   "ok": 79,
+   "models": 10,
+   "accuracy": 0.9875
+  },
+  "carwale": {
+   "checked": 78,
+   "ok": 78,
+   "models": 10,
+   "accuracy": 1.0
+  }
+ },
+ "not_reached": [],
+ "llm_calls": 33,
  "llm": {
   "writer_calls": 0,
-  "checker_calls": 0,
-  "writer_cache_hits": 1,
-  "checker_cache_hits": 0
+  "checker_calls": 33,
+  "writer_cache_hits": 19,
+  "checker_cache_hits": 20
  },
  "backends_out": {
   "writer": {},
-  "checker": {
-   "gemini_alt": "gemini_alt: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://a",
-   "groq": "groq: HTTP 429 {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6vry2nke7xvs6e2qvnfqskr` service tier `on_demand` on tokens per day (TPD): Limit 200000, "
-  }
+  "checker": {}
  },
  "text_models": {
   "writers": [],
-  "checkers": [],
+  "checkers": [
+   "claude-opus-5-5"
+  ],
   "independent": true
  },
  "fetch": {
   "network": 0,
-  "cache": 4,
+  "cache": 67,
   "failed": 0,
   "bytes": 0
  },
  "blocks": [],
- "runtime_seconds": 23.8
+ "runtime_seconds": 593.2
 }

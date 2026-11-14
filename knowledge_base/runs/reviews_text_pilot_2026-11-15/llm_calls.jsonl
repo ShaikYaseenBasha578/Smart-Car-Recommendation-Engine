@@ -1,0 +1,33 @@
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Honda Amaze", "seconds": 13.82, "tokens_in": 5464, "tokens_out": 1005, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Honda Amaze", "seconds": 17.61, "tokens_in": 6680, "tokens_out": 1760, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Honda Amaze", "seconds": 28.05, "tokens_in": 6686, "tokens_out": 3226, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Hyundai Creta", "seconds": 13.66, "tokens_in": 6005, "tokens_out": 1236, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Creta", "seconds": 15.96, "tokens_in": 5626, "tokens_out": 1612, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Creta", "seconds": 25.7, "tokens_in": 6724, "tokens_out": 2765, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Creta", "seconds": 10.81, "tokens_in": 4197, "tokens_out": 729, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Kia Seltos", "seconds": 15.02, "tokens_in": 5762, "tokens_out": 1015, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Seltos", "seconds": 22.8, "tokens_in": 5972, "tokens_out": 2284, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Seltos", "seconds": 23.14, "tokens_in": 6325, "tokens_out": 2237, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Seltos", "seconds": 11.79, "tokens_in": 4145, "tokens_out": 792, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Kia Syros", "seconds": 13.88, "tokens_in": 5338, "tokens_out": 1087, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Mahindra XUV 3XO", "seconds": 12.06, "tokens_in": 5146, "tokens_out": 932, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra XUV 3XO", "seconds": 17.36, "tokens_in": 5618, "tokens_out": 1558, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra XUV 3XO", "seconds": 24.37, "tokens_in": 6375, "tokens_out": 2489, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra XUV 3XO", "seconds": 10.0, "tokens_in": 4202, "tokens_out": 654, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Maruti Suzuki Ertiga", "seconds": 11.04, "tokens_in": 5547, "tokens_out": 836, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Ertiga", "seconds": 20.32, "tokens_in": 6849, "tokens_out": 2214, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Ertiga", "seconds": 19.05, "tokens_in": 6524, "tokens_out": 1941, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Ertiga", "seconds": 21.82, "tokens_in": 6680, "tokens_out": 2359, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Maruti Suzuki Swift", "seconds": 7.85, "tokens_in": 3660, "tokens_out": 336, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Swift", "seconds": 25.32, "tokens_in": 6670, "tokens_out": 2715, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Swift", "seconds": 24.48, "tokens_in": 6276, "tokens_out": 2246, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Skoda Kylaq", "seconds": 10.12, "tokens_in": 4581, "tokens_out": 655, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Skoda Kylaq", "seconds": 18.7, "tokens_in": 6496, "tokens_out": 1911, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Skoda Kylaq", "seconds": 11.12, "tokens_in": 4213, "tokens_out": 549, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Nexon", "seconds": 13.35, "tokens_in": 5605, "tokens_out": 1261, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Nexon", "seconds": 28.46, "tokens_in": 8102, "tokens_out": 3151, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Nexon", "seconds": 27.63, "tokens_in": 6194, "tokens_out": 2845, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Toyota Innova Hycross", "seconds": 12.92, "tokens_in": 5336, "tokens_out": 1017, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Toyota Innova Hycross", "seconds": 21.63, "tokens_in": 6477, "tokens_out": 2336, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Toyota Innova Hycross", "seconds": 30.87, "tokens_in": 6729, "tokens_out": 3489, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Toyota Innova Hycross", "seconds": 9.15, "tokens_in": 4193, "tokens_out": 597, "ok": true}

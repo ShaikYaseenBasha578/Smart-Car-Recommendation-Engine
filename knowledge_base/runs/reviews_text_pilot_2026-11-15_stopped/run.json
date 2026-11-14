@@ -1,0 +1,102 @@
+{
+ "run": "reviews_text_pilot_2026-11-15",
+ "started": "2026-11-14T20:19:00Z",
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 16,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "0 of 0 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->98967",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 650->650",
+     "owner_theme 0->0",
+     "powertrain 216->216",
+     "professional_assessment 598->598",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "0 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "0 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 0,
+  "idempotent": true,
+  "error": null
+ },
+ "models": {},
+ "text": {},
+ "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
+ "numbers_check": {},
+ "not_reached": [
+  "Hyundai Creta",
+  "Kia Seltos",
+  "Kia Syros",
+  "Mahindra XUV 3XO",
+  "Maruti Suzuki Ertiga",
+  "Maruti Suzuki Swift",
+  "Skoda Kylaq",
+  "Tata Nexon",
+  "Toyota Innova Hycross"
+ ],
+ "text_stopped": {
+  "role": "checker",
+  "why": "every backend for this role is out of quota: groq: HTTP 429 {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6vry2nke7xvs6e2qvnfqskr` service tier `on_de",
+  "at": "Honda Amaze"
+ },
+ "llm_calls": 0,
+ "llm": {
+  "writer_calls": 0,
+  "checker_calls": 0,
+  "writer_cache_hits": 1,
+  "checker_cache_hits": 0
+ },
+ "backends_out": {
+  "writer": {},
+  "checker": {
+   "gemini_alt": "gemini_alt: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://a",
+   "groq": "groq: HTTP 429 {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6vry2nke7xvs6e2qvnfqskr` service tier `on_demand` on tokens per day (TPD): Limit 200000, "
+  }
+ },
+ "text_models": {
+  "writers": [],
+  "checkers": [],
+  "independent": true
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 4,
+  "failed": 0,
+  "bytes": 0
+ },
+ "blocks": [],
+ "runtime_seconds": 23.8
+}
