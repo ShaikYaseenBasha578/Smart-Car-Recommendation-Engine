@@ -6,7 +6,7 @@ from utils import preprocess_user_input, filter_cars
 from ml_parser.ml_intent_parser import preprocess_user_input_ml
 from ranking_engine import rank_cars
 from services.catalogue import get_catalogue, get_meta
-from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
+from services.filter_v2 import FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, UNRATED_SAFETY_LABEL, filter_candidates
 from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent
 from services.ranking_adapter import rank_candidates
@@ -275,6 +275,8 @@ def relaxable_constraints(intent):
                         without(transmission={"family": None, "include_types": [], "exclude_types": []})))
     if intent["seats_min"] is not None:
         options.append(("seats", f"{intent['seats_min']}+ seats", without(seats_min=None)))
+    if intent.get("exclude_makes"):
+        options.append(("exclude_make", "excluding " + ", ".join(intent["exclude_makes"]), without(exclude_makes=[])))
     if intent["makes"]:
         options.append(("makes", " / ".join(intent["makes"]), without(makes=[])))
     if intent["models"]:
@@ -285,9 +287,15 @@ def relaxable_constraints(intent):
     for feature in intent["required_features"]:
         options.append((f"feature:{feature}", FEATURE_COLUMNS[feature][1],
                         without(required_features=[f for f in intent["required_features"] if f != feature])))
+    for feature in intent.get("exclude_features") or []:
+        options.append((f"exclude_feature:{feature}", f"no {FEATURE_COLUMNS[feature][1]}",
+                        without(exclude_features=[f for f in intent["exclude_features"] if f != feature])))
     for key, (_, label) in MIN_COLUMNS.items():
         if intent.get(key) is not None:
             options.append((key, f"minimum {label} {intent[key]:g}", without(**{key: None})))
+    for key, (_, label) in MAX_COLUMNS.items():
+        if intent.get(key) is not None:
+            options.append((key, f"maximum {label} {intent[key]:g}", without(**{key: None})))
     if intent["min_safety_stars"] is not None:
         options.append(("min_safety_stars", f"{intent['min_safety_stars']}-star safety",
                         without(min_safety_stars=None)))
@@ -339,6 +347,9 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None)
         "recommendations": [],
         "data_as_of": data_as_of(),
         "unsupported_terms": intent["unsupported_terms"],
+        # ML guesses for body type / fuel: soft preferences only (never filters), shown to the user as "assumed"
+        "assumed": make_json_safe({k: v for k, v in intent.get("assumed", {}).items() if v}),
+        "vague": bool(intent.get("vague")),
         "covered_makes": sorted(get_catalogue()["make"].unique().tolist()),
     }
     if drop is not None:
@@ -350,6 +361,16 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None)
             ", ".join(intent["unsupported_terms"])
             + " isn't in our catalogue, so that part of your query was ignored."
         )
+
+    if intent.get("unsupported_only"):
+        # the whole query is about a brand we don't carry: say so and stop, don't rank something unrelated
+        response["recommendations"] = []
+        response["message"] = (
+            ", ".join(intent["unsupported_terms"]) + " isn't in our catalogue, so there is nothing to recommend for it. "
+            "Tell us a budget, body type or fuel and we will search the brands we cover: "
+            + ", ".join(response["covered_makes"]) + "."
+        )
+        return response
 
     if ranked.empty:
         response["message"] = " ".join(filter(None, [unsupported_note, "No cars match all your requirements."]))
@@ -402,6 +423,9 @@ def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None)
     response["recommendations"] = recommendations
     if unsupported_note:
         response["message"] = unsupported_note + " Showing the closest matches."
+    elif response["vague"]:
+        response["message"] = ("Your query didn't name a budget, body type, fuel or use, so this is a general shortlist. "
+                               "Add a budget and what you need the car for to narrow it down.")
 
     print("✅ Returning recommendations (kb):", len(recommendations))
     return response

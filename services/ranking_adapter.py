@@ -20,6 +20,7 @@ import pandas as pd
 from ranking_engine import rank_cars
 
 SOFT_BOOST_SHARE = 0.10
+SOFT_PREFERENCE_NAMES = {"mileage", "space", "performance", "comfort", "safety", "features"}
 # Every CNG row in the KB that has a mileage_kmpl value (6 of 82) holds its CNG-cycle figure
 # there (26.1-27.0, equal to mileage_km_per_kg where both exist), not a petrol kmpl. Until the
 # KB is corrected, a CNG car's kmpl cell is treated as unknown, so units are never mixed.
@@ -168,13 +169,20 @@ def rank_candidates(intent: dict, candidates: pd.DataFrame) -> tuple[pd.DataFram
     out = candidates.join(ranked[["ranking_score", "match_reasons"]])
 
     prefs = intent.get("soft_preferences") or []
-    if prefs:
+    assumed = intent.get("assumed") or {}
+    assumed_checks = {  # ML guesses: a bounded boost like a soft preference, never a filter
+        f"assumed {kind.replace('_types', '')} {label}": (lambda r, c=col, v=label: r[c] == v)
+        for kind, col in (("body_types", "body_type"), ("fuel_types", "fuel_type"))
+        for label in assumed.get(kind) or []
+    }
+    if prefs or assumed_checks:
         spread = out["ranking_score"].max() - out["ranking_score"].min()
-        boost_unit = SOFT_BOOST_SHARE * (spread if spread > 0 else 1) / len(prefs)
-        hits = [_soft_hits(r, prefs) for _, r in out.iterrows()]
+        boost_unit = SOFT_BOOST_SHARE * (spread if spread > 0 else 1) / (len(prefs) + len(assumed_checks))
+        hits = [_soft_hits(r, prefs) + [name for name, check in assumed_checks.items() if check(r)]
+                for _, r in out.iterrows()]
         out["ranking_score"] = out["ranking_score"] + [boost_unit * len(h) for h in hits]
         out["match_reasons"] = [
-            reasons + [f"fits your {p} preference" for p in h]
+            reasons + [f"fits your {p} preference" if p in SOFT_PREFERENCE_NAMES else f"matches the {p}" for p in h]
             for reasons, h in zip(out["match_reasons"], hits)
         ]
 
