@@ -76,3 +76,26 @@ def parse(page):
 def parse_reviews_only(page):
     p = parse(page)
     return p["reviews"] if p else None
+
+
+def score_text(page):
+    """What the page itself shows of the ratings, for the independent re-check: the overall and per-question values in the page data
+    plus the visible 'Categories (Out of 5)' line."""
+    out = []
+    mm = re.search(r'"aggregateRating":\s*\{\s*"totalRatings"', page or "")
+    i = mm.start() if mm else -1
+    if i >= 0:
+        seg = page[i:i + 6000]
+        m = re.search(r'"overallRating":\s*[0-9.]+', seg)
+        out.append("overall: " + (m.group(0) if m else ""))
+        j = seg.find('"reviewParameters"')
+        if j >= 0:
+            frag = seg[j:j + 1800]
+            frag = frag[:frag.find('"vehicleInfo"')] if '"vehicleInfo"' in frag else frag
+            out.append(re.sub(r'"(Heading|QuestionType|AnswerText|QuestionId)":("[^"]*"|[0-9]+),?', "", frag))
+    nos = re.sub(r"<script.*?</script>", " ", page or "", flags=re.S)
+    t = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", nos)))
+    k = t.find("Categories ( Out of 5 )")
+    if k >= 0:
+        out.append("visible: " + t[k:k + 160])
+    return "\n".join(out)

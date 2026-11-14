@@ -48,9 +48,9 @@ DEFAULTS = {
         "extract": ["claude_sonnet", "gemini", "gemini_alt"],   # brochure pages (first that answers is used)
         "verify": ["gemini_alt", "groq"],                   # web sources (text). Haiku is NOT used: on 2026-11-13 it called 16 exact matches "mismatch"
         "verify_image": ["gemini_alt"],
-        # review layers (kbpipe/reviews.py): free chain only, extractor and verifier on different backends where possible
-        "reviews_extract": ["gemini_alt", "groq"],
-        "reviews_verify": ["groq", "gemini_alt"],                     # brochure pages (image)
+        # review layers (kbpipe/reviews.py, review_text.py): Claude Sonnet writes, the free chain checks. Never the same backend, never Haiku.
+        "reviews_write": ["claude_sonnet"],
+        "reviews_check": ["gemini_alt", "groq"],
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},
             "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 3000},
@@ -69,13 +69,22 @@ DEFAULTS = {
     "reviews": {
         "sources": {"autocar": {"enabled": True}, "carwale": {"enabled": True}},
         "refresh_days": 90,                 # a page / rows older than this are read again
-        "carwale_max_text_pages": 5,        # written-review pages (10 reviews each) read per model for themes
+        "carwale_max_text_pages": 6,        # written-review pages (10 reviews each) read per model for themes
+        "carwale_max_reviews": 60, "carwale_chunk_size": 60, "carwale_review_chars": 500,   # cap per model; reviews per writer call; text kept per review
         "min_reviews_sampled": 20, "min_theme_mentions": 3, "low_confidence_ratings": 30,
         "max_note_words": 25, "max_quote_words": 25,
         "verify_fraction": 0.25,            # share of notes/themes re-checked by the verifier (pilot: 1.0)
-        "verify_bar": 0.95, "max_llm_calls": 120,
+        "verify_bar": 0.95, "max_llm_calls": 1500,
+        "numbers_fraction": 0.15, "numbers_min": 15, "numbers_bar": 0.98,   # independent re-check of the stored scores (plan section 5)
         "saved_pages_dir": "~/carrec_saved_pages/teambhp",
-        "autocar_slugs": {}, "carwale_slugs": {},     # KB model name -> slug, when the default (lower-case, hyphens) is wrong
+        "autocar_slugs": {"Maruti Suzuki WagonR": "wagon-r", "MG Windsor EV": "windsor", "Mahindra Bolero Neo Plus": "bolero-neoplus",
+                          "Mahindra Thar": "thar-og"},   # found 2026-11-15 from the 308 Location headers and Autocar's make listings
+        # models with no expert review of their own (checked 2026-11-15; do not guess a neighbour's page): Kia Sorento (hub page has none),
+        # Tata Tigor (redirects to Aeris), Hyundai Venue N Line / i20 N Line / Creta N Line (not listed), MG Hector Plus (only Hector is reviewed)
+        "autocar_no_review": ["Kia Sorento", "Tata Tigor", "Hyundai Venue N Line", "Hyundai i20 N Line", "Hyundai Creta N Line", "MG Hector Plus"],
+        "autocar_page_names": {"Mahindra Thar": "Mahindra Thar OG", "MG Windsor EV": "MG Windsor", "Maruti Suzuki WagonR": "Maruti Suzuki Wagon R",
+                               "Mahindra Bolero Neo Plus": "Mahindra Bolero Neo+"},   # KB model name -> the name Autocar's page carries when it differs
+        "carwale_slugs": {},     # KB model name -> slug, when the default (lower-case, hyphens) is wrong
         "generation_dates": {},             # KB model name -> ISO date of a facelift/replacement; older reviews become stale_generation
         # source label -> engine aspect(s); used by the export step (not built yet), kept here so a label change is a one-line fix
         "aspect_map": {

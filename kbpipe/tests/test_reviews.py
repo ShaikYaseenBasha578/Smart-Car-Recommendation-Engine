@@ -1,10 +1,11 @@
 import json
 import os
 import sqlite3
+import sys
 
 import pytest
 
-from kbpipe import changeset, fetch, gates, kb, reviews, write
+from kbpipe import changeset, fetch, gates, kb, llm, review_text as RT, reviews, write
 from kbpipe.migrations import reviews_tables as MIG
 from kbpipe.sources import autocar_reviews as AC
 from kbpipe.sources import carwale_ratings as CW
@@ -124,29 +125,78 @@ def test_migration_idempotent_additive_and_refuses_prod(kbfile, tmp_path):
 
 
 # ------------------------------------------------------------------ end to end on a scratch KB
-class FakeBudget:
-    def __init__(self, cfg, run_dir):
-        self.n, self.extract, self.verify = 0, "x", "y"
+class _B:
+    def __init__(self, name, model):
+        self.name, self.model = name, model
 
-    def call(self, chain, prompt, label):
+
+class FakeChain:
+    """Stands in for llm.Chain. `handler(prompt)` returns a dict; `fail` may raise (e.g. llm.QuotaExhausted)."""
+    def __init__(self, name, model, handler):
+        self.backends, self.handler, self.calls, self.n, self.fail = [_B(name, model)], handler, [], 0, None
+        self.name, self.model = name, model
+
+    def complete(self, prompt, images=None, json_mode=True, label=""):
+        if self.fail:
+            raise self.fail
         self.n += 1
-        if "decide from its EVIDENCE" in prompt:
-            res, cur = [], None
-            for line in prompt.splitlines():
-                if line.startswith("CLAIM "):
-                    cur = line.split(":")[0][6:]
-                elif line.startswith("EVIDENCE ") and cur is not None:
-                    pass
-                elif cur is not None and line.strip() and not line.startswith(("CLAIM", "EVIDENCE")) and not any(r["id"] == cur for r in res):
-                    res.append({"id": cur, "verdict": "supported" if "UNSUPPORTED" not in prompt.split("CLAIM %s" % cur)[1].split("CLAIM")[0] else "not_supported", "supporting_line": line.strip()})
-            return {"results": res}, "fake-verify"
-        if "Autocar India" in prompt:
-            return {"notes": [{"aspect": "Ride Comfort And Handling", "note": "Composed over bad roads.", "quote": "Reviewer text about Ride Comfort And Handling is long enough here."},
-                              {"aspect": "Features And Safety", "note": "Feature list is strong.", "quote": "invented words not on the page"},
-                              {"aspect": "Made Up Aspect", "note": "x", "quote": None}]}, "fake-extract"
-        ids = [l[1:l.index("]")] for l in prompt.splitlines() if l.startswith("[")]
-        return {"themes": [{"theme": "service_cost", "label": None, "direction": "negative", "review_ids": ids[:12], "note": "Owners find servicing expensive."},
-                           {"theme": "recurring_fault", "label": "AC failure", "direction": "negative", "review_ids": ids[:2], "note": "x"}]}, "fake-extract"
+        self.calls.append({"model": self.model, "label": label})
+        return json.dumps(self.handler(prompt))
+
+
+def writer_handler(prompt):
+    if "You read an Autocar India car review" in prompt:
+        return {"notes": [{"aspect": "Ride Comfort And Handling", "note": "Composed over bad roads.", "quote": "Reviewer text about Ride Comfort And Handling is long enough here."},
+                          {"aspect": "Features And Safety", "note": "Feature list is strong.", "quote": "invented words not on the page"},
+                          {"aspect": "Made Up Aspect", "note": "x", "quote": None},
+                          {"aspect": "Value For Money", "note": " ".join(["word"] * 30), "quote": None}]}
+    ids = [l[1:l.index("]")] for l in prompt.splitlines() if l.startswith("[")]
+    return {"themes": [{"theme": "service_cost", "label": None, "direction": "negative", "review_ids": ids[:12], "note": "Owners find servicing expensive."},
+                       {"theme": "recurring_fault", "label": "AC failure", "direction": "negative", "review_ids": ids[:2], "note": "x"}]}
+
+
+def checker_handler(prompt):
+    if "You check claims about an Autocar" in prompt:
+        evid = prompt.split("EVIDENCE:\n", 1)[1].split("\n\nCLAIM", 1)[0]
+        out = []
+        for l in prompt.splitlines():
+            if l.startswith("CLAIM "):
+                cid, rest = l[6:].split(" [", 1)
+                aspect = rest.split("]")[0]
+                line = next((x for x in evid.splitlines() if x.startswith(aspect)), "")
+                out.append({"id": cid, "verdict": "not_supported" if "UNSUPPORTED" in l else "supported", "supporting_line": line[len(aspect) + 2:]})
+        return {"results": out}
+    if "You check claims about owner reviews" in prompt:
+        revs = {}
+        for l in prompt.split("REVIEWS:\n", 1)[1].split("\n\nCLAIM", 1)[0].splitlines():
+            if l.startswith("["):
+                revs[l[1:l.index("]")]] = l[l.index("]") + 2:]
+        out = []
+        for l in prompt.splitlines():
+            if l.startswith("CLAIM "):
+                out.append({"id": l[6:].split(":")[0], "verdict": "supported", "support": [{"review_id": i, "line": t[:30]} for i, t in revs.items()]})
+        return {"results": out}
+    evid = prompt.split("EVIDENCE:\n", 1)[1].split("\n\nCLAIM", 1)[0]
+    out = []
+    for l in prompt.splitlines():
+        if l.startswith("CLAIM "):
+            cid = l[6:].split(":")[0]
+            label = l.split("'")[1]
+            i = evid.lower().find(label.lower())
+            if i < 0:
+                i = max(evid.lower().find("autocar score"), evid.lower().find("overall"))
+            out.append({"id": cid, "found": i >= 0, "line": evid[i:i + 60] if i >= 0 else ""})
+    return {"results": out}
+
+
+FAKES = {}
+
+
+def _fake_engine(cfg, run_dir, log=None):
+    w = FakeChain("claude_sonnet", "sonnet", writer_handler)
+    c = FakeChain("gemini_alt", "gemini-fake", checker_handler)
+    FAKES["w"], FAKES["c"] = w, c
+    return RT.Engine(cfg, run_dir, writer=w, checker=c, log=log)
 
 
 def _setup(monkeypatch, cfg, tmp_path):
@@ -164,7 +214,7 @@ def _setup(monkeypatch, cfg, tmp_path):
         self.__dict__.setdefault("blocks", []).append((url, "blocked:403"))
         return None, None, "blocked:403"
     monkeypatch.setattr(fetch.Fetcher, "get_polite", fake_get)
-    monkeypatch.setattr(reviews, "Budget", FakeBudget)
+    monkeypatch.setattr(reviews, "make_engine", _fake_engine)
     cfg["prod_db"] = db
     return db
 
@@ -296,3 +346,168 @@ def test_teambhp_links_file_has_links_only(cfg, tmp_path):
     p = reviews.teambhp_links(cfg, str(tmp_path), models)
     t = open(p).read()
     assert t.index("Nexon") < t.index("Syros") and "site%3Ateam-bhp.com" in t and "<a href=" in t
+
+
+# ------------------------------------------------------------------ text layer: cache, audit, independence, stops
+def _audit(cfg, label):
+    return [json.loads(l) for l in open(os.path.join(cfg["runs_dir"], label, "text_audit.jsonl"))]
+
+
+def test_rerun_makes_zero_llm_calls_from_the_cache(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    R1 = reviews.run(cfg, only=["Nexon"], no_write=True, label="c1", verify_all=True, echo=lambda *a: None)
+    assert R1["llm"]["writer_calls"] == 2 and R1["llm"]["checker_calls"] == 4      # writer: autocar notes, carwale themes | checker: both claim sets and both numbers checks
+    w, c = FAKES["w"].n, FAKES["c"].n
+    R2 = reviews.run(cfg, only=["Nexon"], no_write=True, label="c2", verify_all=True, echo=lambda *a: None)
+    assert (FAKES["w"].n, FAKES["c"].n) == (0, 0) and R2["llm_calls"] == 0                  # new engine, same disk cache
+    assert R2["llm"]["writer_cache_hits"] == 2 and R2["llm"]["checker_cache_hits"] == 4
+    assert _audit(cfg, "c1") == _audit(cfg, "c2")                                             # same audit trail from cache
+    cs1 = json.load(open(os.path.join(cfg["runs_dir"], "c1", "changeset.json")))
+    cs2 = json.load(open(os.path.join(cfg["runs_dir"], "c2", "changeset.json")))
+    strip = lambda cs: [{k: v for k, v in o.items() if k not in ("extracted_at",)} for o in cs["ops"]]
+    assert strip(cs1) == strip(cs2)
+
+
+def test_changed_page_text_is_a_cache_miss(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="m1", verify_all=True, echo=lambda *a: None)
+    page = autocar_page().replace("Weak engine", "Weak engine and thirsty")
+    orig = fetch.Fetcher.get_polite
+    monkeypatch.setattr(fetch.Fetcher, "get_polite", lambda self, url, max_age_days=None: (page, {"fetched_at": "2026-11-14T10:00:00Z"}, None) if "autocarindia" in url else orig(self, url, max_age_days))
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="m2", verify_all=True, echo=lambda *a: None)
+    assert R["llm"]["writer_calls"] == 1 and R["llm"]["writer_cache_hits"] == 1          # autocar re-written, carwale from cache
+
+
+def test_audit_trail_records_kept_and_dropped_with_reasons(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="a1", verify_all=True, echo=lambda *a: None)
+    au = _audit(cfg, "a1")
+    by = {(a["kind"], a.get("aspect") or a.get("theme")): a for a in au}
+    assert by[("note", "Ride Comfort And Handling")]["kept"] and by[("note", "Ride Comfort And Handling")]["supporting_line"]
+    assert "over 25 words" in by[("note", "Value For Money")]["drop_reason"] and not by[("note", "Value For Money")]["kept"]
+    assert by[("note", "Made Up Aspect")]["drop_reason"] == "unknown aspect"
+    assert "quote" in by[("note", "Features And Safety")]["quote_dropped"] and by[("note", "Features And Safety")]["kept"]
+    assert by[("theme", "service_cost")]["kept"] and by[("theme", "service_cost")]["confirmed"] == 12
+    assert by[("theme", "recurring_fault")]["drop_reason"].startswith("below minimum mentions")
+
+
+def test_supporting_line_must_be_a_substring_of_the_page(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    inner = checker_handler
+
+    def liar(prompt):
+        r = inner(prompt)
+        if "You check claims about an Autocar" in prompt:
+            for x in r["results"]:
+                x["supporting_line"] = "a sentence the page never contains"
+        return r
+    monkeypatch.setattr(sys.modules[__name__], "checker_handler", liar)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="l1", verify_all=True, echo=lambda *a: None)
+    n = [a for a in _audit(cfg, "l1") if a["kind"] == "note"]
+    assert n and all(not a["kept"] and "not a substring" in a["drop_reason"] for a in n if a["checked"])
+
+
+def test_theme_needs_distinct_reviews_with_real_lines(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    inner = checker_handler
+
+    def thin(prompt):
+        r = inner(prompt)
+        if "You check claims about owner reviews" in prompt:
+            for x in r["results"]:
+                x["support"] = [x["support"][0], dict(x["support"][0]), {"review_id": x["support"][1]["review_id"], "line": "words that are not in that review"}]
+        return r
+    monkeypatch.setattr(sys.modules[__name__], "checker_handler", thin)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="d1", verify_all=True, echo=lambda *a: None)
+    t = [a for a in _audit(cfg, "d1") if a["kind"] == "theme" and a["checked"]]
+    assert t and all(not a["kept"] and a["confirmed"] == 1 and "minimum 3" in a["drop_reason"] for a in t)
+
+
+def test_writer_and_checker_must_differ_and_haiku_is_refused(cfg, tmp_path):
+    same = FakeChain("claude_sonnet", "sonnet", writer_handler)
+    with pytest.raises(ValueError, match="different backends"):
+        RT.Engine(cfg, str(tmp_path), writer=same, checker=FakeChain("claude_sonnet", "x", checker_handler))
+    with pytest.raises(ValueError, match="different backends"):
+        RT.Engine(cfg, str(tmp_path), writer=same, checker=FakeChain("other", "sonnet", checker_handler))
+    with pytest.raises(ValueError, match="Haiku"):
+        RT.Engine(cfg, str(tmp_path), writer=FakeChain("claude_haiku", "haiku", writer_handler), checker=FakeChain("g", "gem", checker_handler))
+    assert cfg["llm"]["reviews_write"] == ["claude_sonnet"] and cfg["llm"]["reviews_check"] == ["gemini_alt", "groq"]
+
+
+def test_checker_quota_stops_cleanly_resumes_with_no_new_writer_calls_and_never_uses_writer(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+
+    def eng(cfg_, run_dir, log=None):
+        e = _fake_engine(cfg_, run_dir, log)
+        FAKES["c"].fail = llm.QuotaExhausted("gemini_alt: daily budget")
+        return e
+    monkeypatch.setattr(reviews, "make_engine", eng)
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="q1", verify_all=True, echo=lambda *a: None)
+    assert R["text_stopped"]["role"] == "checker" and "resume" in open(os.path.join(cfg["runs_dir"], "q1", "RUN_SUMMARY.md")).read()
+    assert FAKES["w"].n == 1 and R["llm"]["checker_calls"] == 0                          # the writer was not asked to check
+    cs = json.load(open(os.path.join(cfg["runs_dir"], "q1", "changeset.json")))
+    assert not [o for o in cs["ops"] if o.get("note")]                                    # nothing unchecked was kept
+    monkeypatch.setattr(reviews, "make_engine", _fake_engine)                             # quota is back
+    R2 = reviews.run(cfg, only=["Nexon"], no_write=True, label="q2", verify_all=True, echo=lambda *a: None)
+    assert R2["llm"]["writer_calls"] == 1 and R2["llm"]["writer_cache_hits"] >= 1         # autocar reused; carwale (never reached) written now
+    assert [o for o in json.load(open(os.path.join(cfg["runs_dir"], "q2", "changeset.json")))["ops"] if o.get("note")]
+
+
+def test_writer_limit_stops_and_does_not_switch_writers(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+
+    def eng(cfg_, run_dir, log=None):
+        e = _fake_engine(cfg_, run_dir, log)
+        FAKES["w"].fail = llm.QuotaExhausted("claude cli: usage limit reached")
+        return e
+    monkeypatch.setattr(reviews, "make_engine", eng)
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="w9", echo=lambda *a: None)
+    assert R["text_stopped"]["role"] == "writer" and FAKES["c"].n == 0
+
+
+def test_numbers_recheck_flags_a_wrong_stored_score(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    orig = RT.Engine.check_numbers
+
+    def tampered(self, source, key, evidence, scores, flags_add):
+        return orig(self, source, key, evidence, [(l, v + (3 if l == "Value For Money" and source == "autocar" else 0), s, t) for l, v, s, t in scores], flags_add)
+    monkeypatch.setattr(RT.Engine, "check_numbers", tampered)
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="n1", echo=lambda *a: None)
+    n = [json.loads(l) for l in open(os.path.join(cfg["runs_dir"], "n1", "numbers_check.jsonl"))]
+    bad = [x for x in n if not x["confirmed"] and x["source"] == "autocar"]
+    assert [x["aspect"] for x in bad] == ["Value For Money"]
+    assert R["numbers_check"]["autocar"]["ok"] == 7 and R["numbers_check"]["autocar"]["checked"] == 8 and R["numbers_check"]["autocar"]["below_bar"]
+
+
+def test_carwale_chunks_merge_and_cap_at_most_recent(monkeypatch, cfg, tmp_path):
+    cfg["reviews"]["carwale_chunk_size"] = 5
+    cfg["reviews"]["carwale_max_reviews"] = 25
+    _setup(monkeypatch, cfg, tmp_path)
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="k1", verify_all=True, echo=lambda *a: None)
+    au = [a for a in _audit(cfg, "k1") if a["kind"] == "theme" and a["theme"] == "service_cost"][0]
+    assert au["writer_ids"] and max(int(i) for i in au["writer_ids"]) >= 300 and min(int(i) for i in au["writer_ids"]) >= 105      # newest 25 of ids 100..309
+    assert FAKES["w"].n == 1 + 5 and au["writer_count"] >= 3                                   # 1 autocar + 25 reviews / chunk of 5
+
+
+def test_aliases_and_no_review_models(monkeypatch, cfg):
+    assert reviews.slugs(cfg, "Maruti Suzuki", "WagonR")[0] == "wagon-r" and reviews.slugs(cfg, "MG", "Windsor EV")[0] == "windsor"
+    assert reviews.slugs(cfg, "Mahindra", "Bolero Neo Plus")[0] == "bolero-neoplus" and reviews.slugs(cfg, "Mahindra", "Thar")[0] == "thar-og"
+    seen = []
+    monkeypatch.setattr(fetch.Fetcher, "get_polite", lambda self, url, max_age_days=None: (seen.append(url), (None, None, "x"))[1])
+    f = reviews.Flags()
+    assert reviews.autocar_model(cfg, fetch.Fetcher(cfg), {"make": "Kia", "model": "Sorento"}, f, lambda *a: None) is None
+    assert seen == [] and f.rows[0][3] == "NO_EXPERT_REVIEW"
+    p = AC.parse(autocar_page(name="Maruti Suzuki Wagon R", make_s="maruti-suzuki", model_s="wagon-r"))
+    assert not reviews.autocar_identity(p, "Maruti Suzuki", "WagonR", "maruti-suzuki", "wagon-r")[0]
+    assert reviews.autocar_identity(p, "Maruti Suzuki", "WagonR", "maruti-suzuki", "wagon-r", cfg["reviews"]["autocar_page_names"]["Maruti Suzuki WagonR"])[0]
+
+
+def test_claude_cli_usage_limit_is_a_quota_stop_not_a_fallback(monkeypatch, cfg):
+    import subprocess
+    class R:
+        returncode, stderr = 0, ""
+        stdout = json.dumps({"is_error": True, "result": "You've reached your usage limit. It resets at 3am."})
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: R())
+    b = llm.Backend("claude_sonnet", cfg["llm"]["backends"]["claude_sonnet"])
+    with pytest.raises(llm.QuotaExhausted):
+        b.complete("x")

@@ -122,13 +122,27 @@ def parse(page):
     return r
 
 
-def text_blob(parsed):
-    """The page text the notes are read from and checked against."""
+def text_blob(parsed, cap=2500):
+    """The page text the notes are written from and checked against: the pros / cons lists and each aspect's paragraph (when the page has one)."""
     parts = []
     if parsed["pros"]:
         parts.append("We like: " + "; ".join(parsed["pros"]))
     if parsed["cons"]:
         parts.append("We don't like: " + "; ".join(parsed["cons"]))
     for label, t in parsed["aspect_text"].items():
-        parts.append("%s: %s" % (label, t[:900]))
+        parts.append("%s: %s" % (label, t[:cap]))
     return "\n".join(parts)
+
+
+def score_text(page):
+    """Visible text of the score block (tags stripped, paragraphs dropped), for the independent re-check of the numbers:
+    'Autocar score 8 / Exterior Design And Engineering 8 / ...'."""
+    pos = [page.find(l + "</span>") for l in ASPECTS]
+    pos = [p for p in pos if p >= 0]
+    if not pos:
+        return ""
+    a = page.rfind("Autocar score", 0, min(pos))
+    start = a if a >= 0 and min(pos) - a < 3000 else min(pos)
+    seg = re.sub(r"<div class=\"styledInnerHTML.*?</div>", "", page[start:max(pos) + 1800], flags=re.S)
+    lines = [l for l in _text(seg).split("\n") if l.strip()]
+    return "\n".join(lines[:16])

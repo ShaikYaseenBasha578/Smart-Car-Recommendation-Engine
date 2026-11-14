@@ -160,11 +160,15 @@ class Backend:
             finally:
                 if work:
                     shutil.rmtree(work, ignore_errors=True)
+            import re as _re
+            limit = lambda t: bool(_re.search(r"usage limit|limit reached|rate limit|quota|out of (extra )?usage|too many requests|overloaded_error|resets? at", t or "", _re.I))
             if r.returncode != 0:
-                raise LLMError("claude cli: %s" % r.stderr[:300])
+                msg = (r.stderr or "") + (r.stdout or "")[:400]
+                raise (QuotaExhausted if limit(msg) else LLMError)("claude cli: %s" % msg[:300])
             out = json.loads(r.stdout)
             if out.get("is_error"):
-                raise LLMError("claude cli: %s" % str(out.get("result"))[:300])
+                msg = str(out.get("result"))
+                raise (QuotaExhausted if limit(msg) else LLMError)("claude cli: %s" % msg[:300])
             if out.get("permission_denials"):
                 raise LLMError("claude cli: tool use denied: %s" % json.dumps(out["permission_denials"])[:300])
             u = out.get("usage") or {}
