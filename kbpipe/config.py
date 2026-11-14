@@ -49,7 +49,7 @@ DEFAULTS = {
         "verify": ["gemini_alt", "groq"],                   # web sources (text). Haiku is NOT used: on 2026-11-13 it called 16 exact matches "mismatch"
         "verify_image": ["gemini_alt"],
         # review layers (kbpipe/reviews.py): free chain only, extractor and verifier on different backends where possible
-        "reviews_extract": ["gemini", "groq"],
+        "reviews_extract": ["gemini_alt", "groq"],
         "reviews_verify": ["groq", "gemini_alt"],                     # brochure pages (image)
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},

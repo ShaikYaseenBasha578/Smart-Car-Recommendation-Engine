@@ -120,11 +120,14 @@ def validate_carwale(p):
         bad.append("overall %r outside 0..5" % (p["overall"],))
     for label in CW.ASPECTS:
         v = p["aspects"].get(label)
-        if v is None:
-            bad.append("aspect missing: %s" % label)
-        elif not (0 <= v <= CW.SCALE):
+        if v is not None and not (0 <= v <= CW.SCALE):
             bad.append("%s=%s outside 0..5" % (label, v))
     return not bad, bad
+
+
+def carwale_missing(p):
+    """Aspects the site does not show for this model (new models lack some): unknown, never 0; stored as absent and flagged."""
+    return [a for a in CW.ASPECTS if p["aspects"].get(a) is None]
 
 
 # ---------------------------------------------------------------- LLM text
@@ -135,6 +138,7 @@ class Budget:
         self.cap, self.n = rc["max_llm_calls"], 0
         self.extract = llm.get(cfg, "reviews_extract", run_dir)
         self.verify = llm.get(cfg, "reviews_verify", run_dir)
+        self.audit = []          # every verifier verdict, written to text_audit.jsonl
 
     def call(self, chain, prompt, label):
         if self.n >= self.cap:
@@ -183,6 +187,10 @@ def verify_claims(claims, evidence_of, budget, label):
         ev = evidence_of.get(cid)
         ok = r.get("verdict") == "supported" and ev is not None and _in_text(r.get("supporting_line"), ev)
         out[cid] = (ok, r.get("supporting_line"))
+        c = next((x for x in claims if x["id"] == cid), {})
+        getattr(budget, "audit", []).append({"claim": c.get("claim"), "verdict": r.get("verdict"), "supporting_line": r.get("supporting_line"),
+                                             "line_found_in_evidence": bool(ev and _in_text(r.get("supporting_line"), ev)), "verifier": model,
+                                             "label": label})
     return out, model
 
 
@@ -339,13 +347,16 @@ def carwale_model(cfg, fetcher, m, flags, log, want_text):
         flags.add(m["make"], m["model"], "carwale", "INVALID_RATINGS", "; ".join(bad))
         log("carwale", "%s %s: left out, %s" % (m["make"], m["model"], "; ".join(bad)))
         return None
+    miss = carwale_missing(p)
+    if miss:
+        flags.add(m["make"], m["model"], "carwale", "ASPECTS_MISSING", "not shown on the page, left empty: %s" % ", ".join(miss))
     if p["rating_count"] < cfg["reviews"]["low_confidence_ratings"]:
         flags.add(m["make"], m["model"], "carwale", "LOW_CONFIDENCE", "%d ratings (stored, flagged for export)" % p["rating_count"])
     res = {"parsed": p, "url": url, "observed_at": meta["fetched_at"], "reviews": list(p["reviews"]), "review_urls": {}}
     for r in p["reviews"]:
-        res["review_urls"][r["id"]] = url
+        res["review_urls"][str(r["id"])] = url
     if want_text:
-        pages = cfg["reviews"]["carwale_max_text_pages"]
+        pages = min(cfg["reviews"]["carwale_max_text_pages"], 4)
         total = p["total_reviews"] or 0
         for n in range(2, pages + 1):
             if len(res["reviews"]) >= total:
@@ -360,9 +371,9 @@ def carwale_model(cfg, fetcher, m, flags, log, want_text):
                 flags.add(m["make"], m["model"], "carwale", "REVIEW_PAGE_WRONG", u)
                 break
             for r in q["reviews"]:
-                if r["id"] not in res["review_urls"]:
+                if str(r["id"]) not in res["review_urls"]:
                     res["reviews"].append(r)
-                    res["review_urls"][r["id"]] = u
+                    res["review_urls"][str(r["id"])] = u
     return res
 
 
@@ -390,7 +401,7 @@ def rating_ops(m, cw):
     base = {"op": "owner_rating", "make": m["make"], "model": m["model"], "source": SRC_CARWALE, "scale_max": CW.SCALE,
             "rating_count": p["rating_count"], "url": cw["url"], "observed_at": cw["observed_at"], "method": METHOD_CW}
     ops = [dict(base, aspect="overall", score=p["overall"])]
-    ops += [dict(base, aspect=a, score=p["aspects"][a]) for a in CW.ASPECTS]
+    ops += [dict(base, aspect=a, score=p["aspects"][a]) for a in CW.ASPECTS if p["aspects"].get(a) is not None]
     return ops
 
 
@@ -534,7 +545,7 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
                 ops += ops_m
                 rows += [("owner_rating", m["make"], m["model"], o["aspect"], o["score"], o["scale_max"], o["rating_count"], "current", o["url"]) for o in ops_m]
                 if budget and not text_off:
-                    items = [{"id": str(r["id"]), "text": ("%s. %s" % (r["title"], r["text"]))[:600]} for r in cw["reviews"]]
+                    items = [{"id": str(r["id"]), "text": ("%s. %s" % (r["title"], r["text"]))[:400]} for r in cw["reviews"]]
                     try:
                         themes, info = extract_themes(items, cfg, budget, flags, m["make"], m["model"], "carwale", "owner reviews", verify_all, rng, None)
                         method = "kbpipe/%s carwale_reviews_llm; llm %s; verified %s" % (__version__, info["extract_model"], info["verify_model"])
@@ -575,6 +586,12 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
         json.dump(cs, f, default=str)
     _tsv(os.path.join(run_dir, "reviews_rows.tsv"), ["kind", "make", "model", "aspect", "score_or_mentions", "scale_or_sampled", "published_or_count_or_direction", "status", "url"], rows)
     R["llm_calls"] = budget.n if budget else 0
+    if budget:
+        with open(os.path.join(run_dir, "text_audit.jsonl"), "w") as f:
+            for a in getattr(budget, "audit", []):
+                f.write(json.dumps(a, ensure_ascii=False) + "\n")
+        models_used = sorted({c["model"] for c in getattr(budget.extract, "calls", [])}), sorted({c["model"] for c in getattr(budget.verify, "calls", [])})
+        R["text_models"] = {"extractors": models_used[0], "verifiers": models_used[1], "independent": not (set(models_used[0]) & set(models_used[1]))}
     _stage_and_write(cfg, cs, run_dir, before, tables_in_prod, no_write, R, log)
     R["fetch"] = fetcher.stats
     R["blocks"] = list(getattr(fetcher, "blocks", []))
@@ -639,6 +656,9 @@ def _summary(cfg, run_dir, R, summary, flags, rc, nops):
         L.append("- %s: %d of %d sampled items supported%s" % (src, t["ok"], t["verified"], " (withheld: below bar)" if t.get("withheld") else ""))
     if not R.get("text"):
         L.append("- no text extraction ran")
+    if R.get("text_models"):
+        L.append("- extractor model(s): %s; verifier model(s): %s; independent: %s" % (
+            ", ".join(R["text_models"]["extractors"]), ", ".join(R["text_models"]["verifiers"]), R["text_models"]["independent"]))
     L += ["", "## Counts", "", "- change-set ops: %d (changeset.json)" % nops, "- LLM calls: %s (llm_calls.jsonl)" % R.get("llm_calls", 0),
           "- fetches: %s" % json.dumps(R.get("fetch", {})), "- flags: %d (flags.tsv)" % len(flags.rows)]
     if R.get("stage"):

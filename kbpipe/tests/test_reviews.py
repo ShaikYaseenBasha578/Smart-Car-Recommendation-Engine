@@ -74,7 +74,8 @@ def test_carwale_parser_and_validation():
     assert p["overall"] == 4.5 and p["rating_count"] == 300 and p["review_count"] == 120 and len(p["aspects"]) == 7 and len(p["reviews"]) == 10
     assert "Would you be interested?" not in p["aspects"]
     assert reviews.validate_carwale(p) == (True, [])
-    assert not reviews.validate_carwale(CW.parse(carwale_page(aspects=False)))[0]
+    q = CW.parse(carwale_page(aspects=False))                    # new models lack aspects: valid, flagged, never 0
+    assert reviews.validate_carwale(q)[0] and len(reviews.carwale_missing(q)) == 7
     assert not reviews.validate_carwale(CW.parse(carwale_page(rating_count=0)))[0]
     assert not reviews.validate_carwale(CW.parse(carwale_page(overall=6)))[0]
     assert CW.parse("<html>blocked</html>") is None
@@ -178,6 +179,7 @@ def test_no_write_run_stages_gates_and_leaves_prod_alone(monkeypatch, cfg, tmp_p
     kinds = [o["op"] for o in cs["ops"]]
     assert kinds.count("assessment") == 8 and kinds.count("owner_rating") == 8
     th = [o for o in cs["ops"] if o["op"] == "owner_theme"]
+    assert th[0]["sample_urls"] and th[0]["sample_urls"][0].startswith("https://www.carwale.com/tata-cars/nexon/")
     assert len(th) == 1 and th[0]["theme"] == "service_cost" and th[0]["mentions"] == 12 and th[0]["posts_sampled"] == 30   # AC fault cited by 2 only: dropped
     notes = {o["aspect"]: o for o in cs["ops"] if o["op"] == "assessment" and o.get("note")}
     assert sorted(notes) == ["Features And Safety", "Ride Comfort And Handling"] and notes["Ride Comfort And Handling"]["quote"]

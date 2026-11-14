@@ -130,5 +130,5 @@ def text_blob(parsed):
     if parsed["cons"]:
         parts.append("We don't like: " + "; ".join(parsed["cons"]))
     for label, t in parsed["aspect_text"].items():
-        parts.append("%s: %s" % (label, t))
+        parts.append("%s: %s" % (label, t[:900]))
     return "\n".join(parts)

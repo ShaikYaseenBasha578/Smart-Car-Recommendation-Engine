@@ -5,6 +5,7 @@
 2 provenance  every new or changed cell has a provenance row whose observation has a URL, a date and a method
 3 rows        no table lost rows
 4 explained   every row of the full EXCEPT diff is in the apply log; nothing was removed"""
+import json
 import sqlite3
 
 from . import fields as F
@@ -131,7 +132,8 @@ def gate_reviews(before, after, cfg):
             n += 1
             rec = dict(zip([r[1] for r in a.execute("pragma table_info(%s)" % t)], row))
             when = rec.get("observed_at") or rec.get("extracted_at")
-            if not (rec.get("source_url") or rec.get("sample_urls")) or not when or not rec.get("extraction_method"):
+            urls = rec.get("source_url") or (json.loads(rec["sample_urls"]) if rec.get("sample_urls") else [])
+            if not urls or not when or not rec.get("extraction_method"):
                 bad.append("%s %s lacks url, date or method" % (t, rec["id"]))
             if t == "owner_theme":
                 if rec["mentions"] < rc.get("min_theme_mentions", 3) or rec["posts_sampled"] < rc.get("min_reviews_sampled", 20):
