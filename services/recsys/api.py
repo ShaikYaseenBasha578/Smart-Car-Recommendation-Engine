@@ -108,6 +108,12 @@ def _drop_table(intent: dict) -> List[Tuple[str, str, dict]]:
             rows.append((key, f"minimum {label}", without(**{key: None})))
     if intent.get("min_safety_stars") is not None:
         rows.append(("min_safety_stars", "safety-star minimum", without(min_safety_stars=None)))
+    for kind in ("body_types", "fuel_types"):  # ML guesses ("assumed: SUV"): the UI's off switch
+        guess = (intent.get("assumed") or {}).get(kind)
+        if guess:
+            rest = {k: v for k, v in intent["assumed"].items() if k != kind}
+            rows.append((f"assumed:{kind}", f"assumed {kind.replace('_types', '')} {'/'.join(guess)}",
+                         without(assumed={**rest, kind: []})))
     return rows
 
 
@@ -124,6 +130,26 @@ def apply_drops(intent: dict, drop_keys) -> Tuple[dict, List[dict]]:
 
 
 # ---------------------------------------------------------------- response pieces
+
+def unsupported_only_message(terms: List[str], covered_makes: List[str]) -> str:
+    """Same wording as the current kb path (services.new_car_service.get_kb_recommendations)."""
+    return (", ".join(terms) + " isn't in our catalogue, so there is nothing to recommend for it. "
+            "Tell us a budget, body type or fuel and we will search the brands we cover: "
+            + ", ".join(covered_makes) + ".")
+
+
+VAGUE_MESSAGE = ("Your query didn't say what you are looking for, so this is a general shortlist, not personalised. "
+                 "Tell us a budget and what the car is for (family, city, highway, first car...) to narrow it down.")
+VAGUE_LABEL = "General pick, not personalised"
+
+
+def _assumed_matches(cands: pd.DataFrame, assumed: dict) -> Dict[Any, List[str]]:
+    """{row index: ["body suv", ...]} for rows matching an ML-assumed body type / fuel."""
+    checks = [(f"{kind.replace('_types', '')} {v}", col, v)
+              for kind, col in (("body_types", "body_type"), ("fuel_types", "fuel_type"))
+              for v in (assumed or {}).get(kind) or []]
+    return {idx: [name for name, col, v in checks if row[col] == v] for idx, row in cands.iterrows()}
+
 
 def _filters_summary(intent: dict) -> dict:
     keys = ["budget", "body_types", "fuel_types", "transmission", "seats_min", "makes", "models",
@@ -175,6 +201,7 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "boot_space_litres": _num_or_none(car["boot_space_litres"], whole=True),
         # v3 additions
         "variant_id": int(car["variant_id"]),
+        "selection_order": int(car["selection_order"]) if "selection_order" in car.index else None,
         "scores": {"overall": _round(overall), "spec": _round(srow["spec"]), "expert": _round(srow["expert"]),
                    "owner": _round(srow["owner"]), "coverage": _round(srow["coverage"])},
         "criteria": {c: _round(v) for c, v in srow["values"].items() if v is not None},
@@ -208,8 +235,14 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         "unsupported_terms": intent.get("unsupported_terms", []),
         "covered_makes": sorted(df["make"].unique().tolist()),
     }
-    if isinstance(intent.get("assumed"), dict) and intent["assumed"]:
-        response["assumed"] = intent["assumed"]
+    assumed = {k: v for k, v in (intent.get("assumed") or {}).items() if v} if isinstance(intent.get("assumed"), dict) else {}
+    vague = bool(intent.get("vague"))
+    if assumed:
+        # soft only: a bounded boost (config.ASSUMED_BOOST on the 0-1 overall score) to cars that match; never a filter.
+        # `assumed_options` carries the drop key that switches each guess off (same `drop` argument as constraints).
+        response["assumed"] = assumed
+        response["assumed_boost"] = config.ASSUMED_BOOST
+        response["assumed_options"] = [{"key": f"assumed:{k}", "kind": k, "values": v} for k, v in assumed.items()]
     if drop is not None:
         response["dropped"] = dropped
 
@@ -218,6 +251,13 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         unsupported_note = (", ".join(intent["unsupported_terms"])
                             + " isn't in our catalogue, so that part of your query was ignored.")
 
+    if intent.get("unsupported_only"):
+        # the whole query is about a brand we don't carry: say so and stop, don't rank something unrelated
+        response["message"] = unsupported_only_message(intent.get("unsupported_terms") or [], response["covered_makes"])
+        response["weights"] = _weights_payload(build_weights(intent, weight_overrides))
+        return to_jsonable(response)
+
+    response["vague"] = vague
     cands = filter_candidates(intent, df)
     relaxation = None
     relaxed_keys: List[str] = []
@@ -231,9 +271,14 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         cands = relaxation["candidates"]
         relaxed_keys = relaxation["keys"]
 
-    weights = build_weights(intent, weight_overrides)
+    # vague query: neutral default weights, no overrides, no assumed boost: the list is explicitly not personalised
+    weights = build_weights({} if vague else intent, None if vague else weight_overrides)
     # scored against the ORIGINAL intent: a relaxed car's overshoot / missing feature stays visible to the score
     table, _ = score_candidates(cands, intent, weights, ev, budget=intent.get("budget"))
+    matches = _assumed_matches(cands, {} if vague else assumed)
+    if any(matches.values()):
+        table["overall"] = [None if is_unknown(o) else min(1.0, float(o) + config.ASSUMED_BOOST * bool(matches[i]))
+                            for i, o in table["overall"].items()]
     scored = cands.join(table)
     variant_counts = cands["model"].value_counts()
     chosen = diversify(scored, intent)
@@ -243,14 +288,23 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         srow = table.loc[car.name]
         ex = explain(car, srow, weights, intent, ev, relaxed=bool(relaxation))
         viol = violations_for(car, intent, relaxed_keys) if relaxation else []
-        cards.append(_card(car, srow, ex, variant_counts, app_root, viol))
+        card = _card(car, srow, ex, variant_counts, app_root, viol)
+        card["assumed_match"] = matches.get(car.name, [])
+        if vague:
+            card["match_label"] = VAGUE_LABEL
+            card["personalised"] = False
+        cards.append(card)
 
     response["recommendations"] = cards
     response["weights"] = _weights_payload(weights)
     response["weights_profile"] = {"profile": weights["profile"], "drivers": weights["drivers"]}
     response["classes"] = dict(config.CLASS_WEIGHTS)
+    if vague:
+        response["personalised"] = False
+        response["shortlist_label"] = VAGUE_LABEL
+        response["message"] = " ".join(filter(None, [unsupported_note, VAGUE_MESSAGE]))
     if relaxation:
-        response["relaxation"] = {"moves": relaxation["moves"], "keys": relaxed_keys,
+        response["relaxation"] = {"moves": relaxation["moves"], "keys": relaxed_keys, "far": relaxation["far"],
                                   "seats_relaxed": relaxation["seats_relaxed"], "message": relaxation["message"]}
         response["message"] = " ".join(filter(None, [unsupported_note, relaxation["message"]]))
     elif unsupported_note:
