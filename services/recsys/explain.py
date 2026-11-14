@@ -8,6 +8,7 @@ built from the overall score (MATCH_LEVELS) and the number of unknown things.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -128,10 +129,42 @@ def _spec_reason(crit: str, row: pd.Series, value: float, intent: Any) -> Option
     return None
 
 
+def _month_year(text: Optional[str]) -> Optional[str]:
+    """'2025-10-27' / '2025-10' -> 'Oct 2025'; anything else (or empty) -> None."""
+    try:
+        return datetime.strptime(str(text)[:7], "%Y-%m").strftime("%b %Y")
+    except (TypeError, ValueError):
+        return None
+
+
+def _review_reason(crit: str, d: dict) -> dict:
+    """Reason from a review-file row: the source, its own label, the raw score and (experts) the review date."""
+    what = str(d["source_aspect"]).lower()
+    raw, top = f"{d['raw_score']:g}", f"{d['scale_max']:g}"
+    if crit.startswith("expert_"):
+        date = _month_year(d.get("published_on"))
+        when = f" ({date})" if date else ""
+        if d.get("fallback"):
+            text = f"{d['source']} gives an overall score of {raw}/{top}{when}"
+        else:
+            text = f"{d['source']} scores {what} {raw}/{top}{when}"
+        return {"text": text, "evidence_class": "expert", "fields": [crit], "source_url": d["source_url"]}
+    score = f"{d['raw_score']:.1f}/{top}"
+    n = d.get("rating_count")
+    if d.get("low_confidence"):
+        basis = "number of ratings not stated" if n is None else f"only {n} rating{'s' if n != 1 else ''}"
+        text = f"Owners rate {what} {score}, but on {basis} ({d['source']}, low confidence)"
+    else:
+        text = f"Owners rate {what} {score} ({d['source']}, {n} ratings)"
+    return {"text": text, "evidence_class": "owner", "fields": [crit], "source_url": d["source_url"]}
+
+
 def _evidence_reason(crit: str, make: str, model: str, value: float, ev: Evidence) -> Optional[dict]:
     d = ev.detail_for(make, model, crit)
     if d is None:
         return None
+    if d.get("kind") in ("review", "rating"):
+        return _review_reason(crit, d)
     if crit.startswith("expert_"):
         what = criterion_label(crit).split(": ", 1)[1]
         n = d["n_sources"]
@@ -163,7 +196,7 @@ def unknowns_for(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], 
     if any_expert and not has_expert and not evidence.empty:
         out.append("Expert ratings: none for this model yet")
     if any_owner and not has_owner and not evidence.empty:
-        out.append("Owner themes: none for this model yet")
+        out.append("Owner ratings: none for this model yet")
     return list(dict.fromkeys(out))
 
 
@@ -200,10 +233,15 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
     best_owner = next((c for c in candidates if c[1]["evidence_class"] == "owner"), None)
     head = required + [c for c in (best_expert, best_owner) if c is not None]
     ordered = head + [c for c in candidates if not any(c is h for h in head)]
-    reasons = []
-    for _, r in ordered[:config.MAX_REASONS]:
-        reasons.append({"text": r["text"], "evidence_class": r["evidence_class"], "fields": r["fields"],
-                        "source_url": r.get("source_url")})
+    # one score can back several criteria (e.g. ride and handling): show it once, listing every field it backs
+    merged: Dict[str, dict] = {}
+    for _, r in ordered:
+        if r["text"] in merged:
+            merged[r["text"]]["fields"] = list(dict.fromkeys(merged[r["text"]]["fields"] + r["fields"]))
+        else:
+            merged[r["text"]] = {"text": r["text"], "evidence_class": r["evidence_class"], "fields": list(r["fields"]),
+                                 "source_url": r.get("source_url")}
+    reasons = list(merged.values())[:config.MAX_REASONS]
     unknowns = unknowns_for(row, score_row, weights, evidence)
     overall = None if is_unknown(score_row["overall"]) else float(score_row["overall"])
     return {"reasons": reasons, "unknowns": unknowns, "n_unknown": len(unknowns),

@@ -157,7 +157,16 @@ def test_empty_result_when_nothing_possible():
     assert r["recommendations"] and "relaxation" in r
 
 
-def test_empty_evidence_files_do_not_change_the_cards():
+def test_empty_evidence_files_do_not_change_the_cards(tmp_path):
+    from services.recsys.evidence import (ASSESSMENT_COLS, OWNER_COLS, OWNER_RATING_COLS, REVIEW_ASSESSMENT_COLS)
+    for name, cols in (("a.csv", REVIEW_ASSESSMENT_COLS), ("t.csv", OWNER_COLS), ("r.csv", OWNER_RATING_COLS),
+                       ("legacy.csv", ASSESSMENT_COLS)):
+        (tmp_path / name).write_text(",".join(cols) + "\n")
     a = recommend("family suv under 15 lakh", evidence=NO_EVIDENCE)
-    b = recommend("family suv under 15 lakh")  # real (empty) data files
+    # header-only files in both assessment layouts (the repo files now hold the KB review export)
+    for assess in ("a.csv", "legacy.csv"):
+        b = recommend("family suv under 15 lakh",
+                      evidence=Evidence.load(tmp_path / assess, tmp_path / "t.csv", tmp_path / "r.csv"))
+        assert json.dumps(a, sort_keys=True) == json.dumps(b, sort_keys=True)
+    b = recommend("family suv under 15 lakh", evidence=Evidence.load(tmp_path / "a.csv", tmp_path / "t.csv", tmp_path / "r.csv"))
     assert [c["variant_id"] for c in a["recommendations"]] == [c["variant_id"] for c in b["recommendations"]]

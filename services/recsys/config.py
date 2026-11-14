@@ -12,6 +12,11 @@ COVERAGE_PENALTY = 0.15
 EXPERT_SOURCE_K = 1.0
 OWNER_SAMPLE_K = 50
 OWNER_NO_COUNT_SCALE = 0.5
+# a model with no expert aspect rows but an overall score uses the overall for every expert criterion, and its expert
+# class weight is multiplied by this (on top of the source-count factor)
+OVERALL_FALLBACK_SCALE = 0.3
+# an owner rating is pulled toward the segment mean: w x value + (1 - w) x segment mean, w = count / (count +
+# OWNER_SAMPLE_K) (the same constant as the class scale above)
 
 # weight of one required item (feature / minimum) relative to the whole criterion pool (= 1.0).
 # a known-missing required item (only seen when relaxed) counts MISSING_MULTIPLIER times as unknown.

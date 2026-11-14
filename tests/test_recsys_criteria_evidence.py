@@ -5,7 +5,7 @@ import pandas as pd
 
 from services.recsys import config
 from services.recsys.criteria import budget_fit, compute_criteria
-from services.recsys.evidence import ASSESSMENT_COLS, OWNER_COLS, Evidence
+from services.recsys.evidence import ASSESSMENT_COLS, OWNER_COLS, OWNER_RATING_COLS, Evidence
 from tests.recsys_frames import make_frame
 
 
@@ -104,19 +104,23 @@ def _owner(rows):
 
 
 def test_missing_and_empty_files(tmp_path):
-    ev = Evidence.load(tmp_path / "nope.csv", tmp_path / "nope2.csv")
+    ev = Evidence.load(tmp_path / "nope.csv", tmp_path / "nope2.csv", tmp_path / "nope3.csv")
     assert ev.empty
     (tmp_path / "a.csv").write_text(",".join(ASSESSMENT_COLS) + "\n")
     (tmp_path / "o.csv").write_text(",".join(OWNER_COLS) + "\n")
-    ev = Evidence.load(tmp_path / "a.csv", tmp_path / "o.csv")
+    (tmp_path / "r.csv").write_text(",".join(OWNER_RATING_COLS) + "\n")
+    ev = Evidence.load(tmp_path / "a.csv", tmp_path / "o.csv", tmp_path / "r.csv")
     assert ev.empty
     df = _suvs(2)
     assert ev.values_for(df).isna().all().all()
 
 
 def test_repo_data_files_exist_with_headers():
-    from services.recsys.evidence import ASSESSMENTS_CSV, OWNER_THEMES_CSV
-    assert ASSESSMENTS_CSV.read_text().strip().split(",") == ASSESSMENT_COLS
+    from services.recsys.evidence import (ASSESSMENTS_CSV, OWNER_RATING_COLS, OWNER_RATINGS_CSV, OWNER_THEMES_CSV,
+                                          REVIEW_ASSESSMENT_COLS)
+    # assessments.csv and owner_ratings.csv are the KB review export (scripts/export_reviews_from_kb.py)
+    assert ASSESSMENTS_CSV.read_text().splitlines()[0].split(",") == REVIEW_ASSESSMENT_COLS
+    assert OWNER_RATINGS_CSV.read_text().splitlines()[0].split(",") == OWNER_RATING_COLS
     assert OWNER_THEMES_CSV.read_text().strip().split(",") == OWNER_COLS
 
 
