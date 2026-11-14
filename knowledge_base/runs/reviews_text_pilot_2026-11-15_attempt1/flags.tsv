@@ -1,0 +1,54 @@
+make	model	source	flag	detail
+Honda	Amaze	autocar	NOTE_DROPPED	Ride Comfort And Handling: note over 25 words (31)
+Honda	Amaze	autocar	NOTE_DROPPED	Value For Money: note over 25 words (27)
+Honda	Amaze	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker returned no verdict
+Honda	Amaze	autocar	NOTE_DROPPED	Features And Safety: checker returned no verdict
+Honda	Amaze	autocar	NOTE_DROPPED	Interior Space And Comfort: checker returned no verdict
+Honda	Amaze	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker returned no verdict
+Honda	Amaze	autocar	NOTE_DROPPED	Performance And Refinement: checker returned no verdict
+Honda	Amaze	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Hyundai	Creta	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (28)
+Hyundai	Creta	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (28)
+Hyundai	Creta	autocar	NOTE_DROPPED	Performance And Refinement: note over 25 words (27)
+Hyundai	Creta	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: note over 25 words (27)
+Hyundai	Creta	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Hyundai	Creta	autocar	NOTE_DROPPED	Value For Money: note over 25 words (27)
+Hyundai	Creta	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Kia	Seltos	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (26)
+Kia	Seltos	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (26)
+Kia	Seltos	autocar	NOTE_DROPPED	Performance And Refinement: note over 25 words (27)
+Kia	Seltos	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (29)
+Kia	Seltos	autocar	NOTE_DROPPED	Value For Money: note over 25 words (29)
+Kia	Seltos	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Seltos	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Kia	Syros	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (26)
+Kia	Syros	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (28)
+Kia	Syros	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Mahindra	XUV 3XO	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (27)
+Mahindra	XUV 3XO	autocar	NOTE_DROPPED	Ride Comfort And Handling: note over 25 words (27)
+Mahindra	XUV 3XO	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (32)
+Mahindra	XUV 3XO	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (28)
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (31)
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Performance And Refinement: note over 25 words (28)
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: note over 25 words (28)
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Ride Comfort And Handling: note over 25 words (29)
+Maruti Suzuki	Ertiga	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Maruti Suzuki	Ertiga	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Maruti Suzuki	Swift	autocar	NUMBER_NOT_CONFIRMED	overall=8.0
+Maruti Suzuki	Swift	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Skoda	Kylaq	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (27)
+Skoda	Kylaq	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Skoda	Kylaq	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Tata	Nexon	autocar	NOTE_DROPPED	Exterior Design And Engineering: note over 25 words (28)
+Tata	Nexon	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (29)
+Tata	Nexon	autocar	NOTE_DROPPED	Performance And Refinement: note over 25 words (27)
+Tata	Nexon	autocar	NOTE_DROPPED	Value For Money: note over 25 words (27)
+Tata	Nexon	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""
+Toyota	Innova Hycross	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (26)
+Toyota	Innova Hycross	autocar	NOTE_DROPPED	Performance And Refinement: note over 25 words (28)
+Toyota	Innova Hycross	autocar	NOTE_DROPPED	Ride Comfort And Handling: note over 25 words (27)
+Toyota	Innova Hycross	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (27)
+Toyota	Innova Hycross	autocar	NOTE_DROPPED	Value For Money: note over 25 words (26)
+Toyota	Innova Hycross	carwale	CHECK_FAILED	"checker call failed: groq failed: HTTP 400 {""error"":{""message"":""Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details."",""type"":""invalid_request_error"",""code"":""json_validate_failed"","""

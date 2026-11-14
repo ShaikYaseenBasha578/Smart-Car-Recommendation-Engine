@@ -1,0 +1,49 @@
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Honda Amaze", "seconds": 10.25, "tokens_in": 5099, "tokens_out": 771, "ok": true}
+{"backend": "gemini_alt", "model": "gemini-3.5-flash-lite", "label": "autocar_check Honda Amaze", "seconds": 1.47, "tokens_in": 1251, "tokens_out": 308, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Honda Amaze", "seconds": 1.94, "tokens_in": 570, "tokens_out": 704, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Honda Amaze", "seconds": 9.11, "tokens_in": 10726, "tokens_out": 766, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Honda Amaze", "seconds": 3.17, "tokens_in": 833, "tokens_out": 1415, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai Creta", "seconds": 8.06, "tokens_in": 5598, "tokens_out": 699, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Hyundai Creta", "seconds": 2.15, "tokens_in": 1434, "tokens_out": 756, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Hyundai Creta", "seconds": 1.75, "tokens_in": 570, "tokens_out": 703, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Creta", "seconds": 16.71, "tokens_in": 10813, "tokens_out": 1792, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Hyundai Creta", "seconds": 3.05, "tokens_in": 765, "tokens_out": 1112, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Seltos", "seconds": 8.73, "tokens_in": 5389, "tokens_out": 774, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Kia Seltos", "seconds": 3.17, "tokens_in": 1406, "tokens_out": 1337, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Kia Seltos", "seconds": 2.46, "tokens_in": 570, "tokens_out": 1042, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Kia Seltos", "seconds": 12.97, "tokens_in": 10697, "tokens_out": 1421, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Kia Seltos", "seconds": 2.42, "tokens_in": 707, "tokens_out": 919, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Syros", "seconds": 9.75, "tokens_in": 4909, "tokens_out": 743, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Kia Syros", "seconds": 4.37, "tokens_in": 1263, "tokens_out": 1796, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Kia Syros", "seconds": 2.08, "tokens_in": 570, "tokens_out": 675, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Kia Syros", "seconds": 2.17, "tokens_in": 664, "tokens_out": 825, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Mahindra XUV 3XO", "seconds": 8.99, "tokens_in": 4749, "tokens_out": 763, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Mahindra XUV 3XO", "seconds": 3.16, "tokens_in": 1162, "tokens_out": 1231, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Mahindra XUV 3XO", "seconds": 2.31, "tokens_in": 570, "tokens_out": 827, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Mahindra XUV 3XO", "seconds": 17.77, "tokens_in": 9789, "tokens_out": 1989, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Mahindra XUV 3XO", "seconds": 2.95, "tokens_in": 819, "tokens_out": 1139, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Ertiga", "seconds": 9.66, "tokens_in": 5187, "tokens_out": 790, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Maruti Suzuki Ertiga", "seconds": 1.49, "tokens_in": 1258, "tokens_out": 487, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Maruti Suzuki Ertiga", "seconds": 1.78, "tokens_in": 570, "tokens_out": 597, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Ertiga", "seconds": 14.38, "tokens_in": 10163, "tokens_out": 1576, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Maruti Suzuki Ertiga", "seconds": 2.32, "tokens_in": 762, "tokens_out": 970, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Swift", "seconds": 6.5, "tokens_in": 3590, "tokens_out": 286, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Maruti Suzuki Swift", "seconds": 1.58, "tokens_in": 357, "tokens_out": 564, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Maruti Suzuki Swift", "seconds": 2.44, "tokens_in": 570, "tokens_out": 767, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Swift", "seconds": 16.18, "tokens_in": 10312, "tokens_out": 1865, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Maruti Suzuki Swift", "seconds": 2.95, "tokens_in": 703, "tokens_out": 1007, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Skoda Kylaq", "seconds": 9.17, "tokens_in": 4250, "tokens_out": 615, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Skoda Kylaq", "seconds": 3.18, "tokens_in": 809, "tokens_out": 1243, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Skoda Kylaq", "seconds": 1.94, "tokens_in": 584, "tokens_out": 654, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Skoda Kylaq", "seconds": 13.99, "tokens_in": 10189, "tokens_out": 1380, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Skoda Kylaq", "seconds": 2.48, "tokens_in": 763, "tokens_out": 959, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Nexon", "seconds": 9.42, "tokens_in": 5217, "tokens_out": 694, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Tata Nexon", "seconds": 5.29, "tokens_in": 1281, "tokens_out": 2213, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Tata Nexon", "seconds": 1.43, "tokens_in": 584, "tokens_out": 545, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Nexon", "seconds": 13.15, "tokens_in": 9839, "tokens_out": 1368, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Tata Nexon", "seconds": 2.5, "tokens_in": 841, "tokens_out": 1056, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Toyota Innova Hycross", "seconds": 9.37, "tokens_in": 4919, "tokens_out": 788, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_check Toyota Innova Hycross", "seconds": 3.11, "tokens_in": 1129, "tokens_out": 1167, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "autocar_numbers Toyota Innova Hycross", "seconds": 2.41, "tokens_in": 570, "tokens_out": 786, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Toyota Innova Hycross", "seconds": 14.97, "tokens_in": 9938, "tokens_out": 1388, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Toyota Innova Hycross", "seconds": 2.21, "tokens_in": 798, "tokens_out": 921, "ok": true}

@@ -20,7 +20,7 @@ import re
 from . import llm
 from .sources import autocar_reviews as AC
 
-PROMPT_V = {"ac_write": "ac-w3", "ac_check": "ac-c3", "cw_write": "cw-w3", "cw_check": "cw-c3", "num_check": "num-c2"}
+PROMPT_V = {"ac_write": "ac-w5", "ac_check": "ac-c4", "cw_write": "cw-w4", "cw_check": "cw-c4", "num_check": "num-c2"}
 THEMES = ["reliability", "service_cost", "service_experience", "real_world_mileage", "build_issues", "recurring_fault", "resale",
           "satisfaction"]
 DIRECTIONS = ("positive", "negative", "mixed")
@@ -67,19 +67,19 @@ def sampled(seed, model, source, fraction):
 # ---------------------------------------------------------------- prompts
 def autocar_write_prompt(blob, aspects, max_words, max_quote):
     return ("You read an Autocar India car review (TEXT below). It has 'We like' and 'We don't like' lists and, for some aspects, a paragraph under the aspect's name.\n"
-            "For each aspect in the list that the TEXT actually speaks about, write ONE note for a car buyer in your own words, at most %d words, "
-            "saying what the reviewer found (praise or criticism, with the concrete point: for example the engine, ride, space, boot, equipment). "
+            "For each aspect in the list that the TEXT actually speaks about, write ONE note for a car buyer in your own words, at most %d words "
+            "(count them: longer notes are thrown away), saying what the reviewer found (praise or criticism, with the concrete point: for example the engine, ride, space, boot, equipment). "
             "Optionally add a verbatim quote (at most %d words) copied exactly from the TEXT.\n"
-            "Rules: one aspect per note. Use only what the TEXT says; add no outside facts. Do not mention numeric scores. If the TEXT says nothing "
+            "Rules: one aspect per note. Use only what the TEXT says: no outside facts, no inferences about what a fact 'means', no advice. Do not mention numeric scores. If the TEXT says nothing "
             "about an aspect (not even in the like / don't like lists), leave that aspect out.\nAspects: %s\n"
             'Reply with JSON only: {"notes":[{"aspect":"<aspect exactly as listed>","note":"...","quote":"<exact text or null>"}]}\n\nTEXT:\n%s'
-            % (max_words, max_quote, json.dumps(aspects), blob))
+            % (max_words - 5, max_quote, json.dumps(aspects), blob))
 
 
 def autocar_check_prompt(blob, claims):
     body = "\n".join("CLAIM %s [%s]: %s" % (c["id"], c["aspect"], c["claim"]) for c in claims)
     return ("You check claims about an Autocar India car review against its text. EVIDENCE is the review text. For each CLAIM decide from the EVIDENCE alone "
-            "(no outside knowledge) whether it supports the claim for that aspect. verdict is 'supported' or 'not_supported'. If supported, "
+            "(no outside knowledge) whether it supports the claim for that aspect. verdict is 'supported' only if EVERY part of the claim (each fact, figure and comparison) is stated in the EVIDENCE; if any part is missing or only implied, 'not_supported'. If supported, "
             "supporting_line is ONE sentence or phrase copied EXACTLY, character for character, from the EVIDENCE.\n"
             'Reply with JSON only: {"results":[{"id":"...","verdict":"supported","supporting_line":"..."}]}\n\nEVIDENCE:\n%s\n\n%s' % (blob, body))
 
@@ -89,7 +89,7 @@ def carwale_write_prompt(items, min_mentions, max_words):
     return ("Below are %d owner reviews of one car model, each starting with its id in brackets. Find themes that owners raise repeatedly. Allowed themes: %s. "
             "For recurring_fault and build_issues give a short label (a few words, for example 'AC compressor failure'); otherwise label is null. "
             "direction is positive, negative or mixed. In review_ids list EVERY id whose text clearly raises the theme (do not guess). "
-            "note: one sentence in your own words for a car buyer, at most %d words, no quotes. Only themes raised by at least %d different ids.\n"
+            "note: one sentence in your own words saying what owners report, at most %d words, no quotes, no advice to the reader, and no figures (kmpl, rupees) unless several reviews give similar ones. Only themes raised by at least %d different ids.\n"
             'Reply with JSON only: {"themes":[{"theme":"...","label":null,"direction":"negative","review_ids":["id1","id2","id3"],"note":"..."}]}\n\n%s'
             % (len(items), ", ".join(THEMES), max_words, min_mentions, body))
 
@@ -99,7 +99,7 @@ def carwale_check_prompt(reviews_text, claims):
         c["id"], c["theme"], " (%s)" % c["label"] if c["label"] else "", c["direction"], c["note"] or "-") for c in claims)
     return ("You check claims about owner reviews against the reviews themselves. REVIEWS below are numbered by id. For each CLAIM, list EVERY review id from REVIEWS that "
             "clearly raises that theme in that direction (a review about something else does not count), with one short line (at most 20 words) copied EXACTLY, "
-            "character for character, from that review. verdict is 'supported' if at least %d different reviews support the claim, else 'not_supported'. "
+            "character for character, from that review. verdict is 'supported' if at least %d different reviews support the claim AND our summary does not state anything the reviews do not, else 'not_supported'. "
             "Use only the REVIEWS, no outside knowledge.\n"
             'Reply with JSON only: {"results":[{"id":"...","verdict":"supported","support":[{"review_id":"...","line":"..."}]}]}\n\nREVIEWS:\n%s\n\n%s'
             % (3, reviews_text, body))
@@ -112,6 +112,12 @@ def numbers_check_prompt(evidence, claims):
             "claimed number of decimals is fine (4.6462 shows as 4.65 or 4.6). found is true or false; if true, line is ONE short piece copied EXACTLY, "
             "character for character, from the EVIDENCE that contains the number.\n"
             'Reply with JSON only: {"results":[{"id":"...","found":true,"line":"..."}]}\n\nEVIDENCE:\n%s\n\n%s' % (evidence, body))
+
+
+def _cid(x):
+    """Checker ids come back as '3', 'CLAIM 3' or 'C3'; the number is what matters."""
+    m = re.findall(r"\d+", str(x))
+    return m[-1] if m else str(x)
 
 
 def _fmt(x):
@@ -131,6 +137,7 @@ class Engine:
         self.stats = {"writer_calls": 0, "checker_calls": 0, "writer_cache_hits": 0, "checker_cache_hits": 0}
         self.cap = self.rc["max_llm_calls"]
         self.audit, self.numbers, self.stopped = [], [], {}
+        self.write_only = False        # warm the writer cache without asking the checker (nothing is kept; the checks run later)
         self.run_dir = run_dir
 
     def _independent(self):
@@ -221,6 +228,12 @@ class Engine:
                 flags_add("autocar", "QUOTE_DROPPED", "%s: %s" % (a, rec["quote_dropped"]))
                 quote = None
             cand[a] = {"note": note, "quote": quote, "rec": rec}
+        if self.write_only:
+            for a, c in cand.items():
+                c["rec"]["drop_reason"] = "not checked yet (write-only run)"
+                self._log(c["rec"])
+            info["status"], info["kept"] = "write-only: checks pending", 0
+            return {}, info
         if verify and cand:
             claims = [{"id": str(i), "aspect": a, "claim": cand[a]["note"]} for i, a in enumerate(sorted(cand))]
             order = {c["id"]: c["aspect"] for c in claims}
@@ -235,15 +248,15 @@ class Engine:
                     info["dropped"] += 1
                 flags_add("autocar", "CHECK_FAILED", str(e))
                 return {}, info
-            got = {str(r.get("id")): r for r in res.get("results") or []}
+            got = {_cid(r.get("id")): r for r in res.get("results") or []}
             for cid, a in order.items():
                 r, c = got.get(cid), cand[a]
                 rec = c["rec"]
-                rec["checked"], rec["checker"] = True, info["checker_model"]
-                info["checked"] += 1
+                rec["checked"], rec["checker"] = bool(r), info["checker_model"]
                 if not r:
-                    rec["drop_reason"], rec["verdict"] = "checker returned no verdict", None
+                    rec["drop_reason"], rec["verdict"] = "checker returned no verdict (not counted in the supported rate)", None
                 else:
+                    info["checked"] += 1
                     rec["verdict"], rec["supporting_line"] = r.get("verdict"), r.get("supporting_line")
                     line_ok = in_text(r.get("supporting_line"), blob)
                     rec["line_found_in_page_text"] = line_ok
@@ -269,6 +282,22 @@ class Engine:
         return notes, info
 
     # ---------------------------------------------------------------- owner themes
+    def _groups(self, cand, byid):
+        """Claims grouped so one checker call stays within carwale_check_max_chars of review text (the free checker has a
+        per-request token limit). Normally one group per model; a group of one is the minimum."""
+        cap, groups, cur, cur_ids = self.rc.get("carwale_check_max_chars", 9000), [], [], set()
+        for n, c in enumerate(cand):
+            ids = set(c["ids"])
+            size = sum(len(byid[i]["text"]) + 8 for i in cur_ids | ids)
+            if cur and size > cap:
+                groups.append(cur)
+                cur, cur_ids = [], set()
+            cur.append(n)
+            cur_ids |= ids
+        if cur:
+            groups.append(cur)
+        return groups
+
     def _chunks(self, items):
         n = max(5, self.rc.get("carwale_chunk_size", 60))
         return [items[i:i + n] for i in range(0, len(items), n)]
@@ -326,26 +355,42 @@ class Engine:
                 self._log(rec)
                 continue
             cand.append({"theme": th, "label": label, "direction": direction, "note": note, "ids": ids, "mentions": len(ids), "rec": rec})
+        if self.write_only:
+            for c in cand:
+                c["rec"]["drop_reason"] = "not checked yet (write-only run)"
+                self._log(c["rec"])
+            info["status"], info["kept"] = "write-only: checks pending", 0
+            return [], info
         if verify and cand:
-            used = sorted({i for c in cand for i in c["ids"]})
-            text = "\n".join("[%s] %s" % (i, byid[i]["text"]) for i in used)
-            claims = [{"id": str(n), "theme": c["theme"], "label": c["label"], "direction": c["direction"], "note": c["note"]} for n, c in enumerate(cand)]
-            try:
-                res, info["checker_model"], _ = self._call("checker", (source_tag, key, _sha(text), PROMPT_V["cw_check"], claims),
-                                                           carwale_check_prompt(text, claims), "%s_check %s" % (source_tag, key))
-            except TextFail as e:
-                info["status"] = "checker failed: %s" % e
+            res_by, why_failed = {}, None
+            for grp in self._groups(cand, byid):
+                used = sorted({i for n in grp for i in cand[n]["ids"]})
+                text = "\n".join("[%s] %s" % (i, byid[i]["text"]) for i in used)
+                claims = [{"id": str(k), "theme": cand[n]["theme"], "label": cand[n]["label"], "direction": cand[n]["direction"], "note": cand[n]["note"]}
+                          for k, n in enumerate(grp)]
+                try:
+                    res, info["checker_model"], _ = self._call("checker", (source_tag, key, _sha(text), PROMPT_V["cw_check"], claims),
+                                                               carwale_check_prompt(text, claims), "%s_check %s" % (source_tag, key))
+                except TextFail as e:
+                    why_failed = e
+                    continue
+                for r in res.get("results") or []:
+                    k = _cid(r.get("id"))
+                    if k.isdigit() and int(k) < len(grp):
+                        res_by[grp[int(k)]] = r
+            if why_failed and not res_by:
+                info["status"] = "checker failed: %s" % why_failed
                 for c in cand:
                     c["rec"]["drop_reason"] = "checker failed (nothing kept unchecked)"
                     self._log(c["rec"])
                     info["dropped"] += 1
-                flags_add(source_tag, "CHECK_FAILED", str(e))
+                flags_add(source_tag, "CHECK_FAILED", str(why_failed))
                 return [], info
-            got = {str(r.get("id")): r for r in res.get("results") or []}
+            got = {str(n): r for n, r in res_by.items()}
             for n, c in enumerate(cand):
                 rec, r = c["rec"], got.get(str(n))
-                rec["checked"], rec["checker"] = True, info["checker_model"]
-                info["checked"] += 1
+                rec["checked"], rec["checker"] = bool(r), info["checker_model"]
+                info["checked"] += 1 if r else 0
                 good = []
                 if r:
                     rec["verdict"] = r.get("verdict")
@@ -356,7 +401,7 @@ class Engine:
                     rec["support"] = [{"review_id": a, "line": b} for a, b in good][:8]
                 rec["confirmed"] = len(good)
                 if not r:
-                    rec["drop_reason"] = "checker returned no verdict"
+                    rec["drop_reason"] = "checker returned no verdict (not counted in the supported rate)"
                 elif r.get("verdict") != "supported":
                     rec["drop_reason"] = "checker: not supported"
                 elif len(good) < rc["min_theme_mentions"]:
@@ -384,6 +429,8 @@ class Engine:
     def check_numbers(self, source, key, evidence, scores, flags_add):
         """scores: [(label, stored_value, shown_text, tolerance)]. The checker must find each on the page text, with a line that
         is a substring of it and carries a number within the tolerance. -> (n_ok, n_total)."""
+        if self.write_only:
+            return 0, 0
         claims = [{"id": str(i), "label": l, "shown": shown, "value": v, "tol": tol} for i, (l, v, shown, tol) in enumerate(scores)]
         try:
             res, model, _ = self._call("checker", (source, key, _sha(evidence), PROMPT_V["num_check"], [(c["label"], c["shown"]) for c in claims]),
@@ -391,7 +438,7 @@ class Engine:
         except TextFail as e:
             flags_add(source, "NUMBERS_CHECK_FAILED", str(e))
             return 0, 0
-        got = {str(r.get("id")): r for r in res.get("results") or []}
+        got = {_cid(r.get("id")): r for r in res.get("results") or []}
         ok = 0
         for c in claims:
             r = got.get(c["id"]) or {}

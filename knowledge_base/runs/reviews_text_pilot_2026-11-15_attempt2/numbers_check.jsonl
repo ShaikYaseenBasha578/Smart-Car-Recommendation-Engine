@@ -1,0 +1,8 @@
+{"source": "autocar", "model": "Honda Amaze", "aspect": "overall", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Exterior Design And Engineering", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Interior Space And Comfort", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Performance And Refinement", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Mileage / Range And Efficiency", "stored": 7.0, "found": true, "line": "7", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Ride Comfort And Handling", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Features And Safety", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}
+{"source": "autocar", "model": "Honda Amaze", "aspect": "Value For Money", "stored": 8.0, "found": true, "line": "8", "line_in_page_text": true, "confirmed": true, "checker": "openai/gpt-oss-120b"}

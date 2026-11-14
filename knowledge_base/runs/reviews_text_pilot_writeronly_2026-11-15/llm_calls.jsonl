@@ -1,0 +1,19 @@
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Honda Amaze", "seconds": 8.76, "tokens_in": 5130, "tokens_out": 577, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Honda Amaze", "seconds": 16.14, "tokens_in": 10760, "tokens_out": 1522, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai Creta", "seconds": 8.52, "tokens_in": 5625, "tokens_out": 606, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Creta", "seconds": 14.71, "tokens_in": 10851, "tokens_out": 1459, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Seltos", "seconds": 9.28, "tokens_in": 5420, "tokens_out": 671, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Kia Seltos", "seconds": 15.67, "tokens_in": 10732, "tokens_out": 1493, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Syros", "seconds": 9.69, "tokens_in": 4943, "tokens_out": 690, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Mahindra XUV 3XO", "seconds": 8.83, "tokens_in": 4782, "tokens_out": 684, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Mahindra XUV 3XO", "seconds": 15.64, "tokens_in": 9818, "tokens_out": 1590, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Ertiga", "seconds": 7.46, "tokens_in": 5210, "tokens_out": 605, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Ertiga", "seconds": 20.69, "tokens_in": 10199, "tokens_out": 2207, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Swift", "seconds": 6.78, "tokens_in": 3614, "tokens_out": 241, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Swift", "seconds": 19.07, "tokens_in": 10348, "tokens_out": 1866, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Skoda Kylaq", "seconds": 10.78, "tokens_in": 4278, "tokens_out": 561, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Skoda Kylaq", "seconds": 13.74, "tokens_in": 10220, "tokens_out": 1411, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Nexon", "seconds": 8.46, "tokens_in": 5248, "tokens_out": 635, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Nexon", "seconds": 15.86, "tokens_in": 9878, "tokens_out": 1725, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Toyota Innova Hycross", "seconds": 7.63, "tokens_in": 4943, "tokens_out": 648, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Toyota Innova Hycross", "seconds": 16.69, "tokens_in": 9981, "tokens_out": 1758, "ok": true}

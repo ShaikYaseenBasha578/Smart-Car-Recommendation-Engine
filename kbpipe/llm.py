@@ -62,7 +62,9 @@ class Backend:
         if self._used_today() >= self.daily:
             raise QuotaExhausted("%s: daily call budget (%d) reached" % (self.name, self.daily))
         last_err = None
-        for attempt in range(5):
+        for attempt in range(13):          # 429 per-minute waits can need many; other errors stop after 5 attempts
+            if attempt >= 5 and not getattr(self, "_429", 0):
+                break
             wait = self.gap - (time.time() - self._last)
             if wait > 0:
                 time.sleep(wait)
@@ -73,22 +75,29 @@ class Backend:
                 rec = {"backend": self.name, "model": self.model, "label": label, "seconds": round(time.time() - t0, 2),
                        "tokens_in": usage.get("in"), "tokens_out": usage.get("out"), "ok": True}
                 self.calls.append(rec)
+                self._429 = 0
                 self._used_today(1)
                 if self.calls_log:
                     with open(self.calls_log, "a") as f:
                         f.write(json.dumps(rec) + "\n")
                 return text
             except urllib.error.HTTPError as e:
-                body = e.read().decode("utf-8", "replace")[:400]
+                body = e.read().decode("utf-8", "replace")[:1500]
                 last_err = "HTTP %s %s" % (e.code, body)
                 if e.code == 429:
                     self._429 = getattr(self, "_429", 0) + 1
-                    if "per day" in body.lower() or "daily" in body.lower() or "PerDay" in body or "quota" in body.lower() or self._429 >= 3:
+                    per_minute = "per minute" in body.lower() or "(TPM)" in body or "(RPM)" in body or "PerMinute" in body
+                    if "per day" in body.lower() or "daily" in body.lower() or "PerDay" in body or self._429 >= (12 if per_minute else 4):
                         raise QuotaExhausted("%s: %s" % (self.name, last_err))   # give way to the next backend instead of waiting
                     ra = e.headers.get("Retry-After")
-                    time.sleep(min(90, float(ra) if ra and ra.replace(".", "").isdigit() else 20 * (attempt + 1)))
+                    import re as _re
+                    m = _re.search(r"retry in ([0-9.]+)s", body, _re.I) or _re.search(r"try again in ([0-9.]+)s", body, _re.I)
+                    time.sleep(min(90, max(5.0, float(ra)) if ra and ra.replace(".", "").isdigit() else (float(m.group(1)) + 2 if m else 20 * (attempt + 1))))
                 elif e.code in (500, 502, 503, 504):
                     time.sleep(10 * (attempt + 1))
+                elif e.code == 400 and json_mode and "json_validate_failed" in body:
+                    json_mode = False        # the model could not produce strict JSON mode; ask for plain text, parse_json is tolerant
+                    last_err = "HTTP 400 json_validate_failed (retrying without JSON mode)"
                 else:
                     break
             except (urllib.error.URLError, TimeoutError, OSError) as e:
@@ -205,6 +214,8 @@ class Chain:
                 return b.complete(prompt, images=images, json_mode=json_mode, label=label)
             except QuotaExhausted as e:
                 self.dead.add(b.name)
+                self.dead_why = getattr(self, "dead_why", {})
+                self.dead_why[b.name] = str(e)[:200]
                 err = e
             except LLMError as e:
                 err = e

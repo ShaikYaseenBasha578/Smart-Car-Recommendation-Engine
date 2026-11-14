@@ -511,3 +511,14 @@ def test_claude_cli_usage_limit_is_a_quota_stop_not_a_fallback(monkeypatch, cfg)
     b = llm.Backend("claude_sonnet", cfg["llm"]["backends"]["claude_sonnet"])
     with pytest.raises(llm.QuotaExhausted):
         b.complete("x")
+
+
+def test_write_only_warms_the_writer_cache_then_a_normal_run_only_checks(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    R1 = reviews.run(cfg, only=["Nexon"], no_write=True, label="o1w", verify_all=True, write_only=True, echo=lambda *a: None)
+    assert R1["llm"]["writer_calls"] == 2 and R1["llm"]["checker_calls"] == 0 and FAKES["c"].n == 0
+    cs = json.load(open(os.path.join(cfg["runs_dir"], "o1w", "changeset.json")))
+    assert not [o for o in cs["ops"] if o.get("note") or o["op"] == "owner_theme"]       # nothing kept before it is checked
+    R2 = reviews.run(cfg, only=["Nexon"], no_write=True, label="o2w", verify_all=True, echo=lambda *a: None)
+    assert R2["llm"]["writer_calls"] == 0 and R2["llm"]["checker_calls"] == 4 and FAKES["w"].n == 0
+    assert [o for o in json.load(open(os.path.join(cfg["runs_dir"], "o2w", "changeset.json")))["ops"] if o["op"] == "owner_theme"]

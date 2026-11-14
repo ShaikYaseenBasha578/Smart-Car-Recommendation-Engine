@@ -319,7 +319,7 @@ def _fresh(conn, mid, source, days):
 
 
 # ---------------------------------------------------------------- the run
-def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=False, verify_all=False, echo=print):
+def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=False, verify_all=False, force=False, write_only=False, echo=print):
     t0 = time.time()
     run_dir, run_id = _run_dir(cfg, label)
     lines = []
@@ -358,6 +358,7 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
     if not no_text:
         try:
             engine = make_engine(cfg, run_dir, log)
+            engine.write_only = write_only
         except ValueError as e:
             R["stopped"] = "text layer refused to start: %s" % e
             log("stop", R["stopped"])
@@ -399,7 +400,7 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
             summary.pop()
             log("llm", "stopping the run before %s: %d models not reached" % (key, len(R["not_reached"])))
             break
-        if on_ac and not _fresh(conn, m["id"], SRC_AUTOCAR, rc["refresh_days"]):
+        if on_ac and (force or not _fresh(conn, m["id"], SRC_AUTOCAR, rc["refresh_days"])):
             ac = autocar_model(cfg, fetcher, m, flags, log)
             if ac:
                 p = ac["parsed"]
@@ -426,7 +427,7 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
                 rows += [("assessment", m["make"], m["model"], o["aspect"], o["score"], o["scale_max"], o["published_on"], o["status"], o["url"]) for o in ops_m]
         elif on_ac:
             log("autocar", "%s: current rows are younger than %d days, not re-read" % (key, rc["refresh_days"]))
-        if on_cw and not _fresh(conn, m["id"], SRC_CARWALE, rc["refresh_days"]):
+        if on_cw and (force or not _fresh(conn, m["id"], SRC_CARWALE, rc["refresh_days"])):
             cw = carwale_model(cfg, fetcher, m, flags, log, want_text=bool(engine and not text_off))
             if cw:
                 p = cw["parsed"]
@@ -480,6 +481,7 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
     if engine:
         R["llm_calls"] = engine.stats["writer_calls"] + engine.stats["checker_calls"]
         R["llm"] = dict(engine.stats)
+        R["backends_out"] = {"writer": getattr(engine.writer, "dead_why", {}), "checker": getattr(engine.checker, "dead_why", {})}
         with open(os.path.join(run_dir, "text_audit.jsonl"), "w") as f:
             for a in engine.audit:
                 f.write(json.dumps(a, ensure_ascii=False) + "\n")
@@ -573,6 +575,9 @@ def _summary(cfg, run_dir, R, summary, flags, rc, nops):
     if R.get("text_models"):
         tm = R["text_models"]
         L.append("- writer model(s): %s; checker model(s): %s; independent: %s" % (", ".join(tm["writers"]), ", ".join(tm["checkers"]), tm["independent"]))
+    for role, d in (R.get("backends_out") or {}).items():
+        for name, why in d.items():
+            L.append("- %s backend %s ran out and was skipped: %s" % (role, name, why[:160]))
     if R.get("text_stopped"):
         L.append("- **text stopped** (%(role)s out: %(why)s) at %(at)s. %(n)d models not reached; rerun with the same command to resume from the cache." % dict(R["text_stopped"], n=len(R.get("not_reached") or [])))
     for src, t in sorted((R.get("numbers_check") or {}).items()):

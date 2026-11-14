@@ -27,6 +27,8 @@ def main(argv=None):
     v.add_argument("--label", help="name of the run folder")
     v.add_argument("--no-text", action="store_true", help="numbers only: no LLM notes or themes")
     v.add_argument("--verify-all", action="store_true", help="verify every note and theme (default: the configured fraction)")
+    v.add_argument("--force", action="store_true", help="ignore the 90-day freshness of rows already in the KB (pages come from the cache; use it to add text to rows that hold only numbers)")
+    v.add_argument("--write-only", action="store_true", help="only warm the writer cache (Sonnet); the checker is not called and no text is kept. Run the same command without it later to do the checks")
     v.add_argument("--import-saved", metavar="FOLDER", help="read locally saved Team-BHP pages (never fetches) into owner_theme")
     v.add_argument("--teambhp-links", action="store_true", help="only write teambhp_links.html (links; fetches nothing)")
     a = sub.add_parser("apply-review", help="apply the items ticked in a REVIEW_<run>.md")
@@ -57,7 +59,7 @@ def main(argv=None):
                                      ask=(input if sys.stdin.isatty() else None), echo=echo)
             return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in R["stopped"]) else 0
         R = reviews.run(cfg, only=args.only, max_models=args.max_models, no_write=args.no_write, label=args.label,
-                        no_text=args.no_text, verify_all=args.verify_all, echo=echo)
+                        no_text=args.no_text, verify_all=args.verify_all, force=args.force, write_only=args.write_only, echo=echo)
         return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in R["stopped"]) else 0
     if args.cmd == "apply-review":
         print(json.dumps(review.apply(cfg, args.review_file, no_write=args.no_write), indent=1, default=str))

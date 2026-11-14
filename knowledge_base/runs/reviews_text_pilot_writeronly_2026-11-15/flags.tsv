@@ -1,0 +1,6 @@
+make	model	source	flag	detail
+Kia	Seltos	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Maruti Suzuki	Swift	carwale	THEME_DROPPED	real_world_mileage note over 25 words (27)
+Skoda	Kylaq	carwale	THEME_DROPPED	real_world_mileage note over 25 words (27)
