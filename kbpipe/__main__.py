@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-from . import config, kb, pipeline, report, review
+from . import config, kb, pipeline, report, review, reviews
 
 
 def main(argv=None):
@@ -20,6 +20,15 @@ def main(argv=None):
     r.add_argument("--audit", choices=["full", "changed", "none"], help="final audit scope (default: full on the first run, else changed)")
     r.add_argument("--no-brochure", action="store_true", help="skip the brochure layer (no OEM brochure pages are read)")
     r.add_argument("--label", help="name of the run folder (default: today's date)")
+    v = sub.add_parser("reviews", help="professional scores (Autocar India), owner ratings and themes (CarWale); also --import-saved")
+    v.add_argument("--only", action="append", help="process only this model (name or 'Make Model'; repeatable)")
+    v.add_argument("--max-models", type=int)
+    v.add_argument("--no-write", action="store_true", help="stage and gate, but never touch the KB")
+    v.add_argument("--label", help="name of the run folder")
+    v.add_argument("--no-text", action="store_true", help="numbers only: no LLM notes or themes")
+    v.add_argument("--verify-all", action="store_true", help="verify every note and theme (default: the configured fraction)")
+    v.add_argument("--import-saved", metavar="FOLDER", help="read locally saved Team-BHP pages (never fetches) into owner_theme")
+    v.add_argument("--teambhp-links", action="store_true", help="only write teambhp_links.html (links; fetches nothing)")
     a = sub.add_parser("apply-review", help="apply the items ticked in a REVIEW_<run>.md")
     a.add_argument("review_file")
     a.add_argument("--no-write", action="store_true")
@@ -36,6 +45,20 @@ def main(argv=None):
                          no_verify=args.no_verify, audit=args.audit, label=args.label,
                          echo=lambda line: print(line, flush=True))
         return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in (R.get("stopped") or "")) else 0
+    if args.cmd == "reviews":
+        echo = lambda line: print(line, flush=True)
+        if args.teambhp_links:
+            d = os.path.join(cfg["runs_dir"], args.label or "teambhp_links")
+            os.makedirs(d, exist_ok=True)
+            print(reviews.teambhp_links(cfg, d))
+            return 0
+        if args.import_saved:
+            R = reviews.import_saved(cfg, args.import_saved, no_write=args.no_write, label=args.label,
+                                     ask=(input if sys.stdin.isatty() else None), echo=echo)
+            return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in R["stopped"]) else 0
+        R = reviews.run(cfg, only=args.only, max_models=args.max_models, no_write=args.no_write, label=args.label,
+                        no_text=args.no_text, verify_all=args.verify_all, echo=echo)
+        return 1 if (R.get("stopped") and not R.get("write") and "--no-write" not in R["stopped"]) else 0
     if args.cmd == "apply-review":
         print(json.dumps(review.apply(cfg, args.review_file, no_write=args.no_write), indent=1, default=str))
         return 0

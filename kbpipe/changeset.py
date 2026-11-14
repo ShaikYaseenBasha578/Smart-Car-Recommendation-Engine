@@ -18,6 +18,7 @@ import json
 import sqlite3
 
 from . import fields as F
+from . import review_ops
 
 ANY = "__ANY__"
 
@@ -170,6 +171,11 @@ def apply(db_path, cs, check=None):
                     log.append(("evidence_amendment", aid, "insert", "%s.is_discontinued" % vid))
                 for ev in op.get("evidence") or []:
                     _obs(c, cs, ev["obs"], vid, log)
+            elif kind in review_ops.REVIEW_OPS:
+                try:
+                    review_ops.apply_op(c, cs, op, log)
+                except review_ops.ReviewApplyError as e:
+                    raise ApplyError(str(e))
             else:
                 raise ApplyError("unknown op %r" % kind)
         if check:

@@ -9,6 +9,7 @@ import sqlite3
 
 from . import fields as F
 from . import kb
+from . import review_ops as RV
 
 
 def _conn(path):
@@ -105,7 +106,7 @@ def gate_explained(before, after, log, cfg):
             continue
         added_ids = {r[0] for r in ch["added"]}
         for r in ch["removed"]:
-            if t != "variant" or r[0] not in added_ids:
+            if (t != "variant" and t not in RV.REVIEW_TABLES) or r[0] not in added_ids:
                 bad.append("%s row %s was removed or changed outside variant" % (t, r[0]))
         for r in ch["added"]:
             n += 1
@@ -117,7 +118,33 @@ def gate_explained(before, after, log, cfg):
     return (not bad, bad[:20] or ["%d changed rows, all in the run log" % n])
 
 
+def gate_reviews(before, after, cfg):
+    """Rows in the review tables: provenance present, themes meet the evidence minimums, no row removed."""
+    a = _conn(after)
+    if not all(a.execute("select 1 from sqlite_master where type='table' and name=?", (t,)).fetchone() for t in RV.REVIEW_TABLES):
+        return True, ["no review tables"]
+    rc = cfg.get("reviews", {})
+    bad, n = [], 0
+    d = kb.diff(before, after)
+    for t in RV.REVIEW_TABLES:
+        for row in d.get(t, {}).get("added", []):
+            n += 1
+            rec = dict(zip([r[1] for r in a.execute("pragma table_info(%s)" % t)], row))
+            when = rec.get("observed_at") or rec.get("extracted_at")
+            if not (rec.get("source_url") or rec.get("sample_urls")) or not when or not rec.get("extraction_method"):
+                bad.append("%s %s lacks url, date or method" % (t, rec["id"]))
+            if t == "owner_theme":
+                if rec["mentions"] < rc.get("min_theme_mentions", 3) or rec["posts_sampled"] < rc.get("min_reviews_sampled", 20):
+                    bad.append("owner_theme %s below the evidence minimum (%s of %s)" % (rec["id"], rec["mentions"], rec["posts_sampled"]))
+            if t == "professional_assessment" and rec.get("quote") and len(rec["quote"].split()) > rc.get("max_quote_words", 25):
+                bad.append("professional_assessment %s quote too long" % rec["id"])
+            if rec.get("note") and len(rec["note"].split()) > rc.get("max_note_words", 25):
+                bad.append("%s %s note too long" % (t, rec["id"]))
+    return (not bad, bad[:20] or ["%d new or changed review rows have provenance" % n])
+
+
 def run_all(before, after, log, cfg):
     res = {"schema": gate_schema(before, after, cfg), "provenance": gate_provenance(before, after, cfg),
-           "rows": gate_rows(before, after, cfg), "explained": gate_explained(before, after, log, cfg)}
+           "rows": gate_rows(before, after, cfg), "explained": gate_explained(before, after, log, cfg),
+           "reviews": gate_reviews(before, after, cfg)}
     return all(v[0] for v in res.values()), res

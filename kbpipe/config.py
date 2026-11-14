@@ -47,7 +47,10 @@ DEFAULTS = {
     "llm": {
         "extract": ["claude_sonnet", "gemini", "gemini_alt"],   # brochure pages (first that answers is used)
         "verify": ["gemini_alt", "groq"],                   # web sources (text). Haiku is NOT used: on 2026-11-13 it called 16 exact matches "mismatch"
-        "verify_image": ["gemini_alt"],                     # brochure pages (image)
+        "verify_image": ["gemini_alt"],
+        # review layers (kbpipe/reviews.py): free chain only, extractor and verifier on different backends where possible
+        "reviews_extract": ["gemini", "groq"],
+        "reviews_verify": ["groq", "gemini_alt"],                     # brochure pages (image)
         "backends": {
             "gemini": {"kind": "gemini", "model": "gemini-3.8-flash", "key_env": "GEMINI_API_KEY", "rpm": 8, "daily_calls": 400},
             "gemini_alt": {"kind": "gemini", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "rpm": 12, "daily_calls": 3000},
@@ -62,6 +65,31 @@ DEFAULTS = {
     },
     # brochure layer (kbpipe/brochure.py); see DEFAULTS there for the remaining keys
     "brochure": {"enabled": True, "max_pages_per_brochure": 6, "max_page_reads_per_run": 400},
+    # review layers (REVIEW_LAYERS_PLAN.md). Off switch: reviews.sources.autocar.enabled
+    "reviews": {
+        "sources": {"autocar": {"enabled": True}, "carwale": {"enabled": True}},
+        "refresh_days": 90,                 # a page / rows older than this are read again
+        "carwale_max_text_pages": 5,        # written-review pages (10 reviews each) read per model for themes
+        "min_reviews_sampled": 20, "min_theme_mentions": 3, "low_confidence_ratings": 30,
+        "max_note_words": 25, "max_quote_words": 25,
+        "verify_fraction": 0.25,            # share of notes/themes re-checked by the verifier (pilot: 1.0)
+        "verify_bar": 0.95, "max_llm_calls": 120,
+        "saved_pages_dir": "~/carrec_saved_pages/teambhp",
+        "autocar_slugs": {}, "carwale_slugs": {},     # KB model name -> slug, when the default (lower-case, hyphens) is wrong
+        "generation_dates": {},             # KB model name -> ISO date of a facelift/replacement; older reviews become stale_generation
+        # source label -> engine aspect(s); used by the export step (not built yet), kept here so a label change is a one-line fix
+        "aspect_map": {
+            "autocar": {"Performance And Refinement": ["engine_performance", "refinement"],
+                        "Ride Comfort And Handling": ["ride_comfort", "handling"],
+                        "Interior Space And Comfort": ["front_space", "rear_seat_comfort"],
+                        "Mileage / Range And Efficiency": ["real_world_mileage"], "Features And Safety": ["features_tech"],
+                        "Value For Money": ["value_for_money"], "Exterior Design And Engineering": ["build_quality"]},
+            "carwale": {"Comfort and Space": ["owner_comfort"], "Performance": ["owner_performance"],
+                        "Fuel Economy": ["owner_real_world_mileage"], "Value for Money": ["owner_value"],
+                        "Features and Technology": ["owner_features"], "After Sales Cost and Experience": ["owner_after_sales"],
+                        "overall": ["owner_satisfaction"], "Design and Styling": []},
+        },
+    },
     "schema_sha256": None,              # pinned by `kbpipe pin-schema`; the schema gate compares against it
 }
 
