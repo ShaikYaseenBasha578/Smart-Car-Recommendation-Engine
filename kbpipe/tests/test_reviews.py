@@ -150,9 +150,11 @@ def writer_handler(prompt):
                           {"aspect": "Features And Safety", "note": "Feature list is strong.", "quote": "invented words not on the page"},
                           {"aspect": "Made Up Aspect", "note": "x", "quote": None},
                           {"aspect": "Value For Money", "note": " ".join(["word"] * 30), "quote": None}]}
-    ids = [l[1:l.index("]")] for l in prompt.splitlines() if l.startswith("[")]
-    return {"themes": [{"theme": "service_cost", "label": None, "direction": "negative", "review_ids": ids[:12], "note": "Owners find servicing expensive."},
-                       {"theme": "recurring_fault", "label": "AC failure", "direction": "negative", "review_ids": ids[:2], "note": "x"}]}
+    revs = {l[1:l.index("]")]: l[l.index("]") + 2:] for l in prompt.splitlines() if l.startswith("[") and "]" in l}
+    ids = list(revs)
+    ment = lambda sel, d="negative": [{"review_id": i, "line": revs[i][:30], "direction": d} for i in sel]
+    return {"themes": [{"theme": "service_cost", "label": None, "note": "Many owners find servicing expensive.", "mentions": ment(ids[:12]) + [{"review_id": i, "line": "never said this", "direction": "negative"} for i in ids[12:13]]},
+                       {"theme": "recurring_fault", "label": "AC failure", "note": "x", "mentions": ment(ids[:2])}]}
 
 
 def checker_handler(prompt):
@@ -522,3 +524,45 @@ def test_write_only_warms_the_writer_cache_then_a_normal_run_only_checks(monkeyp
     R2 = reviews.run(cfg, only=["Nexon"], no_write=True, label="o2w", verify_all=True, echo=lambda *a: None)
     assert R2["llm"]["writer_calls"] == 0 and R2["llm"]["checker_calls"] == 4 and FAKES["w"].n == 0
     assert [o for o in json.load(open(os.path.join(cfg["runs_dir"], "o2w", "changeset.json")))["ops"] if o["op"] == "owner_theme"]
+
+
+def test_theme_mentions_counted_from_real_lines_and_direction_rules(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="v1", verify_all=True, echo=lambda *a: None)
+    t = [a for a in _audit(cfg, "v1") if a["kind"] == "theme" and a["theme"] == "service_cost"][0]
+    assert t["writer_claimed"] == 13 and t["verified_lines"] == 12 and t["confirmed"] == 12      # the invented line is not counted
+    assert t["claim"].startswith("Many") and t["note_fix"] is None                                # 12 verified backs 'many'
+    assert RT.Engine._quantity_words("Most owners are happy; many agree.", 12, 60) == ("Some owners are happy; many agree.", "quantity word replaced by 'some': Most")
+    assert RT.Engine._quantity_words("Most owners are happy.", 31, 60)[1] is None
+    assert RT.Engine._quantity_words("Several owners complain.", 4, 60)[0] == "Some owners complain."
+
+
+def test_mixed_needs_two_each_side_else_majority_or_drop(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    base_writer = writer_handler
+
+    def mixed(prompt):
+        r = base_writer(prompt)
+        if "owner reviews" in prompt:
+            ids = [x["review_id"] for x in r["themes"][0]["mentions"]]
+            dirs = ["positive", "negative", "positive", "negative", "positive", "positive", "positive", "positive", "positive", "positive", "positive", "positive"]
+            r["themes"][0]["mentions"] = [dict(m, direction=d) for m, d in zip(r["themes"][0]["mentions"], dirs)]
+            r["themes"][1]["mentions"] = [dict(m, direction=d) for m, d in zip(r["themes"][1]["mentions"] + r["themes"][0]["mentions"][2:3], ["positive", "negative", "negative"])]
+            r["themes"][1]["label"] = "AC failure"
+        return r
+    monkeypatch.setattr(sys.modules[__name__], "writer_handler", mixed)
+    reviews.run(cfg, only=["Nexon"], no_write=True, label="x1", verify_all=True, echo=lambda *a: None)
+    au = {a["theme"]: a for a in _audit(cfg, "x1") if a["kind"] == "theme"}
+    assert au["service_cost"]["direction"] == "mixed"                  # 2 negative and 10 positive lines
+    assert au["recurring_fault"]["direction"] == "negative" and au["recurring_fault"]["drop_reason"] is None   # 1 positive, 2 negative: majority
+
+
+def test_no_themes_switch_reads_no_written_reviews(monkeypatch, cfg, tmp_path):
+    _setup(monkeypatch, cfg, tmp_path)
+    cfg["reviews"]["themes_enabled"] = False
+    seen = []
+    orig = fetch.Fetcher.get_polite
+    monkeypatch.setattr(fetch.Fetcher, "get_polite", lambda self, url, max_age_days=None: (seen.append(url), orig(self, url, max_age_days))[1])
+    R = reviews.run(cfg, only=["Nexon"], no_write=True, label="nt", verify_all=True, echo=lambda *a: None)
+    assert not [u for u in seen if "/reviews/page/" in u] and R["llm"]["writer_calls"] == 1
+    assert not [o for o in json.load(open(os.path.join(cfg["runs_dir"], "nt", "changeset.json")))["ops"] if o["op"] == "owner_theme"]

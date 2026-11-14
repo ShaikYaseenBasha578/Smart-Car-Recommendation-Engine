@@ -71,6 +71,7 @@ DEFAULTS = {
         "sources": {"autocar": {"enabled": True}, "carwale": {"enabled": True}},
         "refresh_days": 90,                 # a page / rows older than this are read again
         "carwale_max_text_pages": 6,        # written-review pages (10 reviews each) read per model for themes
+        "themes_enabled": True,      # false (or --no-themes): Autocar notes only, no CarWale written-review reading
         "carwale_max_reviews": 60, "carwale_chunk_size": 60, "carwale_review_chars": 500, "carwale_check_max_chars": 9000,   # cap per model; reviews per writer call; text kept per review
         "min_reviews_sampled": 20, "min_theme_mentions": 3, "low_confidence_ratings": 30,
         "max_note_words": 25, "max_quote_words": 25,

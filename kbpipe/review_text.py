@@ -20,7 +20,7 @@ import re
 from . import llm
 from .sources import autocar_reviews as AC
 
-PROMPT_V = {"ac_write": "ac-w5", "ac_check": "ac-c4", "cw_write": "cw-w4", "cw_check": "cw-c4", "num_check": "num-c2"}
+PROMPT_V = {"ac_write": "ac-w5", "ac_check": "ac-c4", "cw_write": "cw-w5", "cw_check": "cw-c4", "num_check": "num-c2"}
 THEMES = ["reliability", "service_cost", "service_experience", "real_world_mileage", "build_issues", "recurring_fault", "resale",
           "satisfaction"]
 DIRECTIONS = ("positive", "negative", "mixed")
@@ -87,11 +87,15 @@ def autocar_check_prompt(blob, claims):
 def carwale_write_prompt(items, min_mentions, max_words):
     body = "\n".join("[%s] %s" % (i["id"], i["text"]) for i in items)
     return ("Below are %d owner reviews of one car model, each starting with its id in brackets. Find themes that owners raise repeatedly. Allowed themes: %s. "
-            "For recurring_fault and build_issues give a short label (a few words, for example 'AC compressor failure'); otherwise label is null. "
-            "direction is positive, negative or mixed. In review_ids list EVERY id whose text clearly raises the theme (do not guess). "
-            "note: one sentence in your own words saying what owners report, at most %d words, no quotes, no advice to the reader, and no figures (kmpl, rupees) unless several reviews give similar ones. Only themes raised by at least %d different ids.\n"
-            'Reply with JSON only: {"themes":[{"theme":"...","label":null,"direction":"negative","review_ids":["id1","id2","id3"],"note":"..."}]}\n\n%s'
-            % (len(items), ", ".join(THEMES), max_words, min_mentions, body))
+            "For recurring_fault and build_issues give a short label (a few words, for example 'AC compressor failure'); otherwise label is null.\n"
+            "For EVERY review you count as a mention of a theme, give review_id, ONE line copied EXACTLY, character for character, from that review "
+            "(at most 20 words) that shows the theme, and that line's direction: positive, negative or neutral. One mention per review, no guessing; "
+            "a review that does not clearly raise the theme is not listed. A theme needs at least %d mentions.\n"
+            "note: one sentence in your own words saying what owners report, at most %d words (count them before you answer; shorten if needed), no quotes, "
+            "no advice to the reader, no figures (kmpl, rupees) unless the mentions give them. Do not write 'most', 'many' or 'several'; write 'some owners' "
+            "unless nearly all mentions agree. Describe a split (praise and complaints) only if you list lines for both sides.\n"
+            'Reply with JSON only: {"themes":[{"theme":"...","label":null,"note":"...","mentions":[{"review_id":"id1","line":"exact text","direction":"negative"}]}]}\n\n%s'
+            % (len(items), ", ".join(THEMES), min_mentions, max_words - 3, body))
 
 
 def carwale_check_prompt(reviews_text, claims):
@@ -298,6 +302,23 @@ class Engine:
             groups.append(cur)
         return groups
 
+    @staticmethod
+    def _quantity_words(note, n, total):
+        """most needs more than half the sampled reviews, many at least 10, several at least 5; otherwise 'some'."""
+        if not note:
+            return note, None
+        ok = {"most": n > total / 2.0, "many": n >= 10, "several": n >= 5}
+        fixed = []
+
+        def sub(m):
+            w = m.group(0)
+            if ok[w.lower()]:
+                return w
+            fixed.append(w)
+            return "Some" if w[0].isupper() else "some"
+        out = re.sub(r"\b(most|many|several)\b", sub, note, flags=re.I)
+        return out, ("quantity word replaced by 'some': %s" % ", ".join(fixed)) if fixed else None
+
     def _chunks(self, items):
         n = max(5, self.rc.get("carwale_chunk_size", 60))
         return [items[i:i + n] for i in range(0, len(items), n)]
@@ -322,30 +343,42 @@ class Engine:
             chunk_ids = {str(i["id"]) for i in ch}
             for t in data.get("themes") or []:
                 th, label = t.get("theme"), (t.get("label") or None)
-                ids = {str(x) for x in (t.get("review_ids") or []) if str(x) in chunk_ids}
-                m = merged.setdefault((th, label), {"theme": th, "label": label, "dirs": set(), "ids": set(), "notes": [], "invalid_dir": None})
-                m["ids"] |= ids
-                if t.get("direction") in DIRECTIONS:
-                    m["dirs"].add(t.get("direction"))
-                else:
-                    m["invalid_dir"] = t.get("direction")
-                m["notes"].append(((t.get("note") or "").strip() or None, len(ids)))
+                m = merged.setdefault((th, label), {"theme": th, "label": label, "lines": {}, "claimed": 0, "notes": []})
+                for mm in t.get("mentions") or []:
+                    rid = str(mm.get("review_id"))
+                    m["claimed"] += 1
+                    # a mention counts only if its line is a real substring of that review; one per distinct review
+                    if rid in chunk_ids and rid not in m["lines"] and in_text(mm.get("line"), byid[rid]["text"]) and mm.get("direction") in ("positive", "negative", "neutral"):
+                        m["lines"][rid] = (mm.get("line"), mm.get("direction"))
+                m["notes"].append(((t.get("note") or "").strip() or None, len(m["lines"])))
+        n_sampled = len(items)
         cand = []
         for (th, label), m in merged.items():
-            ids = sorted(m["ids"])
-            direction = next(iter(m["dirs"])) if len(m["dirs"]) == 1 else ("mixed" if m["dirs"] else m["invalid_dir"])
+            ids = sorted(m["lines"])
+            pos = sum(1 for r in ids if m["lines"][r][1] == "positive")
+            neg = sum(1 for r in ids if m["lines"][r][1] == "negative")
+            if pos >= 2 and neg >= 2:
+                direction = "mixed"
+            elif pos > neg:
+                direction = "positive"
+            elif neg > pos:
+                direction = "negative"
+            else:
+                direction = None
             note = max(m["notes"], key=lambda x: x[1])[0] if m["notes"] else None
-            rec = dict(base, theme=th, label=label, direction=direction, claim=note, writer_count=len(ids), writer=info["writer_model"], checked=False,
+            note, note_fix = self._quantity_words(note, len(ids), n_sampled)
+            rec = dict(base, theme=th, label=label, direction=direction, claim=note, writer_claimed=m["claimed"], writer_count=len(ids), verified_lines=len(ids),
+                       lines_pos=pos, lines_neg=neg, note_fix=note_fix, writer=info["writer_model"], checked=False,
                        verdict=None, support=None, confirmed=None, kept=False, drop_reason=None, writer_ids=ids)
             why = None
             if th not in THEMES:
                 why = "theme %r not allowed" % th
-            elif direction not in DIRECTIONS:
-                why = "direction %r not allowed" % direction
+            elif len(ids) < rc["min_theme_mentions"]:
+                why = "below minimum mentions (%d verified lines of %d needed; writer claimed %d)" % (len(ids), rc["min_theme_mentions"], m["claimed"])
+            elif direction is None:
+                why = "no majority direction (%d positive, %d negative lines)" % (pos, neg)
             elif th == "recurring_fault" and not label:
                 why = "recurring_fault without a label"
-            elif len(ids) < rc["min_theme_mentions"]:
-                why = "below minimum mentions (%d of %d needed)" % (len(ids), rc["min_theme_mentions"])
             elif note and words(note) > rc["max_note_words"]:
                 why = "note over %d words (%d)" % (rc["max_note_words"], words(note))
             if why:

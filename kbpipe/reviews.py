@@ -428,14 +428,14 @@ def run(cfg, only=None, max_models=None, no_write=False, label=None, no_text=Fal
         elif on_ac:
             log("autocar", "%s: current rows are younger than %d days, not re-read" % (key, rc["refresh_days"]))
         if on_cw and (force or not _fresh(conn, m["id"], SRC_CARWALE, rc["refresh_days"])):
-            cw = carwale_model(cfg, fetcher, m, flags, log, want_text=bool(engine and not text_off))
+            cw = carwale_model(cfg, fetcher, m, flags, log, want_text=bool(engine and not text_off and rc.get("themes_enabled", True)))
             if cw:
                 p = cw["parsed"]
                 S["cw"] = (p["overall"], p["rating_count"])
                 ops_m = rating_ops(m, cw)
                 ops += ops_m
                 rows += [("owner_rating", m["make"], m["model"], o["aspect"], o["score"], o["scale_max"], o["rating_count"], "current", o["url"]) for o in ops_m]
-                if engine and not text_off:
+                if engine and not text_off and rc.get("themes_enabled", True):
                     items = carwale_items(cw, cfg)
                     try:
                         verify = verify_all or RT.sampled(cfg["seed"], key, "carwale", rc["verify_fraction"])
