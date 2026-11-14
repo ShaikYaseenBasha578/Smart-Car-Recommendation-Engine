@@ -1,0 +1,289 @@
+{
+ "adas nahi chahiye, simple si diesel suv, 14 lakh tak": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "ADAS nahi chahiye",
+     "field": "feature_exclude",
+     "value": "adas"
+    },
+    {
+     "evidence": "diesel",
+     "field": "fuel_include",
+     "value": "diesel"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "14 lakh tak",
+     "field": "budget_max",
+     "value": 1400000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 916,
+  "tokens_out": 407
+ },
+ "cng hatchback under 7.5 lakh for daily office commute, 60 km each way": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "CNG",
+     "field": "fuel_include",
+     "value": "cng"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "under 7.5 lakh",
+     "field": "budget_max",
+     "value": 750000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 921,
+  "tokens_out": 324
+ },
+ "cng suv or mpv, 7 seats, under 14 lakh, for a taxi-ish family use": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "CNG",
+     "field": "fuel_include",
+     "value": "cng"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "MPV",
+     "field": "body_include",
+     "value": "mpv"
+    },
+    {
+     "evidence": "7 seats",
+     "field": "seats_min",
+     "value": 7
+    },
+    {
+     "evidence": "under 14 lakh",
+     "field": "budget_max",
+     "value": 1400000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 923,
+  "tokens_out": 484
+ },
+ "first car for my daughter, manual petrol hatchback below 6 lakh": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "6 lakh",
+     "field": "budget_max",
+     "value": 600000
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "manual",
+     "field": "transmission_include",
+     "value": "manual"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 915,
+  "tokens_out": 427
+ },
+ "ford ecosport chahiye mujhe": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [],
+   "soft_preferences": []
+  },
+  "tokens_in": 909,
+  "tokens_out": 157
+ },
+ "looking for a petrol automatic hatchback, budget is about 9 lakh, mostly city driving in pune": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "about 9 lakh",
+     "field": "budget_around",
+     "value": 900000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 921,
+  "tokens_out": 529
+ },
+ "my parents are visiting next month so need a diesel suv with 7 seats, up to 22 lakh please": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "diesel",
+     "field": "fuel_include",
+     "value": "diesel"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "7 seats",
+     "field": "seats_min",
+     "value": 7
+    },
+    {
+     "evidence": "22 lakh",
+     "field": "budget_max",
+     "value": 2200000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 923,
+  "tokens_out": 443
+ },
+ "need a sedan between 10 and 14 lakh, preferably something sporty and comfortable for long drives": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "sedan",
+     "field": "body_include",
+     "value": "sedan"
+    },
+    {
+     "evidence": "10",
+     "field": "budget_min",
+     "value": 1000000
+    },
+    {
+     "evidence": "14 lakh",
+     "field": "budget_max",
+     "value": 1400000
+    }
+   ],
+   "soft_preferences": [
+    "performance",
+    "comfort"
+   ]
+  },
+  "tokens_in": 920,
+  "tokens_out": 477
+ },
+ "sunroof and automatic gearbox in a petrol suv, 15 lakh max": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "sunroof",
+     "field": "feature_include",
+     "value": "sunroof"
+    },
+    {
+     "evidence": "automatic gearbox",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "suv",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "15 lakh max",
+     "field": "budget_max",
+     "value": 1500000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 915,
+  "tokens_out": 397
+ },
+ "yaar 11 lakh tak me sunrof aur automatic dono chahiye, petrol suv": {
+  "model": "openai/gpt-oss-120b",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "11 lakh tak me",
+     "field": "budget_max",
+     "value": 1100000
+    },
+    {
+     "evidence": "sunrof",
+     "field": "feature_include",
+     "value": "sunroof"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 919,
+  "tokens_out": 488
+ }
+}
