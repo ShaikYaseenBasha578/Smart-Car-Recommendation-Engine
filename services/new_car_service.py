@@ -331,6 +331,10 @@ def relaxation_hints(intent):
 
 
 def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None):
+    if os.environ.get("RANKER", "").strip().lower() == "v3":  # opt-in v3 engine (services/recsys); unset = unchanged
+        from services.recsys.api import recommend
+        return recommend(user_query, drop=drop, app_root_path=app_root_path)
+
     print("🔎 Received new-car query (kb):", user_query)
 
     intent, dropped = apply_drops(parse_intent(user_query), drop)
