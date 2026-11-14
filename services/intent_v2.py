@@ -25,7 +25,7 @@ from pathlib import Path
 
 from services.typos import correct_typos
 
-CATALOGUE_CSV = Path(__file__).resolve().parents[1] / "data" / "catalogue.csv"
+from services.catalogue import CATALOGUE_CSV  # same file as the engine (CARREC_CATALOGUE_DIR honoured)
 
 BODY_TYPES = ["suv", "hatchback", "sedan", "mpv", "van", "pickup"]
 FUEL_TYPES = ["petrol", "diesel", "cng", "electric", "hybrid"]

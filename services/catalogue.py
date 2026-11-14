@@ -7,13 +7,17 @@ Loaded once at import. Booleans are True/False/None (None = unknown), numbers ar
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import pandas as pd
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
-CATALOGUE_CSV = DATA_DIR / "catalogue.csv"
-META_JSON = DATA_DIR / "catalogue_meta.json"
+# CARREC_CATALOGUE_DIR: a directory holding catalogue.csv + catalogue_meta.json (e.g. data/catalogue_v3), used by
+# the eval and by v3 only; unset = the data/ files the app and the tests use.
+_CATALOGUE_DIR = Path(os.environ["CARREC_CATALOGUE_DIR"]) if os.environ.get("CARREC_CATALOGUE_DIR") else DATA_DIR
+CATALOGUE_CSV = _CATALOGUE_DIR / "catalogue.csv"
+META_JSON = _CATALOGUE_DIR / "catalogue_meta.json"
 
 TEXT_COLUMNS = [
     "make", "model", "variant", "full_name", "body_type", "fuel_raw", "fuel_type",
