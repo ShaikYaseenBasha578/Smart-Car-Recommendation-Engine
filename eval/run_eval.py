@@ -421,6 +421,7 @@ def evaluate(engine_name: str, queries: list[dict]) -> dict:
             "violations": [],
             "relaxed_response": relaxed_resp,
             "label_check": None,
+            "llm": resp.get("llm"), "corrections": resp.get("corrections"),
             "all_marked_relaxed": relaxed_resp or (bool(cars) and all(car_marked_relaxed(c) for c in cars)),
         }
         if relaxed_resp:
@@ -436,9 +437,21 @@ def evaluate(engine_name: str, queries: list[dict]) -> dict:
         records.append(rec)
 
     summary = summarise(records)
-    summary["unknown_probe"] = unknown_probe(engine_name)
+    llm_env = os.environ.get("LLM_PARSER")
+    os.environ["LLM_PARSER"] = "off"  # the unknown-handling probe has its own queries; it must not spend LLM calls
+    try:
+        summary["unknown_probe"] = unknown_probe(engine_name)
+    finally:
+        if llm_env is None:
+            os.environ.pop("LLM_PARSER", None)
+        else:
+            os.environ["LLM_PARSER"] = llm_env
     summary["shortlist_agreement"] = shortlist_agreement(records)
-    return {"engine": engine_name, "n_queries": len(records), "summary": summary, "records": records}
+    result = {"engine": engine_name, "n_queries": len(records), "summary": summary, "records": records}
+    if engine_name == "v3" and os.environ.get("LLM_PARSER") == "on":
+        from services.recsys import llm_parse
+        result["llm_stats"] = llm_parse.stats()
+    return result
 
 
 def rbo(a: list, b: list, p: float = 0.9) -> float:
@@ -791,12 +804,19 @@ def main() -> None:
     ap.add_argument("--out", help="write full JSON results here")
     ap.add_argument("--queries", default=str(QUERIES_PATH), help="query file (JSON lines), default eval/queries.jsonl")
     ap.add_argument("--compare", nargs=2, metavar=("A.json", "B.json"), help="print a side-by-side table of two result files")
+    ap.add_argument("--llm", choices=["on", "off"], default="off",
+                    help="v3 only: LLM_PARSER on/off. 'on' uses eval/results/llm_cache.json (committed) so reruns spend no quota")
     ap.add_argument("--check-labels", action="store_true", help="only sanity-check the labels against the catalogue")
     args = ap.parse_args()
 
     if args.compare:
         print_compare(*args.compare)
         return
+    if args.llm == "on" and args.engine != "v3":
+        sys.exit("--llm on needs --engine v3")
+    os.environ["LLM_PARSER"] = args.llm
+    if args.llm == "on":
+        os.environ["LLM_PARSER_CACHE_FILE"] = str(ROOT / "eval" / "results" / "llm_cache.json")
     QUERIES_PATH = Path(args.queries)
     queries = load_queries()
     if args.check_labels:
@@ -804,6 +824,8 @@ def main() -> None:
 
     result = evaluate(args.engine, queries)
     print_table(result)
+    if result.get("llm_stats"):
+        print("\nLLM parser stats:", json.dumps(result["llm_stats"]))
     if args.out:
         out = Path(args.out)
         out.parent.mkdir(parents=True, exist_ok=True)
