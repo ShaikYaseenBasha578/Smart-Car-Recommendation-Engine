@@ -16,6 +16,7 @@ NO_TRANS = {"family": None, "include_types": [], "exclude_types": []}
 def expected(**fields):
     base = {
         "budget": {"min": None, "max": None},
+        "corrections": [],
         "body_types": [],
         "fuel_types": [],
         "transmission": NO_TRANS,

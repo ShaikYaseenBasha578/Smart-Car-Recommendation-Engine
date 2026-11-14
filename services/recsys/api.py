@@ -233,6 +233,7 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         "recommendations": [],
         "data_as_of": {"exported": meta["export_utc"][:10], "kb_phase": meta["kb_latest_phase"]},
         "unsupported_terms": intent.get("unsupported_terms", []),
+        "corrections": list(intent.get("corrections") or []),  # typos read as vocabulary words ("automtic" -> "automatic")
         "covered_makes": sorted(df["make"].unique().tolist()),
     }
     assumed = {k: v for k, v in (intent.get("assumed") or {}).items() if v} if isinstance(intent.get("assumed"), dict) else {}

@@ -23,6 +23,8 @@ import csv
 import re
 from pathlib import Path
 
+from services.typos import correct_typos
+
 CATALOGUE_CSV = Path(__file__).resolve().parents[1] / "data" / "catalogue.csv"
 
 BODY_TYPES = ["suv", "hatchback", "sedan", "mpv", "van", "pickup"]
@@ -418,6 +420,43 @@ def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str
     return found, negated, mentioned, text
 
 
+# ---------------------------------------------------------------------------
+# Typo tolerance vocabulary: word -> meaning group (see services/typos.py). Canonical spelling first in a group.
+# ---------------------------------------------------------------------------
+
+_TYPO_GROUPS = {
+    "petrol": ["petrol", "gasoline"], "diesel": ["diesel"], "electric": ["electric"], "hybrid": ["hybrid", "hybrids"],
+    "hatchback": ["hatchback", "hatchbacks", "hatch"], "sedan": ["sedan", "sedans"], "minivan": ["minivan"],
+    "pickup": ["pickup", "pickups"],
+    "automatic": ["automatic", "automatics", "autobox"], "manual": ["manual", "manuals"],
+    "clutchless": ["clutchless"], "converter": ["converter"],
+    "sunroof": ["sunroof", "moonroof", "panoramic"], "ventilated": ["ventilated"], "cruise": ["cruise"],
+    "wireless": ["wireless"], "charging": ["charging", "charger"], "android": ["android"], "carplay": ["carplay"],
+    "camera": ["camera"], "adaptive": ["adaptive"],
+    "lakh": ["lakhs", "lakh"], "crore": ["crores", "crore"], "seater": ["seater", "seaters", "seats", "seating"],
+    "budget": ["budget"], "mileage": ["mileage"], "airbags": ["airbags", "airbag"],
+}
+_typo_vocab: dict[str, str] | None = None
+
+
+def _typo_vocabulary() -> dict[str, str]:
+    global _typo_vocab
+    if _typo_vocab is None:
+        vocab: dict[str, str] = {}
+        for group, words in _TYPO_GROUPS.items():
+            for w in words:
+                vocab.setdefault(w, group)
+        _load_model_vocab()
+        names = [m for m in _model_info] + [make for make, _ in MAKE_PATTERNS] + [b for b, _ in UNSUPPORTED_BRAND_PATTERNS]
+        names += list(MODEL_ALIASES) + [info["make"] for info in _model_info.values()]
+        for name in names:
+            for w in re.findall(r"[a-z]+", name.lower()):
+                if len(w) >= 5:
+                    vocab.setdefault(w, "name:" + w)
+        _typo_vocab = vocab
+    return _typo_vocab
+
+
 def _model_regex(name: str) -> str:
     # "XUV 3XO" -> xuv[\s.-]*3[\s.-]*xo : matches "xuv 3xo", "xuv3xo", "XUV-3XO"
     chunks = re.findall(r"[a-z]+|\d+", name.lower())
@@ -635,6 +674,7 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         "models": [],
         "reference_models": [],
         "unsupported_terms": [],
+        "corrections": [],
         "soft_preferences": [],
         "assumed": {"body_types": [], "fuel_types": []},
         "vague": False,
@@ -643,6 +683,9 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
     }
     trace = out["trace"]
     work = " " + re.sub(r"\s+", " ", (text or "").lower().replace("₹", " rs ")) + " "
+    work, out["corrections"] = correct_typos(work, _typo_vocabulary())
+    for c in out["corrections"]:
+        trace.append(f"typo: read '{c['from']}' as '{c['to']}'")
 
     # brands we don't carry and model names go first, so "Mini Cooper" / "XUV 3XO" can't leak into other fields
     unsupported, _, _, work = _parse_vocab(UNSUPPORTED_BRAND_PATTERNS, work, "unsupported", trace)
