@@ -646,6 +646,13 @@ def _classify_content(out: dict) -> tuple[bool, bool]:
 
 
 def parse_intent(text: str, use_ml: bool = True) -> dict:
+    return parse_intent_ex(text, use_ml)[0]
+
+
+def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
+    """parse_intent plus the RESIDUAL: the lower-cased (typo-corrected) query with every span the rules consumed
+    (brands, models, features, numbers, budgets, gearbox, fuel, body, makes) blanked out. Soft-preference and use-case
+    words are not blanked here (they only set weights); services/recsys/llm_parse.py decides what is "unexplained"."""
     out = {
         "budget": {"min": None, "max": None},
         "body_types": [],
@@ -741,4 +748,4 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
 
     if use_ml:
         _apply_ml(ml_text, out, {"body": body_mentioned, "fuel": fuel_mentioned, "use_case": use_case_mentioned}, trace)
-    return out
+    return out, work

@@ -3,7 +3,7 @@
 recommend() returns the same card keys as the /predict response of the kb path (so the existing front end
 keeps working) plus: engine, weights, per-car scores / reasons / unknowns / violations / match_label, and a
 top-level `relaxation` when the filter returned nothing and a named relaxation was used.
-Everything is JSON-serialisable (NaN -> None). No LLM, no network, no model files.
+Everything is JSON-serialisable (NaN -> None). No network and no LLM unless env LLM_PARSER=on (services/recsys/llm_parse.py).
 """
 
 from __future__ import annotations
@@ -17,8 +17,8 @@ import pandas as pd
 from services.catalogue import get_catalogue, get_meta
 from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, filter_candidates
 from services.images import find_car_image, image_attribution
-from services.intent_v2 import parse_intent
-from services.recsys import config
+from services.intent_v2 import parse_intent_ex
+from services.recsys import config, llm_parse
 from services.recsys.common import is_unknown, num, to_jsonable
 from services.recsys.diversify import diversify
 from services.recsys.evidence import Evidence, get_evidence
@@ -222,7 +222,13 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
     app_root = str(app_root_path or APP_ROOT)
     meta = get_meta()
 
-    parsed = intent if intent is not None else parse_intent(query)
+    if intent is not None:
+        parsed, llm_info = intent, {"used": False, "accepted": [], "rejected": 0, "latency_ms": None,
+                                    "reason": "intent_supplied", "cached": False}
+    else:
+        parsed, residual = parse_intent_ex(query)
+        # optional LLM parser (env LLM_PARSER=on): only adds evidence-quoted constraints for what the rules left unexplained
+        parsed, llm_info = llm_parse.refine(query, parsed, residual)
     intent, dropped = apply_drops(parsed, drop)
 
     response: Dict[str, Any] = {
@@ -233,6 +239,7 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         "recommendations": [],
         "data_as_of": {"exported": meta["export_utc"][:10], "kb_phase": meta["kb_latest_phase"]},
         "unsupported_terms": intent.get("unsupported_terms", []),
+        "llm": {k: v for k, v in llm_info.items() if k != "rejected_detail"},
         "corrections": list(intent.get("corrections") or []),  # typos read as vocabulary words ("automtic" -> "automatic")
         "covered_makes": sorted(df["make"].unique().tolist()),
     }
