@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarRec Knowledge Base</title>
+<style>
+/* Layout: one calm column on a cool grey ground. Sections are separated by space and a hairline, not boxed. The pipeline
+   diagram is the only large object; the single accent (deep teal) marks the knowledge base and every measured value. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#111a24; --ink2:#44505d; --muted:#5f6b78; --line:#d8dee5; --line2:#e8ecf0;
+  --accent:#0a6a75; --accent-ink:#ffffff; --accent-soft:#dcecee; --warn:#b4401a; --neutral:#7d8894;
+  --heat-lo:#e9f2f3; --heat-hi:#064e58; --heat-on-lo:#111a24; --heat-on-hi:#ffffff; --focus:#0a6a75;
+  --font:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --shadow:0 1px 2px rgba(17,26,36,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1219; --surface:#141c25; --ink:#e8edf2; --ink2:#b0bac5; --muted:#8e9aa7; --line:#27323f; --line2:#1d2733;
+  --accent:#5cc3ce; --accent-ink:#0c1219; --accent-soft:#143037; --warn:#f08c63; --neutral:#7d8894;
+  --heat-lo:#15262c; --heat-hi:#7dd6df; --heat-on-lo:#e8edf2; --heat-on-hi:#0c1219; --focus:#5cc3ce; --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1219; --surface:#141c25; --ink:#e8edf2; --ink2:#b0bac5; --muted:#8e9aa7; --line:#27323f; --line2:#1d2733;
+  --accent:#5cc3ce; --accent-ink:#0c1219; --accent-soft:#143037; --warn:#f08c63; --neutral:#7d8894;
+  --heat-lo:#15262c; --heat-hi:#7dd6df; --heat-on-lo:#e8edf2; --heat-on-hi:#0c1219; --focus:#5cc3ce; --shadow:none; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:3px}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:720;letter-spacing:-.025em}
+h2{font-size:clamp(1.4rem,3vw,1.8rem);font-weight:700}
+h3{font-size:1.02rem;font-weight:650}
+p{margin:0}
+.lede{max-width:62ch;color:var(--ink2);font-size:1.12rem}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono)}
+.eyebrow{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:650}
+header.top{padding-top:28px;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.topbar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-bottom:40px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem}
+nav a{color:var(--ink2);text-decoration:none;border-bottom:1px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+button.theme{font:inherit;font-size:.82rem;color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
+button.theme:hover{border-color:var(--accent);color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:22px;font-size:.88rem;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+section{padding-top:64px}
+.sec-head{display:grid;gap:8px;margin-bottom:26px;max-width:72ch}
+.sec-head p{color:var(--ink2)}
+/* glance */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);background:var(--surface)}
+.stat{padding:18px 18px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:3px;align-content:start}
+.stat .v{font-size:clamp(1.7rem,3.4vw,2.35rem);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.05}
+.stat .l{font-size:.86rem;color:var(--ink2)}
+.stat .s{font-size:.76rem;color:var(--muted)}
+.group-label{grid-column:1/-1;padding:9px 18px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:650;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg)}
+/* diagram panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.diagram{min-width:960px;padding:10px 6px 4px}
+.diagram svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--font);fill:var(--ink)}
+svg .t2{fill:var(--ink2)} svg .tm{fill:var(--muted)}
+.node rect.box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.node{cursor:pointer;outline:none}
+.node:hover rect.box,.node:focus rect.box{stroke:var(--accent);stroke-width:2.5}
+.node.sel rect.box{stroke:var(--accent);stroke-width:3}
+.node.kbnode rect.box{fill:var(--accent);stroke:var(--accent)}
+.node.kbnode text{fill:var(--accent-ink)!important}
+.node .step{font-size:11px;font-weight:700;fill:var(--muted)}
+.node:focus-visible rect.box{stroke-dasharray:none;stroke:var(--focus);stroke-width:3.5}
+.edge{stroke:var(--ink2);stroke-width:1.6;fill:none}
+.tag rect{fill:var(--surface);stroke:var(--accent);stroke-width:1.2;stroke-dasharray:4 3}
+.tag text{font-size:12.5px;font-weight:600;fill:var(--ink)}
+.tagline{stroke:var(--accent);stroke-width:1.2;stroke-dasharray:3 3;fill:none}
+.stage-detail{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:20px 36px;padding:22px 24px;border-top:1px solid var(--line)}
+.stage-detail h3{font-size:1.25rem;margin-bottom:6px}
+.stage-detail .big{font-size:2.3rem;font-weight:720;letter-spacing:-.02em;color:var(--accent);line-height:1.05;font-variant-numeric:tabular-nums}
+.stage-detail .biglabel{font-size:.9rem;color:var(--ink2)}
+.stage-detail .src{font-size:.78rem;color:var(--muted);margin-top:4px}
+.hint{font-size:.82rem;color:var(--muted);padding:10px 24px 0}
+.rules{display:flex;flex-wrap:wrap;gap:8px 24px;padding:14px 24px 18px;border-top:1px solid var(--line);font-size:.88rem;color:var(--ink2)}
+.rules b{color:var(--ink)}
+/* bars */
+.twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px 40px}
+.bars{display:grid;gap:7px}
+.brow{display:grid;grid-template-columns:minmax(92px,128px) minmax(0,1fr) 54px;gap:10px;align-items:center;font-size:.88rem}
+.brow .bl{color:var(--ink2);overflow-wrap:anywhere}
+.brow .track{height:14px;background:var(--line2);border-radius:2px 7px 7px 2px;overflow:hidden}
+.brow .fill{display:block;height:100%;background:var(--accent);border-radius:2px 7px 7px 2px}
+.brow .bv{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;max-width:80ch}
+.cap.ink{color:var(--ink2)}
+/* heatmap */
+table{border-collapse:collapse;width:100%}
+.heat{min-width:640px;font-variant-numeric:tabular-nums;font-size:.86rem}
+.heat th,.heat td{padding:0;text-align:center;border:2px solid var(--surface)}
+.heat thead th{font-weight:600;color:var(--ink2);padding:8px 4px;font-size:.78rem;text-transform:capitalize}
+.heat tbody th{text-align:left;font-weight:600;padding:0 12px 0 10px;white-space:nowrap;color:var(--ink);background:var(--surface);position:sticky;left:0}
+.heat tbody th small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+.heat td{height:40px;font-weight:650;min-width:64px}
+.heat tr.all td,.heat tr.all th{border-top:6px solid var(--surface)}
+.scale{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--muted);margin-top:12px}
+.scale i{display:block;width:180px;height:12px;border-radius:2px;background:linear-gradient(90deg,var(--heat-lo),var(--heat-hi));border:1px solid var(--line)}
+/* trust */
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.84rem;color:var(--ink2);margin-bottom:14px}
+.legend span{display:inline-flex;gap:7px;align-items:center}
+.sw{display:inline-block;width:14px;height:14px;border-radius:2px;border:1px solid var(--line)}
+.sw.match,.seg.match{background:var(--accent)}
+.sw.mismatch,.seg.mismatch{background:var(--warn)}
+.sw.unreachable,.seg.unreachable{background:repeating-linear-gradient(135deg,var(--neutral) 0 3px,var(--surface) 3px 6px)}
+.sw.verifier_error,.seg.verifier_error{background:var(--ink2)}
+.trow{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr) minmax(120px,150px);gap:6px 16px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line2)}
+.trow .tl b{display:block;font-weight:650}
+.trow .tl span{font-size:.8rem;color:var(--muted);display:block;line-height:1.35}
+.stack{display:flex;height:26px;border-radius:2px 8px 8px 2px;overflow:hidden;gap:2px;background:var(--surface)}
+.seg{display:flex;align-items:center;justify-content:center;font-size:.74rem;font-weight:700;color:#fff;min-width:0;overflow:hidden;font-variant-numeric:tabular-nums}
+.seg.match{color:var(--accent-ink)}
+.seg.unreachable b{background:var(--surface);color:var(--ink);padding:1px 6px;border-radius:3px;font-weight:700}
+.seg.verifier_error{color:var(--bg)}
+.trow .acc{text-align:right;font-variant-numeric:tabular-nums}
+.trow .acc b{font-size:1.15rem}
+.trow .acc span{display:block;font-size:.74rem;color:var(--muted)}
+.callout{border-left:3px solid var(--accent);padding:4px 0 4px 16px;color:var(--ink2);max-width:80ch}
+.callout b{color:var(--ink)}
+.mini{width:100%;font-size:.86rem;font-variant-numeric:tabular-nums}
+.mini th,.mini td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line2)}
+.mini th:first-child,.mini td:first-child{text-align:left}
+.mini thead th{color:var(--muted);font-weight:600;font-size:.76rem;border-bottom:1px solid var(--line)}
+/* reviews */
+.stripnote{font-size:.82rem;color:var(--muted);margin:2px 0 10px}
+.covbar{display:flex;height:30px;border-radius:2px 8px 8px 2px;overflow:hidden;gap:2px;margin:6px 0 8px}
+.covbar div{display:flex;align-items:center;padding:0 10px;font-size:.8rem;font-weight:700;white-space:nowrap;overflow:hidden;font-variant-numeric:tabular-nums}
+.cv-both{background:var(--accent);color:var(--accent-ink)}
+.cv-e{background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent)}
+.cv-o{background:repeating-linear-gradient(135deg,var(--accent-soft) 0 4px,var(--surface) 4px 8px);color:var(--ink);border:1px solid var(--accent)}
+.cv-n{background:var(--line2);color:var(--ink2)}
+.tbl-wrap{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.sortable{min-width:560px;font-size:.9rem;font-variant-numeric:tabular-nums}
+.sortable th,.sortable td{padding:8px 12px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
+.sortable th:nth-child(-n+2),.sortable td:nth-child(-n+2){text-align:left}
+.sortable thead th{position:sticky;top:0;background:var(--surface);z-index:1;border-bottom:1px solid var(--line);padding:0}
+.sortable thead button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;padding:9px 12px;font-size:.78rem;font-weight:650;color:var(--ink2);text-align:inherit}
+.sortable thead button:hover{color:var(--ink)}
+.sortable thead button:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.sortable thead th[aria-sort="ascending"] button::after{content:" \25B2";font-size:.7em}
+.sortable thead th[aria-sort="descending"] button::after{content:" \25BC";font-size:.7em}
+.nodata{color:var(--muted)}
+.themes{display:grid;gap:6px}
+/* footer */
+footer{margin-top:72px;border-top:1px solid var(--line);padding-top:32px}
+.read{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px 36px}
+.read h3{margin-bottom:6px}
+.read p{font-size:.94rem;color:var(--ink2)}
+/* tooltip */
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--bg);font-size:.82rem;padding:6px 10px;border-radius:4px;max-width:280px;opacity:0;transition:opacity .08s;line-height:1.35}
+#tip.on{opacity:1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){
+  section{padding-top:48px}
+  .stage-detail{grid-template-columns:minmax(0,1fr)}
+  .trow{grid-template-columns:minmax(0,1fr)}
+  .trow .acc{text-align:left}
+  .stage-detail,.rules,.hint{padding-left:16px;padding-right:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top" id="top">
+  <div class="topbar">
+    <nav aria-label="Sections"><ul>
+      <li><a href="#glance">At a glance</a></li><li><a href="#pipeline">Pipeline</a></li><li><a href="#contents">What is in it</a></li>
+      <li><a href="#coverage">Coverage</a></li><li><a href="#growth">Growth</a></li><li><a href="#trust">Trust</a></li>
+      <li><a href="#reviews">Reviews</a></li><li><a href="#read">How to read this</a></li></ul></nav>
+    <button class="theme" id="themebtn" type="button">Theme: auto</button>
+  </div>
+  <p class="eyebrow">Car data for India, with receipts</p>
+  <h1 style="margin-top:10px">CarRec knowledge base</h1>
+  <p class="lede" style="margin-top:16px">A verified, source-tracked database of new cars sold in India. It feeds a recommendation engine, and a scripted pipeline keeps it complete and current without inventing values.</p>
+  <div class="meta"><span>Generated on <b id="m-date" class="num"></b></span><span>KB hash <b id="m-hash" class="mono"></b></span><span id="m-runs"></span></div>
+</header>
+
+<section id="glance" aria-labelledby="h-glance">
+  <div class="sec-head"><h2 id="h-glance">At a glance</h2><p>What the database holds right now, counted from a read-only copy of the file.</p></div>
+  <div class="glance" id="glance-grid"></div>
+  <p class="cap" id="glance-note"></p>
+</section>
+
+<section id="pipeline" aria-labelledby="h-pipe">
+  <div class="sec-head"><h2 id="h-pipe">How the knowledge base is kept up to date</h2>
+    <p>Each box is one stage of a run. Select a stage, by click, tap or keyboard, to see what it does and one figure from a real run.</p></div>
+  <div class="panel">
+    <p class="hint">Reads left to right, then continues on the second row. The dashed labels are rules that hold at every run.</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Pipeline diagram, scrolls sideways on narrow screens"><div class="diagram" id="pipe-svg"></div></div>
+    <div class="stage-detail" id="stage-detail" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="contents" aria-labelledby="h-ent">
+  <div class="sec-head"><h2 id="h-ent">What is in the knowledge base</h2>
+    <p>The main tables, in four groups, with the number of rows in each. Arrows run from the table that is referred to, to the table that refers to it.</p></div>
+  <div class="panel"><div class="scroll" tabindex="0" role="region" aria-label="Table diagram, scrolls sideways on narrow screens"><div class="diagram" id="ent-svg" style="min-width:880px"></div></div></div>
+  <p class="cap">A variant is one trim with one engine and gearbox, for example a specific petrol manual. A powertrain is an engine description shared by several variants. Every value on a variant can point back to the observations that support it.</p>
+</section>
+
+<section id="coverage" aria-labelledby="h-cov">
+  <div class="sec-head"><h2 id="h-cov">Coverage</h2>
+    <p>How complete the data is, by manufacturer and by kind of fact. A blank is a blank: it means the pipeline had no source it was allowed to trust.</p></div>
+  <h3 style="margin-bottom:10px">Share of values present, by manufacturer and field group</h3>
+  <div class="panel scroll" tabindex="0" role="region" aria-label="Heatmap of coverage"><div id="heat" style="padding:10px"></div></div>
+  <div class="scale"><span>0%</span><i aria-hidden="true"></i><span>100%</span><span style="margin-left:8px">Stronger colour means more complete. Each cell prints its value.</span></div>
+  <p class="cap" id="heat-note"></p>
+  <div class="twocol" style="margin-top:36px">
+    <div><h3 style="margin-bottom:12px">Models per manufacturer</h3><div class="bars" id="bars-models"></div></div>
+    <div><h3 style="margin-bottom:12px">Variants per manufacturer</h3><div class="bars" id="bars-variants"></div></div>
+  </div>
+</section>
+
+<section id="growth" aria-labelledby="h-growth">
+  <div class="sec-head"><h2 id="h-growth">Growth</h2><p id="growth-intro"></p></div>
+  <div class="twocol" id="growth-charts" style="gap:20px 28px"></div>
+  <div class="scroll" style="margin-top:22px"><table class="mini" id="growth-table"></table></div>
+  <h3 style="margin:34px 0 8px">Runs behind these figures</h3>
+  <div class="scroll"><table class="mini" id="runs-table"></table></div>
+</section>
+
+<section id="trust" aria-labelledby="h-trust">
+  <div class="sec-head"><h2 id="h-trust">Trust</h2><p id="trust-intro"></p></div>
+  <div id="trust-body"></div>
+</section>
+
+<section id="reviews" aria-labelledby="h-rev">
+  <div class="sec-head"><h2 id="h-rev">Reviews layer</h2>
+    <p>Alongside the specs, the KB keeps what experts and owners think. Expert scores come from Autocar India (out of 10). Owner ratings come from CarWale (out of 5). Both are stored as scores per model, never mixed into spec values.</p></div>
+  <h3>Which models have scores</h3>
+  <div id="cov-bar"></div>
+  <div class="twocol" style="margin-top:34px;gap:34px 44px">
+    <div><h3>Expert scores by aspect</h3><p class="stripnote" id="expert-note"></p><div id="strip-expert"></div></div>
+    <div><h3>Owner ratings by aspect</h3><p class="stripnote" id="owner-note"></p><div id="strip-owner"></div></div>
+  </div>
+  <h3 style="margin:44px 0 6px">Every model, sortable</h3>
+  <p class="stripnote">Select a column heading to sort. Blank means the source had no page or no score for that model.</p>
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Model scores table"><table class="sortable" id="model-table"></table></div>
+  <h3 style="margin:44px 0 8px">Owner themes</h3>
+  <div id="themes"></div>
+</section>
+
+<footer id="read" aria-labelledby="h-read">
+  <h2 id="h-read" style="margin-bottom:22px">How to read this</h2>
+  <div class="read">
+    <div><h3>Verified</h3><p>A value is verified when it traces to a source the pipeline is allowed to trust: an OEM brochure page, or two sites that agree on the same variant. A separate model then re-reads a random sample of those sources to check the stored value. Verified does not mean certain. Sites can copy each other, and the Trust section shows what the re-check found.</p></div>
+    <div><h3>Unknown</h3><p>Unknown stays unknown. When no allowed source states a value, the cell is left empty and the reason is logged. It is never filled with a guess, an average or a value borrowed from a similar model. An empty cell is not a no: a feature the KB marks 0 was stated as absent, an empty cell was not stated at all.</p></div>
+    <div><h3>This page</h3><p>Every figure is computed from a read-only copy of the database and from the run folders, and the source of each is named. Generated on <span class="num" id="f-date"></span> from KB hash <span class="mono" id="f-hash"></span>. Rebuilding it from the same inputs gives the same page apart from this date.</p></div>
+  </div>
+</footer>
+</div>
+<div id="tip" role="tooltip"></div>
+<script id="data" type="application/json">{"entities":{"evidence_amendment":681,"evidence_quarantine":1636,"field_provenance":98967,"generation":92,"manufacturer":12,"model":92,"owner_rating":650,"owner_theme":0,"powertrain":216,"professional_assessment":598,"safety_rating":27,"safety_test":37,"safety_test_applicability":23,"source":11,"source_observation":8415,"variant":1464,"warranty":21},"glance":{"expert_models":75,"expert_rows":598,"makes":12,"models":92,"n_fields":40,"owner_models":88,"owner_ratings_total":24313,"owner_rows":650,"powertrains":216,"values":42297,"variants":1464,"with_evidence":40669,"with_url":26181},"growth":[{"date":"2026-11-14","label":"Before run 2026-11-13","models":62,"review_rows":null,"sha8":"7c0de89b","tag":"kb-run-2026-11-13","variants":832},{"date":"2026-11-14","label":"After run 2026-11-13","models":90,"review_rows":null,"sha8":"64ac467b","tag":"kb-run-2026-11-13-after","variants":1447},{"date":"2026-11-14","label":"After run 2026-11-13_2","models":92,"review_rows":null,"sha8":"60115040","tag":"kb-run-2026-11-13_2-after","variants":1464},{"date":"2026-11-15","label":"Before run reviews_2026-11-15","models":92,"review_rows":0,"sha8":"a3388a46","tag":"kb-run-reviews_2026-11-15","variants":1464},{"date":"2026-11-15","label":"After run reviews_2026-11-15","models":92,"review_rows":1248,"sha8":"bee4f613","tag":"kb-run-reviews_2026-11-15-after","variants":1464}],"heat":{"fields_per_group":{"capacity":["seating_capacity","boot_space_litres","fuel_tank_litres"],"comfort":["automatic_climate_control","rear_ac_vents","sunroof","ventilated_front_seats","cruise_control","paddle_shifters","wireless_charging","heads_up_display","drive_modes","connected_car_features","android_auto","apple_carplay"],"dimensions":["length_mm","width_mm","height_mm","wheelbase_mm","ground_clearance_mm","kerb_weight_kg"],"drivetrain":["transmission","drivetrain"],"efficiency":["mileage_arai_kmpl","mileage_arai_km_per_kg","claimed_ev_range_km"],"engine":["fuel_type","engine_cc","power_bhp","torque_nm"],"price":["price_ex_showroom"],"safety":["airbags","abs","esc","hill_assist","tyre_pressure_monitoring_system","rear_parking_sensors","rear_camera","camera_360","adas_available"]},"groups":["price","engine","drivetrain","dimensions","capacity","efficiency","safety","comfort"],"makes":["Honda","Hyundai","Kia","MG","Mahindra","Maruti Suzuki","Nissan","Renault","Skoda","Tata","Toyota","Volkswagen","All makes"],"n_variants":[24,210,162,26,160,214,46,56,35,409,97,25,1464],"pct":[[1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.7916666666666666],[1.0,1.0,1.0,0.49047619047619045,0.6476190476190476,0.37142857142857144,0.8021164021164021,0.7980158730158731],[1.0,0.9861111111111112,0.9506172839506173,0.6419753086419753,0.6792452830188679,0.43209876543209874,0.8319615912208504,0.6929012345679012],[1.0,0.9519230769230769,0.9615384615384616,0.46153846153846156,0.6164383561643836,0.19230769230769232,0.7948717948717948,0.6634615384615384],[1.0,0.9828125,1.0,0.7,0.810126582278481,0.375,0.8347222222222223,0.7713541666666667],[1.0,0.9544392523364486,1.0,0.719626168224299,0.7774294670846394,0.8364485981308412,0.8592938733125649,0.7916666666666666],[1.0,1.0,1.0,0.5434782608695652,0.6956521739130435,0.7391304347826086,0.8381642512077294,0.625],[1.0,0.96875,1.0,0.30357142857142855,0.5357142857142857,0.26785714285714285,0.7400793650793651,0.6145833333333334],[1.0,1.0,0.9571428571428572,0.9142857142857143,0.9428571428571428,1.0,0.946031746031746,0.830952380952381],[1.0,0.9419315403422983,1.0,0.38875305623471884,0.596252129471891,0.19315403422982885,0.7495245857104048,0.6911165444172779],[1.0,0.9896907216494846,0.9896907216494846,0.711340206185567,0.7903780068728522,0.7835051546391752,0.8625429553264605,0.654639175257732],[1.0,1.0,1.0,0.84,0.8933333333333333,0.92,0.9333333333333333,0.8833333333333333],[1.0,0.9709699453551912,0.9921448087431693,0.5683060109289617,0.6977983777520278,0.46311475409836067,0.8142076502732241,0.7304758652094717]]},"meta":{"generated":"2026-11-15","growth_source":"history","kb_hash8":"bee4f613","runs_used":["2026-11-13","2026-11-13_2","audit_2026-11-14","reviews_pilot_2026-11-14","reviews_dry_2026-11-15","reviews_2026-11-15"]},"per_make":[{"make":"Tata","models":16,"variants":409},{"make":"Maruti Suzuki","models":16,"variants":214},{"make":"Hyundai","models":12,"variants":210},{"make":"Kia","models":7,"variants":162},{"make":"Mahindra","models":11,"variants":160},{"make":"Toyota","models":8,"variants":97},{"make":"Renault","models":4,"variants":56},{"make":"Nissan","models":3,"variants":46},{"make":"Skoda","models":4,"variants":35},{"make":"MG","models":5,"variants":26},{"make":"Volkswagen","models":3,"variants":25},{"make":"Honda","models":3,"variants":24}],"reviews":{"coverage":{"both":72,"expert_only":1,"neither":3,"owner_only":16,"total":92},"expert":{"axis_min":4,"rows":[{"aspect":"overall","points":[["Mahindra Bolero",6.0],["Mahindra Bolero Neo",6.0],["Mahindra Scorpio Classic",6.0],["Maruti Suzuki Jimny",6.0],["Maruti Suzuki S-Presso",6.0],["Maruti Suzuki e VITARA",6.0],["Renault Kwid",6.0],["Tata Curvv",6.0],["Honda City",7.0],["Hyundai Aura",7.0],["MG Astor",7.0],["MG Hector",7.0],["Maruti Suzuki Celerio",7.0],["Skoda Kushaq",7.0],["Tata Altroz",7.0],["Tata Curvv EV",7.0],["Toyota Fortuner",7.0],["Toyota Hilux",7.0],["Toyota Innova Crysta",7.0],["Volkswagen Taigun",7.0],["Honda Amaze",8.0],["Hyundai Alcazar",8.0],["Hyundai Grand i10 Nios",8.0],["Hyundai Venue",8.0],["Hyundai i20",8.0],["Kia Carens",8.0],["Kia Carens Clavis",8.0],["Kia Seltos",8.0],["Kia Sonet",8.0],["MG Majestor",8.0],["Mahindra Scorpio-N",8.0],["Mahindra Thar Roxx",8.0],["Mahindra XEV 9e",8.0],["Mahindra XUV 3XO",8.0],["Maruti Suzuki Alto K10",8.0],["Maruti Suzuki Baleno",8.0],["Maruti Suzuki Brezza",8.0],["Maruti Suzuki Dzire",8.0],["Maruti Suzuki Ertiga",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki Swift",8.0],["Maruti Suzuki Victoris",8.0],["Maruti Suzuki XL6",8.0],["Nissan Magnite",8.0],["Nissan Tekton",8.0],["Renault Kiger",8.0],["Renault Triber",8.0],["Skoda Kodiaq",8.0],["Skoda Kylaq",8.0],["Skoda Slavia",8.0],["Tata Harrier",8.0],["Tata Harrier EV",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Punch",8.0],["Tata Safari",8.0],["Tata Sierra",8.0],["Tata Sierra EV",8.0],["Tata Tiago",8.0],["Toyota Innova Hycross",8.0],["Toyota Rumion",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Toyota Urban Cruiser Taisor",8.0],["Volkswagen Tayron",8.0],["Volkswagen Virtus",8.0],["Hyundai Creta",9.0],["Kia Syros",9.0],["Mahindra XEV 9S",9.0],["Mahindra XUV 7XO",9.0],["Renault Duster",9.0],["Tata Punch EV",9.0],["Tata Tiago EV",9.0]]},{"aspect":"Exterior Design And Engineering","points":[["Maruti Suzuki S-Presso",4.0],["Mahindra Bolero",5.0],["Hyundai Aura",6.0],["MG Astor",6.0],["Mahindra Bolero Neo",6.0],["Maruti Suzuki Alto K10",6.0],["Maruti Suzuki Celerio",6.0],["Honda City",7.0],["Hyundai Grand i10 Nios",7.0],["Kia Carens",7.0],["Kia Seltos",7.0],["Kia Syros",7.0],["MG Hector",7.0],["Mahindra Scorpio Classic",7.0],["Mahindra XEV 9e",7.0],["Mahindra XUV 3XO",7.0],["Maruti Suzuki Baleno",7.0],["Maruti Suzuki Brezza",7.0],["Maruti Suzuki Ertiga",7.0],["Maruti Suzuki e VITARA",7.0],["Renault Kiger",7.0],["Skoda Kodiaq",7.0],["Tata Harrier EV",7.0],["Tata Tiago EV",7.0],["Toyota Hilux",7.0],["Toyota Innova Crysta",7.0],["Toyota Innova Hycross",7.0],["Toyota Rumion",7.0],["Volkswagen Taigun",7.0],["Honda Amaze",8.0],["Honda Elevate",8.0],["Hyundai Alcazar",8.0],["Hyundai Creta",8.0],["Hyundai i20",8.0],["Kia Carens Clavis",8.0],["Kia Sonet",8.0],["MG Majestor",8.0],["Mahindra Scorpio-N",8.0],["Mahindra Thar Roxx",8.0],["Mahindra XEV 9S",8.0],["Mahindra XUV 7XO",8.0],["Maruti Suzuki Dzire",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki Jimny",8.0],["Maruti Suzuki Swift",8.0],["Maruti Suzuki Victoris",8.0],["Maruti Suzuki XL6",8.0],["Nissan Gravite",8.0],["Nissan Magnite",8.0],["Renault Kwid",8.0],["Renault Triber",8.0],["Skoda Kushaq",8.0],["Skoda Kylaq",8.0],["Skoda Slavia",8.0],["Tata Altroz",8.0],["Tata Curvv",8.0],["Tata Curvv EV",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Punch",8.0],["Tata Punch EV",8.0],["Toyota Fortuner",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Volkswagen Tayron",8.0],["Volkswagen Virtus",8.0],["Hyundai Venue",9.0],["Maruti Suzuki Fronx",9.0],["Nissan Tekton",9.0],["Renault Duster",9.0],["Tata Harrier",9.0],["Tata Safari",9.0],["Tata Sierra",9.0],["Tata Sierra EV",9.0],["Tata Tiago",9.0],["Toyota Urban Cruiser Taisor",9.0]]},{"aspect":"Features And Safety","points":[["Mahindra Bolero",5.0],["Mahindra Bolero Neo",5.0],["Mahindra Scorpio Classic",5.0],["Maruti Suzuki Alto K10",6.0],["Maruti Suzuki Ertiga",6.0],["Maruti Suzuki S-Presso",6.0],["Maruti Suzuki XL6",6.0],["Renault Kwid",6.0],["Toyota Innova Crysta",6.0],["Toyota Rumion",6.0],["Volkswagen Taigun",6.0],["Honda City",7.0],["Hyundai Aura",7.0],["Hyundai Grand i10 Nios",7.0],["Maruti Suzuki Brezza",7.0],["Maruti Suzuki Celerio",7.0],["Maruti Suzuki Fronx",7.0],["Maruti Suzuki Jimny",7.0],["Maruti Suzuki e VITARA",7.0],["Toyota Fortuner",7.0],["Toyota Hilux",7.0],["Toyota Urban Cruiser Taisor",7.0],["Honda Amaze",8.0],["Honda Elevate",8.0],["Hyundai i20",8.0],["Kia Seltos",8.0],["MG Astor",8.0],["MG Hector",8.0],["Mahindra Scorpio-N",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki Swift",8.0],["Nissan Gravite",8.0],["Nissan Magnite",8.0],["Renault Duster",8.0],["Renault Kiger",8.0],["Renault Triber",8.0],["Skoda Kodiaq",8.0],["Skoda Kushaq",8.0],["Skoda Kylaq",8.0],["Tata Harrier EV",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Tiago EV",8.0],["Toyota Innova Hycross",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Volkswagen Tayron",8.0],["Volkswagen Virtus",8.0],["Hyundai Alcazar",9.0],["Hyundai Creta",9.0],["Hyundai Venue",9.0],["Kia Carens",9.0],["Kia Carens Clavis",9.0],["Kia Sonet",9.0],["Kia Syros",9.0],["MG Majestor",9.0],["Mahindra Thar Roxx",9.0],["Mahindra XEV 9S",9.0],["Mahindra XEV 9e",9.0],["Mahindra XUV 3XO",9.0],["Mahindra XUV 7XO",9.0],["Maruti Suzuki Baleno",9.0],["Maruti Suzuki Dzire",9.0],["Maruti Suzuki Victoris",9.0],["Nissan Tekton",9.0],["Skoda Slavia",9.0],["Tata Altroz",9.0],["Tata Curvv",9.0],["Tata Curvv EV",9.0],["Tata Harrier",9.0],["Tata Punch",9.0],["Tata Punch EV",9.0],["Tata Safari",9.0],["Tata Sierra",9.0],["Tata Sierra EV",9.0],["Tata Tiago",9.0]]},{"aspect":"Interior Space And Comfort","points":[["Mahindra Bolero",4.0],["Mahindra Bolero Neo",6.0],["Mahindra Scorpio Classic",6.0],["Maruti Suzuki Alto K10",6.0],["Maruti Suzuki Jimny",6.0],["Maruti Suzuki e VITARA",6.0],["Hyundai Aura",7.0],["Kia Seltos",7.0],["Kia Sonet",7.0],["Mahindra Scorpio-N",7.0],["Mahindra Thar Roxx",7.0],["Maruti Suzuki Grand Vitara",7.0],["Maruti Suzuki S-Presso",7.0],["Skoda Kushaq",7.0],["Skoda Kylaq",7.0],["Tata Altroz",7.0],["Tata Curvv",7.0],["Tata Curvv EV",7.0],["Tata Nexon",7.0],["Tata Nexon EV",7.0],["Tata Punch EV",7.0],["Tata Sierra EV",7.0],["Toyota Fortuner",7.0],["Toyota Hilux",7.0],["Toyota Urban Cruiser Hyryder",7.0],["Volkswagen Taigun",7.0],["Honda Amaze",8.0],["Honda City",8.0],["Honda Elevate",8.0],["Hyundai Alcazar",8.0],["Hyundai Grand i10 Nios",8.0],["Hyundai Venue",8.0],["Hyundai i20",8.0],["Kia Carens Clavis",8.0],["MG Astor",8.0],["MG Hector",8.0],["Mahindra XEV 9S",8.0],["Mahindra XEV 9e",8.0],["Mahindra XUV 3XO",8.0],["Mahindra XUV 7XO",8.0],["Maruti Suzuki Baleno",8.0],["Maruti Suzuki Brezza",8.0],["Maruti Suzuki Celerio",8.0],["Maruti Suzuki Dzire",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki Swift",8.0],["Maruti Suzuki Victoris",8.0],["Nissan Magnite",8.0],["Nissan Tekton",8.0],["Renault Duster",8.0],["Renault Kiger",8.0],["Renault Kwid",8.0],["Skoda Kodiaq",8.0],["Skoda Slavia",8.0],["Tata Harrier EV",8.0],["Tata Punch",8.0],["Tata Tiago",8.0],["Tata Tiago EV",8.0],["Toyota Innova Crysta",8.0],["Toyota Urban Cruiser Taisor",8.0],["Volkswagen Tayron",8.0],["Volkswagen Virtus",8.0],["Hyundai Creta",9.0],["Kia Carens",9.0],["MG Majestor",9.0],["Maruti Suzuki Ertiga",9.0],["Maruti Suzuki XL6",9.0],["Nissan Gravite",9.0],["Renault Triber",9.0],["Tata Harrier",9.0],["Tata Safari",9.0],["Tata Sierra",9.0],["Toyota Innova Hycross",9.0],["Toyota Rumion",9.0],["Kia Syros",10.0]]},{"aspect":"Mileage / Range And Efficiency","points":[["MG Astor",5.0],["Toyota Fortuner",5.0],["Hyundai Alcazar",6.0],["Hyundai i20",6.0],["Kia Syros",6.0],["MG Hector",6.0],["MG Majestor",6.0],["Mahindra Thar Roxx",6.0],["Maruti Suzuki Jimny",6.0],["Nissan Tekton",6.0],["Skoda Kodiaq",6.0],["Volkswagen Taigun",6.0],["Volkswagen Tayron",6.0],["Honda Amaze",7.0],["Honda Elevate",7.0],["Hyundai Creta",7.0],["Mahindra Bolero",7.0],["Mahindra Bolero Neo",7.0],["Mahindra Scorpio Classic",7.0],["Mahindra Scorpio-N",7.0],["Mahindra XUV 7XO",7.0],["Maruti Suzuki XL6",7.0],["Nissan Gravite",7.0],["Renault Duster",7.0],["Renault Kiger",7.0],["Skoda Kushaq",7.0],["Skoda Kylaq",7.0],["Skoda Slavia",7.0],["Tata Altroz",7.0],["Tata Curvv",7.0],["Tata Harrier",7.0],["Tata Punch",7.0],["Tata Safari",7.0],["Tata Sierra",7.0],["Toyota Innova Crysta",7.0],["Volkswagen Virtus",7.0],["Honda City",8.0],["Hyundai Aura",8.0],["Hyundai Grand i10 Nios",8.0],["Hyundai Venue",8.0],["Kia Carens",8.0],["Kia Carens Clavis",8.0],["Kia Seltos",8.0],["Kia Sonet",8.0],["Mahindra XEV 9S",8.0],["Mahindra XUV 3XO",8.0],["Maruti Suzuki Alto K10",8.0],["Maruti Suzuki Celerio",8.0],["Maruti Suzuki Dzire",8.0],["Maruti Suzuki Ertiga",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki S-Presso",8.0],["Maruti Suzuki e VITARA",8.0],["Nissan Magnite",8.0],["Renault Kwid",8.0],["Renault Triber",8.0],["Tata Curvv EV",8.0],["Tata Harrier EV",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Punch EV",8.0],["Tata Sierra EV",8.0],["Tata Tiago",8.0],["Tata Tiago EV",8.0],["Toyota Hilux",8.0],["Toyota Innova Hycross",8.0],["Toyota Rumion",8.0],["Toyota Urban Cruiser Taisor",8.0],["Mahindra XEV 9e",9.0],["Maruti Suzuki Baleno",9.0],["Maruti Suzuki Brezza",9.0],["Maruti Suzuki Grand Vitara",9.0],["Maruti Suzuki Swift",9.0],["Maruti Suzuki Victoris",9.0],["Toyota Urban Cruiser Hyryder",9.0]]},{"aspect":"Performance And Refinement","points":[["Nissan Gravite",5.0],["Mahindra Bolero",6.0],["Maruti Suzuki Jimny",6.0],["Tata Altroz",6.0],["Tata Curvv",6.0],["Tata Nexon",6.0],["Toyota Innova Crysta",6.0],["Honda City",7.0],["Hyundai Alcazar",7.0],["Hyundai Aura",7.0],["Kia Carens Clavis",7.0],["MG Astor",7.0],["MG Hector",7.0],["MG Majestor",7.0],["Mahindra Bolero Neo",7.0],["Mahindra Scorpio Classic",7.0],["Maruti Suzuki Brezza",7.0],["Maruti Suzuki Dzire",7.0],["Maruti Suzuki Ertiga",7.0],["Maruti Suzuki Victoris",7.0],["Maruti Suzuki XL6",7.0],["Maruti Suzuki e VITARA",7.0],["Nissan Tekton",7.0],["Renault Kwid",7.0],["Skoda Kushaq",7.0],["Tata Curvv EV",7.0],["Tata Tiago",7.0],["Toyota Fortuner",7.0],["Toyota Rumion",7.0],["Honda Amaze",8.0],["Honda Elevate",8.0],["Hyundai Creta",8.0],["Hyundai Grand i10 Nios",8.0],["Hyundai Venue",8.0],["Hyundai i20",8.0],["Kia Carens",8.0],["Kia Seltos",8.0],["Kia Sonet",8.0],["Kia Syros",8.0],["Mahindra Scorpio-N",8.0],["Mahindra XUV 3XO",8.0],["Maruti Suzuki Alto K10",8.0],["Maruti Suzuki Baleno",8.0],["Maruti Suzuki Celerio",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki S-Presso",8.0],["Maruti Suzuki Swift",8.0],["Nissan Magnite",8.0],["Renault Kiger",8.0],["Renault Triber",8.0],["Skoda Kodiaq",8.0],["Skoda Kylaq",8.0],["Skoda Slavia",8.0],["Tata Harrier",8.0],["Tata Nexon EV",8.0],["Tata Punch",8.0],["Tata Safari",8.0],["Tata Sierra",8.0],["Tata Sierra EV",8.0],["Tata Tiago EV",8.0],["Toyota Innova Hycross",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Toyota Urban Cruiser Taisor",8.0],["Volkswagen Taigun",8.0],["Volkswagen Virtus",8.0],["Mahindra Thar Roxx",9.0],["Mahindra XEV 9S",9.0],["Mahindra XUV 7XO",9.0],["Renault Duster",9.0],["Tata Harrier EV",9.0],["Tata Punch EV",9.0],["Toyota Hilux",9.0],["Volkswagen Tayron",9.0],["Mahindra XEV 9e",10.0]]},{"aspect":"Ride Comfort And Handling","points":[["Mahindra Bolero",5.0],["Mahindra Scorpio Classic",5.0],["Kia Sonet",6.0],["MG Hector",6.0],["Mahindra Bolero Neo",6.0],["Maruti Suzuki S-Presso",6.0],["Maruti Suzuki e VITARA",6.0],["Toyota Fortuner",6.0],["Hyundai Alcazar",7.0],["Hyundai Aura",7.0],["Hyundai Grand i10 Nios",7.0],["Hyundai Venue",7.0],["Hyundai i20",7.0],["Kia Carens Clavis",7.0],["MG Astor",7.0],["Mahindra Scorpio-N",7.0],["Mahindra Thar Roxx",7.0],["Maruti Suzuki Alto K10",7.0],["Maruti Suzuki Celerio",7.0],["Maruti Suzuki Jimny",7.0],["Nissan Gravite",7.0],["Skoda Kushaq",7.0],["Tata Safari",7.0],["Toyota Hilux",7.0],["Toyota Innova Crysta",7.0],["Honda Amaze",8.0],["Honda City",8.0],["Honda Elevate",8.0],["Hyundai Creta",8.0],["Kia Carens",8.0],["Kia Seltos",8.0],["Kia Syros",8.0],["MG Majestor",8.0],["Mahindra XEV 9S",8.0],["Maruti Suzuki Baleno",8.0],["Maruti Suzuki Brezza",8.0],["Maruti Suzuki Ertiga",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki Victoris",8.0],["Maruti Suzuki XL6",8.0],["Nissan Magnite",8.0],["Renault Kiger",8.0],["Renault Kwid",8.0],["Renault Triber",8.0],["Skoda Kodiaq",8.0],["Skoda Kylaq",8.0],["Skoda Slavia",8.0],["Tata Curvv",8.0],["Tata Curvv EV",8.0],["Tata Harrier",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Sierra",8.0],["Tata Sierra EV",8.0],["Tata Tiago",8.0],["Toyota Innova Hycross",8.0],["Toyota Rumion",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Toyota Urban Cruiser Taisor",8.0],["Volkswagen Taigun",8.0],["Volkswagen Tayron",8.0],["Volkswagen Virtus",8.0],["Mahindra XEV 9e",9.0],["Mahindra XUV 3XO",9.0],["Mahindra XUV 7XO",9.0],["Maruti Suzuki Dzire",9.0],["Maruti Suzuki Swift",9.0],["Nissan Tekton",9.0],["Renault Duster",9.0],["Tata Altroz",9.0],["Tata Harrier EV",9.0],["Tata Punch",9.0],["Tata Punch EV",9.0],["Tata Tiago EV",9.0]]},{"aspect":"Value For Money","points":[["Toyota Fortuner",5.0],["Honda City",6.0],["Mahindra Bolero Neo",6.0],["Mahindra Scorpio Classic",6.0],["Maruti Suzuki Jimny",6.0],["Maruti Suzuki e VITARA",6.0],["Tata Curvv",6.0],["Toyota Innova Crysta",6.0],["Volkswagen Taigun",6.0],["Hyundai Aura",7.0],["Hyundai Grand i10 Nios",7.0],["Kia Carens Clavis",7.0],["MG Astor",7.0],["Mahindra Bolero",7.0],["Maruti Suzuki Alto K10",7.0],["Maruti Suzuki Celerio",7.0],["Maruti Suzuki Swift",7.0],["Renault Kiger",7.0],["Renault Kwid",7.0],["Skoda Kodiaq",7.0],["Skoda Kushaq",7.0],["Skoda Kylaq",7.0],["Tata Curvv EV",7.0],["Tata Punch",7.0],["Tata Sierra EV",7.0],["Toyota Hilux",7.0],["Toyota Innova Hycross",7.0],["Volkswagen Virtus",7.0],["Honda Amaze",8.0],["Honda Elevate",8.0],["Hyundai Alcazar",8.0],["Hyundai Venue",8.0],["Hyundai i20",8.0],["Kia Carens",8.0],["Kia Seltos",8.0],["Kia Sonet",8.0],["Kia Syros",8.0],["MG Hector",8.0],["MG Majestor",8.0],["Mahindra Scorpio-N",8.0],["Mahindra Thar Roxx",8.0],["Mahindra XEV 9e",8.0],["Mahindra XUV 3XO",8.0],["Maruti Suzuki Baleno",8.0],["Maruti Suzuki Brezza",8.0],["Maruti Suzuki Fronx",8.0],["Maruti Suzuki Grand Vitara",8.0],["Maruti Suzuki S-Presso",8.0],["Maruti Suzuki Victoris",8.0],["Nissan Gravite",8.0],["Nissan Tekton",8.0],["Skoda Slavia",8.0],["Tata Altroz",8.0],["Tata Harrier",8.0],["Tata Harrier EV",8.0],["Tata Nexon",8.0],["Tata Nexon EV",8.0],["Tata Safari",8.0],["Tata Sierra",8.0],["Tata Tiago",8.0],["Tata Tiago EV",8.0],["Toyota Urban Cruiser Hyryder",8.0],["Toyota Urban Cruiser Taisor",8.0],["Volkswagen Tayron",8.0],["Hyundai Creta",9.0],["Mahindra XUV 7XO",9.0],["Maruti Suzuki Dzire",9.0],["Maruti Suzuki Ertiga",9.0],["Maruti Suzuki XL6",9.0],["Nissan Magnite",9.0],["Renault Duster",9.0],["Renault Triber",9.0],["Tata Punch EV",9.0],["Toyota Rumion",9.0],["Mahindra XEV 9S",10.0]]}],"scale_max":10.0},"owner":{"axis_min":3,"rows":[{"aspect":"overall","points":[["Maruti Suzuki Jimny",3.7],["Maruti Suzuki Baleno",3.71],["Toyota Hilux",3.91],["Maruti Suzuki Celerio",4.06],["Honda Elevate",4.25],["Mahindra Bolero Neo",4.25],["Tata Sierra EV",4.25],["MG Astor",4.27],["Maruti Suzuki e VITARA",4.27],["Hyundai Bayon",4.29],["Kia Sonet",4.31],["Nissan Magnite",4.31],["Maruti Suzuki Brezza",4.32],["MG Hector Plus",4.36],["MG Windsor EV",4.38],["Tata Nexon EV",4.4],["Tata Tiago",4.41],["Honda City",4.42],["Mahindra XUV 7XO",4.43],["Tata Punch EV",4.43],["Toyota Urban Cruiser Hyryder",4.43],["Nissan Gravite",4.44],["Hyundai Exter",4.45],["Kia Seltos",4.45],["Maruti Suzuki S-Presso",4.45],["Renault Kiger",4.45],["Kia Carens",4.46],["Maruti Suzuki XL6",4.47],["Tata Curvv EV",4.47],["Renault Kwid",4.48],["MG Majestor",4.49],["Maruti Suzuki Grand Vitara",4.5],["Tata Aeris",4.5],["Tata Tiago EV",4.52],["Hyundai Aura",4.53],["Maruti Suzuki Swift",4.53],["Maruti Suzuki Victoris",4.53],["Hyundai Grand i10 Nios",4.54],["Mahindra Bolero",4.54],["Tata Harrier EV",4.54],["Toyota Fortuner",4.54],["MG Hector",4.55],["Maruti Suzuki Alto K10",4.55],["Maruti Suzuki Ertiga",4.58],["Renault Triber",4.58],["Toyota Innova Hycross",4.58],["Hyundai Alcazar",4.59],["Hyundai i20",4.59],["Maruti Suzuki Fronx",4.59],["Renault Duster",4.59],["Skoda Kodiaq",4.59],["Tata Nexon",4.59],["Hyundai Creta",4.6],["Toyota Urban Cruiser Taisor",4.6],["Honda Amaze",4.61],["Hyundai Creta N Line",4.61],["Mahindra XEV 9S",4.62],["Maruti Suzuki Eeco",4.63],["Tata Safari",4.63],["Hyundai Venue",4.64],["Mahindra Thar Roxx",4.64],["Tata Punch",4.64],["Kia Carens Clavis",4.65],["Mahindra XUV 3XO",4.65],["Skoda Slavia",4.65],["Tata Altroz",4.65],["Tata Curvv",4.65],["Hyundai i20 N Line",4.66],["Kia Carens Clavis EV",4.66],["Volkswagen Taigun",4.66],["Mahindra XEV 9e",4.67],["Volkswagen Virtus",4.67],["Tata Harrier",4.68],["Toyota Rumion",4.68],["Nissan Tekton",4.69],["Toyota Innova Crysta",4.69],["Mahindra Scorpio-N",4.7],["Kia Syros",4.71],["Mahindra Bolero Neo Plus",4.71],["Toyota Glanza",4.72],["Skoda Kylaq",4.73],["Tata Sierra",4.73],["Maruti Suzuki Dzire",4.74],["Skoda Kushaq",4.76],["Hyundai Verna",4.77],["Hyundai Venue N Line",4.79],["Kia Sorento",4.89],["Volkswagen Tayron",5.0]]},{"aspect":"After Sales Cost and Experience","points":[["Renault Kwid",3.44],["MG Hector Plus",3.8],["MG Windsor EV",3.8],["Hyundai Creta N Line",4.0],["MG Majestor",4.0],["Skoda Kodiaq",4.0],["Mahindra Bolero Neo",4.02],["Nissan Magnite",4.04],["Tata Harrier EV",4.04],["Tata Tiago EV",4.04],["Tata Safari",4.1],["Tata Nexon",4.13],["Kia Sonet",4.15],["Renault Kiger",4.17],["MG Hector",4.19],["Hyundai i20 N Line",4.2],["Tata Nexon EV",4.2],["Mahindra XUV 7XO",4.24],["Toyota Rumion",4.24],["Skoda Slavia",4.25],["Tata Harrier",4.25],["Tata Altroz",4.26],["Honda Amaze",4.28],["Hyundai Grand i10 Nios",4.29],["Maruti Suzuki Baleno",4.29],["Renault Duster",4.29],["Skoda Kylaq",4.29],["Tata Punch EV",4.29],["Kia Carens Clavis",4.31],["Nissan Gravite",4.31],["Tata Sierra EV",4.33],["Toyota Innova Crysta",4.33],["MG Astor",4.35],["Tata Curvv",4.35],["Kia Seltos",4.36],["Hyundai i20",4.37],["Mahindra XUV 3XO",4.37],["Mahindra Bolero",4.38],["Nissan Tekton",4.38],["Tata Punch",4.38],["Tata Tiago",4.38],["Volkswagen Taigun",4.38],["Hyundai Alcazar",4.43],["Volkswagen Virtus",4.43],["Hyundai Aura",4.44],["Kia Syros",4.44],["Mahindra XEV 9e",4.44],["Maruti Suzuki Brezza",4.44],["Maruti Suzuki Jimny",4.45],["Tata Sierra",4.45],["Mahindra Thar Roxx",4.47],["Renault Triber",4.47],["Maruti Suzuki e VITARA",4.48],["Kia Carens",4.49],["Honda Elevate",4.5],["Hyundai Bayon",4.5],["Mahindra XEV 9S",4.5],["Maruti Suzuki Celerio",4.5],["Maruti Suzuki S-Presso",4.5],["Skoda Kushaq",4.5],["Toyota Urban Cruiser Hyryder",4.5],["Kia Carens Clavis EV",4.52],["Maruti Suzuki Grand Vitara",4.52],["Maruti Suzuki Swift",4.52],["Maruti Suzuki Eeco",4.53],["Hyundai Exter",4.54],["Maruti Suzuki Ertiga",4.54],["Tata Curvv EV",4.56],["Mahindra Scorpio-N",4.57],["Maruti Suzuki XL6",4.57],["Toyota Innova Hycross",4.57],["Maruti Suzuki Alto K10",4.6],["Honda City",4.62],["Hyundai Creta",4.63],["Maruti Suzuki Fronx",4.63],["Toyota Fortuner",4.64],["Toyota Urban Cruiser Taisor",4.65],["Tata Aeris",4.67],["Toyota Hilux",4.67],["Hyundai Venue",4.68],["Mahindra Bolero Neo Plus",4.69],["Maruti Suzuki Dzire",4.7],["Maruti Suzuki Victoris",4.73],["Hyundai Verna",4.81],["Hyundai Venue N Line",4.86],["Toyota Glanza",5.0]]},{"aspect":"Comfort and Space","points":[["Toyota Hilux",3.33],["Maruti Suzuki Jimny",3.96],["MG Hector Plus",4.0],["Tata Tiago EV",4.03],["Maruti Suzuki Celerio",4.22],["Maruti Suzuki Alto K10",4.26],["Maruti Suzuki Baleno",4.29],["Renault Kwid",4.33],["Kia Sonet",4.36],["Maruti Suzuki S-Presso",4.37],["Hyundai Bayon",4.38],["Renault Kiger",4.41],["Renault Duster",4.43],["Tata Curvv EV",4.43],["Maruti Suzuki Eeco",4.44],["Nissan Gravite",4.44],["Mahindra Bolero",4.45],["Tata Nexon EV",4.45],["Hyundai Grand i10 Nios",4.46],["Hyundai i20 N Line",4.46],["Maruti Suzuki Brezza",4.46],["Toyota Urban Cruiser Hyryder",4.46],["Skoda Kodiaq",4.47],["Maruti Suzuki Swift",4.48],["Maruti Suzuki Fronx",4.5],["Maruti Suzuki Grand Vitara",4.5],["Maruti Suzuki e VITARA",4.5],["Skoda Slavia",4.5],["Hyundai Aura",4.51],["Tata Tiago",4.51],["Maruti Suzuki Ertiga",4.52],["Toyota Urban Cruiser Taisor",4.52],["Hyundai Creta N Line",4.53],["Nissan Magnite",4.53],["Mahindra Bolero Neo",4.54],["MG Astor",4.55],["Tata Punch EV",4.55],["Toyota Fortuner",4.56],["Kia Syros",4.57],["Mahindra Thar Roxx",4.57],["Honda Amaze",4.59],["Tata Nexon",4.59],["Maruti Suzuki XL6",4.6],["Honda City",4.61],["Skoda Kylaq",4.61],["Hyundai i20",4.62],["Mahindra Scorpio-N",4.63],["Tata Punch",4.63],["Hyundai Alcazar",4.65],["Mahindra Bolero Neo Plus",4.65],["Volkswagen Virtus",4.65],["Mahindra XUV 3XO",4.66],["Tata Altroz",4.66],["Kia Carens Clavis EV",4.67],["Renault Triber",4.67],["Volkswagen Taigun",4.67],["Hyundai Exter",4.68],["Mahindra XUV 7XO",4.68],["Tata Curvv",4.68],["Tata Harrier EV",4.68],["Hyundai Creta",4.69],["Maruti Suzuki Dzire",4.69],["Kia Carens",4.7],["Hyundai Venue",4.71],["Hyundai Venue N Line",4.71],["MG Hector",4.71],["Toyota Rumion",4.71],["Mahindra XEV 9e",4.72],["Kia Seltos",4.73],["MG Windsor EV",4.73],["Toyota Innova Hycross",4.73],["Maruti Suzuki Victoris",4.74],["Honda Elevate",4.75],["Tata Safari",4.75],["Nissan Tekton",4.76],["Skoda Kushaq",4.76],["Tata Aeris",4.77],["Tata Harrier",4.77],["Tata Sierra",4.8],["Toyota Innova Crysta",4.81],["Kia Carens Clavis",4.83],["Mahindra XEV 9S",4.83],["Hyundai Verna",4.86],["MG Majestor",4.86],["Tata Sierra EV",4.87],["Toyota Glanza",5.0]]},{"aspect":"Design and Styling","points":[["Maruti Suzuki Baleno",3.57],["Maruti Suzuki Celerio",4.2],["Maruti Suzuki Jimny",4.24],["Maruti Suzuki S-Presso",4.34],["Maruti Suzuki Eeco",4.37],["Hyundai Bayon",4.38],["Maruti Suzuki Brezza",4.39],["Maruti Suzuki Alto K10",4.41],["Maruti Suzuki e VITARA",4.47],["Tata Tiago EV",4.5],["Mahindra Bolero Neo",4.51],["Maruti Suzuki Ertiga",4.52],["MG Windsor EV",4.53],["Maruti Suzuki XL6",4.53],["Hyundai Aura",4.54],["Kia Carens",4.54],["Mahindra Bolero Neo Plus",4.56],["Kia Sonet",4.57],["Maruti Suzuki Grand Vitara",4.58],["Tata Nexon EV",4.58],["Hyundai Grand i10 Nios",4.59],["Mahindra XUV 7XO",4.59],["Maruti Suzuki Swift",4.59],["Kia Syros",4.6],["Honda Amaze",4.61],["MG Astor",4.61],["Mahindra Bolero",4.61],["Mahindra XUV 3XO",4.61],["Tata Curvv EV",4.61],["Toyota Urban Cruiser Hyryder",4.61],["Renault Kwid",4.62],["Toyota Innova Hycross",4.62],["Toyota Urban Cruiser Taisor",4.62],["Nissan Gravite",4.63],["Nissan Magnite",4.63],["Renault Kiger",4.63],["Hyundai Alcazar",4.64],["Tata Nexon",4.64],["Hyundai Creta",4.65],["MG Hector Plus",4.65],["Toyota Rumion",4.66],["Tata Tiago",4.67],["Toyota Hilux",4.67],["Honda City",4.68],["MG Majestor",4.69],["Maruti Suzuki Victoris",4.69],["Tata Aeris",4.69],["Kia Carens Clavis EV",4.7],["Tata Punch EV",4.7],["Mahindra Scorpio-N",4.71],["Maruti Suzuki Fronx",4.71],["Renault Triber",4.71],["Hyundai Venue",4.72],["Hyundai i20",4.72],["Kia Carens Clavis",4.72],["Kia Seltos",4.72],["Skoda Kylaq",4.72],["Volkswagen Taigun",4.72],["Hyundai Exter",4.73],["Maruti Suzuki Dzire",4.73],["Toyota Fortuner",4.73],["Mahindra Thar Roxx",4.74],["Tata Curvv",4.74],["Honda Elevate",4.75],["Mahindra XEV 9e",4.75],["Nissan Tekton",4.75],["Skoda Kushaq",4.76],["Tata Punch",4.76],["Tata Safari",4.76],["Tata Sierra EV",4.76],["Renault Duster",4.77],["Tata Harrier EV",4.77],["Volkswagen Virtus",4.77],["Tata Harrier",4.78],["Hyundai Verna",4.79],["Skoda Kodiaq",4.79],["Hyundai Creta N Line",4.8],["Tata Altroz",4.8],["Hyundai i20 N Line",4.83],["Hyundai Venue N Line",4.85],["MG Hector",4.86],["Mahindra XEV 9S",4.87],["Toyota Innova Crysta",4.88],["Tata Sierra",4.89],["Skoda Slavia",5.0],["Toyota Glanza",5.0]]},{"aspect":"Features and Technology","points":[["Maruti Suzuki Brezza",3.89],["Honda Elevate",4.0],["Mahindra Bolero Neo",4.01],["Maruti Suzuki Baleno",4.07],["Toyota Fortuner",4.17],["Maruti Suzuki S-Presso",4.2],["Toyota Rumion",4.23],["Maruti Suzuki Jimny",4.24],["Maruti Suzuki Eeco",4.25],["Renault Kwid",4.25],["Skoda Slavia",4.25],["Mahindra Bolero",4.29],["Nissan Magnite",4.3],["Honda City",4.32],["Maruti Suzuki Alto K10",4.32],["Toyota Hilux",4.33],["Maruti Suzuki Celerio",4.35],["Honda Amaze",4.36],["Maruti Suzuki Ertiga",4.38],["Maruti Suzuki Swift",4.39],["Maruti Suzuki e VITARA",4.39],["Renault Kiger",4.42],["Toyota Innova Hycross",4.42],["Maruti Suzuki XL6",4.45],["Toyota Urban Cruiser Taisor",4.45],["Maruti Suzuki Fronx",4.46],["Hyundai Aura",4.47],["Maruti Suzuki Grand Vitara",4.47],["Toyota Urban Cruiser Hyryder",4.47],["Mahindra Scorpio-N",4.49],["Skoda Kushaq",4.49],["Tata Tiago EV",4.49],["Hyundai Grand i10 Nios",4.5],["Hyundai i20 N Line",4.5],["MG Windsor EV",4.5],["Tata Nexon",4.51],["Mahindra Bolero Neo Plus",4.52],["Skoda Kylaq",4.53],["Tata Harrier",4.55],["Hyundai Creta",4.56],["MG Hector Plus",4.56],["Renault Duster",4.56],["Hyundai i20",4.57],["Kia Sonet",4.57],["Volkswagen Virtus",4.57],["Mahindra Thar Roxx",4.58],["Mahindra XUV 3XO",4.58],["Tata Safari",4.58],["Nissan Gravite",4.59],["Renault Triber",4.6],["Hyundai Venue",4.61],["Volkswagen Taigun",4.61],["Hyundai Bayon",4.62],["Maruti Suzuki Victoris",4.62],["Skoda Kodiaq",4.62],["Hyundai Alcazar",4.63],["Tata Punch EV",4.63],["Tata Tiago",4.63],["Maruti Suzuki Dzire",4.64],["Toyota Innova Crysta",4.64],["Hyundai Venue N Line",4.65],["Kia Carens",4.65],["Kia Seltos",4.66],["Tata Harrier EV",4.66],["Tata Nexon EV",4.66],["Nissan Tekton",4.67],["Kia Carens Clavis",4.68],["Kia Syros",4.68],["Tata Punch",4.68],["Tata Aeris",4.69],["Tata Altroz",4.69],["MG Hector",4.7],["Mahindra XUV 7XO",4.7],["Tata Curvv",4.7],["Hyundai Creta N Line",4.71],["Hyundai Exter",4.71],["Tata Sierra EV",4.72],["Kia Carens Clavis EV",4.73],["Tata Curvv EV",4.73],["MG Astor",4.76],["Mahindra XEV 9e",4.77],["Tata Sierra",4.77],["Hyundai Verna",4.85],["Mahindra XEV 9S",4.89],["MG Majestor",4.94],["Toyota Glanza",5.0]]},{"aspect":"Fuel Economy","points":[["MG Astor",3.61],["Maruti Suzuki Jimny",3.81],["Hyundai i20",3.94],["Hyundai i20 N Line",3.95],["Kia Sonet",4.03],["Hyundai Creta N Line",4.04],["Skoda Kodiaq",4.09],["Kia Carens",4.1],["Nissan Magnite",4.1],["Toyota Fortuner",4.1],["Volkswagen Virtus",4.11],["Mahindra Thar Roxx",4.15],["Honda Amaze",4.16],["Kia Carens Clavis",4.16],["Tata Altroz",4.17],["Hyundai Grand i10 Nios",4.18],["Hyundai Creta",4.19],["Mahindra XUV 3XO",4.21],["Hyundai Alcazar",4.22],["Mahindra Scorpio-N",4.23],["Tata Nexon",4.26],["Maruti Suzuki XL6",4.3],["Hyundai Aura",4.31],["Skoda Kylaq",4.31],["Tata Safari",4.31],["Tata Harrier",4.35],["Tata Curvv",4.37],["Tata Nexon EV",4.38],["Mahindra Bolero Neo Plus",4.42],["Maruti Suzuki Grand Vitara",4.42],["Maruti Suzuki Fronx",4.43],["Toyota Innova Hycross",4.44],["Maruti Suzuki Ertiga",4.46],["Toyota Urban Cruiser Taisor",4.46],["Maruti Suzuki Celerio",4.47],["Maruti Suzuki S-Presso",4.48],["Maruti Suzuki Eeco",4.5],["MG Windsor EV",4.51],["Toyota Urban Cruiser Hyryder",4.55],["Mahindra XEV 9e",4.57],["Maruti Suzuki Alto K10",4.58],["Maruti Suzuki Swift",4.62],["Tata Curvv EV",4.62],["Toyota Rumion",4.68],["Maruti Suzuki Dzire",4.75],["Tata Harrier EV",4.84]]},{"aspect":"Performance","points":[["Maruti Suzuki Baleno",3.5],["Honda Elevate",3.75],["Maruti Suzuki Jimny",4.11],["Renault Kwid",4.12],["MG Astor",4.18],["Nissan Magnite",4.21],["Maruti Suzuki Celerio",4.24],["Skoda Slavia",4.25],["Renault Kiger",4.26],["Maruti Suzuki Brezza",4.28],["Maruti Suzuki XL6",4.31],["Tata Tiago EV",4.33],["Honda City",4.34],["Kia Sonet",4.36],["Maruti Suzuki Grand Vitara",4.37],["Nissan Tekton",4.38],["Kia Seltos",4.41],["Hyundai i20",4.44],["Skoda Kodiaq",4.44],["Kia Carens",4.46],["Maruti Suzuki e VITARA",4.46],["Renault Triber",4.46],["Hyundai Aura",4.47],["Maruti Suzuki Ertiga",4.49],["Kia Carens Clavis",4.5],["MG Hector Plus",4.5],["Nissan Gravite",4.5],["Hyundai Grand i10 Nios",4.51],["Maruti Suzuki S-Presso",4.51],["Tata Nexon EV",4.51],["Toyota Urban Cruiser Hyryder",4.51],["Honda Amaze",4.52],["Hyundai Venue",4.52],["Maruti Suzuki Fronx",4.52],["Maruti Suzuki Swift",4.52],["Tata Nexon",4.52],["Maruti Suzuki Eeco",4.53],["Maruti Suzuki Victoris",4.53],["Toyota Urban Cruiser Taisor",4.53],["Maruti Suzuki Alto K10",4.54],["Tata Altroz",4.55],["Toyota Innova Hycross",4.55],["MG Windsor EV",4.56],["Hyundai Bayon",4.57],["Kia Carens Clavis EV",4.57],["Tata Tiago",4.57],["Tata Curvv",4.58],["Tata Safari",4.58],["Hyundai Exter",4.59],["Mahindra Bolero Neo Plus",4.59],["Tata Punch",4.6],["Maruti Suzuki Dzire",4.61],["Hyundai Creta",4.62],["Tata Curvv EV",4.62],["Hyundai Alcazar",4.63],["Mahindra Bolero Neo",4.63],["Mahindra XUV 7XO",4.63],["Renault Duster",4.64],["MG Hector",4.65],["Toyota Rumion",4.65],["Hyundai Creta N Line",4.66],["Tata Sierra",4.66],["Mahindra XUV 3XO",4.67],["Mahindra Thar Roxx",4.68],["Tata Harrier",4.68],["Tata Aeris",4.69],["Hyundai i20 N Line",4.7],["MG Majestor",4.71],["Mahindra Bolero",4.71],["Mahindra Scorpio-N",4.71],["Tata Punch EV",4.71],["Toyota Fortuner",4.71],["Mahindra XEV 9e",4.72],["Kia Syros",4.75],["Volkswagen Taigun",4.75],["Skoda Kylaq",4.76],["Tata Harrier EV",4.77],["Volkswagen Virtus",4.77],["Hyundai Venue N Line",4.79],["Hyundai Verna",4.82],["Tata Sierra EV",4.83],["Skoda Kushaq",4.85],["Mahindra XEV 9S",4.88],["Toyota Innova Crysta",4.92],["Toyota Glanza",5.0],["Toyota Hilux",5.0]]},{"aspect":"Value for Money","points":[["Toyota Hilux",3.0],["Maruti Suzuki Jimny",3.9],["Honda Elevate",4.0],["Maruti Suzuki Baleno",4.07],["MG Hector Plus",4.19],["Maruti Suzuki Celerio",4.21],["Honda City",4.26],["Hyundai Creta N Line",4.31],["Renault Kwid",4.31],["Skoda Kodiaq",4.33],["Toyota Fortuner",4.34],["MG Astor",4.35],["Maruti Suzuki e VITARA",4.37],["Toyota Innova Hycross",4.37],["Kia Sonet",4.38],["Tata Nexon EV",4.39],["Mahindra Bolero Neo",4.41],["Toyota Urban Cruiser Hyryder",4.42],["Maruti Suzuki Grand Vitara",4.43],["Nissan Tekton",4.44],["Tata Tiago EV",4.45],["Hyundai i20",4.46],["Kia Syros",4.46],["Hyundai Aura",4.47],["MG Majestor",4.47],["Maruti Suzuki Brezza",4.47],["Volkswagen Taigun",4.47],["Hyundai i20 N Line",4.48],["Kia Carens",4.49],["Hyundai Bayon",4.5],["Hyundai Grand i10 Nios",4.5],["Hyundai Venue N Line",4.5],["Maruti Suzuki XL6",4.5],["Skoda Slavia",4.5],["Nissan Magnite",4.51],["Tata Curvv EV",4.51],["Hyundai Creta",4.52],["MG Windsor EV",4.52],["Maruti Suzuki S-Presso",4.52],["Volkswagen Virtus",4.52],["Maruti Suzuki Ertiga",4.53],["Tata Harrier EV",4.54],["Mahindra Thar Roxx",4.55],["Mahindra XEV 9e",4.55],["Maruti Suzuki Fronx",4.55],["Renault Kiger",4.55],["Tata Harrier",4.55],["Tata Nexon",4.55],["Honda Amaze",4.56],["Hyundai Alcazar",4.56],["Hyundai Venue",4.56],["Maruti Suzuki Eeco",4.56],["Skoda Kushaq",4.56],["MG Hector",4.57],["Renault Duster",4.57],["Tata Safari",4.58],["Kia Carens Clavis EV",4.59],["Kia Seltos",4.59],["Maruti Suzuki Alto K10",4.59],["Mahindra Scorpio-N",4.6],["Mahindra XUV 3XO",4.6],["Maruti Suzuki Swift",4.6],["Toyota Rumion",4.61],["Toyota Urban Cruiser Taisor",4.61],["Kia Carens Clavis",4.62],["Mahindra XUV 7XO",4.62],["Maruti Suzuki Victoris",4.62],["Tata Curvv",4.64],["Tata Sierra EV",4.66],["Skoda Kylaq",4.67],["Tata Punch EV",4.68],["Mahindra XEV 9S",4.69],["Nissan Gravite",4.69],["Tata Tiago",4.7],["Mahindra Bolero",4.71],["Tata Altroz",4.71],["Hyundai Exter",4.72],["Tata Punch",4.73],["Tata Sierra",4.73],["Hyundai Verna",4.76],["Mahindra Bolero Neo Plus",4.77],["Maruti Suzuki Dzire",4.77],["Renault Triber",4.77],["Toyota Innova Crysta",4.8],["Tata Aeris",4.88],["Toyota Glanza",5.0]]}],"scale_max":5.0},"table":[{"count":207,"expert":8.0,"make":"Honda","model":"Amaze","owner":4.61,"variants":6},{"count":47,"expert":7.0,"make":"Honda","model":"City","owner":4.42,"variants":8},{"count":28,"expert":null,"make":"Honda","model":"Elevate","owner":4.25,"variants":10},{"count":123,"expert":8.0,"make":"Hyundai","model":"Alcazar","owner":4.59,"variants":20},{"count":317,"expert":7.0,"make":"Hyundai","model":"Aura","owner":4.53,"variants":9},{"count":30,"expert":null,"make":"Hyundai","model":"Bayon","owner":4.29,"variants":11},{"count":736,"expert":9.0,"make":"Hyundai","model":"Creta","owner":4.6,"variants":36},{"count":39,"expert":null,"make":"Hyundai","model":"Creta N Line","owner":4.61,"variants":4},{"count":113,"expert":null,"make":"Hyundai","model":"Exter","owner":4.45,"variants":23},{"count":417,"expert":8.0,"make":"Hyundai","model":"Grand i10 Nios","owner":4.54,"variants":17},{"count":276,"expert":8.0,"make":"Hyundai","model":"Venue","owner":4.64,"variants":36},{"count":28,"expert":null,"make":"Hyundai","model":"Venue N Line","owner":4.79,"variants":6},{"count":49,"expert":null,"make":"Hyundai","model":"Verna","owner":4.77,"variants":28},{"count":406,"expert":8.0,"make":"Hyundai","model":"i20","owner":4.59,"variants":15},{"count":71,"expert":null,"make":"Hyundai","model":"i20 N Line","owner":4.66,"variants":5},{"count":300,"expert":8.0,"make":"Kia","model":"Carens","owner":4.46,"variants":3},{"count":169,"expert":8.0,"make":"Kia","model":"Carens Clavis","owner":4.65,"variants":39},{"count":42,"expert":null,"make":"Kia","model":"Carens Clavis EV","owner":4.66,"variants":9},{"count":230,"expert":8.0,"make":"Kia","model":"Seltos","owner":4.45,"variants":41},{"count":397,"expert":8.0,"make":"Kia","model":"Sonet","owner":4.31,"variants":21},{"count":9,"expert":null,"make":"Kia","model":"Sorento","owner":4.89,"variants":32},{"count":30,"expert":9.0,"make":"Kia","model":"Syros","owner":4.71,"variants":17},{"count":394,"expert":7.0,"make":"MG","model":"Astor","owner":4.27,"variants":1},{"count":41,"expert":7.0,"make":"MG","model":"Hector","owner":4.55,"variants":16},{"count":20,"expert":null,"make":"MG","model":"Hector Plus","owner":4.36,"variants":1},{"count":29,"expert":8.0,"make":"MG","model":"Majestor","owner":4.49,"variants":3},{"count":202,"expert":null,"make":"MG","model":"Windsor EV","owner":4.38,"variants":5},{"count":122,"expert":6.0,"make":"Mahindra","model":"Bolero","owner":4.54,"variants":4},{"count":89,"expert":6.0,"make":"Mahindra","model":"Bolero Neo","owner":4.25,"variants":5},{"count":76,"expert":null,"make":"Mahindra","model":"Bolero Neo Plus","owner":4.71,"variants":2},{"count":null,"expert":6.0,"make":"Mahindra","model":"Scorpio Classic","owner":null,"variants":3},{"count":1294,"expert":8.0,"make":"Mahindra","model":"Scorpio-N","owner":4.7,"variants":50},{"count":null,"expert":null,"make":"Mahindra","model":"Thar","owner":null,"variants":7},{"count":584,"expert":8.0,"make":"Mahindra","model":"Thar Roxx","owner":4.64,"variants":21},{"count":112,"expert":9.0,"make":"Mahindra","model":"XEV 9S","owner":4.62,"variants":4},{"count":213,"expert":8.0,"make":"Mahindra","model":"XEV 9e","owner":4.67,"variants":2},{"count":959,"expert":8.0,"make":"Mahindra","model":"XUV 3XO","owner":4.65,"variants":34},{"count":218,"expert":9.0,"make":"Mahindra","model":"XUV 7XO","owner":4.43,"variants":28},{"count":671,"expert":8.0,"make":"Maruti Suzuki","model":"Alto K10","owner":4.55,"variants":14},{"count":46,"expert":8.0,"make":"Maruti Suzuki","model":"Baleno","owner":3.71,"variants":9},{"count":64,"expert":8.0,"make":"Maruti Suzuki","model":"Brezza","owner":4.32,"variants":11},{"count":464,"expert":7.0,"make":"Maruti Suzuki","model":"Celerio","owner":4.06,"variants":8},{"count":616,"expert":8.0,"make":"Maruti Suzuki","model":"Dzire","owner":4.74,"variants":11},{"count":343,"expert":null,"make":"Maruti Suzuki","model":"Eeco","owner":4.63,"variants":4},{"count":901,"expert":8.0,"make":"Maruti Suzuki","model":"Ertiga","owner":4.58,"variants":9},{"count":1125,"expert":8.0,"make":"Maruti Suzuki","model":"Fronx","owner":4.59,"variants":14},{"count":834,"expert":8.0,"make":"Maruti Suzuki","model":"Grand Vitara","owner":4.5,"variants":35},{"count":354,"expert":6.0,"make":"Maruti Suzuki","model":"Jimny","owner":3.7,"variants":5},{"count":273,"expert":6.0,"make":"Maruti Suzuki","model":"S-Presso","owner":4.45,"variants":15},{"count":635,"expert":8.0,"make":"Maruti Suzuki","model":"Swift","owner":4.53,"variants":17},{"count":336,"expert":8.0,"make":"Maruti Suzuki","model":"Victoris","owner":4.53,"variants":39},{"count":null,"expert":null,"make":"Maruti Suzuki","model":"WagonR","owner":null,"variants":10},{"count":366,"expert":8.0,"make":"Maruti Suzuki","model":"XL6","owner":4.47,"variants":9},{"count":80,"expert":6.0,"make":"Maruti Suzuki","model":"e VITARA","owner":4.27,"variants":4},{"count":134,"expert":null,"make":"Nissan","model":"Gravite","owner":4.44,"variants":6},{"count":225,"expert":8.0,"make":"Nissan","model":"Magnite","owner":4.31,"variants":28},{"count":13,"expert":8.0,"make":"Nissan","model":"Tekton","owner":4.69,"variants":12},{"count":91,"expert":9.0,"make":"Renault","model":"Duster","owner":4.59,"variants":26},{"count":137,"expert":8.0,"make":"Renault","model":"Kiger","owner":4.45,"variants":19},{"count":21,"expert":6.0,"make":"Renault","model":"Kwid","owner":4.48,"variants":4},{"count":295,"expert":8.0,"make":"Renault","model":"Triber","owner":4.58,"variants":7},{"count":37,"expert":8.0,"make":"Skoda","model":"Kodiaq","owner":4.59,"variants":3},{"count":52,"expert":7.0,"make":"Skoda","model":"Kushaq","owner":4.76,"variants":11},{"count":641,"expert":8.0,"make":"Skoda","model":"Kylaq","owner":4.73,"variants":11},{"count":28,"expert":8.0,"make":"Skoda","model":"Slavia","owner":4.65,"variants":10},{"count":109,"expert":null,"make":"Tata","model":"Aeris","owner":4.5,"variants":18},{"count":204,"expert":7.0,"make":"Tata","model":"Altroz","owner":4.65,"variants":27},{"count":385,"expert":6.0,"make":"Tata","model":"Curvv","owner":4.65,"variants":21},{"count":103,"expert":7.0,"make":"Tata","model":"Curvv EV","owner":4.47,"variants":2},{"count":386,"expert":8.0,"make":"Tata","model":"Harrier","owner":4.68,"variants":53},{"count":174,"expert":8.0,"make":"Tata","model":"Harrier EV","owner":4.54,"variants":17},{"count":1068,"expert":8.0,"make":"Tata","model":"Nexon","owner":4.59,"variants":76},{"count":254,"expert":8.0,"make":"Tata","model":"Nexon EV","owner":4.4,"variants":9},{"count":379,"expert":8.0,"make":"Tata","model":"Punch","owner":4.64,"variants":26},{"count":124,"expert":9.0,"make":"Tata","model":"Punch EV","owner":4.43,"variants":6},{"count":353,"expert":8.0,"make":"Tata","model":"Safari","owner":4.63,"variants":46},{"count":443,"expert":8.0,"make":"Tata","model":"Sierra","owner":4.73,"variants":55},{"count":21,"expert":8.0,"make":"Tata","model":"Sierra EV","owner":4.25,"variants":15},{"count":199,"expert":8.0,"make":"Tata","model":"Tiago","owner":4.41,"variants":20},{"count":107,"expert":9.0,"make":"Tata","model":"Tiago EV","owner":4.52,"variants":4},{"count":null,"expert":null,"make":"Tata","model":"Tigor","owner":null,"variants":14},{"count":667,"expert":7.0,"make":"Toyota","model":"Fortuner","owner":4.54,"variants":11},{"count":18,"expert":null,"make":"Toyota","model":"Glanza","owner":4.72,"variants":9},{"count":11,"expert":7.0,"make":"Toyota","model":"Hilux","owner":3.91,"variants":3},{"count":33,"expert":7.0,"make":"Toyota","model":"Innova Crysta","owner":4.69,"variants":14},{"count":400,"expert":8.0,"make":"Toyota","model":"Innova Hycross","owner":4.58,"variants":10},{"count":186,"expert":8.0,"make":"Toyota","model":"Rumion","owner":4.68,"variants":15},{"count":654,"expert":8.0,"make":"Toyota","model":"Urban Cruiser Hyryder","owner":4.43,"variants":23},{"count":321,"expert":8.0,"make":"Toyota","model":"Urban Cruiser Taisor","owner":4.6,"variants":12},{"count":80,"expert":7.0,"make":"Volkswagen","model":"Taigun","owner":4.66,"variants":11},{"count":8,"expert":8.0,"make":"Volkswagen","model":"Tayron","owner":5.0,"variants":2},{"count":427,"expert":8.0,"make":"Volkswagen","model":"Virtus","owner":4.67,"variants":12}],"theme_rows":0,"themes":[]},"runs":[{"gates_ok":true,"idempotent":true,"kind":"Incremental run","name":"2026-11-13","rows_written":48290,"started":"2026-11-13","stopped":null,"wrote":true},{"gates_ok":true,"idempotent":true,"kind":"Full run","name":"2026-11-13_2","rows_written":25955,"started":"2026-11-13","stopped":null,"wrote":true},{"gates_ok":true,"idempotent":true,"kind":"Full audit","name":"audit_2026-11-14","rows_written":null,"started":"2026-11-14","stopped":"--no-write: staged and gated, the KB was not touched","wrote":false},{"gates_ok":true,"idempotent":true,"kind":"Review layers","name":"reviews_pilot_2026-11-14","rows_written":null,"started":"2026-11-14","stopped":"--no-write: staged and gated, the KB was not touched","wrote":false},{"gates_ok":true,"idempotent":true,"kind":"Review layers","name":"reviews_dry_2026-11-15","rows_written":null,"started":"2026-11-14","stopped":"--no-write: staged and gated, the KB was not touched","wrote":false},{"gates_ok":true,"idempotent":true,"kind":"Review layers","name":"reviews_2026-11-15","rows_written":1248,"started":"2026-11-14","stopped":null,"wrote":true}],"stages":[{"id":"sources","number":{"label":"source observations recorded in the KB","run":"KB copy","value":8415},"sub":["CarWale, CarDekho specs","OEM brochure PDFs","Autocar India scores","CarWale owner ratings","Owner-saved forum pages"],"text":"Specs and prices come from the CarWale and CarDekho model pages. OEM brochure PDFs are read page by page and outrank the sites. Autocar India supplies expert scores and CarWale supplies owner ratings and reviews. Forum pages the owner saves by hand are the source for owner themes; the tool never contacts that forum.","title":["Sources"]},{"id":"discovery","number":{"label":"new models found (107 models processed)","run":"audit_2026-11-14","value":16},"sub":["What is new,","changed or gone"],"text":"Reads each brand's listing on both sites and compares it with the KB. Every model is sorted as new, existing, no longer listed, upcoming or out of scope. An incremental run processes only models whose listing changed.","title":["Discovery"]},{"id":"extraction","number":{"label":"pages read (370 fetched, 1398 from cache)","run":"audit_2026-11-14","value":1768},"sub":["Structured page data,","no LLM for specs"],"text":"Reads the structured data both sites embed in each page. No language model is used for specs. Every value keeps its address, the time it was fetched and the method used.","title":["Extraction"]},{"id":"linking","number":{"label":"variants linked across both sites and the KB","run":"audit_2026-11-14","value":1243},"sub":["Same fuel, gearbox,","trim words; price","within 0.5%"],"text":"A CarWale version is linked to a CarDekho variant, and both to a KB variant, only when fuel, gearbox class and trim words are equal and the ex-showroom prices are within 0.5%. A page that turns out to show a different variant than requested is discarded.","title":["Variant linking"]},{"id":"reconcile","number":{"label":"disagreements between sources logged","run":"audit_2026-11-14","value":591},"sub":["Brochure beats two","agreeing sites; one","site alone decides","nothing"],"text":"An OEM brochure value outranks two agreeing sites. Two agreeing sites may fill a blank or confirm an existing value. One site alone decides nothing, so the cell stays blank and is listed with the reason. Every disagreement between sources is logged.","title":["Reconciliation"]},{"id":"staging","number":{"label":"operations staged on the copy","run":"audit_2026-11-14","value":22779},"sub":["Changes go to a copy,","never the live file"],"text":"Every change is first applied to a scratch copy of the KB. The live file is not opened for writing at this point.","title":["Staging copy"]},{"id":"gates","number":{"label":"gates passed; the idempotency re-run made 0 changes","run":"audit_2026-11-14","value":"4 of 4"},"sub":["Schema, provenance,","rows never dropped,","every change explained"],"text":"Four scripted checks run on the copy: the schema is unchanged and the database is intact, every new or changed value has provenance, no table loses rows, and every changed row appears in the run log. A second run on the result must change nothing. If any gate fails, nothing reaches the KB.","title":["Four gates"]},{"id":"kb","number":{"label":"rows written, integrity check ok","run":"2026-11-13_2","value":25955},"sub":["Written in one","transaction after","a backup"],"text":"Only after the gates pass: a check that nothing else holds the file, a hash check, a backup, then one transaction, an integrity check and a table-by-table comparison with the staging copy. Rows are never deleted. A model or variant no longer listed is only flagged for the owner.","title":["Knowledge base"]},{"id":"verify","number":{"label":"cells re-checked; 404 decided as match or mismatch","run":"audit_2026-11-14","value":500},"sub":["A different model","re-reads the source"],"text":"A different model from the one that extracted values re-reads the source page, or the cited brochure page, for a random sample of values and says whether the source supports each one. Its verdicts go to a file that nothing else edits, and all accuracy figures come from that file alone.","title":["Independent","verification"]},{"id":"review","number":{"label":"items waiting for the owner","run":"audit_2026-11-14","value":320},"sub":["Only what needs a","human decision"],"text":"Anything the tool cannot decide goes into one review file with tick boxes: values both sites agree on but that differ from the KB, blanks both sites could fill, and models that look like a facelift or are no longer listed. Nothing in it is applied until the owner approves it.","title":["Owner review file"]},{"id":"export","number":null,"sub":["Catalogue and scores","for the engine"],"text":"A separate step, outside kbpipe, turns the KB into the data files the recommendation engine reads. kbpipe itself does not export or open pull requests.","title":["Export"]},{"id":"engine","number":{"label":"variants across 92 models available to it","run":"KB copy","value":1464},"sub":["Unknown values stay","unknown"],"text":"The engine ranks cars from the KB's values and from the expert and owner scores. A value the KB does not hold is treated as unknown, not as a no.","title":["Recommendation","engine"]}],"trust":{"by_class":{"aggregator":{"accuracy":0.9935483870967742,"ci":[0.9644,0.9989],"match":154,"mismatch":1,"n":200,"unreachable":45,"verifier_error":0},"brochure":{"accuracy":0.9603960396039604,"ci":[0.9026,0.9845],"match":97,"mismatch":4,"n":125,"unreachable":24,"verifier_error":0},"legacy":{"accuracy":0.75,"ci":[0.6745,0.8128],"match":111,"mismatch":37,"n":175,"unreachable":26,"verifier_error":1}},"by_group":{"capacity":{"accuracy":0.9838709677419355,"ci":[0.9141,0.9971],"match":61,"mismatch":1,"n":75,"unreachable":13,"verifier_error":0},"comfort":{"accuracy":0.9333333333333333,"ci":[0.8407,0.9738],"match":56,"mismatch":4,"n":75,"unreachable":14,"verifier_error":1},"dimensions":{"accuracy":0.9545454545454546,"ci":[0.782,0.9919],"match":21,"mismatch":1,"n":50,"unreachable":28,"verifier_error":0},"drivetrain":{"accuracy":0.9387755102040817,"ci":[0.8348,0.979],"match":46,"mismatch":3,"n":50,"unreachable":1,"verifier_error":0},"efficiency":{"accuracy":0.873015873015873,"ci":[0.7689,0.9342],"match":55,"mismatch":8,"n":75,"unreachable":12,"verifier_error":0},"engine":{"accuracy":1.0,"ci":[0.9286,1.0],"match":50,"mismatch":0,"n":50,"unreachable":0,"verifier_error":0},"price":{"accuracy":0.58,"ci":[0.4423,0.7063],"match":29,"mismatch":21,"n":50,"unreachable":0,"verifier_error":0},"safety":{"accuracy":0.9166666666666666,"ci":[0.8045,0.9671],"match":44,"mismatch":4,"n":75,"unreachable":27,"verifier_error":0}},"class_explain":{"aggregator":"Values that CarWale and CarDekho both state for the same variant, written by kbpipe.","brochure":"Values taken from a manufacturer brochure PDF, each citing its page.","legacy":"Values from the June 2026 import. They recorded no web address, so they are checked against today's page for that variant."},"class_label":{"aggregator":"Two agreeing sites","brochure":"OEM brochure","legacy":"Legacy import"},"class_order":["aggregator","brochure","legacy"],"grid":{"aggregator/capacity":{"accuracy":1.0,"ci":[0.8389,1.0],"match":20,"mismatch":0,"n":25,"unreachable":5,"verifier_error":0},"aggregator/comfort":{"accuracy":1.0,"ci":[0.8389,1.0],"match":20,"mismatch":0,"n":25,"unreachable":5,"verifier_error":0},"aggregator/dimensions":{"accuracy":null,"ci":null,"match":0,"mismatch":0,"n":25,"unreachable":25,"verifier_error":0},"aggregator/drivetrain":{"accuracy":1.0,"ci":[0.862,1.0],"match":24,"mismatch":0,"n":25,"unreachable":1,"verifier_error":0},"aggregator/efficiency":{"accuracy":0.9444444444444444,"ci":[0.7424,0.9901],"match":17,"mismatch":1,"n":25,"unreachable":7,"verifier_error":0},"aggregator/engine":{"accuracy":1.0,"ci":[0.8668,1.0],"match":25,"mismatch":0,"n":25,"unreachable":0,"verifier_error":0},"aggregator/price":{"accuracy":1.0,"ci":[0.8668,1.0],"match":25,"mismatch":0,"n":25,"unreachable":0,"verifier_error":0},"aggregator/safety":{"accuracy":1.0,"ci":[0.8569,1.0],"match":23,"mismatch":0,"n":25,"unreachable":2,"verifier_error":0},"brochure/capacity":{"accuracy":1.0,"ci":[0.8668,1.0],"match":25,"mismatch":0,"n":25,"unreachable":0,"verifier_error":0},"brochure/comfort":{"accuracy":0.9090909090909091,"ci":[0.7218,0.9747],"match":20,"mismatch":2,"n":25,"unreachable":3,"verifier_error":0},"brochure/efficiency":{"accuracy":1.0,"ci":[0.8668,1.0],"match":25,"mismatch":0,"n":25,"unreachable":0,"verifier_error":0},"brochure/engine":{"accuracy":1.0,"ci":[0.8668,1.0],"match":25,"mismatch":0,"n":25,"unreachable":0,"verifier_error":0},"brochure/safety":{"accuracy":0.5,"ci":[0.15,0.85],"match":2,"mismatch":2,"n":25,"unreachable":21,"verifier_error":0},"legacy/capacity":{"accuracy":0.9411764705882353,"ci":[0.7302,0.9895],"match":16,"mismatch":1,"n":25,"unreachable":8,"verifier_error":0},"legacy/comfort":{"accuracy":0.8888888888888888,"ci":[0.672,0.969],"match":16,"mismatch":2,"n":25,"unreachable":6,"verifier_error":1},"legacy/dimensions":{"accuracy":0.9545454545454546,"ci":[0.782,0.9919],"match":21,"mismatch":1,"n":25,"unreachable":3,"verifier_error":0},"legacy/drivetrain":{"accuracy":0.88,"ci":[0.7004,0.9583],"match":22,"mismatch":3,"n":25,"unreachable":0,"verifier_error":0},"legacy/efficiency":{"accuracy":0.65,"ci":[0.4329,0.8188],"match":13,"mismatch":7,"n":25,"unreachable":5,"verifier_error":0},"legacy/price":{"accuracy":0.16,"ci":[0.064,0.3465],"match":4,"mismatch":21,"n":25,"unreachable":0,"verifier_error":0},"legacy/safety":{"accuracy":0.9047619047619048,"ci":[0.7109,0.9735],"match":19,"mismatch":2,"n":25,"unreachable":4,"verifier_error":0}},"groups":["price","engine","drivetrain","dimensions","capacity","efficiency","safety","comfort"],"legacy":{"all":{"accuracy":0.75,"ci":[0.6745,0.8128],"match":111,"mismatch":37,"n":175,"unreachable":26,"verifier_error":1},"mismatch_price":21,"mismatch_total":37,"non_price":{"accuracy":0.8699186991869918,"ci":[0.7991,0.9183],"match":107,"mismatch":16,"n":150,"unreachable":26,"verifier_error":1},"price":{"accuracy":0.16,"ci":[0.064,0.3465],"match":4,"mismatch":21,"n":25,"unreachable":0,"verifier_error":0}},"legacy_cells":14156,"legacy_checkable":9096,"n":500,"overall":{"accuracy":0.8960396039603961,"ci":[0.8625,0.9222],"match":362,"mismatch":42,"n":500,"unreachable":95,"verifier_error":1},"planted":{"flagged":8,"n":8},"run":"audit_2026-11-14","started":"2026-11-14"},"verify_runs":[{"accuracy":0.9699812382739212,"ci":[0.9518,0.9814],"match":517,"mismatch":16,"n":729,"name":"2026-11-13","unreachable":11,"verifier_error":185},{"accuracy":1.0,"ci":[0.8569,1.0],"match":23,"mismatch":0,"n":23,"name":"2026-11-13_2","unreachable":0,"verifier_error":0},{"accuracy":0.8960396039603961,"ci":[0.8625,0.9222],"match":362,"mismatch":42,"n":500,"name":"audit_2026-11-14","unreachable":95,"verifier_error":1}]}</script>
+<script>
+(function(){
+'use strict';
+var D=JSON.parse(document.getElementById('data').textContent);
+function $(s,r){return (r||document).querySelector(s);}
+function fmt(n){return n==null?'–':Number(n).toLocaleString('en-US');}
+function pct(x,d){return x==null?'n/a':(x*100).toFixed(d==null?1:d)+'%';}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function el(id){return document.getElementById(id);}
+var G=D.glance;
+
+/* ---- theme */
+(function(){
+  var b=el('themebtn'),modes=['auto','light','dark'],i=0;
+  try{var s=localStorage.getItem('kbdash-theme'); if(s&&modes.indexOf(s)>-1)i=modes.indexOf(s);}catch(e){}
+  function apply(){var m=modes[i]; if(m==='auto')document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme',m); b.textContent='Theme: '+m;
+    try{localStorage.setItem('kbdash-theme',m);}catch(e){} }
+  b.addEventListener('click',function(){i=(i+1)%3;apply();rerender();});
+  apply();
+})();
+
+/* ---- header and footer */
+el('m-date').textContent=D.meta.generated; el('m-hash').textContent=D.meta.kb_hash8;
+el('f-date').textContent=D.meta.generated; el('f-hash').textContent=D.meta.kb_hash8;
+el('m-runs').textContent=D.meta.runs_used.length+' pipeline runs on record';
+
+/* ---- glance */
+(function(){
+  var vs=G.values?G.with_evidence/G.values:null, vu=G.values?G.with_url/G.values:null;
+  var items=[
+    {g:'The catalogue'},
+    {v:fmt(G.makes),l:'Manufacturers'},{v:fmt(G.models),l:'Models'},{v:fmt(G.variants),l:'Variants',s:'one trim, engine and gearbox each'},{v:fmt(G.powertrains),l:'Powertrains',s:'distinct engine descriptions'},
+    {g:'The facts and where they come from'},
+    {v:fmt(G.values),l:'Values recorded',s:'non-empty spec and feature cells across '+G.n_fields+' tracked fields'},
+    {v:pct(vs,1),l:'Values with recorded source evidence',s:fmt(G.with_evidence)+' of '+fmt(G.values)+'; '+pct(vu,1)+' cite a web or PDF address'},
+    {g:'Reviews'},
+    {v:fmt(G.expert_rows),l:'Expert score rows',s:'across '+fmt(G.expert_models)+' models, out of 10'},
+    {v:fmt(G.owner_rows),l:'Owner rating rows',s:'across '+fmt(G.owner_models)+' models, out of 5'},
+    {v:fmt(G.owner_ratings_total),l:'Ratings behind the owner scores',s:'sum of each model’s overall rating count'}
+  ];
+  el('glance-grid').innerHTML=items.map(function(it){
+    if(it.g)return '<div class="group-label">'+esc(it.g)+'</div>';
+    return '<div class="stat"><span class="v">'+it.v+'</span><span class="l">'+esc(it.l)+'</span>'+(it.s?'<span class="s">'+esc(it.s)+'</span>':'')+'</div>';}).join('');
+  el('glance-note').textContent='Values are counted from the canonical view of the KB (cells under quarantine are excluded; an edition inherits its base variant’s cells). A feature marked absent counts as a value; an empty cell does not.';
+})();
+
+/* ---- tooltip */
+var tip=el('tip');
+function showTip(t,x,y){tip.textContent=t;tip.classList.add('on');var w=tip.offsetWidth,h=tip.offsetHeight;var nx=Math.min(innerWidth-w-8,Math.max(8,x+12)),ny=y-h-12;if(ny<8)ny=y+16;tip.style.left=nx+'px';tip.style.top=ny+'px';}
+function hideTip(){tip.classList.remove('on');}
+document.addEventListener('mousemove',function(e){var t=e.target.closest&&e.target.closest('[data-tip]');if(t)showTip(t.getAttribute('data-tip'),e.clientX,e.clientY);else hideTip();});
+document.addEventListener('scroll',hideTip,true);
+
+/* ---- pipeline diagram */
+var NW=170,NH=140,GX=30,X0=20,YA=52,YB=272;
+function nodePos(i){var row=i<6?0:1,col=i%6;return {x:X0+col*(NW+GX),y:row?YB:YA};}
+var selStage='reconcile';
+function pipeSvg(){
+  var S=D.stages,p='';
+  p+='<svg viewBox="0 0 1210 520" role="img" aria-labelledby="pt pd"><title id="pt">Pipeline stages</title><desc id="pd">Twelve stages from sources to the recommendation engine. Row one: sources, discovery, extraction, variant linking, reconciliation, staging copy. Row two: four gates, knowledge base, independent verification, owner review file, export, recommendation engine.</desc>';
+  p+='<defs><marker id="ar" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ink2)"/></marker></defs>';
+  for(var i=0;i<S.length-1;i++){
+    var a=nodePos(i),b=nodePos(i+1);
+    if(i===5){var ax=a.x+NW/2,mid=(YA+NH+YB)/2;var bx=b.x+NW/2;p+='<path class="edge" marker-end="url(#ar)" d="M'+ax+' '+(a.y+NH)+'V'+mid+'H'+bx+'V'+(b.y-2)+'"/>';}
+    else p+='<path class="edge" marker-end="url(#ar)" d="M'+(a.x+NW)+' '+(a.y+NH/2)+'H'+(b.x-2)+'"/>';
+  }
+  S.forEach(function(s,i){
+    var q=nodePos(i),cx=q.x+NW/2,ty=q.y+26+(s.title.length>1?0:0);
+    p+='<g class="node'+(s.id==='kb'?' kbnode':'')+(s.id===selStage?' sel':'')+'" tabindex="0" role="button" data-stage="'+s.id+'" aria-label="'+esc(s.title.join(' '))+'. Select for details.">';
+    p+='<rect class="box" x="'+q.x+'" y="'+q.y+'" width="'+NW+'" height="'+NH+'" rx="6"/>';
+    p+='<text class="step" x="'+(q.x+10)+'" y="'+(q.y+16)+'">'+(i+1)+'</text>';
+    var y=q.y+36;
+    s.title.forEach(function(t){p+='<text x="'+(q.x+NW/2)+'" y="'+y+'" text-anchor="middle" font-size="16" font-weight="700">'+esc(t)+'</text>';y+=19;});
+    y+=6;
+    s.sub.forEach(function(t){p+='<text class="t2" x="'+(q.x+NW/2)+'" y="'+y+'" text-anchor="middle" font-size="12.5">'+esc(t)+'</text>';y+=17;});
+    p+='</g>';
+  });
+  // rule tags
+  function tag(cx,y,w,txt,toY,fromY){var x=cx-w/2;return '<g class="tag"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="26" rx="13"/><text x="'+cx+'" y="'+(y+17.5)+'" text-anchor="middle">'+esc(txt)+'</text></g><path class="tagline" d="M'+cx+' '+fromY+'V'+toY+'"/>';}
+  var r4=nodePos(4);p+=tag(r4.x+NW/2,12,250,'Never fabricates: unknowns stay blank',YA-2,38);
+  var g0=nodePos(6),k0=nodePos(7);
+  p+=tag(g0.x+NW/2,YB+NH+28,176,'Never deletes rows',YB+NH+2,YB+NH+28);
+  p+=tag(k0.x+NW/2,YB+NH+28,214,'Backup before every write',YB+NH+2,YB+NH+28);
+  p+=tag(k0.x+NW/2+20,YB+NH+64,276,'Local git history of every KB state',YB+NH+54,YB+NH+64);
+  p+='</svg>';
+  return p;
+}
+function stageDetail(){
+  var s=D.stages.filter(function(x){return x.id===selStage;})[0];if(!s)return;
+  var n=s.number,h='<div><h3>'+esc(s.title.join(' '))+'</h3><p>'+esc(s.text)+'</p></div><div>';
+  if(n)h+='<div class="big">'+(typeof n.value==='number'?fmt(n.value):esc(n.value))+'</div><div class="biglabel">'+esc(n.label)+'</div><div class="src">From '+(n.run==='KB copy'?'the KB copy this page was built from':'run '+esc(n.run))+'</div>';
+  else h+='<div class="biglabel">No figure from the run folders for this stage.</div>';
+  el('stage-detail').innerHTML=h+'</div>';
+}
+function bindPipe(){
+  var host=el('pipe-svg');
+  function pick(t){var g=t.closest('.node');if(!g)return;selStage=g.getAttribute('data-stage');host.querySelectorAll('.node').forEach(function(n){n.classList.toggle('sel',n===g);});stageDetail();}
+  host.addEventListener('click',function(e){pick(e.target);});
+  host.addEventListener('mouseover',function(e){pick(e.target);});
+  host.addEventListener('focusin',function(e){pick(e.target);});
+  host.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(e.target);}});
+}
+el('pipe-svg').innerHTML=pipeSvg();bindPipe();stageDetail();
+
+/* ---- entity diagram */
+function entSvg(){
+  var E=D.entities;
+  var BW=170,BH=54;
+  var B={
+    manufacturer:[30,60],model:[230,60],generation:[430,60],variant:[630,60],powertrain:[830,60],warranty:[130,142],
+    evidence_amendment:[30,292],source:[230,292],source_observation:[430,292],field_provenance:[630,292],evidence_quarantine:[830,292],
+    safety_test:[25,482],safety_test_applicability:[185,482],safety_rating:[415,482],
+    professional_assessment:[625,482],owner_rating:[830,482],owner_theme:[975,482]};
+  var bw={safety_test:140,safety_test_applicability:210,safety_rating:150,professional_assessment:190,owner_rating:130,owner_theme:115,warranty:170};
+  function W(k){return bw[k]||BW;}
+  function R(k){return [B[k][0]+W(k),B[k][1]+BH/2];} function L(k){return [B[k][0],B[k][1]+BH/2];}
+  function T(k,dx){return [B[k][0]+W(k)/2+(dx||0),B[k][1]];} function Bt(k,dx){return [B[k][0]+W(k)/2+(dx||0),B[k][1]+BH];}
+  function line(a,b,dash){return '<path class="'+(dash?'tagline':'edge')+'" '+(dash?'':'marker-end="url(#ar2)" ')+'d="M'+a[0]+' '+a[1]+'L'+b[0]+' '+b[1]+'"/>';}
+  var p='<svg viewBox="0 0 1110 610" role="img" aria-labelledby="et ed"><title id="et">Main tables of the knowledge base</title><desc id="ed">Catalogue tables: manufacturer, model, generation, variant, powertrain, warranty. Evidence tables: source, source observation, field provenance, evidence quarantine, evidence amendment. Safety tables: safety test, safety test applicability, safety rating. Review tables: professional assessment, owner rating, owner theme.</desc>';
+  p+='<defs><marker id="ar2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ink2)"/></marker></defs>';
+  function band(x,y,w,h,t){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="8" fill="none" stroke="var(--line)" stroke-width="1.5"/><text class="tm" x="'+(x+14)+'" y="'+(y+24)+'" font-size="12" font-weight="700" letter-spacing="1.2">'+t.toUpperCase()+'</text>';}
+  p+=band(10,10,1090,206,'Catalogue')+band(10,236,1090,162,'Evidence and provenance')+band(10,418,585,176,'Safety')+band(610,418,490,176,'Reviews');
+  var edges=[line(R('manufacturer'),L('model')),line(R('model'),L('generation')),line(R('generation'),L('variant')),line(L('powertrain'),R('variant')),
+    line(Bt('manufacturer'),T('warranty',-30)),line(Bt('model'),T('warranty',30)),
+    line(R('source'),L('source_observation')),line(R('source_observation'),L('field_provenance')),line(Bt('variant'),T('field_provenance')),
+    line(L('evidence_quarantine'),R('field_provenance'),true),line(R('safety_test'),L('safety_test_applicability'))];
+  p+=edges.join('');
+  var labels={evidence_quarantine:'hides cells and evidence',evidence_amendment:'log of in-place fixes',source:'one row per site or agency',powertrain:'engine descriptions',source_observation:'one page read, as found',field_provenance:'which observation backs which cell'};
+  Object.keys(B).forEach(function(k){
+    var x=B[k][0],y=B[k][1],w=W(k),hot=(k==='variant'||k==='field_provenance');
+    p+='<g><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+BH+'" rx="5" fill="'+(hot?'var(--accent-soft)':'var(--surface)')+'" stroke="'+(hot?'var(--accent)':'var(--line)')+'" stroke-width="1.5"/>';
+    p+='<text x="'+(x+10)+'" y="'+(y+21)+'" font-size="12" font-weight="700" class="mono">'+k+'</text>';
+    p+='<text x="'+(x+10)+'" y="'+(y+41)+'" font-size="13" class="t2"><tspan font-weight="700" fill="var(--ink)" style="fill:var(--ink)">'+fmt(E[k])+'</tspan> rows</text></g>';
+    if(labels[k]&&B[k][1]!==482)p+='<text class="tm" x="'+x+'" y="'+(y+BH+16)+'" font-size="11.5">'+esc(labels[k])+'</text>';
+  });
+  p+='<text class="tm" x="25" y="574" font-size="12">Applicability points at a model or family, never at a single variant.</text>';
+  p+='<text class="tm" x="625" y="574" font-size="12">Scores and themes attach to a model and to the source they came from.</text>';
+  return p+'</svg>';
+}
+el('ent-svg').innerHTML=entSvg();
+
+/* ---- heatmap */
+function heat(){
+  var H=D.heat,h='<table class="heat"><caption class="sr">Percent of values present, by manufacturer and field group</caption><thead><tr><th scope="col"><span class="sr">Manufacturer</span></th>';
+  H.groups.forEach(function(g){h+='<th scope="col">'+g+'</th>';});h+='</tr></thead><tbody>';
+  H.makes.forEach(function(m,i){
+    h+='<tr'+(m==='All makes'?' class="all"':'')+'><th scope="row">'+esc(m)+'<small>'+fmt(H.n_variants[i])+' variants</small></th>';
+    H.pct[i].forEach(function(v,j){
+      if(v==null){h+='<td>–</td>';return;}
+      var t=Math.max(0,Math.min(1,v)),dark=t>=.62;
+      h+='<td data-tip="'+esc(m+', '+H.groups[j]+': '+(v*100).toFixed(1)+'% of values present')+'" style="background:color-mix(in srgb,var(--heat-hi) '+(t*100).toFixed(1)+'%,var(--heat-lo));color:var(--heat-on-'+(dark?'hi':'lo')+')">'+Math.round(v*100)+'%</td>';});
+    h+='</tr>';});
+  el('heat').innerHTML=h+'</tbody></table>';
+  var fg=D.heat.fields_per_group,lines=D.heat.groups.map(function(g){return g+': '+fg[g].join(', ');});
+  el('heat-note').textContent='Percent of value slots filled, across all variants of the manufacturer. Efficiency counts a variant as covered when it has any of km/l, km/kg or electric range, since each car has only one of them. Fuel tank is not counted for electric cars. Fields per group: '+lines.join('; ')+'.';
+}
+heat();
+function bars(id,key){
+  var rows=D.per_make.slice().sort(function(a,b){return b[key]-a[key]||(a.make<b.make?-1:1);}),mx=Math.max.apply(null,rows.map(function(r){return r[key];}))||1;
+  el(id).innerHTML=rows.map(function(r){return '<div class="brow" data-tip="'+esc(r.make+': '+fmt(r[key])+' '+key)+'"><span class="bl">'+esc(r.make)+'</span><span class="track"><span class="fill" style="width:'+(r[key]/mx*100).toFixed(1)+'%"></span></span><span class="bv">'+fmt(r[key])+'</span></div>';}).join('');
+}
+bars('bars-models','models');bars('bars-variants','variants');
+
+/* ---- growth */
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dshort(s){var p=s.split('-');return parseInt(p[2],10)+' '+MONTHS[parseInt(p[1],10)-1];}
+function growth(){
+  var pts=D.growth;
+  el('growth-intro').textContent=pts.length?('The KB at each recorded state, in order. '+(D.meta.growth_source==='history'?'States are read from the local history repository, which stores a dump of every table before and after each write.':'States are taken from the run folders, because the history repository could not be read.')):'No growth data could be read.';
+  var panels=[{k:'models',t:'Models'},{k:'variants',t:'Variants'}];
+  if(pts.some(function(p){return p.review_rows;}))panels.push({k:'review_rows',t:'Review rows (expert and owner)'});
+  var host=el('growth-charts');host.innerHTML='';
+  panels.forEach(function(pn){var d=document.createElement('div');d.innerHTML='<h3>'+pn.t+'</h3><div class="gchart"></div>';host.appendChild(d);d._k=pn.k;});
+  drawGrowth();
+  var h='<thead><tr><th>State</th><th>Date</th><th>KB hash</th><th>Models</th><th>Variants</th><th>Review rows</th></tr></thead><tbody>';
+  pts.forEach(function(p){h+='<tr><td>'+esc(p.label)+'</td><td>'+esc(p.date)+'</td><td class="mono">'+esc(p.sha8)+'</td><td>'+fmt(p.models)+'</td><td>'+fmt(p.variants)+'</td><td>'+(p.review_rows==null?'–':fmt(p.review_rows))+'</td></tr>';});
+  el('growth-table').innerHTML=h+'</tbody>';
+  var rh='<thead><tr><th>Run</th><th>Started (UTC)</th><th>Kind</th><th>Wrote to KB</th><th>Rows written</th><th>Gates</th></tr></thead><tbody>';
+  D.runs.forEach(function(r){rh+='<tr><td>'+esc(r.name)+'</td><td>'+esc(r.started)+'</td><td>'+esc(r.kind)+'</td><td>'+(r.wrote?'yes':'no'+(r.stopped?' (dry run)':''))+'</td><td>'+(r.rows_written==null?'–':fmt(r.rows_written))+'</td><td>'+(r.gates_ok==null?'–':(r.gates_ok?'all passed':'failed'))+'</td></tr>';});
+  el('runs-table').innerHTML=rh+'</tbody>';
+}
+function drawGrowth(){
+  var pts=D.growth;
+  document.querySelectorAll('#growth-charts > div').forEach(function(d){
+    var k=d._k,host=d.querySelector('.gchart'),W=Math.max(280,host.clientWidth||d.clientWidth||320),H=190,L=44,Rm=18,Tp=26,Bm=34;
+    var vals=pts.map(function(p){return p[k]==null?0:p[k];}),mx=Math.max.apply(null,vals)||1;
+    var pw=Math.pow(10,Math.floor(Math.log10(mx*1.1))),m=mx*1.1/pw,steps=[1,1.2,1.5,2,2.5,3,4,5,6,8,10],top=pw*steps.filter(function(x){return x>=m-1e-9;})[0];
+    var xs=function(i){return pts.length>1?L+(W-L-Rm)*i/(pts.length-1):L+(W-L-Rm)/2;},ys=function(v){return Tp+(H-Tp-Bm)*(1-v/top);};
+    var s='<svg width="'+W+'" height="'+H+'" role="img" aria-label="'+esc(k.replace('_',' '))+' at each recorded KB state: '+esc(vals.map(fmt).join(', '))+'">';
+    [0,.5,1].forEach(function(f){var y=ys(top*f);s+='<line x1="'+L+'" x2="'+(W-Rm)+'" y1="'+y+'" y2="'+y+'" stroke="var(--line2)"/><text class="tm" x="'+(L-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="11">'+fmt(Math.round(top*f))+'</text>';});
+    var path=pts.map(function(p,i){return (i?'L':'M')+xs(i)+' '+ys(vals[i]);}).join('');
+    if(pts.length>1)s+='<path d="'+path+'" fill="none" stroke="var(--accent)" stroke-width="2.5"/>';
+    pts.forEach(function(p,i){var x=xs(i),y=ys(vals[i]);
+      s+='<circle cx="'+x+'" cy="'+y+'" r="5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" data-tip="'+esc(p.label+' ('+p.date+'): '+fmt(vals[i]))+'"/>';
+      s+='<text x="'+x+'" y="'+(y-10)+'" text-anchor="'+(i===0?'start':i===pts.length-1?'end':'middle')+'" font-size="12" font-weight="700">'+fmt(vals[i])+'</text>';
+      s+='<text class="tm" x="'+x+'" y="'+(H-12)+'" text-anchor="'+(i===0?'start':i===pts.length-1?'end':'middle')+'" font-size="11">'+(i+1)+'</text>';});
+    s+='<text class="tm" x="'+L+'" y="'+(H-0)+'" font-size="10.5" dy="-1">State number, in order (see table)</text>';
+    host.innerHTML=s+'</svg>';
+  });
+}
+growth();
+
+/* ---- trust */
+var VERD=[['match','Match: the source states this value'],['mismatch','Mismatch: the source states a different value'],['unreachable','Unreachable: page gone, or it no longer states the field. Not counted as a match'],['verifier_error','Verifier error: no usable reply']];
+function stack(c){
+  var n=c.n||1;return '<div class="stack" role="img" aria-label="'+VERD.map(function(v){return c[v[0]]+' '+v[0].replace('_',' ');}).join(', ')+'">'+VERD.map(function(v){var k=c[v[0]];if(!k)return '';var w=k/n*100;
+    return '<div class="seg '+v[0]+'" style="flex:'+k+' 1 0" data-tip="'+esc(v[1]+': '+k+' of '+c.n)+'">'+(w>=7?(v[0]==='unreachable'?'<b>'+k+'</b>':k):'')+'</div>';}).join('')+'</div>';
+}
+function accBlock(c){return '<div class="acc"><b>'+pct(c.accuracy,1)+'</b><span>'+c.match+' of '+(c.match+c.mismatch)+' decided'+(c.ci?'; 95% range '+pct(c.ci[0],0)+' to '+pct(c.ci[1],0):'')+'</span></div>';}
+function trust(){
+  var T=D.trust,host=el('trust-body');
+  if(!T){el('trust-intro').textContent='No verification results were found in the run folders.';host.innerHTML='';return;}
+  var o=T.overall;
+  el('trust-intro').textContent='Results from run '+T.run+' (started '+T.started+'): a random sample of '+fmt(T.n)+' stored values, each sent back to its source and re-read by a model that did not extract it. Accuracy is match divided by match plus mismatch. Unreachable and verifier errors are shown, and are never counted as matches.';
+  var h='<div class="legend" aria-label="Legend">'+VERD.map(function(v){return '<span><i class="sw '+v[0]+'"></i>'+esc(v[1])+'</span>';}).join('')+'</div>';
+  h+='<h3 style="margin:6px 0 2px">By source class</h3>';
+  T.class_order.filter(function(k){return T.by_class[k];}).forEach(function(k){var c=T.by_class[k];
+    h+='<div class="trow"><div class="tl"><b>'+esc(T.class_label[k])+'</b><span>'+esc(T.class_explain[k])+' Sample: '+fmt(c.n)+'.</span></div>'+stack(c)+accBlock(c)+'</div>';});
+  h+='<h3 style="margin:30px 0 2px">By field group</h3>';
+  T.groups.filter(function(k){return T.by_group[k];}).forEach(function(k){var c=T.by_group[k];
+    h+='<div class="trow"><div class="tl"><b style="text-transform:capitalize">'+esc(k)+'</b><span>Sample: '+fmt(c.n)+'</span></div>'+stack(c)+accBlock(c)+'</div>';});
+  var L=T.legacy,sh=L.mismatch_total?L.mismatch_price/L.mismatch_total:0;
+  h+='<div class="callout" style="margin-top:30px"><p><b>Reading the legacy figure.</b> Legacy values scored '+pct(L.all.accuracy,1)+' ('+L.all.match+' of '+(L.all.match+L.all.mismatch)+'). ';
+  if(sh>0.5)h+='Most of its mismatches are prices: '+L.mismatch_price+' of '+L.mismatch_total+' ('+pct(sh,0)+'). Legacy prices were checked against today’s page, so a price mismatch can mean the car’s price changed after June, not that the import was wrong. Prices checked: '+(L.price.match+L.price.mismatch)+', matching: '+L.price.match+' ('+pct(L.price.accuracy,0)+'). Without prices, legacy accuracy is '+pct(L.non_price.accuracy,1)+' ('+L.non_price.match+' of '+(L.non_price.match+L.non_price.mismatch)+').';
+  else h+='Price mismatches make up '+L.mismatch_price+' of its '+L.mismatch_total+' mismatches, so prices are not the main driver here.';
+  h+='</p></div>';
+  h+='<div class="callout" style="margin-top:14px"><p><b>Unreachable is not a match.</b> '+fmt(o.unreachable)+' of the '+fmt(o.n)+' sampled cells could not be checked (the page could not be read, or it no longer states that field), plus '+o.verifier_error+' verifier error'+(o.verifier_error===1?'':'s')+'. They are left out of every accuracy figure. Overall: '+pct(o.accuracy,1)+' ('+o.match+' of '+(o.match+o.mismatch)+' decided).'+(T.legacy_cells?' The KB held '+fmt(T.legacy_cells)+' legacy cells, of which '+fmt(T.legacy_checkable)+' belong to a variant linked to a current page and could be sampled.':'')+'</p></div>';
+  if(T.planted&&T.planted.n)h+='<div class="callout" style="margin-top:14px"><p><b>Does the verifier catch errors?</b> '+T.planted.n+' deliberately wrong values were slipped into the sample. The verifier flagged '+T.planted.flagged+' of '+T.planted.n+' as mismatches.</p></div>';
+  var vr=D.verify_runs;
+  if(vr.length){h+='<h3 style="margin:32px 0 8px">Every verification on record</h3><div class="scroll"><table class="mini"><thead><tr><th>Run</th><th>Sampled</th><th>Match</th><th>Mismatch</th><th>Unreachable</th><th>Verifier errors</th><th>Accuracy</th></tr></thead><tbody>'+vr.map(function(r){return '<tr><td>'+esc(r.name)+'</td><td>'+fmt(r.n)+'</td><td>'+fmt(r.match)+'</td><td>'+fmt(r.mismatch)+'</td><td>'+fmt(r.unreachable)+'</td><td>'+fmt(r.verifier_error)+'</td><td>'+pct(r.accuracy,1)+'</td></tr>';}).join('')+'</tbody></table></div><p class="cap">Earlier runs verified only newly written values, and some verifier calls failed when free model quotas ran out. Those failures are listed, not counted.</p>';}
+  host.innerHTML=h;
+}
+trust();
+
+/* ---- reviews */
+function covbar(){
+  var C=D.reviews.coverage,t=C.total||1;
+  var seg=[['cv-both','Both',C.both],['cv-e','Expert only',C.expert_only],['cv-o','Owner only',C.owner_only],['cv-n','Neither',C.neither]];
+  el('cov-bar').innerHTML='<div class="covbar" role="img" aria-label="'+seg.map(function(s){return s[1]+' '+s[2];}).join(', ')+' of '+C.total+' models">'+seg.filter(function(s){return s[2]>0;}).map(function(s){return '<div class="'+s[0]+'" style="flex:'+s[2]+' 1 0" data-tip="'+esc(s[1]+': '+s[2]+' of '+t+' models')+'">'+(s[2]/t>0.08?esc(s[1])+' '+s[2]:s[2])+'</div>';}).join('')+'</div><p class="cap ink">Of '+fmt(C.total)+' models: '+fmt(C.both)+' have both an expert score and an owner rating, '+fmt(C.expert_only)+' only an expert score, '+fmt(C.owner_only)+' only an owner rating, and '+fmt(C.neither)+' neither. Expert pages that redirected or did not exist are simply missing.</p>';
+}
+covbar();
+function quant(a,q){var s=a.slice().sort(function(x,y){return x-y;}),p=(s.length-1)*q,i=Math.floor(p),f=p-i;return s[i]+(s[i+1]!==undefined?(s[i+1]-s[i])*f:0);}
+function hash(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+function strip(id,block,unit,noteId){
+  var host=el(id),W=Math.max(280,host.clientWidth||320),L=12,Rm=16,RH=56,AX=26;
+  var rows=block.rows,min=block.axis_min,max=block.scale_max;
+  if(!rows.length){host.innerHTML='<p class="nodata">No scores in the KB yet.</p>';return;}
+  var H=rows.length*RH+AX+4,xs=function(v){return L+(W-L-Rm)*(v-min)/(max-min);};
+  var s='<svg width="'+W+'" height="'+H+'" role="img" aria-label="Dot plot of '+esc(unit)+' by aspect, one row per aspect, one dot per model">';
+  for(var t=min;t<=max;t++){var x=xs(t);s+='<line x1="'+x+'" x2="'+x+'" y1="0" y2="'+(H-AX)+'" stroke="var(--line2)"/><text class="tm" x="'+x+'" y="'+(H-10)+'" text-anchor="middle" font-size="11">'+t+'</text>';}
+  rows.forEach(function(r,i){
+    var y0=i*RH,vals=r.points.map(function(p){return p[1];}),cy=y0+RH-18,med=quant(vals,.5),q1=quant(vals,.25),q3=quant(vals,.75);
+    var mean=vals.reduce(function(a,b){return a+b;},0)/vals.length;
+    s+='<text x="'+L+'" y="'+(y0+14)+'" font-size="12.5" font-weight="'+(r.aspect==='overall'?'700':'500')+'">'+esc(r.aspect==='overall'?'Overall':r.aspect)+'</text>';
+    s+='<text class="tm" x="'+(W-Rm)+'" y="'+(y0+14)+'" text-anchor="end" font-size="11.5">median '+med.toFixed(1)+', n='+vals.length+'</text>';
+    s+='<line x1="'+xs(Math.min.apply(null,vals))+'" x2="'+xs(Math.max.apply(null,vals))+'" y1="'+cy+'" y2="'+cy+'" stroke="var(--line)" stroke-width="1"/>';
+    s+='<rect x="'+xs(q1)+'" y="'+(cy-11)+'" width="'+Math.max(2,xs(q3)-xs(q1))+'" height="22" rx="3" fill="var(--accent-soft)"/>';
+    r.points.forEach(function(p){var jy=((hash(p[0])%100)/100-.5)*14;
+      s+='<circle cx="'+xs(p[1])+'" cy="'+(cy+jy)+'" r="3.1" fill="var(--accent)" fill-opacity=".6" data-tip="'+esc(p[0]+': '+p[1])+'"/>';});
+    s+='<line x1="'+xs(med)+'" x2="'+xs(med)+'" y1="'+(cy-12)+'" y2="'+(cy+12)+'" stroke="var(--ink)" stroke-width="2.2"/>';
+  });
+  host.innerHTML=s+'</svg>';
+  el(noteId).textContent='One dot per model, '+unit+'. Shaded box: middle half of the models. Black line: median. Axis runs from '+min+' to '+max+', so it does not start at zero.';
+}
+function drawStrips(){strip('strip-expert',D.reviews.expert,'score out of 10','expert-note');strip('strip-owner',D.reviews.owner,'rating out of 5','owner-note');}
+drawStrips();
+(function(){
+  var cols=[['make','Make',0],['model','Model',0],['expert','Expert overall (of 10)',1],['owner','Owner overall (of 5)',1],['count','Owner ratings',1],['variants','Variants',1]];
+  var rows=D.reviews.table.slice(),key='expert',dir=-1;
+  function cmp(a,b){var x=a[key],y=b[key];if(x==null&&y==null)return a.model<b.model?-1:1;if(x==null)return 1;if(y==null)return -1;var r=typeof x==='string'?x.localeCompare(y):x-y;return r*dir||(a.model<b.model?-1:1);}
+  function draw(){
+    rows.sort(cmp);
+    var h='<thead><tr>'+cols.map(function(c){return '<th scope="col" aria-sort="'+(c[0]===key?(dir>0?'ascending':'descending'):'none')+'"><button type="button" data-k="'+c[0]+'">'+c[1]+'</button></th>';}).join('')+'</tr></thead><tbody>';
+    rows.forEach(function(r){h+='<tr><td>'+esc(r.make)+'</td><td>'+esc(r.model)+'</td><td>'+(r.expert==null?'<span class="nodata">–</span>':r.expert.toFixed(1))+'</td><td>'+(r.owner==null?'<span class="nodata">–</span>':r.owner.toFixed(2))+'</td><td>'+(r.count==null?'<span class="nodata">–</span>':fmt(r.count))+'</td><td>'+fmt(r.variants)+'</td></tr>';});
+    var t=el('model-table');t.innerHTML=h+'</tbody>';
+    t.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-k');if(k===key)dir=-dir;else{key=k;dir=(k==='make'||k==='model')?1:-1;}draw();var nb=el('model-table').querySelector('button[data-k="'+k+'"]');if(nb)nb.focus();});});
+  }
+  draw();
+})();
+(function(){
+  var R=D.reviews,h=el('themes');
+  if(!R.themes.length){h.innerHTML='<p class="callout">The owner-theme layer is in progress. The table exists in the KB and holds '+fmt(R.theme_rows)+' rows today. Themes will be extracted from owner reviews and from forum pages the owner saves by hand, and each one will be checked against its source text before it is written.</p>';return;}
+  var mx=Math.max.apply(null,R.themes.map(function(t){return t.mentions;}))||1;
+  h.className='bars';h.innerHTML=R.themes.map(function(t){return '<div class="brow" data-tip="'+esc(t.theme+' ('+t.direction+'): '+t.mentions+' mentions in '+t.models+' models')+'"><span class="bl">'+esc(t.theme)+'</span><span class="track"><span class="fill" style="width:'+(t.mentions/mx*100).toFixed(1)+'%"></span></span><span class="bv">'+fmt(t.mentions)+'</span></div>';}).join('');
+})();
+
+/* ---- re-render on resize and theme */
+var rt;function rerender(){drawGrowth();drawStrips();}
+addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rerender,120);});
+})();
+</script>
+</body>
+</html>
