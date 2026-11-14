@@ -3,7 +3,9 @@
 One command runs everything, no network, no LLM:
 
     .venv/bin/python eval/run_eval.py --engine current --out eval/results/<name>.json
-    .venv/bin/python eval/run_eval.py --engine v3 ...        # needs services/recsys/api.py (recommend(query))
+    .venv/bin/python eval/run_eval.py --engine v3 ...        # services/recsys/api.py recommend(query)
+    .venv/bin/python eval/run_eval.py --queries eval/other.jsonl ...   # another query file (default eval/queries.jsonl)
+    .venv/bin/python eval/run_eval.py --compare a.json b.json          # side-by-side table of the summary metrics
     .venv/bin/python eval/run_eval.py --check-labels         # labels vs catalogue, engine not run
 
 ## Files
@@ -39,24 +41,41 @@ A key that is absent means the query says nothing about it. Vocabulary is the ca
 
 ## Metrics
 
-- **a. Constraint satisfaction.** For every returned car the runner looks up its catalogue row and checks every hard
-  constraint in `expect`. A violation is a KNOWN value that breaks the constraint (a feature known absent for a
-  required one, known present for an excluded one, a number on the wrong side of a bound). Unknown values never
-  count as violations (the engine keeps them and flags them). A CNG row's `mileage_kmpl` is treated as unknown (it holds km/kg).
-  Reported: share of queries (among those that returned cars) with zero violations, by constraint kind, and every violation.
-  Cars explicitly marked relaxed (`relaxed`, `broken_constraints`, ...) are not counted.
+- **a. Constraint satisfaction.** For every returned car the runner looks up its catalogue row (by `variant_id` when the
+  response carries it, else model + variant) and checks every hard constraint in `expect`. A violation is a KNOWN value
+  that breaks the constraint (a feature known absent for a required one, known present for an excluded one, a number on
+  the wrong side of a bound). Unknown values never count as violations. A CNG row's `mileage_kmpl` is treated as unknown
+  (it holds km/kg). Reported: share of queries (among those that returned cars) with zero violations, by constraint
+  kind, and every violation. **Only non-relaxed responses are counted** (see a2); the number is reported for both engines.
+- **a2. Relaxed results and label truthfulness.** A response with a top-level `relaxation` and per-car `violations` (v3)
+  is a deliberately relaxed result. Its cars are not counted as violations. Instead, for every car, the constraints it
+  really breaks (the same catalogue check) must all be named in that car's `violations`, and nothing else may be named
+  ("like X" size bands cannot be checked from a label and are ignored on both sides). Names are compared after mapping
+  both sides to one vocabulary (budget, fuel, body, make, gearbox, transmission_family, seats, feature:x,
+  exclude_feature:x, min:col, max:col). Reported: relaxed responses, truthful vs mislabelled, and every mislabelled case.
 - **b. Parse accuracy.** `intent_to_label()` is the one function that maps the parser's intent object to the label
   form above (hard constraints only; soft preferences and "assumed" guesses are not mapped). Per field, over all
   queries, an unstated field counts as an empty expectation, so a guessed field the user never stated is a false positive.
   Reported: precision (of what the parser produced, how much was right), recall (of what the query states, how much was
   found), and exact-match rate over queries where the field is stated or produced.
-- **c. Empty handling.** For `expect_empty` queries: no cars (with or without relaxation hints), cars marked relaxed, or
-  cars returned unmarked (the bad case). Also lists satisfiable queries that came back empty.
-- **d. Vague / unsupported brand.** How many returned cars; whether the response carries `vague: true`; whether the
-  message names an unsupported brand.
-- **e. Paraphrase consistency.** For each group, mean pairwise Jaccard overlap of the top-5 model sets across the three
-  wordings; reported as the mean over groups.
-- **f. Unknown-handling probe.** For 10 feature queries (5 hard-required, 5 soft wishes) the runner copies the catalogue,
-  blanks the feature column(s) on the top result's variant, re-runs, and reports where that car lands and whether a car
-  known to LACK the feature is now ranked above it ("unknown scored as no"). With a hard-required feature the known-lacking
-  cars are filtered out, so only the soft cases can show the defect. Current engine only.
+- **c. Over-constrained handling.** For `expect_empty` queries, one of: `empty` (no cars, with or without relaxation
+  hints); `relaxed_truthfully_labelled`; `relaxed_but_mislabelled` (also: cars marked relaxed in a form the runner cannot
+  check); `cars_returned_unmarked` (the bad case). Also lists satisfiable queries that came back empty.
+- **d. Vague / unsupported brand.** How many returned cars; whether the response carries `vague: true`; whether it is
+  labelled not personalised (v3: `personalised: false`); whether the message names an unsupported brand.
+- **e. Paraphrase consistency.** For each group of three wordings, over all pairs: mean Jaccard of the top-5 model sets,
+  top-1 agreement (same first model), and rank-biased overlap (extrapolated RBO, p = 0.9) of the top-8 model lists.
+  Each is reported for all groups and separately for groups whose three wordings parsed to an IDENTICAL intent
+  (hard constraints, use case, soft preferences, assumed guesses) versus groups that parsed differently, so a perfect
+  score from identical parses is distinguishable from a ranking that is robust to different parses.
+- **f. Unknown-handling probe (both engines).** For 15 feature queries (7 with a hard-required feature, 8 soft wishes)
+  the runner takes the top FIVE returned models; for each it copies the catalogue, blanks the requested feature
+  column(s) on ALL variants of that model (one model at a time), re-runs the same engine on the modified catalogue (v3:
+  `recommend(catalogue=...)`; current: patched `services.new_car_service.get_catalogue`), and records (i) whether the
+  model is still returned (in the engine's top list), (ii) its rank change, (iii) whether any car KNOWN to lack the
+  feature now ranks above it, and whether it was already above before the blanking ("newly above" is the defect signal).
+  With a hard-required feature the known-lacking cars are filtered out, so only the soft cases can show the defect.
+  A model that falls out of the list after blanking has dropped below the list limit; it is not filtered out.
+- **g. Shortlist agreement.** If `shortlist_sheet.csv` has filled rows (`car_1`..`car_5` as "Make Model"), recall@8 and
+  mean reciprocal rank of the engine's top 8 against them (make + model, case-insensitive); otherwise the runner prints
+  "no shortlists filled in yet". The sheet is filled by the owner, never by the runner.
