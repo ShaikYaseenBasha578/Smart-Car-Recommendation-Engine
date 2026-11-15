@@ -16,7 +16,46 @@ OWNER_NO_COUNT_SCALE = 0.5
 # class weight is multiplied by this (on top of the source-count factor)
 OVERALL_FALLBACK_SCALE = 0.3
 # an owner rating is pulled toward the segment mean: w x value + (1 - w) x segment mean, w = count / (count +
-# OWNER_SAMPLE_K) (the same constant as the class scale above)
+# OWNER_SAMPLE_K). That is the only discount on owner ratings (the class weight is not scaled by the count again);
+# owner themes from owner_themes.csv keep the count-based class scale above.
+
+# How review aspects enter the expert / owner sub-score (2026-11-15): an aspect counts in proportion to the query weight
+# (weights.py, within the spec class) of the spec criteria it maps to, as the mean over those criteria, and not at all
+# when that weight is 0. A query that states no preference uses only the 'overall' rows (expert overall; owner
+# satisfaction). Aspects that one source label feeds together (see scripts/export_reviews_from_kb.py LABEL_MAP) count once.
+EXPERT_ASPECT_CRITERIA = {
+    "ride_comfort": ["comfort_features"],
+    "handling": ["performance"],
+    "engine_performance": ["performance"],
+    "refinement": ["comfort_features"],
+    "city_driveability": ["comfort_features", "performance"],
+    "highway_stability": ["performance", "safety"],
+    "front_space": ["space_practicality"],
+    "rear_seat_comfort": ["space_practicality", "comfort_features"],
+    "boot_practicality": ["space_practicality"],
+    "real_world_mileage": ["running_cost"],
+    "build_quality": ["safety"],
+    "features_tech": ["tech_assist", "comfort_features"],
+    "value_for_money": ["value_for_budget", "price"],
+}
+OWNER_THEME_CRITERIA = {
+    "reliability": ["running_cost", "value_for_budget"],
+    "service_cost": ["running_cost", "value_for_budget"],
+    "service_experience": ["value_for_budget"],
+    "real_world_mileage": ["running_cost"],
+    "build_issues": ["value_for_budget", "safety"],
+    "recurring_fault": ["value_for_budget"],
+    "resale": ["value_for_budget", "price"],
+    "satisfaction": ["value_for_budget", "safety", "running_cost", "comfort_features", "space_practicality",
+                     "performance", "tech_assist"],
+    "comfort": ["comfort_features", "space_practicality"],
+    "performance": ["performance"],
+    "value": ["value_for_budget", "price"],
+    "features": ["tech_assist", "comfort_features"],
+}
+# the aspect that stands for the whole review when the query states no preference
+EXPERT_OVERALL_ASPECT = "overall"
+OWNER_OVERALL_ASPECT = "satisfaction"
 
 # a blank field inside a criterion is valued at a conservative prior, never left out of the criterion's mean
 # (criterion value = sum of weight x (known value or prior) / total weight). The prior is never shown as a fact; the

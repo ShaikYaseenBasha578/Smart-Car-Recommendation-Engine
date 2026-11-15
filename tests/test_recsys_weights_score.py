@@ -161,7 +161,11 @@ def test_expert_data_for_few_models_does_not_make_unreviewed_cars_last():
                                      source_name="s", source_url="u", published_on="", variant_scope="")],
                                columns=ASSESSMENT_COLS))
     table, _ = score_candidates(df, intent(), evidence=ev)
-    assert table["overall"].notna().all() and table["expert"].notna().sum() == 1
+    # change 3b: unreviewed cars take the segment mean of the reviewed models (here the one reviewed car's value), so
+    # nobody is last for lacking a row; the class is flagged neutral for them (no score is shown)
+    assert table["overall"].notna().all()
+    assert (table["expert"] == table["expert"].iloc[0]).all()
+    assert sum(1 for n in table["neutral_classes"] if n == ["expert"]) == 5
 
 
 def test_scores_are_deterministic_and_in_range():

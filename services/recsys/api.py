@@ -218,8 +218,11 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         # v3 additions
         "variant_id": int(car["variant_id"]),
         "selection_order": int(car["selection_order"]) if "selection_order" in car.index else None,
-        "scores": {"overall": _round(overall), "spec": _round(srow["spec"]), "expert": _round(srow["expert"]),
-                   "owner": _round(srow["owner"]), "coverage": _round(srow["coverage"])},
+        # a review class the model has no row in is scored at the segment mean: no score is shown for it
+        "scores": {"overall": _round(overall), "spec": _round(srow["spec"]),
+                   "expert": None if "expert" in srow["neutral_classes"] else _round(srow["expert"]),
+                   "owner": None if "owner" in srow["neutral_classes"] else _round(srow["owner"]),
+                   "coverage": _round(srow["coverage"])},
         "class_weights": {c: _round(v) for c, v in srow["class_weights"].items()},
         "criteria": {c: _round(v) for c, v in srow["values"].items() if v is not None},
         "reasons": ex["reasons"],

@@ -254,6 +254,8 @@ class Evidence:
         self.segments = dict(segments or {})
         self._expert: Dict[tuple, dict] = {}
         self._expert_overall: Dict[tuple, dict] = {}  # (make, model) -> overall-only fallback, models with no aspect row
+        self._overall_all: Dict[tuple, dict] = {}     # (make, model) -> the model's overall row(s), every model that has one
+        self._neutral_cache: Dict[tuple, Any] = {}
         self._owner: Dict[tuple, dict] = {}
         if len(self.assessments):
             if review:
@@ -277,6 +279,7 @@ class Evidence:
                 "n_sources": int(max(g["n_sources"].max(), g["source_name"].nunique())), "rows": g}
         have = {(mk, md) for (mk, md, _a) in self._expert}
         for (make, model), g in df[df["aspect"] == "overall"].groupby(["make", "model"]):
+            self._overall_all[(make, model)] = {"value": float(g["value"].mean()), "rows": g}
             if (make, model) not in have:
                 self._expert_overall[(make, model)] = {
                     "value": float(g["value"].mean()), "mean_rating": None,
@@ -322,6 +325,101 @@ class Evidence:
     def _overall_hit(self, make: str, model: str) -> Optional[dict]:
         return self._expert_overall.get((make, model)) or self._expert_overall.get((NO_MAKE, model))
 
+    @property
+    def data_aspects(self) -> set:
+        """Expert aspects with at least one row for any model (the only ones a model can be rated on)."""
+        if not hasattr(self, "_data_aspects"):
+            self._data_aspects = {a for (_m, _n, a) in self._expert}
+        return self._data_aspects
+
+    def _overall_hit_any(self, make: str, model: str) -> Optional[dict]:
+        """The model's overall expert row (review layout), whether or not it also has aspect rows."""
+        hit = self._overall_all.get((make, model)) or self._overall_all.get((NO_MAKE, model))
+        if hit is None:
+            return None
+        rows = hit["rows"]
+        return {"value": hit["value"], "n_sources": int(max(rows["n_sources"].max(), rows["source_name"].nunique())),
+                "rows": rows}
+
+    @staticmethod
+    def _group_key(aspect: str, hit: dict) -> tuple:
+        """Aspects one source label feeds together share a key (review layout); every other aspect is its own."""
+        rows = hit["rows"]
+        if "source_aspect" in rows.columns and len(rows):
+            r = rows.iloc[0]
+            label = str(r.get("source_aspect") or "")
+            src = str(r.get("source_name") if "source_name" in rows.columns else r.get("source") or "")
+            if label:
+                return (src, label)
+        return (aspect,)
+
+    def class_sub(self, kind: str, make: str, model: str, aspect_w: Optional[Dict[str, float]]) -> Optional[float]:
+        """The model's expert or owner sub-score in [0, 1], or None when it has no usable row.
+        aspect_w: {aspect: query weight} (weights.review_aspect_weights); None = the query states no preference, so
+        only the 'overall' rows count (expert overall; owner satisfaction), falling back to the aspects at equal
+        weight when the model has no such row. Aspects fed by one source label count once (the mean of their weights),
+        aspects with weight 0 count not at all."""
+        if kind == "expert":
+            table, names, overall_name = self._expert, ASPECTS, config.EXPERT_OVERALL_ASPECT
+        else:
+            table, names, overall_name = self._owner, THEMES, config.OWNER_OVERALL_ASPECT
+        hits = {a: h for a in names if (h := self._hit(table, make, model, a))}
+        if kind == "expert":
+            ov = self._overall_hit_any(make, model)
+            if not hits:
+                return None if ov is None else ov["value"]       # overall-only model: it stands for every aspect
+            if aspect_w is None and ov is not None:
+                return ov["value"]
+        elif not hits:
+            return None
+        elif aspect_w is None and overall_name in hits:
+            return hits[overall_name]["value"]
+        if aspect_w is None:                                     # no overall row to use: all aspects at equal weight
+            aspect_w = {a: 1.0 for a in hits}
+        groups: Dict[tuple, List[tuple]] = {}
+        for a, h in hits.items():
+            w = aspect_w.get(a, 0.0)
+            if w > 0:
+                groups.setdefault(self._group_key(a, h), []).append((w, h["value"]))
+        if not groups:
+            return None
+        num = den = 0.0
+        for members in groups.values():
+            gw = sum(w for w, _ in members) / len(members)       # the group counts once
+            num += gw * (sum(v for _, v in members) / len(members))
+            den += gw
+        return num / den if den > 0 else None
+
+    def reviewed_models(self, kind: str) -> List[tuple]:
+        """(make, model) of every model with at least one row of this kind."""
+        if kind == "expert":
+            return sorted(set((mk, md) for (mk, md, _a) in self._expert) | set(self._expert_overall)
+                          | set(self._overall_all))
+        return sorted(set((mk, md) for (mk, md, _t) in self._owner))
+
+    def neutral_class(self, kind: str, segment: str, aspect_w: Optional[Dict[str, float]],
+                      relevant: List[str]) -> Optional[tuple]:
+        """(neutral sub-score, neutral class scale) for a model with no review rows of this kind: the mean over the
+        reviewed models of its segment (all reviewed models when the segment has fewer than MIN_SEGMENT_MODELS) of their
+        sub-score and of their class scale, under the same query weights. None when no model is reviewed."""
+        key = (kind, segment, None if aspect_w is None else tuple(sorted(aspect_w.items())), tuple(relevant))
+        if key in self._neutral_cache:
+            return self._neutral_cache[key]
+        rows = []
+        for make, model in self.reviewed_models(kind):
+            sub = self.class_sub(kind, make, model, aspect_w)
+            if sub is None:
+                continue
+            scale = self.expert_scale(make, model, relevant) if kind == "expert" else self.owner_scale(make, model)
+            rows.append((self.segments.get(model, "*"), sub, 1.0 if scale is None else scale))
+        in_seg = [r for r in rows if r[0] == segment] if segment != "*" else []
+        use = in_seg if len(in_seg) >= config.MIN_SEGMENT_MODELS else rows
+        out = (sum(r[1] for r in use) / len(use), sum(r[2] for r in use) / len(use)) if use else None
+        if len(self._neutral_cache) > 512:
+            self._neutral_cache.clear()
+        self._neutral_cache[key] = out
+        return out
+
     # -- how much evidence a car has (scales the class weights in score.py) ---------------------------------
     @staticmethod
     def _source_key(row: pd.Series) -> str:
@@ -331,12 +429,22 @@ class Evidence:
         """scale in [0, 1] for the expert class weight of one model, or None when it has no expert row.
         (relevant aspects the model has a value for / relevant aspects) x n_sources / (n_sources + EXPERT_SOURCE_K),
         n_sources = distinct sources behind those covered aspects."""
+        if list(relevant_aspects) == [config.EXPERT_OVERALL_ASPECT]:   # no preference: the overall row stands for the model
+            ov = self._overall_hit_any(make, model)
+            if ov is not None:
+                n = ov["n_sources"]
+                return n / (n + config.EXPERT_SOURCE_K)
+            relevant_aspects = [a for a in ASPECTS if self._hit(self._expert, make, model, a)]
+        asked = list(relevant_aspects)
+        # only aspects the data file has a row for (for any model) can be covered: counting the others in the
+        # denominator would cap the scale of even a fully rated car
+        relevant_aspects = [a for a in asked if a in self.data_aspects]
         covered = [a for a in relevant_aspects if self._hit(self._expert, make, model, a)]
         if not any(self._hit(self._expert, make, model, a) for a in ASPECTS):
             fb = self._overall_hit(make, model)
             if fb is None:
                 return None
-            if not relevant_aspects:
+            if not asked:
                 return 0.0
             n = fb["n_sources"]  # the overall score stands for every aspect, at a low weight
             return config.OVERALL_FALLBACK_SCALE * n / (n + config.EXPERT_SOURCE_K)
@@ -364,9 +472,14 @@ class Evidence:
         return best
 
     def owner_scale(self, make: str, model: str) -> Optional[float]:
-        """scale in [0, 1] for the owner class weight (count / (count + OWNER_SAMPLE_K)), None without owner rows."""
-        if not any(self._hit(self._owner, make, model, t) for t in THEMES):
+        """scale in [0, 1] for the owner class weight, None without owner rows. Owner RATINGS are already pulled
+        toward the segment mean by their count (value shrinkage), so they are not discounted again: 1.0. Owner themes
+        (owner_themes.csv, no shrinkage) keep count / (count + OWNER_SAMPLE_K)."""
+        hits = [h for t in THEMES if (h := self._hit(self._owner, make, model, t))]
+        if not hits:
             return None
+        if any(h.get("kind") == "rating" for h in hits):
+            return 1.0
         return owner_scale_for_count(self.owner_sample(make, model))
 
     @classmethod

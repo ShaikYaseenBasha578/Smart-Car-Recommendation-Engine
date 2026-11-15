@@ -16,6 +16,11 @@
                       unknown_frac; e.g. no crash rating = 3 of 10 safety weight) times the criterion weight
                       is added too, so partial gaps are not free.
   overall           = overall_raw x (1 - COVERAGE_PENALTY x unknown_share)
+Review classes (2026-11-15): the expert / owner sub-score is computed from the evidence (Evidence.class_sub): each aspect
+counts in proportion to the query weight of the spec criteria it maps to (aspects with no weight not at all; a query with
+no preference uses only the overall rows), aspects one source label feeds count once. A model with no row in a class
+takes the segment mean of the reviewed models' sub-score and class scale (Evidence.neutral_class), so being reviewed is
+not rewarded in itself; its unknown criteria still feed the coverage factor and no score is shown.
 Thin evidence counts for less (class_weights below): per car the expert / owner class weight (after redistribution
 over the classes the car has) is multiplied by Evidence.expert_scale / owner_scale (config EXPERT_SOURCE_K,
 OWNER_SAMPLE_K) and the freed weight goes to the spec class, so the class weights of a car always sum to 1. A car with
@@ -34,8 +39,8 @@ from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS
 from services.recsys import config
 from services.recsys.common import is_unknown, num
 from services.recsys.criteria import SPEC_CRITERIA, CriteriaResult, compute_criteria
-from services.recsys.evidence import EXPERT_CRITERIA, OWNER_CRITERIA, Evidence, get_evidence
-from services.recsys.weights import ALL_CRITERIA, CRITERION_CLASS, build_weights
+from services.recsys.evidence import ASPECTS, EXPERT_CRITERIA, OWNER_CRITERIA, Evidence, get_evidence
+from services.recsys.weights import ALL_CRITERIA, CRITERION_CLASS, build_weights, review_aspect_weights
 
 CLASSES = ["spec", "expert", "owner"]
 KMPL_UNTRUSTED_FUELS = {"cng"}  # a CNG row's kmpl cell is a km/kg figure: unknown as kmpl
@@ -91,7 +96,8 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     """Score every candidate row. Returns (table, criteria result).
 
     table columns: overall, spec, expert, owner, coverage, unknown_share, values {criterion: value|None},
-    weights {criterion: global weight}, required {item: status}, flags [str], unknown_criteria [str].
+    weights {criterion: global weight}, required {item: status}, flags [str], unknown_criteria [str], neutral_classes
+    [str] (review classes the car has no row in, scored at the segment mean: never shown as its own score).
     Sorted by overall desc then variant_id."""
     weights = weights or build_weights(intent)
     evidence = evidence if evidence is not None else get_evidence()
@@ -100,7 +106,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     cheap_across = bool(_intent_get(intent, "cheap_intent", False)) and not _intent_get(intent, "body_types", [])
     criteria = criteria or compute_criteria(cands, budget, reference, price_whole_catalogue=cheap_across)
     cols = ["overall", "spec", "expert", "owner", "coverage", "unknown_share", "values", "weights",
-            "required", "flags", "unknown_criteria", "partial_unknown", "class_weights"]
+            "required", "flags", "unknown_criteria", "partial_unknown", "class_weights", "neutral_classes"]
     if len(cands) == 0:
         return pd.DataFrame(columns=cols), criteria
 
@@ -117,10 +123,10 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     global_w = {c: (config.CLASS_WEIGHTS[CRITERION_CLASS[c]] / total_cw) * norm_w[c]
                 if CRITERION_CLASS[c] in active else 0.0 for c in ALL_CRITERIA}
 
-    # aspects the query cares about: the expert aspects its profile boosts (all active aspects when none is boosted)
-    active_aspects = [c for c in EXPERT_CRITERIA if weights["criteria"][c]["active"]]
-    boosted = [c for c in active_aspects if weights["criteria"][c]["multiplier"] > 1.0]
-    relevant_aspects = [c[len("expert_"):] for c in (boosted or active_aspects)]
+    # how the review classes are scored (weights.review_aspect_weights): None = no preference, overall rows only;
+    # else {aspect: query weight}. The aspects that count for the thin-evidence scale are the ones with weight.
+    aw = review_aspect_weights(weights)
+    relevant_aspects = [config.EXPERT_OVERALL_ASPECT] if aw["expert"] is None else [a for a in ASPECTS if a in aw["expert"]]
 
     records = []
     for idx, row in cands.iterrows():
@@ -132,11 +138,25 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             cs = [c for c in ALL_CRITERIA if CRITERION_CLASS[c] == cls and norm_w[c] > 0 and not np.isnan(vals[c])]
             wsum = sum(norm_w[c] for c in cs)
             subs[cls] = sum(norm_w[c] * vals[c] for c in cs) / wsum if cs and wsum > 0 else None
+        # expert / owner sub-scores come from the evidence directly: aspects weighted by the query, one source label
+        # counted once, and a model with no row in the class takes the segment mean of the reviewed models
+        scale_override: Dict[str, float] = {}
+        for cls in ("expert", "owner"):
+            if cls not in active:
+                continue
+            sub = evidence.class_sub(cls, row["make"], row["model"], aw[cls])
+            if sub is None:
+                neutral = evidence.neutral_class(cls, str(row["body_type"]), aw[cls],
+                                                 relevant_aspects if cls == "expert" else [])
+                sub, scale_override[cls] = neutral if neutral is not None else (None, None)
+            subs[cls] = sub
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
         cw = {c: used[c] / sum(used.values()) for c in used}
         if subs["spec"] is not None and len(used) > 1:
-            scale = {"expert": evidence.expert_scale(row["make"], row["model"], relevant_aspects),
-                     "owner": evidence.owner_scale(row["make"], row["model"])}
+            scale = {"expert": scale_override["expert"] if "expert" in scale_override
+                     else evidence.expert_scale(row["make"], row["model"], relevant_aspects),
+                     "owner": scale_override["owner"] if "owner" in scale_override
+                     else evidence.owner_scale(row["make"], row["model"])}
             for c in ("expert", "owner"):
                 if c in cw:
                     cw[c] *= 1.0 if scale[c] is None else scale[c]
@@ -172,7 +192,7 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             "coverage": 1.0 - unknown_share, "unknown_share": unknown_share,
             "values": {c: (None if np.isnan(v[c]) else float(v[c])) for c in ALL_CRITERIA},
             "weights": dict(global_w), "required": items, "flags": flags, "unknown_criteria": unknown_crit,
-            "partial_unknown": partial, "class_weights": cw,
+            "partial_unknown": partial, "class_weights": cw, "neutral_classes": sorted(scale_override),
         })
     table = pd.DataFrame(records, index=cands.index, columns=cols)
     table["_vid"] = cands["variant_id"].to_numpy()

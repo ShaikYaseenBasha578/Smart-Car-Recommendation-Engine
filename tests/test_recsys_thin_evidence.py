@@ -48,10 +48,12 @@ def vid(df, model):
 # ------------------------------------------------------------------ scales
 
 def test_expert_scale_is_aspect_coverage_times_source_factor():
-    ev = Evidence(assess([dict(aspect=a) for a in ASPECTS[:4]]))
+    # model Z gives the data file rows for 8 aspects; only those can be covered (change 3a): the others are not counted
+    ev = Evidence(assess([dict(aspect=a) for a in ASPECTS[:4]] + [dict(model="Z", aspect=a) for a in ASPECTS[:8]]))
     rel = ASPECTS[:4]
     assert ev.expert_scale("Acme", "A", rel) == pytest.approx(0.5)                 # 4/4 x 1/2
     assert ev.expert_scale("Acme", "A", ASPECTS[:8]) == pytest.approx(0.5 * 0.5)   # 4/8 x 1/2
+    assert ev.expert_scale("Acme", "A", list(ASPECTS)) == pytest.approx(0.5 * 0.5)  # 13 asked, 8 have data: still 4/8
     two = Evidence(assess([dict(aspect="ride_comfort"), dict(aspect="ride_comfort", source_name="mag2", source_url="u2")]))
     assert two.expert_scale("Acme", "A", ["ride_comfort"]) == pytest.approx(2 / 3)
     three = Evidence(assess([dict(source_name=f"m{i}", source_url=f"u{i}") for i in range(3)]))
@@ -94,27 +96,30 @@ def test_class_weights_sum_to_one_in_every_case_and_freed_weight_goes_to_spec():
     table, _ = score_candidates(df, intent(), evidence=cases["both"])
     cw = table.loc[vid(df, "A"), "class_weights"]
     base = {c: config.CLASS_WEIGHTS[c] / sum(config.CLASS_WEIGHTS.values()) for c in config.CLASS_WEIGHTS}
-    ex_scale = (1 / 13) * 0.5          # one aspect of 13 relevant, one source
+    ex_scale = 1.0 * 0.5               # the one aspect the file has a row for is covered (change 3a), one source
     ow_scale = 100 / 150
     assert cw["expert"] == pytest.approx(base["expert"] * ex_scale)
     assert cw["owner"] == pytest.approx(base["owner"] * ow_scale)
     assert cw["spec"] == pytest.approx(1 - cw["expert"] - cw["owner"])
     assert cw["spec"] > base["spec"]                               # the freed weight returned to the spec class
-    # the car without evidence has no expert/owner weight at all (redistributed as before)
-    assert table.loc[vid(df, "B"), "class_weights"] == {"spec": 1.0}
+    # change 3b: the car without evidence is scored at the segment mean of the reviewed cars (here car A) with the same
+    # class weights as they have, instead of having the classes redistributed to spec
+    assert table.loc[vid(df, "B"), "class_weights"] == pytest.approx(cw)
+    assert table.loc[vid(df, "B"), "neutral_classes"] == ["expert", "owner"]
 
 
 def test_relevant_aspects_follow_the_query_profile():
-    """'family' boosts 3 expert aspects, so covering those 3 is full coverage; a neutral query has 13 relevant."""
-    ev = Evidence(assess([dict(aspect=a) for a in ("rear_seat_comfort", "boot_practicality", "ride_comfort")]))
+    """Change 3c: the relevant aspects are the ones (with data) whose spec criteria carry query weight. Switching running
+    cost off removes real_world_mileage from them, so covering the other two is full coverage."""
+    rows = [dict(aspect=a) for a in ("rear_seat_comfort", "boot_practicality")] + [dict(model="Z", aspect="real_world_mileage")]
+    ev = Evidence(assess(rows))
     df = twins()
-    fam, _ = score_candidates(df, intent(use_case="family"), build_weights(intent(use_case="family")), ev)
-    neu, _ = score_candidates(df, intent(), build_weights(intent()), ev)
-    w = build_weights(intent(use_case="family"))
-    n_boosted = sum(1 for c, v in w["criteria"].items() if c.startswith("expert_") and v["multiplier"] > 1)
-    assert fam.loc[vid(df, "A"), "class_weights"]["expert"] > neu.loc[vid(df, "A"), "class_weights"]["expert"]
+    it = intent(use_case="family")
+    fam, _ = score_candidates(df, it, build_weights(it), ev)
+    off, _ = score_candidates(df, it, build_weights(it, {"running_cost": False}), ev)
     base_e = config.CLASS_WEIGHTS["expert"] / (config.CLASS_WEIGHTS["expert"] + config.CLASS_WEIGHTS["spec"])
-    assert fam.loc[vid(df, "A"), "class_weights"]["expert"] == pytest.approx(base_e * (3 / n_boosted) * 0.5)
+    assert fam.loc[vid(df, "A"), "class_weights"]["expert"] == pytest.approx(base_e * (2 / 3) * 0.5)
+    assert off.loc[vid(df, "A"), "class_weights"]["expert"] == pytest.approx(base_e * 1.0 * 0.5)
 
 
 def test_one_glowing_single_source_expert_row_cannot_outrank_an_identical_car_by_much():
@@ -134,7 +139,7 @@ def test_one_glowing_single_source_expert_row_cannot_outrank_an_identical_car_by
     assert a["overall"] - b["overall"] < 0.02
     # unscaled (the pre-change behaviour) the same row would give a much larger edge
     unscaled = (config.CLASS_WEIGHTS["expert"] / sum(config.CLASS_WEIGHTS[c] for c in ("spec", "expert"))) * (1.0 - spec_sub)
-    assert unscaled > 5 * gain_bound
+    assert unscaled >= 2 * gain_bound - 1e-9          # one source halves the weight (the aspect is the only one with data)
 
 
 def test_full_evidence_car_with_three_sources_gets_three_quarters_of_the_class_weight():

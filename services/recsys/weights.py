@@ -121,6 +121,35 @@ def price_share(intent: Any) -> float:
     return config.PRICE_DEFAULT_WEIGHT
 
 
+STATED_BUDGET_DRIVER = "stated a budget"
+
+
+def has_preferences(weights: Dict[str, Any]) -> bool:
+    """True when the query states anything beyond a budget (use case, soft preference, required feature, minimum,
+    cheap wording) or the user switched a chip. A budget alone is a constraint, not a preference."""
+    if any(d != STATED_BUDGET_DRIVER for d in weights.get("drivers", [])):
+        return True
+    return any("set by you" in v["why"] or "switched off" in v["why"] for v in weights["criteria"].values())
+
+
+def review_aspect_weights(weights: Dict[str, Any]) -> Dict[str, Optional[Dict[str, float]]]:
+    """{"expert": {aspect: w} | None, "owner": {theme: w} | None}. With no preference: None (the sub-score then uses
+    the 'overall' rows only). Otherwise an aspect's weight is the mean query weight of the spec criteria it maps to
+    (config.EXPERT_ASPECT_CRITERIA / OWNER_THEME_CRITERIA); aspects with weight 0 are left out."""
+    if not has_preferences(weights):
+        return {"expert": None, "owner": None}
+    crit = weights["criteria"]
+
+    def spread(mapping: Dict[str, List[str]]) -> Dict[str, float]:
+        out = {}
+        for aspect, cs in mapping.items():
+            w = sum(crit[c]["weight"] for c in cs) / len(cs)
+            if w > 0:
+                out[aspect] = w
+        return out
+    return {"expert": spread(config.EXPERT_ASPECT_CRITERIA), "owner": spread(config.OWNER_THEME_CRITERIA)}
+
+
 def label_for(criterion: str) -> str:
     return LABELS.get(criterion, criterion)
 

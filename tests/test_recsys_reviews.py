@@ -175,9 +175,10 @@ def test_overall_is_only_a_low_weight_fallback():
 
 
 def test_thin_evidence_scaling_applies_to_review_rows():
-    ev = Evidence(assess([dict(aspect="ride_comfort"), dict(aspect="handling")]))
-    # 2 of 4 relevant aspects covered, one source
-    assert ev.expert_scale("", "A", ["ride_comfort", "handling", "refinement", "front_space"]) == pytest.approx(0.5 * 0.5)
+    # the file has rows for three aspects; model A has two of them. front_space has no row for any model, so it cannot
+    # be covered and is not counted in the denominator (change 3a): 2 of 3 relevant aspects, one source
+    ev = Evidence(assess([dict(aspect="ride_comfort"), dict(aspect="handling"), dict(model="Z", aspect="refinement")]))
+    assert ev.expert_scale("", "A", ["ride_comfort", "handling", "refinement", "front_space"]) == pytest.approx(2 / 3 * 0.5)
 
 
 # ------------------------------------------------------------------ engine: owner ratings and shrinkage
@@ -228,7 +229,8 @@ def test_design_and_unknown_owner_aspects_are_not_scored():
 def test_owner_class_scale_uses_the_rating_count():
     ev = Evidence(owner_ratings=rate([dict(model="A", rating_count="150")]))
     assert ev.owner_sample("", "A") == 150
-    assert ev.owner_scale("", "A") == pytest.approx(0.75)
+    # change 3e: ratings are shrunk by their count (value), the class weight is not scaled by it a second time
+    assert ev.owner_scale("", "A") == 1.0
 
 
 # ------------------------------------------------------------------ empty files change nothing
