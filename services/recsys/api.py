@@ -231,6 +231,9 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         # themes and reported faults, for the UI to show apart
         "expert_notes": ex["expert_lines"],
         "owner_notes": ex["owner_lines"],
+        # display only: where the model's overall expert / owner rating stands among rated models of its segment
+        "expert_standing": ex["expert_standing"],
+        "owner_standing": ex["owner_standing"],
         "caveats": ex["caveats"],
         "unknowns": ex["unknowns"],
         "violations": violations,

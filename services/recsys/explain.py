@@ -319,14 +319,86 @@ def owner_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence,
     mult = mult or {}
     key = lambda r: (-strength(r), r["theme"], r["label"] or "")
     rel_key = lambda r: (-mult.get(r["theme"], 1.0), -strength(r), r["theme"], r["label"] or "")
-    faults = sorted((r for r in rows if r["theme"] == "recurring_fault"), key=key)
-    others = sorted((r for r in rows if r["theme"] != "recurring_fault"
+    # a line needs OWNER_LINE_MIN_MENTIONS verified mentions; negative themes and reported faults keep the stored minimum
+    qualifies = lambda r: (r["direction"] == "negative" or r["theme"] == "recurring_fault"
+                           or int(r["mentions"]) >= config.OWNER_LINE_MIN_MENTIONS)
+    faults = sorted((r for r in rows if r["theme"] == "recurring_fault" and qualifies(r)), key=key)
+    others = sorted((r for r in rows if r["theme"] != "recurring_fault" and qualifies(r)
                      and (aw is None or aw.get(r["theme"], 0.0) > 0)), key=rel_key)
     picked = faults[:1] + others
     picked = (picked + faults[1:])[:config.MAX_OWNER_LINES]
     caveat_rows = sorted((r for r in rows if r["direction"] == "negative" or r["theme"] == "recurring_fault"), key=key)[:3]
     return [_theme_entry(r) for r in picked], [{**_theme_entry(r), "kind": "reported_fault" if r["theme"] == "recurring_fault"
                                                  else "negative_theme"} for r in caveat_rows]
+
+
+SEGMENT_PLURALS = {"suv": "SUVs", "hatchback": "hatchbacks", "sedan": "sedans", "mpv": "MPVs", "van": "vans",
+                   "pickup": "pickups", "coupe": "coupes", "convertible": "convertibles", "wagon": "wagons"}
+BAND_WORDS = {"top": "among the best-rated {seg}", "upper": "above average among {seg}",
+              "lower": "below average among {seg}", "bottom": "among the lowest-rated {seg}"}
+
+
+def _segment_name(segment: str) -> str:
+    return SEGMENT_PLURALS.get(str(segment).lower(), f"{segment}s")
+
+
+def _standing_tail(st: dict) -> str:
+    """The words after the rating: a standing claim from the band, or why there is none."""
+    seg = _segment_name(st["segment"])
+    if st["band"] in BAND_WORDS:
+        return BAND_WORDS[st["band"]].format(seg=seg)
+    if st["segment"] == "*":
+        return "no body type on record, so no comparison"
+    return f"only {st['n_models']} rated {seg}, too few to compare"
+
+
+def owner_standing(model: str, evidence: Evidence) -> Optional[dict]:
+    """Where the model's overall owner rating stands among the rated models of its segment, plus the raw figures, for the
+    Owners bar and the ratings-summary line. A model with fewer than STANDING_MIN_RATINGS ratings gets no standing claim.
+    None when the model has no overall owner rating. Display only."""
+    row = evidence.owner_rating_row(model, config.OWNER_OVERALL_ASPECT)
+    if row is None:
+        return None
+    rating, top = float(row["raw_score"]), float(row["scale_max"])
+    try:
+        count = int(float(row["rating_count"]))
+    except (TypeError, ValueError):
+        count = None
+    low = count is None or count < config.STANDING_MIN_RATINGS or str(row["low_confidence"]).lower() == "true"
+    st = evidence.standing("owner", model) or {"value": None, "band": "small_segment", "segment": "*", "n_models": 0}
+    after = evidence.owner_rating_row(model, "service_cost")
+    after_rating = None if after is None else float(after["raw_score"])
+    source = row["source"]
+    score = f"{rating:.1f}/{top:g}"
+    if low:
+        st = {**st, "value": None, "band": "low_confidence"}
+        basis = "number of ratings not stated" if count is None else f"only {count} rating{'s' if count != 1 else ''}"
+        caption = f"{score} from {basis} · too few to compare"
+        cite = f"{source}, {basis}, low confidence"
+    else:
+        caption = f"{score} from {count} ratings · {_standing_tail(st)}"
+        cite = f"{source}, {count} ratings"
+    summary = (f"Owners rate it {score} overall"
+               + (f", after-sales cost {after_rating:.1f}/{top:g}" if after_rating is not None else "") + f" ({cite})")
+    return {"value": st["value"], "band": st["band"], "segment": st["segment"], "n_models": st["n_models"],
+            "rating": round(rating, 2), "scale_max": top, "rating_count": count, "after_sales": after_rating,
+            "source": source, "caption": caption, "summary": summary, "source_url": row["url"] or None}
+
+
+def expert_standing(model: str, evidence: Evidence) -> Optional[dict]:
+    """The same for Autocar's overall score. None when the model has no expert rows at all."""
+    df = evidence.assessments
+    if df.empty or "raw_score" not in df.columns or not (df["model"] == model).any():
+        return None
+    g = df[(df["model"] == model) & (df["aspect"] == config.EXPERT_OVERALL_ASPECT)]
+    if g.empty:
+        return {"value": None, "band": "no_overall", "segment": evidence.segments.get(model, "*"), "n_models": 0,
+                "score": None, "scale_max": None, "source": None, "caption": "No overall Autocar score to compare"}
+    st = evidence.standing("expert", model) or {"value": None, "band": "small_segment", "segment": "*", "n_models": 0}
+    score, top = float(pd.to_numeric(g["raw_score"]).mean()), float(pd.to_numeric(g["scale_max"]).iloc[0])
+    source = g["source_name"].iloc[0]
+    return {**st, "score": round(score, 2), "scale_max": top, "source": source,
+            "caption": f"{source} {score:g}/{top:g} overall · {_standing_tail(st)}"}
 
 
 def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], intent: Any,
@@ -380,6 +452,7 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
     reasons = list(merged.values())[:config.MAX_REASONS]
     unknowns = unknowns_for(row, score_row, weights, evidence)
     overall = None if is_unknown(score_row["overall"]) else float(score_row["overall"])
-    return {"reasons": reasons, "expert_lines": e_lines, "owner_lines": o_lines, "caveats": caveats,
+    return {"reasons": reasons, "expert_standing": expert_standing(row["model"], evidence),
+            "owner_standing": owner_standing(row["model"], evidence), "expert_lines": e_lines, "owner_lines": o_lines, "caveats": caveats,
             "unknowns": unknowns, "n_unknown": len(unknowns),
             "match_label": match_label(overall, len(unknowns), relaxed)}

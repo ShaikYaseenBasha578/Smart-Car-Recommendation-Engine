@@ -503,6 +503,59 @@ class Evidence:
             out[k]["aspects"].append(r["aspect"])
         return [out[k] for k in sorted(out)]
 
+    # -- standing within the segment (display only; never read by the score) -------------------------------------
+    def _standing_populations(self, kind: str) -> Dict[str, List[float]]:
+        """{segment: sorted raw ratings (as a share of the scale) of the segment's rated models}: owners' overall
+        (satisfaction) rating, or Autocar's overall score. Same segments as the owner-rating shrinkage."""
+        cache = self.__dict__.setdefault("_standing_pops", {})
+        if kind not in cache:
+            pops: Dict[str, List[float]] = {}
+            for model, v in self._standing_values(kind).items():
+                pops.setdefault(self.segments.get(model, "*"), []).append(v)
+            cache[kind] = {seg: sorted(vals) for seg, vals in pops.items()}
+        return cache[kind]
+
+    def _standing_values(self, kind: str) -> Dict[str, float]:
+        out: Dict[str, float] = {}
+        if kind == "owner":
+            df = self.owner_ratings
+            if not df.empty:
+                for _, r in df[df["aspect"] == config.OWNER_OVERALL_ASPECT].iterrows():
+                    out[r["model"]] = round(float(r["raw_score"]) / float(r["scale_max"]), 4)
+        else:
+            df = self.assessments
+            if len(df) and "raw_score" in df.columns:
+                for model, g in df[df["aspect"] == config.EXPERT_OVERALL_ASPECT].groupby("model"):
+                    share = (pd.to_numeric(g["raw_score"], errors="coerce") / pd.to_numeric(g["scale_max"], errors="coerce")).dropna()
+                    if len(share):
+                        out[model] = round(float(share.mean()), 4)
+        return out
+
+    def standing(self, kind: str, model: str) -> Optional[dict]:
+        """{"value": 0-100 or None, "band": top|upper|lower|bottom|small_segment, "segment", "n_models"} for a model with an
+        overall rating of this kind, else None. value is the mid-rank percentile of the model's overall rating among the
+        rated models of its segment (ties count half); None when the segment has fewer than MIN_SEGMENT_MODELS rated models."""
+        mine = self._standing_values(kind).get(model)
+        if mine is None:
+            return None
+        seg = self.segments.get(model, "*")
+        pop = self._standing_populations(kind).get(seg, [])
+        out = {"value": None, "band": "small_segment", "segment": seg, "n_models": len(pop)}
+        if seg == "*" or len(pop) < config.MIN_SEGMENT_MODELS:
+            return out
+        below = sum(1 for v in pop if v < mine - 1e-9)
+        level = sum(1 for v in pop if abs(v - mine) <= 1e-9)
+        value = int(round(100.0 * (below + 0.5 * level) / len(pop)))
+        band = next((b for t, b in config.STANDING_BANDS if value >= t), config.STANDING_BOTTOM_BAND)
+        return {**out, "value": value, "band": band}
+
+    def owner_rating_row(self, model: str, aspect: str) -> Optional[pd.Series]:
+        df = self.owner_ratings
+        if df.empty:
+            return None
+        g = df[(df["model"] == model) & (df["aspect"] == aspect)]
+        return None if g.empty else g.iloc[0]
+
     def reviewed_models(self, kind: str) -> List[tuple]:
         """(make, model) of every model with at least one row of this kind."""
         if kind == "expert":

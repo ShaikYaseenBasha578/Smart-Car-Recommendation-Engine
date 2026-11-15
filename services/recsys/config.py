@@ -124,6 +124,17 @@ ASSUMED_BOOST = 0.03           # added to the overall score (0-1) of a car match
 MAX_REASONS = 4
 MAX_EXPERT_LINES = 2           # Autocar note lines per car
 MAX_OWNER_LINES = 2            # owner theme lines per car (a reported fault always takes one)
+# An owner theme line (positive or mixed) is shown only with at least this many verified mentions. Negative themes and
+# reported recurring faults keep the stored minimum (3, from the export) so a caveat is never suppressed. Display only:
+# scoring still counts every theme row.
+OWNER_LINE_MIN_MENTIONS = 5
+# Where a model stands among the rated models of its segment (body type), 0-100 (mid-rank percentile). At or above the
+# first threshold: "among the best-rated"; then "above average"; then "below average"; below the last: "among the lowest-rated".
+# A segment with fewer than MIN_SEGMENT_MODELS rated models, or a model with fewer than STANDING_MIN_RATINGS ratings,
+# gets no standing claim. Display only: never read by the score.
+STANDING_BANDS = [(75, "top"), (50, "upper"), (25, "lower")]
+STANDING_BOTTOM_BAND = "bottom"
+STANDING_MIN_RATINGS = 30
 PREVALENCE_SOME_BELOW = 0.25   # share of sampled reviews: below -> "some owners"; 0.25 to 0.5 -> "many"; over 0.5 -> "most"
 PREVALENCE_MOST_ABOVE = 0.5
 # percentile-based spec scores centre near 0.5-0.65, so the bars sit above that
