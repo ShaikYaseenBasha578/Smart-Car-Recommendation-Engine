@@ -1,0 +1,29 @@
+# docker compose up --build
+#   web: the Flask site        -> http://localhost:5001
+#   api: the FastAPI service   -> http://localhost:8000/docs
+# Both run from the same image. No secrets are baked in; pass optional ones from your shell (GEMINI_API_KEY).
+services:
+  web:
+    build: .
+    image: carrec:local
+    command: ["gunicorn", "app:app", "--bind", "0.0.0.0:5001", "--workers", "2", "--timeout", "120"]
+    environment:
+      RANKER: v3
+      CARREC_CATALOGUE_DIR: /app/data/catalogue_v3
+    ports:
+      - "5001:5001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5001/', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 40s
+      retries: 3
+  api:
+    build: .
+    image: carrec:local
+    command: ["uvicorn", "api_service.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      API_CORS_ORIGINS: ${API_CORS_ORIGINS:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    ports:
+      - "8000:8000"
