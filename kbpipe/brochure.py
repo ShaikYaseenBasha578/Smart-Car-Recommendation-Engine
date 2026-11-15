@@ -693,7 +693,8 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
             rec["status"] = "no specification or feature page found"
             log("brochure", "%s %s: %s" % (make, model, rec["status"]))
             continue
-        frac = guard_text(vinfo, texts, pages, model)
+        blind = any(len(texts[p - 1].strip()) < 50 for p in pages)       # an image-only page cannot be judged from text; the guard after the reads still applies
+        frac = None if blind else guard_text(vinfo, texts, pages, model)
         rec["variant_match_fraction_text"] = None if frac is None else round(frac, 2)
         if frac is not None and frac < b["match_fraction"]:
             rec["status"] = "brochure does not match the current listing"
