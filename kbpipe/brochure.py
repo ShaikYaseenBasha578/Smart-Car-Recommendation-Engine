@@ -312,7 +312,13 @@ def find_pages(texts, variants, model, cap, min_score):
     scored = [(score_page(t, words), i + 1) for i, t in enumerate(texts)]
     keep = [(s, p) for s, p in scored if s >= min_score]
     keep.sort(key=lambda x: (-x[0], x[1]))
-    return sorted(p for s, p in keep[:cap]), dict((p, s) for s, p in scored)
+    chosen = [p for s, p in keep[:cap]]
+    # image-only pages (no text layer, no OCR) cannot be scored; a short brochure whose tables are images would otherwise yield
+    # no specification page. In a brochure of at most 12 pages, fill the remaining slots with them (at most 3), after every scored page.
+    blind = [i + 1 for i, t in enumerate(texts) if len(t.strip()) < 50 and i > 0]
+    if len(chosen) < cap and len(texts) <= 12:        # short brochures only
+        chosen += blind[:min(3, cap - len(chosen))]
+    return sorted(chosen), dict((p, s) for s, p in scored)
 
 
 # ---------------------------------------------------------------- 4. read
