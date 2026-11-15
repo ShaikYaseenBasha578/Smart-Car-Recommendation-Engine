@@ -49,7 +49,7 @@ log = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 ASSESSMENTS_CSV = Path(os.environ.get("RECSYS_ASSESSMENTS_CSV") or DATA_DIR / "assessments.csv")
-OWNER_THEMES_CSV = DATA_DIR / "owner_themes.csv"
+OWNER_THEMES_CSV = Path(os.environ.get("RECSYS_OWNER_THEMES_CSV") or DATA_DIR / "owner_themes.csv")
 OWNER_RATINGS_CSV = Path(os.environ.get("RECSYS_OWNER_RATINGS_CSV") or DATA_DIR / "owner_ratings.csv")
 
 ASPECTS = ["ride_comfort", "handling", "engine_performance", "refinement", "city_driveability",
@@ -72,6 +72,11 @@ REVIEW_ASSESSMENT_COLS = ["model", "aspect", "value", "source", "url", "publishe
                           "scale_max", "source_aspect"]
 OWNER_RATING_COLS = ["model", "aspect", "value", "rating_count", "low_confidence", "source", "url", "observed_at",
                      "raw_score", "scale_max", "source_aspect"]
+# optional text columns of the review-file layout (older files lack them: no notes then)
+ASSESSMENT_TEXT_COLS = ["note", "quote"]
+# owner_themes.csv exported from the KB (no make column; `source` instead of `source_name`; share = mentions / posts)
+EXPORT_THEME_COLS = ["model", "theme", "label", "direction", "mentions", "posts_sampled", "share", "note",
+                     "sample_urls", "source", "period"]
 NO_MAKE = ""  # review files carry no make column: their rows are keyed by model name alone
 
 
@@ -87,7 +92,7 @@ def criterion_label(criterion: str) -> str:
     return criterion
 
 
-def _read(path: Path, cols: List[str]) -> pd.DataFrame:
+def _read(path: Path, cols: List[str], optional: Optional[List[str]] = None) -> pd.DataFrame:
     try:
         if path is None or not Path(path).exists() or Path(path).stat().st_size == 0:
             return pd.DataFrame(columns=cols)
@@ -98,8 +103,11 @@ def _read(path: Path, cols: List[str]) -> pd.DataFrame:
     missing = [c for c in cols if c not in df.columns]
     if missing:
         log.warning("evidence: %s lacks columns %s; ignoring file", path, missing)
-        return pd.DataFrame(columns=cols)
-    return df[cols]
+        return pd.DataFrame(columns=cols + list(optional or []))
+    for c in optional or []:
+        if c not in df.columns:
+            df[c] = ""
+    return df[cols + list(optional or [])]
 
 
 def _read_assessments(path: Path) -> pd.DataFrame:
@@ -108,11 +116,61 @@ def _read_assessments(path: Path) -> pd.DataFrame:
         if path is not None and Path(path).exists() and Path(path).stat().st_size > 0:
             head = pd.read_csv(path, dtype=str, keep_default_na=False, nrows=0)
             if "value" in head.columns:
-                return _read(path, REVIEW_ASSESSMENT_COLS)
+                return _read(path, REVIEW_ASSESSMENT_COLS, ASSESSMENT_TEXT_COLS)
     except Exception as exc:
         log.warning("evidence: cannot read %s (%s); ignoring", path, exc)
         return pd.DataFrame(columns=ASSESSMENT_COLS)
     return _read(path, ASSESSMENT_COLS)
+
+
+def _read_themes(path: Path) -> pd.DataFrame:
+    """Owner themes in either layout: the KB export (no make column, has `share`) or the legacy one."""
+    try:
+        if path is not None and Path(path).exists() and Path(path).stat().st_size > 0:
+            head = pd.read_csv(path, dtype=str, keep_default_na=False, nrows=0)
+            if "make" not in head.columns and "model" in head.columns:
+                return _read(path, EXPORT_THEME_COLS)
+    except Exception as exc:
+        log.warning("evidence: cannot read %s (%s); ignoring", path, exc)
+        return pd.DataFrame(columns=EXPORT_THEME_COLS)
+    return _read(path, OWNER_COLS)
+
+
+def _is_export_theme_frame(df: Optional[pd.DataFrame]) -> bool:
+    return df is not None and "model" in df.columns and "make" not in df.columns and "share" in df.columns
+
+
+def clean_export_themes(df: pd.DataFrame) -> pd.DataFrame:
+    """Exported theme rows: a model, a theme from the fixed list, a direction, 0 <= mentions <= posts_sampled."""
+    keep = []
+    for i, r in df.iterrows():
+        try:
+            mentions, posts = int(float(r["mentions"])), int(float(r["posts_sampled"]))
+        except (TypeError, ValueError):
+            mentions = posts = None
+        if r["theme"] not in THEMES:
+            log.warning("owner_themes row %s: theme %r not in the fixed list; dropped", i, r["theme"])
+        elif r["direction"] not in DIRECTIONS:
+            log.warning("owner_themes row %s: direction %r invalid; dropped", i, r["direction"])
+        elif mentions is None or posts is None or posts <= 0 or mentions < 0 or mentions > posts:
+            log.warning("owner_themes row %s: mentions/posts_sampled invalid; dropped", i)
+        elif not r["model"]:
+            log.warning("owner_themes row %s: missing model; dropped", i)
+        else:
+            keep.append(i)
+    out = df.loc[keep].copy()
+    out["mentions"] = out["mentions"].astype(float).astype(int)
+    out["posts_sampled"] = out["posts_sampled"].astype(float).astype(int)
+    return out.reset_index(drop=True)
+
+
+def theme_strength(mentions: int, posts: int) -> float:
+    """Strength in [0, 1] of one theme row: share of the sampled reviews that mention it (full at
+    OWNER_SATURATION_SHARE) times posts / (posts + OWNER_SAMPLE_K), so a small sample counts for less."""
+    if posts <= 0:
+        return 0.0
+    share = min(1.0, mentions / posts)
+    return min(1.0, share / config.OWNER_SATURATION_SHARE) * posts / (posts + config.OWNER_SAMPLE_K)
 
 
 def _is_review_frame(df: Optional[pd.DataFrame]) -> bool:
@@ -138,6 +196,9 @@ def clean_review_assessments(df: pd.DataFrame) -> pd.DataFrame:
             vals.append(v)
     out = df.loc[keep].copy()
     out["value"] = vals
+    for c in ASSESSMENT_TEXT_COLS:  # files without the text columns: no notes, no quotes
+        if c not in out.columns:
+            out[c] = ""
     out["make"] = NO_MAKE
     out["source_name"] = out["source"]
     out["source_url"] = out["url"]
@@ -247,7 +308,12 @@ class Evidence:
             self.assessments = clean_assessments(assessments)
         else:
             self.assessments = pd.DataFrame(columns=ASSESSMENT_COLS)
-        self.owner_themes = clean_owner_themes(owner_themes) if owner_themes is not None and len(owner_themes) \
+        # exported themes (model-keyed, see EXPORT_THEME_COLS) feed a capped adjustment of the owner sub-score and the
+        # explanations; the legacy layout (make-keyed) keeps feeding the owner_<theme> criteria
+        self.themes = clean_export_themes(owner_themes) if _is_export_theme_frame(owner_themes) and len(owner_themes) \
+            else pd.DataFrame(columns=EXPORT_THEME_COLS)
+        legacy = owner_themes if owner_themes is not None and not _is_export_theme_frame(owner_themes) else None
+        self.owner_themes = clean_owner_themes(legacy) if legacy is not None and len(legacy) \
             else pd.DataFrame(columns=OWNER_COLS)
         self.owner_ratings = clean_owner_ratings(owner_ratings) if owner_ratings is not None and len(owner_ratings) \
             else pd.DataFrame(columns=OWNER_RATING_COLS)
@@ -257,6 +323,9 @@ class Evidence:
         self._overall_all: Dict[tuple, dict] = {}     # (make, model) -> the model's overall row(s), every model that has one
         self._neutral_cache: Dict[tuple, Any] = {}
         self._owner: Dict[tuple, dict] = {}
+        self._themes: Dict[str, List[dict]] = {}
+        for r in self.themes.to_dict("records"):
+            self._themes.setdefault(r["model"], []).append(r)
         if len(self.assessments):
             if review:
                 self._build_expert_reviews()
@@ -390,6 +459,50 @@ class Evidence:
             den += gw
         return num / den if den > 0 else None
 
+    # -- owner themes (text-derived) and expert notes --------------------------------------------------------------
+    def theme_rows(self, model: str) -> List[dict]:
+        return list(self._themes.get(model, []))
+
+    def theme_adjustment(self, model: str, aspect_w: Optional[Dict[str, float]]) -> float:
+        """Signed change to the model's owner sub-score from its themes, within +-THEME_ADJUST_CAP x the sub-score range
+        (1.0). Each theme row is signal = direction (+1 / 0 / -1) x theme_strength; a row counts with the query weight of
+        its theme (the same OWNER_THEME_CRITERIA weights the ratings use; a query with no preference counts only the
+        satisfaction theme; weight 0 = not counted). The adjustment is cap x the weighted mean signal of the rows the
+        model has, so a model with no themes (or none relevant) gets exactly 0: neutral, not penalised."""
+        rows = self._themes.get(model)
+        if not rows:
+            return 0.0
+        weight = {config.OWNER_OVERALL_ASPECT: 1.0} if aspect_w is None else aspect_w
+        num = den = 0.0
+        for r in rows:
+            w = weight.get(r["theme"], 0.0)
+            if w <= 0:
+                continue
+            num += w * DIRECTIONS[r["direction"]] * theme_strength(int(r["mentions"]), int(r["posts_sampled"]))
+            den += w
+        if den <= 0:
+            return 0.0
+        return config.THEME_ADJUST_CAP * max(-1.0, min(1.0, num / den))
+
+    def expert_notes(self, model: str) -> List[dict]:
+        """One entry per source label of the model that has a note (review layout), with the engine aspects it feeds:
+        {source, source_aspect, aspects, raw_score, scale_max, published_on, source_url, note, quote}. Text is exactly
+        as exported."""
+        df = self.assessments
+        if df.empty or "note" not in df.columns or "source_aspect" not in df.columns:
+            return []
+        g = df[(df["model"] == model) & (df["aspect"] != "overall") & (df["note"].astype(str) != "")]
+        out: Dict[tuple, dict] = {}
+        for _, r in g.iterrows():
+            k = (r["source_name"], r["source_aspect"])
+            if k not in out:
+                out[k] = {"source": r["source_name"], "source_aspect": r["source_aspect"], "aspects": [],
+                          "raw_score": float(r["raw_score"]), "scale_max": float(r["scale_max"]),
+                          "published_on": r["published_on"] or None, "source_url": r["source_url"] or None,
+                          "note": r["note"], "quote": r["quote"] or None}
+            out[k]["aspects"].append(r["aspect"])
+        return [out[k] for k in sorted(out)]
+
     def reviewed_models(self, kind: str) -> List[tuple]:
         """(make, model) of every model with at least one row of this kind."""
         if kind == "expert":
@@ -489,7 +602,7 @@ class Evidence:
         if segments is None:
             segments = catalogue_segments()
         return cls(_read_assessments(assessments_path or ASSESSMENTS_CSV),
-                   _read(owner_path or OWNER_THEMES_CSV, OWNER_COLS),
+                   _read_themes(owner_path or OWNER_THEMES_CSV),
                    _read(ratings_path or OWNER_RATINGS_CSV, OWNER_RATING_COLS), segments=segments)
 
     @property

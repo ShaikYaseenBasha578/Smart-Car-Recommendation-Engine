@@ -57,7 +57,7 @@ def vid(df, model):
 
 # ------------------------------------------------------------------ exporter
 
-def _kb(path, assessments, owners):
+def _kb(path, assessments, owners, themes=()):
     con = sqlite3.connect(path)
     con.executescript("""
         CREATE TABLE model (id INTEGER PRIMARY KEY, name TEXT);
@@ -65,14 +65,19 @@ def _kb(path, assessments, owners):
         CREATE TABLE variant (id INTEGER PRIMARY KEY, model_id INTEGER);
         CREATE VIEW v_variant_canonical_q AS SELECT id, model_id FROM variant;
         CREATE TABLE professional_assessment (id INTEGER PRIMARY KEY, model_id INT, source_id INT, source_aspect TEXT,
-            score REAL, scale_max REAL, source_url TEXT, published_on TEXT, observed_at TEXT, status TEXT);
+            score REAL, scale_max REAL, source_url TEXT, published_on TEXT, observed_at TEXT, status TEXT,
+            note TEXT, quote TEXT);
+        CREATE TABLE owner_theme (id INTEGER PRIMARY KEY, model_id INT, theme TEXT, label TEXT, direction TEXT,
+            mentions INT, posts_sampled INT, period TEXT, sample_urls TEXT, note TEXT, source_id INT);
         CREATE TABLE owner_rating (id INTEGER PRIMARY KEY, model_id INT, source_id INT, source_aspect TEXT,
             score REAL, scale_max REAL, rating_count INT, source_url TEXT, observed_at TEXT, status TEXT);
         INSERT INTO model VALUES (1, 'Nexon'), (2, 'Punch');
         INSERT INTO variant VALUES (1, 1), (2, 2);
         INSERT INTO source VALUES (1, 'Autocar India expert review'), (2, 'CarWale user ratings');
     """)
-    con.executemany("INSERT INTO professional_assessment VALUES (?,?,?,?,?,?,?,?,?,?)", assessments)
+    con.executemany("INSERT INTO professional_assessment VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                    [tuple(a) + (None,) * (12 - len(a)) for a in assessments])
+    con.executemany("INSERT INTO owner_theme VALUES (?,?,?,?,?,?,?,?,?,?,?)", themes)
     con.executemany("INSERT INTO owner_rating VALUES (?,?,?,?,?,?,?,?,?,?)", owners)
     con.commit()
     con.close()
@@ -86,25 +91,42 @@ def test_exporter_maps_labels_scales_flags_and_is_deterministic(tmp_path):
     db = tmp_path / "kb.db"
     _kb(db, [
         (1, 1, 1, "Performance And Refinement", 7.0, 10.0, "http://ac/n", "2025-07-04", "2026-11-14", "current"),
-        (2, 1, 1, "Ride Comfort And Handling", 8.0, 10.0, "http://ac/n", None, "2026-11-14", "current"),
+        (2, 1, 1, "Ride Comfort And Handling", 8.0, 10.0, "http://ac/n", None, "2026-11-14", "current",
+         "Composed over ruts; light steering.", "Ride comfort remains a core strength."),
         (3, 1, 1, "overall", 8.0, 10.0, "http://ac/n", "2025-07-04", "2026-11-14", "current"),
         (4, 2, 1, "Value For Money", 9.0, 10.0, "http://ac/p", "2025-07-04", "2026-11-14", "superseded"),
     ], [
         (1, 1, 2, "After Sales Cost and Experience", 4.4, 5.0, 386, "http://cw/n", "2026-11-14T00:00:00Z", "current"),
         (2, 1, 2, "Design and Styling", 4.0, 5.0, 386, "http://cw/n", "2026-11-14T00:00:00Z", "current"),
         (3, 2, 2, "overall", 4.5, 5.0, 11, "http://cw/p", "2026-11-14T00:00:00Z", "current"),
+    ], [
+        (1, 1, "recurring_fault", "music system faults", "negative", 3, 60, None, '["http://cw/n/1", "http://cw/n/2"]',
+         "Owners report repeated music system faults.", 2),
+        (2, 2, "service_cost", None, "positive", 14, 60, None, '["http://cw/p/1"]', None, 2),
     ])
     out1, out2 = tmp_path / "o1", tmp_path / "o2"
     assert exporter.main(["--db", str(db), "--out-dir", str(out1)]) == 0
     assert exporter.main(["--db", str(db), "--out-dir", str(out2)]) == 0
-    for name in ("assessments.csv", "owner_ratings.csv"):
+    for name in ("assessments.csv", "owner_ratings.csv", "owner_themes.csv"):
         assert _sha(out1 / name) == _sha(out2 / name)
+    t = pd.read_csv(out1 / "owner_themes.csv", dtype=str, keep_default_na=False)
+    assert list(t.columns) == exporter.THEME_COLUMNS
+    fault = t[t.theme == "recurring_fault"].iloc[0]
+    assert (fault.model, fault.label, fault.mentions, fault.posts_sampled, fault.share, fault.source) == \
+        ("Nexon", "music system faults", "3", "60", "0.05", "CarWale")
+    assert fault.note == "Owners report repeated music system faults." and fault.sample_urls.startswith('["http://cw/n/1"')
+    cost = t[t.theme == "service_cost"].iloc[0]
+    assert (cost.model, cost.label, cost.note, cost.share) == ("Punch", "", "", "0.2333")
     a = pd.read_csv(out1 / "assessments.csv", dtype=str, keep_default_na=False)
     assert list(a.columns) == exporter.ASSESSMENT_COLUMNS
     by = {(r.model, r.aspect): r for r in a.itertuples()}
     assert {k[1] for k in by} == {"engine_performance", "refinement", "ride_comfort", "handling", "overall"}
     assert by[("Nexon", "refinement")].value == "0.7" and by[("Nexon", "refinement")].source == "Autocar India"
     assert by[("Nexon", "handling")].published_on == "" and by[("Nexon", "handling")].raw_score == "8"
+    # note and quote are copied as stored (a label feeding two aspects repeats them); empty when absent
+    assert by[("Nexon", "ride_comfort")].note == by[("Nexon", "handling")].note == "Composed over ruts; light steering."
+    assert by[("Nexon", "handling")].quote == "Ride comfort remains a core strength."
+    assert by[("Nexon", "refinement")].note == "" and by[("Nexon", "refinement")].quote == ""
     assert not any(r.model == "Punch" for r in a.itertuples())              # superseded rows are not exported
     o = pd.read_csv(out1 / "owner_ratings.csv", dtype=str, keep_default_na=False)
     assert list(o.columns) == exporter.OWNER_COLUMNS

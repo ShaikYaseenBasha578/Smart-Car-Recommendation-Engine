@@ -121,11 +121,12 @@ def test_missing_and_empty_files(tmp_path):
 
 def test_repo_data_files_exist_with_headers():
     from services.recsys.evidence import (ASSESSMENTS_CSV, OWNER_RATING_COLS, OWNER_RATINGS_CSV, OWNER_THEMES_CSV,
-                                          REVIEW_ASSESSMENT_COLS)
-    # assessments.csv and owner_ratings.csv are the KB review export (scripts/export_reviews_from_kb.py)
-    assert ASSESSMENTS_CSV.read_text().splitlines()[0].split(",") == REVIEW_ASSESSMENT_COLS
+                                          REVIEW_ASSESSMENT_COLS, ASSESSMENT_TEXT_COLS, EXPORT_THEME_COLS)
+    # the three files are the KB review export (scripts/export_reviews_from_kb.py); assessments gained note, quote and
+    # owner_themes.csv switched to the export layout (no make column) on 2026-11-15
+    assert ASSESSMENTS_CSV.read_text().splitlines()[0].split(",") == REVIEW_ASSESSMENT_COLS + ASSESSMENT_TEXT_COLS
     assert OWNER_RATINGS_CSV.read_text().splitlines()[0].split(",") == OWNER_RATING_COLS
-    assert OWNER_THEMES_CSV.read_text().strip().split(",") == OWNER_COLS
+    assert OWNER_THEMES_CSV.read_text().splitlines()[0].split(",") == EXPORT_THEME_COLS
 
 
 def test_expert_mean_rating_mapped_and_counted():
