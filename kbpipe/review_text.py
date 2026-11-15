@@ -20,7 +20,7 @@ import re
 from . import llm
 from .sources import autocar_reviews as AC
 
-PROMPT_V = {"ac_write": "ac-w5", "ac_check": "ac-c4", "cw_write": "cw-w5", "cw_check": "cw-c4", "num_check": "num-c2"}
+PROMPT_V = {"ac_write": "ac-w5", "ac_check": "ac-c4", "cw_write": "cw-w6", "cw_check": "cw-c4", "num_check": "num-c2"}
 THEMES = ["reliability", "service_cost", "service_experience", "real_world_mileage", "build_issues", "recurring_fault", "resale",
           "satisfaction"]
 DIRECTIONS = ("positive", "negative", "mixed")
@@ -93,7 +93,7 @@ def carwale_write_prompt(items, min_mentions, max_words):
             "a review that does not clearly raise the theme is not listed. A theme needs at least %d mentions.\n"
             "note: one sentence in your own words saying what owners report, at most %d words (count them before you answer; shorten if needed), no quotes, "
             "no advice to the reader, no figures (kmpl, rupees) unless the mentions give them. Do not write 'most', 'many' or 'several'; write 'some owners' "
-            "unless nearly all mentions agree. Describe a split (praise and complaints) only if you list lines for both sides.\n"
+            "unless nearly all mentions agree. Describe a split (praise and complaints) only if you list at least two lines for each side; otherwise the note says only what the lines say, with no 'but' or 'though' clause. No digits in the note.\n"
             'Reply with JSON only: {"themes":[{"theme":"...","label":null,"note":"...","mentions":[{"review_id":"id1","line":"exact text","direction":"negative"}]}]}\n\n%s'
             % (len(items), ", ".join(THEMES), min_mentions, max_words - 3, body))
 
@@ -381,6 +381,10 @@ class Engine:
                 why = "recurring_fault without a label"
             elif note and words(note) > rc["max_note_words"]:
                 why = "note over %d words (%d)" % (rc["max_note_words"], words(note))
+            elif note and direction != "mixed" and re.search(r"\b(but|though|although|while|however|yet|whereas)\b", note, re.I):
+                why = "note describes a split but the verified lines are one-sided (%s)" % direction
+            elif note and re.search(r"\d", note):
+                why = "note contains figures the checker cannot tie to the mentions"
             if why:
                 rec["drop_reason"] = why
                 info["dropped"] += 1
