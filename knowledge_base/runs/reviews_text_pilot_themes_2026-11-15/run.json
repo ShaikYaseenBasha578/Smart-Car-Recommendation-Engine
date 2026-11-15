@@ -1,0 +1,118 @@
+{
+ "run": "reviews_text_pilot_themes_2026-11-15",
+ "started": "2026-11-14T20:33:44Z",
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 158,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "0 of 0 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->98967",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 650->650",
+     "owner_theme 0->0",
+     "powertrain 216->216",
+     "professional_assessment 598->598",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "64 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "64 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 64,
+  "idempotent": true,
+  "error": null
+ },
+ "models": {},
+ "text": {
+  "autocar": {
+   "verified": 66,
+   "ok": 64,
+   "unchecked": 0,
+   "accuracy": 0.9697
+  },
+  "carwale": {
+   "verified": 39,
+   "ok": 36,
+   "unchecked": 0,
+   "accuracy": 0.9231,
+   "withheld": true
+  }
+ },
+ "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
+ "numbers_check": {
+  "autocar": {
+   "checked": 80,
+   "ok": 79,
+   "models": 10,
+   "accuracy": 0.9875
+  },
+  "carwale": {
+   "checked": 70,
+   "ok": 70,
+   "models": 9,
+   "accuracy": 1.0
+  }
+ },
+ "not_reached": [],
+ "llm_calls": 20,
+ "llm": {
+  "writer_calls": 8,
+  "checker_calls": 12,
+  "writer_cache_hits": 10,
+  "checker_cache_hits": 29
+ },
+ "backends_out": {
+  "writer": {},
+  "checker": {
+   "gemini_alt": "gemini_alt: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://a"
+  }
+ },
+ "text_models": {
+  "writers": [
+   "sonnet"
+  ],
+  "checkers": [
+   "claude-opus-5-5",
+   "openai/gpt-oss-120b"
+  ],
+  "independent": true
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 67,
+  "failed": 0,
+  "bytes": 0
+ },
+ "blocks": [],
+ "runtime_seconds": 511.9
+}

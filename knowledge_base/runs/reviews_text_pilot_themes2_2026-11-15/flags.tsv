@@ -1,0 +1,9 @@
+make	model	source	flag	detail
+Honda	Amaze	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Honda	Amaze	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Kia	Seltos	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Maruti Suzuki	Ertiga	carwale	THEME_DROPPED	service_cost note describes a split but the verified lines are one-sided (positive)
+Maruti Suzuki	Swift	autocar	NUMBER_NOT_CONFIRMED	overall=8.0
+Toyota	Innova Hycross	carwale	THEME_DROPPED	real_world_mileage: checker: not supported

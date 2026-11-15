@@ -1,0 +1,114 @@
+{
+ "run": "reviews_text_pilot_themes2_2026-11-15",
+ "started": "2026-11-15T00:13:02Z",
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 200,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "0 of 0 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->98967",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 650->650",
+     "owner_theme 0->42",
+     "powertrain 216->216",
+     "professional_assessment 598->598",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "106 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "106 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 106,
+  "idempotent": true,
+  "error": null
+ },
+ "models": {},
+ "text": {
+  "autocar": {
+   "verified": 66,
+   "ok": 64,
+   "unchecked": 0,
+   "accuracy": 0.9697
+  },
+  "carwale": {
+   "verified": 43,
+   "ok": 42,
+   "unchecked": 0,
+   "accuracy": 0.9767
+  }
+ },
+ "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
+ "numbers_check": {
+  "autocar": {
+   "checked": 80,
+   "ok": 79,
+   "models": 10,
+   "accuracy": 0.9875
+  },
+  "carwale": {
+   "checked": 78,
+   "ok": 78,
+   "models": 10,
+   "accuracy": 1.0
+  }
+ },
+ "not_reached": [],
+ "llm_calls": 22,
+ "llm": {
+  "writer_calls": 9,
+  "checker_calls": 13,
+  "writer_cache_hits": 10,
+  "checker_cache_hits": 30
+ },
+ "backends_out": {
+  "writer": {},
+  "checker": {}
+ },
+ "text_models": {
+  "writers": [
+   "sonnet"
+  ],
+  "checkers": [
+   "claude-opus-5-5"
+  ],
+  "independent": true
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 67,
+  "failed": 0,
+  "bytes": 0
+ },
+ "blocks": [],
+ "runtime_seconds": 634.4
+}
