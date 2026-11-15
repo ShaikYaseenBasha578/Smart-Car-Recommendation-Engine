@@ -170,7 +170,7 @@ class Backend:
                 if work:
                     shutil.rmtree(work, ignore_errors=True)
             import re as _re
-            limit = lambda t: bool(_re.search(r"usage limit|limit reached|hit your limit|reached your limit|limit will reset|rate limit|quota|out of (extra )?usage|too many requests|overloaded_error|resets? at", t or "", _re.I))
+            limit = lambda t: bool(_re.search(r"usage limit|limit reached|hit your (\d+-hour |weekly |session )?limit|reached your limit|hour limit|limit will reset|rate limit|quota|out of (extra )?usage|too many requests|overloaded_error|resets? at", t or "", _re.I))
             if r.returncode != 0:
                 msg = (r.stderr or "")
                 try:
