@@ -1,0 +1,144 @@
+make	model	source	flag	detail
+Tata	Sierra	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Tata	Sierra	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Safari	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Kia	Seltos	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Victoris	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Maruti Suzuki	Grand Vitara	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Maruti Suzuki	Grand Vitara	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Kia	Sorento	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Kia	Sorento	carwale	ASPECTS_MISSING	not shown on the page, left empty: Design and Styling, Comfort and Space, Performance, Fuel Economy, Value for Money, Features and Technology, After Sales Cost and Experience
+Kia	Sorento	carwale	LOW_CONFIDENCE	9 ratings (stored, flagged for export)
+Kia	Sorento	carwale	THEMES_SKIPPED	only 5 owner reviews sampled (minimum 20)
+Hyundai	Verna	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Verna	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Verna	carwale	THEMES_SKIPPED	only 12 owner reviews sampled (minimum 20)
+Mahindra	XUV 7XO	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Mahindra	XUV 7XO	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Altroz	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Renault	Duster	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Punch	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker: not supported
+Tata	Punch	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Exter	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Exter	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Urban Cruiser Hyryder	autocar	NOTE_DROPPED	Performance And Refinement: checker: not supported
+Tata	Curvv	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Hyundai	Alcazar	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Tata	Tiago	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Kiger	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Aeris	autocar	INVALID_SCORES	aspect missing: Mileage / Range And Efficiency
+Tata	Aeris	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Tata	Harrier EV	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Tata	Harrier EV	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+MG	Hector	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Hector	carwale	THEMES_SKIPPED	only 14 owner reviews sampled (minimum 20)
+Hyundai	i20	carwale	THEME_DROPPED	reliability: checker: not supported
+Maruti Suzuki	S-Presso	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Tata	Sierra EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Sierra EV	carwale	LOW_CONFIDENCE	21 ratings (stored, flagged for export)
+Tata	Sierra EV	carwale	THEME_DROPPED	recurring_fault: checker: not supported
+Tata	Tigor	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Tata	Tigor	carwale	WRONG_PAGE	page is for Tata Aeris, wanted Tata Tigor
+Toyota	Innova Crysta	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Toyota	Innova Crysta	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Innova Crysta	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Nissan	Tekton	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker: not supported
+Nissan	Tekton	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Nissan	Tekton	carwale	LOW_CONFIDENCE	13 ratings (stored, flagged for export)
+Hyundai	Bayon	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Bayon	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Bayon	carwale	THEMES_SKIPPED	only 12 owner reviews sampled (minimum 20)
+Maruti Suzuki	Brezza	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Skoda	Kushaq	autocar	NOTE_DROPPED	Value For Money: checker: not supported
+Skoda	Kushaq	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Skoda	Kushaq	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Toyota	Fortuner	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker: not supported
+Volkswagen	Taigun	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	Elevate	autocar	OVERALL_MISSING	seven aspect scores kept, no overall row
+Honda	Elevate	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Honda	Elevate	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	Elevate	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Honda	Elevate	carwale	THEMES_SKIPPED	only 9 owner reviews sampled (minimum 20)
+Maruti Suzuki	WagonR	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Maruti Suzuki	WagonR	carwale	WRONG_PAGE	page is for Maruti Suzuki Wagon R, wanted Maruti Suzuki WagonR
+Skoda	Slavia	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Skoda	Slavia	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Skoda	Slavia	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Skoda	Slavia	carwale	THEMES_SKIPPED	only 7 owner reviews sampled (minimum 20)
+Toyota	Innova Hycross	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Hyundai	Aura	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Kia	Carens Clavis EV	autocar	INVALID_SCORES	aspect missing: Value For Money
+Kia	Carens Clavis EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Carens Clavis EV	carwale	THEMES_SKIPPED	only 15 owner reviews sampled (minimum 20)
+Maruti Suzuki	Baleno	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Ertiga	carwale	THEME_DROPPED	service_cost note describes a split but the verified lines are one-sided (positive)
+Maruti Suzuki	XL6	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Tata	Nexon EV	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Tata	Nexon EV	carwale	THEME_DROPPED	recurring_fault: checker: not supported
+Toyota	Glanza	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Toyota	Glanza	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Glanza	carwale	LOW_CONFIDENCE	18 ratings (stored, flagged for export)
+Toyota	Glanza	carwale	THEMES_SKIPPED	only 4 owner reviews sampled (minimum 20)
+Honda	City	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	City	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Honda	City	carwale	NUMBER_NOT_CONFIRMED	After Sales Cost and Experience=4.62
+Mahindra	Thar	autocar	INVALID_SCORES	aspect missing: Mileage / Range And Efficiency
+Mahindra	Thar	carwale	WRONG_PAGE	page is for Mahindra Thar OG, wanted Mahindra Thar
+Renault	Triber	autocar	NUMBER_NOT_CONFIRMED	Features And Safety=8.0
+Renault	Triber	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	Amaze	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Honda	Amaze	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Hyundai	Venue N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Hyundai	Venue N Line	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue N Line	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Hyundai	Venue N Line	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Nissan	Gravite	autocar	OVERALL_MISSING	seven aspect scores kept, no overall row
+Nissan	Gravite	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Punch EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	i20 N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+MG	Windsor EV	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+MG	Windsor EV	carwale	THEME_DROPPED	service_cost: checker: not supported
+Mahindra	Bolero Neo	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Mahindra	Bolero Neo	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Jimny	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Maruti Suzuki	Jimny	carwale	THEME_DROPPED	real_world_mileage note contains figures the checker cannot tie to the mentions
+Hyundai	Creta N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Hyundai	Creta N Line	carwale	THEMES_SKIPPED	only 16 owner reviews sampled (minimum 20)
+Mahindra	Bolero	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Mahindra	Bolero	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Mahindra	XEV 9S	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker: not supported
+Mahindra	XEV 9S	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Mahindra	XEV 9S	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Eeco	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Maruti Suzuki	e VITARA	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Kwid	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Kwid	carwale	LOW_CONFIDENCE	21 ratings (stored, flagged for export)
+Renault	Kwid	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Tata	Tiago EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Tiago EV	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Kia	Carens	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+MG	Majestor	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Majestor	carwale	LOW_CONFIDENCE	29 ratings (stored, flagged for export)
+MG	Majestor	carwale	THEMES_SKIPPED	only 14 owner reviews sampled (minimum 20)
+Mahindra	Scorpio Classic	carwale	WRONG_PAGE	page is for Mahindra Scorpio, wanted Mahindra Scorpio Classic
+Skoda	Kodiaq	carwale	THEMES_SKIPPED	only 13 owner reviews sampled (minimum 20)
+Toyota	Hilux	autocar	NOTE_DROPPED	Performance And Refinement: checker: not supported
+Toyota	Hilux	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Hilux	carwale	LOW_CONFIDENCE	11 ratings (stored, flagged for export)
+Toyota	Hilux	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Mahindra	Bolero Neo Plus	autocar	NOTE_DROPPED	Interior Space And Comfort: note over 25 words (26)
+Mahindra	Bolero Neo Plus	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Mahindra	XEV 9e	carwale	THEME_DROPPED	service_experience: checker: not supported
+Tata	Curvv EV	autocar	NOTE_DROPPED	Performance And Refinement: checker: not supported
+Tata	Curvv EV	carwale	THEME_DROPPED	build_issues: checker: not supported
+Volkswagen	Tayron	carwale	ASPECTS_MISSING	not shown on the page, left empty: Design and Styling, Comfort and Space, Performance, Fuel Economy, Value for Money, Features and Technology, After Sales Cost and Experience
+Volkswagen	Tayron	carwale	LOW_CONFIDENCE	8 ratings (stored, flagged for export)
+Volkswagen	Tayron	carwale	THEMES_SKIPPED	only 2 owner reviews sampled (minimum 20)
+MG	Hector Plus	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+MG	Hector Plus	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Hector Plus	carwale	LOW_CONFIDENCE	20 ratings (stored, flagged for export)
+MG	Hector Plus	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)

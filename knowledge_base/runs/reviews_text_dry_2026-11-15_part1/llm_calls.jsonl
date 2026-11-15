@@ -1,0 +1,117 @@
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Sierra", "seconds": 8.07, "tokens_in": 5484, "tokens_out": 486, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Sierra", "seconds": 15.83, "tokens_in": 5774, "tokens_out": 1241, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_numbers Tata Sierra", "seconds": 8.86, "tokens_in": 3989, "tokens_out": 345, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Sierra", "seconds": 23.68, "tokens_in": 9912, "tokens_out": 2768, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Sierra", "seconds": 13.54, "tokens_in": 4638, "tokens_out": 1140, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Harrier", "seconds": 10.39, "tokens_in": 5038, "tokens_out": 671, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Harrier", "seconds": 14.08, "tokens_in": 5404, "tokens_out": 1155, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Harrier", "seconds": 26.24, "tokens_in": 10177, "tokens_out": 3457, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Harrier", "seconds": 29.43, "tokens_in": 6007, "tokens_out": 3319, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Mahindra Scorpio-N", "seconds": 8.69, "tokens_in": 4781, "tokens_out": 676, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Mahindra Scorpio-N", "seconds": 15.34, "tokens_in": 5142, "tokens_out": 1272, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Mahindra Scorpio-N", "seconds": 38.51, "tokens_in": 9477, "tokens_out": 5355, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra Scorpio-N", "seconds": 28.72, "tokens_in": 6050, "tokens_out": 3128, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Safari", "seconds": 9.15, "tokens_in": 5118, "tokens_out": 663, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Safari", "seconds": 14.36, "tokens_in": 5476, "tokens_out": 1149, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Safari", "seconds": 38.31, "tokens_in": 10265, "tokens_out": 5310, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Safari", "seconds": 25.61, "tokens_in": 6222, "tokens_out": 2694, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Carens Clavis", "seconds": 8.68, "tokens_in": 5355, "tokens_out": 663, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Kia Carens Clavis", "seconds": 13.41, "tokens_in": 5747, "tokens_out": 1124, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Kia Carens Clavis", "seconds": 47.65, "tokens_in": 10854, "tokens_out": 7197, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Carens Clavis", "seconds": 29.71, "tokens_in": 6945, "tokens_out": 3332, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Carens Clavis", "seconds": 12.47, "tokens_in": 4971, "tokens_out": 926, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Victoris", "seconds": 8.65, "tokens_in": 5259, "tokens_out": 688, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Maruti Suzuki Victoris", "seconds": 17.19, "tokens_in": 5612, "tokens_out": 1441, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_numbers Maruti Suzuki Victoris", "seconds": 8.08, "tokens_in": 3990, "tokens_out": 355, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Victoris", "seconds": 31.21, "tokens_in": 10380, "tokens_out": 4079, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Victoris", "seconds": 31.95, "tokens_in": 6391, "tokens_out": 3288, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai Venue", "seconds": 9.63, "tokens_in": 5554, "tokens_out": 702, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Hyundai Venue", "seconds": 12.39, "tokens_in": 5934, "tokens_out": 998, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Venue", "seconds": 34.91, "tokens_in": 10261, "tokens_out": 4852, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Venue", "seconds": 26.89, "tokens_in": 5794, "tokens_out": 2699, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki Grand Vitara", "seconds": 8.25, "tokens_in": 5097, "tokens_out": 652, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Maruti Suzuki Grand Vitara", "seconds": 12.3, "tokens_in": 5462, "tokens_out": 866, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki Grand Vitara", "seconds": 41.95, "tokens_in": 10488, "tokens_out": 5971, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Grand Vitara", "seconds": 25.32, "tokens_in": 6821, "tokens_out": 2768, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Maruti Suzuki Grand Vitara", "seconds": 15.18, "tokens_in": 5061, "tokens_out": 1244, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_numbers Hyundai Verna", "seconds": 8.06, "tokens_in": 4108, "tokens_out": 321, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Mahindra XUV 7XO", "seconds": 9.38, "tokens_in": 5586, "tokens_out": 637, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Mahindra XUV 7XO", "seconds": 13.17, "tokens_in": 5947, "tokens_out": 1015, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Mahindra XUV 7XO", "seconds": 22.93, "tokens_in": 10255, "tokens_out": 2847, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra XUV 7XO", "seconds": 19.46, "tokens_in": 5018, "tokens_out": 1921, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_numbers Mahindra XUV 7XO", "seconds": 6.69, "tokens_in": 4276, "tokens_out": 205, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Nissan Magnite", "seconds": 8.58, "tokens_in": 5175, "tokens_out": 680, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Nissan Magnite", "seconds": 13.33, "tokens_in": 5566, "tokens_out": 1043, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Nissan Magnite", "seconds": 43.8, "tokens_in": 10289, "tokens_out": 6467, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Nissan Magnite", "seconds": 32.35, "tokens_in": 6714, "tokens_out": 3398, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Nissan Magnite", "seconds": 13.28, "tokens_in": 4601, "tokens_out": 866, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Altroz", "seconds": 9.28, "tokens_in": 4947, "tokens_out": 692, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Altroz", "seconds": 14.4, "tokens_in": 5341, "tokens_out": 1195, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Altroz", "seconds": 26.43, "tokens_in": 9673, "tokens_out": 3598, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Altroz", "seconds": 28.1, "tokens_in": 6115, "tokens_out": 2834, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Renault Duster", "seconds": 8.42, "tokens_in": 5203, "tokens_out": 648, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Renault Duster", "seconds": 14.12, "tokens_in": 5585, "tokens_out": 1080, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Renault Duster", "seconds": 22.84, "tokens_in": 7846, "tokens_out": 3027, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Renault Duster", "seconds": 16.92, "tokens_in": 5712, "tokens_out": 1528, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Punch", "seconds": 8.52, "tokens_in": 5468, "tokens_out": 640, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Punch", "seconds": 15.14, "tokens_in": 5849, "tokens_out": 1066, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Punch", "seconds": 24.32, "tokens_in": 9652, "tokens_out": 2994, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Punch", "seconds": 14.29, "tokens_in": 4727, "tokens_out": 1112, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Exter", "seconds": 18.55, "tokens_in": 7480, "tokens_out": 2138, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Exter", "seconds": 14.3, "tokens_in": 4598, "tokens_out": 1092, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Toyota Urban Cruiser Hyryder", "seconds": 9.18, "tokens_in": 4719, "tokens_out": 719, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Toyota Urban Cruiser Hyryder", "seconds": 11.95, "tokens_in": 5117, "tokens_out": 721, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_numbers Toyota Urban Cruiser Hyryder", "seconds": 8.4, "tokens_in": 3988, "tokens_out": 386, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Toyota Urban Cruiser Hyryder", "seconds": 31.5, "tokens_in": 10688, "tokens_out": 4323, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Toyota Urban Cruiser Hyryder", "seconds": 27.58, "tokens_in": 5754, "tokens_out": 2851, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Kia Sonet", "seconds": 8.07, "tokens_in": 5174, "tokens_out": 600, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Kia Sonet", "seconds": 16.13, "tokens_in": 5525, "tokens_out": 1322, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Kia Sonet", "seconds": 38.83, "tokens_in": 10389, "tokens_out": 5623, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Kia Sonet", "seconds": 35.6, "tokens_in": 6563, "tokens_out": 3895, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Mahindra Thar Roxx", "seconds": 8.01, "tokens_in": 5074, "tokens_out": 595, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Mahindra Thar Roxx", "seconds": 14.32, "tokens_in": 5424, "tokens_out": 1241, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Mahindra Thar Roxx", "seconds": 28.25, "tokens_in": 10128, "tokens_out": 4022, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Mahindra Thar Roxx", "seconds": 26.72, "tokens_in": 6351, "tokens_out": 2833, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Curvv", "seconds": 8.29, "tokens_in": 4950, "tokens_out": 659, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Curvv", "seconds": 13.72, "tokens_in": 5312, "tokens_out": 1044, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_numbers Tata Curvv", "seconds": 8.52, "tokens_in": 3987, "tokens_out": 393, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Curvv", "seconds": 32.71, "tokens_in": 9656, "tokens_out": 4333, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Curvv", "seconds": 24.51, "tokens_in": 5676, "tokens_out": 2244, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai Alcazar", "seconds": 8.53, "tokens_in": 4995, "tokens_out": 598, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Hyundai Alcazar", "seconds": 13.69, "tokens_in": 5362, "tokens_out": 1125, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Alcazar", "seconds": 36.06, "tokens_in": 9966, "tokens_out": 5289, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Alcazar", "seconds": 26.05, "tokens_in": 6903, "tokens_out": 2713, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Tiago", "seconds": 8.32, "tokens_in": 5109, "tokens_out": 682, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Tiago", "seconds": 13.4, "tokens_in": 5523, "tokens_out": 1081, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Tiago", "seconds": 20.56, "tokens_in": 7193, "tokens_out": 2830, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Tiago", "seconds": 13.01, "tokens_in": 5021, "tokens_out": 1126, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Renault Kiger", "seconds": 8.27, "tokens_in": 4954, "tokens_out": 619, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Renault Kiger", "seconds": 11.59, "tokens_in": 5327, "tokens_out": 756, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Renault Kiger", "seconds": 23.76, "tokens_in": 8392, "tokens_out": 2833, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Renault Kiger", "seconds": 22.63, "tokens_in": 5357, "tokens_out": 2187, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Aeris", "seconds": 22.35, "tokens_in": 7427, "tokens_out": 2306, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Aeris", "seconds": 15.45, "tokens_in": 4701, "tokens_out": 1259, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai Grand i10 Nios", "seconds": 7.78, "tokens_in": 4854, "tokens_out": 599, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Hyundai Grand i10 Nios", "seconds": 14.96, "tokens_in": 5220, "tokens_out": 1157, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai Grand i10 Nios", "seconds": 45.35, "tokens_in": 9927, "tokens_out": 7051, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Grand i10 Nios", "seconds": 24.35, "tokens_in": 6606, "tokens_out": 2682, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai Grand i10 Nios", "seconds": 17.85, "tokens_in": 5837, "tokens_out": 1642, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Tata Harrier EV", "seconds": 8.39, "tokens_in": 5115, "tokens_out": 693, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Tata Harrier EV", "seconds": 12.78, "tokens_in": 5447, "tokens_out": 805, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Tata Harrier EV", "seconds": 40.89, "tokens_in": 10838, "tokens_out": 6008, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Tata Harrier EV", "seconds": 27.59, "tokens_in": 6229, "tokens_out": 3016, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes MG Hector", "seconds": 8.44, "tokens_in": 5247, "tokens_out": 682, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check MG Hector", "seconds": 12.02, "tokens_in": 5619, "tokens_out": 903, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Hyundai i20", "seconds": 7.96, "tokens_in": 5245, "tokens_out": 579, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Hyundai i20", "seconds": 15.21, "tokens_in": 5550, "tokens_out": 1238, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Hyundai i20", "seconds": 31.08, "tokens_in": 10817, "tokens_out": 4250, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai i20", "seconds": 20.64, "tokens_in": 6272, "tokens_out": 1859, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "carwale_check Hyundai i20", "seconds": 17.56, "tokens_in": 4750, "tokens_out": 1305, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "autocar_notes Maruti Suzuki S-Presso", "seconds": 9.66, "tokens_in": 4930, "tokens_out": 610, "ok": true}
+{"backend": "claude_opus", "model": "claude-opus-5-5", "label": "autocar_check Maruti Suzuki S-Presso", "seconds": 12.68, "tokens_in": 5275, "tokens_out": 907, "ok": true}
+{"backend": "claude_sonnet", "model": "sonnet", "label": "carwale_themes Maruti Suzuki S-Presso", "seconds": 29.76, "tokens_in": 10415, "tokens_out": 4635, "ok": true}
+{"backend": "gemini_alt", "model": "gemini-3.5-flash-lite", "label": "carwale_check Maruti Suzuki S-Presso", "seconds": 2.55, "tokens_in": 2513, "tokens_out": 868, "ok": true}
+{"backend": "gemini_alt", "model": "gemini-3.5-flash-lite", "label": "carwale_numbers Maruti Suzuki S-Presso", "seconds": 1.22, "tokens_in": 627, "tokens_out": 223, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Toyota Glanza", "seconds": 2.08, "tokens_in": 660, "tokens_out": 794, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Honda City", "seconds": 2.82, "tokens_in": 647, "tokens_out": 953, "ok": true}
+{"backend": "groq", "model": "openai/gpt-oss-120b", "label": "carwale_numbers Volkswagen Tayron", "seconds": 1.13, "tokens_in": 259, "tokens_out": 180, "ok": true}

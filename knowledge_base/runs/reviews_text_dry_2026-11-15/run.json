@@ -1,0 +1,115 @@
+{
+ "run": "reviews_text_dry_2026-11-15",
+ "started": "2026-11-15T05:13:29Z",
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 1543,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "0 of 0 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->98967",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 650->650",
+     "owner_theme 0->271",
+     "powertrain 216->216",
+     "professional_assessment 598->622",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "295 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "295 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 295,
+  "idempotent": true,
+  "error": null
+ },
+ "models": {},
+ "text": {
+  "autocar": {
+   "verified": 523,
+   "ok": 496,
+   "unchecked": 0,
+   "accuracy": 0.9484,
+   "withheld": true
+  },
+  "carwale": {
+   "verified": 285,
+   "ok": 271,
+   "unchecked": 0,
+   "accuracy": 0.9509
+  }
+ },
+ "sha1_before": "bee4f613b123478ea5d0755de3d258d60b86828b",
+ "numbers_check": {
+  "autocar": {
+   "checked": 104,
+   "ok": 103,
+   "models": 13,
+   "accuracy": 0.9904
+  },
+  "carwale": {
+   "checked": 68,
+   "ok": 67,
+   "models": 10,
+   "accuracy": 0.9853
+  }
+ },
+ "not_reached": [],
+ "llm_calls": 166,
+ "llm": {
+  "writer_calls": 75,
+  "checker_calls": 91,
+  "writer_cache_hits": 70,
+  "checker_cache_hits": 92
+ },
+ "backends_out": {
+  "writer": {},
+  "checker": {}
+ },
+ "text_models": {
+  "writers": [
+   "sonnet"
+  ],
+  "checkers": [
+   "claude-opus-5-5"
+  ],
+  "independent": true
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 480,
+  "failed": 0,
+  "bytes": 0
+ },
+ "blocks": [],
+ "runtime_seconds": 2773.5
+}

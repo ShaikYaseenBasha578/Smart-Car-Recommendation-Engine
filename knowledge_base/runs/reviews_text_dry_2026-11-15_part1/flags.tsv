@@ -1,0 +1,191 @@
+make	model	source	flag	detail
+Tata	Sierra	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Tata	Sierra	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Safari	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Kia	Seltos	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Victoris	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Maruti Suzuki	Grand Vitara	autocar	NOTE_DROPPED	Interior Space And Comfort: checker: not supported
+Maruti Suzuki	Grand Vitara	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Kia	Sorento	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Kia	Sorento	carwale	ASPECTS_MISSING	not shown on the page, left empty: Design and Styling, Comfort and Space, Performance, Fuel Economy, Value for Money, Features and Technology, After Sales Cost and Experience
+Kia	Sorento	carwale	LOW_CONFIDENCE	9 ratings (stored, flagged for export)
+Kia	Sorento	carwale	THEMES_SKIPPED	only 5 owner reviews sampled (minimum 20)
+Hyundai	Verna	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Verna	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Verna	carwale	THEMES_SKIPPED	only 12 owner reviews sampled (minimum 20)
+Mahindra	XUV 7XO	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Mahindra	XUV 7XO	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Altroz	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Renault	Duster	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Punch	autocar	NOTE_DROPPED	Exterior Design And Engineering: checker: not supported
+Tata	Punch	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Exter	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Exter	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Urban Cruiser Hyryder	autocar	NOTE_DROPPED	Performance And Refinement: checker: not supported
+Tata	Curvv	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Hyundai	Alcazar	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Tata	Tiago	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Kiger	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Aeris	autocar	INVALID_SCORES	aspect missing: Mileage / Range And Efficiency
+Tata	Aeris	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Syros	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Tata	Harrier EV	autocar	NOTE_DROPPED	Features And Safety: note over 25 words (26)
+Tata	Harrier EV	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+MG	Hector	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Hector	carwale	THEMES_SKIPPED	only 14 owner reviews sampled (minimum 20)
+Hyundai	i20	carwale	THEME_DROPPED	reliability: checker: not supported
+Maruti Suzuki	S-Presso	autocar	NOTE_DROPPED	Mileage / Range And Efficiency: checker: not supported
+Tata	Sierra EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""3f956f7d-fb16-401f-8144-0b36b0f188b2"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Sierra EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Sierra EV	carwale	LOW_CONFIDENCE	21 ratings (stored, flagged for export)
+Tata	Sierra EV	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""33ec0f6a-7626-4725-bb96-a11294c04caf"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Rumion	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""b9f5cb0e-25ad-4fa8-b6c1-b689830db1e8"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Rumion	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""7b7d53c1-3b33-48d7-b066-bb8b96292116"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Alto K10	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""aaf82146-c49c-4abf-a431-647041167f19"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Alto K10	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""4501c7b4-1471-4953-b9a0-3edc9251b2ae"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Fronx	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""a0268ad5-a067-4f55-8450-56997c422e66"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Fronx	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""eec6e7f1-19c9-4a20-a587-129cb5a3736c"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Tigor	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Tata	Tigor	carwale	WRONG_PAGE	page is for Tata Aeris, wanted Tata Tigor
+Toyota	Innova Crysta	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""329fc0da-584b-43ac-a4cf-8ca8f8a3eb08"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Innova Crysta	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Innova Crysta	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Nissan	Tekton	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c75006c9-a536-4117-b17d-0c1635720527"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Nissan	Tekton	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Nissan	Tekton	carwale	LOW_CONFIDENCE	13 ratings (stored, flagged for export)
+Nissan	Tekton	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""38b8c20a-d467-4050-a06e-4121baa801ef"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Urban Cruiser Taisor	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""25dc8ed7-86f8-4c48-91d0-e699db7e7e7e"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Urban Cruiser Taisor	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""08732027-4d79-4a0e-80bf-982d02af1e30"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Virtus	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""1e1821ab-ebc9-46fc-ab41-c45895389d1c"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Virtus	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""5aa65a5b-b4e3-462c-84a2-905446f096ea"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Hyundai	Bayon	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Hyundai	Bayon	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Bayon	carwale	THEMES_SKIPPED	only 12 owner reviews sampled (minimum 20)
+Maruti Suzuki	Brezza	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""832aa963-e77a-4884-9ee4-99b4bb5ac809"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Brezza	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Brezza	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""cafe8c6f-2a32-45f8-be23-871e308630a3"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Dzire	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""3a7d6635-7842-4891-8b48-22016155c094"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Dzire	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""fd43a3c6-2076-4b04-b940-1f0a56b92bf3"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Skoda	Kushaq	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""a17df212-4934-4551-b6b3-6e12f2d5235f"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Skoda	Kushaq	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Skoda	Kushaq	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Toyota	Fortuner	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""d1cfcd8d-ae0a-4535-906d-ebd607c66cf7"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Fortuner	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""b1e09e47-77a8-40ea-a725-41f4507b64ce"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Taigun	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""f9c55941-d025-4a4c-8c8e-f52a39d9db2c"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Taigun	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Volkswagen	Taigun	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""1060e393-3a38-4a62-91a9-a274ac7005a0"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Honda	Elevate	autocar	OVERALL_MISSING	seven aspect scores kept, no overall row
+Honda	Elevate	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""9a2ca579-e484-4eaa-bb34-b3c13a022f72"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Honda	Elevate	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	Elevate	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Honda	Elevate	carwale	THEMES_SKIPPED	only 9 owner reviews sampled (minimum 20)
+Maruti Suzuki	WagonR	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""cebb16fb-adc5-4c29-ad8a-6da66a610012"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	WagonR	carwale	WRONG_PAGE	page is for Maruti Suzuki Wagon R, wanted Maruti Suzuki WagonR
+Skoda	Slavia	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""388b0534-860e-4992-a103-f3edd3c61f06"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Skoda	Slavia	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Skoda	Slavia	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Skoda	Slavia	carwale	THEMES_SKIPPED	only 7 owner reviews sampled (minimum 20)
+Toyota	Innova Hycross	carwale	THEME_DROPPED	real_world_mileage: checker: not supported
+Hyundai	Aura	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""41e346a3-5899-4010-aca0-6b21c12aa7f5"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Hyundai	Aura	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""b72b9379-69e5-4142-aead-4d398e9c29e6"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Kia	Carens Clavis EV	autocar	INVALID_SCORES	aspect missing: Value For Money
+Kia	Carens Clavis EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Kia	Carens Clavis EV	carwale	THEMES_SKIPPED	only 15 owner reviews sampled (minimum 20)
+Maruti Suzuki	Baleno	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""5057fde3-abf4-4b8f-b954-a30bbf6560b8"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Baleno	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	Baleno	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c984f68e-e3ca-445d-be85-8bf9f612de9e"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Ertiga	carwale	THEME_DROPPED	service_cost note describes a split but the verified lines are one-sided (positive)
+Maruti Suzuki	XL6	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""b0e1fbe3-f6fe-49fc-90a4-17658156791b"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	XL6	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""a734db70-5d65-49c6-8843-637fa8910a15"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Nexon EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""95b9fb2d-e45c-4b3f-b6c5-c5c0b823b5d0"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Nexon EV	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""f2452f25-a6c3-49f7-ab1b-f52d49e2b6a5"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Glanza	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Toyota	Glanza	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Glanza	carwale	LOW_CONFIDENCE	18 ratings (stored, flagged for export)
+Toyota	Glanza	carwale	THEMES_SKIPPED	only 4 owner reviews sampled (minimum 20)
+Honda	City	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""2c09358f-0ed6-4346-adc2-36e523f62161"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Honda	City	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Honda	City	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Honda	City	carwale	NUMBER_NOT_CONFIRMED	After Sales Cost and Experience=4.62
+Maruti Suzuki	Celerio	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""294b74c6-2c0d-4e89-85d6-be6ed5978cba"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Celerio	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""cabc9ab5-cabb-42b9-8346-e0dc50a4f6aa"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Thar	autocar	INVALID_SCORES	aspect missing: Mileage / Range And Efficiency
+Mahindra	Thar	carwale	WRONG_PAGE	page is for Mahindra Thar OG, wanted Mahindra Thar
+Renault	Triber	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""bc736c87-098e-43d9-a291-e4c86ae60339"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Renault	Triber	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Triber	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c505ea0f-eacf-45dd-929d-e575af80ea52"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Honda	Amaze	autocar	NOTE_DROPPED	Features And Safety: checker: not supported
+Honda	Amaze	autocar	NOTE_DROPPED	Ride Comfort And Handling: checker: not supported
+Hyundai	Venue N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Hyundai	Venue N Line	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Hyundai	Venue N Line	carwale	LOW_CONFIDENCE	28 ratings (stored, flagged for export)
+Hyundai	Venue N Line	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
+Nissan	Gravite	autocar	OVERALL_MISSING	seven aspect scores kept, no overall row
+Nissan	Gravite	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""b1a1b363-6111-4f8e-a580-3dfbb85f149e"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Nissan	Gravite	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Nissan	Gravite	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""7a1a01ec-47e6-46c9-a78b-73416cae5023"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Punch EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""917377e8-7af4-4328-a5fe-55ed424838d0"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Punch EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Punch EV	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""86a0bf7c-10b2-4cbf-924c-02faa4c420ab"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Hyundai	i20 N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Hyundai	i20 N Line	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""465ed34f-4646-458e-9ebd-62883df26e2b"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Windsor EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""2302b764-fade-43df-91cd-91257888e741"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Windsor EV	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c16a74fa-cb31-408e-b044-ce3728e84bde"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Bolero Neo	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""f8f4039c-6643-4563-8385-82d01bc761ce"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Bolero Neo	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Mahindra	Bolero Neo	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""5be59051-17fc-4fa5-b5ab-4d21fd328035"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Jimny	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""935ca699-45fd-489b-bf6e-e3d5b423fff7"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Jimny	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""cb43ba75-ef62-49a0-8fa7-93472b590e23"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Hyundai	Creta N Line	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+Hyundai	Creta N Line	carwale	THEMES_SKIPPED	only 16 owner reviews sampled (minimum 20)
+Mahindra	Bolero	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""f5a6c50b-9ab3-4717-af4f-f3e9700c6ff0"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Bolero	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Mahindra	Bolero	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""feeb77e4-fddb-4593-9136-686b8aeacea6"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	XEV 9S	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""e4414354-f35d-4854-a228-c4244933ece0"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	XEV 9S	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Mahindra	XEV 9S	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""4455166f-68da-43f4-862a-c0a898524817"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	Eeco	autocar	INVALID_SCORES	aspect missing: Exterior Design And Engineering; aspect missing: Interior Space And Comfort; aspect missing: Performance And Refinement; aspect missing: Mileage / Range And Efficiency; aspect missing: Ride Comfort And Handling; aspect missing: Features And Safety; aspect missing: Value For Money
+Maruti Suzuki	Eeco	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c2e2371e-79d8-4db8-9477-1b0e99866cde"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	e VITARA	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""aacc7719-70b6-4eff-8d52-84c5fa6444e8"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Maruti Suzuki	e VITARA	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Maruti Suzuki	e VITARA	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""5f4f1f40-5573-46bd-bc34-8e2e17751265"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Renault	Kwid	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""aadbdbb5-0053-4a37-8e9a-5cb67df0cced"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Renault	Kwid	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Renault	Kwid	carwale	LOW_CONFIDENCE	21 ratings (stored, flagged for export)
+Renault	Kwid	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Tata	Tiago EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""0d479b65-764a-48ce-a239-d8ebb2e553c6"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Tiago EV	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Tata	Tiago EV	carwale	THEMES_SKIPPED	only 17 owner reviews sampled (minimum 20)
+Kia	Carens	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""bcd4a2d0-4da7-4e04-89ce-c4c2ae53f7d9"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Kia	Carens	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c8ea9ebe-5ff8-4722-a860-7f2c24458bf6"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Majestor	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""640a5fe8-dffd-4415-8753-53aa915bbc27"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Majestor	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Majestor	carwale	LOW_CONFIDENCE	29 ratings (stored, flagged for export)
+MG	Majestor	carwale	THEMES_SKIPPED	only 14 owner reviews sampled (minimum 20)
+Mahindra	Scorpio Classic	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""a0b15753-f1f1-40ea-98e1-e3cade3c90a5"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Scorpio Classic	carwale	WRONG_PAGE	page is for Mahindra Scorpio, wanted Mahindra Scorpio Classic
+Skoda	Kodiaq	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""520f083e-c84d-4039-b601-d5edc0e126c1"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Skoda	Kodiaq	carwale	THEMES_SKIPPED	only 13 owner reviews sampled (minimum 20)
+Toyota	Hilux	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""96b9707d-1b9c-45c2-a7a3-f4f6cf0f5efa"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Toyota	Hilux	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+Toyota	Hilux	carwale	LOW_CONFIDENCE	11 ratings (stored, flagged for export)
+Toyota	Hilux	carwale	THEMES_SKIPPED	only 6 owner reviews sampled (minimum 20)
+Mahindra	Bolero Neo Plus	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c351f203-dfa5-40b5-a773-308316530c9c"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	Bolero Neo Plus	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""53537fb4-514b-4c48-a597-f95e5d61e365"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	XEV 9e	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""d6710c06-c671-47c3-86fb-82f9c66aec5d"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Mahindra	XEV 9e	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""e892d263-5fb7-4bd1-a7c4-cdb1ff507808"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Curvv EV	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""26fc1de3-99dc-45d3-86a2-89b12714c7bc"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Tata	Curvv EV	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""e05cd4c3-ebb8-46b3-bcd3-f70f46f7f36e"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Tayron	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""f225f81f-b090-4224-be46-5394ec16d691"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+Volkswagen	Tayron	carwale	ASPECTS_MISSING	not shown on the page, left empty: Design and Styling, Comfort and Space, Performance, Fuel Economy, Value for Money, Features and Technology, After Sales Cost and Experience
+Volkswagen	Tayron	carwale	LOW_CONFIDENCE	8 ratings (stored, flagged for export)
+Volkswagen	Tayron	carwale	THEMES_SKIPPED	only 2 owner reviews sampled (minimum 20)
+MG	Astor	autocar	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""7b721ccd-94b8-4fb2-81af-9bf7e7664884"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Astor	carwale	TEXT_FAILED	"writer call failed: claude cli: {""duration_api_ms"":0,""stop_reason"":""stop_sequence"",""session_id"":""c84871b3-9fe5-4c2f-8e8e-ae3a820f045c"",""total_cost_usd"":0,""usage"":{""output_tokens_details"":{""thinking_tokens"":0},""input_toke"
+MG	Hector Plus	autocar	NO_EXPERT_REVIEW	Autocar has no expert review page of its own for this model (checked 2026-11-15); nothing fetched
+MG	Hector Plus	carwale	ASPECTS_MISSING	not shown on the page, left empty: Fuel Economy
+MG	Hector Plus	carwale	LOW_CONFIDENCE	20 ratings (stored, flagged for export)
+MG	Hector Plus	carwale	THEMES_SKIPPED	only 8 owner reviews sampled (minimum 20)
