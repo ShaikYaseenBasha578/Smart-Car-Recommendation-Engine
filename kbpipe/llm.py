@@ -170,9 +170,14 @@ class Backend:
                 if work:
                     shutil.rmtree(work, ignore_errors=True)
             import re as _re
-            limit = lambda t: bool(_re.search(r"usage limit|limit reached|rate limit|quota|out of (extra )?usage|too many requests|overloaded_error|resets? at", t or "", _re.I))
+            limit = lambda t: bool(_re.search(r"usage limit|limit reached|hit your limit|reached your limit|limit will reset|rate limit|quota|out of (extra )?usage|too many requests|overloaded_error|resets? at", t or "", _re.I))
             if r.returncode != 0:
-                msg = (r.stderr or "") + (r.stdout or "")[:400]
+                msg = (r.stderr or "")
+                try:
+                    msg += " " + str(json.loads(r.stdout).get("result"))
+                except ValueError:
+                    pass
+                msg += " " + (r.stdout or "")[:600]
                 raise (QuotaExhausted if limit(msg) else LLMError)("claude cli: %s" % msg[:300])
             out = json.loads(r.stdout)
             if out.get("is_error"):

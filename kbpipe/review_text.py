@@ -141,6 +141,7 @@ class Engine:
         self.stats = {"writer_calls": 0, "checker_calls": 0, "writer_cache_hits": 0, "checker_cache_hits": 0}
         self.cap = self.rc["max_llm_calls"]
         self.audit, self.numbers, self.stopped = [], [], {}
+        self._fails = {}
         self.write_only = False        # warm the writer cache without asking the checker (nothing is kept; the checks run later)
         self.run_dir = run_dir
 
@@ -178,7 +179,12 @@ class Engine:
             self.stopped[role] = str(e)[:200]
             raise TextStop(role, str(e)[:200])
         except llm.LLMError as e:
+            self._fails[role] = self._fails.get(role, 0) + 1
+            if self._fails[role] >= 3:          # three failures in a row: treat as the role being out (e.g. an unrecognised limit message)
+                self.stopped[role] = "3 consecutive failures: %s" % str(e)[:150]
+                raise TextStop(role, self.stopped[role])
             raise TextFail("%s call failed: %s" % (role, str(e)[:200]))
+        self._fails[role] = 0
         self.stats[role + "_calls"] += 1
         model = ("%s:%s" % (chain.calls[-1]["backend"], chain.calls[-1]["model"])) if chain.calls else chain.model
         try:
