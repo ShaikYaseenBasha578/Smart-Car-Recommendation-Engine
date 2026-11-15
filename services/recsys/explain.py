@@ -8,6 +8,7 @@ built from the overall score (MATCH_LEVELS) and the number of unknown things.
 
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -19,6 +20,7 @@ from services.recsys.common import is_unknown, num
 from services.recsys.criteria import COMFORT_BOOLS, SPEC_LABELS, TECH_BOOLS
 from services.recsys.evidence import ASPECTS, THEMES, Evidence, criterion_label
 from services.recsys.relax import format_rupees
+from services.recsys.weights import review_aspect_weights
 
 BOOL_LABELS = {
     "esc": "ESC", "abs": "ABS", "tpms": "tyre-pressure monitoring", "hill_assist": "hill assist",
@@ -227,6 +229,92 @@ def unknowns_for(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], 
     return list(dict.fromkeys(out))
 
 
+THEME_NAMES = {
+    "reliability": "reliability", "service_cost": "service cost", "service_experience": "service experience",
+    "real_world_mileage": "real-world mileage", "build_issues": "build issues", "recurring_fault": "recurring faults",
+    "satisfaction": "overall satisfaction", "resale": "resale value",
+}
+
+
+def expert_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence) -> List[dict]:
+    """Up to MAX_EXPERT_LINES stored Autocar notes, the aspects most relevant to the query first (mean query weight of
+    the engine aspects the label feeds; a query with no preference ranks by score). Note and quote text is exactly as
+    stored; the quote is a separate, marked field."""
+    ranked = []
+    for n in evidence.expert_notes(model):
+        score = n["raw_score"] / n["scale_max"]
+        if aw is None:
+            rel = 0.0
+        else:
+            rel = sum(aw.get(a, 0.0) for a in n["aspects"]) / len(n["aspects"])
+            if rel <= 0:
+                continue
+        ranked.append((-rel, -score, n["source_aspect"], n))
+    out = []
+    for _, _, _, n in sorted(ranked, key=lambda t: t[:3])[:config.MAX_EXPERT_LINES]:
+        date = _month_year(n["published_on"])
+        text = (f"{n['source']}, {n['source_aspect'].lower()} {n['raw_score']:g}/{n['scale_max']:g}"
+                + (f" ({date})" if date else "") + f": {n['note']}")
+        quote = None if not n["quote"] else {"text": n["quote"], "kind": "quotation", "source": n["source"],
+                                              "source_url": n["source_url"]}
+        out.append({"text": text, "evidence_class": "expert", "source": n["source"], "source_aspect": n["source_aspect"],
+                    "score": n["raw_score"], "scale_max": n["scale_max"], "published_on": n["published_on"],
+                    "note": n["note"], "quote": quote, "source_url": n["source_url"],
+                    "fields": [f"expert_{a}" for a in n["aspects"]]})
+    return out
+
+
+def _theme_text(r: dict) -> str:
+    m, n, src = int(r["mentions"]), int(r["posts_sampled"]), r["source"]
+    count = f"{m} of {n} reviews, {src}"
+    label = r["label"]
+    if r["theme"] == "recurring_fault":
+        text = f"Reported fault: {label or 'recurring fault'} ({count})"
+    else:
+        name = THEME_NAMES.get(r["theme"], r["theme"].replace("_", " ")) + (f" - {label}" if label else "")
+        share = m / n
+        if r["direction"] == "mixed":
+            text = f"Owners have mixed views on {name} ({count})"
+        else:
+            q = ("Some" if share < config.PREVALENCE_SOME_BELOW
+                 else "Most" if share > config.PREVALENCE_MOST_ABOVE else "Many")
+            text = f"{q} owners are {r['direction']} about {name} ({count})"
+    return text + (f": {r['note']}" if r["note"] else "")
+
+
+def _theme_entry(r: dict) -> dict:
+    try:
+        urls = [u for u in json.loads(r["sample_urls"] or "[]") if u]
+    except (TypeError, ValueError):
+        urls = []
+    return {"text": _theme_text(r), "evidence_class": "owner", "theme": r["theme"], "label": r["label"] or None,
+            "direction": r["direction"], "mentions": int(r["mentions"]), "posts_sampled": int(r["posts_sampled"]),
+            "share": round(int(r["mentions"]) / int(r["posts_sampled"]), 4), "note": r["note"] or None,
+            "source": r["source"], "source_url": urls[0] if urls else None, "source_urls": urls,
+            "fields": [f"owner_{r['theme']}"]}
+
+
+def owner_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence) -> tuple:
+    """(lines, caveats). Lines: up to MAX_OWNER_LINES theme rows relevant to the query (query weight > 0; a query with no
+    preference accepts any), strongest first, a reported fault always taking a place. Caveats: every negative theme and
+    reported fault the model has, relevant or not (strongest first, at most 3)."""
+    from services.recsys.evidence import theme_strength
+    rows = evidence.theme_rows(model)
+    if not rows:
+        return [], []
+    def strength(r):
+        return theme_strength(int(r["mentions"]), int(r["posts_sampled"]))
+    key = lambda r: (-strength(r), r["theme"], r["label"] or "")
+    faults = sorted((r for r in rows if r["theme"] == "recurring_fault"), key=key)
+    others = sorted((r for r in rows if r["theme"] != "recurring_fault"
+                     and (aw is None or aw.get(r["theme"], 0.0) > 0)), key=key)
+    picked = faults[:1] + others
+    picked = (picked + faults[1:])[:config.MAX_OWNER_LINES]
+    caveat_rows = sorted((r for r in rows if r["direction"] == "negative" or r["theme"] == "recurring_fault"), key=key)[:3]
+    return [_theme_entry(r) for r in picked], [{**_theme_entry(r), "kind": "reported_fault" if r["theme"] == "recurring_fault"
+                                                 else "negative_theme"} for r in caveat_rows]
+
+
 def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], intent: Any,
             evidence: Evidence, relaxed: bool = False) -> Dict[str, Any]:
     """{"reasons": [...], "unknowns": [...], "match_label": str, "n_unknown": int}"""
@@ -268,8 +356,16 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
         else:
             merged[r["text"]] = {"text": r["text"], "evidence_class": r["evidence_class"], "fields": list(r["fields"]),
                                  "source_url": r.get("source_url")}
+    aw = review_aspect_weights(weights)
+    e_lines = expert_lines(row["model"], aw["expert"], evidence)
+    o_lines, caveats = owner_lines(row["model"], aw["owner"], evidence)
+    shown = {f for ln in e_lines for f in ln["fields"]}
+    # a score reason is redundant when its note line (which carries the same score, source and date) is shown
+    for text in [t for t, r in merged.items() if r["evidence_class"] == "expert" and set(r["fields"]) <= shown]:
+        del merged[text]
     reasons = list(merged.values())[:config.MAX_REASONS]
     unknowns = unknowns_for(row, score_row, weights, evidence)
     overall = None if is_unknown(score_row["overall"]) else float(score_row["overall"])
-    return {"reasons": reasons, "unknowns": unknowns, "n_unknown": len(unknowns),
+    return {"reasons": reasons, "expert_lines": e_lines, "owner_lines": o_lines, "caveats": caveats,
+            "unknowns": unknowns, "n_unknown": len(unknowns),
             "match_label": match_label(overall, len(unknowns), relaxed)}

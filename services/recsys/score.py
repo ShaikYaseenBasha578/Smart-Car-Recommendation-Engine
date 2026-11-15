@@ -149,6 +149,8 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
                 neutral = evidence.neutral_class(cls, str(row["body_type"]), aw[cls],
                                                  relevant_aspects if cls == "expert" else [])
                 sub, scale_override[cls] = neutral if neutral is not None else (None, None)
+            if cls == "owner" and sub is not None:   # themes: a capped adjustment, 0 for a model with none
+                sub = min(1.0, max(0.0, sub + evidence.theme_adjustment(row["model"], aw["owner"])))
             subs[cls] = sub
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
         cw = {c: used[c] / sum(used.values()) for c in used}

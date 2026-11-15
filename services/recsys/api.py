@@ -201,7 +201,8 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "carDekhoLink": _cardekho(car["make"], car["model"]),
         "carWaleLink": _carwale(car["make"], car["model"]),
         "ranking_score": None if overall is None else round(overall * 100, 2),
-        "match_reasons": [r["text"] for r in ex["reasons"]],
+        "match_reasons": [r["text"] for r in ex["reasons"]] + [r["text"] for r in ex["expert_lines"]]
+                         + [r["text"] for r in ex["owner_lines"]],
         "transmission_type": car["transmission_type"],
         "transmission_label": TRANSMISSION_LABELS.get(car["transmission_type"]),
         "matched_features": [item.split(":", 1)[1] for item, s in srow["required"].items()
@@ -226,6 +227,11 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "class_weights": {c: _round(v) for c, v in srow["class_weights"].items()},
         "criteria": {c: _round(v) for c, v in srow["values"].items() if v is not None},
         "reasons": ex["reasons"],
+        # stored Autocar notes (quote marked as a quotation, source_url to link) and owner theme lines; caveats = negative
+        # themes and reported faults, for the UI to show apart
+        "expert_notes": ex["expert_lines"],
+        "owner_notes": ex["owner_lines"],
+        "caveats": ex["caveats"],
         "unknowns": ex["unknowns"],
         "violations": violations,
         "match_label": ex["match_label"],

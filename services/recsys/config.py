@@ -53,6 +53,13 @@ OWNER_THEME_CRITERIA = {
     "value": ["value_for_budget", "price"],
     "features": ["tech_assist", "comfort_features"],
 }
+# Owner themes (data/owner_themes.csv, text-derived) move the owner sub-score by at most this share of its range (1.0), on
+# top of the ratings: adjustment = cap x weighted mean of (direction +1 / 0 / -1 x strength); strength = min(1, share /
+# OWNER_SATURATION_SHARE) x posts_sampled / (posts_sampled + OWNER_SAMPLE_K). A theme counts with the query weight of the
+# criteria OWNER_THEME_CRITERIA maps it to (the one theme -> criterion table above; reliability / recurring_fault /
+# build_issues -> value_for_budget (+ running_cost, safety); service_cost / service_experience -> running cost and
+# value; real_world_mileage -> running cost; satisfaction -> every spec criterion = the overall).
+THEME_ADJUST_CAP = 0.25
 # the aspect that stands for the whole review when the query states no preference
 EXPERT_OVERALL_ASPECT = "overall"
 OWNER_OVERALL_ASPECT = "satisfaction"
@@ -115,6 +122,10 @@ ASSUMED_BOOST = 0.03           # added to the overall score (0-1) of a car match
 
 # explain.py
 MAX_REASONS = 4
+MAX_EXPERT_LINES = 2           # Autocar note lines per car
+MAX_OWNER_LINES = 2            # owner theme lines per car (a reported fault always takes one)
+PREVALENCE_SOME_BELOW = 0.25   # share of sampled reviews: below -> "some owners"; 0.25 to 0.5 -> "many"; over 0.5 -> "most"
+PREVALENCE_MOST_ABOVE = 0.5
 # percentile-based spec scores centre near 0.5-0.65, so the bars sit above that
 MATCH_LEVELS = [(0.75, "Strong match"), (0.65, "Good match"), (0.55, "Fair match")]
 MATCH_FLOOR_LABEL = "Partial match"
