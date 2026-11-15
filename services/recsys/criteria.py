@@ -66,7 +66,7 @@ COMFORT_BOOLS = {"auto_climate_control": 2.0, "rear_ac_vents": 2.0, "cruise_cont
 TECH_BOOLS = {"adas_available": 3.0, "camera_360": 2.0, "connected_car_features": 1.5,
               "wireless_charging": 1.0, "android_auto": 1.0, "apple_carplay": 1.0,
               "heads_up_display": 1.0}
-# features that count in the features-per-rupee ratio
+# features that count in the features-per-rupee ratio (a blank counts at its blank prior, see _fpr)
 VALUE_FEATURES = sorted(set(COMFORT_BOOLS) | set(TECH_BOOLS) | {"esc", "rear_camera", "rear_parking_sensors"})
 # gearbox for performance: fixed ordinal (small weight): quick-shifting boxes score higher
 GEARBOX_SCORE = {"dct": 1.0, "single_speed_ev": 1.0, "torque_converter": 0.9, "manual": 0.6, "imt": 0.6,
@@ -127,14 +127,19 @@ def _make_pops(raw: pd.Series, groups: pd.Series, models: pd.Series) -> Dict[Any
             for g, sub in frame.groupby("g")}
 
 
-def _fpr(df: pd.DataFrame) -> pd.Series:
-    """Known-true feature count per lakh of price, only when enough feature cells are known."""
+def _fpr(df: pd.DataFrame, ref: "Reference") -> pd.Series:
+    """Feature count per lakh of price, only when enough feature cells are known. A known-True cell counts 1, a
+    known-False cell 0, and a blank cell counts the same conservative blank prior as in the feature criteria (the
+    segment share of True x config.BLANK_PRIOR_BOOL_FACTOR), never 0: a blank is not "absent"."""
     price = df["price_ex_showroom"].map(num)
     present = [c for c in VALUE_FEATURES if c in df.columns]
     flags = df[present].apply(lambda col: col.map(lambda v: np.nan if is_unknown(v) else (1.0 if v is True else 0.0)))
     known_share = flags.notna().mean(axis=1)
-    true_count = flags.fillna(0.0).sum(axis=1)
-    return (true_count / (price / 100000.0)).where(price.notna() & (price > 0) & (known_share >= config.MIN_FEATURE_KNOWN_SHARE))
+    seg, allc = df["body_type"].astype(str), pd.Series("all", index=df.index)
+    for c in present:
+        flags[c] = flags[c].fillna(ref.blank_prior(f"bool:{c}", "bool", seg, allc))
+    count = flags.sum(axis=1)
+    return (count / (price / 100000.0)).where(price.notna() & (price > 0) & (known_share >= config.MIN_FEATURE_KNOWN_SHARE))
 
 
 def _running_cost_raw(df: pd.DataFrame) -> Tuple[List[Optional[str]], pd.Series]:
@@ -163,14 +168,13 @@ def _slot_inputs(df: pd.DataFrame) -> Dict[str, Tuple[pd.Series, pd.Series, pd.S
         out[col] = (df[col].map(num).astype(float), seg, allc)
     _, p2w, power_only = _p2w(df)
     out["p2w"], out["power_only"] = (p2w, seg, allc), (power_only, seg, allc)
-    out["fpr"] = (_fpr(df), seg, allc)
     out["price"] = (df["price_ex_showroom"].map(num).astype(float), seg, allc)
     out["price_all"] = (df["price_ex_showroom"].map(num).astype(float), allc, allc)
     out["stars"] = ((df["safety_stars_adult"].map(num).astype(float) / 5.0).clip(0, 1), seg, allc)
     _, rc_raw = _running_cost_raw(df)
     out["running_cost"] = (rc_raw, seg + "|" + df["fuel_type"].astype(str), df["fuel_type"].astype(str))
     # yes/no features (share of True among the known cells, per segment) and the gearbox ordinal: blank priors only
-    for col in sorted(set(SAFETY_BOOLS) | set(COMFORT_BOOLS) | set(TECH_BOOLS)):
+    for col in sorted(set(SAFETY_BOOLS) | set(COMFORT_BOOLS) | set(TECH_BOOLS) | set(VALUE_FEATURES)):
         out[f"bool:{col}"] = (_bool_score(df[col]), seg, allc)
     out["gear"] = (df["transmission_type"].map(lambda t: GEARBOX_SCORE.get(t, np.nan) if not is_unknown(t) else np.nan
                                               ).astype(float), seg, allc)
@@ -187,6 +191,10 @@ class Reference:
         self.pops: Dict[str, Dict[str, Dict[Any, _Pop]]] = {}
         for slot, (raw, seg, fb) in _slot_inputs(df).items():
             self.pops[slot] = {"seg": _make_pops(raw, seg, models), "fb": _make_pops(raw, fb, models)}
+        # features per lakh counts blank feature cells at their blank priors, so it is built after the yes/no slots
+        seg, allc = df["body_type"].astype(str), pd.Series("all", index=df.index)
+        fpr = _fpr(df, self)
+        self.pops["fpr"] = {"seg": _make_pops(fpr, seg, models), "fb": _make_pops(fpr, allc, models)}
 
     def percentile(self, slot: str, values: pd.Series, groups: pd.Series, fallback: pd.Series) -> pd.Series:
         """Percentile of each known value in its segment population (fallback population when the segment has
@@ -432,7 +440,7 @@ def _value(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, budget: Optional[d
         fit = price.map(lambda p: np.nan if is_unknown(p) else budget_fit(p, bmax))
         fields.append(("price_vs_budget", price, fit.astype(float), 1.0, "price / stated maximum budget", None, None, None))
     # features per rupee: known-true count per lakh, only when enough feature cells are known
-    fpr = _fpr(df)
+    fpr = _fpr(df, ref)
     fields.append(("features_per_lakh", fpr, ref.percentile("fpr", fpr, seg, allc), 1.0, "segment percentile", None, None,
                    ref.blank_prior("fpr", "pct", seg, allc)))
     return fields
