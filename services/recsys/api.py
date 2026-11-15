@@ -23,7 +23,7 @@ from services.recsys.common import is_unknown, num, to_jsonable
 from services.recsys.criteria import catalogue_reference
 from services.recsys.diversify import diversify
 from services.recsys.evidence import Evidence, get_evidence
-from services.recsys.explain import explain
+from services.recsys.explain import explain, not_verified_labels
 from services.recsys.relax import find_relaxation, violations_for
 from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
@@ -227,6 +227,9 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         "violations": violations,
         "match_label": ex["match_label"],
         "flags": list(srow["flags"]),
+        # requirements this car passes only because the field is blank ("ground clearance not verified"); cars with
+        # none are listed above every car with one or more (diversify.py, tiers)
+        "not_verified": not_verified_labels(car),
         # requested features this variant is not known to have
         "missing_features": [item.split(":", 1)[1] for item, st in srow["required"].items()
                              if item.startswith("feature:") and st != "met"],

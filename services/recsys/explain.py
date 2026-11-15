@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
-from services.filter_v2 import FEATURE_COLUMNS
+from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS
 from services.recsys import config
 from services.recsys.common import is_unknown, num
 from services.recsys.criteria import COMFORT_BOOLS, SPEC_LABELS, TECH_BOOLS
@@ -178,12 +178,39 @@ def _evidence_reason(crit: str, make: str, model: str, value: float, ev: Evidenc
             "evidence_class": "owner", "fields": [crit], "source_url": d["source_url"]}
 
 
+def _item_label(item: str) -> str:
+    """Human label of a required item key (feature:x, min_*)."""
+    if item.startswith("feature:"):
+        return FEATURE_COLUMNS[item.split(":", 1)[1]][1]
+    if item in MIN_COLUMNS:
+        return MIN_COLUMNS[item][1]
+    return "crash rating" if item == "min_safety_stars" else item
+
+
+def not_verified_labels(row: pd.Series) -> List[str]:
+    """Plain labels of the requirements this car passes only because the field is blank, e.g. "ground clearance not
+    verified", "sunroof absence not verified" (an excluded feature), "crash rating not verified"."""
+    out: List[str] = []
+    unverified = row.get("unverified") if hasattr(row, "get") else None
+    for u in unverified if isinstance(unverified, list) else []:
+        label = str(u).split(": ", 1)[-1]
+        out.append(f"{label[3:]} absence not verified" if label.startswith("no ") else f"{label} not verified")
+    if bool(row.get("unrated_safety", False)) if hasattr(row, "get") else False:
+        out.append("crash rating not verified")
+    return list(dict.fromkeys(out))
+
+
 def unknowns_for(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], evidence: Evidence) -> List[str]:
     out: List[str] = []
     for item, status in score_row["required"].items():
         if status == "unknown":
-            label = FEATURE_COLUMNS[item.split(":", 1)[1]][1] if item.startswith("feature:") else item
-            out.append(f"{label[0].upper() + label[1:]}: not confirmed in our data")
+            out.append(f"{_item_label(item)[0].upper() + _item_label(item)[1:]}: not confirmed in our data")
+    # requirements the car passes only because the field is blank that the score table does not list (excluded
+    # features, maximums): the filter's own list
+    unverified = row.get("unverified") if hasattr(row, "get") else None
+    for u in unverified if isinstance(unverified, list) else []:
+        label = str(u).split(": ", 1)[-1]
+        out.append(f"{label[0].upper() + label[1:]}: not confirmed in our data")
     if is_unknown(row["safety_stars_adult"]) and weights["criteria"]["safety"]["active"]:
         out.append("Crash rating: not available")
     for crit in score_row["unknown_criteria"]:
