@@ -37,6 +37,12 @@ DEFAULTS = {
     "tile_w": 580, "tile_h": 650, "tile_overlap": 20,
     "index_dir": "~/carrec_kb_scratch/enrich_claude/index",
     "match_fraction": 0.5,               # wrong-year guard
+    "check": True,                       # independent image check of every extracted cell (a different model than the reader)
+    "check_fraction": 1.0,               # 1.0 = every cell; below 1: a fixed sample per (model, field group), see check_cells
+    "check_chunk": 40,                   # claims per checker call
+    "check_prompt_version": "bc1",
+    "check_bar": 0.95,                   # sample mode: a field group whose sample is below this attaches nothing it did not check
+    "max_consecutive_failures": 3,
 }
 
 # fields a brochure does not state (price) or that define a variant's identity (fuel, gearbox): never read from a brochure
@@ -128,21 +134,28 @@ class Session:
         self.cfg, self.run_dir = cfg, run_dir
         self.chain = chain
         self.calls = 0
+        self.check_calls = 0
+        self.check_hits = 0
+        self.fails = 0                   # consecutive failed LLM calls (reader or checker); 3 stop the run
         self.exhausted = None
         self.models = {}
+        self.checkers = {}
+        self.check_chain = None          # tests inject a checker chain here; the reader-is-not-checker rule still applies
 
 
 _SESSIONS = {}
 
 
-def session(cfg, run_dir, chain=None):
+def session(cfg, run_dir, chain=None, check_chain=None):
     s = _SESSIONS.get(run_dir)
     if s is None:
         s = _SESSIONS[run_dir] = Session(cfg, run_dir, chain)
     if chain is not None:
         s.chain = chain
+    if check_chain is not None:
+        s.check_chain = check_chain
     if s.chain is None:
-        s.chain = llm.get(cfg, "extract", run_dir)
+        s.chain = llm.get(cfg, "brochure_read", run_dir)
     return s
 
 
@@ -196,6 +209,12 @@ def locate_new(item, bundle, cfg, fetcher, log):
     if not body.startswith(b"%PDF"):
         log("brochure", "%s %s: %s is not a PDF" % (item["make"], item["model"], url))
         return []
+    return store_new(item, url, body, meta, cfg, log)
+
+
+def store_new(item, url, body, meta, cfg, log, key=None):
+    """Save a downloaded brochure under oem_new_dir/<make>/<model>/<sha1>.pdf (never under sources/oem) and record URL, date and
+    hashes in oem_new_dir/brochure_manifest.json. Refuses a file that is not a PDF with a text layer naming the model."""
     sha1 = hashlib.sha1(body).hexdigest()
     d = os.path.join(cfg["oem_new_dir"], _slug(item["make"]), _slug(item["model"]))
     os.makedirs(d, exist_ok=True)
@@ -217,14 +236,33 @@ def locate_new(item, bundle, cfg, fetcher, log):
         return []
     mp = os.path.join(cfg["oem_new_dir"], "brochure_manifest.json")
     man = _load_json(mp, {})
-    man["%s/%s" % (item["make"], item["model"])] = {"url": url, "sha1": sha1, "sha256": hashlib.sha256(body).hexdigest(),
-                                                       "bytes": len(body), "fetched_at": (meta or {}).get("fetched_at") or _utc(),
-                                                       "path": os.path.relpath(path, cfg["oem_new_dir"])}
+    man[key or "%s/%s" % (item["make"], item["model"])] = {
+        "url": url, "sha1": sha1, "sha256": hashlib.sha256(body).hexdigest(), "bytes": len(body),
+        "fetched_at": (meta or {}).get("fetched_at") or _utc(), "path": os.path.relpath(path, cfg["oem_new_dir"]),
+        "pages": len(texts)}
     tmp = mp + ".tmp"
     with open(tmp, "w") as f:
         json.dump(man, f, indent=1, sort_keys=True)
     os.replace(tmp, mp)
     return [{"path": path, "sha1": sha1, "origin": "new", "url": url}]
+
+
+def locate_new_dir(item, cfg, log):
+    """Brochures already downloaded into the kbpipe folder (oem_new_dir manifest; keys 'Make/Model' or 'Make/Model|n').
+    Used for models that are now in the KB but have no brochure in sources/oem."""
+    man = _load_json(os.path.join(cfg["oem_new_dir"], "brochure_manifest.json"), {})
+    out = []
+    base = "%s/%s" % (item["make"], item["model"])
+    for key in sorted(man):
+        if key != base and not key.startswith(base + "|"):
+            continue
+        m = man[key]
+        ap = os.path.join(cfg["oem_new_dir"], m["path"])
+        if not os.path.exists(ap) or _sha(ap, "sha1") != m["sha1"]:
+            log("brochure", "%s: %s missing or changed since download; not used" % (base, m["path"]))
+            continue
+        out.append({"path": ap, "sha1": m["sha1"], "origin": "new", "url": m["url"]})
+    return out
 
 
 # ---------------------------------------------------------------- 2. index
@@ -366,7 +404,12 @@ def read_page(S, pdf, sha1, page, text, model, variants, fields, log, read_no):
     key = cache_key(sha1, page, fields, variants, "%s_%s" % (model, S.chain.model), read_no)
     path = os.path.join(cdir, key + ".json")
     if os.path.exists(path):
-        return _load_json(path, None)
+        d = _load_json(path, None)
+        if isinstance(d, dict):
+            d.setdefault("_reader", S.chain.name)       # a read cached before readers were recorded came from the chain's first backend
+        return d
+    if S.exhausted:
+        return None
     if S.calls >= b["max_page_reads_per_run"]:
         if not S.exhausted:
             S.exhausted = "budget of %d page reads for this run is used up" % b["max_page_reads_per_run"]
@@ -378,17 +421,27 @@ def read_page(S, pdf, sha1, page, text, model, variants, fields, log, read_no):
     try:
         reply = S.chain.complete(prompt, images=imgs, json_mode=True, label="brochure p%d r%d" % (page, read_no))
         data = llm.parse_json(reply)
+        data["_reader"] = S.chain.last or S.chain.name
+        S.fails = 0
     except llm.QuotaExhausted as e:
-        S.exhausted = "LLM quota: %s" % e
+        S.exhausted = "LLM quota or usage limit (reader): %s" % str(e)[:200]
         log("brochure", "STOP: " + S.exhausted)
         return None
     except (llm.LLMError, ValueError) as e:
         log("brochure", "page %d read %d failed: %s" % (page, read_no, str(e)[:160]))
+        _fail(S, b, "reader", e, log)
         return None
     with open(path + ".tmp", "w") as f:
         json.dump(data, f)
     os.replace(path + ".tmp", path)
     return data
+
+
+def _fail(S, b, who, e, log):
+    S.fails += 1
+    if S.fails >= b["max_consecutive_failures"] and not S.exhausted:
+        S.exhausted = "%d consecutive %s call failures (last: %s)" % (S.fails, who, str(e)[:160])
+        log("brochure", "STOP: " + S.exhausted)
 
 
 # ---------------------------------------------------------------- 5. units
@@ -472,7 +525,8 @@ def parse_cells(reply, variants, fields_asked):
             if k in out and not F.same(f, out[k]["value"], val):
                 out[k] = {"value": None, "conflict": True}       # one read contradicts itself on this cell
                 continue
-            out[k] = {"value": val, "qualifier": str(cell.get("qualifier") or ""), "source": str(cell.get("source") or "")[:300]}
+            out[k] = {"value": val, "qualifier": str(cell.get("qualifier") or ""), "source": str(cell.get("source") or "")[:300],
+                      "raw": "%s %s" % (cell.get("value"), cell.get("unit") or "")}
     out = {k: v for k, v in out.items() if v.get("value") is not None}
     # absent-as-zero guard (enrich_batch, 10B lesson): a 0 for a feature the page never shows fitted on any variant, with no marker
     any1 = {f for (vn, f), v in out.items() if F.FIELDS[f][1] == "bool" and v["value"] == 1}
@@ -556,12 +610,12 @@ def guard_text(variants, texts, pages, model):
 
 
 # ---------------------------------------------------------------- the entry point
-def enrich(item, bundle, conn, cfg, fetcher, log, run_dir, chain=None):
+def enrich(item, bundle, conn, cfg, fetcher, log, run_dir, chain=None, check_chain=None):
     """Attach brochure evidence to bundle["versions"][i]["brochure"]. Returns a summary dict (also written to
     <run_dir>/brochure/<make>_<model>.json). Never raises for a missing or unusable brochure: it logs why and returns."""
     b = bcfg(cfg)
     make, model = item["make"], item["model"]
-    S = session(cfg, run_dir, chain)
+    S = session(cfg, run_dir, chain, check_chain)
     summ = {"make": make, "model": model, "status": None, "brochures": [], "pages_read": 0, "llm_calls": 0, "cells_kept": 0,
             "cells_attached": 0, "cells_skipped_existing": 0, "cells_dropped_disagree": 0, "cells_dropped_single_read": 0,
             "cells_dropped_page_conflict": 0, "drops": {}, "cells": []}
@@ -610,13 +664,17 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
     by_name = {v["name"]: v for v in versions}
     summ["kb_linked"] = {n: r["id"] for n, r in links.items()}
     backed = oem_backed(conn)
-    brochures = locate_disk(item, cfg, log) if item.get("in_kb") else locate_new(item, bundle, cfg, fetcher, log)
+    if item.get("in_kb"):
+        brochures = locate_disk(item, cfg, log) or locate_new_dir(item, cfg, log)
+    else:
+        brochures = locate_new(item, bundle, cfg, fetcher, log)
     if not brochures:
         summ["status"] = "no brochure"
         if item.get("in_kb"):
             log("brochure", "%s %s: no brochure on disk for model id %s" % (make, model, item.get("kb_model_id")))
         return
     all_cells = {}                      # (variant, field) -> [ {value, page, ...} ]
+    reader_of = {}                      # (pdf sha1, page) -> set of reader backend names
     for bro in brochures:
         pdf, sha1 = bro["path"], bro["sha1"]
         rec = {"pdf": stored_path(cfg, pdf), "sha1": sha1, "origin": bro["origin"], "pages": [], "status": None}
@@ -635,7 +693,7 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
             rec["status"] = "brochure does not match the current listing"
             log("brochure", "%s %s: brochure does not match the current listing (%d%% of variants named on its pages)" % (make, model, round(frac * 100)))
             continue
-        named_all, page_results = set(), []
+        named_all, page_results, readers = set(), [], {}
         for pg in pages:
             if S.exhausted:
                 break
@@ -650,6 +708,7 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
                 if data is None:
                     break
                 cells, dropped, named = parse_cells(data, vinfo, set(fields))
+                readers.setdefault((sha1, pg), set()).add(data.get("_reader") or S.chain.name)
                 reads.append(cells)
                 named_all |= named
                 for k, n in dropped.items():
@@ -673,6 +732,7 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
         for pg, kept in page_results:
             for (vn, f), cell in kept.items():
                 all_cells.setdefault((vn, f), []).append(dict(cell, page=pg, pdf=pdf, sha1=sha1, url_origin=bro, field=f, variant=vn))
+        reader_of.update(readers)
     # the same cell on several pages must agree, else it is dropped
     final = []
     for (vn, f), lst in all_cells.items():
@@ -681,13 +741,20 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
             continue
         final += lst
     summ["cells_kept"] = len(final)
+    verdicts = check_cells(S, b, model, vinfo, final, reader_of, log, summ)
     # attach; one observation per (variant, page) so that its payload lists exactly the cells it supports
     per_obs = {}
     for x in final:
         row = links.get(x["variant"])
         existing = bool(row and (row["id"], x["field"]) in backed)
+        v = verdicts.get(id(x)) or {"verdict": "unchecked", "attach": not b["check"], "evidence": "", "checker": None}
         summ["cells"].append({"variant": x["variant"], "kb_variant_id": row["id"] if row else None, "field": x["field"], "value": x["value"],
-                              "page": x["page"], "printed": x["source"], "qualifier": x["qualifier"], "kb_has_brochure_value": existing})
+                              "page": x["page"], "printed": x["source"], "qualifier": x["qualifier"], "raw": x.get("raw"),
+                              "group": F.FIELDS[x["field"]][2], "kb_has_brochure_value": existing, "verdict": v["verdict"],
+                              "checker": v.get("checker"), "check_evidence": v.get("evidence", "")[:200], "sha1": x["sha1"]})
+        if not v["attach"]:
+            summ["cells_not_attached_check"] = summ.get("cells_not_attached_check", 0) + 1
+            continue
         if existing:
             summ["cells_skipped_existing"] += 1       # rule 7: already brochure-backed, nothing to add
             continue
@@ -704,9 +771,155 @@ def _enrich(item, bundle, conn, cfg, fetcher, log, S, b, summ):
             by_name[vn]["brochure"].append({"field": x["field"], "value": x["value"], "obs": o})
             summ["cells_attached"] += 1
     summ["status"] = summ["status"] or ("ok" if summ["pages_read"] else "nothing read")
+    if S.exhausted:
+        summ["status"] = "incomplete: " + S.exhausted
     log("brochure", "%s %s: %d page(s) read, %d call(s), %d cells kept (%d attached, %d already brochure-backed), dropped: %d disagree, %d single-read, %d page conflict" % (
         make, model, summ["pages_read"], S.calls, summ["cells_kept"], summ["cells_attached"], summ["cells_skipped_existing"],
         summ["cells_dropped_disagree"], summ["cells_dropped_single_read"], summ["cells_dropped_page_conflict"]))
+
+
+# ---------------------------------------------------------------- independent image check
+CHECK_PROMPT = """You are checking claims extracted from ONE page of an OEM car brochure for the {model}. Use ONLY the page image tiles given (overlapping tiles of the same page; look at all of them). Do not use any other knowledge of the car.
+
+For each claim decide whether THIS PAGE supports it for the named catalogue variant:
+- The brochure prints trim columns or names; map them to the variant using its fuel and gearbox and any printed restriction ("AT only", "Diesel only").
+- Numbers: supported only when the page prints that number (the claim lists the printed value and unit; "stored" is the same value converted to the KB's unit, so only the printed figure must be on the page).
+- Features (value 1): supported only when the page shows the feature fitted on that trim (tick, dot, "Yes", or the feature listed under that trim or as standard for it).
+- Features (value 0): supported ONLY when the page shows the feature explicitly absent for that trim (a dash, cross, "-", "NA", "Not available" in that trim's cell, or listed as not available). A feature that is merely not mentioned, or a blank cell with no marker, is "unclear".
+- Counts (airbags, drive modes) must equal the printed number for that trim.
+
+Verdicts: "supported", "not_supported" (the page shows something different), "unclear" (the page does not settle it, is unreadable, or the trim cannot be matched). Be strict: when in doubt, "unclear".
+
+CLAIMS (id | variant (fuel, gearbox) | field: meaning | value | printed value and unit | header or line the reader cited)
+{claims}
+
+OUTPUT: ONE JSON object and nothing else, no markdown fences:
+{{"results":[{{"id":<claim id>,"verdict":"supported|not_supported|unclear","evidence":"<the cell, header or line on the page that decides it, max 20 words>"}}]}}
+Every claim id must appear exactly once."""
+
+
+def _claims_text(chunk, vmeta):
+    rows = []
+    for i, x in enumerate(chunk, 1):
+        vm = vmeta.get(x["variant"]) or {}
+        rows.append("%d | %s (%s, %s) | %s: %s | %s | %s | %s" % (
+            i, x["variant"], vm.get("fuel") or "?", vm.get("transmission") or "?", x["field"], F.DEFINITIONS[x["field"]],
+            x["value"], (x.get("raw") or "").strip(), (x.get("source") or "")[:120]))
+    return "\n".join(rows)
+
+
+def _sample(cells, frac, model):
+    """Deterministic sample: per field group the cells with the smallest hash, at least 5 (or all when fewer), at least `frac`."""
+    by = {}
+    for x in cells:
+        by.setdefault(F.FIELDS[x["field"]][2], []).append(x)
+    pick = []
+    for g, xs in by.items():
+        xs = sorted(xs, key=lambda x: hashlib.sha256(("%s|%s|%s" % (model, x["variant"], x["field"])).encode()).hexdigest())
+        n = len(xs) if len(xs) <= 5 else max(5, int(-(-len(xs) * frac // 1)))
+        pick += xs[:n]
+    return pick
+
+
+def check_chunk(S, b, model, sha1, pdf, page, chunk, vmeta, readers, log):
+    """{claim no: (verdict, evidence, checker backend)} for one chunk, or None when it could not be had. Cached on disk by
+    (pdf sha1, page, prompt version, claims): a rerun makes no call. A checker is never the backend that read the page."""
+    cdir = os.path.join(S.cfg["cache_dir"], "brochure_checks")
+    os.makedirs(cdir, exist_ok=True)
+    ctext = _claims_text(chunk, vmeta)
+    ver = b["check_prompt_version"]
+    key = "%s_p%d_%s_%s" % (sha1, page, ver, hashlib.sha256((model + "\n" + ctext).encode()).hexdigest()[:16])
+    path = os.path.join(cdir, key + ".json")
+    if os.path.exists(path):
+        d = _load_json(path, None)
+        if d:
+            S.check_hits += 1
+            return {int(r["id"]): (r.get("verdict"), str(r.get("evidence") or ""), d.get("checker")) for r in d["results"]}
+    if S.exhausted:
+        return None
+    ex = tuple(sorted(readers))
+    chain = S.check_chain or S.checkers.get(ex)
+    if chain is None:
+        try:
+            chain = S.checkers[ex] = llm.get(S.cfg, "brochure_check", S.run_dir, exclude=ex)
+        except llm.LLMError as e:
+            S.exhausted = "no checker available: %s" % e
+            log("brochure", "STOP: " + S.exhausted)
+            return None
+    imgs = tiles(pdf, page, S.cfg, sha1)
+    prompt = CHECK_PROMPT.format(model=model, claims=ctext)
+    S.check_calls += 1
+    try:
+        reply = chain.complete(prompt, images=imgs, json_mode=True, label="brochure check p%d" % page)
+        data = llm.parse_json(reply)
+        res = {int(r["id"]): r for r in data["results"] if isinstance(r, dict) and "id" in r}
+        S.fails = 0
+    except llm.QuotaExhausted as e:
+        S.exhausted = "LLM quota or usage limit (checker): %s" % str(e)[:200]
+        log("brochure", "STOP: " + S.exhausted)
+        return None
+    except (llm.LLMError, ValueError, KeyError, TypeError) as e:
+        log("brochure", "check p%d failed: %s" % (page, str(e)[:160]))
+        _fail(S, b, "checker", e, log)
+        return None
+    who = chain.last
+    if who in readers:
+        raise RuntimeError("checker %s is the reader of this page; refused" % who)
+    if chain.dead:
+        log("brochure", "checker chain: %s unavailable (%s); %s is answering" % (
+            ",".join(sorted(chain.dead)), "; ".join(getattr(chain, "dead_why", {}).values())[:160], who))
+    out = {i: (str(res.get(i, {}).get("verdict") or "unclear"), str(res.get(i, {}).get("evidence") or ""), who) for i in range(1, len(chunk) + 1)}
+    with open(path + ".tmp", "w") as f:
+        json.dump({"checker": who, "model": next((x.model for x in chain.backends if x.name == who), None), "readers": sorted(readers),
+                   "prompt_version": ver, "page": page, "sha1": sha1,
+                   "results": [{"id": i, "verdict": v[0], "evidence": v[1]} for i, v in out.items()]}, f)
+    os.replace(path + ".tmp", path)
+    return out
+
+
+def check_cells(S, b, model, vinfo, final, reader_of, log, summ):
+    """Check the cells that survived the two reads against the rendered page with a different model. Returns
+    {id(cell): {verdict, attach, evidence, checker}}. Only a cell the checker supports is attached; with check_fraction < 1 the
+    unchecked cells of a field group are attached only when that group's sample is at least check_bar supported."""
+    if not b["check"]:
+        return {}
+    vmeta = {v["name"]: v for v in vinfo}
+    frac = b["check_fraction"]
+    todo = list(final) if frac >= 1.0 else _sample(final, frac, model)
+    out = {}
+    by_page = {}
+    for x in todo:
+        by_page.setdefault((x["sha1"], x["page"], x["pdf"]), []).append(x)
+    for (sha1, pg, pdf), xs in sorted(by_page.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+        xs.sort(key=lambda x: (x["field"], x["variant"]))
+        readers = set(reader_of.get((sha1, pg)) or {S.chain.name})
+        for i in range(0, len(xs), b["check_chunk"]):
+            chunk = xs[i:i + b["check_chunk"]]
+            res = check_chunk(S, b, model, sha1, pdf, pg, chunk, vmeta, readers, log)
+            for n, x in enumerate(chunk, 1):
+                if res is None:
+                    out[id(x)] = {"verdict": "unchecked", "attach": False, "evidence": "", "checker": None}
+                else:
+                    v, ev, who = res[n]
+                    out[id(x)] = {"verdict": v if v in ("supported", "not_supported", "unclear") else "unclear",
+                                  "attach": v == "supported", "evidence": ev, "checker": who}
+    if frac < 1.0:
+        groups = {}
+        for x in final:
+            groups.setdefault(F.FIELDS[x["field"]][2], []).append(x)
+        for g, xs in groups.items():
+            done = [out[id(x)] for x in xs if id(x) in out and out[id(x)]["verdict"] != "unchecked"]
+            ok = bool(done) and sum(1 for d in done if d["verdict"] == "supported") / float(len(done)) >= b["check_bar"]
+            for x in xs:
+                if id(x) not in out:
+                    out[id(x)] = {"verdict": "unchecked_sampled" if ok else "unchecked", "attach": ok, "evidence": "", "checker": None}
+    cnt = {}
+    for x in final:
+        v = out.get(id(x), {"verdict": "unchecked"})["verdict"]
+        key = (F.FIELDS[x["field"]][2], v)
+        cnt[key] = cnt.get(key, 0) + 1
+    summ["check_counts"] = {"%s/%s" % k: n for k, n in sorted(cnt.items())}
+    return out
 
 
 def brochure_url(cfg, bro, pdf, page):

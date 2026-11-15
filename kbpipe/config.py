@@ -48,6 +48,10 @@ DEFAULTS = {
         "extract": ["claude_sonnet", "gemini", "gemini_alt"],   # brochure pages (first that answers is used)
         "verify": ["gemini_alt", "groq"],                   # web sources (text). Haiku is NOT used: on 2026-11-13 it called 16 exact matches "mismatch"
         "verify_image": ["gemini_alt"],
+        # brochure layer: the reader is Sonnet only (no silent fallback to a free model; a limit stops the run);
+        # the image checker is a different model: Opus first, then the Gemini image backend. A checker never uses the backend that read the page.
+        "brochure_read": ["claude_sonnet"],
+        "brochure_check": ["claude_opus", "gemini_alt"],
         # review layers (kbpipe/reviews.py, review_text.py): Claude Sonnet writes, the free chain checks. Never the same backend, never Haiku.
         "reviews_write": ["claude_sonnet"],
         "reviews_check": ["claude_opus", "gemini_alt", "groq"],

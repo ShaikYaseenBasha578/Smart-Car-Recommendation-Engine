@@ -58,7 +58,7 @@ def env(tmp_path, cfg, kbfile):
     man = {"Tata_Nexon": {"model_id": 1, "artifact_path": rel, "sha256": brochure._sha(pdf, "sha256")}}
     (oem / "brochure_manifest.json").write_text(json.dumps(man))
     cfg.update(oem_dir=str(oem), oem_new_dir=str(root / "knowledge_base" / "sources" / "oem_kbpipe"))
-    cfg["brochure"] = {"enabled": True, "index_dir": str(tmp_path / "noindex")}
+    cfg["brochure"] = {"enabled": True, "check": False, "index_dir": str(tmp_path / "noindex")}
     conn = sqlite3.connect(kbfile)
     conn.row_factory = sqlite3.Row
     item = {"make": "Tata", "model": "Nexon", "in_kb": True, "kb_model_id": 1, "key": "nexon"}
@@ -73,13 +73,13 @@ def env(tmp_path, cfg, kbfile):
     return {"cfg": cfg, "conn": conn, "item": item, "bundle": bundle, "pdf": pdf, "tmp": tmp_path, "root": root}
 
 
-def run(env, script, name="r1", bundle=None, chain=None):
+def run(env, script, name="r1", bundle=None, chain=None, checker=None):
     m = Mock(script)
     b = bundle or env["bundle"]()
     logs = []
     rd = str(env["tmp"] / name)
     os.makedirs(rd, exist_ok=True)
-    s = brochure.enrich(env["item"], b, env["conn"], env["cfg"], None, lambda *a: logs.append(" ".join(map(str, a))), rd, chain=m.chain())
+    s = brochure.enrich(env["item"], b, env["conn"], env["cfg"], None, lambda *a: logs.append(" ".join(map(str, a))), rd, chain=m.chain(), check_chain=checker.chain() if checker else None)
     return s, b, m, logs
 
 
@@ -232,3 +232,93 @@ def test_new_model_download_and_name_check(env, tmp_path):
     logs = []
     brochure.enrich(item, b2, env["conn"], env["cfg"], Fetch(other), lambda *a: logs.append(a), str(tmp_path / "n2"), chain=m.chain())
     assert not attached(b2) and any("does not mention the model" in " ".join(l) for l in logs)
+
+
+class MockChecker:
+    """Mock checker: verdict(field) -> 'supported' | 'not_supported' | 'unclear' | an exception to raise."""
+    def __init__(self, verdict, name="mockcheck"):
+        self.verdict, self.n, self.name = verdict, 0, name
+
+    def __call__(self, prompt, images):
+        self.n += 1
+        rows = re.findall(r"^(\d+) \| .*? \| (\w+): ", prompt, re.M)
+        out = []
+        for i, f in rows:
+            v = self.verdict(f)
+            if isinstance(v, Exception):
+                raise v
+            out.append({"id": int(i), "verdict": v, "evidence": "line"})
+        return json.dumps({"results": out})
+
+    def chain(self):
+        b = llm.Backend(self.name, {"kind": "mock", "model": "mockcheck-m"})
+        b.mock = self
+        return llm.Chain([b])
+
+
+def _cells(r, p):
+    return [cell("wheelbase_mm", 2498, "mm", ALL), cell("airbags", 6, "count", ALL), cell("sunroof", 1, "bool", ALL)]
+
+
+def test_checker_gates_cells_and_reports_counts(env):
+    env["cfg"]["brochure"]["check"] = True
+    ck = MockChecker(lambda f: "not_supported" if f == "airbags" else "supported")
+    s, b, m, _ = run(env, _cells, name="c1", checker=ck)
+    a = attached(b)
+    assert (ALL[0], "wheelbase_mm") in a and (ALL[0], "sunroof") in a
+    assert not any(k[1] == "airbags" for k in a)                      # not supported by the page: nothing attached
+    assert s["check_counts"]["comfort/supported"] == 4 and s["check_counts"]["safety/not_supported"] == 4
+    assert {c["verdict"] for c in s["cells"] if c["field"] == "airbags"} == {"not_supported"}
+    assert ck.n >= 1
+
+
+def test_unclear_is_not_attached(env):
+    env["cfg"]["brochure"]["check"] = True
+    s, b, _, _ = run(env, _cells, name="c2", checker=MockChecker(lambda f: "unclear"))
+    assert attached(b) == {}
+
+
+def test_rerun_makes_zero_new_calls(env):
+    env["cfg"]["brochure"]["check"] = True
+    ck1 = MockChecker(lambda f: "supported")
+    s1, b1, m1, _ = run(env, _cells, name="z1", checker=ck1)
+    assert m1.n > 0 and ck1.n > 0
+    ck2 = MockChecker(lambda f: "supported")
+    s2, b2, m2, _ = run(env, _cells, name="z2", checker=ck2)       # new run folder, same cache folder (the write run)
+    assert m2.n == 0 and ck2.n == 0
+    assert attached(b1).keys() == attached(b2).keys() and attached(b2)
+
+
+def test_checker_must_not_be_the_reader(env):
+    env["cfg"]["brochure"]["check"] = True
+    # the reader is the backend named "mock"; a checker with that name is refused
+    with pytest.raises(RuntimeError):
+        brochure_enrich_same = MockChecker(lambda f: "supported", name="mock")
+        s, b, m, logs = run(env, _cells, name="rc", checker=brochure_enrich_same)
+        if s["status"].startswith("error"):
+            raise RuntimeError(s["status"])
+    # and the real chain drops the reader's backend
+    cfg = env["cfg"]
+    assert [x.name for x in llm.get(cfg, "brochure_check", exclude=("claude_opus",)).backends] == ["gemini_alt"]
+    assert [x.name for x in llm.get(cfg, "brochure_check", exclude=("gemini_alt",)).backends] == ["claude_opus"]
+    with pytest.raises(llm.LLMError):
+        llm.get(cfg, "brochure_check", exclude=("claude_opus", "gemini_alt"))
+
+
+def test_usage_limit_stops_cleanly(env):
+    env["cfg"]["brochure"]["check"] = True
+    ck = MockChecker(lambda f: llm.QuotaExhausted("claude cli: You've hit your usage limit"))
+    s, b, _, logs = run(env, _cells, name="q1", checker=ck)
+    assert s["status"].startswith("incomplete") and "usage limit" in s["status"]
+    assert attached(b) == {}                                          # nothing unchecked is attached
+    assert any("STOP" in l for l in logs)
+    assert {c["verdict"] for c in s["cells"]} == {"unchecked"}
+
+
+def test_sample_mode_attaches_only_when_group_sample_passes(env):
+    env["cfg"]["brochure"].update(check=True, check_fraction=0.25)
+    s, b, _, _ = run(env, _cells, name="s1", checker=MockChecker(lambda f: "supported"))
+    assert len(attached(b)) == 6
+    env["cfg"]["cache_dir"] = str(env["tmp"] / "other_cache")         # the first run's cached verdicts would be reused
+    s, b, _, _ = run(env, _cells, name="s2", checker=MockChecker(lambda f: "not_supported"))
+    assert attached(b) == {}

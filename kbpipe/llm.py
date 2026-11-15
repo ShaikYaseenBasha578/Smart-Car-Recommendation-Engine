@@ -195,6 +195,7 @@ class Chain:
     """Backends tried in order. A backend that runs out of quota or fails is skipped for the rest of the run."""
     def __init__(self, backends):
         self.backends, self.dead = backends, set()
+        self.last = None              # name of the backend that answered the latest call
 
     @property
     def name(self):
@@ -216,7 +217,9 @@ class Chain:
             if b.name in self.dead:
                 continue
             try:
-                return b.complete(prompt, images=images, json_mode=json_mode, label=label)
+                out = b.complete(prompt, images=images, json_mode=json_mode, label=label)
+                self.last = b.name
+                return out
             except QuotaExhausted as e:
                 self.dead.add(b.name)
                 self.dead_why = getattr(self, "dead_why", {})
@@ -229,10 +232,15 @@ class Chain:
         raise LLMError(str(err))
 
 
-def get(cfg, role, run_dir=None):
-    """Backend chain for a role: 'extract', 'verify' or 'verify_image'."""
+def get(cfg, role, run_dir=None, exclude=()):
+    """Backend chain for a role: 'extract', 'verify', 'verify_image', 'brochure_read' or 'brochure_check'.
+    `exclude`: backend names or model ids that must not be in the chain (a checker never uses the backend that read)."""
     names = cfg["llm"][role]
     names = [names] if isinstance(names, str) else names
+    ex = {str(x) for x in exclude}
+    names = [n for n in names if n not in ex and cfg["llm"]["backends"][n].get("model") not in ex]
+    if not names:
+        raise LLMError("no backend left for role %s after excluding %s" % (role, sorted(ex)))
     os.makedirs(cfg["cache_dir"], exist_ok=True)
     return Chain([Backend(n, cfg["llm"]["backends"][n], calls_log=os.path.join(run_dir, "llm_calls.jsonl") if run_dir else None,
                           state_path=os.path.join(cfg["cache_dir"], "llm_budget.json")) for n in names])

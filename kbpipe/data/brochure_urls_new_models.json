@@ -1,0 +1,175 @@
+{
+ "_note": "Official maker URLs for the 30 models kbpipe added on 13 Nov 2026, found on each maker's own brochure/model page on 2026-11-15 (listing page in 'found_on'). Models missing here have no brochure of their own on the maker's site. Tata Aeris iCNG brochure URL returns the same file as the main one (identical SHA-1), so one entry. MG Hector Plus and Mahindra Bolero Neo Plus have no brochure of their own on the maker's site (MG: one Hector brochure; Mahindra: the Neo Plus pages carry no PDF link). Nissan Tekton: the CDN's robots.txt answered 403, so nothing is fetched.",
+ "Hyundai/Alcazar": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/alcazar.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Hyundai/Bayon": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/bayon.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Hyundai/Creta N Line": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/creta-n-line.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Hyundai/Venue N Line": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/venue-n-line.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Hyundai/i20": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/i20.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Hyundai/i20 N Line": [
+  [
+   "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/i20-n-line.pdf",
+   "https://www.hyundai.com/in/en/buy-a-car/request-a-brochure"
+  ]
+ ],
+ "Kia/Carens": [
+  [
+   "https://www.kia.com/content/dam/kia2/in/en/our-vehicles/showroom/Brochures/Kia_Carens_Brochure_Desktop_2026.pdf",
+   "https://www.kia.com/in/buy/download-brochure.html"
+  ]
+ ],
+ "Kia/Sonet": [
+  [
+   "https://www.kia.com/content/dam/kia2/in/en/our-vehicles/showroom/sonet/brochure/Sonet_Wild_Reborn_Brochure_2026_Desktop.pdf",
+   "https://www.kia.com/in/buy/download-brochure.html"
+  ]
+ ],
+ "Kia/Sorento": [
+  [
+   "https://www.kia.com/content/dam/kia2/in/en/images/our-vehicles/sorento/brochure/Kia_Sorento_Brochure_2026_Desktop.pdf",
+   "https://www.kia.com/in/buy/download-brochure.html"
+  ]
+ ],
+ "MG/Astor": [
+  [
+   "https://s7ap1.scene7.com/is/content/mgmotor/brand/mgmotor/homepage/tools/brochures/MG%20Astor%20-%20Brochure.pdf",
+   "https://www.mgmotor.co.in/tools/brochures"
+  ]
+ ],
+ "MG/Majestor": [
+  [
+   "https://s7ap1.scene7.com/is/content/mgmotor/mgmotor/documents/MG%20Majestor%20-%20Brochure.pdf",
+   "https://www.mgmotor.co.in/tools/brochures"
+  ]
+ ],
+ "Mahindra/Bolero Neo": [
+  [
+   "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/default/dw702a971a/NEO/BoleroNeo-Brochure-19-Dec.pdf",
+   "https://auto.mahindra.com/suv/boleroneo"
+  ]
+ ],
+ "Mahindra/XEV 9S": [
+  [
+   "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/XEV-9s/PDFs/XEV9S_BROCHURE.pdf",
+   "https://www.mahindraelectricsuv.com/esuv/xev-9s.html"
+  ]
+ ],
+ "Mahindra/XEV 9e": [
+  [
+   "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/MXV9/XEV9e_BROCHURE_R1_20260428.pdf",
+   "https://www.mahindraelectricsuv.com/esuv/xev-9e.html"
+  ]
+ ],
+ "Maruti Suzuki/Celerio": [
+  [
+   "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/celerio/documents/Arena-Celerio-Brochure.pdf",
+   "https://www.marutisuzuki.com/celerio/brochure"
+  ]
+ ],
+ "Nissan/Tekton": [
+  [
+   "https://www-asia.nissan-cdn.net/content/dam/Nissan/in/brochures/2026/FINAL-TEKTON-BROCHURE.pdf",
+   "https://www.nissan.in/vehicles/brochures.html"
+  ]
+ ],
+ "Renault/Kiger": [
+  [
+   "https://cdn.group.renault.com/ren/in/kiger-my26/kiger-my26-product-brochure.pdf.asset.pdf/6d8341dec0.pdf",
+   "https://www.renault.co.in/download-a-brochure.html"
+  ]
+ ],
+ "Renault/Kwid": [
+  [
+   "https://cdn.group.renault.com/ren/in/kwid-my26/docs/Kwid_Brochure_Revised_03072026.pdf.asset.pdf/2fccc87f5b.pdf",
+   "https://www.renault.co.in/download-a-brochure.html"
+  ]
+ ],
+ "Skoda/Kodiaq": [
+  [
+   "https://www.skoda-auto.co.in/_doc/3b5c7264-d9de-428f-97ff-93b9f1e91edd",
+   "https://www.skoda-auto.co.in/shopping/kodiaq-download-brochure"
+  ]
+ ],
+ "Tata/Aeris": [
+  [
+   "https://tata.cars/content/dam/tml/pv/products/aeris/year-2026/ice/promoting-vc/brochures/october/aeris-brochure.pdf",
+   "https://tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Curvv": [
+  [
+   "https://tata.cars/content/dam/tml/pv/products/curvv/year-2026/ice/promoting-vc/brochures/october/CURVV_Series-X_Brochure.pdf",
+   "https://tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Curvv EV": [
+  [
+   "https://ev.tata.cars/content/dam/tml/ev/products/curvv/year-2026/ev/promoting-vc/broucher/year-2026/october/curvv-ev-x-web-brochure.pdf",
+   "https://ev.tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Harrier EV": [
+  [
+   "https://ev.tata.cars/content/dam/tml/ev/products/harrier/year-2026/ev/promoting-vc/brochure/october/harrier-ev-brochure-oct-26.pdf",
+   "https://ev.tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Punch": [
+  [
+   "https://tata.cars/content/dam/tml/pv/products/punch/year-2026/ice/promoting-vc/brochures/november/new-tata-punch-brochure.pdf",
+   "https://tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Safari": [
+  [
+   "https://tata.cars/content/dam/tml/pv/products/safari/year-2026/ice/promoting-vc/brouchers/june/safari-master-brochure.pdf",
+   "https://tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Sierra": [
+  [
+   "https://tata.cars/content/dam/tml/pv/products/sierra/year-2026/ice/promoting-vc/brochures/september/sierra-brochure.pdf",
+   "https://tata.cars/support/brochures.html"
+  ]
+ ],
+ "Tata/Sierra EV": [
+  [
+   "https://ev.tata.cars/content/dam/tml/ev/products/sierra/year-2026/ev/promoting-vc/brochure/july/sierra-ev-brochure.pdf",
+   "https://ev.tata.cars/support/brochures.html"
+  ]
+ ],
+ "Volkswagen/Tayron": [
+  [
+   "https://www.volkswagen.co.in/idhub/content/dam/onehub_pkw/importers/in/models/tayron/tayron-brochure.pdf",
+   "https://www.volkswagen.co.in/en/models/tayron.html"
+  ],
+  [
+   "https://www.volkswagen.co.in/idhub/content/dam/onehub_pkw/importers/in/models/tayron-r-line/tayron-r-Line-brochure.pdf",
+   "https://www.volkswagen.co.in/en/models/tayron.html"
+  ]
+ ]
+}
