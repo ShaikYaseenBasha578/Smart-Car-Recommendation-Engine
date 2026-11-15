@@ -12,7 +12,9 @@ uvicorn api_service.main:app --port 8000
 
 Interactive docs: http://localhost:8000/docs
 
-The service sets `RANKER=v3` and `CARREC_CATALOGUE_DIR=data/catalogue_v3` for its own process only, and only where you have not set them. It never touches a knowledge-base file.
+v3 on `data/catalogue_v3` is now the default of the whole repository (the Flask app, the evaluation runner and this service). The service still sets `RANKER=v3` and `CARREC_CATALOGUE_DIR=data/catalogue_v3` for its own process, only where you have not set them, so it keeps working if those defaults are changed again. It never touches a knowledge-base file.
+
+**Defaults on this branch.** With no environment variables the Flask app also runs v3 on the 1,464-variant catalogue. The old engine and the original 832-variant catalogue are kept: `RANKER=current` selects the old engine and `CARREC_CATALOGUE_DIR=data` the old catalogue (the two are independent). The deployed app, and any deployment configuration (`Dockerfile`, `docker-compose.yml`, the host's environment), are unaffected until this branch is merged and deployed by the owner; `docker-compose.yml` already sets both variables explicitly, which is now redundant but harmless.
 
 Environment variables (all optional):
 

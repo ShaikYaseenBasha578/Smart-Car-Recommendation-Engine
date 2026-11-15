@@ -330,8 +330,16 @@ def relaxation_hints(intent):
     return hints[:MAX_RELAXATION_HINTS]
 
 
+# RANKER: unset or "v3" = ranking engine v3 (services/recsys); "current" (also "old", "v2") = the engine used before v3.
+CURRENT_RANKER_NAMES = ("current", "old", "v2")
+
+
+def ranker_name():
+    return "current" if os.environ.get("RANKER", "").strip().lower() in CURRENT_RANKER_NAMES else "v3"
+
+
 def get_kb_recommendations(user_query, app_root_path, make_json_safe, drop=None):
-    if os.environ.get("RANKER", "").strip().lower() == "v3":  # opt-in v3 engine (services/recsys); unset = unchanged
+    if ranker_name() == "v3":  # the default engine (services/recsys); RANKER=current selects the old engine below
         from services.recsys.api import recommend
         return recommend(user_query, drop=drop, app_root_path=app_root_path)
 

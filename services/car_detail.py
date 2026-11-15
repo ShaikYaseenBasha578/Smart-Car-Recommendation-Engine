@@ -19,7 +19,7 @@ from services.filter_v2 import filter_candidates
 from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent
 from services.new_car_service import (
-    TRANSMISSION_LABELS, apply_drops, data_as_of, format_cardekho_url, safe_slug, safety_summary,
+    TRANSMISSION_LABELS, apply_drops, data_as_of, format_cardekho_url, ranker_name, safe_slug, safety_summary,
 )
 from services.ranking_adapter import KMPL_UNTRUSTED_FUELS, rank_candidates
 from services.summary import build_summary
@@ -172,9 +172,25 @@ def _query_matches(q: str, drop: list[str], model: str) -> tuple[set[int], int |
     mine = candidates[candidates["model"] == model]
     if mine.empty:
         return set(), None
+    shown = _v3_card_variant(q, drop, model) if ranker_name() == "v3" else None
+    if shown is not None and shown in set(mine["variant_id"].astype(int)):
+        return set(mine["variant_id"].astype(int)), shown
     ranked, _ = rank_candidates(intent, candidates)
     best = ranked.loc[ranked["model"] == model, "variant_id"]
     return set(mine["variant_id"].astype(int)), int(best.iloc[0])
+
+
+def _v3_card_variant(q: str, drop: list[str], model: str) -> int | None:
+    """The variant the v3 engine shows on this model's card for the query (None when the model is not in the list)."""
+    from services.recsys.api import recommend
+    try:
+        response = recommend(q, drop=drop or None)
+    except Exception:  # the detail page must still open; it falls back to the old ranking's pick
+        return None
+    for card in response.get("recommendations") or []:
+        if card.get("Model") == model and card.get("variant_id") is not None:
+            return int(card["variant_id"])
+    return None
 
 
 def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str] | None = None,

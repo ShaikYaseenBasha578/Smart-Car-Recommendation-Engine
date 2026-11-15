@@ -5,6 +5,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from services.catalogue import get_catalogue
 from services.recsys import config
 from services.recsys.api import recommend
 from services.recsys.evidence import ASPECTS, ASSESSMENT_COLS, OWNER_COLS, Evidence, owner_scale_for_count
@@ -12,7 +13,11 @@ from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
 from tests.recsys_frames import make_frame
 
-GOLDEN = json.loads((Path(__file__).parent / "data" / "golden_empty_evidence.json").read_text())
+# One snapshot per catalogue: the original 832-variant file (CARREC_CATALOGUE_DIR=data) and the default 1,464-variant one.
+# The 1,464 snapshot differs from the 832 one only because the 30 added models are candidates and move the segment
+# reference populations; same code, same queries.
+_GOLDEN_FILES = {832: "golden_empty_evidence.json", 1464: "golden_empty_evidence_1464.json"}
+GOLDEN = json.loads((Path(__file__).parent / "data" / _GOLDEN_FILES[len(get_catalogue())]).read_text())
 
 
 def intent(**kw):

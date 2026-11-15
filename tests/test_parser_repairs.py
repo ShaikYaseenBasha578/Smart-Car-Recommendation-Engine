@@ -11,6 +11,13 @@ from services.ranking_adapter import rank_candidates
 from tests.test_filter_v2 import frame, ids, intent
 
 
+@pytest.fixture(autouse=True)
+def old_engine(monkeypatch):
+    """These tests pin the response contract of the old engine (RANKER=current): twin slots, relaxation hints,
+    `dropped`, `vague`. v3 is the default engine; its own contract is tested in tests/test_recsys_*.py."""
+    monkeypatch.setenv("RANKER", "current")
+
+
 @pytest.fixture(scope="module")
 def client():
     from app import app

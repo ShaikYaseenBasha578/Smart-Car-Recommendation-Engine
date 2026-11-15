@@ -35,9 +35,10 @@ def predict(client, query, drop=None):
 
 
 def test_every_model_resolves_by_slug():
-    assert len(MODELS) == 62
+    n_models = {832: 62, 1464: 92}[len(get_catalogue())]     # the original catalogue, or the default 1,464-variant one
+    assert len(MODELS) == n_models
     slugs = {(safe_slug(mk), safe_slug(md)) for mk, md in MODELS}
-    assert len(slugs) == 62
+    assert len(slugs) == n_models
     for make, model in MODELS:
         detail = get_car_detail(safe_slug(make), safe_slug(model))
         assert (detail["make"], detail["model"]) == (make, model)

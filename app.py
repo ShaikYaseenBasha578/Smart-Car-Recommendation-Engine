@@ -87,7 +87,8 @@ def make_json_safe(value):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    from services.catalogue import get_catalogue
+    return render_template("index.html", variant_count=f"{len(get_catalogue()):,}")
 
 
 @app.route("/recommend")

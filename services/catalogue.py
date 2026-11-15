@@ -1,4 +1,4 @@
-"""Read-only access to the KB catalogue export (data/catalogue.csv + catalogue_meta.json).
+"""Read-only access to the KB catalogue export (data/catalogue_v3/catalogue.csv + catalogue_meta.json by default).
 
 Loaded once at import. Booleans are True/False/None (None = unknown), numbers are float
 (NaN = unknown), unverified_fields is a set of column names.
@@ -12,10 +12,24 @@ from pathlib import Path
 
 import pandas as pd
 
-DATA_DIR = Path(__file__).resolve().parents[1] / "data"
-# CARREC_CATALOGUE_DIR: a directory holding catalogue.csv + catalogue_meta.json (e.g. data/catalogue_v3), used by
-# the eval and by v3 only; unset = the data/ files the app and the tests use.
-_CATALOGUE_DIR = Path(os.environ["CARREC_CATALOGUE_DIR"]) if os.environ.get("CARREC_CATALOGUE_DIR") else DATA_DIR
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = REPO_ROOT / "data"
+# Default catalogue: data/catalogue_v3 (1,464 variants, 92 models). The original 832-variant file stays in data/ and is
+# selected with CARREC_CATALOGUE_DIR=data. CARREC_CATALOGUE_DIR is a directory holding catalogue.csv +
+# catalogue_meta.json; a relative path is taken from the repository root.
+DEFAULT_CATALOGUE_DIR = DATA_DIR / "catalogue_v3"
+OLD_CATALOGUE_DIR = DATA_DIR
+
+
+def _catalogue_dir() -> Path:
+    chosen = os.environ.get("CARREC_CATALOGUE_DIR", "").strip()
+    if not chosen:
+        return DEFAULT_CATALOGUE_DIR
+    path = Path(chosen)
+    return path if path.is_absolute() else REPO_ROOT / path
+
+
+_CATALOGUE_DIR = _catalogue_dir()
 CATALOGUE_CSV = _CATALOGUE_DIR / "catalogue.csv"
 META_JSON = _CATALOGUE_DIR / "catalogue_meta.json"
 

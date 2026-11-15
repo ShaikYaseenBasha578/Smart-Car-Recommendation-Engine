@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Evaluation runner for the car recommendation engine. See eval/README.md.
 
-    .venv/bin/python eval/run_eval.py [--engine current|v3] [--out eval/results/<name>.json]
+    .venv/bin/python eval/run_eval.py [--engine v3|current] [--out eval/results/<name>.json]
+(default engine v3 on the default catalogue, the same as the app; CARREC_CATALOGUE_DIR=data selects the 832-variant one)
     .venv/bin/python eval/run_eval.py --check-labels     # label sanity check, no engine run
 
 No network, no LLM. The engine is called in-process.
@@ -247,7 +248,8 @@ def make_engine(name: str, catalogue=None):
         from services import new_car_service as ncs
 
         def run(query: str) -> dict:
-            original = ncs.get_catalogue
+            original, ranker = ncs.get_catalogue, os.environ.get("RANKER")
+            os.environ["RANKER"] = "current"          # v3 is the app default; this engine is the old one
             if catalogue is not None:
                 ncs.get_catalogue = lambda: catalogue
             try:
@@ -255,6 +257,10 @@ def make_engine(name: str, catalogue=None):
                     return ncs.get_kb_recommendations(query, str(ROOT), make_json_safe)
             finally:
                 ncs.get_catalogue = original
+                if ranker is None:
+                    os.environ.pop("RANKER", None)
+                else:
+                    os.environ["RANKER"] = ranker
         return run
     if name == "v3":
         try:
@@ -800,7 +806,8 @@ def print_compare(path_a: str, path_b: str) -> None:
 def main() -> None:
     global QUERIES_PATH
     ap = argparse.ArgumentParser()
-    ap.add_argument("--engine", choices=["current", "v3"], default="current")
+    ap.add_argument("--engine", choices=["current", "v3"], default="v3",
+                    help="v3 (default, same as the app) or current (the old engine, RANKER=current)")
     ap.add_argument("--out", help="write full JSON results here")
     ap.add_argument("--queries", default=str(QUERIES_PATH), help="query file (JSON lines), default eval/queries.jsonl")
     ap.add_argument("--compare", nargs=2, metavar=("A.json", "B.json"), help="print a side-by-side table of two result files")

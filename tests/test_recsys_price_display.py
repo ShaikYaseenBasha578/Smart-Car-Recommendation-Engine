@@ -212,7 +212,8 @@ def test_cheapest_car_returns_the_lowest_priced_cars_first():
     ranks = [order[(c["Make"], c["Model"])] for c in r["recommendations"]]
     prices = [c["Ex-Showroom_Price"] for c in r["recommendations"]]
     assert ranks[0] == 0                                    # the lowest-priced model in the catalogue is first
-    assert sum(1 for x in ranks if x < 16) >= 6, ranks      # most of the list is among the 16 cheapest models
+    cheapest_quarter = round(len(order) * 16 / 62)            # the 16 cheapest of 62 models, scaled to the catalogue (24 of 92)
+    assert sum(1 for x in ranks if x < cheapest_quarter) >= 6, ranks   # most of the list is among the cheapest quarter
     assert max(prices) < 9 * LAKH
     assert r["weights"]["price"]["weight"] == pytest.approx(config.PRICE_CHEAP_WEIGHT)
     assert any("Price prioritised" in x["text"] for x in r["recommendations"][0]["reasons"])

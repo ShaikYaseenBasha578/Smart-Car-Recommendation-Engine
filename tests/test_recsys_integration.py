@@ -105,8 +105,10 @@ def test_exclusions_and_upper_bounds_enforced():
 
 
 def test_upper_bound_relaxation_names_the_violation_and_only_true_ones():
-    r = recommend("hatchback without sunroof under 6 lakh, ground clearance under 160 mm, no Maruti",
-                  evidence=NO_EVIDENCE)
+    # Renault and Hyundai are excluded as well: the Kwid and i20 (added with the 1,464-variant catalogue) have no
+    # ground-clearance figure and would otherwise satisfy the query as unverified, so nothing would need relaxing
+    r = recommend("hatchback without sunroof under 6 lakh, ground clearance under 160 mm, no Maruti, no Renault, "
+                  "no Hyundai", evidence=NO_EVIDENCE)
     assert r["relaxation"]["keys"] == ["max_ground_clearance_mm"] and r["relaxation"]["far"] is False
     for c in r["recommendations"]:
         assert [v["constraint"] for v in c["violations"]] == ["max_ground_clearance_mm"]

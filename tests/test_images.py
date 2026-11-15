@@ -10,6 +10,14 @@ ROOT = str(Path(__file__).resolve().parents[1])
 LICENSE = "OEM brochure — not licensed for reuse; replace for commercial use"
 PLACEHOLDERS = "/static/car_images/placeholders/"
 
+# The 30 models the 1,464-variant catalogue added; none has a brochure image yet (do not fabricate one: add a manifest
+# row and a file, then remove the model from this list).
+NEW_MODELS_WITHOUT_IMAGE = [
+    "Alcazar", "Bayon", "Creta N Line", "Venue N Line", "i20", "i20 N Line", "Carens", "Sonet", "Sorento", "Astor",
+    "Hector Plus", "Majestor", "Bolero Neo", "Bolero Neo Plus", "XEV 9S", "XEV 9e", "Celerio", "Tekton", "Kiger",
+    "Kwid", "Kodiaq", "Aeris", "Curvv", "Curvv EV", "Harrier EV", "Punch", "Safari", "Sierra", "Sierra EV", "Tayron",
+]
+
 
 def manifest_urls():
     return {f"/static/car_images/{r['filename']}" for r in get_manifest().values()}
@@ -34,7 +42,8 @@ def test_every_catalogue_model_gets_a_manifest_image_or_a_placeholder():
         assert (Path(ROOT) / url.lstrip("/")).exists()
     placeholders = [model for make, model, body_type in cars.itertuples(index=False)
                     if find_car_image(ROOT, make, model, body_type).startswith(PLACEHOLDERS)]
-    assert sorted(placeholders) == ["Creta", "Thar Roxx"]
+    # no brochure image is on disk for these, and none is fabricated: they show the body-type silhouette
+    assert sorted(placeholders) == sorted(["Creta", "Thar Roxx"] + (NEW_MODELS_WITHOUT_IMAGE if len(get_catalogue()) > 832 else []))
 
 
 def test_manifest_then_placeholder_never_a_filename(monkeypatch):

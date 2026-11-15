@@ -320,8 +320,13 @@ def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dic
 
     1. row count within ROW_COUNT_TOLERANCE of (KB variant rows - variants the view excludes)
     2. no duplicate variant ids (also checked while building)
-    3. per column, non-null rate (share of rows with a value) not worse than the previous file's by more than
-       NON_NULL_DROP_LIMIT points. Columns that do not apply to a row's fuel type count as non-null there.
+    3. per column, the non-null rate (share of rows with a value; columns that do not apply to a row's fuel type count
+       as non-null there) of the rows that were already in the previous file ("carried": same variant id) must not be
+       worse than the previous file's rate for those same rows by more than NON_NULL_DROP_LIMIT points. This is the
+       only per-column check that can fail the export.
+    The rows that are new in this export are reported, never failed: a freshly added model often has blanks (the KB
+    records only what the source states), so a column where the new rows are more than NON_NULL_DROP_LIMIT points
+    sparser than the previous file is marked "new rows sparse" in the table (`new_rows_pct`, `new_rows_sparse`).
     """
     failures: list[str] = []
     kb_variants = conn.execute("SELECT COUNT(*) FROM variant").fetchone()[0]
@@ -345,21 +350,31 @@ def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dic
         return 100.0 * ok / len(rs)
 
     old_ids = {r["variant_id"] for r in old_rows}
+    new_ids = set(ids)
     carried = [r for r in rows if r["variant_id"] in old_ids]
+    added = [r for r in rows if r["variant_id"] not in old_ids]
+    old_carried = [r for r in old_rows if r["variant_id"] in new_ids]
     table = []
     for col in CHECKED_COLUMNS + SAFETY_COLUMNS:
         new, old = rate(rows, col), rate(old_rows, col)
-        same = rate(carried, col)
+        same, was = rate(carried, col), rate(old_carried, col)
+        fresh = rate(added, col)
         delta = None if old is None else new - old
-        bad = delta is not None and delta < -NON_NULL_DROP_LIMIT
+        carried_delta = None if same is None or was is None else same - was
+        bad = carried_delta is not None and carried_delta < -NON_NULL_DROP_LIMIT
         if bad:
-            failures.append(f"{col}: non-null rate {new:.1f}% vs {old:.1f}% before ({delta:+.1f} points)")
+            failures.append(f"{col}: non-null rate of the {len(carried)} carried-over rows {same:.1f}% vs {was:.1f}% "
+                            f"before ({carried_delta:+.1f} points)")
+        sparse = fresh is not None and old is not None and fresh < old - NON_NULL_DROP_LIMIT
         table.append({"column": col, "new_pct": round(new, 1), "old_pct": None if old is None else round(old, 1),
                       "delta": None if delta is None else round(delta, 1), "worse_than_limit": bad,
                       # same variant ids as the previous file: separates "new KB rows are sparse" from "old rows got worse"
-                      "carried_over_rows_pct": None if same is None else round(same, 1)})
+                      "carried_over_rows_pct": None if same is None else round(same, 1),
+                      "carried_over_before_pct": None if was is None else round(was, 1),
+                      "new_rows_pct": None if fresh is None else round(fresh, 1), "new_rows_sparse": sparse})
     table.insert(0, {"column": "ROWS", "new_pct": len(rows), "old_pct": len(old_rows) or None, "delta": None,
-                     "worse_than_limit": False, "kb_variants": kb_variants, "excluded": excluded})
+                     "worse_than_limit": False, "kb_variants": kb_variants, "excluded": excluded,
+                     "carried_over_rows": len(carried), "new_rows": len(added)})
     return table, failures
 
 
@@ -440,11 +455,18 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             conn.close()
 
-    print("sanity table (non-null %, new vs previous file; carried = rows whose variant id was in the previous file):")
+    print("sanity table (non-null %, new vs previous file; carried = rows whose variant id was in the previous file, "
+          "before = the previous file's rate for those same rows; added = rows new in this export):")
     for t in sanity:
         print(f"  {t['column']:<26} new {t['new_pct']!s:>6}  old {t['old_pct']!s:>6}  delta {t['delta']!s:>6}"
-              f"  carried {t.get('carried_over_rows_pct')!s:>6}"
-              + ("  <-- WORSE" if t["worse_than_limit"] else ""))
+              f"  carried {t.get('carried_over_rows_pct')!s:>6}  before {t.get('carried_over_before_pct')!s:>6}"
+              f"  added {t.get('new_rows_pct')!s:>6}"
+              + ("  <-- CARRIED ROWS WORSE (fails)" if t["worse_than_limit"] else "")
+              + ("  <-- new rows sparse (reported, not a failure)" if t.get("new_rows_sparse") else ""))
+    sparse_cols = [t["column"] for t in sanity if t.get("new_rows_sparse")]
+    if sparse_cols:
+        print(f"{sparse_cols.__len__()} column(s) are sparser on the rows added in this export than in the previous file: "
+              + ", ".join(sparse_cols))
     if failures:
         for f in failures:
             print(f"sanity check failed: {f}", file=sys.stderr)

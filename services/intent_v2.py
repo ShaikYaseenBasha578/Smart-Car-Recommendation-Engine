@@ -130,11 +130,11 @@ REFERENCE_BEFORE = r"(?:like|similar\s*to|alternatives?\s*(?:to|for)|rivals?\s*(
                    r"|instead\s*of)\s*(?:a|an|the)?\s*$"
 REFERENCE_AFTER = r"^\s*(?:jaisi|jaisa|jaise|type|like|alternative|alternatives|rival|rivals)(?![a-z])"
 # Common words that are also model names: only a model when the make comes right before ("honda city").
-AMBIGUOUS_MODELS = {"City", "Venue", "Aura", "Elevate"}
+AMBIGUOUS_MODELS = {"City", "Venue", "Aura", "Elevate", "Punch"}
 MODEL_ALIASES = {
     "innova": ["Innova Crysta", "Innova Hycross"],
     "scorpio": ["Scorpio Classic", "Scorpio-N"],
-    "carens": ["Carens Clavis", "Carens Clavis EV"],
+    "carens": ["Carens", "Carens Clavis", "Carens Clavis EV"],
     "clavis": ["Carens Clavis", "Carens Clavis EV"],
     "vitara": ["Grand Vitara", "e VITARA"],
     "hyryder": ["Urban Cruiser Hyryder"],
@@ -502,7 +502,10 @@ def _load_model_vocab() -> list[tuple[str, str | None, list[str]]]:
                 _model_info.setdefault(row["model"], {"make": row["make"], "body_type": row["body_type"]})
         make_regex = dict(MAKE_PATTERNS)
         vocab = []
+        covered_by_alias = {(_model_regex(a), m) for a, ms in MODEL_ALIASES.items() for m in ms}
         for model, info in _model_info.items():
+            if (_model_regex(model), model) in covered_by_alias:   # the same-spelling alias entry names it (and its siblings)
+                continue
             needs_make = make_regex[info["make"]] if model in AMBIGUOUS_MODELS else None
             vocab.append((_model_regex(model), needs_make, [model]))
         for alias, models in MODEL_ALIASES.items():

@@ -2,8 +2,9 @@
 
 One command runs everything, no network, no LLM:
 
-    .venv/bin/python eval/run_eval.py --engine current --out eval/results/<name>.json
-    .venv/bin/python eval/run_eval.py --engine v3 ...        # services/recsys/api.py recommend(query)
+    .venv/bin/python eval/run_eval.py --out eval/results/<name>.json              # v3 on the default catalogue (the app default)
+    .venv/bin/python eval/run_eval.py --engine current ...   # the old engine (RANKER=current is set for you)
+    CARREC_CATALOGUE_DIR=data .venv/bin/python eval/run_eval.py ...   # the original 832-variant catalogue
     .venv/bin/python eval/run_eval.py --queries eval/other.jsonl ...   # another query file (default eval/queries.jsonl)
     .venv/bin/python eval/run_eval.py --compare a.json b.json          # side-by-side table of the summary metrics
     .venv/bin/python eval/run_eval.py --check-labels         # labels vs catalogue, engine not run

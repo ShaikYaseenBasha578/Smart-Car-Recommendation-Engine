@@ -1,3 +1,5 @@
+import pytest
+
 import services.new_car_service as ncs
 
 
@@ -5,8 +7,19 @@ def _make_json_safe(v):
     return v
 
 
-def test_default_path_does_not_reach_v3(monkeypatch):
+def test_unset_ranker_reaches_v3(monkeypatch):
+    """v3 is the default engine: with no RANKER set the request goes to services.recsys."""
     monkeypatch.delenv("RANKER", raising=False)
+    import services.recsys.api as api
+    seen = {}
+    monkeypatch.setattr(api, "recommend", lambda q, **k: seen.update(q=q) or {"engine": "v3", "recommendations": []})
+    assert ncs.get_kb_recommendations("family suv under 15 lakh", ".", _make_json_safe)["engine"] == "v3"
+    assert seen["q"] == "family suv under 15 lakh"
+
+
+@pytest.mark.parametrize("name", ["current", "CURRENT", " current ", "old", "v2"])
+def test_current_ranker_selects_the_old_engine_and_never_reaches_v3(monkeypatch, name):
+    monkeypatch.setenv("RANKER", name)
     import services.recsys.api as api
     monkeypatch.setattr(api, "recommend", lambda *a, **k: (_ for _ in ()).throw(AssertionError("v3 reached")))
     r = ncs.get_kb_recommendations("family suv under 15 lakh", ".", _make_json_safe)
@@ -14,10 +27,9 @@ def test_default_path_does_not_reach_v3(monkeypatch):
     assert "ranking_score" in r["recommendations"][0] and "scores" not in r["recommendations"][0]
 
 
-def test_other_ranker_values_use_default(monkeypatch):
-    monkeypatch.setenv("RANKER", "v2")
-    r = ncs.get_kb_recommendations("family suv under 15 lakh", ".", _make_json_safe)
-    assert "engine" not in r
+def test_unknown_ranker_value_falls_back_to_the_default_v3(monkeypatch):
+    monkeypatch.setenv("RANKER", "banana")
+    assert ncs.ranker_name() == "v3"
 
 
 def test_v3_path_is_reached_with_env_switch(monkeypatch):
