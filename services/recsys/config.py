@@ -18,6 +18,17 @@ OVERALL_FALLBACK_SCALE = 0.3
 # an owner rating is pulled toward the segment mean: w x value + (1 - w) x segment mean, w = count / (count +
 # OWNER_SAMPLE_K) (the same constant as the class scale above)
 
+# a blank field inside a criterion is valued at a conservative prior, never left out of the criterion's mean
+# (criterion value = sum of weight x (known value or prior) / total weight). The prior is never shown as a fact; the
+# unknown share still feeds the coverage factor.
+#   "segment": percentile / ordinal fields: (segment median of the known values) - BLANK_PRIOR_MARGIN, clipped to
+#              [0, 1]; yes/no features: (segment share of True among the known cells) x BLANK_PRIOR_BOOL_FACTOR
+#   "flat":    BLANK_PRIOR_FLAT for every blank field
+BLANK_PRIOR_MODE = "segment"
+BLANK_PRIOR_MARGIN = 0.15
+BLANK_PRIOR_BOOL_FACTOR = 0.7
+BLANK_PRIOR_FLAT = 0.35
+
 # weight of one required item (feature / minimum) relative to the whole criterion pool (= 1.0).
 # a known-missing required item (only seen when relaxed) counts MISSING_MULTIPLIER times as unknown.
 REQUIRED_ITEM_WEIGHT = 0.10

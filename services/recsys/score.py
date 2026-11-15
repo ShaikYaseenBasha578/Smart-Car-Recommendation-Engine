@@ -1,7 +1,9 @@
 """Overall scoring (plan section 5).
 
-  sub-score(class)  = weighted mean over the KNOWN criteria of that class (weights normalised within
-                      the class by weights.py); None when the car has no known criterion in the class.
+  sub-score(class)  = weighted mean over the criteria of that class (weights normalised within the class by
+                      weights.py); a spec criterion with blank fields is valued with the blank priors
+                      (criteria.py, config.BLANK_PRIOR_*), including one whose fields are all blank; None when the
+                      car has no criterion with a value in the class.
   overall_raw       = sum(CLASS_WEIGHTS[c] x sub[c]) / sum(CLASS_WEIGHTS[c]) over classes whose sub is not None.
   unknown_share     = (weight of unknown criteria + REQUIRED_ITEM_WEIGHT x unknown required items)
                       / (1 + REQUIRED_ITEM_WEIGHT x number of required items),
@@ -103,6 +105,11 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         return pd.DataFrame(columns=cols), criteria
 
     values = pd.concat([criteria.values, evidence.values_for(cands)], axis=1)[ALL_CRITERIA]
+    # what the sub-scores are computed from: the same, plus the blank priors of the spec criteria (a criterion whose
+    # fields are all blank is still unknown in `values`, but is scored at its prior, never dropped from the mean)
+    scoring = values.copy()
+    if criteria.scoring is not None:
+        scoring[SPEC_CRITERIA] = criteria.scoring[SPEC_CRITERIA].reindex(values.index)
     norm_w = {c: weights["criteria"][c]["weight"] for c in ALL_CRITERIA}
     active = active_classes(values, norm_w)
     class_share = {c: config.CLASS_WEIGHTS[c] for c in active}
@@ -118,11 +125,13 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     records = []
     for idx, row in cands.iterrows():
         v = values.loc[idx]
+        sv = scoring.loc[idx]
         subs: Dict[str, Optional[float]] = {}
         for cls in CLASSES:
-            cs = [c for c in ALL_CRITERIA if CRITERION_CLASS[c] == cls and norm_w[c] > 0 and not np.isnan(v[c])]
+            vals = sv if cls in active else v
+            cs = [c for c in ALL_CRITERIA if CRITERION_CLASS[c] == cls and norm_w[c] > 0 and not np.isnan(vals[c])]
             wsum = sum(norm_w[c] for c in cs)
-            subs[cls] = sum(norm_w[c] * v[c] for c in cs) / wsum if cs and wsum > 0 else None
+            subs[cls] = sum(norm_w[c] * vals[c] for c in cs) / wsum if cs and wsum > 0 else None
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
         cw = {c: used[c] / sum(used.values()) for c in used}
         if subs["spec"] is not None and len(used) > 1:

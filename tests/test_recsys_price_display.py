@@ -122,8 +122,8 @@ def test_displayed_variant_is_the_best_scoring_one_and_cheaper_qualifying_is_exp
     """with the small default price weight the well-equipped top trim still wins; the cheapest trim that has the
     requested sunroof is exposed separately."""
     s = _scored([
-        dict(model="A", variant="base", price_ex_showroom=8 * LAKH, sunroof=False),
-        dict(model="A", variant="mid", price_ex_showroom=10 * LAKH, sunroof=True),
+        dict(model="A", variant="base", price_ex_showroom=8 * LAKH, sunroof=False, adas_available=False, camera_360=False),
+        dict(model="A", variant="mid", price_ex_showroom=10 * LAKH, sunroof=True, adas_available=False, camera_360=False),
         dict(model="A", variant="top", price_ex_showroom=14 * LAKH, sunroof=True, adas_available=True, camera_360=True),
     ])
     out = displayed_variant_per_model(s)

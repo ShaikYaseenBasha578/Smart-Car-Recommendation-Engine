@@ -20,15 +20,19 @@ def test_all_unknown_fields_give_none_not_zero():
     assert res.values["tech_assist"].isna().all()
 
 
-def test_unknown_field_is_skipped_known_false_is_zero():
-    df = make_frame([dict(model="A", auto_climate_control=True, rear_ac_vents=None),
-                     dict(model="B", auto_climate_control=True, rear_ac_vents=False)])
+def test_unknown_field_is_valued_at_a_prior_known_false_is_zero():
+    """A blank is neither left out of the mean nor zero: it takes the segment share of True times 0.7."""
+    bg = [dict(model=f"G{i}", auto_climate_control=True, rear_ac_vents=True) for i in range(8)]
+    df = make_frame(bg + [dict(model="A", auto_climate_control=True, rear_ac_vents=None),
+                          dict(model="B", auto_climate_control=True, rear_ac_vents=True),
+                          dict(model="C", auto_climate_control=True, rear_ac_vents=False)])
     res = compute_criteria(df)
-    a, b = res.values["comfort_features"].tolist()
-    assert a == 1.0           # only the known field counts
-    assert b < 1.0            # known lacking is worse than unknown
-    fields = {d["field"]: d for d in res.detail[1]["comfort_features"]}
-    assert fields["rear_ac_vents"]["score"] is None and fields["rear_ac_vents"]["raw"] is None
+    a, b, c = res.values["comfort_features"].iloc[-3:].tolist()
+    assert c < a < b            # known lacking < unknown < known present
+    fields = {d["field"]: d for d in res.detail[len(bg) + 1]["comfort_features"]}
+    rear = fields["rear_ac_vents"]
+    assert rear["score"] is None and rear["raw"] is None          # never displayed as a known value
+    assert rear["prior_score"] == pytest.approx(0.7 * 9 / 10)     # 9 of 10 known cells (model-weighted) are True x factor
 
 
 def test_running_cost_never_compared_across_fuels():
