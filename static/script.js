@@ -306,6 +306,310 @@ function buildCarCard(car, index, recs, topScore, intent) {
         </article>`;
 }
 
+// ============================================
+// v3 engine results (data.engine === "v3")
+// ============================================
+// Everything below is only used when the response says engine "v3". With the old engine none of it runs and the
+// cards above are built exactly as before. All review text (notes, quotes, labels) goes through escapeHtml; a link
+// is only drawn for an http(s) URL.
+
+const FEW_OWNERS_BELOW = 0.15;   // an owner line resting on under 15% of the sampled reviews is labelled "a few owners"
+const MAX_V3_REASONS = 4;
+const THEME_LABELS = {
+    reliability: "Reliability", service_cost: "Service cost", service_experience: "Service experience",
+    real_world_mileage: "Real-world mileage", build_issues: "Build issues", recurring_fault: "Reported fault",
+    satisfaction: "Overall satisfaction", resale: "Resale value"
+};
+const MIN_LABELS = {
+    min_airbags: v => `${v}+ airbags`, min_boot_space_litres: v => `${v}+ L boot`,
+    min_ground_clearance_mm: v => `ground clearance ${v}+ mm`, min_ev_range_km: v => `${v}+ km range`,
+    min_mileage_kmpl: v => `${v}+ kmpl`, min_mileage_km_per_kg: v => `${v}+ km/kg`,
+    min_safety_stars: v => `${v}+ star safety`
+};
+const SCORE_PARTS = [
+    { key: "spec", label: "Specs", sub: "fit to your search", tip: "How well the car's own figures (price, features, safety, space, running cost) fit what you asked for." },
+    { key: "expert", label: "Expert", sub: "Autocar India", tip: "Autocar India's review scores for the aspects your search cares about." },
+    { key: "owner", label: "Owners", sub: "CarWale", tip: "CarWale owner ratings and review themes for the aspects your search cares about." }
+];
+
+function safeUrl(url) {
+    try {
+        const u = new URL(String(url));
+        return u.protocol === "https:" || u.protocol === "http:" ? u.href : "";
+    } catch (error) {
+        return "";
+    }
+}
+
+function monthYear(text) {
+    const m = /^(\d{4})-(\d{2})/.exec(String(text || ""));
+    if (!m) return "";
+    const names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return m[2] >= "01" && m[2] <= "12" ? `${names[Number(m[2]) - 1]} ${m[1]}` : "";
+}
+
+function sentenceCase(text) {
+    const t = String(text || "").trim().toLowerCase();
+    return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+function upperFirst(text) {
+    const t = String(text || "");
+    return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+// meta line pieces: each piece keeps its trailing separator, so a wrapped line never starts with a dot
+function metaLine(parts, tail = "") {
+    const list = parts.filter(Boolean);
+    return list.map((t, i) => `<span class="seg${String(t).length <= 28 ? " seg--keep" : ""}">${escapeHtml(t)}${i < list.length - 1 || tail ? " \u00b7" : ""}</span>`).join(" ") + tail;
+}
+
+function externalLink(url, text) {
+    const href = safeUrl(url);
+    if (!href) return "";
+    return `<a class="v3-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)} ${ICONS.external}<span class="sr-only">(opens in a new tab)</span></a>`;
+}
+
+// --- query echo: what the engine understood ---
+// Returns chips { text, kind: "ask" | "soft" | "assumed" | "corrected", dropKey? } and the number of hard requirements.
+function understoodChips(data) {
+    const it = data.intent || {};
+    const chips = [];
+    let hard = 0;
+    const need = (text) => { hard += 1; chips.push({ text, kind: "ask" }); };
+    const b = it.budget || {};
+    if (b.min != null && b.max != null) need(`${formatBudget(b.min)} to ${formatBudget(b.max)}`);
+    else if (b.max != null) need(`Under ${formatBudget(b.max)}`);
+    else if (b.min != null) need(`Above ${formatBudget(b.min)}`);
+    (it.body_types || []).forEach(x => need(x.toUpperCase() === "SUV" || x === "mpv" ? x.toUpperCase() : upperFirst(x)));
+    (it.fuel_types || []).forEach(x => need(x === "cng" ? "CNG" : upperFirst(x)));
+    const t = it.transmission || {};
+    if (t.family) need(upperFirst(t.family));
+    if (it.seats_min != null) need(`${it.seats_min}+ seats`);
+    (it.makes || []).forEach(x => need(x));
+    (it.models || []).forEach(x => need(x));
+    (it.required_features || []).forEach(x => need(FEATURE_LABELS[x] || x.replace(/_/g, " ")));
+    Object.keys(MIN_LABELS).forEach(k => { if (it[k] != null) need(MIN_LABELS[k](it[k])); });
+    (it.exclude_body_types || []).forEach(x => need(`not ${x}`));
+    (it.exclude_fuel_types || []).forEach(x => need(`not ${x}`));
+    if (it.use_case) chips.push({ text: `for ${String(it.use_case).replace(/_/g, " ")}`, kind: "soft" });
+    (it.soft_preferences || []).forEach(x => chips.push({ text: String(x).replace(/_/g, " "), kind: "soft" }));
+    const options = data.assumed_options || [];
+    Object.entries(data.assumed || {}).forEach(([kind, values]) => {
+        const opt = options.find(o => o.kind === kind);
+        (values || []).forEach(v => chips.push({ text: kind === "fuel_types" && v === "cng" ? "CNG" : (v === "suv" || v === "mpv" ? v.toUpperCase() : upperFirst(v)), kind: "assumed", dropKey: opt ? opt.key : "" }));
+    });
+    (data.corrections || []).forEach(c => chips.push({ text: `${c.from} → ${c.to}`, kind: "corrected" }));
+    return { chips, hard };
+}
+
+function buildQueryEcho(data) {
+    const { chips } = understoodChips(data);
+    if (!chips.length) return "";
+    const tag = { assumed: "assumed", corrected: "corrected" };
+    const items = chips.map(c => {
+        const mark = tag[c.kind] ? `<span class="echo-mark">${tag[c.kind]}</span>` : "";
+        const off = c.dropKey ? `<button type="button" class="echo-off" data-drop-key="${escapeHtml(c.dropKey)}" aria-label="Remove assumption: ${escapeHtml(c.text)}">Remove</button>` : "";
+        return `<li class="echo echo--${c.kind}"><span>${escapeHtml(c.text)}</span>${mark}${off}</li>`;
+    }).join("");
+    return `<section class="echo-box" aria-label="What we understood from your search">
+        <h3 class="echo-title">What we understood</h3>
+        <ul class="echo-list">${items}</ul>
+    </section>`;
+}
+
+function buildRelaxedNotice(data) {
+    if (!data.relaxation && !(data.message && data.recommendations && data.recommendations.length)) return "";
+    const text = data.relaxation ? data.relaxation.message : data.message;
+    return `<div class="notice" role="status">${ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ')}<div>
+        <strong>${data.relaxation ? "Nothing matched every requirement" : "Please note"}</strong>
+        <p>${escapeHtml(text)}</p>
+    </div></div>`;
+}
+
+// --- match wording from the data ---
+function v3MatchLabel(car, hard, personalised) {
+    if (personalised === false) return { key: "neutral", text: car.match_label || "General pick, not personalised", detail: "" };
+    const violations = car.violations || [];
+    const unverified = (car.not_verified || []).length;
+    if (violations.length) {
+        const met = Math.max(hard - violations.length, 0);
+        return { key: "near", text: hard ? `Meets ${met} of ${hard} requirements` : "Near match",
+                 detail: violations.map(v => v.text) };
+    }
+    if (!hard) return { key: "ok", text: "Ranked on your preferences", detail: "" };
+    const text = hard === 1 ? "Meets your requirement" : "Meets all your requirements";
+    return { key: "ok", text: unverified ? `${text} · ${unverified} not verified` : text, detail: "" };
+}
+
+// --- sub-score meters ---
+function buildMeters(car) {
+    const scores = car.scores || {};
+    return `<div class="meters" aria-label="Match breakdown, 0 to 100">` + SCORE_PARTS.map(p => {
+        const v = scores[p.key];
+        const has = v != null && !isNaN(v);
+        const pct = has ? Math.round(Number(v) * 100) : null;
+        const bar = has
+            ? `<span class="meter-track" role="img" aria-label="${p.label}: ${pct} out of 100"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span>`
+            : `<span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--none">no data</span><span class="sr-only">${p.label}: no data</span>`;
+        return `<div class="meter" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div><div class="meter-row">${bar}</div></div>`;
+    }).join("") + `</div>`;
+}
+
+// --- reviews ---
+function buildExpertBlock(car) {
+    const notes = (car.expert_notes || []).slice(0, 2);
+    const hasScore = car.scores && car.scores.expert != null;
+    let body;
+    if (notes.length) {
+        body = notes.map(n => {
+            const meta = metaLine([n.source, sentenceCase(n.source_aspect),
+                `${trimNumber(Number(n.score), 1)}/${trimNumber(Number(n.scale_max), 0)}`, monthYear(n.published_on)]);
+            const q = n.quote && n.quote.text
+                ? `<blockquote class="v3-quote"><p>“${escapeHtml(n.quote.text)}”</p>${externalLink(n.quote.source_url || n.source_url, "Read the review")}</blockquote>`
+                : "";
+            return `<li><p class="line-meta">${meta}</p><p class="line-note">${escapeHtml(n.note)}</p>${q}</li>`;
+        }).join("");
+        body = `<ul class="lines">${body}</ul>`;
+    } else if (hasScore) {
+        body = `<p class="muted">No review notes to show for this search.</p>`;
+    } else {
+        body = `<p class="muted">No expert review on file for this model.</p>`;
+    }
+    return `<section class="evi" aria-label="What reviewers say"><h4>What reviewers say</h4>${body}</section>`;
+}
+
+function ownerMeta(n) {
+    const name = n.theme === "recurring_fault"
+        ? `Reported fault${n.label ? ": " + n.label : ""}`
+        : `${THEME_LABELS[n.theme] || upperFirst(String(n.theme || "").replace(/_/g, " "))}${n.label ? " - " + n.label : ""}`;
+    const dir = n.theme === "recurring_fault" ? "" : upperFirst(n.direction || "");
+    const count = `${Number(n.mentions)} of ${Number(n.posts_sampled)} reviews, ${n.source}`;
+    const few = Number(n.share) < FEW_OWNERS_BELOW || (n.share == null && Number(n.mentions) / Number(n.posts_sampled) < FEW_OWNERS_BELOW);
+    return { parts: [name, dir, count], few, dir: n.direction };
+}
+
+function ownerMetaHtml(n) {
+    const m = ownerMeta(n);
+    return metaLine(m.parts, m.few ? ' <span class="few">a few owners</span>' : "");
+}
+
+function buildOwnerBlock(car) {
+    const notes = (car.owner_notes || []).slice(0, 2);
+    const hasScore = car.scores && car.scores.owner != null;
+    let body;
+    if (notes.length) {
+        body = `<ul class="lines">` + notes.map(n => {
+            return `<li><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
+        }).join("") + `</ul>`;
+    } else if (hasScore) {
+        body = `<p class="muted">No owner review themes to show for this search.</p>`;
+    } else {
+        body = `<p class="muted">No owner ratings available for this model.</p>`;
+    }
+    return `<section class="evi" aria-label="What owners say"><h4>What owners say</h4>${body}</section>`;
+}
+
+function buildCaveats(car) {
+    const items = car.caveats || [];
+    if (!items.length) return "";
+    return `<section class="caveats" aria-label="Caveats from owners">
+        <h4>${ICONS.info}Caveats</h4>
+        <ul class="lines">` + items.map(n => {
+            return `<li><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
+        }).join("") + `</ul></section>`;
+}
+
+function v3Chips(car) {
+    const chips = [];
+    (car.matched_features || []).forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
+    const notVerified = car.not_verified || [];
+    if (car.safety) {
+        const year = car.safety.year ? ` (${car.safety.year})` : "";
+        chips.push({ text: `${car.safety.stars_adult}-star ${car.safety.testing_body}${year}`, kind: "safety", icon: ICONS.star });
+    } else if (!notVerified.some(t => /crash rating/i.test(t))) {
+        chips.push({ text: NO_RATING_LABEL, kind: "unverified", icon: ICONS.info });
+    }
+    notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
+    if (car.matching_variant_count) {
+        const n = car.matching_variant_count;
+        chips.push({ text: `${n} matching variant${n === 1 ? "" : "s"}`, kind: "plain", icon: "" });
+    }
+    return chips;
+}
+
+function buildV3Card(car, index, hard, personalised) {
+    const name = `${car.Make} ${car.Model}`;
+    const image = car.carImage || "/static/pic.avif";
+    const caption = car.imageAttribution
+        ? `Image: ${car.imageAttribution}`
+        : (/\.svg$/.test(image) ? "Illustration: no photo of this model yet" : "");
+    const label = v3MatchLabel(car, hard, personalised);
+    const reasons = (car.reasons || []).slice(0, MAX_V3_REASONS);
+    const link = car.carDekhoLink;
+    const also = car.also_available_from;
+    const alsoHtml = also && also["Ex-Showroom_Price"]
+        ? `<p class="also">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
+    const detail = Array.isArray(label.detail) && label.detail.length
+        ? `<ul class="unmet" aria-label="Requirements this car does not meet">${label.detail.map(d => `<li>Not met: ${escapeHtml(d)}</li>`).join("")}</ul>` : "";
+    const chips = v3Chips(car);
+    return `
+        <article class="car car--v3${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
+            <figure class="car-photo">
+                ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
+                ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
+            </figure>
+            <div class="car-body">
+                <div class="car-head">
+                    <div>
+                        <h3 class="car-title">${escapeHtml(name)}</h3>
+                        ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
+                    </div>
+                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span></p>
+                </div>
+                ${alsoHtml}
+                ${buildFacts(car)}
+                <div class="v3-fit">
+                    <p class="fit-label fit-label--${label.key}">${escapeHtml(label.text)}</p>
+                    ${detail}
+                    ${buildMeters(car)}
+                </div>
+            </div>
+            <div class="v3-more">
+                <div class="evi-grid">
+                ${reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map(r => `<li>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
+                    ${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
+                ${buildCaveats(car)}
+                <div class="car-foot">
+                    ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
+                    <div class="car-actions">
+                        <button type="button" class="btn btn-quiet" data-detail aria-expanded="false">View details</button>
+                        ${link ? `<a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>` : ""}
+                    </div>
+                </div>
+            </div>
+        </article>`;
+}
+
+function buildSourcesFooter(recs, data) {
+    const dates = [];
+    recs.forEach(c => (c.expert_notes || []).forEach(n => { if (/^\d{4}-\d{2}/.test(n.published_on || "")) dates.push(String(n.published_on).slice(0, 7)); }));
+    dates.sort();
+    const span = dates.length ? (monthYear(dates[0]) === monthYear(dates[dates.length - 1]) ? monthYear(dates[0]) : `${monthYear(dates[0])} to ${monthYear(dates[dates.length - 1])}`) : "";
+    const exported = data.data_as_of && data.data_as_of.exported ? escapeHtml(data.data_as_of.exported) : "";
+    return `<p class="sources">Expert scores and notes are from Autocar India${span ? ` (reviews dated ${escapeHtml(span)}, each note shows its own date)` : ""}; owner ratings and themes are from CarWale user reviews${exported ? ` (data exported ${exported})` : ""}. Notes are short summaries, not the original text: use the links to read the originals.</p>`;
+}
+
+function renderV3Results(box, data, banner, link) {
+    const recs = data.recommendations || [];
+    const { hard } = understoodChips(data);
+    const personalised = data.personalised;
+    box.innerHTML = banner + buildRelaxedNotice(data) + buildQueryEcho(data) + buildResultsToolbar(data, link)
+        + `<div class="cards">${recs.map((car, i) => buildV3Card(car, i, hard, personalised)).join("")}</div>`
+        + buildSourcesFooter(recs, data);
+}
+
 // --- car detail (inline panel under a card, and the /car/<make>/<model> permalink page) ---
 // One component: renderDetail() draws GET /api/car/... for both. Sections, in order: Summary,
 // Variants, Specifications, Safety, Warranty, then the data stamp and actions.
@@ -607,6 +911,11 @@ function renderResults(box, data, ok, link) {
             <p>${hints ? "Loosen one requirement to see close matches:" : "Try a wider budget or fewer must-haves."}</p>
             ${hints}
         </div>`;
+        return;
+    }
+
+    if (data.engine === "v3" && (data.recommendations || []).length) {
+        renderV3Results(box, data, banner, link);
         return;
     }
 
