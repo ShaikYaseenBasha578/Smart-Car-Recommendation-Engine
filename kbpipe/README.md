@@ -199,3 +199,26 @@ How it works:
 - Off switch: `reviews.sources.autocar.enabled` (false: Autocar is neither fetched nor written).
 - Writing needs the tables from `kbpipe/migrations/reviews_tables.py`, which creates `professional_assessment`, `owner_rating`, `owner_theme` and three `source` rows. It is DDL, so the owner approves it (P16) and runs it with `--prod` once; it refuses the production file otherwise. `reviews` refuses to write while the production KB lacks the tables, and the schema pin (`kbpipe pin-schema`) must be refreshed after the migration.
 - Team-BHP: save a thread in your browser into `~/carrec_saved_pages/teambhp/`, then `kbpipe reviews --import-saved ~/carrec_saved_pages/teambhp --no-write`. The model and thread URL are read from the saved page (a `saved from url` comment, the canonical link or the title); an unknown model is asked for. The saved files stay local and are never committed or exported. Read Team-BHP's terms in a browser first; that risk is yours.
+
+## Brochure layer for models already in the KB (13 Nov 2026 additions)
+
+Official brochures for the 30 models kbpipe added on 13 Nov 2026 are downloaded into `oem_new_dir` (`knowledge_base/sources/oem_kbpipe`, never `sources/oem`) by:
+
+```bash
+.venv-kbpipe/bin/python -m kbpipe.tools.brochure_acquire
+```
+
+URLs are in `kbpipe/data/brochure_urls_new_models.json` (each found on the maker's own brochure or model page). robots.txt is obeyed, one attempt per URL, no retry around a block; a host whose robots.txt answers 404 has no rules. URL, date and hashes go to `oem_new_dir/brochure_manifest.json`. A KB model with no brochure in `sources/oem` uses the `oem_kbpipe` manifest (`brochure.locate_new_dir`).
+
+Reading and checking (all in `kbpipe/brochure.py`):
+- Reader: `llm.brochure_read` = Claude Sonnet only. No fallback to a free model; a usage limit or 3 consecutive failed calls stop the run (`incomplete` in the model's brochure summary) and a rerun resumes from the cache.
+- Checker: `llm.brochure_check` = Opus first, then the Gemini image backend. It sees the rendered page and is asked, per cell, supported / not_supported / unclear. Only supported cells are attached. A checker is never the backend that read the page (the reader's backend is removed from the chain; a violation raises). Features: 1 needs a fitted marker for that trim; 0 needs an explicit absence marker; an unmarked blank is `unclear`.
+- Cache: reader answers in `<cache_dir>/brochure_reads`, checker answers in `<cache_dir>/brochure_checks` keyed by (PDF SHA-1, page, prompt version, claims). A rerun, including the write run, makes no new LLM call. `brochure.check_prompt_version` must be bumped if the checker prompt changes.
+- `brochure.check_fraction` (default 1.0 = every cell). Below 1, a fixed sample per (model, field group) is checked, and unchecked cells of a group are attached only if its sample is at least `check_bar` (0.95) supported.
+- Report: `python -m kbpipe.tools.brochure_report <run_dir>` writes `BROCHURE_REPORT.md`, `brochure_cells.tsv` (every cell with verdict and the checker's evidence) and `brochure_disagreements.tsv`.
+
+Dry run of the 30 models:
+
+```bash
+./bin/kbpipe run --no-write --full --no-verify --only Alcazar --only Sonet ... --label brochure_new_models_2026-11-15
+```
