@@ -315,6 +315,7 @@ function buildCarCard(car, index, recs, topScore, intent) {
 
 const FEW_OWNERS_BELOW = 0.15;   // an owner line resting on under 15% of the sampled reviews is labelled "a few owners"
 const MAX_V3_REASONS = 4;
+const V3_REASONS_SHOWN = 2;      // the collapsed card shows this many "Why this car" lines; the rest sit behind the reviews toggle
 const THEME_LABELS = {
     reliability: "Reliability", service_cost: "Service cost", service_experience: "Service experience",
     real_world_mileage: "Real-world mileage", build_issues: "Build issues", recurring_fault: "Reported fault",
@@ -328,8 +329,8 @@ const MIN_LABELS = {
 };
 const SCORE_PARTS = [
     { key: "spec", label: "Specs", sub: "fit to your search", tip: "How well the car's own figures (price, features, safety, space, running cost) fit what you asked for." },
-    { key: "expert", label: "Expert", sub: "Autocar India", tip: "Autocar India's review scores for the aspects your search cares about." },
-    { key: "owner", label: "Owners", sub: "CarWale", tip: "CarWale owner ratings and review themes for the aspects your search cares about." }
+    { key: "expert", label: "Expert", sub: "Autocar India", tip: "Where the model's Autocar India overall score stands among rated models of its body type." },
+    { key: "owner", label: "Owners", sub: "CarWale", tip: "Where the model's CarWale owner rating stands among rated models of its body type." }
 ];
 
 function safeUrl(url) {
@@ -443,32 +444,66 @@ function v3MatchLabel(car, hard, personalised) {
 }
 
 // --- sub-score meters ---
+// Expert and Owners show where the model stands among rated models of its segment (body type), computed on the server
+// (car.expert_standing / car.owner_standing: value 0-100, caption with the raw rating and the wording). Raw ratings cluster
+// (owners give 4.5 of 5 to nearly everything), so the raw-score bar would read 90+ for every car. Where there is no standing
+// (a small segment, or too few ratings) the bar is left empty and the raw rating is shown instead: no claim is made.
+const STANDING_FIELD = { expert: "expert_standing", owner: "owner_standing" };
+
+function rawRating(key, st) {
+    if (key === "owner" && st.rating != null) return `${trimNumber(Number(st.rating), 1)}/${trimNumber(Number(st.scale_max), 0)}`;
+    if (key === "expert" && st.score != null) return `${trimNumber(Number(st.score), 1)}/${trimNumber(Number(st.scale_max), 0)}`;
+    return "n/a";
+}
+
+function buildMeter(car, p) {
+    const st = car[STANDING_FIELD[p.key]];
+    if (st && typeof st === "object") {
+        const caption = st.caption ? `<p class="meter-cap">${escapeHtml(st.caption)}</p>` : "";
+        if (st.value != null && !isNaN(st.value)) {
+            const pct = Math.max(0, Math.min(100, Math.round(Number(st.value))));
+            return `<div class="meter meter--standing" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div>`
+                + `<div class="meter-row"><span class="meter-track" role="img" aria-label="${p.label} standing: ${pct} out of 100 among rated models of its body type"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span></div>${caption}</div>`;
+        }
+        return `<div class="meter meter--standing" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div>`
+            + `<div class="meter-row"><span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--raw">${escapeHtml(rawRating(p.key, st))}</span><span class="sr-only">${p.label}: no standing shown</span></div>${caption}</div>`;
+    }
+    const v = (car.scores || {})[p.key];
+    const has = v != null && !isNaN(v);
+    const pct = has ? Math.round(Number(v) * 100) : null;
+    const bar = has
+        ? `<span class="meter-track" role="img" aria-label="${p.label}: ${pct} out of 100"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span>`
+        : `<span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--none">no data</span><span class="sr-only">${p.label}: no data</span>`;
+    return `<div class="meter" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div><div class="meter-row">${bar}</div></div>`;
+}
+
 function buildMeters(car) {
-    const scores = car.scores || {};
-    return `<div class="meters" aria-label="Match breakdown, 0 to 100">` + SCORE_PARTS.map(p => {
-        const v = scores[p.key];
-        const has = v != null && !isNaN(v);
-        const pct = has ? Math.round(Number(v) * 100) : null;
-        const bar = has
-            ? `<span class="meter-track" role="img" aria-label="${p.label}: ${pct} out of 100"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span>`
-            : `<span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--none">no data</span><span class="sr-only">${p.label}: no data</span>`;
-        return `<div class="meter" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div><div class="meter-row">${bar}</div></div>`;
-    }).join("") + `</div>`;
+    const anyStanding = ["expert", "owner"].some(k => car[STANDING_FIELD[k]] && typeof car[STANDING_FIELD[k]] === "object");
+    return `<div class="meters" aria-label="Match breakdown, 0 to 100">` + SCORE_PARTS.map(p => buildMeter(car, p)).join("") + `</div>`
+        + (anyStanding ? `<p class="meters-note">Expert and Owners show standing among rated models of the same body type, not absolute quality.</p>` : "");
 }
 
 // --- reviews ---
+// Collapsed by default: one expert line and one owner line. The second line of each and the quotes carry `data-more` + `hidden`
+// and are shown by the card's "Show more from reviews" button; while collapsed a note is clamped to 3 lines (CSS) and the
+// button is the way to read the rest. Caveats are never behind it.
+const CLAMP_NOTE_CHARS = 110;   // a note longer than this may be clamped in the collapsed card, so the card gets the button
+let reviewsSeq = 0;
+
+function moreAttr(i) { return i > 0 ? " data-more hidden" : ""; }
+
 function buildExpertBlock(car) {
     const notes = (car.expert_notes || []).slice(0, 2);
     const hasScore = car.scores && car.scores.expert != null;
     let body;
     if (notes.length) {
-        body = notes.map(n => {
+        body = notes.map((n, i) => {
             const meta = metaLine([n.source, sentenceCase(n.source_aspect),
                 `${trimNumber(Number(n.score), 1)}/${trimNumber(Number(n.scale_max), 0)}`, monthYear(n.published_on)]);
             const q = n.quote && n.quote.text
-                ? `<blockquote class="v3-quote"><p>“${escapeHtml(n.quote.text)}”</p>${externalLink(n.quote.source_url || n.source_url, "Read the review")}</blockquote>`
+                ? `<blockquote class="v3-quote" data-more hidden><p>“${escapeHtml(n.quote.text)}”</p>${externalLink(n.quote.source_url || n.source_url, "Read the review")}</blockquote>`
                 : "";
-            return `<li><p class="line-meta">${meta}</p><p class="line-note">${escapeHtml(n.note)}</p>${q}</li>`;
+            return `<li${moreAttr(i)}><p class="line-meta">${meta}</p><p class="line-note">${escapeHtml(n.note)}</p>${q}</li>`;
         }).join("");
         body = `<ul class="lines">${body}</ul>`;
     } else if (hasScore) {
@@ -496,18 +531,43 @@ function ownerMetaHtml(n) {
 
 function buildOwnerBlock(car) {
     const notes = (car.owner_notes || []).slice(0, 2);
-    const hasScore = car.scores && car.scores.owner != null;
+    const st = car.owner_standing;
     let body;
     if (notes.length) {
-        body = `<ul class="lines">` + notes.map(n => {
-            return `<li><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
+        body = `<ul class="lines">` + notes.map((n, i) => {
+            return `<li${moreAttr(i)}><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
         }).join("") + `</ul>`;
-    } else if (hasScore) {
+    } else if (st && st.summary) {
+        // no theme line has enough verified mentions: the ratings summary instead of an empty block
+        body = `<p class="line-note owner-summary">${escapeHtml(st.summary)}</p>`;
+    } else if (car.scores && car.scores.owner != null) {
         body = `<p class="muted">No owner review themes to show for this search.</p>`;
     } else {
         body = `<p class="muted">No owner ratings available for this model.</p>`;
     }
     return `<section class="evi" aria-label="What owners say"><h4>What owners say</h4>${body}</section>`;
+}
+
+// the card gets the toggle when something sits behind it: a second line, a quote, or a note long enough to be clamped
+function hasMoreReviews(car) {
+    if ((car.reasons || []).slice(0, MAX_V3_REASONS).length > V3_REASONS_SHOWN) return true;
+    const ex = (car.expert_notes || []).slice(0, 2), ow = (car.owner_notes || []).slice(0, 2);
+    return ex.length > 1 || ow.length > 1 || ex.some(n => n.quote && n.quote.text)
+        || ex.concat(ow).some(n => String(n.note || "").length > CLAMP_NOTE_CHARS);
+}
+
+function buildReviewsToggle(controlsId) {
+    return `<div class="more-toggle"><button type="button" class="btn btn-quiet" data-reviews-toggle aria-expanded="false" aria-controls="${controlsId}">Show more from reviews</button></div>`;
+}
+
+function toggleReviews(button) {
+    const card = button.closest(".car--v3");
+    if (!card) return;
+    const open = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = open ? "Show fewer reviews" : "Show more from reviews";
+    card.dataset.reviews = open ? "expanded" : "collapsed";
+    card.querySelectorAll("[data-more]").forEach(el => { el.hidden = !open; });
 }
 
 function buildCaveats(car) {
@@ -553,8 +613,10 @@ function buildV3Card(car, index, hard, personalised) {
     const detail = Array.isArray(label.detail) && label.detail.length
         ? `<ul class="unmet" aria-label="Requirements this car does not meet">${label.detail.map(d => `<li>Not met: ${escapeHtml(d)}</li>`).join("")}</ul>` : "";
     const chips = v3Chips(car);
+    const more = hasMoreReviews(car);
+    const reviewsId = `reviews-${++reviewsSeq}`;
     return `
-        <article class="car car--v3${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
+        <article class="car car--v3${index === 0 ? " car--top" : ""}"${more ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
                 ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
@@ -577,9 +639,10 @@ function buildV3Card(car, index, hard, personalised) {
                 </div>
             </div>
             <div class="v3-more">
-                <div class="evi-grid">
-                ${reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map(r => `<li>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
+                <div class="evi-grid" id="${reviewsId}">
+                ${reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
                     ${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
+                ${more ? buildReviewsToggle(reviewsId) : ""}
                 ${buildCaveats(car)}
                 <div class="car-foot">
                     ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
@@ -1028,6 +1091,8 @@ function initNewCarPage() {
         if (copy) copyLink(copy);
         const details = e.target.closest("[data-detail]");
         if (details) toggleDetail(details);
+        const reviews = e.target.closest("[data-reviews-toggle]");
+        if (reviews) toggleReviews(reviews);
     });
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {

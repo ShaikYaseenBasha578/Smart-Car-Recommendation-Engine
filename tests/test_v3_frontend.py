@@ -5,6 +5,7 @@ HTML string it produces. Skipped when node is not installed. With engine unset t
 """
 
 import json
+import re
 import shutil
 import subprocess
 from html.parser import HTMLParser
@@ -190,3 +191,152 @@ def test_old_engine_payload_uses_the_old_card_builder():
     html = render({"recommendations": [{"Make": "Tata", "Model": "Nexon", "Variant": "Smart", "Ex-Showroom_Price": 800000.0,
                                         "ranking_score": 80.0, "Fuel_Type": "Petrol", "Transmission": "Manual"}]})
     assert "Great match" in html and "car--v3" not in html and "What reviewers say" not in html and "sources" not in html
+
+
+# ------------------------------------------------------------------ second pass: standing bars, collapsed reviews
+
+def standing(**kw):
+    base = {"value": 75, "band": "top", "segment": "suv", "n_models": 40, "rating": 4.6, "scale_max": 5.0,
+            "rating_count": 336, "after_sales": 4.4, "source": "CarWale",
+            "caption": "4.6/5 from 336 ratings · among the best-rated SUVs",
+            "summary": "Owners rate it 4.6/5 overall, after-sales cost 4.4/5 (CarWale, 336 ratings)"}
+    return {**base, **kw}
+
+
+def expert_standing(**kw):
+    base = {"value": 57, "band": "upper", "segment": "suv", "n_models": 40, "score": 8.0, "scale_max": 10.0,
+            "source": "Autocar India", "caption": "Autocar India 8/10 overall · above average among SUVs"}
+    return {**base, **kw}
+
+
+def with_standing(**kw):
+    return car(owner_standing=standing(), expert_standing=expert_standing(), **kw)
+
+
+def meter(html, label):
+    """The HTML of the meter whose name is `label`."""
+    parts = re.split(r'<div class="meter(?: meter--standing)?"', html)[1:]
+    return next(p for p in parts if f"<strong>{label}</strong>" in p)[:1200]
+
+
+def test_owner_and_expert_bars_show_standing_not_the_raw_score():
+    html = render(response([with_standing()]))
+    owners, expert, specs = meter(html, "Owners"), meter(html, "Expert"), meter(html, "Specs")
+    assert 'width:75%' in owners and ">75<" in owners and ">90<" not in owners          # standing 75, not the 0.9 sub-score
+    assert 'width:57%' in expert and ">57<" in expert and ">74<" not in expert
+    assert "4.6/5 from 336 ratings · among the best-rated SUVs" in owners
+    assert "Autocar India 8/10 overall · above average among SUVs" in expert
+    assert ">81<" in specs and "meter-cap" not in specs                                 # Specs unchanged
+    assert "Expert and Owners show standing among rated models of the same body type, not absolute quality." in html
+
+
+def test_no_standing_claim_for_small_segments_and_low_confidence_shows_the_raw_rating():
+    small = standing(value=None, band="small_segment", caption="4.6/5 from 336 ratings · only 7 rated sedans, too few to compare")
+    low = standing(value=None, band="low_confidence", rating=4.4, caption="4.4/5 from only 12 ratings · too few to compare")
+    for st, raw in ((small, "4.6/5"), (low, "4.4/5")):
+        html = render(response([car(owner_standing=st, expert_standing=expert_standing())]))
+        owners = meter(html, "Owners")
+        assert "meter-track--empty" in owners and "meter-fill" not in owners
+        assert f">{raw}<" in owners and "too few to compare" in owners
+        assert "best-rated" not in owners and "above average" not in owners and "lowest-rated" not in owners
+        assert "Owners: no standing shown" in html
+
+
+def test_bars_fall_back_to_the_score_when_the_payload_has_no_standing():
+    html = render(response([car()]))
+    assert ">90<" in meter(html, "Owners") and "Expert and Owners show standing" not in html
+
+
+def test_standing_caption_is_escaped():
+    html = render(response([car(owner_standing=standing(caption="<script>alert(1)</script>"))]))
+    assert "<script>" not in html and "&lt;script&gt;alert(1)&lt;/script&gt;" in html
+
+
+def many_lines():
+    return with_standing(expert_notes=[expert(note="expert 0"), expert(note="expert 1")],
+                         owner_notes=[owner(note="owner 0"), owner(theme="service_cost", note="owner 1")],
+                         reasons=[{"text": f"reason {i}", "evidence_class": "spec"} for i in range(4)])
+
+
+def hidden_texts(html):
+    """Texts of the elements carrying data-more + hidden (what the collapsed card hides)."""
+    out = []
+    for chunk in html.split("data-more hidden")[1:]:
+        out.append(chunk.split("</li>")[0].split("</blockquote>")[0])
+    return out
+
+
+def test_toggle_is_a_real_button_collapsed_by_default_with_aria():
+    html = render(response([many_lines()]))
+    assert 'data-reviews="collapsed"' in html
+    btn = html.split("<button type=\"button\" class=\"btn btn-quiet\" data-reviews-toggle")[1].split("</button>")[0]
+    assert 'aria-expanded="false"' in btn and "Show more from reviews" in btn
+    ident = btn.split('aria-controls="')[1].split('"')[0]
+    assert f'id="{ident}"' in html                                                  # aria-controls points at a real element
+    assert "<details" not in html and "<div data-reviews-toggle" not in html
+
+
+def test_second_lines_and_quotes_sit_behind_the_toggle_first_lines_do_not():
+    html = render(response([many_lines()]))
+    hidden = " ".join(hidden_texts(html))
+    assert "expert 1" in hidden and "owner 1" in hidden and "plush at low speed" in hidden
+    assert "expert 0" not in hidden and "owner 0" not in hidden
+    assert "reason 2" in hidden and "reason 3" in hidden and "reason 0" not in hidden and "reason 1" not in hidden
+    assert html.count("data-more hidden") == len(hidden_texts(html))
+
+
+def test_caveats_are_never_hidden_or_clamped_behind_the_toggle():
+    caveat = owner(theme="recurring_fault", label="clutch judder", direction="negative", mentions=3, posts_sampled=60,
+                   share=0.05, note="Judder at low speed.", kind="reported_fault")
+    html = render(response([with_standing(expert_notes=[expert(), expert(note="e2")], caveats=[caveat])]))
+    block = html.split('class="caveats"')[1].split("</section>")[0]
+    assert "Reported fault: clutch judder" in block and "Judder at low speed." in block
+    assert " hidden>" not in block and "data-more" not in block
+    assert html.index("data-reviews-toggle") < html.index('class="caveats"')         # the button is not what hides them
+
+
+def test_no_toggle_when_nothing_sits_behind_it():
+    short = car(expert_notes=[expert(quote=None, note="Short.")], owner_notes=[owner(note="Short.")],
+                reasons=[{"text": "one", "evidence_class": "spec"}])
+    html = render(response([short]))
+    assert "data-reviews-toggle" not in html and "data-reviews=" not in html and "data-more" not in html
+
+
+def test_a_long_note_gets_the_toggle_so_a_clamped_note_can_be_read():
+    long_note = "Words " * 40
+    html = render(response([car(expert_notes=[expert(quote=None, note=long_note)], owner_notes=[owner(note="Short.")])]))
+    assert "data-reviews-toggle" in html and long_note.strip() in html          # the full note is in the DOM, only clamped by CSS
+
+
+def test_clamp_is_collapsed_only_in_css():
+    css = (ROOT / "static" / "style.css").read_text()
+    assert '.car--v3[data-reviews="collapsed"] .evi .line-note' in css and "-webkit-line-clamp: 3" in css
+    assert "caveats .line-note" not in css.split("-webkit-line-clamp: 3")[0].split('.car--v3[data-reviews="collapsed"]')[-1]
+
+
+def test_owner_summary_line_replaces_an_empty_owner_block():
+    html = render(response([with_standing(owner_notes=[])]))
+    block = html.split('aria-label="What owners say"')[1].split("</section>")[0]
+    assert "Owners rate it 4.6/5 overall, after-sales cost 4.4/5 (CarWale, 336 ratings)" in block
+    assert "No owner review themes" not in block and "No owner ratings" not in block
+
+
+def test_owner_summary_not_shown_when_lines_exist_and_no_ratings_still_says_so():
+    html = render(response([with_standing()]))
+    assert "Owners rate it 4.6/5 overall" not in html
+    none = render(response([car(owner_notes=[], scores={"overall": 0.5, "spec": 0.5, "expert": 0.7, "owner": None, "coverage": 0.5})]))
+    assert "No owner ratings available for this model." in none
+
+
+def test_toggle_script_flips_state_without_persisting_it():
+    js = (ROOT / "static" / "script.js").read_text()
+    body = js.split("function toggleReviews(button)")[1].split("\n}\n")[0]
+    assert "aria-expanded" in body and "hidden" in body
+    assert "localStorage" not in body and "sessionStorage" not in body
+
+
+def test_old_engine_html_has_none_of_the_new_markup():
+    html = render({"recommendations": [{"Make": "Tata", "Model": "Nexon", "Variant": "Smart", "Ex-Showroom_Price": 800000.0,
+                                        "ranking_score": 80.0, "Fuel_Type": "Petrol", "Transmission": "Manual"}]})
+    for needle in ("data-reviews", "meter-cap", "meters-note", "data-more"):
+        assert needle not in html
