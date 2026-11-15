@@ -236,10 +236,20 @@ THEME_NAMES = {
 }
 
 
-def expert_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence) -> List[dict]:
-    """Up to MAX_EXPERT_LINES stored Autocar notes, the aspects most relevant to the query first (mean query weight of
-    the engine aspects the label feeds; a query with no preference ranks by score). Note and quote text is exactly as
-    stored; the quote is a separate, marked field."""
+def _multipliers(weights: Optional[Dict[str, Any]], prefix: str) -> Dict[str, float]:
+    """{aspect or theme: the query's profile multiplier on expert_<aspect> / owner_<theme>} (1.0 = the query does not
+    single it out; a use case or preference such as comfort or mileage raises it)."""
+    crit = (weights or {}).get("criteria", {})
+    return {c[len(prefix):]: float(v["multiplier"]) for c, v in crit.items() if c.startswith(prefix)}
+
+
+def expert_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence,
+                 mult: Optional[Dict[str, float]] = None) -> List[dict]:
+    """Up to MAX_EXPERT_LINES stored Autocar notes. Candidates are labels whose aspects carry query weight (a query with
+    no preference accepts all); they rank by how strongly the query singles the label out (largest profile multiplier
+    among its aspects, `mult`), then mean query weight, then score. Note and quote text is exactly as stored; the quote
+    is a separate, marked field."""
+    mult = mult or {}
     ranked = []
     for n in evidence.expert_notes(model):
         score = n["raw_score"] / n["scale_max"]
@@ -249,9 +259,10 @@ def expert_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence)
             rel = sum(aw.get(a, 0.0) for a in n["aspects"]) / len(n["aspects"])
             if rel <= 0:
                 continue
-        ranked.append((-rel, -score, n["source_aspect"], n))
+        pick = max(mult.get(a, 1.0) for a in n["aspects"])
+        ranked.append((-pick, -rel, -score, n["source_aspect"], n))
     out = []
-    for _, _, _, n in sorted(ranked, key=lambda t: t[:3])[:config.MAX_EXPERT_LINES]:
+    for *_, n in sorted(ranked, key=lambda t: t[:4])[:config.MAX_EXPERT_LINES]:
         date = _month_year(n["published_on"])
         text = (f"{n['source']}, {n['source_aspect'].lower()} {n['raw_score']:g}/{n['scale_max']:g}"
                 + (f" ({date})" if date else "") + f": {n['note']}")
@@ -294,7 +305,8 @@ def _theme_entry(r: dict) -> dict:
             "fields": [f"owner_{r['theme']}"]}
 
 
-def owner_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence) -> tuple:
+def owner_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence,
+                mult: Optional[Dict[str, float]] = None) -> tuple:
     """(lines, caveats). Lines: up to MAX_OWNER_LINES theme rows relevant to the query (query weight > 0; a query with no
     preference accepts any), strongest first, a reported fault always taking a place. Caveats: every negative theme and
     reported fault the model has, relevant or not (strongest first, at most 3)."""
@@ -304,10 +316,12 @@ def owner_lines(model: str, aw: Optional[Dict[str, float]], evidence: Evidence) 
         return [], []
     def strength(r):
         return theme_strength(int(r["mentions"]), int(r["posts_sampled"]))
+    mult = mult or {}
     key = lambda r: (-strength(r), r["theme"], r["label"] or "")
+    rel_key = lambda r: (-mult.get(r["theme"], 1.0), -strength(r), r["theme"], r["label"] or "")
     faults = sorted((r for r in rows if r["theme"] == "recurring_fault"), key=key)
     others = sorted((r for r in rows if r["theme"] != "recurring_fault"
-                     and (aw is None or aw.get(r["theme"], 0.0) > 0)), key=key)
+                     and (aw is None or aw.get(r["theme"], 0.0) > 0)), key=rel_key)
     picked = faults[:1] + others
     picked = (picked + faults[1:])[:config.MAX_OWNER_LINES]
     caveat_rows = sorted((r for r in rows if r["direction"] == "negative" or r["theme"] == "recurring_fault"), key=key)[:3]
@@ -357,8 +371,8 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
             merged[r["text"]] = {"text": r["text"], "evidence_class": r["evidence_class"], "fields": list(r["fields"]),
                                  "source_url": r.get("source_url")}
     aw = review_aspect_weights(weights)
-    e_lines = expert_lines(row["model"], aw["expert"], evidence)
-    o_lines, caveats = owner_lines(row["model"], aw["owner"], evidence)
+    e_lines = expert_lines(row["model"], aw["expert"], evidence, _multipliers(weights, "expert_"))
+    o_lines, caveats = owner_lines(row["model"], aw["owner"], evidence, _multipliers(weights, "owner_"))
     shown = {f for ln in e_lines for f in ln["fields"]}
     # a score reason is redundant when its note line (which carries the same score, source and date) is shown
     for text in [t for t, r in merged.items() if r["evidence_class"] == "expert" and set(r["fields"]) <= shown]:
