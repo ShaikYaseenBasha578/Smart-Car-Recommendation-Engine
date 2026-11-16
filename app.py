@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, Response, abort
 from flask_cors import CORS
 
 import pandas as pd
@@ -89,6 +89,27 @@ def make_json_safe(value):
 def index():
     from services.catalogue import get_catalogue
     return render_template("index.html", variant_count=f"{len(get_catalogue()):,}")
+
+
+# "How it works" pages: four generated, self-contained HTML files in project_pages/ (refresh: scripts/sync_project_pages.py).
+# Only these fixed names are served, so there is no path to traverse.
+PROJECT_PAGES = {
+    "": "index.html",
+    "pipeline": "pipeline.html",
+    "knowledge-base": "kb.html",
+    "engine": "engine.html",
+}
+
+
+@app.route("/project", defaults={"name": ""})
+@app.route("/project/<name>")
+def project_page(name):
+    filename = PROJECT_PAGES.get(name)
+    if filename is None:
+        abort(404)
+    with open(os.path.join(BASE_DIR, "project_pages", filename), "rb") as fh:
+        body = fh.read()
+    return Response(body, mimetype="text/html", headers={"Cache-Control": "public, max-age=300"})
 
 
 @app.route("/recommend")
