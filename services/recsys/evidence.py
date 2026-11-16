@@ -40,6 +40,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import numpy as np
 import pandas as pd
 
 from services.recsys import config
@@ -413,14 +414,17 @@ class Evidence:
     @staticmethod
     def _group_key(aspect: str, hit: dict) -> tuple:
         """Aspects one source label feeds together share a key (review layout); every other aspect is its own."""
-        rows = hit["rows"]
-        if "source_aspect" in rows.columns and len(rows):
-            r = rows.iloc[0]
-            label = str(r.get("source_aspect") or "")
-            src = str(r.get("source_name") if "source_name" in rows.columns else r.get("source") or "")
-            if label:
-                return (src, label)
-        return (aspect,)
+        if "_gk" not in hit:      # a hit is immutable once built: work the key out once
+            rows = hit["rows"]
+            key = None
+            if "source_aspect" in rows.columns and len(rows):
+                r = rows.iloc[0]
+                label = str(r.get("source_aspect") or "")
+                src = str(r.get("source_name") if "source_name" in rows.columns else r.get("source") or "")
+                if label:
+                    key = (src, label)
+            hit["_gk"] = key
+        return hit["_gk"] if hit["_gk"] is not None else (aspect,)
 
     def class_sub(self, kind: str, make: str, model: str, aspect_w: Optional[Dict[str, float]]) -> Optional[float]:
         """The model's expert or owner sub-score in [0, 1], or None when it has no usable row.
@@ -516,6 +520,12 @@ class Evidence:
         return cache[kind]
 
     def _standing_values(self, kind: str) -> Dict[str, float]:
+        cache = self.__dict__.setdefault("_standing_vals", {})
+        if kind not in cache:
+            cache[kind] = self._compute_standing_values(kind)
+        return cache[kind]
+
+    def _compute_standing_values(self, kind: str) -> Dict[str, float]:
         out: Dict[str, float] = {}
         if kind == "owner":
             df = self.owner_ratings
@@ -616,8 +626,12 @@ class Evidence:
             return config.OVERALL_FALLBACK_SCALE * n / (n + config.EXPERT_SOURCE_K)
         if not covered or not relevant_aspects:
             return 0.0
-        sources = {self._source_key(r) for a in covered
-                   for _, r in self._hit(self._expert, make, model, a)["rows"].iterrows()}
+        sources = set()
+        for a in covered:
+            h = self._hit(self._expert, make, model, a)
+            if "_sk" not in h:
+                h["_sk"] = frozenset(self._source_key(r) for _, r in h["rows"].iterrows())
+            sources |= h["_sk"]
         n = len(sources)
         return (len(covered) / len(relevant_aspects)) * (n / (n + config.EXPERT_SOURCE_K))
 
@@ -674,16 +688,24 @@ class Evidence:
         out = pd.DataFrame(index=df.index, columns=cols, dtype=float)
         if self.empty:
             return out
-        for i, (make, model) in zip(df.index, zip(df["make"], df["model"])):
+        per_model: Dict[tuple, Dict[str, float]] = {}      # a model repeats across its variants: look it up once
+        for make, model in set(zip(df["make"], df["model"])):
+            found: Dict[str, float] = {}
             for a in ASPECTS:
                 hit = self.expert(make, model, a)
                 if hit:
-                    out.at[i, f"expert_{a}"] = hit["value"]
+                    found[f"expert_{a}"] = hit["value"]
             for t in THEMES:
                 hit = self.owner(make, model, t)
                 if hit:
-                    out.at[i, f"owner_{t}"] = hit["value"]
-        return out
+                    found[f"owner_{t}"] = hit["value"]
+            per_model[(make, model)] = found
+        pos = {c: j for j, c in enumerate(cols)}
+        data = np.full((len(df), len(cols)), np.nan)
+        for k, key in enumerate(zip(df["make"], df["model"])):
+            for col, value in per_model[key].items():
+                data[k, pos[col]] = value
+        return pd.DataFrame(data, index=df.index, columns=cols, dtype=float)
 
     def detail_for(self, make: str, model: str, criterion: str) -> Optional[dict]:
         """Numbers and a source link behind one expert_/owner_ value, for explanations."""

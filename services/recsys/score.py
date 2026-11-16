@@ -128,10 +128,21 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
     aw = review_aspect_weights(weights)
     relevant_aspects = [config.EXPERT_OVERALL_ASPECT] if aw["expert"] is None else [a for a in ASPECTS if a in aw["expert"]]
 
+    # one model has many variants: the evidence lookups depend only on (make, model[, body type]), so each is made once
+    memo: Dict[tuple, Any] = {}
+
+    def once(key: tuple, fn):
+        if key not in memo:
+            memo[key] = fn()
+        return memo[key]
+
+    values_by_row = values.to_dict("index")
+    scoring_by_row = scoring.to_dict("index")
+    unknown_frac_by_row = criteria.unknown_frac.to_dict("index") if criteria.unknown_frac is not None else None
     records = []
     for idx, row in cands.iterrows():
-        v = values.loc[idx]
-        sv = scoring.loc[idx]
+        v = values_by_row[idx]
+        sv = scoring_by_row[idx]
         subs: Dict[str, Optional[float]] = {}
         for cls in CLASSES:
             vals = sv if cls in active else v
@@ -144,21 +155,26 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         for cls in ("expert", "owner"):
             if cls not in active:
                 continue
-            sub = evidence.class_sub(cls, row["make"], row["model"], aw[cls])
+            sub = once(("sub", cls, row["make"], row["model"]),
+                       lambda: evidence.class_sub(cls, row["make"], row["model"], aw[cls]))
             if sub is None:
-                neutral = evidence.neutral_class(cls, str(row["body_type"]), aw[cls],
-                                                 relevant_aspects if cls == "expert" else [])
+                neutral = once(("neutral", cls, str(row["body_type"])),
+                               lambda: evidence.neutral_class(cls, str(row["body_type"]), aw[cls],
+                                                              relevant_aspects if cls == "expert" else []))
                 sub, scale_override[cls] = neutral if neutral is not None else (None, None)
             if cls == "owner" and sub is not None:   # themes: a capped adjustment, 0 for a model with none
-                sub = min(1.0, max(0.0, sub + evidence.theme_adjustment(row["model"], aw["owner"])))
+                sub = min(1.0, max(0.0, sub + once(("theme", row["model"]),
+                                                   lambda: evidence.theme_adjustment(row["model"], aw["owner"]))))
             subs[cls] = sub
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
         cw = {c: used[c] / sum(used.values()) for c in used}
         if subs["spec"] is not None and len(used) > 1:
             scale = {"expert": scale_override["expert"] if "expert" in scale_override
-                     else evidence.expert_scale(row["make"], row["model"], relevant_aspects),
+                     else once(("escale", row["make"], row["model"]),
+                               lambda: evidence.expert_scale(row["make"], row["model"], relevant_aspects)),
                      "owner": scale_override["owner"] if "owner" in scale_override
-                     else evidence.owner_scale(row["make"], row["model"])}
+                     else once(("oscale", row["make"], row["model"]),
+                               lambda: evidence.owner_scale(row["make"], row["model"]))}
             for c in ("expert", "owner"):
                 if c in cw:
                     cw[c] *= 1.0 if scale[c] is None else scale[c]
@@ -171,9 +187,9 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         unknown_crit = [c for c in ALL_CRITERIA if global_w[c] > 0 and np.isnan(v[c])]
         # partly unknown criteria: {criterion: unknown fraction of its field weight}, only where a value exists
         partial = {}
-        if criteria.unknown_frac is not None:
+        if unknown_frac_by_row is not None:
             for c in SPEC_CRITERIA:
-                f = criteria.unknown_frac.loc[idx, c]
+                f = unknown_frac_by_row[idx][c]
                 if global_w[c] > 0 and not np.isnan(v[c]) and f > 1e-12:
                     partial[c] = float(f)
         unknown_w = sum(global_w[c] for c in unknown_crit) + sum(global_w[c] * f for c, f in partial.items())
