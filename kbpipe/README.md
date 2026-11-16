@@ -38,6 +38,92 @@ To call it as `kbpipe` from anywhere:
 ln -s ~/carrec_worktrees/kb-kbpipe/bin/kbpipe /usr/local/bin/kbpipe
 ```
 
+## Updating everything with one command
+
+```bash
+./bin/kbpipe update
+```
+
+One command brings the KB up to date with the market and prepares the app to show it. It ends with a **pull request** for you to merge and a **review file** for you to tick. It never deploys by itself, never applies a change to an existing value without your approval, and never touches the app's `main`.
+
+| Stage | What it does | LLM |
+|---|---|---|
+| 1 preflight | KB free (holder, -wal), hash recorded, backup, disk space, today's LLM quotas, app worktree state | no |
+| 2 specs | new models and variants, changed prices and specs (`kbpipe run`, brochure layer off) | verifier only |
+| 3 brochures | brochure layer for models added in stage 2 and models with many blanks | Sonnet reads, Opus checks |
+| 4 reviews | expert scores and owner ratings | no |
+| 5 text | expert notes and owner themes, only for new or changed pages | Sonnet writes, Opus checks |
+| 6 saved | Team-BHP pages you saved by hand, only files not read before (never fetched) | Sonnet writes, Opus checks |
+| 7 audit | audit of what this update added (resumable) | verifier |
+| 8 export | catalogue and review files into a clone of the app repository | no |
+| 9 checks | the app's tests and evaluation; golden snapshots regenerated only when the catalogue alone moved | no |
+| 10 pages | project pages regenerated (`--app-base /`) and synced | no |
+| 11 pr | branch `data/kb-update-<date>` from `origin/main`, commit of data, golden files and project pages only, push, pull request | no |
+| 12 summary | `UPDATE_SUMMARY.md` | no |
+
+Folder: `knowledge_base/runs/update_<date>/` holds `state.json` (per stage: pending / done / failed / skipped / stopped_on_limit, start and finish times, KB hash before and after, the sub-run folder, one line of result) and `UPDATE_SUMMARY.md`. Each stage's own run folder is `knowledge_base/runs/update_<date>_<stage>/`.
+
+### Commands
+
+```bash
+./bin/kbpipe update --quick                 # the cheap weekly refresh: no subscription allowance used
+./bin/kbpipe update                         # the full update
+./bin/kbpipe update --no-write --quick      # look first: no KB write, no push, no pull request
+./bin/kbpipe update --resume                # continue the latest interrupted update
+./bin/kbpipe update --resume --label update_2026-11-20
+```
+
+| Flag | Meaning |
+|---|---|
+| `--no-write` | Every stage runs against staging copies (later stages read what earlier ones would have written). Nothing is written to the KB, pushed or opened. The app work happens in a scratch clone under `~/carrec_kb_cache/update_ws/`. |
+| `--resume` | Continue from the first stage not done. A stage that is done is **never** repeated (except the report, which is rewritten). Flags stored at the start (`--quick`, `--no-write`, ...) are kept. |
+| `--redo <stage>` | Run one stage again although it is done (name or number), for example `--resume --redo export` after you applied review decisions. |
+| `--only-stages specs,reviews` | Run only these stages (names or numbers). The others stay as they were. |
+| `--skip-stages brochures,text` | Leave stages out. |
+| `--max-models N` | Cap the models processed in stage 2 (default cap on new models: 40). |
+| `--quick` | Skip stages 3, 5 and 6 (brochures, review text, saved pages). |
+| `--no-pr` | Do stage 11 locally (branch and commit in the scratch clone); no push, no pull request. |
+| `--no-verify` | No verifier calls at all: stage 2 does not verify and stage 7 is skipped. For rehearsals. |
+| `--label NAME` | Name of the update folder. |
+
+**Rules.** A failed gate stops the update at that stage; later stages stay pending. A usage limit or quota stop is recorded as `stopped_on_limit`; the command prints when and how to continue, and because every LLM answer is cached, the resume repeats no call. Fetching is polite: robots.txt is obeyed on every fetch (for this tool's name and for `*`, Crawl-delay included) under the truthful identity `kbpipe/1.0 (personal research; contact via repository)` (config key `user_agent`). A path that robots.txt disallows is reported and nothing is written for it; no other identity is ever tried. Team-BHP is never fetched.
+
+### What stays manual
+
+- **The review file** (`REVIEW_<run>.md` in the specs run folder): tick items, then `kbpipe apply-review <file>`, then `./bin/kbpipe update --resume --redo export` to refresh stages 8 to 11. Changes to existing values, removals and held models always go there.
+- **Merging the pull request.** Merging is the deploy and stays your click.
+- Pushing the `kb/kbpipe` branch of this repository to GitHub.
+
+### Where it stops and how to continue
+
+`UPDATE_SUMMARY.md` (also printed) ends with "Stopped?" and the exact command. For a usage limit, wait for the allowance to refresh (free Gemini and Groq quotas reset daily; a Claude limit resets at the time its message states, see `/usage`) and run the printed `--resume` command.
+
+An interrupted audit continues on its own: `kbpipe run --audit full --resume-audit knowledge_base/runs/<run folder>` reads that folder's `verify/results.jsonl` and checks only the cells without a verdict.
+
+### Config
+
+| Key | Default | Meaning |
+|---|---|---|
+| `app_repo` | `~/carrec_worktrees/recsys-v3` | The app repository. It is only read and cloned; its worktree is never modified. Its `.venv` runs the exporters, tests and evaluation. |
+| `app_python` | the app's `.venv/bin/python` | Override the interpreter used for the app. |
+| `user_agent` | `kbpipe/1.0 (personal research; contact via repository)` | Truthful identity for every fetch. No personal details. |
+| `obey_robots` | `true` | robots.txt and Crawl-delay on every fetch. |
+| `update.blank_threshold`, `update.brochure_blank_models` | 0.5, 10 | Stage 3 also reads brochures for up to 10 models with more than half their variant cells blank. |
+
+### Troubleshooting
+
+| Symptom | Meaning | What to do |
+|---|---|---|
+| `STOPPED ... on a usage limit` | A free quota or the Claude allowance ran out. | Wait, then run the printed `--resume` command. Nothing is repeated. |
+| Stage 1: "KB is held by ..." | Something other than the read-only VM service has the KB open (P11). | Close it (for example DB Browser), then `--resume`. |
+| Stage 2: "robots.txt disallows every brand page of <site>" | The site's rules refuse this tool's identity for the paths it needs. | Nothing is written for that site. Do not work around it; talk to the site or use the other source only if the rules allow. |
+| Stage 2/4 "gates failed on staging" | A gate (schema, provenance, rows, explained) refused the change-set. | Read `RUN_SUMMARY.md` of the stage's run folder; nothing was merged. |
+| Stage 9 "app tests failed ... golden files NOT regenerated" | A test other than the golden snapshot fails, or the golden snapshot moved without a catalogue change. | Look at `app/tests.log` in the update folder. The KB is already updated; the app is simply not ahead. |
+| Stage 11 "refused: the app worktree has uncommitted changes" | The app worktree has edits to tracked files. | Commit or stash them, then `--resume --redo pr`. |
+| Stage 11 "gh pr create failed" / "git push failed" | Not logged in to GitHub, or no network. | `gh auth login`, then `--resume --redo pr`; the commit is kept in the scratch clone. |
+| Stage 11 "the app already has this data" | The export produced no change apart from a timestamp. | Nothing to do. |
+| `error: <folder> already exists` | The label is taken. | `--resume --label <it>` or another label. |
+
 ## Commands
 
 | Command | What it does |
