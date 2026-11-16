@@ -317,18 +317,18 @@
     "comfort_features": 1.0,
     "performance": 0.7666,
     "price": 0.1548,
-    "safety": 0.7974,
+    "safety": 0.8874,
     "space_practicality": 0.5774,
     "tech_assist": 0.9107,
     "value_for_budget": 0.7071
    },
-   "ranking_score": 68.9,
+   "ranking_score": 70.74,
    "scores": {
-    "coverage": 0.7073,
+    "coverage": 0.7506,
     "expert": null,
-    "overall": 0.689,
+    "overall": 0.7074,
     "owner": null,
-    "spec": 0.7206
+    "spec": 0.7349
    },
    "variant_id": 1129
   }
@@ -382,18 +382,18 @@
     "performance": 0.6851,
     "price": 0.2798,
     "running_cost": 0.5,
-    "safety": 0.7114,
+    "safety": 0.8014,
     "space_practicality": 0.4604,
     "tech_assist": 0.8298,
     "value_for_budget": 0.8223
    },
-   "ranking_score": 70.1,
+   "ranking_score": 72.13,
    "scores": {
-    "coverage": 0.8728,
+    "coverage": 0.9231,
     "expert": null,
-    "overall": 0.701,
+    "overall": 0.7213,
     "owner": null,
-    "spec": 0.7146
+    "spec": 0.7297
    },
    "variant_id": 1054
   },
