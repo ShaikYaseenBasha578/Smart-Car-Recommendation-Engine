@@ -61,7 +61,7 @@ def test_site_on_synthetic_fixture(tmp_path):
         t.feed(html)
         assert not t.errors and not t.stack, (fn, t.errors, t.stack)
         for h in t.hrefs:
-            assert h.startswith("#") or h in PAGES, (fn, h)
+            assert h.startswith("#") or h.split("#")[0] in PAGES, (fn, h)
         assert 'aria-current="page"' in html
         assert "2026-01-02" in html and "/Users/" not in html
     assert "Data not found" in first["engine.html"]
@@ -122,3 +122,37 @@ def test_engine_page_prefers_the_final_result_files_and_drops_the_unsaved_note(t
     E_ = dashboard.engine_data(str(root))
     assert E_["v3_main"]["file"] == "final_v3_main.json" and E_["cur_main"]["file"] == "final_current_main.json"
     assert E_["cur_held"] is None
+
+
+def test_evidence_classes_and_honest_wording(tmp_path):
+    cl = dashboard.classify_cell
+    assert cl(None) == "none"
+    assert cl([{"oem", "carwale"}, True]) == "brochure"
+    assert cl([{"carwale", "cardekho"}, False]) == "two_sites"
+    assert cl([{"carwale", "v6_migration"}, False]) == "one_site"
+    assert cl([{"v6_migration"}, False]) == "import"
+    out, _ = run(tmp_path)
+    kb = (out / "kb.html").read_text()
+    assert "June 2026 import only" in kb and "Page generated" in kb
+    for fn in PAGES:
+        html = (out / fn).read_text()
+        assert "Every value has" not in html and "Every match comes from a verified" not in html
+
+
+def test_price_freshness_bands_and_import_only(tmp_path):
+    import sqlite3
+    from conftest import make_kb
+    db = make_kb(str(tmp_path / "p.db"))
+    c = sqlite3.connect(db)
+    c.executescript("""
+    insert into source_observation(id,source_id,raw_name,source_url,observed_at,resolution_status) values
+      (1,1,'a',null,'2026-06-28','applied'),(2,4,'b','https://x','2026-11-13T10:00:00Z','applied');
+    insert into field_provenance(variant_id,field_name,accepted_value,source_observation_id,decision) values
+      (1,'price_ex_showroom','800000',1,'accepted'),(2,'price_ex_showroom','1100000',1,'accepted'),(2,'price_ex_showroom','1100000',2,'confirmed');
+    """)
+    c.commit()
+    c.row_factory = sqlite3.Row
+    vrows = [{"id": 1, "base_variant_id": None, "price_ex_showroom": 800000}, {"id": 2, "base_variant_id": None, "price_ex_showroom": 1100000}]
+    p = dashboard.price_freshness(c, vrows, "2026-11-16")
+    assert (p["within30"], p["within90"], p["within180"], p["import_only"], p["no_evidence"]) == (1, 1, 1, 1, 0)
+    assert p["import_age"] == 141

@@ -108,7 +108,7 @@ def collect_kb(c):
     pf = [f for f in F.POWERTRAIN_FIELDS if f in pcols]
     fields = vf + pf
     sel = ["v.id", "v.base_variant_id" if "base_variant_id" in vcols else "null as base_variant_id", "ma.name as make",
-           "p.fuel_type as _fuel"]
+           "mo.name as _model", 'v."name" as _vname', "p.fuel_type as _fuel"]
     sel += ['v."%s" as "%s"' % (f, f) for f in vf] + ['p."%s" as "%s"' % (f, f) for f in pf if f != "fuel_type"]
     if "fuel_type" in pf:
         sel.append('p.fuel_type as "fuel_type"')
@@ -134,9 +134,304 @@ def evidence_sets(c):
     return ev
 
 
+# ---------------------------------------------------------------- how well each value is backed, price age, review backlog
+SITES = {"carwale", "cardekho", "91wheels", "v3cars"}
+EV_ORDER = ["brochure", "two_sites", "one_site", "import", "none"]
+EV_LABEL = {"brochure": "Maker's brochure, page cited", "two_sites": "Agreed by two or more listing sites", "one_site": "One listing site only",
+            "import": "June 2026 import only", "none": "No evidence row"}
+EV_PLAIN = {"brochure": "A brochure PDF from the manufacturer states the value. The stored row names the file and page.",
+            "two_sites": "Two or more listing sites (CarWale, CarDekho, 91wheels, v3cars) recorded the same value for this variant.",
+            "one_site": "One listing site recorded it and nothing stronger exists. The value may be right; nothing else backs it.",
+            "import": "Carried over from the original June 2026 import. That import recorded no web address, so there is no page to open.",
+            "none": "The value is stored but no live evidence row points to it."}
+EV_CLS = {"brochure": "ev-b", "two_sites": "ev-2", "one_site": "ev-1", "import": "ev-i", "none": "ev-n"}
+
+
+def cell_evidence(c):
+    """(variant_id, field) -> [set of source names, brochure page cited]. Live evidence only (quarantine honoured)."""
+    if has(c, "v_live_evidence"):
+        q = ("select e.variant_id, e.field_name, s.name, case when s.name='oem' and (o.source_url like '%#page=%' or o.raw_payload like '%\"page\":%') "
+             "then 1 else 0 end from v_live_evidence e join source_observation o on o.id=e.observation_id join source s on s.id=e.source_id "
+             "where e.decision in ('accepted','confirmed')")
+    else:
+        q = ("select e.variant_id, e.field_name, s.name, case when s.name='oem' and (o.source_url like '%#page=%' or o.raw_payload like '%\"page\":%') "
+             "then 1 else 0 end from field_provenance e join source_observation o on o.id=e.source_observation_id join source s on s.id=o.source_id "
+             "where e.decision in ('accepted','confirmed')")
+    ev = {}
+    for v, f, name, pg in rows(c, q):
+        d = ev.setdefault((v, f), [set(), False])
+        d[0].add(name)
+        d[1] = d[1] or bool(pg)
+    return ev
+
+
+def classify_cell(entry):
+    """Strongest evidence behind one stored value."""
+    if not entry:
+        return "none"
+    s = entry[0]
+    if "oem" in s:
+        return "brochure"
+    n = len(s & SITES)
+    if n >= 2:
+        return "two_sites"
+    if n == 1:
+        return "one_site"
+    return "import" if "v6_migration" in s else "none"
+
+
+def audit_definition(c):
+    """The independent audit's counting rule: every non-blank cell of the raw variant table plus power, torque and engine size,
+    evidence looked up on the variant's own id only (no edition inheritance, no quarantine mask on the values)."""
+    try:
+        vcols = [r[1] for r in c.execute("pragma table_info(variant)")]
+        skip = {"id", "model_id", "generation_id", "powertrain_id", "name", "full_name", "is_discontinued", "v6_row_index", "created_at",
+                "updated_at", "base_variant_id", "edition_classification", "adas_tier"}
+        fields = [f for f in vcols if f not in skip]
+        ptc = {r[1] for r in c.execute("pragma table_info(powertrain)")}
+        pt = [f for f in ("engine_cc", "power_bhp", "torque_nm") if f in ptc]
+        cev = cell_evidence(c)
+        counts = {k: 0 for k in EV_ORDER}
+        sql = "select v.*" + "".join(', p."%s" as "pt_%s"' % (f, f) for f in pt) + " from variant v join powertrain p on p.id=v.powertrain_id"
+        for r in c.execute(sql):
+            for f in fields + pt:
+                val = r["pt_" + f] if f in pt else r[f]
+                if val is None or val == "":
+                    continue
+                counts[classify_cell(cev.get((r["id"], f)))] += 1
+        return {"total": sum(counts.values()), "classes": counts, "n_fields": len(fields) + len(pt)}
+    except sqlite3.Error:
+        return None
+
+
+def parse_day(s):
+    try:
+        return datetime.date.fromisoformat(str(s)[:10])
+    except ValueError:
+        return None
+
+
+def price_freshness(c, vrows, ref):
+    """Per variant, the date of the latest price evidence from a listing site or brochure, against the page date."""
+    ref_d = parse_day(ref)
+    if has(c, "v_live_evidence"):
+        q = ("select e.variant_id, substr(o.observed_at,1,10), s.name from v_live_evidence e join source_observation o on o.id=e.observation_id "
+             "join source s on s.id=e.source_id where e.field_name='price_ex_showroom' and e.decision in ('accepted','confirmed')")
+    else:
+        q = ("select e.variant_id, substr(o.observed_at,1,10), s.name from field_provenance e join source_observation o on o.id=e.source_observation_id "
+             "join source s on s.id=o.source_id where e.field_name='price_ex_showroom' and e.decision in ('accepted','confirmed')")
+    per = {}
+    for v, d, n in rows(c, q):
+        per.setdefault(v, []).append((d, n))
+    out = {"n": 0, "within30": 0, "within90": 0, "within180": 0, "older": 0, "import_only": 0, "no_evidence": 0, "price_missing": 0,
+           "latest": None, "import_date": None, "import_age": None}
+    for r in vrows:
+        if r.get("price_ex_showroom") is None:
+            out["price_missing"] += 1
+            continue
+        out["n"] += 1
+        lst = per.get(r["id"]) or (per.get(r["base_variant_id"]) if r["base_variant_id"] else None) or []
+        site = [d for d, n in lst if n != "v6_migration" and parse_day(d)]
+        if site:
+            d = max(site)
+            out["latest"] = max(out["latest"] or d, d)
+            age = max((ref_d - parse_day(d)).days, 0) if ref_d else None
+            if age is None or age > 180:
+                out["older"] += 1
+            else:
+                out["within180"] += 1
+                if age <= 90:
+                    out["within90"] += 1
+                if age <= 30:
+                    out["within30"] += 1
+        elif lst:
+            out["import_only"] += 1
+            idates = [d for d, n in lst if parse_day(d)]
+            if idates:
+                out["import_date"] = max(out["import_date"] or max(idates), max(idates))
+        else:
+            out["no_evidence"] += 1
+    if out["import_date"] and ref_d:
+        out["import_age"] = max((ref_d - parse_day(out["import_date"])).days, 0)
+    return out
+
+
+def spec_run(runs):
+    """Latest run of the listing-site pipeline that wrote to the knowledge base (brochure and review runs are separate)."""
+    c = [r for r in runs if r["json"].get("write") and r["json"].get("full") and r["json"].get("discovery")
+         and not r["name"].startswith(("brochure", "reviews", "audit"))]
+    return c[-1] if c else None
+
+
+def norm_name(s):
+    return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
+
+
+def norm_val(v):
+    if isinstance(v, bool):
+        return 1.0 if v else 0.0
+    if isinstance(v, str):
+        t = v.strip().lower()
+        if t in ("true", "yes"):
+            return 1.0
+        if t in ("false", "no"):
+            return 0.0
+        try:
+            return float(t)
+        except ValueError:
+            return t
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return v
+
+
+def backlog(c, runs, vrows):
+    """What the latest listing-site run found and did not apply. 'Still pending' means the knowledge base does not hold the proposed value."""
+    run = spec_run(runs)
+    if not run:
+        return None
+    pend = read_json(os.path.join(run["dir"], "pending.json"))
+    disc = read_json(os.path.join(run["dir"], "discovery.json")) or []
+    if not pend or not isinstance(pend.get("items"), list):
+        return None
+    byname = {(r["make"], r["_model"], r["_vname"]): r for r in vrows}
+    items = pend["items"]
+    kinds = {}
+    for i in items:
+        kinds[i["kind"]] = kinds.get(i["kind"], 0) + 1
+    cells = price_cells = fills = changes = unmatched = 0
+    still = price_still = 0
+    price_vars = set()
+    unlisted = new_var = new_var_open = 0
+    for i in items:
+        for o in i.get("ops") or []:
+            if o.get("op") == "cell":
+                cells += 1
+                isp = o.get("field") == "price_ex_showroom"
+                price_cells += 1 if isp else 0
+                if o.get("expect_old") is None:
+                    fills += 1
+                else:
+                    changes += 1
+                row = byname.get((o["make"], o["model"], o["variant"]))
+                if row is None:
+                    unmatched += 1
+                    continue
+                if norm_val(row.get(o["field"])) != norm_val(o["value"]):
+                    still += 1
+                    if isp:
+                        price_still += 1
+                        price_vars.add((o["make"], o["model"], o["variant"]))
+            elif o.get("op") == "discontinue":
+                unlisted += 1
+            elif o.get("op") == "add_variant":
+                new_var += 1
+                if (o["make"], o["model"], o["name"]) not in byname:
+                    new_var_open += 1
+    model_names = {(r["make"], norm_name(r["_model"])) for r in vrows}
+    missing = [d for d in disc if d.get("kind") == "NEW_MODEL" and (d["make"], norm_name(d["model"])) not in model_names]
+    one_site = [d for d in disc if d.get("kind") == "ONE_SITE_ONLY" and (d["make"], norm_name(d["model"])) not in model_names]
+    names = lambda ds: sorted("%s %s" % (d["make"], d["model"]) for d in ds)
+    rj = run["json"]
+    return {"run": run["name"], "date": run["started"][:10], "items": len(items), "kinds": kinds, "cells": cells, "price_cells": price_cells,
+            "cell_fills": fills, "cell_changes": changes, "cells_still_pending": still, "price_still_pending": price_still,
+            "price_variants_pending": len(price_vars), "cells_unmatched": unmatched, "unlisted_ops": unlisted,
+            "unlisted_record": (rj.get("stats") or {}).get("kb_variants_not_listed"), "cells_record": (rj.get("stats") or {}).get("cells_for_review"),
+            "new_variants": new_var, "new_variants_open": new_var_open, "missing_models": names(missing), "one_site_models": names(one_site),
+            "facelift": sorted("%s %s" % (i["make"], i["model"]) for i in items if i["kind"] == "FACELIFT"),
+            "discontinued_candidates": sorted("%s %s" % (i["make"], i["model"]) for i in items if i["kind"] == "DISCONTINUED_CANDIDATE"),
+            "out_of_scope": names([d for d in disc if d.get("kind") == "OUT_OF_SCOPE"]),
+            "price_cap": config.DEFAULTS.get("scope_max_base_price"),
+            "marked_discontinued": one(c, "select count(*) from variant where is_discontinued=1")}
+
+
+def duplicate_groups(c):
+    q = ("select count(*), coalesce(sum(n),0) from (select count(*) n from variant where price_ex_showroom is not null and base_variant_id is null "
+         "group by model_id, price_ex_showroom, powertrain_id, transmission having count(*)>1)")
+    r = rows(c, q)
+    return {"groups": r[0][0], "variants": r[0][1]} if r else None
+
+
+def crash_gap(c):
+    """Crash tests stored for a model that has no link to any variant of it, so the app shows the model as unrated."""
+    if not (has(c, "safety_test") and has(c, "v_safety_applicability_q")):
+        return None
+    models = rows(c, "select mo.id, ma.name, mo.name, (select count(*) from variant v where v.model_id=mo.id), "
+                     "(select count(*) from v_safety_applicability_q a where a.model_id=mo.id) from model mo join manufacturer ma on ma.id=mo.manufacturer_id")
+    tests = rows(c, "select tested_vehicle_name, aop_stars, resolution_status from safety_test")
+    total_var = sum(m[3] for m in models) or 1
+    unrated_var = sum(m[3] for m in models if m[4] == 0)
+    gap = []
+    for mid, make, name, nv, linked in models:
+        if linked:
+            continue
+        strip = set(norm_name(make).split()) | {"suzuki", "maruti"}
+        hit = None
+        for tname, stars, status in tests:
+            for part in str(tname).split("/"):
+                toks = [t for t in norm_name(part).split() if t not in strip]
+                if toks and " ".join(toks) == norm_name(name):
+                    hit = stars
+            if hit is not None:
+                break
+        if hit is not None:
+            gap.append({"model": "%s %s" % (make, name), "variants": nv, "stars": hit})
+    return {"models": gap, "variants": sum(g["variants"] for g in gap), "unrated_variants": unrated_var, "total_variants": total_var,
+            "tests": len(tests), "unlinked_tests": sum(1 for t in tests if t[2] != "RESOLVED")}
+
+
+def third_party(c):
+    out = {}
+    r = rows(c, "select count(*), count(distinct model_id), sum(quote is not null and quote<>''), max(length(quote)), avg(length(quote)), "
+                "sum(note is not null and note<>''), min(published_on), max(published_on) from professional_assessment where status='current'")
+    if r:
+        n, m, q, mx, av, notes, d0, d1 = r[0]
+        out["expert"] = {"rows": n or 0, "models": m or 0, "quotes": q or 0, "quote_max": mx, "quote_mean": av, "notes": notes or 0, "from": d0, "to": d1}
+    r = rows(c, "select count(*), count(distinct model_id) from owner_rating where status='current'")
+    if r:
+        out["owner"] = {"rows": r[0][0] or 0, "models": r[0][1] or 0}
+    r = rows(c, "select count(*), count(distinct model_id), coalesce(sum(mentions<=3),0), coalesce(sum(mentions<5),0) from owner_theme")
+    if r:
+        out["themes"] = {"rows": r[0][0] or 0, "models": r[0][1] or 0, "le3": r[0][2] or 0, "lt5": r[0][3] or 0}
+    return out
+
+
+def audit_spot_check(path):
+    """The independent reviewer's tally of 40 values judged from memory (read from the audit file when present)."""
+    try:
+        txt = open(path, encoding="utf-8").read()
+    except OSError:
+        return None
+    m = re.search(r"Tally:\s*(\d+) look right,\s*(\d+) look wrong,\s*(\d+) I doubt", txt)
+    return {"right": int(m.group(1)), "wrong": int(m.group(2)), "doubt": int(m.group(3))} if m else None
+
+
+def date_block(c, runs):
+    writes = [r for r in runs if r["json"].get("write")]
+    spec = spec_run(runs)
+    return {"last_write": writes[-1]["started"][:10] if writes else None, "last_write_run": writes[-1]["name"] if writes else None,
+            "last_spec": spec["started"][:10] if spec else None, "last_spec_run": spec["name"] if spec else None,
+            "newest_observation": one(c, "select max(substr(observed_at,1,10)) from source_observation", default=None)}
+
+
+def planted_by_run(runs):
+    out = []
+    for r in runs:
+        pl = read_jsonl(os.path.join(r["dir"], "verify", "planted.jsonl"))
+        if pl:
+            out.append({"name": r["name"], "n": len(pl), "caught": sum(1 for x in pl if x.get("verdict") == "mismatch"),
+                        "error": sum(1 for x in pl if x.get("verdict") == "verifier_error")})
+    return out
+
+
 def values_and_coverage(c, vrows, fields):
     ev = evidence_sets(c)
+    cev = cell_evidence(c)
     values = with_ev = with_url = 0
+    classes = {k: 0 for k in EV_ORDER}
+    by_field = {f: {k: 0 for k in EV_ORDER} for f in fields}
+    brochure_page = 0
     makes = sorted({r["make"] for r in vrows})
     slot = {m: {g: [0, 0] for g in F.GROUPS} for m in makes + ["All makes"]}
     for r in vrows:
@@ -150,6 +445,12 @@ def values_and_coverage(c, vrows, fields):
             if hit is not None:
                 with_ev += 1
                 with_url += 1 if hit else 0
+            entry = cev.get(key_own) or (cev.get(key_base) if r["base_variant_id"] else None)
+            cls = classify_cell(entry)
+            classes[cls] += 1
+            by_field[f][cls] += 1
+            if cls == "brochure" and entry[1]:
+                brochure_page += 1
         for g in F.GROUPS:
             gf = [f for f in fields if F.FIELDS[f][2] == g]
             if not gf:
@@ -168,7 +469,8 @@ def values_and_coverage(c, vrows, fields):
             "pct": [[(slot[m][g][0] / slot[m][g][1]) if slot[m][g][1] else None for g in F.GROUPS] for m in makes + ["All makes"]],
             "n_variants": [nvar[m] for m in makes + ["All makes"]],
             "fields_per_group": {g: [f for f in fields if F.FIELDS[f][2] == g] for g in F.GROUPS}}
-    return {"values": values, "with_evidence": with_ev, "with_url": with_url, "n_fields": len(fields)}, heat
+    return {"values": values, "with_evidence": with_ev, "with_url": with_url, "n_fields": len(fields), "classes": classes,
+            "brochure_page": brochure_page, "by_field": by_field}, heat
 
 
 def per_make(c):
@@ -689,6 +991,30 @@ def engine_data(recsys_dir):
     newr = [r for r in (cat["data"] if cat else []) if (r.get("variant_id") or "").isdigit() and int(r["variant_id"]) > 833]
     if newr:   # the rows added after the original 832 variants: how much of the fields once missing is now filled
         E["added_fill"] = {"rows": len(newr), **{c: sum(1 for r in newr if r.get(c)) / len(newr) for c in ("length_mm", "abs", "esc", "adas_available")}}
+    if cat:
+        E["blank_share"] = {col: sum(1 for r in cat["data"] if not (r.get(col) or "").strip()) / len(cat["data"]) for col in ("adas_available", "sunroof")
+                            if col in cat["cols"]}
+    # the later audit-style figure that counts a blank as not met, when its result file exists
+    af = read_json(os.path.join(res_dir, "audit_fix_v3_main.json"))
+    E["verified_satisfaction"] = None
+    if isinstance(af, dict):
+        def walk(o, path=""):
+            if isinstance(o, dict):
+                for k, v in o.items():
+                    if "verified" in str(k).lower() and "satisf" in (str(k) + path).lower() and isinstance(v, dict):
+                        return v
+                    r = walk(v, path + "/" + str(k))
+                    if r is not None:
+                        return r
+            return None
+        E["verified_satisfaction"] = walk(af.get("summary", af))
+    # was the second query set used again after the parser changed? (read only: local git history)
+    first = git(root, "log", "--diff-filter=A", "--format=%H %cI", "--", "eval/heldout_queries.jsonl")
+    if first and first.strip():
+        sha, when = first.strip().splitlines()[-1].split()
+        after = git(root, "log", "--format=%h", "%s..HEAD" % sha, "--", "services/intent_v2.py", "services/typos.py", "services/recsys/llm_parse.py")
+        E["heldout_reuse"] = {"written": when[:10], "parser_commits_after": len([x for x in (after or "").split() if x]),
+                              "result_files": len(glob.glob(os.path.join(res_dir, "*heldout*.json")))}
     # shortlist size
     sheet = csv_stats(os.path.join(root, "eval", "shortlist_sheet.csv"), "id")
     if sheet:
@@ -702,7 +1028,8 @@ def engine_data(recsys_dir):
                        "model_names": sorted({r["model"] for r in a["data"]})}
     o = csv_stats(os.path.join(root, "data", "owner_ratings.csv"))
     if o:
-        E["owner"] = {"rows": o["rows"], "models": o["models"], "low_conf_models": len({r["model"] for r in o["data"] if r.get("low_confidence") == "true"})}
+        ov = [float(r["raw_score"]) for r in o["data"] if r.get("source_aspect") == "overall" and r.get("raw_score")]
+        E["owner"] = {"mean_overall": (sum(ov) / len(ov)) if ov else None, "scale": 5, "rows": o["rows"], "models": o["models"], "low_conf_models": len({r["model"] for r in o["data"] if r.get("low_confidence") == "true"})}
     t = csv_stats(os.path.join(root, "data", "owner_themes.csv"))
     if t:
         E["themes"] = {"rows": t["rows"], "models": t["models"]}
@@ -990,6 +1317,23 @@ table{border-collapse:collapse;width:100%}
 .limits em{display:block;font-style:normal;font-size:.8125rem;color:var(--ink-3);margin-top:2px}
 .api li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:var(--s1);padding:var(--s1) 0;border-bottom:1px solid var(--line);font-size:var(--text-sm)}
 .api .m{font-family:var(--mono);font-weight:700;color:var(--accent-text)}
+/* evidence strength, plain statements */
+.plain{font-size:var(--text-lg);line-height:1.5;max-width:42em;color:var(--ink);text-wrap:pretty}
+.stackbar.evbar{height:36px;border-radius:var(--r-ctl)}
+.stackbar .ev-b{fill:var(--good)}.stackbar .ev-2{fill:var(--accent)}.stackbar .ev-1{fill:var(--neutral)}.stackbar .ev-i{fill:var(--warn-text)}.stackbar .ev-n{fill:var(--line-strong)}
+.sw.ev-b{background:var(--good)}.sw.ev-2{background:var(--accent)}.sw.ev-1{background:var(--neutral)}.sw.ev-i{background:var(--warn-text)}.sw.ev-n{background:var(--line-strong)}
+.evrows{margin-top:var(--s2);border-top:1px solid var(--line)}
+.evrow{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:var(--s1);padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.evrow .sw{margin-top:5px}
+.evrow b{font-weight:680}
+.evrow .d{display:block;margin-top:2px;color:var(--ink-2);font-size:var(--text-sm);max-width:52em}
+.evrow .n{text-align:right;font-weight:720;font-size:1.125rem;white-space:nowrap}
+.evrow .n small{display:block;color:var(--ink-2);font-weight:550;font-size:var(--text-sm)}
+.notice ul{list-style:disc;padding-left:1.25rem;margin-top:var(--s0);display:grid;gap:6px}
+.notice p+p,.notice p+ul{margin-top:var(--s0)}
+.facts.sm dt{max-width:34em}
+.facts.sm dd{width:auto;min-width:10.5ch}
+.landing-ev{margin-top:var(--s5)}
 /* footer */
 .site-footer{margin-top:var(--s6);padding-block:var(--s3);border-top:1px solid var(--line);font-size:var(--text-sm);color:var(--ink-3)}
 .site-footer .wrap{display:flex;flex-wrap:wrap;gap:var(--s0) var(--s3);justify-content:space-between}
@@ -1108,16 +1452,20 @@ def shell(cur, title, body, ctx, desc=""):
             '<div class="hdr-right"><nav class="nav" aria-label="Project pages">%s</nav>'
             '<button class="btn" id="themebtn" type="button" aria-label="Change colour theme"><span class="lbl">Theme: </span>Auto</button></div></div></header>\n'
             '<main>\n%s\n</main>\n'
-            '<footer class="site-footer"><div class="wrap"><p>Generated on <b>%s</b> from knowledge base snapshot <span class="mono">%s</span>. '
-            'Every figure on this page is computed from the knowledge base, the pipeline run records or the recommender files, and the source is named beside it.</p>'
+            '<footer class="site-footer"><div class="wrap"><p>Page generated on <b>%s</b> from knowledge base snapshot <span class="mono">%s</span>. This is the date the page was built, not the date the data was updated: '
+            'the knowledge base was last written on <b>%s</b> and the listing-site pipeline last ran in full on <b>%s</b>. '
+            'Figures are computed from the knowledge base, the pipeline run records and the recommender files, with the source named beside each; a few statements are marked as taken from an independent audit.</p>'
             '<p>CarRec project pages</p></div></footer>\n<script>%s</script>\n</body>\n</html>\n'
-            % (E(title), E(desc), CSS, home, logo_svg(), "".join(nav), body, E(m["generated"]), E(m["kb_hash8"]), JS))
+            % (E(title), E(desc), CSS, home, logo_svg(), "".join(nav), body, E(m["generated"]), E(m["kb_hash8"]), E(day_text(m["dates"]["last_write"])),
+               E(day_text(m["dates"]["last_spec"])), JS))
 
 
 def page_head(title, lede, ctx, extra=""):
     m = ctx["meta"]
-    return ('<div class="page-head wrap"><h1>%s</h1><p class="lede">%s</p><div class="meta"><span>Generated <b>%s</b></span>'
-            '<span>Knowledge base snapshot <b class="mono">%s</b></span>%s</div></div>' % (E(title), E(lede), E(m["generated"]), E(m["kb_hash8"]), extra))
+    return ('<div class="page-head wrap"><h1>%s</h1><p class="lede">%s</p><div class="meta"><span>Page generated <b>%s</b></span>'
+            '<span>Knowledge base last written <b>%s</b></span><span>Last full pipeline run <b>%s</b></span>'
+            '<span>Snapshot <b class="mono">%s</b></span>%s</div></div>' % (E(title), E(lede), E(m["generated"]), E(day_text(m["dates"]["last_write"])),
+                                                                         E(day_text(m["dates"]["last_spec"])), E(m["kb_hash8"]), extra))
 
 
 def section(id_, title, lede, inner):
@@ -1129,10 +1477,154 @@ def src(text):
     return '<p class="src"><b>Source:</b> %s</p>' % E(text)
 
 
+# ---------------------------------------------------------------- evidence, price and backlog views (shared by the pages)
+def day_text(s):
+    d = parse_day(s)
+    return d.strftime("%d %b %Y").lstrip("0") if d else "n/a"
+
+
+def evidence_sentence(g):
+    cl, tot = g["classes"], g["values"] or 1
+    return ("Of %s stored values, %s rest on a maker's brochure, %s on two or more listing sites, %s on one listing site, and %s only on the June 2026 import, "
+            "which recorded no source address. %s have no live evidence row at all."
+            % (fmt(tot), pct(cl["brochure"] / tot), pct(cl["two_sites"] / tot), pct(cl["one_site"] / tot), pct(cl["import"] / tot), pct(cl["none"] / tot)))
+
+
+def verified_sentence(T):
+    if not T:
+        return "No independent check results were found, so no stored value can be called verified."
+    o = T["overall"]
+    d = o["match"] + o["mismatch"]
+    return ("A value is called verified here only if an independent check re-read its source and found the same value. That is true of %s values, in a sample of %s cells (audit run %s): "
+            "%s of %s decided cells agreed and %s could not be reached. The other stored values have not been independently checked, and a sample audit is not a guarantee for any of them."
+            % (fmt(o["match"]), fmt(o["n"]), T["run"], fmt(o["match"]), fmt(d), fmt(o["unreachable"])))
+
+
+def evidence_bar(g):
+    cl, tot = g["classes"], g["values"] or 1
+    label = "Stored values by strongest evidence: " + "; ".join("%s %s" % (EV_LABEL[k], pct(cl[k] / tot)) for k in EV_ORDER)
+    return stackbar([(cl[k], EV_CLS[k], EV_LABEL[k]) for k in EV_ORDER], label).replace('class="stackbar"', 'class="stackbar evbar"')
+
+
+def evidence_view(D):
+    g, H, T = D["glance"], D["honest"], D["trust"]
+    cl, tot = g["classes"], g["values"] or 1
+    items = []
+    for k in EV_ORDER:
+        plain = EV_PLAIN[k]
+        if k == "brochure":
+            plain += " %s of these %s cells rest on rows that name the page." % (fmt(g["brochure_page"]), fmt(cl[k]))
+        items.append('<li class="evrow"><i class="sw %s" aria-hidden="true"></i><div><b>%s</b><span class="d">%s</span></div><div class="n">%s<small>%s</small></div></li>'
+                     % (EV_CLS[k], E(EV_LABEL[k]), E(plain), fmt(cl[k]), pct(cl[k] / tot)))
+    out = ('<p class="plain">%s</p><div style="margin-top:var(--s2)">%s</div><ul class="evrows">%s</ul>' % (E(evidence_sentence(g)), evidence_bar(g), "".join(items)))
+    out += '<div class="notice" style="margin-top:var(--s2)"><strong>What &ldquo;verified&rdquo; means here.</strong> %s</div>' % E(verified_sentence(T))
+    ad = H.get("audit_def")
+    if ad and ad["total"]:
+        def rowtab(name, cls, total, nf):
+            return "<tr><td>%s</td><td class=\"n\">%s</td>%s</tr>" % (E(name), fmt(total), "".join('<td class="n">%s</td>' % pct(cls[k] / total) for k in EV_ORDER))
+        diff = max(abs(cl[k] / tot - ad["classes"][k] / ad["total"]) for k in EV_ORDER)
+        out += ('<div class="sub"><h3>The same count under the independent audit&rsquo;s rule</h3><div class="tbl-wrap" tabindex="0" role="region" aria-label="Evidence breakdown under two counting rules"><table class="tbl" style="min-width:680px"><thead><tr><th>Counting rule</th><th class="n">Values</th>%s</tr></thead><tbody>%s%s</tbody></table></div>'
+                '<p class="note">This page counts the %d tracked fields after quarantined cells are masked, and lets an edition variant inherit the evidence of its base trim. The audit counted %d columns of the raw tables and looked up evidence on each variant only. '
+                'The two rules differ by at most %.1f percentage points in any class. Under the audit&rsquo;s rule the import-only share is %s and the brochure share %s.</p></div>'
+                % ("".join('<th class="n">%s</th>' % E(EV_LABEL[k]) for k in EV_ORDER),
+                   rowtab("This page", cl, tot, g["n_fields"]), rowtab("Audit rule", ad["classes"], ad["total"], ad["n_fields"]), g["n_fields"], ad["n_fields"], diff * 100,
+                   pct(ad["classes"]["import"] / ad["total"]), pct(ad["classes"]["brochure"] / ad["total"])))
+    wf = []
+    for f, c_ in g["by_field"].items():
+        n = sum(c_.values())
+        if n >= 200:
+            wf.append((c_["import"] / n, f, n, c_["import"]))
+    wf.sort(reverse=True)
+    if wf:
+        out += ('<div class="sub"><h3>Fields that rest most often on the import alone</h3>%s<p class="note">Fields with at least 200 stored values, ranked by the share of those values whose only evidence is the import.</p></div>'
+                % "".join(bar_row(f.replace("_", " "), sh, "%s of %s" % (pct(sh, 0), fmt(n)), "wide") for sh, f, n, k in wf[:6]))
+    return out + src("live evidence rows by source (quarantined rows excluded) for every non-blank stored value, knowledge base snapshot; verification file of run %s" % (T["run"] if T else "n/a"))
+
+
+def price_view(D):
+    P, H = D["honest"]["price"], D["honest"]
+    B, dt = H.get("backlog"), H["dates"]
+    n = P["n"] or 1
+    bars = "".join(bar_row(l, v / n, "%s (%s)" % (fmt(v), pct(v / n)), "wide") for l, v in [
+        ("Price read from a site or brochure within 30 days", P["within30"]), ("within 90 days", P["within90"]), ("within 180 days", P["within180"]),
+        ("Only the June import (no later price evidence)", P["import_only"]), ("No price evidence", P["no_evidence"])])
+    dates = ('<dl class="facts sm" style="margin-top:var(--s2)"><div><dt>Page generated (the build date of this page, not a data date)</dt><dd>%s</dd></div>'
+             '<div><dt>Last write to the knowledge base</dt><dd>%s</dd></div><div><dt>Last full run of the listing-site pipeline</dt><dd>%s</dd></div>'
+             '<div><dt>Newest price evidence on any variant</dt><dd>%s</dd></div></dl>'
+             % (E(day_text(D["meta"]["generated"])), E(day_text(dt["last_write"])), E(day_text(dt["last_spec"])), E(day_text(P["latest"]))))
+    imp = ("The import is dated %s, %s days before this page was built." % (day_text(P["import_date"]), fmt(P["import_age"]))) if P["import_date"] else ""
+    pend = ""
+    if B:
+        pend = ("<p class=\"plain\" style=\"margin-top:var(--s2)\">The pipeline has found %s changed prices on existing variants (run %s). None has been applied: changed prices wait for the owner&rsquo;s approval, so the stored price can differ from the current showroom price.</p>"
+                % (fmt(B["price_still_pending"]), E(B["run"])))
+    return ('<p class="plain">Prices are ex-showroom list prices and may be out of date. %s of %s variants (%s) have price evidence from a listing site or brochure within 180 days of the page date. '
+            '%s variants (%s) rest only on the June 2026 import. %s</p><div style="margin-top:var(--s2)">%s</div>%s%s%s'
+            % (fmt(P["within180"]), fmt(P["n"]), pct(P["within180"] / n), fmt(P["import_only"]), pct(P["import_only"] / n), imp, bars, pend, dates,
+               src("price evidence rows (accepted or confirmed, quarantine excluded) joined to the date each page was read; pending changes from the review file of run %s" % (B["run"] if B else "n/a"))))
+
+
+def gaps_view(D):
+    H = D["honest"]
+    B, dup, cg, sp = H.get("backlog"), H.get("duplicates"), H.get("crash"), H.get("spot")
+    out = ""
+    gaps = []
+    if B:
+        out += ('<dl class="facts sm"><div><dt>Cells where the sites differ from the knowledge base or could fill a blank, not applied</dt><dd>%s</dd></div>'
+                '<div><dt>of those, price cells</dt><dd>%s</dd></div><div><dt>Variants the sites no longer list, not marked</dt><dd>%s</dd></div>'
+                '<div><dt>New variants waiting for approval</dt><dd>%s</dd></div><div><dt>Models both sites list that are not in the knowledge base</dt><dd>%s</dd></div>'
+                '<div><dt>Variants marked discontinued</dt><dd>%s</dd></div></dl>'
+                % (fmt(B["cells_still_pending"]), fmt(B["price_still_pending"]), fmt(B["unlisted_ops"]), fmt(B["new_variants_open"]), fmt(len(B["missing_models"])),
+                   fmt(B["marked_discontinued"])))
+        out += src("review file of run %s (%s): each proposed value was compared with the knowledge base snapshot, and counted only if the knowledge base does not hold it" % (B["run"], B["date"]))
+        gaps.append(("Changes to existing values are held, not applied.",
+                     "The pipeline writes new variants and blanks only when two sites agree. A value that differs from the stored one waits for the owner: %s cells (%s of them prices) from run %s are in that queue, and none has been applied."
+                     % (fmt(B["cells_still_pending"]), fmt(B["price_still_pending"]), B["run"]), "review file of that run"))
+        gaps.append(("Variants missing from the listings can still be recommended.", "%s variants were not found in the current listings. They are recorded for review, not marked discontinued (%s are marked), so the engine can still recommend them. Some may only have been renamed." % (fmt(B["unlisted_ops"]), fmt(B["marked_discontinued"])), "review file; knowledge base snapshot"))
+        if B["missing_models"]:
+            gaps.append(("Models listed by both sites that the knowledge base lacks.", "%s models are listed as current on both CarWale and CarDekho but have no variants here: %s." % (fmt(len(B["missing_models"])), ", ".join(B["missing_models"])), "discovery file of run %s" % B["run"]))
+        if B["out_of_scope"]:
+            gaps.append(("Models left out by a price ceiling.", "The pipeline skips models whose base price is above Rs %s. Listed but not added for that reason: %s." % (fmt(B["price_cap"]), ", ".join(B["out_of_scope"])), "discovery file of run %s" % B["run"]))
+        if B["one_site_models"]:
+            gaps.append(("Models listed by one site only.", "%s names appear on CarDekho alone (for example tour and cargo versions); one site is not enough to add a model: %s." % (fmt(len(B["one_site_models"])), ", ".join(B["one_site_models"])), "discovery file of run %s" % B["run"]))
+        if B["facelift"]:
+            gaps.append(("Models that may describe an older version.", "CarWale gives a launch date later than the first data held for: %s. Their rows are held for review and may describe the earlier version." % ", ".join(B["facelift"]), "review file of run %s" % B["run"]))
+        if B["discontinued_candidates"]:
+            gaps.append(("Possibly discontinued.", "%s: one site no longer lists it and the other marks it discontinued. It is still in the knowledge base." % ", ".join(B["discontinued_candidates"]), "review file of run %s" % B["run"]))
+    if dup and dup["groups"]:
+        gaps.append(("Probable duplicate variants.", "%s groups (%s variants) share model, price, engine and gearbox. Some are real trims with one price; others are the same car stored under two naming styles, so the variant count is higher than the number of distinct cars." % (fmt(dup["groups"]), fmt(dup["variants"])), "knowledge base snapshot"))
+    if cg and cg["models"]:
+        gaps.append(("Crash ratings stored but not linked.", "%s models have a crash test in the database that is not linked to them, covering %s variants: %s. The app shows these as having no rating on record. %s of %s variants have no linked crash rating. Re-linking is a data change that has not been made." % (fmt(len(cg["models"])), fmt(cg["variants"]), ", ".join("%s (%s-star adult)" % (m["model"], m["stars"]) for m in cg["models"]), fmt(cg["unrated_variants"]), fmt(cg["total_variants"])), "crash-test and link tables, knowledge base snapshot"))
+    t = H.get("third", {})
+    ex = t.get("expert")
+    if ex and ex.get("from"):
+        gaps.append(("Expert scores are dated.", "Autocar India scores were published between %s and %s. A model changed after its review may be scored on the earlier car." % (day_text(ex["from"]), day_text(ex["to"])), "expert score rows"))
+    th = t.get("themes")
+    if th and th["rows"]:
+        gaps.append(("Some owner themes rest on very few reviews.", "%s of %s owner theme rows rest on 3 or fewer mentions, and %s on fewer than 5, out of a sample of reviews per model." % (fmt(th["le3"]), fmt(th["rows"]), fmt(th["lt5"])), "owner theme table"))
+    if sp:
+        gaps.append(("An independent spot check found errors.", "A reviewer judged 40 stored values from memory, not from a source lookup: %s looked right, %s looked wrong and %s were doubtful. The reviewer saw the errors cluster in fields that rest on the import alone and in recently added models." % (fmt(sp["right"]), fmt(sp["wrong"]), fmt(sp["doubt"])), "independent audit file"))
+    if gaps:
+        out += '<ul class="limits" style="margin-top:var(--s2)">%s</ul>' % "".join("<li><b>%s</b> %s<em>%s</em></li>" % (E(a), E(b), E(c)) for a, b, c in gaps)
+    return out
+
+
+def notice_third_party(D, where):
+    t = D["honest"].get("third", {})
+    ex, ow, th = t.get("expert"), t.get("owner"), t.get("themes")
+    parts = []
+    if ex and ex["rows"]:
+        parts.append("From Autocar India: %s expert scores for %s models, %s short summaries written in the project&rsquo;s own words, and %s short quotes (longest %s characters), each with a link to the page it came from." % (fmt(ex["rows"]), fmt(ex["models"]), fmt(ex["notes"]), fmt(ex["quotes"]), fmt(ex["quote_max"])))
+    if ow and ow["rows"]:
+        parts.append("From CarWale: owner ratings (%s rows for %s models)%s, with links to the review pages." % (fmt(ow["rows"]), fmt(ow["models"]), (" and %s themes distilled from sampled owner reviews, in the project&rsquo;s own words" % fmt(th["rows"])) if th and th["rows"] else ""))
+    if not parts:
+        return ""
+    return ('<div class="notice"><strong>Third-party content.</strong> %s This content remains that of Autocar India and CarWale. The project is non-commercial. To ask for something to be removed, contact: see repository.</div>' % " ".join(parts))
+
+
 # ---------------------------------------------------------------- landing page
 def three_box(ctx, small=False):
     w, h = 1000, 150
-    boxes = [("Pipeline", "Reads, checks and writes", "pipeline.html"), ("Knowledge base", "Every value has evidence", "kb.html"),
+    boxes = [("Pipeline", "Reads, checks, writes", "pipeline.html"), ("Knowledge base", "Values and their evidence", "kb.html"),
              ("Recommendation engine", "Ranks cars for a query", "engine.html")]
     out = []
     for i, (t, s, href) in enumerate(boxes):
@@ -1150,43 +1642,55 @@ def three_box(ctx, small=False):
 
 
 def page_index(D, ctx):
-    g, P, T, E_ = D["glance"], D["pipeline"], D["trust"], D["engine"]
+    g, P, T, E_, H = D["glance"], D["pipeline"], D["trust"], D["engine"], D["honest"]
     wr = sum(1 for r in D["history"] if r["wrote"])
     fetch = P.get("fetch") or {}
     pages_read = (fetch.get("network", 0) + fetch.get("cache", 0)) if fetch else None
     gates = P.get("gates") or {}
+    cl, tot = g["classes"], g["values"] or 1
     cards = []
 
     def facts(items):
         return '<dl class="facts sm">%s</dl>' % "".join('<div><dt>%s</dt><dd>%s</dd></div>' % (E(l), E(v)) for v, l in items)
+    B = H.get("backlog")
     cards.append(('pipeline.html', "The pipeline",
-                  "A scripted run that reads two car sites and manufacturer brochures, links what they say to each variant, and writes only what passes four checks.",
-                  facts([(fmt(wr), "runs applied to the knowledge base"), (fmt(pages_read), "pages read in the latest full run"),
-                         ("%d of %d" % (sum(1 for v in gates.values() if v.get("ok")), len(gates)) if gates else "n/a", "gates passed in that run")]),
+                  "A scripted run that reads two car sites and manufacturer brochures, links what they say to each variant, and writes new variants and blanks that pass four checks. "
+                  "Changes to values already stored wait for the owner.",
+                  facts([(fmt(wr), "runs applied to the knowledge base"), (fmt(pages_read), "pages read in the latest run"),
+                         (fmt(B["cells_still_pending"]) if B else "n/a", "proposed changes not applied")]),
                   "Walk through the pipeline"))
+    o = T["overall"] if T else None
     cards.append(('kb.html', "The knowledge base",
-                  "A database of new cars sold in India. Each value can be traced to the page or brochure it came from, and a sample is re-checked against its source.",
-                  facts([(fmt(g["variants"]), "variants in %s models" % fmt(g["models"])), (fmt(g["with_evidence"]), "of %s values have evidence rows" % fmt(g["values"])),
-                         (pct(T["overall"]["accuracy"]) if T else "n/a", "of audited cells matched their source")]),
+                  "A database of new cars sold in India. Each stored value is shown with the strongest evidence behind it, and some rest only on an import with no recorded source.",
+                  facts([(pct(cl["brochure"] / tot), "of values backed by a brochure page"), (pct(cl["import"] / tot), "of values with only the June 2026 import"),
+                         ("%s of %s" % (fmt(o["match"]), fmt(o["n"])) if o else "n/a", "sampled values confirmed by a second check")]),
                   "See what it holds"))
     if E_.get("found") and E_.get("v3_main"):
         v = E_["v3_main"]
-        eng = facts([(fmt(v["n_queries"]), "queries in the main evaluation"), ("%s of %s" % (fmt(v["zero_viol"]), fmt(v["with_cars"])), "answers met every stated requirement"),
-                     ("%.2f" % v["recall8"] if v.get("recall8") is not None else "n/a", "recall@8 on 40 hand-labelled shortlists")])
+        eng = facts([(fmt(v["n_queries"]), "test queries, written by the project's author"), ("%s of %s" % (fmt(v["zero_viol"]), fmt(v["with_cars"])), "answers met every stated requirement, counting blank values as met"),
+                     ("%.2f" % v["recall8"] if v.get("recall8") is not None else "n/a", "recall@8, 40 queries labelled by one person")])
     else:
         eng = '<p class="empty">Recommender data not found when this page was generated.</p>'
     cards.append(('engine.html', "The recommendation engine",
-                  "Turns a plain-language request into a ranked list. Hard requirements are never broken silently, and a missing value is treated as unknown, not as no.",
+                  "Turns a plain-language request into a ranked list. A feature that is blank for a car does not rule it out, and the card says the value is unknown.",
                   eng, "See how it ranks"))
     cs = "".join('<a class="card pcard" href="%s"><h2>%s</h2><p>%s</p>%s<span class="go">%s &rarr;</span></a>' % (h, E(t), E(p), f, E(b)) for h, t, p, f, b in cards)
-    body = (page_head("CarRec", "CarRec recommends new cars sold in India. It rests on a knowledge base in which every value points to its source. "
-                                "A pipeline builds and maintains that knowledge base, and a recommendation engine ranks cars from it. "
-                                "Each part has its own page.", ctx)
+    P_ = H["price"]
+    lede = ("CarRec recommends new cars sold in India from a knowledge base of %s variants. The strongest evidence for %s of the stored values is the June 2026 import, which recorded no source, "
+            "and %s of %s variants have no price evidence newer than that import. A pipeline builds and updates the knowledge base, and a recommendation engine ranks cars from it. Each part has its own page."
+            % (fmt(g["variants"]), pct(cl["import"] / tot), fmt(P_["import_only"]), fmt(P_["n"])))
+    body = (page_head("CarRec", lede, ctx)
             + '<section class="section"><div class="wrap"><div class="panel" style="padding:24px 16px">%s</div></div></section>' % three_box(ctx)
             + '<section class="section"><div class="wrap"><div class="grid g3">%s</div>%s</div></section>'
             % (cs, '<p class="note">Figures: pipeline run records (run %s), the knowledge base snapshot, the audit run %s and the recommender evaluation files.</p>'
-               % (E(P.get("run") or "n/a"), E(T["run"] if T else "n/a"))))
-    return shell("index.html", "CarRec overview", body, ctx, "CarRec: a car knowledge base, the pipeline that maintains it and the engine that reads it.")
+               % (E(P.get("run") or "n/a"), E(T["run"] if T else "n/a")))
+            + section("evidence", "How well the stored values are backed", "", '<p class="plain">%s</p><div style="margin-top:var(--s2)">%s</div>'
+                      '<div class="legend" style="margin-top:12px">%s</div><p class="note"><a href="kb.html#evidence">Breakdown, price age and known gaps on the knowledge base page</a></p>%s'
+                      % (E(evidence_sentence(g)), evidence_bar(g),
+                         "".join('<span><i class="sw %s"></i>%s %s</span>' % (EV_CLS[k], E(EV_LABEL[k]), pct(cl[k] / tot)) for k in EV_ORDER),
+                         src("live evidence rows by source for every stored value, knowledge base snapshot")))
+            + '<section class="section"><div class="wrap"><div class="notice"><strong>What &ldquo;verified&rdquo; means here.</strong> %s</div></div></section>' % E(verified_sentence(T)))
+    return shell("index.html", "CarRec overview", body, ctx, "CarRec: a car knowledge base, the pipeline that maintains it and the engine that reads it, with the evidence behind each stated.")
 
 
 # ---------------------------------------------------------------- pipeline page
@@ -1273,7 +1777,7 @@ def page_pipeline(D, ctx):
     b = ('<div class="ex"><h3 class="lbl">How %s sorted every model it saw on the two sites</h3>%s</div>%s'
          % (E(runlab), "".join(bar_row(lab.get(k, k), v / mx, fmt(v)) for k, v in sorted(disc.items(), key=lambda kv: -kv[1])), src("discovery counts, " + runlab)))
     blocks.append(stage_block(2, "discover", "Discover", "Find out what is new, changed or gone before reading any page in detail.",
-                              "A full read of every model is slow and polite sites should not be hammered. Sorting the listing first means an incremental run only touches models whose listing changed.", b,
+                              "A full read of every model is slow, and each site is limited to one request every few seconds. Sorting the listing first means an incremental run only touches models whose listing changed.", b,
                               [(fmt(disc.get("NEW_MODEL")), "new models found", runlab), (fmt(P.get("processed")), "models processed", runlab), (fmt(disc.get("OUT_OF_SCOPE")), "left out by the price ceiling", runlab)]))
     # 3 extract
     pv = P.get("provenance")
@@ -1291,7 +1795,7 @@ def page_pipeline(D, ctx):
     if not ex:
         ex = '<p class="empty">No extraction example could be built from this snapshot.</p>'
     blocks.append(stage_block(3, "extract", "Extract", "Read each page's embedded data and keep every value with its address, time and method.",
-                              "Reading structured data is repeatable: the same page gives the same value. A value without an address could not be checked later.", ex + src("knowledge base snapshot, observation payloads for the variant shown"),
+                              "Reading structured data is repeatable: the same page gives the same value. A value without an address cannot be checked later, and the June 2026 import has none.", ex + src("knowledge base snapshot, observation payloads for the variant shown"),
                               [(fmt((fetch.get("network") or 0) + (fetch.get("cache") or 0)) if fetch else None, "pages read", "%s (%s fetched, %s from cache)" % (runlab, fmt(fetch.get("network")), fmt(fetch.get("cache")))),
                                (fmt(fetch.get("failed")) if fetch else None, "page fetches that failed", runlab),
                                ("%.1f MB" % (fetch["bytes"] / 1e6) if fetch.get("bytes") else None, "downloaded", runlab)]))
@@ -1334,11 +1838,11 @@ def page_pipeline(D, ctx):
                % (E(ce2["make"]), E(ce2["model"]), E(ce2["variant"]), E(ce2["field"].replace("_", " ")), kvlist([("Values", E(ce2["values"])), ("Logged resolution", E(ce2["resolution"]))])))
     b = '<div class="grid g2" style="align-items:start"><div class="ex"><h3 class="lbl">The rule</h3>%s</div><div class="ex"><h3 class="lbl">Two logged cases</h3>%s</div></div>%s' % (ladder, cx or '<p class="empty">No conflict log.</p>', src("conflict log and run record, " + runlab))
     blocks.append(stage_block(5, "reconcile", "Reconcile", "Compare what the sources say and apply the ranking.",
-                              "One source can be wrong or stale. Requiring two to agree, or a brochure to decide, keeps a single bad page from becoming a fact.", b,
+                              "One source can be wrong or stale. Requiring two to agree, or a brochure to decide, means a single page cannot change a value by itself. Two sites can still be wrong together.", b,
                               [(fmt(P.get("conflicts_total")), "disagreements logged", runlab + ", %s of them high-impact" % fmt(st.get("high_conflicts"))), (fmt(st.get("cells_confirmed")), "existing cells confirmed by both sites", runlab),
                                (fmt(st.get("cells_null_SINGLE_SOURCE")), "cells left blank because only one site had a value", runlab)]))
     # 6 gates
-    gl = {"schema": ("Schema intact", "The database structure is unchanged and the integrity check passes."), "provenance": ("Every value has provenance", "Each new or changed value has at least one evidence row."),
+    gl = {"schema": ("Schema intact", "The database structure is unchanged and the integrity check passes."), "provenance": ("Every new value has provenance", "Each new or changed value has at least one evidence row."),
           "rows": ("No rows lost", "No table ends with fewer rows than it started with."), "explained": ("Every change explained", "Each changed row appears in the run log."),
           "reviews": ("Review rows have provenance", "Added when a run writes review scores.")}
     tiles = ""
@@ -1355,7 +1859,7 @@ def page_pipeline(D, ctx):
     b = '<div class="gates">%s</div>%s<p class="note">After the four gates pass, the same run is applied again to the result. It must change nothing. If any gate fails, nothing reaches the knowledge base.</p>%s' % (tiles or '<p class="empty">No gate record.</p>', extra, src("gate record, " + runlab))
     gvals = P.get("gates") or {}
     blocks.append(stage_block(6, "gates", "Gates", "Run four scripted checks on a staging copy before anything touches the real database.",
-                              "Checks written in code do not get tired. A run that would lose rows or leave a value with no evidence is stopped.", b,
+                              "The gates are scripted checks of form: structure, row counts, an evidence row for each new value and a log entry for each change. They do not test whether a value is right; the sample re-check in the last stage does that for a small share.", b,
                               [("%d of %d" % (sum(1 for v in gvals.values() if v.get("ok")), len(gvals)) if gvals else None, "gates passed", runlab), (fmt(P.get("ops")), "operations staged on the copy", runlab),
                                ("0 changes" if P.get("idempotent") else None, "made by the second, identical run", runlab)]))
     # 7 kb
@@ -1377,20 +1881,37 @@ def page_pipeline(D, ctx):
                 % ("ok" if kind == "ok" else "no", "supported" if kind == "ok" else "mismatch", E(x["car"]), E(x["field"].replace("_", " ")),
                    kvlist([("Knowledge base value", E(x["kb_value"])), ("Source says", E(x["source_value"])), ("Evidence text", E(trim_text(x["evidence"], 80))),
                            ("Source", E(brochure_ref(x["source_ref"]) if x["source_class"] == "brochure" else shorturl(x["source_ref"])))])))
-    b = ('<div class="grid g2" style="align-items:start">%s%s</div><p class="note">Any difference counts as a mismatch, however small. Cells the checker could not reach are reported separately and are not counted as matches.</p>%s'
-         % (vcard(vo, "ok"), vcard(vb, "bad"), src("verification results, audit run %s" % (T["run"] if T else "n/a"))))
+    pl = D["honest"]["planted"]
+    cfg_llm = config.DEFAULTS.get("llm", {})
+    bk = cfg_llm.get("backends", {})
+    same = False
+    try:
+        same = bk[cfg_llm["brochure_read"][0]]["kind"] == bk[cfg_llm["brochure_check"][0]]["kind"]
+    except (KeyError, IndexError):
+        pass
+    plnote = ""
+    if pl:
+        plnote = (" Control test: wrong values were planted in the sample to see whether the checker flags them. %s."
+                  % "; ".join("run %s: %s of %s flagged%s" % (x["name"], fmt(x["caught"]), fmt(x["n"]), (", %s returned a checker error and prove nothing" % fmt(x["error"])) if x["error"] else "") for x in pl))
+    b = ('<div class="grid g2" style="align-items:start">%s%s</div><p class="note">Any difference counts as a mismatch, however small. Cells the checker could not reach are reported separately and are not counted as matches. '
+         'The checker is a model, not a person%s.%s For old values it re-reads today&rsquo;s page, not the page the value came from.</p>%s'
+         % (vcard(vo, "ok"), vcard(vb, "bad"), "; for brochures the reader and the first-choice checker are from the same maker, so they may share mistakes" if same else "",
+            E(plnote), src("verification results, audit run %s" % (T["run"] if T else "n/a"))))
     if not (vo or vb):
         b = '<p class="empty">No verification results in the run folders.</p>'
     ov = T["overall"] if T else None
-    blocks.append(stage_block(8, "verify", "Verify", "Have a different model re-read the source for a random sample of stored values.",
-                              "The model that extracted a value should not grade it. A separate checker re-reads the page or brochure page and says whether the source supports the value.", b,
+    blocks.append(stage_block(8, "verify", "Verify", "Have a second model re-read the source for a sample of stored values.",
+                              "The model that extracted a value should not grade it, so a separate checker re-reads the page or brochure page and says whether the source supports the value. Only a sample is checked.", b,
                               [(fmt(T["n"]) if T else None, "cells re-checked", "audit run %s" % (T["run"] if T else "")), (pct(ov["accuracy"]) if ov else None, "match rate among decided cells (%s of %s)" % (fmt(ov["match"]), fmt(ov["match"] + ov["mismatch"])) if ov else "", "audit run; %s unreachable" % fmt(ov["unreachable"]) if ov else ""),
                                (pct(T["by_class"]["aggregator"]["accuracy"]) if T and "aggregator" in T["by_class"] else None, "match rate, values both sites agreed on", "audit run")]))
     # refuses
-    ref = ('<div class="refuse"><div><h3>It never fabricates</h3><p>One source alone decides nothing. If only one site states a value and no brochure does, the cell stays blank and the reason is listed.</p></div>'
-           '<div><h3>It never deletes rows</h3><p>Rows are added or amended. A car that disappears from a listing is flagged for a human, not removed.</p></div>'
-           '<div><h3>It never writes without a backup and gates</h3><p>Every write follows the sequence above: staging copy, four gates, an identical re-run that changes nothing, backup, then one transaction.</p></div>'
-           '<div><h3>It never works around a site block</h3><p>When a site refuses a request, the pipeline records the block and moves on. It does not disguise itself or retry around it.</p></div></div>')
+    wr = (D["honest"].get("backlog") or {})
+    ua = config.DEFAULTS.get("user_agent", "")
+    ref = ('<div class="refuse"><div><h3>One source alone decides nothing</h3><p>If only one site states a value and no brochure does, the cell stays blank and the reason is listed.</p></div>'
+           '<div><h3>Rows are not deleted</h3><p>Rows are added or amended. A car that disappears from a listing is flagged for a human, not removed: %s variants are flagged this way and %s are marked discontinued.</p></div>'
+           '<div><h3>No write without a backup and gates</h3><p>Every write follows the sequence above: staging copy, four gates, an identical re-run that changes nothing, backup, then one transaction.</p></div>'
+           '<div><h3>A refusal is recorded, not retried</h3><p>When a review page refuses a request, the pipeline records the block and moves on. Gap: spec pages are fetched %swithout checking the site&rsquo;s robots.txt.</p></div></div>'
+           % (fmt(wr.get("unlisted_ops")) if wr else "n/a", fmt(wr.get("marked_discontinued")) if wr else "n/a", "under a desktop-browser identity and " if ua.startswith("Mozilla") else ""))
     # evidence layers
     ly = P.get("layers") or {}
     txt, num = (ly.get("text") or {}), (ly.get("numbers") or {})
@@ -1435,14 +1956,14 @@ def page_pipeline(D, ctx):
         ht += ('<details style="margin-top:24px"><summary><b>Dry runs and pilots (%d)</b>: staged and gated, the knowledge base was not touched</summary><div class="tbl-wrap" style="margin-top:8px"><table class="tbl" style="min-width:760px">%s<tbody>%s</tbody></table></div></details>'
                % (len(dry), th, "".join(hrow(r) for r in dry)))
     ht += src("run records, one folder per run")
-    body = (page_head("The pipeline", "How the knowledge base is built and kept current: eight stages, each with one real case and numbers from the latest run.", ctx)
+    body = (page_head("The pipeline", "How the knowledge base is built and updated: eight stages, each with one case from the data and numbers from the latest run. New variants and blanks are written automatically after two sites agree; changes to stored values wait for the owner.", ctx)
             + '<section class="section"><div class="wrap"><div class="panel" style="padding:24px 16px 16px">%s</div>'
               '<p class="note">Select a stage to jump to it. Numbers in each section come from %s unless another run is named.</p></div></section>' % (overview_svg(), E(runlab))
             + "".join(blocks)
-            + section("refuses", "What it refuses to do", "Four rules the pipeline will not bend.", ref)
-            + section("layers", "The three evidence layers", "Specifications, professional opinion and owner opinion are kept apart and checked differently.", layers)
+            + section("refuses", "What it is built to refuse", "Four rules in the code, and the gaps beside them.", ref)
+            + section("layers", "The three evidence layers", "Specifications, professional opinion and owner opinion are stored apart and checked differently.", layers)
             + section("history", "Run history", "Every run leaves a folder with its record. Dates are run start dates.", ht))
-    return shell("pipeline.html", "CarRec pipeline", body, ctx, "How the CarRec knowledge base is built: eight stages, four gates, independent verification.")
+    return shell("pipeline.html", "CarRec pipeline", body, ctx, "How the CarRec knowledge base is built and updated: eight stages, four gates and a sampled re-check.")
 
 
 # ---------------------------------------------------------------- knowledge base page
@@ -1530,7 +2051,7 @@ def trust_blocks(T, per_run):
              ("Most mismatches are prices: %d of %d. Legacy prices were checked against today&rsquo;s page, so a mismatch can mean the car&rsquo;s price changed after June, not that the import was wrong. Prices matched %d of %d; without prices, legacy accuracy is %s (%d of %d)."
               % (L["mismatch_price"], L["mismatch_total"], L["price"]["match"], L["price"]["match"] + L["price"]["mismatch"], pct(L["non_price"]["accuracy"]),
                  L["non_price"]["match"], L["non_price"]["match"] + L["non_price"]["mismatch"])) if sh > 0.5 else ""))
-    h += ('<div class="notice warn" style="margin-top:16px"><strong>Unreachable is not a match.</strong> %s of the %s sampled cells could not be checked, plus %s checker errors. They are left out of every accuracy figure. Overall: %s (%s of %s decided; 95%% range %s to %s).</div>'
+    h += ('<div class="notice warn" style="margin-top:16px"><strong>Unreachable is not a match.</strong> %s of the %s sampled cells could not be checked, plus %s checker error(s). They are left out of every accuracy figure. Overall: %s (%s of %s decided; 95%% range %s to %s).</div>'
           % (fmt(o["unreachable"]), fmt(o["n"]), fmt(o["verifier_error"]), pct(o["accuracy"]), fmt(o["match"]), fmt(o["match"] + o["mismatch"]), pct(o["ci"][0], 0), pct(o["ci"][1], 0)))
     if T.get("legacy_cells"):
         h += ('<p class="note">The knowledge base held %s legacy cells, of which %s had a current page to check against. This is a sample of %s cells, stratified by source and kind of fact, not a census.</p>'
@@ -1546,7 +2067,7 @@ def page_kb(D, ctx):
     g, T, rev, rx = D["glance"], D["trust"], D["reviews"], D["reviews_extra"]
     ent = D["entities"]
     facts = [(g["variants"], "variants"), (g["models"], "models"), (g["makes"], "manufacturers"), (g["powertrains"], "powertrains"), (g["values"], "filled values across %d fields" % g["n_fields"]),
-             (g["with_evidence"], "values with at least one evidence row"), (ent.get("source_observation"), "page and brochure observations"), (ent.get("field_provenance"), "provenance rows"),
+             (g["classes"]["brochure"], "values backed by a brochure page"), (g["classes"]["import"], "values backed only by the June 2026 import"), (ent.get("source_observation"), "page and brochure observations"), (ent.get("field_provenance"), "provenance rows"),
              (ent.get("evidence_quarantine"), "evidence rows set aside (quarantined)"), (g["expert_rows"] + g["owner_rows"], "current review scores"), (ent.get("owner_theme"), "owner theme rows"),
              (ent.get("safety_test"), "crash tests recorded")]
     glance = '<dl class="facts">%s</dl>%s' % ("".join('<div><dt>%s</dt><dd>%s</dd></div>' % (E(l), fmt(v)) for v, l in facts), src("counts from the knowledge base snapshot; values are the non-blank cells of the %d tracked fields" % g["n_fields"]))
@@ -1564,7 +2085,8 @@ def page_kb(D, ctx):
               '<div class="card"><h3 class="lbl">4. Its evidence rows (%s)</h3><ul>%s</ul></div></div>'
               % (E(shorturl(ev[1]["source_url"] if len(ev) > 1 else ev[0]["source_url"])), E("%s: %s" % snip) if snip else "n/a", fmt(ev[1]["obs"] if len(ev) > 1 else ev[0]["obs"]),
                  E((ev[1]["observed_at"] if len(ev) > 1 else ev[0]["observed_at"])[:10]), E(pv["variant"]), E(pv["stored"]), E(pv["field"].replace("_", " ")), fmt(pv["variant_id"]), fmt(pv["n_evidence"]), evl))
-        tr += '<p class="note">Reading it: the value was first recorded by one source, then confirmed by two others. If a source were later found wrong, its evidence rows can be set aside without deleting them, and the cell would be recomputed from what remains.</p>' + src("knowledge base snapshot: field_provenance, source_observation and the variant row")
+        tr += ('<p class="note">Reading it: this value has %s evidence rows from %s sources. Not every value has a trail this complete: the breakdown above shows how many rest on a single site or only on the import. '
+           'If a source were later found wrong, its evidence rows can be set aside without deleting them.</p>' % (fmt(pv["n_evidence"]), fmt(len({e["source"] for e in ev})))) + src("knowledge base snapshot: field_provenance, source_observation and the variant row")
     else:
         tr = '<p class="empty">No example could be traced in this snapshot.</p>'
     # heatmap
@@ -1620,23 +2142,29 @@ def page_kb(D, ctx):
         items = td.get(d_, [])[:8]
         m_ = max([i["mentions"] for i in items] or [1])
         cols += '<div><h3>%s</h3>%s</div>' % (lab, "".join(bar_row(i["theme"], i["mentions"] / m_, "%s in %d %s" % (fmt(i["mentions"]), i["models"], "model" if i["models"] == 1 else "models")) for i in items) or '<p class="empty">None.</p>')
-    themes = '<div class="themes">%s</div><p class="note">%s theme rows across %d models. A mention is one sampled review that raised the theme, verified by a second model; counts come from a sample of reviews per model, not all reviews.</p>%s' % (cols, fmt(rev["theme_rows"]), rx["n_theme_models"], src("owner_theme table, knowledge base snapshot"))
+    themes = '<div class="themes">%s</div><p class="note">%s theme rows across %d models. A mention is one sampled review that raised the theme, checked by a second model; counts come from a sample of reviews per model, not all reviews.</p>%s' % (cols, fmt(rev["theme_rows"]), rx["n_theme_models"], src("owner_theme table, knowledge base snapshot"))
     notes = "".join('<figure><figcaption><b>%s %s</b> &middot; %s %s/%s</figcaption><blockquote>%s</blockquote><figcaption>%s, published %s</figcaption></figure>'
                     % (E(n["make"]), E(n["model"]), E(n["aspect"]), "%g" % n["score"], "%g" % n["scale_max"], E(n["note"]), E(n["source"]), E(n["published_on"])) for n in rx["notes"])
     notesh = ('<div class="notes">%s</div><p class="note">%s of the %s expert rows carry a note. Notes are written by one model from the review page and checked by another; the score beside each note is read as page data.</p>%s'
               % (notes or '<p class="empty">No notes yet.</p>', fmt(rx["n_notes"]), fmt(rx["n_current"]), src("professional_assessment, knowledge base snapshot")))
-    body = (page_head("The knowledge base", "A database of new cars sold in India. Each value can be traced to the page or brochure it came from, and a random sample is re-checked against its source.", ctx)
+    cl_, tot_ = g["classes"], g["values"] or 1
+    body = (page_head("The knowledge base", "A database of new cars sold in India. Each stored value is shown with the strongest evidence behind it: %s of values rest on a brochure page and %s only on an import that recorded no source. Prices may be out of date."
+                      % (pct(cl_["brochure"] / tot_), pct(cl_["import"] / tot_)), ctx)
+            + section("evidence", "How well each value is backed", "Every stored value, counted once by the strongest evidence behind it.", evidence_view(D))
+            + section("prices", "How recent the prices are", "", price_view(D))
+            + section("gaps", "Not yet applied, and known gaps", "What the pipeline has found but not written, and what the data is missing.", gaps_view(D))
             + section("glance", "At a glance", "What the database holds now.", glance)
             + section("contents", "What is in it", "The main tables in four groups, with row counts.", '<div class="panel scroll" tabindex="0" role="region" aria-label="Table diagram, scrolls sideways on narrow screens" style="padding:16px">%s</div>%s'
                       % (entity_svg(ent), src("row counts, knowledge base snapshot")))
-            + section("provenance", "How provenance works", "One real value, followed from the page it was read on to the cell it is stored in.", tr)
-            + section("coverage", "Coverage", "How complete the data is, by manufacturer and kind of fact. A blank is a blank: the pipeline had no source it was allowed to trust.", heat)
+            + section("provenance", "How provenance works", "One stored value, followed from the page it was read on to the cell it is stored in. This example has a full trail.", tr)
+            + section("coverage", "Coverage", "How many values are filled, by manufacturer and kind of fact. A blank means no value was stored; it is unknown, not zero.", heat)
             + section("growth", "Growth over runs", "The size of the knowledge base after each recorded state.", growth)
-            + section("trust", "Trust", "A random sample of stored values was re-read against its source by a different model. All figures come from that verification file alone, and what could not be checked is shown, not hidden.", trust_blocks(T, D["verify_runs"]))
-            + section("reviews", "The reviews layer", "Expert scores and notes from Autocar India, and owner ratings and themes from CarWale. They are stored as their own evidence and never mixed into specifications.",
+            + section("trust", "Sample re-check", "A sample of stored values, stratified by source and kind of fact, was re-read against its source by a second model. All figures come from that verification file; cells that could not be checked are shown, not hidden. A sample says little about any one value.", trust_blocks(T, D["verify_runs"]))
+            + section("reviews", "The reviews layer", "Expert scores and notes from Autocar India, and owner ratings and themes from CarWale. They are stored as their own evidence, apart from the specifications.",
                       '<div class="sub"><h3>Which models have scores</h3>%s%s</div><div class="sub">%s</div><div class="sub"><h3>Every model</h3>%s</div><div class="sub"><h3>Most common owner themes, by direction</h3>%s</div><div class="sub"><h3>Example expert notes</h3>%s</div>'
-                      % (cov, src("model counts, knowledge base snapshot"), dist, table, themes, notesh)))
-    return shell("kb.html", "CarRec knowledge base", body, ctx, "What the CarRec knowledge base holds, how provenance works, and how far it can be trusted.")
+                      % (cov, src("model counts, knowledge base snapshot"), dist, table, themes, notesh))
+            + '<section class="section" id="third-party"><div class="wrap">%s</div></section>' % notice_third_party(D, "kb"))
+    return shell("kb.html", "CarRec knowledge base", body, ctx, "What the CarRec knowledge base holds, the evidence behind each value, how recent the prices are, and what is missing.")
 
 
 # ---------------------------------------------------------------- recommendation engine page
@@ -1654,7 +2182,7 @@ def wrap_text(s, n):
 def flow_svg(C):
     steps = [("Query", "Plain English or Hinglish, typed as the user likes"),
              ("Parse and repair", "Rules read budget, fuel, body, features; common typos are repaired"),
-             ("Hard constraints", "Every stated must-have filters the catalogue"),
+             ("Hard constraints", "Each stated must-have filters the catalogue; a blank value passes"),
              ("Score", "Weighted criteria across three evidence classes"),
              ("Diversify", "Best variant per model, then a re-rank so the list is not eight near-twins (max %s models)" % C.get("MAX_MODELS", "8")),
              ("Explain", "Up to %s reasons per car, each tagged with its evidence class" % C.get("MAX_REASONS", "4"))]
@@ -1698,17 +2226,17 @@ def eval_table(E_):
 
     def probe(e):
         return "%s of %s still returned; known-lacking car placed above it: %s (newly: %s)" % (fmt(e["probe_returned"]), fmt(e["probe_n"]), fmt(e["probe_lacking_above"]), fmt(e["probe_newly_above"]))
-    r = [("Hard requirements met, main set", cs(cm), cs(vm), "%s queries, %s returned cars" % (fmt(vm["n_queries"]), fmt(vm["with_cars"]))),
-         ("Hard requirements met, held-out set", cs(ch), cs(vh), "%s queries, %s returned cars" % (fmt(vh["n_queries"]) if vh else "n/a", fmt(vh["with_cars"]) if vh else "n/a")),
-         ("Shortlist recall@8", "%.3f" % cm["recall8"], "%.3f" % vm["recall8"], "%s hand-labelled queries (small)" % fmt(vm["shortlist_filled"])),
+    r = [("Hard requirements met, main set (blank values count as met)", cs(cm), cs(vm), "%s queries, %s returned cars" % (fmt(vm["n_queries"]), fmt(vm["with_cars"]))),
+         ("Hard requirements met, second set (blank values count as met)", cs(ch), cs(vh), "%s queries, %s returned cars" % (fmt(vh["n_queries"]) if vh else "n/a", fmt(vh["with_cars"]) if vh else "n/a")),
+         ("Shortlist recall@8", "%.3f" % cm["recall8"], "%.3f" % vm["recall8"], "%s queries labelled by one person" % fmt(vm["shortlist_filled"])),
          ("Shortlist MRR", "%.3f" % cm["mrr"], "%.3f" % vm["mrr"], "same %s queries" % fmt(vm["shortlist_filled"])),
          ("Impossible requests", imp(cm), imp(vm), "%s queries" % fmt(vm["empty_expected"])),
          ("Unknown-value probe", probe(cm), probe(vm), "%s blanked cells; lower known-lacking is better" % fmt(vm["probe_n"]))]
     tb = ('<div class="tbl-wrap"><table class="tbl" style="min-width:760px"><thead><tr><th>Measure</th><th>Current engine</th><th>New engine (v3)</th><th>Sample</th></tr></thead><tbody>%s</tbody></table></div>'
           % "".join("<tr><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>" % tuple(E(x) for x in row) for row in r))
     bars = ""
-    for name, a, b in [("Hard requirements met, main", cm["zero_viol"] / cm["with_cars"], vm["zero_viol"] / vm["with_cars"]),
-                       ("Hard requirements met, held-out", (ch["zero_viol"] / ch["with_cars"]) if ch else None, (vh["zero_viol"] / vh["with_cars"]) if vh else None),
+    for name, a, b in [("Hard requirements met, main (blanks count as met)", cm["zero_viol"] / cm["with_cars"], vm["zero_viol"] / vm["with_cars"]),
+                       ("Hard requirements met, second set", (ch["zero_viol"] / ch["with_cars"]) if ch else None, (vh["zero_viol"] / vh["with_cars"]) if vh else None),
                        ("Shortlist recall@8", cm["recall8"], vm["recall8"]), ("Shortlist MRR", cm["mrr"], vm["mrr"])]:
         if a is None or b is None:
             continue
@@ -1719,7 +2247,7 @@ def eval_table(E_):
 
 def page_engine(D, ctx):
     E_ = D["engine"]
-    head = page_head("The recommendation engine", "Turns a plain-language request into a ranked list of cars, with reasons. It never breaks a stated requirement silently, and it treats a missing value as unknown, not as no.", ctx)
+    head = page_head("The recommendation engine", "Turns a plain-language request into a ranked list of cars, with reasons. A value that is blank for a car is treated as unknown, not as no, so such a car can pass a stated requirement; its card then says the value is unknown.", ctx)
     if not E_.get("found"):
         body = head + '<section class="section"><div class="wrap"><div class="empty"><b>Data not found.</b> The recommender files (documents, configuration, evaluation results, review data and screenshots) were not available when this page was generated, so this page has no figures. The other pages are unaffected.</div></div></section>'
         return shell("engine.html", "CarRec engine", body, ctx, "The CarRec recommendation engine.")
@@ -1778,7 +2306,7 @@ def page_engine(D, ctx):
         lg = ('<ol class="legendlist"><li><span><b>Variant and price.</b> The variant shown is the best-scoring one for this query, with the lowest price in the model alongside.</span></li>'
               '<li><span><b>Requirement status.</b> &ldquo;Meets all your requirements&rdquo;, or the requirement that was relaxed.</span></li>'
               '<li><span><b>Three bars.</b> Specifications fit the search; expert and owner bars show standing among rated models of the same body type, not absolute quality.</span></li>'
-              '<li><span><b>Why this car.</b> Reasons built from the values used in scoring.</span></li>'
+              '<li><span><b>Why this car.</b> Reasons built from the values used in scoring. Any criterion scored at or above the midpoint can appear as a reason.</span></li>'
               '<li><span><b>What reviewers say.</b> Stored note, score, source and date, with the quoted line and a link to the review.</span></li>'
               '<li><span><b>What owners say.</b> Theme, direction and how many of the sampled reviews raised it.</span></li>'
               '<li><span><b>Caveats.</b> Every negative theme and reported fault, shown whether or not the query asked about it.</span></li></ol>')
@@ -1789,7 +2317,7 @@ def page_engine(D, ctx):
         if shots.get("phone"):
             sm.append('<figure style="max-width:320px"><div class="shotbox"><img alt="The same card at phone width" width="390" loading="lazy" src="data:image/jpeg;base64,%s"></div><figcaption class="note">%s</figcaption></figure>' % (shots["phone"]["b64"], E(shots["phone"]["caption"])))
         extra = '<div class="grid g2" style="margin-top:40px;align-items:start">%s</div>' % "".join(sm) if sm else ""
-        parts.append(section("card", "What a result card shows", "Every line on a card comes from a value the engine used, tagged with its evidence class and source.",
+        parts.append(section("card", "What a result card shows", "Each line on a card is built from values the engine used, and names its source.",
                              '<div class="shots">%s<div>%s</div></div>%s%s' % (left, lg, extra, src("screenshots of the running application, downscaled"))))
     else:
         parts.append(section("card", "What a result card shows", "", '<p class="empty">No screenshots were found.</p>'))
@@ -1802,41 +2330,84 @@ def page_engine(D, ctx):
         fnote = (' The review&rsquo;s last section reports %.3f recall@8 and %.3f MRR for the default build and %.3f and %.3f for the current engine, measured on a later build whose result files are not among the saved ones; this page shows the saved files.'
                  % (fd["v3_recall"], fd["v3_mrr"], fd["cur_recall"], fd["cur_mrr"]))
     sl = E_.get("shortlist") or {}
-    ev = ('%s<div class="notice warn" style="margin-top:24px"><strong>How much to trust this.</strong> The shortlist measure rests on %s queries and %s picks written by one person against an older, smaller catalogue. One pick is half a point of recall, so differences of a few hundredths are within noise. The two engines are compared on the same catalogue of %s variants and %s models.%s</div>'
-          '<div class="sub">%s</div><p class="src"><b>Files used:</b> %s. Both engines ran with the language-model query reader off, so results do not depend on a network call.</p>'
-          % (tb, fmt(sl.get("queries")), fmt(sl.get("picks")), fmt((E_.get("catalogue") or {}).get("rows")), fmt((E_.get("catalogue") or {}).get("models")), fnote, bars and ('<h3>Same numbers as bars</h3>' + bars), E(", ".join(used))))
-    parts.append(section("evaluation", "How well it works", "The current engine and the new one, run on the same queries and the same catalogue.", ev))
+    first_models = (D["growth"][0].get("models") if D.get("growth") else None)
+    cat_models = (E_.get("catalogue") or {}).get("models")
+    added = (cat_models - first_models) if (first_models and cat_models) else None
+    hr = E_.get("heldout_reuse") or {}
+    vs = E_.get("verified_satisfaction")
+    vm_ = E_.get("v3_main") or {}
+    if vs and all(isinstance(x, (int, float)) for x in vs.values()):
+        vtxt = "A figure that counts a blank as not met: %s, beside the %s of %s above." % (
+            ", ".join("%s %s" % (k.replace("_", " "), fmt(v) if float(v).is_integer() else "%.3f" % v) for k, v in vs.items()),
+            fmt(vm_.get("zero_viol")), fmt(vm_.get("with_cars")))
+    else:
+        vtxt = "A figure that counts a blank as not met is being added and is not on this page yet, so the 100% in the table below says nothing about requirements that were blank."
+    trust = ['The query sets and their labels were written by the project&rsquo;s author, who also built the engine. No second person labelled them, so there is no agreement figure between raters.']
+    if hr:
+        trust.append("The second query set was written on %s as a held-out set. The query parser was then changed in %s commits and the set was scored again; %s result files are named for it. It is no longer unseen: read it as a second development set."
+                     % (E(day_text(hr["written"])), fmt(hr["parser_commits_after"]), fmt(hr["result_files"])))
+    else:
+        trust.append("The second query set was written as a held-out set; if the parser was changed afterwards and the set scored again, it is no longer unseen.")
+    trust.append("Unknown values are not counted as violations in the hard-requirements figure, so a car with a blank for something the buyer asked for counts as meeting it. %s" % E(vtxt))
+    trust.append("The shortlist measure has %s queries and %s picks, all by one person%s. One pick moves recall by about %.1f percentage points."
+                 % (fmt(sl.get("queries")), fmt(sl.get("picks")), (", written before the %s models added since (%s now, %s then)" % (fmt(added), fmt(cat_models), fmt(first_models))) if added else "",
+                    100.0 / sl["picks"] if sl.get("picks") else 0))
+    trust.append("No user study and no click data exist. Nothing here measures whether people find the recommendations useful.")
+    trust.append("Both engines are the project&rsquo;s own, run on the project&rsquo;s own queries. The tables show that the code does what it was written to do on these queries; they do not show that the recommendations are good.%s" % fnote)
+    box = '<div class="notice warn"><strong>How far to trust these numbers.</strong><ul>%s</ul></div>' % "".join("<li>%s</li>" % t if "&rsquo;" in t else "<li>%s</li>" % t for t in trust)
+    ev = ('%s<div style="margin-top:var(--s3)">%s</div>'
+          '<div class="sub">%s</div><p class="src"><b>Files used:</b> %s. Both engines ran with the language-model query reader off, so results do not depend on a network call. The two engines are compared on the same catalogue of %s variants and %s models.</p>'
+          % (box, tb, bars and ('<h3>Same numbers as bars</h3>' + bars), E(", ".join(used)), fmt((E_.get("catalogue") or {}).get("rows")), fmt(cat_models)))
+    parts.append(section("evaluation", "What was measured", "The project's own tests of the current engine and the new one, on the same queries and catalogue. They are not proof of quality.", ev))
     # limits
     vm, vh = E_["v3_main"], E_["v3_held"]
     ass, own = E_.get("assess") or {}, E_.get("owner") or {}
     missing = sorted(set(E_.get("catalogue_models") or []) - set(ass.get("model_names") or []))
     lim = []
     if vm:
-        lim.append(("The shortlist test is small and dated.", "%s queries, %s picks, labelled against the older catalogue. The 30 models added later were never on a label, so a new model that ranks first can count as a miss." % (fmt(sl.get("queries")), fmt(sl.get("picks"))), "evaluation results; shortlist gap review"))
+        lim.append(("The shortlist test is small and dated.", "%s queries, %s picks, labelled by one person against the older catalogue. The %s models added later were never on a label, so a new model that ranks first can count as a miss." % (fmt(sl.get("queries")), fmt(sl.get("picks")), fmt(added) if added else "newer"), "evaluation results; shortlist gap review"))
         lim.append(("The unknown-value probe is not met.", "When a feature is blanked on a good car, a car known to lack it ranks above it %s times out of %s probes (the target is 0)." % (fmt(vm["probe_newly_above"]), fmt(vm["probe_n"])), "evaluation results; review of 15 Nov"))
         lim.append(("Some impossible requests return cars.", "%s of %s requests labelled impossible still returned cars with no relaxation label in both engines. In each case the returned cars have a blank (unknown) value for the thing asked for, and a blank is unknown, not no, so it passes the filter; the test calls a request impossible by its known values only." % (fmt((vm.get("empty_outcomes") or {}).get("cars_returned_unmarked")), fmt(vm["empty_expected"])), "evaluation results; checked against the catalogue file"))
     if vh and vh.get("violating"):
-        lim.append(("Parser misses remain.", "On the held-out set %d queries returned a car that breaks a stated requirement (%s); both engines share these parser misses. Unknown values never count as violations in this test." % (len(vh["violating"]), ", ".join(vh["violating"])), "evaluation results"))
+        lim.append(("Parser misses remain.", "On the second set %d queries returned a car that breaks a stated requirement (%s); both engines share these parser misses. Unknown values never count as violations in this test." % (len(vh["violating"]), ", ".join(vh["violating"])), "evaluation results"))
     if ass:
         lim.append(("Review coverage is partial.", "%s of %s catalogue models have no expert rows and %s models have owner ratings under 30 reviews. They get no review reasons and are not penalised." % (fmt(len(missing)), fmt((E_.get("catalogue") or {}).get("models")), fmt(own.get("low_conf_models"))), "review data files"))
         if ass.get("min10") is not None:
             lim.append(("Expert scores are compressed.", "Overall expert scores run from %.0f to %.0f out of 10, so the engine compares cars; it does not rescale them." % (ass["min10"], ass["max10"]), "review data files"))
     af = E_.get("added_fill")
-    if af and min(af["length_mm"], af["abs"], af["esc"]) >= .5:
-        lim.append(("Newer models are scored on a little less.", "The %s variants added after the first 832 now have length for %.0f%%, ABS for %.0f%%, ESC for %.0f%% and ADAS for %.0f%% of rows, filled from brochures; the rest stay unknown and are scored as unknown. The review notes written before this fill said these were empty." % (fmt(af["rows"]), af["length_mm"] * 100, af["abs"] * 100, af["esc"] * 100, af["adas_available"] * 100), "catalogue file; review of 15 Nov"))
+    if af:
+        lim.append(("Newer models are scored on less.", "The %s variants added after the first 832 have length for %.0f%%, ABS for %.0f%%, ESC for %.0f%% and ADAS for %.0f%% of rows; the rest are unknown and are scored as unknown." % (fmt(af["rows"]), af["length_mm"] * 100, af["abs"] * 100, af["esc"] * 100, af["adas_available"] * 100), "catalogue file; review of 15 Nov"))
     else:
         lim.append(("Newer models are scored on less.", "The review notes say the models added most recently carry no dimension, ABS, ESC or ADAS values yet, so they are scored on more unknowns until the knowledge base is filled.", "review of 15 Nov"))
+    bs = E_.get("blank_share") or {}
+    if bs:
+        lim.append(("A blank value passes a hard requirement.", "In the catalogue, ADAS is blank for %s of variants and sunroof for %s. A car with a blank still passes a request that needs the feature, and its card says the value is unverified. When no car has the feature confirmed, the unconfirmed cars are what is shown."
+                    % (pct(bs.get("adas_available")), pct(bs.get("sunroof"))), "catalogue file; evaluation results"))
+    cg = (D.get("honest") or {}).get("crash")
+    fl, bm = C.get("CRASH_PRIOR_FLOOR_STARS"), C.get("CRASH_PRIOR_STARS_BELOW_MEDIAN")
+    if fl is not None and bm is not None:
+        lim.append(("A car with no crash rating can outscore one rated badly.", "An unrated car is scored from a prior of the segment median minus %s star, with a floor of %s stars, so at least %.1f of the crash criterion; a car rated 2 stars scores %.1f.%s"
+                    % ("%g" % bm, "%g" % fl, fl / 5, 2 / 5, (" %s models whose crash test is stored but not linked to them (%s variants) are scored on the prior, and the app shows them as having no rating on record." % (fmt(len(cg["models"])), fmt(cg["variants"]))) if cg and cg["models"] else ""), "engine configuration; knowledge base snapshot"))
+    pw = C.get("PRICE_CHEAP_WEIGHT")
+    if pw is not None:
+        lim.append(("A request for the cheapest car is not sorted by price.", "Price is one criterion among several; even when the query asks for cheap it carries a weight of %s, so the top result need not be the lowest-priced car." % ("%g" % pw), "engine configuration"))
+    if own.get("mean_overall") is not None:
+        lim.append(("Owner ratings are close together.", "Overall owner ratings average %.2f out of %d across the models that have one, so a line such as &ldquo;owners rate this 4.3/5&rdquo; says little on its own.".replace("&ldquo;", "\u201c").replace("&rdquo;", "\u201d") % (own["mean_overall"], own["scale"]), "review data files"))
+    th = ((D.get("honest") or {}).get("third") or {}).get("themes")
+    if th and th["rows"]:
+        lim.append(("A caveat can rest on three reviews.", "%s of %s owner theme rows rest on 3 or fewer mentions, and caveats are built from them." % (fmt(th["le3"]), fmt(th["rows"])), "knowledge base snapshot"))
     lim.append(("Owner themes are a sample.", "Theme counts are mentions in a sample of reviews per model, not in all reviews, and a theme&rsquo;s effect on the score is capped by design.".replace("&rsquo;", "’"), "review of 15 Nov"))
     lim.append(("The language-model query reader is off by default.", "The design plan wanted it on; it is optional, needs a key, and falls back to the rules.", "review of 14 Nov; API notes"))
     lh = '<ul class="limits">%s</ul>' % "".join("<li><b>%s</b> %s<em>%s</em></li>" % (E(a), E(b), E(c)) for a, b, c in lim)
-    parts.append(section("limits", "Known limits", "Taken from the review notes and recomputed from the result files where a number is shown.", lh))
+    parts.append(section("limits", "Known limits", "Taken from the review notes and the independent audit, and recomputed from the result files and the knowledge base where a number is shown.", lh))
     # api
     eps = E_.get("endpoints") or []
     if eps:
         ah = '<ul class="api">%s</ul>%s' % ("".join('<li><span class="m">%s</span><span><b class="mono">%s</b><br>%s</span></li>' % (E(e["method"]), E(e["path"]), E(trim_text(e["text"], 300))) for e in eps), src("API and deployment notes"))
         parts.append(section("api", "API endpoints", "The same engine is available as a small typed HTTP service beside the web app.", ah))
+    parts.append('<section class="section" id="third-party"><div class="wrap">%s</div></section>' % notice_third_party(D, "engine"))
     body = head + "".join(parts)
-    return shell("engine.html", "CarRec engine", body, ctx, "How the CarRec recommendation engine ranks cars, and how well it works.")
+    return shell("engine.html", "CarRec engine", body, ctx, "How the CarRec recommendation engine ranks cars, what its tests measured and where they fall short.")
 
 
 # ---------------------------------------------------------------- build
@@ -1854,7 +2425,7 @@ def check_public(name, html):
             raise ValueError("%s loads or links an external address: %s" % (name, u))
 
 
-def build(db_path, runs_dir, history_repo, kb_sha1, date, recsys_dir=None):
+def build(db_path, runs_dir, history_repo, kb_sha1, date, recsys_dir=None, audit_report=None):
     c = sqlite3.connect("file:%s?immutable=1" % db_path, uri=True)
     c.row_factory = sqlite3.Row
     base, vrows, fields = collect_kb(c)
@@ -1869,10 +2440,14 @@ def build(db_path, runs_dir, history_repo, kb_sha1, date, recsys_dir=None):
     pipe = pipeline_data(c, runs, trust, glance, kb_counts)
     extra = reviews_extra(c)
     per_src = per_source_counts(c)
+    honest = {"audit_def": audit_definition(c), "price": price_freshness(c, vrows, date), "dates": date_block(c, runs),
+              "backlog": backlog(c, runs, vrows), "duplicates": duplicate_groups(c), "crash": crash_gap(c), "third": third_party(c),
+              "spot": audit_spot_check(audit_report) if audit_report else None, "planted": planted_by_run(runs),
+              "import_note": one(c, "select notes from source where name='v6_migration'", default=None)}
     c.close()
-    return {"meta": {"generated": date, "kb_hash8": kb_sha1[:8], "growth_source": "history" if hist else "runs"}, "glance": glance, "entities": kb_counts,
-            "heat": heat, "growth": growth, "history": history_table(runs), "trust": trust, "verify_runs": per_run, "reviews": rev, "reviews_extra": extra,
-            "pipeline": pipe, "per_source": per_src, "engine": engine_data(recsys_dir)}
+    return {"meta": {"generated": date, "kb_hash8": kb_sha1[:8], "growth_source": "history" if hist else "runs", "dates": honest["dates"]},
+            "glance": glance, "entities": kb_counts, "heat": heat, "growth": growth, "history": history_table(runs), "trust": trust, "verify_runs": per_run,
+            "reviews": rev, "reviews_extra": extra, "pipeline": pipe, "per_source": per_src, "engine": engine_data(recsys_dir), "honest": honest}
 
 
 def render_site(D, app_base=""):
@@ -1893,6 +2468,7 @@ def main(argv=None):
     ap.add_argument("--recsys-dir", default=DEFAULT_RECSYS, help="recommender checkout (default: %(default)s); engine.html says so if absent")
     ap.add_argument("--app-base", default="", help="path of the web app (for example /); adds a Back to CarRec link")
     ap.add_argument("--no-local-notes", action="store_true", help="accepted for clarity: pages never carry local paths or internal tool names, and the build fails if one slips in")
+    ap.add_argument("--audit-report", help="the independent audit file (read for its spot-check tally only); default: looked up beside the production file")
     ap.add_argument("--date", help="override the generated-on date (YYYY-MM-DD)")
     a = ap.parse_args(argv)
     cfg = config.load()
@@ -1903,7 +2479,11 @@ def main(argv=None):
         sha = kb.copy_for_read(cfg["prod_db"], db)
     out_dir = a.out_dir or (os.path.dirname(os.path.abspath(a.out)) if a.out else os.path.join(config.ROOT, "knowledge_base", "reports", "kb_dashboard"))
     date = a.date or datetime.date.today().isoformat()
-    D = build(db, a.runs or cfg["runs_dir"], a.history or cfg["history_repo"], sha, date, a.recsys_dir)
+    audit = a.audit_report
+    if audit is None:
+        hits = sorted(glob.glob(os.path.join(os.path.dirname(os.path.expanduser(cfg["prod_db"])), "reports", "BLIND_AUDIT_*.md")))
+        audit = hits[-1] if hits else None
+    D = build(db, a.runs or cfg["runs_dir"], a.history or cfg["history_repo"], sha, date, a.recsys_dir, audit)
     pages = render_site(D, a.app_base)
     os.makedirs(out_dir, exist_ok=True)
     for fn, h in pages.items():
