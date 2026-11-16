@@ -223,7 +223,7 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
             verify.run(cells, cfg, fetcher, vt, vdir, log, legacy_lookup=lookup, batch="audit")
         except llm.QuotaExhausted as e:
             R["audit_incomplete"] = str(e)
-            log("verify", "audit stopped early: %s. Run `kbpipe audit --resume %s` tomorrow." % (e, run_id))
+            log("verify", "audit stopped early: %s. Continue with: kbpipe run --audit %s --resume-audit %s" % (e, do_audit, run_dir))
     rows = verify.load(vdir)
     if vt and rows and cfg.get("planted_errors", 20):
         try:
@@ -242,6 +242,9 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
         for c in calls:
             R["llm"]["by_model"][c["model"]] = R["llm"]["by_model"].get(c["model"], 0) + 1
     R["fetch"] = fetcher.stats
+    R["robots_blocked"] = sorted({u for u, why in getattr(fetcher, "blocks", []) if why == "robots"})
+    if R["robots_blocked"]:
+        log("fetch", "robots.txt disallows %d address(es) the pipeline needs; nothing was written for them (see run.json robots_blocked)" % len(R["robots_blocked"]))
     R["runtime_seconds"] = round(time.time() - t0, 1)
     R["review_items"] = len(P["review"])
     R["conflicts"] = len(P["conflicts"])

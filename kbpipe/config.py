@@ -16,7 +16,9 @@ DEFAULTS = {
     "history_repo": "~/carrec_kb_history",
     "changelog": os.path.join(ROOT, "knowledge_base", "KB_CHANGELOG.md"),
     # fetching
-    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "user_agent": "kbpipe/1.0 (personal research; contact via repository)",   # truthful, names the tool; no browser identity
+    "obey_robots": True,                  # robots.txt (for this agent and for *) and Crawl-delay are obeyed on every fetch
+    "app_repo": "~/carrec_worktrees/recsys-v3",   # the app repository used by `kbpipe update` stages 8-11
     "min_seconds_between_requests": 4.0,
     "fetch_timeout": 30,
     "fetch_retries": 2,
@@ -105,6 +107,8 @@ DEFAULTS = {
                         "overall": ["owner_satisfaction"], "Design and Styling": []},
         },
     },
+    # `kbpipe update` (kbpipe/update.py)
+    "update": {"blank_threshold": 0.5, "brochure_blank_models": 10, "disk_margin_gb": 2},
     "schema_sha256": None,              # pinned by `kbpipe pin-schema`; the schema gate compares against it
 }
 
@@ -124,7 +128,7 @@ def load(path=None):
     if os.path.exists(path):
         with open(path) as f:
             _merge(cfg, json.load(f))
-    for k in ("prod_db", "backup_dir", "oem_dir", "oem_new_dir", "runs_dir", "cache_dir", "history_repo", "changelog"):
+    for k in ("app_repo", "prod_db", "backup_dir", "oem_dir", "oem_new_dir", "runs_dir", "cache_dir", "history_repo", "changelog"):
         env = os.environ.get("KBPIPE_" + k.upper())
         if env:
             cfg[k] = env

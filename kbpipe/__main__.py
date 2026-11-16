@@ -1,10 +1,10 @@
-"""kbpipe command line.  kbpipe run | apply-review | agreement | status | pin-schema"""
+"""kbpipe command line.  kbpipe update | run | apply-review | agreement | status | pin-schema"""
 import argparse
 import json
 import os
 import sys
 
-from . import config, kb, pipeline, report, review, reviews
+from . import audit, config, kb, pipeline, report, review, reviews
 
 
 def main(argv=None):
@@ -20,6 +20,7 @@ def main(argv=None):
     r.add_argument("--audit", choices=["full", "changed", "none"], help="final audit scope (default: full on the first run, else changed)")
     r.add_argument("--no-brochure", action="store_true", help="skip the brochure layer (no OEM brochure pages are read)")
     r.add_argument("--label", help="name of the run folder (default: today's date)")
+    r.add_argument("--resume-audit", metavar="RUN_FOLDER", help="continue an interrupted audit from that folder's verify/results.jsonl (no discovery, no write); scope from --audit")
     v = sub.add_parser("reviews", help="professional scores (Autocar India), owner ratings and themes (CarWale); also --import-saved")
     v.add_argument("--only", action="append", help="process only this model (name or 'Make Model'; repeatable)")
     v.add_argument("--max-models", type=int)
@@ -32,6 +33,17 @@ def main(argv=None):
     v.add_argument("--no-themes", action="store_true", help="Autocar notes only: CarWale written reviews are not read and no owner themes are made")
     v.add_argument("--import-saved", metavar="FOLDER", help="read locally saved Team-BHP pages (never fetches) into owner_theme")
     v.add_argument("--teambhp-links", action="store_true", help="only write teambhp_links.html (links; fetches nothing)")
+    u = sub.add_parser("update", help="the whole update in one command: specs, brochures, reviews, audit, export to the app, tests, project pages, pull request")
+    u.add_argument("--no-write", action="store_true", help="run every stage against staging copies: no KB write, no push, no pull request")
+    u.add_argument("--resume", action="store_true", help="continue an interrupted update from its state.json (stages already done are not repeated)")
+    u.add_argument("--only-stages", action="append", metavar="LIST", help="run only these stages (names or numbers, comma separated): preflight specs brochures reviews text saved audit export checks pages pr summary")
+    u.add_argument("--skip-stages", action="append", metavar="LIST", help="leave these stages out")
+    u.add_argument("--max-models", type=int, help="cap the models processed per update")
+    u.add_argument("--no-pr", action="store_true", help="commit to the app branch locally; do not push or open a pull request")
+    u.add_argument("--quick", action="store_true", help="skip brochures, review text and saved pages (no subscription allowance used)")
+    u.add_argument("--redo", action="append", metavar="STAGE", help="run this stage again although it is done")
+    u.add_argument("--label", help="name of the update folder (default update_<date>); with --resume, the update to continue (default: the latest)")
+    u.add_argument("--no-verify", action="store_true", help="no verifier calls at all (stage 2 verification and the stage 7 audit are skipped)")
     a = sub.add_parser("apply-review", help="apply the items ticked in a REVIEW_<run>.md")
     a.add_argument("review_file")
     a.add_argument("--no-write", action="store_true")
@@ -41,6 +53,18 @@ def main(argv=None):
     sub.add_parser("pin-schema", help="print the current schema hash to pin in the config")
     args = ap.parse_args(argv)
     cfg = config.load(args.config)
+    if args.cmd == "update":
+        from . import update
+        state, rc = update.run(cfg, {"no_write": args.no_write, "resume": args.resume, "only_stages": args.only_stages,
+                                     "skip_stages": args.skip_stages, "max_models": args.max_models, "no_pr": args.no_pr,
+                                     "quick": args.quick, "redo": args.redo, "label": args.label, "no_verify": args.no_verify},
+                               echo=lambda line: print(line, flush=True))
+        return rc
+    if args.cmd == "run" and args.resume_audit:
+        R = audit.run(cfg, scope=args.audit if args.audit in ("full", "changed") else "changed", resume=args.resume_audit,
+                      echo=lambda line: print(line, flush=True))
+        print(json.dumps({k: R.get(k) for k in ("scope", "cells", "already_done", "checked_now", "stopped_on_limit")}, indent=1))
+        return 1 if R.get("stopped_on_limit") else 0
     if args.cmd == "run":
         if args.no_brochure:
             cfg.setdefault("brochure", {})["enabled"] = False
