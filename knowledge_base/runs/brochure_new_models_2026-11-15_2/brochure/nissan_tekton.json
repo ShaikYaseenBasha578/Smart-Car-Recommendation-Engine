@@ -1,0 +1,30 @@
+{
+ "make": "Nissan",
+ "model": "Tekton",
+ "status": "no brochure",
+ "brochures": [],
+ "pages_read": 0,
+ "llm_calls": 0,
+ "cells_kept": 0,
+ "cells_attached": 0,
+ "cells_skipped_existing": 0,
+ "cells_dropped_disagree": 0,
+ "cells_dropped_single_read": 0,
+ "cells_dropped_page_conflict": 0,
+ "drops": {},
+ "cells": [],
+ "kb_linked": {
+  "Visia Petrol 1.0L Turbo Manual T160": 977,
+  "Visia Plus Petrol 1.0L Turbo Manual T160": 978,
+  "Acenta Petrol 1.0L Turbo Manual T160": 979,
+  "N-Connecta Petrol 1.0L Turbo Manual T160": 980,
+  "N-Connecta Petrol 1.3L Turbo Manual T280": 981,
+  "Acenta Petrol 1.3L Turbo Automatic (DCT) T280": 982,
+  "Tekna Petrol 1.0L Turbo Manual T160": 983,
+  "Tekna Petrol 1.3L Turbo Manual T280": 984,
+  "N-Connecta Petrol 1.3L Turbo Automatic (DCT) T280": 985,
+  "Tekna Plus Petrol 1.0L Turbo Manual T160": 986,
+  "Tekna Petrol 1.3L Turbo Automatic (DCT) T280": 987,
+  "Tekna Plus Petrol 1.3L Turbo Automatic (DCT) T280": 988
+ }
+}

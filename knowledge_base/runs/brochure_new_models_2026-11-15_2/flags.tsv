@@ -1,0 +1,361 @@
+make	model	variant	field	why	detail
+Hyundai	Alcazar	Executive Petrol 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Executive Diesel 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Prestige Petrol 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Corporate Diesel 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Prestige Petrol 1.5L Turbo Automatic (DCT) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Corporate Diesel 1.5L Turbo Automatic (TC) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Platinum Petrol 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Platinum Diesel 1.5L Turbo 6 Speed Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Petrol 1.5L Turbo Automatic (DCT) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Knight Petrol 1.5L Turbo Automatic (DCT) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Knight Diesel 1.5L Turbo Automatic (TC) 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 7 STR Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Petrol 1.5L Turbo Automatic (DCT) 7 STR Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Petrol 1.5L Turbo Automatic (DCT) 6 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 6 STR	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 6 STR Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Petrol 1.5L Turbo Automatic (DCT) 6 STR Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Lounge Edition	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Dual Tone Lounge Edition	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Bayon	HX 5 Petrol 1.5L Automatic (CVT)	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 5 Petrol 1.5L Automatic (CVT) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 6 Petrol 1.5L Automatic (CVT)	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 6 Petrol 1.5L Automatic (CVT) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 8 Petrol 1.5L Automatic (CVT)	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 8 Petrol 1.5L Automatic (CVT) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 10 Petrol 1.5L Automatic (CVT)	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Bayon	HX 10 Petrol 1.5L Automatic (CVT) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (identity)
+Hyundai	Creta N Line	N10 Petrol Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Creta N Line	N10 Petrol Turbo Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Creta N Line	N10 Petrol Turbo Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Creta N Line	N10 Petrol Turbo Automatic Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N6 Petrol Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N6 Petrol Turbo Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N6 Petrol Turbo Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N6 Petrol Turbo Automatic Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N10 Petrol Turbo Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	Venue N Line	N10 Petrol Turbo Automatic Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Era Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Magna Executive Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Magna Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Sportz Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Sportz (O) Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Sportz (O) Knight Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Sportz Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Sportz (O) Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Petrol Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Knight Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Petrol Automatic Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Hyundai	i20	Asta (O) Knight Edition Petrol Automatic Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Carens	Premium (O) Petrol 1.5L Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Carens	Premium (O) Petrol 1.5L Manual 7 STR	torque_nm	POWERTRAIN_DIFFERS	
+Kia	Carens	Premium (O) CNG 1.5L Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Carens	Premium (O) CNG 1.5L Manual 7 STR	torque_nm	POWERTRAIN_DIFFERS	
+Kia	Carens	Premium (O) Diesel 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTE Petrol 1.2L 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTE (O) Petrol 1.2L 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK (O) Petrol 1.2L 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus Petrol 1.2L 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTE (O) Diesel 1.5L Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK (O) Petrol 1.0L Turbo Clutchless Manual (IMT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus (O) Petrol 1.2L 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK (O) Diesel 1.5L Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK (O) Petrol 1.0L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTE (O) Diesel 1.5L Turbo Automatic (TC)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus (O) Petrol 1.0L Turbo Clutchless Manual (IMT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus Diesel 1.5L Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK (O) Diesel 1.5L Turbo Automatic (TC)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus (O) Petrol 1.0L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus (O) Diesel 1.5L Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus Diesel 1.5L Turbo Automatic (TC)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTX Diesel 1.5L Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTX Petrol 1.0L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTK Plus (O) Diesel 1.5L Turbo Automatic (TC)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	HTX Diesel 1.5L Turbo Automatic (TC)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	GTX Plus Petrol 1.0L Turbo Automatic (DCT)	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Kia	Sonet	GTX Plus Petrol 1.0L Turbo Automatic (DCT) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Kia	Sonet	X Line Petrol 1.0L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Kia	Sonet	GTX Plus Diesel 1.5L Turbo Automatic (TC)	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Kia	Sonet	GTX Plus Diesel 1.5L Turbo Automatic (TC) Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Sprint Petrol 1.5L Manual Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Shine Petrol 1.5L Manual Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Select Petrol 1.5L Manual Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Sharp Pro Petrol 1.5L Manual Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Select Petrol 1.5L Automatic (CVT) Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Sharp Pro Petrol 1.5L Automatic (CVT) Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Sharp Pro Petrol 1.5L Automatic (CVT) Dual Tone Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Savvy Pro Petrol 1.5L Automatic (CVT) Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Savvy Pro Petrol 1.5L Automatic (CVT) Sangria	power_bhp	POWERTRAIN_DIFFERS	
+MG	Astor	Savvy Pro Petrol 1.5L Automatic (CVT) Dual Tone Ivory	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Astor	Savvy Pro Petrol 1.5L Automatic (CVT) Dual Tone Sangria	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Hector Plus	Sharp Pro Petrol Turbo Manual 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Hector Plus	Sharp Pro Petrol Turbo CVT Speed Automatic (CVT) 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+MG	Majestor	Savvy 2WD Diesel 2.0L Turbo Automatic 6 STR	power_bhp	POWERTRAIN_DIFFERS	
+MG	Majestor	Savvy 2WD Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+MG	Majestor	Savvy 4WD Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	Bolero Neo	N4 Diesel Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	Bolero Neo	N8 Diesel Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	Bolero Neo	N11 Diesel Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	Bolero Neo	N10 (O) Diesel Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9S	Pack One Above 59.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack One Above 79.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack Two Above 70.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack Two Above 79.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack One Above 59.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three 79.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack One Above 79.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 7 STR No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9S	Pack Two Above 70.0 kWh 6 STR No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9S	Pack Two Above 70.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Two Above 70.0 kWh 6 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Two Above 79.0 kWh 6 STR No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9S	Pack Two Above 79.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Two Above 79.0 kWh 6 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9S	Pack Three 79.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three 79.0 kWh 6 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 7 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9S	Pack Three Above 79.0 kWh 6 STR 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack One 59.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Two 79.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Mahindra	XEV 9e	Pack One 59.0 kWh 7.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack One 59.0 kWh 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Cineluxe Edition  79.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Two 59.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Two 59.0 kWh 7.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Three 79.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Two 59.0 kWh 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Two 79.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9e	Pack Two 79.0 kWh 11.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Mahindra	XEV 9e	Pack Three 59.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Three Select 59.0 kWh 7.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Three Select 59.0 kWh 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Cineluxe Edition  79.0 kWh 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Three 79.0 kWh 7.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Mahindra	XEV 9e	Pack Three 79.0 kWh 11.2kW Charger	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Maruti Suzuki	Celerio	LXi Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	VXi Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	VXi Petrol Automatic	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	ZXi Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	ZXi Petrol Automatic	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	ZXi Plus Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Maruti Suzuki	Celerio	ZXi Plus Petrol Automatic	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kiger	Authentic Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Authentic CNG Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Renault	Kiger	Evolution Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Evolution CNG Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Renault	Kiger	Evolution Plus Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Evolution Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Evolution Plus Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno CNG Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Renault	Kiger	Techno Petrol Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Evolution Plus Petrol Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Automatic (AMT) Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion CNG Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Renault	Kiger	Emotion Petrol Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Turbo Automatic (CVT) Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Turbo Automatic (CVT) Dual Tone	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Manual Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Turbo Automatic (CVT)	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Techno Petrol Turbo Automatic (CVT)	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Automatic (CVT)	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Automatic (CVT)	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Automatic (CVT) Dual Tone	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kiger	Emotion Petrol Turbo Automatic (CVT) Dual Tone	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kwid	Evolution CNG 1.0L Manual	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Renault	Kwid	Evolution Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kwid	Evolution Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kwid	Evolution Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kwid	Evolution Petrol Automatic	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kwid	Climber Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kwid	Climber Petrol Manual	torque_nm	POWERTRAIN_DIFFERS	
+Renault	Kwid	Climber CNG 1.0L Manual	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Renault	Kwid	Climber Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Renault	Kwid	Climber Petrol Automatic	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Aeris	Smart Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Smart CNG Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Plus Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure CNG Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Plus Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Creative Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure CNG Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Plus CNG Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Creative Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Accomplished Petrol Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Pure Plus CNG Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Creative CNG Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Accomplished Petrol Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Creative CNG Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Accomplished CNG Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Aeris	Accomplished CNG Automatic (AMT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Smart X Petrol 1.2L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure X Petrol 1.2L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure Plus X Petrol 1.2L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure Plus X Petrol 1.2L Turbo Manual Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure X Petrol 1.2L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure X Diesel 1.5L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Petrol 1.2L Turbo Manual Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Curvv	Pure Plus X Petrol 1.2L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure Plus X Diesel 1.5L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Petrol 1.2L Turbo Manual Dual Tone Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Curvv	Pure Plus X Petrol 1.2L Turbo Automatic (DCT) Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Pure Plus X Diesel 1.5L Turbo Manual Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished X Petrol 1.2L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Diesel 1.5L Turbo Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Petrol 1.2L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished X Petrol 1.2L Turbo Manual Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Petrol 1.2L Turbo Automatic (DCT) Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Creative X Plus Diesel 1.5L Turbo Manual Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished X Petrol 1.2L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished X Diesel 1.5L Turbo Manual Dual Tone	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Curvv	Accomplished X Diesel 1.5L Turbo Manual Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished X Petrol 1.2L Turbo Automatic (DCT) Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished Plus X Petrol 1.2L Turbo Automatic (DCT) Dual Tone Hyperion GDI	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Curvv	Accomplished Plus X Diesel 1.5L Turbo Automatic (DCT)	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv	Accomplished Plus X Petrol 1.2L Turbo Automatic (DCT) Dual Tone Hyperion GDI Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Curvv	Accomplished Plus X Diesel 1.5L Turbo Automatic (DCT) Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv EV	Accomplished X 55.0 kWh	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Tata	Curvv EV	Empowered X 55.0 kWh	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Curvv EV	Empowered X 55.0 kWh Dark edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Adventure 2WD 65.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)
+Tata	Harrier EV	Adventure 2WD 65.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Adventure S  2WD 65.0 kWh No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Adventure S  2WD 65.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus 2WD 65.0 kWh No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus 2WD 65.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus 2WD 75.0 kWh No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus 2WD 75.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh No Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Fearless Plus AWD 75.0 kWh 7.2kW Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered 2WD 75.0 kWh No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered 2WD 75.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered Stealth Edition 2WD 75.0 kWh No Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered Stealth Edition 2WD 75.0 kWh 7.2kW Charger	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered AWD 75.0 kWh No Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered AWD 75.0 kWh 7.2kW Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered Stealth Edition AWD 75.0 kWh No Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Harrier EV	Empowered Stealth Edition AWD 75.0 kWh 7.2kW Charger	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Punch	Smart Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Pure Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Pure Plus Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Pure Plus (S) Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Pure Plus Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Adventure Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Pure Plus (S) Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Adventure (S) Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Adventure Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Accomplished  Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Adventure Petrol Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Accomplished  Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Accomplished Plus (S) Petrol 5 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Accomplished Plus (S) Petrol Automatic	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Punch	Accomplished Plus (S) Petrol Turbo 6 Speed Manual	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Smart Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Smart Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Dark Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus  Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Dark Edition Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus Dark Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Dark Edition Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus  Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus  Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus Dark Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Pure X Dark Edition Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus Dark Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus  Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Adventure X Plus Dark Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Dark Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Dark Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus  Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus  Petrol 1.5L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Dark Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Dark Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus Dark Petrol 1.5L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 7 STR Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 6 STR Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Red Dark Petrol 1.5L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Red Dark Petrol 1.5L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus  Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus  Diesel 2.0L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Stealth Edition Petrol 1.5L Turbo Manual 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus  Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus Dark Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Dark Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus  Petrol 1.5L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Dark Diesel 2.0L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Dark Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus Dark Petrol 1.5L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 6 STR Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Manual 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Manual 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 7 STR Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus Stealth Edition Diesel 2.0L Turbo Manual 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Petrol 1.5L Turbo Automatic 6 STR Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Red Dark Petrol 1.5L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Red Dark Petrol 1.5L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus  Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus  Diesel 2.0L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Stealth Edition Petrol 1.5L Turbo Automatic 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Stealth Edition Petrol 1.5L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Dark Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished X Plus Dark Diesel 2.0L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR Dark Edition	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 6 STR Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Automatic 7 STR	power_bhp	POWERTRAIN_DIFFERS	
+Tata	Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Stealth Edition Diesel 2.0L Turbo Automatic 7 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Safari	Accomplished X Plus Stealth Edition Diesel 2.0L Turbo Automatic 6 STR	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Pure Plus Petrol 1.5L Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Adventure Petrol 1.5L Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Pure Plus Petrol 1.5L Automatic (DCT)	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Pure Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Pure Plus Diesel 1.5L Turbo Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Adventure Diesel 1.5L Turbo Manual	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Adventure Petrol 1.5L Automatic (DCT)	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Pure L (O) Diesel 1.5L Turbo Automatic (TC) Dark Edition	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Pure Plus Diesel 1.5L Turbo Automatic (TC)	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Pure Plus L Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Pure Plus L Diesel 1.5L Turbo Automatic (TC) Dark Edition	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Adventure Plus Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Adventure Plus L Petrol 1.5L Turbo Automatic (TC) Hyperion GDI	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Adventure Plus L Petrol 1.5L Turbo Automatic (TC) Hyperion GDI Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Adventure Plus L Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Adventure Plus L Diesel 1.5L Turbo Automatic (TC) Dark Edition	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Accomplished  Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Accomplished  Diesel 1.5L Turbo Automatic (TC) Dark Edition	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Accomplished  Petrol 1.5L Turbo Automatic (TC) Hyperion GDI Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Accomplished Plus Petrol 1.5L Turbo Automatic (TC) Hyperion GDI Dark Edition	*	VARIANT_NOT_ADDED	only one site lists it (no candidate with the same identity)
+Tata	Sierra	Accomplished Plus Diesel 1.5L Turbo Automatic (TC)	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra	Accomplished Plus Diesel 1.5L Turbo Automatic (TC) Dark Edition	torque_nm	POWERTRAIN_DIFFERS	
+Tata	Sierra EV	Pure 2WD 63.0 kWh No Charger	*	VARIANT_NOT_ADDED	only one site lists it (1 candidates share the identity or price differs)

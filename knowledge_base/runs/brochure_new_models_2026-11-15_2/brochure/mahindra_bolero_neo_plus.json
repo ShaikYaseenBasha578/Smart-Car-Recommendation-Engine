@@ -1,0 +1,20 @@
+{
+ "make": "Mahindra",
+ "model": "Bolero Neo Plus",
+ "status": "no brochure",
+ "brochures": [],
+ "pages_read": 0,
+ "llm_calls": 0,
+ "cells_kept": 0,
+ "cells_attached": 0,
+ "cells_skipped_existing": 0,
+ "cells_dropped_disagree": 0,
+ "cells_dropped_single_read": 0,
+ "cells_dropped_page_conflict": 0,
+ "drops": {},
+ "cells": [],
+ "kb_linked": {
+  "P4 Diesel 2.2L Turbo Manual": 961,
+  "P10 Diesel 2.2L Turbo Manual": 962
+ }
+}

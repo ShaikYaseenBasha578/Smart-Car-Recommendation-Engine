@@ -1,0 +1,192 @@
+{
+ "run": "brochure_new_models_2026-11-15_2",
+ "version": "1.0",
+ "started": "2026-11-16T04:21:09Z",
+ "full": true,
+ "stopped": "--no-write: staged and gated, the KB was not touched",
+ "write": null,
+ "stage": {
+  "ops": 9751,
+  "gates": {
+   "schema": {
+    "ok": true,
+    "detail": [
+     "schema 87b7f560cd53, integrity ok, 297 known orphans"
+    ]
+   },
+   "provenance": {
+    "ok": true,
+    "detail": [
+     "2201 of 2201 new or changed cells have provenance"
+    ]
+   },
+   "rows": {
+    "ok": true,
+    "detail": [
+     "evidence_amendment 681->681",
+     "evidence_quarantine 1636->1636",
+     "field_provenance 98967->113601",
+     "generation 92->92",
+     "manufacturer 12->12",
+     "model 92->92",
+     "owner_rating 650->650",
+     "owner_theme 271->271",
+     "powertrain 216->216",
+     "professional_assessment 622->622",
+     "safety_rating 27->27",
+     "safety_test 37->37"
+    ]
+   },
+   "explained": {
+    "ok": true,
+    "detail": [
+     "15974 changed rows, all in the run log"
+    ]
+   },
+   "reviews": {
+    "ok": true,
+    "detail": [
+     "0 new or changed review rows have provenance"
+    ]
+   }
+  },
+  "log_rows": 17912,
+  "idempotent": true,
+  "error": null
+ },
+ "verify_batches": [],
+ "stopped_groups": {},
+ "llm": {},
+ "sha1_before": "d84a94abc7c1cbb8990d2c1dac6af4b2fa864802",
+ "coverage_before": {
+  "makes": 12,
+  "models": 92,
+  "variants": 1464,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 14,
+    "variants": 174
+   },
+   "MPV": {
+    "models": 10,
+    "variants": 121
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 57,
+    "variants": 1046
+   },
+   "Sedan": {
+    "models": 9,
+    "variants": 116
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 36333,
+  "cells_possible": 52704,
+  "provenance_rows": 98967,
+  "observations": 8415,
+  "cells_with_url_evidence": 26495
+ },
+ "discovery": {
+  "NOT_ON_SALE": 289,
+  "UPCOMING": 86,
+  "EXISTING": 91,
+  "REVIEW_MODEL": 1,
+  "NEW_MODEL": 16,
+  "OUT_OF_SCOPE": 11,
+  "ONE_SITE_ONLY": 14,
+  "DISCONTINUED_CANDIDATE": 1
+ },
+ "processed": 30,
+ "skipped_unchanged": 0,
+ "deferred": [],
+ "stats": {
+  "variants_matched": 383,
+  "cells_confirmed": 7550,
+  "powertrain_differences": 254,
+  "cells_written": 2201,
+  "variants_not_added": 106,
+  "high_conflicts": 51,
+  "cells_for_review": 5
+ },
+ "coverage_after": {
+  "makes": 12,
+  "models": 92,
+  "variants": 1464,
+  "discontinued": 0,
+  "by_body_type": {
+   "Hatchback": {
+    "models": 14,
+    "variants": 174
+   },
+   "MPV": {
+    "models": 10,
+    "variants": 121
+   },
+   "Pickup": {
+    "models": 1,
+    "variants": 3
+   },
+   "SUV": {
+    "models": 57,
+    "variants": 1046
+   },
+   "Sedan": {
+    "models": 9,
+    "variants": 116
+   },
+   "Van": {
+    "models": 1,
+    "variants": 4
+   }
+  },
+  "cells_filled": 38534,
+  "cells_possible": 52704,
+  "provenance_rows": 113601,
+  "observations": 9492,
+  "cells_with_url_evidence": 28696
+ },
+ "verify": {
+  "overall": {
+   "n": 0,
+   "match": 0,
+   "mismatch": 0,
+   "unreachable": 0,
+   "verifier_error": 0,
+   "accuracy": null
+  },
+  "by_group": {},
+  "by_source_class": {},
+  "by_group_and_class": {}
+ },
+ "verify_audit_only": {
+  "overall": {
+   "n": 0,
+   "match": 0,
+   "mismatch": 0,
+   "unreachable": 0,
+   "verifier_error": 0,
+   "accuracy": null
+  },
+  "by_group": {},
+  "by_source_class": {},
+  "by_group_and_class": {}
+ },
+ "fetch": {
+  "network": 0,
+  "cache": 475,
+  "failed": 0,
+  "bytes": 0
+ },
+ "runtime_seconds": 963.7,
+ "review_items": 11,
+ "conflicts": 212
+}

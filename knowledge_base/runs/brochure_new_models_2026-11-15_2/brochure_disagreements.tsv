@@ -1,0 +1,71 @@
+model	variant	field	kind	kb_value	values	resolution
+Hyundai/Alcazar	Prestige Petrol 1.5L Turbo 6 Speed Manual 7 STR	wireless_charging	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Hyundai/Alcazar	Corporate Diesel 1.5L Turbo 6 Speed Manual 7 STR	wireless_charging	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Hyundai/Alcazar	Prestige Petrol 1.5L Turbo Automatic (DCT) 7 STR	paddle_shifters	brochure_vs_aggregator		cardekho=0; oem=1	precedence: brochure
+Hyundai/Alcazar	Prestige Petrol 1.5L Turbo Automatic (DCT) 7 STR	wireless_charging	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Hyundai/Alcazar	Corporate Diesel 1.5L Turbo Automatic (TC) 7 STR	paddle_shifters	brochure_vs_aggregator		cardekho=0; oem=1	precedence: brochure
+Hyundai/Alcazar	Corporate Diesel 1.5L Turbo Automatic (TC) 7 STR	wireless_charging	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Hyundai/Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Lounge Edition	sunroof	brochure_vs_aggregator		carwale=1; cardekho=0; oem=1	precedence: brochure
+Hyundai/Alcazar	Signature Diesel 1.5L Turbo Automatic (TC) 5 STR Dual Tone Lounge Edition	sunroof	brochure_vs_aggregator		carwale=1; cardekho=0; oem=1	precedence: brochure
+Hyundai/i20	Magna Petrol Manual	rear_ac_vents	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Hyundai/i20 N Line	N6 Petrol Turbo Manual	automatic_climate_control	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Kia/Sonet	HTK Plus (O) Petrol 1.0L Turbo Clutchless Manual (IMT)	automatic_climate_control	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Mahindra/Bolero Neo	N4 Diesel Turbo Manual	power_bhp	brochure_vs_aggregator		carwale=100.0; cardekho=98.56; oem=98.56	precedence: brochure
+Mahindra/Bolero Neo	N8 Diesel Turbo Manual	power_bhp	brochure_vs_aggregator		carwale=100.0; cardekho=98.56; oem=98.56	precedence: brochure
+Mahindra/Bolero Neo	N11 Diesel Turbo Manual	power_bhp	brochure_vs_aggregator		carwale=100.0; cardekho=98.56; oem=98.56	precedence: brochure
+Mahindra/Bolero Neo	N10 (O) Diesel Turbo Manual	power_bhp	brochure_vs_aggregator		carwale=100.0; cardekho=98.56; oem=98.56	precedence: brochure
+Mahindra/XEV 9S	Pack Two Above 70.0 kWh 6 STR No Charger	ground_clearance_mm	brochure_vs_aggregator		cardekho=201; oem=205	precedence: brochure
+Mahindra/XEV 9S	Pack Two Above 79.0 kWh 6 STR No Charger	ground_clearance_mm	brochure_vs_aggregator		cardekho=201; oem=205	precedence: brochure
+Mahindra/XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	ground_clearance_mm	brochure_vs_aggregator		cardekho=201; oem=205	precedence: brochure
+Mahindra/XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	rear_camera	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Mahindra/XEV 9S	Pack Three 79.0 kWh 6 STR No Charger	camera_360	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Mahindra/XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	ground_clearance_mm	brochure_vs_aggregator		cardekho=201; oem=205	precedence: brochure
+Mahindra/XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	rear_camera	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Mahindra/XEV 9S	Pack Three Above 79.0 kWh 6 STR No Charger	camera_360	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Maruti Suzuki/Celerio	LXi Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	VXi Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	VXi Petrol Manual	mileage_arai_kmpl	brochure_vs_aggregator		carwale=25.24; cardekho=24.97; oem=24.97	precedence: brochure
+Maruti Suzuki/Celerio	VXi Petrol Automatic	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	VXi Petrol Automatic	mileage_arai_kmpl	brochure_vs_aggregator		carwale=26.68; cardekho=26.0; oem=26.0	precedence: brochure
+Maruti Suzuki/Celerio	ZXi Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	ZXi Petrol Manual	mileage_arai_kmpl	brochure_vs_aggregator		carwale=25.24; cardekho=24.97; oem=24.97	precedence: brochure
+Maruti Suzuki/Celerio	ZXi Petrol Automatic	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	ZXi Plus Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Maruti Suzuki/Celerio	ZXi Plus Petrol Automatic	torque_nm	brochure_vs_aggregator		carwale=89.0; cardekho=91.1; oem=91.1	precedence: brochure
+Renault/Kwid	Evolution Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=91.0; cardekho=92.5; oem=92.5	precedence: brochure
+Renault/Kwid	Evolution Petrol Automatic	torque_nm	brochure_vs_aggregator		carwale=91.0; cardekho=92.5; oem=92.5	precedence: brochure
+Renault/Kwid	Climber Petrol Manual	torque_nm	brochure_vs_aggregator		carwale=91.0; cardekho=92.5; oem=92.5	precedence: brochure
+Renault/Kwid	Climber Petrol Automatic	torque_nm	brochure_vs_aggregator		carwale=91.0; cardekho=92.5; oem=92.5	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	length_mm	brochure_vs_aggregator		cardekho=4758; oem=4699	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	kerb_weight_kg	brochure_vs_aggregator		cardekho=1820; oem=1779	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	boot_space_litres	brochure_vs_aggregator		cardekho=281.0; oem=270.0; oem=270.0	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	fuel_tank_litres	brochure_vs_aggregator		cardekho=62.0; oem=58.0	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	mileage_arai_kmpl	brochure_vs_aggregator	14.86	carwale=14.86; cardekho=14.86; oem=13.32	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	hill_assist	brochure_vs_aggregator		carwale=0; oem=1	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	tyre_pressure_monitoring_system	brochure_vs_aggregator		carwale=1; oem=0	precedence: brochure
+Skoda/Kodiaq	Sportline Petrol Turbo Automatic 7 STR	rear_camera	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	length_mm	brochure_vs_aggregator		cardekho=4758; oem=4699	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	kerb_weight_kg	brochure_vs_aggregator		cardekho=1825; oem=1793	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	boot_space_litres	brochure_vs_aggregator		cardekho=281.0; oem=270.0; oem=270.0	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	fuel_tank_litres	brochure_vs_aggregator		cardekho=62.0; oem=58.0	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	mileage_arai_kmpl	brochure_vs_aggregator	14.86	carwale=14.86; cardekho=14.86; oem=13.32	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	rear_camera	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Skoda/Kodiaq	Selection L&K Petrol Turbo Automatic 7 STR	camera_360	brochure_vs_aggregator		carwale=0; cardekho=1; oem=1	precedence: brochure
+Tata/Aeris	Smart CNG Manual	android_auto	brochure_vs_aggregator		carwale=1; oem=0	precedence: brochure
+Tata/Aeris	Smart CNG Manual	apple_carplay	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure Petrol Automatic (AMT)	android_auto	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure Petrol Automatic (AMT)	apple_carplay	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure CNG Manual	android_auto	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure CNG Manual	apple_carplay	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure CNG Automatic (AMT)	android_auto	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure CNG Automatic (AMT)	apple_carplay	brochure_vs_aggregator		carwale=1; cardekho=0; oem=0	precedence: brochure
+Tata/Aeris	Pure Plus CNG Automatic (AMT)	cruise_control	brochure_vs_aggregator	0	carwale=0; cardekho=0; oem=1	precedence: brochure
+Tata/Aeris	Creative CNG Automatic (AMT)	cruise_control	brochure_vs_aggregator	0	carwale=0; cardekho=0; oem=1	precedence: brochure
+Tata/Aeris	Accomplished CNG Automatic (AMT)	cruise_control	brochure_vs_aggregator	0	carwale=0; cardekho=0; oem=1	precedence: brochure
+Tata/Harrier EV	Fearless Plus AWD 75.0 kWh No Charger	torque_nm	brochure_vs_aggregator		carwale=504.0; cardekho=315.0; oem=504.0	precedence: brochure
+Tata/Harrier EV	Fearless Plus AWD 75.0 kWh 7.2kW Charger	torque_nm	brochure_vs_aggregator		carwale=504.0; cardekho=315.0; oem=504.0	precedence: brochure
+Tata/Safari	Accomplished Ultra Petrol 1.5L Turbo Manual 7 STR Dark Edition	airbags	brochure_vs_aggregator		carwale=6; cardekho=7; oem=7	precedence: brochure
+Tata/Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR	airbags	brochure_vs_aggregator		carwale=6; cardekho=7; oem=7	precedence: brochure
+Tata/Safari	Accomplished Ultra Diesel 2.0L Turbo Manual 7 STR Dark Edition	airbags	brochure_vs_aggregator		carwale=6; cardekho=7; oem=7	precedence: brochure
+Tata/Safari	Accomplished Ultra Red Dark Diesel 2.0L Turbo Manual 7 STR	airbags	brochure_vs_aggregator		carwale=6; cardekho=7; oem=7	precedence: brochure
+Tata/Safari	Accomplished Ultra Diesel 2.0L Turbo Automatic 7 STR Dark Edition	airbags	brochure_vs_aggregator		carwale=6; cardekho=7; oem=7	precedence: brochure

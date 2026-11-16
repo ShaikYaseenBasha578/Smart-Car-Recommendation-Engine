@@ -61,6 +61,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dir")
     ap.add_argument("--models", nargs="*")
+    ap.add_argument("--models-file", help="one Make/Model per line")
     a = ap.parse_args()
     rd = a.run_dir
     sums = {}
@@ -68,7 +69,7 @@ def main():
         d = json.load(open(p))
         if "cells" in d:
             sums["%s/%s" % (d["make"], d["model"])] = d
-    models = a.models or sorted(sums)
+    models = a.models or ([l.strip() for l in open(a.models_file) if l.strip()] if a.models_file else sorted(sums))
     before = opendb(os.path.join(rd, "before.db"))
     after = opendb(os.path.join(rd, "staging.db")) if os.path.exists(os.path.join(rd, "staging.db")) else None
     cs = json.load(open(os.path.join(rd, "changeset.json")))
@@ -111,7 +112,7 @@ def main():
             cal.append("%d/%d" % (filled_n, before_n))
             call_tot[name][0] += filled_n
             call_tot[name][1] += before_n
-        status = (s or {}).get("status") or "no brochure"
+        status = (s or {}).get("status") or "no summary (no brochure, or run stopped before it)"
         lines.append("| %s | %s | %d | %d | %d | %d | %d | %d | %d | %s |" % (
             m, status, nv, total, len(bl), len(ucells), sup, len(cs_m), len(al), " | ".join(cal)))
         tot["blank_before"] += len(bl)
@@ -124,6 +125,21 @@ def main():
               "TOTAL: tracked %d, blank before %d, brochure cells %d (supported %d), filled by brochure in the change-set %d, blank after %d"
               % (tot["tracked"], tot["blank_before"], tot["cells"], tot["sup"], tot["fill"], tot["blank_after"]), ""]
     lines += ["Callouts, all models: " + "; ".join("%s %d of %d blank filled" % (k, v[0], v[1]) for k, v in call_tot.items()), ""]
+    # what the change-set holds, by origin (all models of the run)
+    kinds = {}
+    for op in cs["ops"]:
+        if op["op"] != "cell":
+            continue
+        ev = next((e for e in op["evidence"] if e["decision"] in ("accepted", "confirmed")), None)
+        src = "brochure" if any(obs.get(e["obs"], {}).get("source") == "oem" and e["decision"] == "accepted" for e in op["evidence"]) else "aggregators"
+        if op["reason"] == "AGGREGATORS_CONFIRM":
+            k = "aggregator confirmation of an existing value (evidence only, no cell changes)"
+        elif src == "brochure":
+            k = "brochure: new fill of a blank cell" if op.get("expect_old") is None else "brochure: correction of an existing value"
+        else:
+            k = "aggregators agreed (two sites), new cell"
+        kinds[k] = kinds.get(k, 0) + 1
+    lines += ["## Change-set cell ops by origin (whole run)", ""] + ["- %s: %d" % (k, n) for k, n in sorted(kinds.items())] + [""]
     lines += ["## Checker verdicts per field group (unique cells)", "", "| Group | Supported | Checked | Rate |", "|---|---|---|---|"]
     for g in F.GROUPS:
         if g in G:
