@@ -83,6 +83,25 @@ def displayed_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
     return best.sort_values(["_t", "_o", "variant_id"], ascending=[True, False, True]).drop(columns=["_o", "_t"])
 
 
+def price_ordered(scored: pd.DataFrame, max_models: int = config.MAX_MODELS) -> List[pd.Series]:
+    """Explicit superlative ("cheapest", "lowest price", "sabse sasti"): the ORDER is the instruction. One row per
+    model, the cheapest variant that passed the filter (fewest unverified requirements first, as everywhere), the
+    models listed by ascending price (then variant_id), at most max_models. No MMR, no score trade-off."""
+    df = scored.assign(_price=scored["price_ex_showroom"].astype(float).fillna(float("inf")),
+                       _t=tier_of(scored).to_numpy())
+    df = df[df["_price"] < float("inf")]
+    # per model: lowest tier, then cheapest, then lowest variant_id
+    best = df.sort_values(["_t", "_price", "variant_id"]).drop_duplicates(subset=["make", "model"], keep="first")
+    best = best.sort_values(["_t", "_price", "variant_id"]).head(max_models)
+    out = []
+    for i, (_, row) in enumerate(best.iterrows(), start=1):
+        row = row.drop(labels=["_price", "_t"]).copy()
+        row["cheapest_variant_id"] = float(row["variant_id"])    # the shown variant is the cheapest: no "also from"
+        row["selection_order"] = i
+        out.append(row)
+    return out
+
+
 def similarity(a: pd.Series, b: pd.Series) -> float:
     w = config.SIM_WEIGHTS
     same_make = 1.0 if a["make"] == b["make"] else 0.0
@@ -147,6 +166,8 @@ def diversify(scored: pd.DataFrame, intent: Any, max_models: int = config.MAX_MO
     Returns the chosen rows sorted by overall score descending, each with `selection_order` set."""
     if scored.empty:
         return []
+    if not isinstance(intent, dict) and getattr(intent, "price_order", False) or isinstance(intent, dict) and intent.get("price_order"):
+        return price_ordered(scored, max_models)
     models = displayed_variant_per_model(scored)
     if named_make_or_model(intent):
         picked = score_order_select(models, max_models, use_twins)

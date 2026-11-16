@@ -2,86 +2,65 @@
  "cheapest automatic SUV": [
   {
    "criteria": {
-    "comfort_features": 0.3125,
-    "performance": 0.235,
-    "price": 0.9876,
-    "running_cost": 0.6233,
-    "safety": 0.8374,
-    "space_practicality": 0.289,
-    "tech_assist": 0.1905,
-    "value_for_budget": 0.9545
-   },
-   "ranking_score": 86.12,
-   "scores": {
-    "coverage": 0.9871,
-    "expert": null,
-    "overall": 0.8612,
-    "owner": null,
-    "spec": 0.8628
-   },
-   "variant_id": 816
-  },
-  {
-   "criteria": {
-    "comfort_features": 0.3546,
-    "performance": 0.0515,
-    "price": 0.9803,
+    "comfort_features": 0.0863,
+    "performance": 0.0699,
+    "price": 0.9946,
     "running_cost": 0.717,
-    "safety": 0.7414,
-    "space_practicality": 0.3593,
-    "tech_assist": 0.3809,
-    "value_for_budget": 0.9576
-   },
-   "ranking_score": 85.59,
-   "scores": {
-    "coverage": 0.9239,
-    "expert": null,
-    "overall": 0.8559,
-    "owner": null,
-    "spec": 0.8658
-   },
-   "variant_id": 1345
-  },
-  {
-   "criteria": {
-    "comfort_features": 0.5437,
-    "performance": 0.0515,
-    "price": 0.9766,
     "safety": 0.8374,
-    "space_practicality": 0.4056,
-    "tech_assist": 0.3425,
-    "value_for_budget": 0.9722
+    "space_practicality": 0.322,
+    "tech_assist": 0.0444,
+    "value_for_budget": 0.2798
    },
-   "ranking_score": 82.6,
-   "scores": {
-    "coverage": 0.8638,
-    "expert": null,
-    "overall": 0.826,
-    "owner": null,
-    "spec": 0.8432
-   },
-   "variant_id": 993
-  },
-  {
-   "criteria": {
-    "comfort_features": 0.3363,
-    "performance": 0.3504,
-    "price": 0.927,
-    "running_cost": 0.9844,
-    "safety": 0.7374,
-    "space_practicality": 0.2632,
-    "tech_assist": 0.2349,
-    "value_for_budget": 0.6512
-   },
-   "ranking_score": 81.92,
+   "ranking_score": 78.59,
    "scores": {
     "coverage": 0.9763,
     "expert": null,
-    "overall": 0.8192,
+    "overall": 0.7859,
     "owner": null,
-    "spec": 0.8221
+    "spec": 0.7887
    },
-   "variant_id": 488
+   "variant_id": 720
+  },
+  {
+   "criteria": {
+    "comfort_features": 0.0,
+    "performance": 0.235,
+    "price": 0.9876,
+    "running_cost": 0.6233,
+    "safety": 0.7374,
+    "space_practicality": 0.289,
+    "tech_assist": 0.1905,
+    "value_for_budget": 0.7205
+   },
+   "ranking_score": 82.3,
+   "scores": {
+    "coverage": 0.9871,
+    "expert": null,
+    "overall": 0.823,
+    "owner": null,
+    "spec": 0.8246
+   },
+   "variant_id": 658
+  },
+  {
+   "criteria": {
+    "comfort_features": 0.1847,
+    "performance": 0.0515,
+    "price": 0.9854,
+    "safety": 0.8374,
+    "space_practicality": 0.4056,
+    "tech_assist": 0.3425,
+    "value_for_budget": 0.9326
+   },
+   "ranking_score": 81.65,
+   "scores": {
+    "coverage": 0.8567,
+    "expert": null,
+    "overall": 0.8165,
+    "owner": null,
+    "spec": 0.8345
+   },
+   "variant_id": 992
   },
   {
    "criteria": {
@@ -126,6 +105,48 @@
   },
   {
    "criteria": {
+    "comfort_features": 0.3363,
+    "performance": 0.3504,
+    "price": 0.927,
+    "running_cost": 0.9844,
+    "safety": 0.7374,
+    "space_practicality": 0.2632,
+    "tech_assist": 0.2349,
+    "value_for_budget": 0.6512
+   },
+   "ranking_score": 81.92,
+   "scores": {
+    "coverage": 0.9763,
+    "expert": null,
+    "overall": 0.8192,
+    "owner": null,
+    "spec": 0.8221
+   },
+   "variant_id": 488
+  },
+  {
+   "criteria": {
+    "comfort_features": 0.0,
+    "performance": 0.3821,
+    "price": 0.9224,
+    "running_cost": 0.2708,
+    "safety": 0.7974,
+    "space_practicality": 0.3929,
+    "tech_assist": 0.2524,
+    "value_for_budget": 0.3259
+   },
+   "ranking_score": 72.08,
+   "scores": {
+    "coverage": 0.9959,
+    "expert": null,
+    "overall": 0.7208,
+    "owner": null,
+    "spec": 0.7212
+   },
+   "variant_id": 77
+  },
+  {
+   "criteria": {
     "comfort_features": 0.0863,
     "performance": 0.6368,
     "price": 0.8956,
@@ -144,47 +165,6 @@
     "spec": 0.7705
    },
    "variant_id": 670
-  },
-  {
-   "criteria": {
-    "comfort_features": 0.625,
-    "performance": 0.518,
-    "price": 0.8428,
-    "safety": 0.8374,
-    "space_practicality": 0.2902,
-    "tech_assist": 0.3425,
-    "value_for_budget": 0.8853
-   },
-   "ranking_score": 74.48,
-   "scores": {
-    "coverage": 0.8722,
-    "expert": null,
-    "overall": 0.7448,
-    "owner": null,
-    "spec": 0.7593
-   },
-   "variant_id": 906
-  },
-  {
-   "criteria": {
-    "comfort_features": 0.6234,
-    "performance": 0.4967,
-    "price": 0.7744,
-    "running_cost": 0.8409,
-    "safety": 0.7974,
-    "space_practicality": 0.4294,
-    "tech_assist": 0.2857,
-    "value_for_budget": 0.7683
-   },
-   "ranking_score": 74.38,
-   "scores": {
-    "coverage": 0.9946,
-    "expert": null,
-    "overall": 0.7438,
-    "owner": null,
-    "spec": 0.7444
-   },
-   "variant_id": 46
   }
  ],
  "diesel SUV with ADAS under 25 lakh": [
