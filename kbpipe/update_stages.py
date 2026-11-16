@@ -246,7 +246,7 @@ def saved_pages(ctx):
 # ------------------------------------------------------------------ 7
 def audit(ctx):
     if ctx.opts.get("no_verify"):
-        return {"status": SKIPPED, "result": "skipped: --no-verify (no verifier calls)"}
+        return {"status": SKIPPED, "result": "--no-verify: no verifier calls, so nothing to audit"}
     dirs = [ctx.sub_dir(n) for n in ("specs", "brochures", "reviews", "text", "saved")]
     pids = audit_mod.changed_pids(*dirs)
     if not pids:

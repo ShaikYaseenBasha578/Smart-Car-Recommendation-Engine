@@ -250,7 +250,8 @@ def run(cfg, opts, stages=None, echo=print, sha_fn=None):
                     r2 = summ.fn(ctx) or {}
                     state["stages"][summ.name].update(status=PENDING, result=r2.get("result", ""), data=r2.get("data"), run_dir=r2.get("run_dir"))
                 except Exception:
-                    pass
+                    with open(os.path.join(update_dir, "errors.log"), "a") as f:
+                        f.write("== %s summary after stop\n%s\n" % (utc(), traceback.format_exc()))
             _save(update_dir, state)
             break
     _save(update_dir, state)

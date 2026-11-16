@@ -296,7 +296,7 @@ def pr_body(ctx, files):
          "- Shortlist recall@8 / MRR: %s / %s -> %s / %s" % (b.get("recall_at_8", "n/a"), b.get("mrr", "n/a"), a.get("recall_at_8", "n/a"), a.get("mrr", "n/a"))]
     if ck.get("golden_regenerated"):
         L += ["", "## Golden files regenerated (only the catalogue moved)", ""] + ["- `%s`" % g for g in ck["golden_regenerated"]] + ["", "```", ck.get("golden_diff_stat", ""), "```"]
-    L += ["", "## Update stages", ""] + ["- %s %s: %s" % (s.name, ctx.entry(s.name).get("status"), (ctx.entry(s.name).get("result") or "")[:160]) for s in ctx.stages if s.name != "summary"]
+    L += ["", "## Update stages", ""] + ["- %s %s: %s" % (s.name, ctx.entry(s.name).get("status"), (ctx.entry(s.name).get("result") or "")[:160]) for s in ctx.stages if s.name != "summary" and ctx.entry(s.name).get("status") not in (None, "pending")]
     return "\n".join(L)
 
 
