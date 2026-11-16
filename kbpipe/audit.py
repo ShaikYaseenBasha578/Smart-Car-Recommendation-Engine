@@ -107,11 +107,12 @@ def run(cfg, scope="changed", run_dir=None, label=None, resume=None, db=None, li
         vt = {"text": llm.get(cfg, "verify", run_dir), "image": llm.get(cfg, "verify_image", run_dir)}
         fetcher = fetcher or fetch.Fetcher(cfg, log=log)
         try:
-            R["checked_now"] = len(verify.run(cells, cfg, fetcher, vt, vdir, log, legacy_lookup=lookup, batch="audit"))
+            verify.run(cells, cfg, fetcher, vt, vdir, log, legacy_lookup=lookup, batch="audit")
         except llm.QuotaExhausted as e:
             R["stopped_on_limit"] = str(e)
             log("audit", "stopped on a usage limit: %s. Resume: kbpipe run --audit %s --resume-audit %s" % (e, scope, run_dir))
         rows = verify.load(vdir)
+        R["checked_now"] = len({(r["variant_id"], r["field"]) for r in rows} - done_before)
         if not R["stopped_on_limit"] and rows and cfg.get("planted_errors", 20) and not os.path.exists(os.path.join(vdir, "planted.jsonl")):
             try:
                 R["planted"] = verify.planted(cells, rows, cfg.get("planted_errors", 20), cfg, fetcher, vt, vdir, log, legacy_lookup=lookup)
