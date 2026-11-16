@@ -41,11 +41,17 @@ UNKNOWN_TEXT = {
 }
 
 
-def match_label(overall: Optional[float], n_unknown: int, relaxed: bool = False) -> str:
+UNCONFIRMED_LABEL = "Requirements not confirmed"
+
+
+def match_label(overall: Optional[float], n_unknown: int, relaxed: bool = False, n_unverified: int = 0) -> str:
+    """A car that passes a hard requirement only because its value is blank is never called a match (n_unverified)."""
     if overall is None:
         base = "No score"
     elif relaxed:
         base = "Near match"
+    elif n_unverified:
+        base = UNCONFIRMED_LABEL
     else:
         base = config.MATCH_FLOOR_LABEL
         for threshold, name in config.MATCH_LEVELS:
@@ -455,4 +461,4 @@ def explain(row: pd.Series, score_row: pd.Series, weights: Dict[str, Any], inten
     return {"reasons": reasons, "expert_standing": expert_standing(row["model"], evidence),
             "owner_standing": owner_standing(row["model"], evidence), "expert_lines": e_lines, "owner_lines": o_lines, "caveats": caveats,
             "unknowns": unknowns, "n_unknown": len(unknowns),
-            "match_label": match_label(overall, len(unknowns), relaxed)}
+            "match_label": match_label(overall, len(unknowns), relaxed, len(not_verified_labels(row)))}

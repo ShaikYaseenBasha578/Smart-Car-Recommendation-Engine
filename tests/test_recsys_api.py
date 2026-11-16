@@ -110,7 +110,8 @@ def test_no_hard_constraint_violated_unless_relaxed(responses):
 
 def test_relaxed_response_names_what_was_relaxed(responses):
     r = responses["7 seater diesel suv under 6 lakh with sunroof and adas"]
-    assert "relaxation" in r and r["relaxation"]["moves"] and "No cars match" in r["message"]
+    assert "relaxation" in r and r["relaxation"]["moves"] \
+        and ("No cars match" in r["message"] or r["message"].startswith("No car is confirmed to have all of:"))
     assert r["recommendations"] and all(c["violations"] for c in r["recommendations"])
     assert all(v["text"] for c in r["recommendations"] for v in c["violations"])
 

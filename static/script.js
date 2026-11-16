@@ -423,7 +423,7 @@ function buildRelaxedNotice(data) {
     if (!data.relaxation && !(data.message && data.recommendations && data.recommendations.length)) return "";
     const text = data.relaxation ? data.relaxation.message : data.message;
     return `<div class="notice" role="status">${ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ')}<div>
-        <strong>${data.relaxation ? "Nothing matched every requirement" : "Please note"}</strong>
+        <strong>${data.relaxation ? "Nothing matched every requirement" : (data.no_confirmed ? "Requirements not confirmed" : "Please note")}</strong>
         <p>${escapeHtml(text)}</p>
     </div></div>`;
 }
@@ -431,16 +431,22 @@ function buildRelaxedNotice(data) {
 // --- match wording from the data ---
 function v3MatchLabel(car, hard, personalised) {
     if (personalised === false) return { key: "neutral", text: car.match_label || "General pick, not personalised", detail: "" };
+    // a blank value is not a pass: any unmet or unverified requirement is named on the card and the card never says "meets all"
     const violations = car.violations || [];
-    const unverified = (car.not_verified || []).length;
+    const notVerified = car.not_verified || [];
+    const detail = [
+        ...violations.map(v => `Not met: ${v.text}`),
+        ...notVerified.map(t => `Not verified: ${t.replace(/ not verified$/, "")}`),
+    ];
     if (violations.length) {
-        const met = Math.max(hard - violations.length, 0);
-        return { key: "near", text: hard ? `Meets ${met} of ${hard} requirements` : "Near match",
-                 detail: violations.map(v => v.text) };
+        const met = Math.max(hard - violations.length - notVerified.length, 0);
+        return { key: "near", text: hard ? `Meets ${met} of ${hard} requirements` : "Near match", detail };
+    }
+    if (notVerified.length) {
+        return { key: "near", text: hard ? `Confirmed on ${Math.max(hard - notVerified.length, 0)} of ${hard} requirements` : "Requirements not confirmed", detail };
     }
     if (!hard) return { key: "ok", text: "Ranked on your preferences", detail: "" };
-    const text = hard === 1 ? "Meets your requirement" : "Meets all your requirements";
-    return { key: "ok", text: unverified ? `${text} · ${unverified} not verified` : text, detail: "" };
+    return { key: "ok", text: hard === 1 ? "Meets your requirement" : "Meets all your requirements", detail: "" };
 }
 
 // --- sub-score meters ---
@@ -611,7 +617,7 @@ function buildV3Card(car, index, hard, personalised) {
     const alsoHtml = also && also["Ex-Showroom_Price"]
         ? `<p class="also">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
     const detail = Array.isArray(label.detail) && label.detail.length
-        ? `<ul class="unmet" aria-label="Requirements this car does not meet">${label.detail.map(d => `<li>Not met: ${escapeHtml(d)}</li>`).join("")}</ul>` : "";
+        ? `<ul class="unmet" aria-label="Requirements this car does not meet or could not confirm">${label.detail.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ul>` : "";
     const chips = v3Chips(car);
     const more = hasMoreReviews(car);
     const reviewsId = `reviews-${++reviewsSeq}`;

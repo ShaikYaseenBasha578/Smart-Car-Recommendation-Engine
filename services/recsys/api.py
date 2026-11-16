@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 
 from services.catalogue import get_catalogue, get_meta
-from services.filter_v2 import FEATURE_COLUMNS, MIN_COLUMNS, filter_candidates
+from services.filter_v2 import FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, filter_candidates
 from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent_ex
 from services.recsys import config, llm_parse
@@ -24,7 +24,7 @@ from services.recsys.criteria import catalogue_reference
 from services.recsys.diversify import diversify
 from services.recsys.evidence import Evidence, get_evidence
 from services.recsys.explain import explain, not_verified_labels
-from services.recsys.relax import find_relaxation, violations_for
+from services.recsys.relax import find_relaxation, format_rupees, violations_for
 from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
 
@@ -152,6 +152,34 @@ def _assumed_matches(cands: pd.DataFrame, assumed: dict) -> Dict[Any, List[str]]
     return {idx: [name for name, col, v in checks if row[col] == v] for idx, row in cands.iterrows()}
 
 
+def requirement_phrases(intent: dict) -> List[str]:
+    """Every hard requirement of the query in plain words, for the "No car is confirmed to have all of: ..." line."""
+    out: List[str] = []
+    b = intent.get("budget") or {}
+    if b.get("min") is not None and b.get("max") is not None:
+        out.append(f"{format_rupees(b['min'])} to {format_rupees(b['max'])}")
+    elif b.get("max") is not None:
+        out.append(f"under {format_rupees(b['max'])}")
+    elif b.get("min") is not None:
+        out.append(f"above {format_rupees(b['min'])}")
+    if intent.get("seats_min") is not None:
+        out.append(f"{intent['seats_min']}+ seats")
+    if intent.get("body_types"):
+        out.append("/".join(intent["body_types"]))
+    if intent.get("fuel_types"):
+        out.append("/".join(intent["fuel_types"]))
+    t = intent.get("transmission") or {}
+    if t.get("include_types") or t.get("family"):
+        out.append("/".join(t.get("include_types") or [t["family"]]) + " gearbox")
+    out += [FEATURE_COLUMNS[f][1] for f in intent.get("required_features") or []]
+    out += [f"no {FEATURE_COLUMNS[f][1]}" for f in intent.get("exclude_features") or []]
+    out += [f"{label} of at least {intent[k]:g}" for k, (_, label) in MIN_COLUMNS.items() if intent.get(k) is not None]
+    out += [f"{label} of at most {intent[k]:g}" for k, (_, label) in MAX_COLUMNS.items() if intent.get(k) is not None]
+    if intent.get("min_safety_stars") is not None:
+        out.append(f"{intent['min_safety_stars']}-star crash rating")
+    return out
+
+
 def _filters_summary(intent: dict) -> dict:
     keys = ["budget", "body_types", "fuel_types", "transmission", "seats_min", "makes", "models",
             "required_features", "exclude_body_types", "exclude_fuel_types"]
@@ -245,6 +273,8 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
         # requested features this variant is not known to have
         "missing_features": [item.split(":", 1)[1] for item, st in srow["required"].items()
                              if item.startswith("feature:") and st != "met"],
+        # true only when no hard requirement is unmet and none rests on a blank value; such a card may say "meets all"
+        "verified_match": not violations and not not_verified_labels(car),
     }
 
 
@@ -342,6 +372,20 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         cards.append(card)
 
     response["recommendations"] = cards
+    # a blank is not a pass: when no car shown is confirmed on every requirement, say so first and name everything
+    # unmet or unverified (never only one of them)
+    nv_union = list(dict.fromkeys(t for c in cards for t in c["not_verified"]))
+    if cards and nv_union and not vague:
+        reqs = ", ".join(requirement_phrases(intent))
+        head = f"No car is confirmed to have all of: {reqs}."
+        tail = f" Not confirmed in our data for the cars shown: {', '.join(t.replace(' not verified', '') for t in nv_union)}."
+        if relaxation:
+            body = relaxation["message"].replace("No cars match all your requirements. ", "", 1)
+            relaxation["message"] = f"{head} {body}{tail}"
+        elif not any(c["verified_match"] for c in cards):
+            response["no_confirmed"] = {"requirements": requirement_phrases(intent), "not_verified": nv_union}
+            response["message"] = " ".join(filter(None, [unsupported_note, head + " These cars are listed because the "
+                                                       "data is blank, not because they were found to qualify." + tail]))
     response["weights"] = _weights_payload(weights)
     response["weights_profile"] = {"profile": weights["profile"], "drivers": weights["drivers"]}
     response["classes"] = dict(config.CLASS_WEIGHTS)
@@ -353,6 +397,6 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         response["relaxation"] = {"moves": relaxation["moves"], "keys": relaxed_keys, "far": relaxation["far"],
                                   "seats_relaxed": relaxation["seats_relaxed"], "message": relaxation["message"]}
         response["message"] = " ".join(filter(None, [unsupported_note, relaxation["message"]]))
-    elif unsupported_note:
+    elif unsupported_note and "no_confirmed" not in response:
         response["message"] = unsupported_note + " Showing the closest matches."
     return to_jsonable(response)
