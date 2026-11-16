@@ -212,6 +212,30 @@ def load_safety(conn: sqlite3.Connection) -> dict[int, sqlite3.Row]:
     return latest
 
 
+def unlinked_safety_tests(conn: sqlite3.Connection) -> list[tuple[int, str, list[str]]]:
+    """(test id, tested vehicle name, [models in the KB whose name appears in it]) for every crash test that is not
+    linked to a model in v_safety_applicability_q although the test title names a model that is in the `model` table.
+    Report only: the exporter never links a test itself (that is a KB write, and a name match is not applicability).
+    Found 2026-11-16: eight models added after their tests were ingested showed "no rating on record"."""
+    def norm(text: str) -> str:
+        return "".join(ch for ch in str(text).lower() if ch.isalnum())
+
+    models = conn.execute("SELECT m.name AS model, mf.name AS make FROM model m "
+                          "JOIN manufacturer mf ON mf.id = m.manufacturer_id").fetchall()
+    out = []
+    for t in conn.execute(
+            """SELECT st.id, st.tested_vehicle_name FROM safety_test st
+               WHERE NOT EXISTS (SELECT 1 FROM v_safety_applicability_q a WHERE a.safety_test_id = st.id)
+               ORDER BY st.id"""):
+        title = norm(t["tested_vehicle_name"])
+        hits = sorted({m["model"] for m in models
+                       if len(norm(m["model"])) >= 4 and norm(m["model"]) in title
+                       and norm(m["make"].split()[0]) in title})
+        if hits:
+            out.append((t["id"], t["tested_vehicle_name"], hits))
+    return out
+
+
 def load_warranty(conn: sqlite3.Connection) -> tuple[dict[int, sqlite3.Row], dict[int, sqlite3.Row]]:
     """Brochure-cited rows from the quarantine-aware view: (by model, by make)."""
     by_model: dict[int, sqlite3.Row] = {}
@@ -447,6 +471,7 @@ def main(argv: list[str] | None = None) -> int:
         try:
             rows, safety = build_rows(conn)
             quarantined = quarantine_counts(conn, rows, safety)
+            unlinked = unlinked_safety_tests(conn)
             sanity, failures = sanity_checks(conn, rows, old_rows)
             phase = latest_phase(conn)
         except ExportError as exc:
@@ -455,6 +480,9 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             conn.close()
 
+    for test_id, name, hits in unlinked:
+        print(f"WARNING: safety_test {test_id} ({name}) names {', '.join(hits)}, which is in the KB, but no applicability "
+              "row links them: the catalogue shows no crash rating for it. Link it in the KB (owner decision).")
     print("sanity table (non-null %, new vs previous file; carried = rows whose variant id was in the previous file, "
           "before = the previous file's rate for those same rows; added = rows new in this export):")
     for t in sanity:
