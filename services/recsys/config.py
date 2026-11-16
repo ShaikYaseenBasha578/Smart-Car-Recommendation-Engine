@@ -84,6 +84,10 @@ MISSING_MULTIPLIER = 2.0
 # never below the floor; the field still counts as unknown for coverage and is never shown as a rating
 CRASH_PRIOR_STARS_BELOW_MEDIAN = 1.0
 CRASH_PRIOR_FLOOR_STARS = 3.0
+# audit 2026-11-16: untested is not tested-and-equal. The prior is cut by this many further stars, and never
+# lies above (median - this): an unrated car always scores strictly below a rated car at or above its prior, and
+# below every car rated at or above the segment median, whatever the floor.
+CRASH_PRIOR_UNTESTED_DISCOUNT_STARS = 0.5
 
 # price criterion (value = 1 - price percentile inside the car's segment; lower price is better), weight as a share of
 # the spec class. No budget in the query: PRICE_DEFAULT_WEIGHT. Cheap / value wording ("cheapest", "paisa vasool"):

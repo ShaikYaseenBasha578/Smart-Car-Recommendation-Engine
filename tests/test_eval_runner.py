@@ -79,3 +79,20 @@ def test_label_truthfulness_body_derived_from_reference_model():
     liar = {"variant_id": int(same["variant_id"]), "Model": same["model"], "Variant": same["variant"],
             "violations": [{"constraint": "body_type"}]}
     assert not E.label_truthfulness([liar], expect)["truthful"]       # naming it for a same-body car is still wrong
+
+
+def test_unverified_requirements_counts_blanks_not_known_values():
+    cat = E.get_catalogue()
+    blank = cat[cat["sunroof"].isna()].iloc[0]
+    yes = cat[(cat["sunroof"] == True) & ~cat["unverified_fields"].map(lambda s: "sunroof" in s)].iloc[0]  # noqa: E712
+    no = cat[(cat["sunroof"] == False) & ~cat["unverified_fields"].map(lambda s: "sunroof" in s)].iloc[0]  # noqa: E712
+    expect = {"required_features": ["sunroof"]}
+    assert E.violations(blank, expect) == []                      # the old figure lets a blank pass
+    assert E.unverified_requirements(blank, expect) == ["required_feature sunroof"]
+    assert E.unverified_requirements(yes, expect) == []
+    assert E.unverified_requirements(no, expect) == []            # a known absence is a violation, not an unknown
+    assert E.violations(no, expect)
+    assert E.unverified_requirements(blank, {"excluded_features": ["sunroof"]}) == ["excluded_feature sunroof"]
+    blank_boot = cat[cat["boot_space_litres"].isna()].iloc[0]
+    assert E.unverified_requirements(blank_boot, {"numeric_min": {"boot_space_litres": 300}}) == [
+        "numeric_min boot_space_litres"]

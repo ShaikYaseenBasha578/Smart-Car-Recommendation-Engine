@@ -160,6 +160,16 @@ CHEAP_INTENT_PATTERN = (
     r"|(?:lowest|least|minimum)\s*(?:price|priced|cost)"
 )
 
+# An explicit superlative is an ORDERING instruction, not just a weight: "cheapest car", "lowest price", "sabse sasti
+# gaadi" -> intent["price_order"], and the recommender lists the cheapest variant of each model in ascending price
+# (services/recsys/diversify.price_ordered). "cheapest to run / maintain" is about cost of ownership, not price.
+PRICE_ORDER_PATTERN = (
+    r"cheapest(?!\s*(?:to\s*(?:run|maintain|own|service|insure|drive)|running|maintenance|ownership))"
+    r"|lowest[- ]?(?:price|priced|cost)|least\s*(?:price|priced|cost)|minimum\s*(?:price|priced)"
+    r"|sabse\s*(?:sast(?:i|a|e)|kam\s*(?:daam|dam|keemat|kimat|price))"
+    r"|most\s*(?:affordable|economical)"
+)
+
 # First match wins; same label set as the ML use_case model (minus "general").
 USE_CASE_PATTERNS = [
     ("premium", r"luxury|luxurious|premium"),
@@ -706,6 +716,7 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
         "max_mileage_km_per_kg": None,
         "use_case": None,
         "cheap_intent": False,
+        "price_order": False,
         "exclude_features": [],
         "exclude_makes": [],
         "exclude_fuel_types": [],
@@ -780,6 +791,11 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
     if cheap:
         out["cheap_intent"] = True
         trace.append(f"cheap_intent <- rule '{cheap.group(0).strip()}'")
+    superlative = next(iter(_find(PRICE_ORDER_PATTERN, use_case_text)), None)
+    if superlative:
+        out["cheap_intent"] = True
+        out["price_order"] = True
+        trace.append(f"price_order <- rule '{superlative.group(0).strip()}'")
 
     out["vague"], out["unsupported_only"] = _classify_content(out)
 

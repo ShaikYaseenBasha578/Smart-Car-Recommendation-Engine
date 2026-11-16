@@ -126,6 +126,37 @@ def violations(row, expect: dict) -> list[str]:
     return out
 
 
+def unverified_requirements(row, expect: dict) -> list[str]:
+    """Hard requirements in `expect` that catalogue row `row` meets only because its value is unknown (blank, or
+    flagged in `unverified_fields`). `violations` never counts these; "verified satisfaction" does."""
+    out = []
+    unverified = row["unverified_fields"]
+    price = row["price_ex_showroom"]
+    if any(expect.get(k) is not None for k in ("budget_min", "budget_max", "budget_around")) and _nan(price):
+        out.append("price")
+    if expect.get("seats_min") is not None and _nan(row["seats"]):
+        out.append("seats")
+    for key, col in (("fuel_include", "fuel_type"), ("body_include", "body_type"),
+                     ("transmission_family", "transmission_family"), ("transmission_include", "transmission_type")):
+        if expect.get(key) and _nan(row[col]):
+            out.append(col)
+    for feature in expect.get("required_features") or []:
+        col = FEATURE_COLUMNS[feature]
+        if row[col] is not True or col in unverified:
+            if row[col] is not False or col in unverified:   # a known absence is a violation, counted there
+                out.append(f"required_feature {feature}")
+    for feature in expect.get("excluded_features") or []:
+        col = FEATURE_COLUMNS[feature]
+        if row[col] is not False or col in unverified:
+            if row[col] is not True or col in unverified:
+                out.append(f"excluded_feature {feature}")
+    for bound in ("numeric_min", "numeric_max"):
+        for col in (expect.get(bound) or {}):
+            if _nan(row[col]) or col in unverified or (col == "mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS):
+                out.append(f"{bound} {col}")
+    return out
+
+
 def matching_rows(expect: dict) -> int:
     cat = get_catalogue()
     return sum(1 for _, row in cat.iterrows() if not violations(row, expect))
@@ -425,6 +456,7 @@ def evaluate(engine_name: str, queries: list[dict]) -> dict:
             "label": intent_to_label(resp["intent"]) if resp.get("intent") else None,
             "intent_fp": intent_fingerprint(resp.get("intent")),
             "violations": [],
+            "unverified": [],
             "relaxed_response": relaxed_resp,
             "label_check": None,
             "llm": resp.get("llm"), "corrections": resp.get("corrections"),
@@ -440,6 +472,8 @@ def evaluate(engine_name: str, queries: list[dict]) -> dict:
                     continue
                 for v in violations(row, q["expect"]):
                     rec["violations"].append({"car": f"{row['model']} / {row['variant']}", "constraint": v})
+                for v in unverified_requirements(row, q["expect"]):
+                    rec["unverified"].append({"car": f"{row['model']} / {row['variant']}", "constraint": v})
         records.append(rec)
 
     summary = summarise(records)
@@ -492,6 +526,13 @@ def summarise(records: list[dict]) -> dict:
     for r in with_cars:
         for kind in {v["constraint"].split(" ")[0] for v in r["violations"]}:
             by_cause[kind] += 1
+    # a2. verified satisfaction: the same queries, but a car whose value is unknown on a hard requirement does not
+    # count as meeting it (the "satisfaction" figure above lets unknowns pass)
+    verified_clean = [r for r in clean if not r["unverified"]]
+    unverified_by_kind = defaultdict(int)
+    for r in with_cars:
+        for kind in {v["constraint"].split(" ")[0] for v in r["unverified"]}:
+            unverified_by_kind[kind] += 1
     relaxed = [r for r in records if r["relaxed_response"]]
     mislabelled = [r for r in relaxed if not r["label_check"]["truthful"]]
     # b. parse accuracy
@@ -539,6 +580,15 @@ def summarise(records: list[dict]) -> dict:
             "by_constraint_kind": dict(sorted(by_cause.items(), key=lambda kv: -kv[1])),
             "violations": [{"id": r["id"], "query": r["query"], "n": len(r["violations"]), "examples": r["violations"][:3]}
                            for r in with_cars if r["violations"]],
+        },
+        "verified_satisfaction": {
+            "scope": "non-relaxed responses only; unknown value on a hard requirement = not satisfied",
+            "queries_with_cars": len(with_cars), "queries_verified": len(verified_clean),
+            "share_verified": len(verified_clean) / len(with_cars) if with_cars else None,
+            "queries_with_unverified": len([r for r in with_cars if r["unverified"]]),
+            "by_requirement_kind": dict(sorted(unverified_by_kind.items(), key=lambda kv: -kv[1])),
+            "examples": [{"id": r["id"], "query": r["query"], "n": len(r["unverified"]), "examples": r["unverified"][:3]}
+                         for r in with_cars if r["unverified"]][:40],
         },
         "relaxed_responses": {
             "n": len(relaxed), "truthfully_labelled": len(relaxed) - len(mislabelled), "mislabelled": len(mislabelled),
@@ -710,6 +760,11 @@ def print_table(result: dict) -> None:
         print(f"    {v['id']:<14} {v['n']:>3} viol  e.g. {ex['car']}: {ex['constraint']}  | {v['query']}")
     if len(cs["violations"]) > 25:
         print(f"    ... {len(cs['violations']) - 25} more in the JSON")
+    vs = s.get("verified_satisfaction")
+    if vs:
+        print(f"  VERIFIED satisfaction (unknown on a hard requirement = not satisfied): {vs['queries_verified']} / "
+              f"{vs['queries_with_cars']} ({pct(vs['share_verified'])}); queries with an unverified requirement: "
+              f"{vs['queries_with_unverified']} {vs['by_requirement_kind']}")
     rr = s.get("relaxed_responses", {})
     print(f"  relaxed responses (judged on labels): {rr.get('n', 0)}, truthful {rr.get('truthfully_labelled', 0)}, "
           f"mislabelled {rr.get('mislabelled', 0)}")
@@ -761,6 +816,9 @@ def flat_metrics(result: dict) -> dict:
     out = {
         "constraint satisfaction (non-relaxed)": pct(cs["share_zero_violations"]),
         "  queries with cars / violating": f"{cs['queries_with_cars']} / {cs['violating_queries']}",
+        "verified satisfaction (unknown = not met)": (pct(s["verified_satisfaction"]["share_verified"])
+                                                      + f" ({s['verified_satisfaction']['queries_verified']}/{s['verified_satisfaction']['queries_with_cars']})"
+                                                      if s.get("verified_satisfaction") else "-"),
         "relaxed responses (truthful/mislabelled)": f"{rr.get('truthfully_labelled', 0)}/{rr.get('mislabelled', 0)}" if rr else "-",
         "over-constrained: empty": oc.get("empty", oc.get("no_cars", 0) + oc.get("no_cars_with_relaxation_hints", 0)),
         "over-constrained: relaxed, truthful": oc.get("relaxed_truthfully_labelled", "-"),

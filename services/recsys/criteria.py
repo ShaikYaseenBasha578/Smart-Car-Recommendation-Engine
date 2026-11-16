@@ -35,6 +35,7 @@ the whole criterion is unknown) and .detail
 from __future__ import annotations
 
 import math
+from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
@@ -282,8 +283,8 @@ def _weighted_mean(fields: List[Field], index: pd.Index
     blank_num = pd.Series(0.0, index=index)     # blank-prior fields
     blank_den = pd.Series(0.0, index=index)
     applicable_w = pd.Series(0.0, index=index)
-    detail: Dict[Any, List[dict]] = {i: [] for i in index}
     known_den = pd.Series(0.0, index=index)   # weight of fields known from evidence (priors excluded)
+    kept = []
     for name, raw, score, weight, basis, applicable, prior, blank in fields:
         applies = pd.Series(True, index=index) if applicable is None else applicable.astype(bool)
         known = score.notna() & applies
@@ -297,9 +298,19 @@ def _weighted_mean(fields: List[Field], index: pd.Index
         if blank is not None:
             blank_num[blank_used] += weight * blank[blank_used]
             blank_den[blank_used] += weight
-        for i in index:
+        kept.append((name, raw, score, weight, basis, is_prior, blank, blank_used))
+    total = den + blank_den
+    scoring = ((num_sum + blank_num) / total).where(total > 0)
+    # a prior alone never makes a criterion known
+    value = scoring.where(known_den > 0)
+    unknown_frac = (1.0 - known_den / applicable_w).where(applicable_w > 0, 1.0).where(known_den > 0, 1.0).clip(0.0, 1.0)
+
+    def row_detail(i) -> List[dict]:
+        """Per-field detail of one row, built on demand (only tests and callers that ask for a row need it)."""
+        out = []
+        for name, raw, score, weight, basis, is_prior, blank, blank_used in kept:
             stand_in = score[i] if is_prior[i] else (blank[i] if blank_used[i] else None)
-            detail[i].append({
+            out.append({
                 "field": name,
                 "raw": None if is_unknown(raw[i]) else raw[i],
                 "score": None if is_unknown(score[i]) or is_prior[i] else float(score[i]),
@@ -307,12 +318,31 @@ def _weighted_mean(fields: List[Field], index: pd.Index
                 "basis": basis,
                 **({"prior_score": float(stand_in)} if stand_in is not None and not is_unknown(stand_in) else {}),
             })
-    total = den + blank_den
-    scoring = ((num_sum + blank_num) / total).where(total > 0)
-    # a prior alone never makes a criterion known
-    value = scoring.where(known_den > 0)
-    unknown_frac = (1.0 - known_den / applicable_w).where(applicable_w > 0, 1.0).where(known_den > 0, 1.0).clip(0.0, 1.0)
-    return value, scoring, unknown_frac, detail
+        return out
+
+    return value, scoring, unknown_frac, row_detail
+
+
+class LazyDetail(Mapping):
+    """{row index: {criterion: [field detail dicts]}}, each row built the first time it is read."""
+
+    def __init__(self, index: pd.Index, makers: Dict[str, Any]):
+        self._index = index
+        self._makers = makers
+        self._cache: Dict[Any, Dict[str, List[dict]]] = {}
+
+    def __getitem__(self, i):
+        if i not in self._cache:
+            if i not in self._index:
+                raise KeyError(i)
+            self._cache[i] = {crit: maker(i) for crit, maker in self._makers.items()}
+        return self._cache[i]
+
+    def __iter__(self):
+        return iter(self._index)
+
+    def __len__(self):
+        return len(self._index)
 
 
 # ---------------------------------------------------------------------------
@@ -328,10 +358,11 @@ def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -
     # prior = ONE STAR BELOW the segment median of known ratings, floored at 3 stars (config), so an unrated car never
     # outranks an otherwise identical rated car at the median
     med = ref.median("stars", seg, allc) * 5.0
-    prior = ((med - config.CRASH_PRIOR_STARS_BELOW_MEDIAN).clip(lower=config.CRASH_PRIOR_FLOOR_STARS) / 5.0
-             ).where(known.isna())
+    cut = config.CRASH_PRIOR_UNTESTED_DISCOUNT_STARS
+    prior_stars = (med - config.CRASH_PRIOR_STARS_BELOW_MEDIAN).clip(lower=config.CRASH_PRIOR_FLOOR_STARS) - cut
+    prior = (np.minimum(prior_stars, med - cut).clip(lower=0.0) / 5.0).where(known.isna())
     fields.append(("safety_stars_adult", stars, known.fillna(prior), 3.0,
-                   "absolute (stars/5); unrated = one star below the segment median (floor 3) as a prior, still unknown for coverage",
+                   "absolute (stars/5); unrated = one star below the segment median (floor 3), minus a further half star for being untested (always below the median), as a prior, still unknown for coverage",
                    None, prior.notna(), None))
     airbags = df["airbags"].map(num)
     fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None, None,
@@ -482,12 +513,11 @@ def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
     values = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
     scoring = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
     unknown_frac = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
-    detail: Dict[Any, Dict[str, List[dict]]] = {i: {} for i in index}
+    makers: Dict[str, Any] = {}
     for crit in SPEC_CRITERIA:
         value, scored, ufrac, per_row = _weighted_mean(builders[crit], index)
         values[crit] = value
         scoring[crit] = scored
         unknown_frac[crit] = ufrac
-        for i in index:
-            detail[i][crit] = per_row[i]
-    return CriteriaResult(values, detail, unknown_frac, scoring)
+        makers[crit] = per_row
+    return CriteriaResult(values, LazyDetail(index, makers), unknown_frac, scoring)

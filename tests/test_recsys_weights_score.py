@@ -261,12 +261,12 @@ def test_unrated_prior_is_one_star_below_the_median_and_still_unknown_for_covera
     assert "unrated_safety" in table.loc[uid, "flags"]
     # nothing displays or implies a rating: the detail carries no star score for the unrated car
     star = next(d for d in crit.detail[uid]["safety"] if d["field"] == "safety_stars_adult")
-    assert star["raw"] is None and star["score"] is None and star["prior_score"] == pytest.approx(0.6)
+    assert star["raw"] is None and star["score"] is None and star["prior_score"] == pytest.approx(0.5)
 
 
-@pytest.mark.parametrize("body,prior", [("suv", 0.6), ("hatchback", 0.6), ("estate", 0.8)])
+@pytest.mark.parametrize("body,prior", [("suv", 0.5), ("hatchback", 0.5), ("estate", 0.7)])
 def test_prior_is_one_star_below_the_median_with_a_floor_of_three(body, prior):
-    """median 4 -> 3 stars; median 3 -> 2 floored to 3; median 5 -> 4 (equal to a 4-star car before the charge)."""
+    """median 4 -> 3 stars; median 3 -> 2 floored to 3; median 5 -> 4; each less a half star for being untested (2026-11-16)."""
     df, vid = _two_segment_frame()
     crit = compute_criteria(df)
     star = next(d for d in crit.detail[vid[f"{body}-Unrated"]]["safety"] if d["field"] == "safety_stars_adult")
@@ -275,10 +275,10 @@ def test_prior_is_one_star_below_the_median_with_a_floor_of_three(body, prior):
     assert o["Rated5"] > o["Rated4"] > o["Unrated"] > o["Rated1"]
 
 
-def test_estate_unrated_is_equal_to_the_4_star_car_before_the_coverage_charge_and_below_after():
+def test_estate_unrated_is_strictly_below_the_4_star_car_even_before_the_coverage_charge():
     df, vid = _two_segment_frame()
     table, o = _star_scores(df, vid, "estate")
-    assert table.loc[vid["estate-Unrated"], "spec"] == pytest.approx(table.loc[vid["estate-Rated4"], "spec"])
+    assert table.loc[vid["estate-Unrated"], "spec"] < table.loc[vid["estate-Rated4"], "spec"]
     assert o["Unrated"] < o["Rated4"]
 
 
@@ -299,8 +299,8 @@ def test_whole_catalogue_median_for_a_tiny_segment():
     df = make_frame(rows)
     crit = compute_criteria(df)
     star = next(d for d in crit.detail[len(rows)]["safety"] if d["field"] == "safety_stars_adult")
-    # the coupe segment has no rated model: falls back to the whole catalogue (median 4, prior 3 stars)
-    assert star["prior_score"] == pytest.approx(0.6)
+    # the coupe segment has no rated model: falls back to the whole catalogue (median 4, prior 3 stars less a half)
+    assert star["prior_score"] == pytest.approx(0.5)
 
 
 def test_one_star_versus_unrated_numbers():

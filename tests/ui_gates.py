@@ -345,7 +345,7 @@ def run(base, shots):
             check(f"{tag}: at most 4 reasons per card", all(n <= 4 for n in reasons), reasons)
             check(f"{tag}: feature chip (Sunroof)", page.locator(".tag--feature", has_text="Sunroof").count() > 0)
             check(f"{tag}: matching_variant_count chip", page.locator(".tag", has_text=re.compile(r"\d+ matching variants?")).count() > 0)
-            check(f"{tag}: safety chip or no-rating chip", page.locator(".tag--safety").count() + page.locator(".tag", has_text="No Bharat NCAP rating on record").count() > 0)
+            check(f"{tag}: safety chip or no-rating chip", page.locator(".tag--safety").count() + page.locator(".tag", has_text="No crash-test rating on record").count() > 0)
             link = first.locator(".car-actions a")
             check(f"{tag}: primary action is external on-road price link",
                   link.inner_text().startswith("Check on-road price") and link.get_attribute("target") == "_blank"

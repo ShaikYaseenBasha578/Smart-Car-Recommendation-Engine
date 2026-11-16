@@ -114,7 +114,7 @@ def test_safety_rated_unrated():
     assert ids(out) == [1, 3]
     assert not out.loc[1, "unrated_safety"] and out.loc[1, "matched"] == ["min_safety_stars"]
     assert out.loc[3, "unrated_safety"] and out.loc[3, "n_soft_flags"] == 1
-    assert UNRATED_SAFETY_LABEL == "No Bharat NCAP rating on record"
+    assert UNRATED_SAFETY_LABEL == "No crash-test rating on record"
 
 
 def test_unrated_safety_ignored_without_safety_constraint():
