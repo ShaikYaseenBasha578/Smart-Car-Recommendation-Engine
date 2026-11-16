@@ -1,0 +1,565 @@
+{
+ "adas equipped suv below 18 lakh, petrol, automatic": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "ADAS",
+     "field": "feature_include",
+     "value": "adas"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "below 18 lakh",
+     "field": "budget_max",
+     "value": 1800000
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 865,
+  "tokens_out": 124
+ },
+ "automatic gaadi chahiye, 10 lakh tak, shehar mein chalani hai": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "10 lakh tak",
+     "field": "budget_max",
+     "value": 1000000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 870,
+  "tokens_out": 93
+ },
+ "cheapest automatic car you can find, i can't go above 8 lakh": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "8 lakh",
+     "field": "budget_max",
+     "value": 800000
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 870,
+  "tokens_out": 90
+ },
+ "cng hatchback under 7.5 lakh for daily office commute, 60 km each way": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "CNG",
+     "field": "fuel_include",
+     "value": "cng"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "under 7.5 lakh",
+     "field": "budget_max",
+     "value": 750000
+    }
+   ],
+   "soft_preferences": [
+    "mileage",
+    "comfort"
+   ]
+  },
+  "tokens_in": 873,
+  "tokens_out": 146
+ },
+ "cng hatchback, max budget 7 lakh": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "CNG",
+     "field": "fuel_include",
+     "value": "cng"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "7 lakh",
+     "field": "budget_max",
+     "value": 700000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 862,
+  "tokens_out": 83
+ },
+ "cng suv or mpv, 7 seats, under 14 lakh, for a taxi-ish family use": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "CNG",
+     "field": "fuel_include",
+     "value": "cng"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "MPV",
+     "field": "body_include",
+     "value": "mpv"
+    },
+    {
+     "evidence": "7 seats",
+     "field": "seats_min",
+     "value": 7
+    },
+    {
+     "evidence": "under 14 lakh",
+     "field": "budget_max",
+     "value": 1400000
+    }
+   ],
+   "soft_preferences": [
+    "comfort"
+   ]
+  },
+  "tokens_in": 877,
+  "tokens_out": 204
+ },
+ "datsun go jaisi koi gaadi dikhao": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [],
+   "soft_preferences": []
+  },
+  "tokens_in": 864,
+  "tokens_out": 11
+ },
+ "first car for my daughter, manual petrol hatchback below 6 lakh": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "manual",
+     "field": "transmission_include",
+     "value": "manual"
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "below 6 lakh",
+     "field": "budget_max",
+     "value": 600000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 866,
+  "tokens_out": 162
+ },
+ "hybrid car under 25 lakh, we drive about 40 km daily in bangalore": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "hybrid",
+     "field": "fuel_include",
+     "value": "hybrid"
+    },
+    {
+     "evidence": "under 25 lakh",
+     "field": "budget_max",
+     "value": 2500000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 871,
+  "tokens_out": 94
+ },
+ "hybrid gaadi chahiye 20 lakh ke andar, petrol bachana hai": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "hybrid",
+     "field": "fuel_include",
+     "value": "hybrid"
+    },
+    {
+     "evidence": "20 lakh",
+     "field": "budget_max",
+     "value": 2000000
+    }
+   ],
+   "soft_preferences": [
+    "mileage"
+   ]
+  },
+  "tokens_in": 868,
+  "tokens_out": 101
+ },
+ "hyundai ki petrol suv jisme sunroof ho": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "Hyundai",
+     "field": "make_include",
+     "value": "Hyundai"
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "sunroof",
+     "field": "feature_include",
+     "value": "sunroof"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 861,
+  "tokens_out": 153
+ },
+ "i'd like a petrol automatic hatchback that costs less than 8 lakh": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "less than 8 lakh",
+     "field": "budget_max",
+     "value": 800000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 868,
+  "tokens_out": 163
+ },
+ "kia seltos jaisi koi aur gaadi batao, petrol wali": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "petrol wali",
+     "field": "fuel_include",
+     "value": "petrol"
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 868,
+  "tokens_out": 55
+ },
+ "looking for a petrol automatic hatchback, budget is about 9 lakh, mostly city driving in pune": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "hatchback",
+     "field": "body_include",
+     "value": "hatchback"
+    },
+    {
+     "evidence": "about 9 lakh",
+     "field": "budget_around",
+     "value": 900000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 872,
+  "tokens_out": 162
+ },
+ "my parents are visiting next month so need a diesel suv with 7 seats, up to 22 lakh please": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "diesel",
+     "field": "fuel_include",
+     "value": "diesel"
+    },
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "7 seats",
+     "field": "seats_min",
+     "value": 7
+    },
+    {
+     "evidence": "up to 22 lakh",
+     "field": "budget_max",
+     "value": 2200000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 876,
+  "tokens_out": 161
+ },
+ "need a 7 seater mpv, diesel, not more than 20 lakh, we do hill trips with the whole family": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "7 seater",
+     "field": "seats_min",
+     "value": 7
+    },
+    {
+     "evidence": "MPV",
+     "field": "body_include",
+     "value": "mpv"
+    },
+    {
+     "evidence": "diesel",
+     "field": "fuel_include",
+     "value": "diesel"
+    },
+    {
+     "evidence": "not more than 20 lakh",
+     "field": "budget_max",
+     "value": 2000000
+    }
+   ],
+   "soft_preferences": [
+    "comfort"
+   ]
+  },
+  "tokens_in": 879,
+  "tokens_out": 171
+ },
+ "need a sedan between 10 and 14 lakh, preferably something sporty and comfortable for long drives": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "sedan",
+     "field": "body_include",
+     "value": "sedan"
+    },
+    {
+     "evidence": "10",
+     "field": "budget_min",
+     "value": 1000000
+    },
+    {
+     "evidence": "14 lakh",
+     "field": "budget_max",
+     "value": 1400000
+    }
+   ],
+   "soft_preferences": [
+    "performance",
+    "comfort"
+   ]
+  },
+  "tokens_in": 874,
+  "tokens_out": 92
+ },
+ "petrol manual sedan under 11 lakh with a sunroof, i live in chennai and drive a lot on weekends": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "Petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "manual",
+     "field": "transmission_family",
+     "value": "manual"
+    },
+    {
+     "evidence": "sedan",
+     "field": "body_include",
+     "value": "sedan"
+    },
+    {
+     "evidence": "under 11 lakh",
+     "field": "budget_max",
+     "value": 1100000
+    },
+    {
+     "evidence": "sunroof",
+     "field": "feature_include",
+     "value": "sunroof"
+    }
+   ],
+   "soft_preferences": [
+    "comfort"
+   ]
+  },
+  "tokens_in": 875,
+  "tokens_out": 203
+ },
+ "pickup truck, diesel, under 20 lakh, needed for the farm": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "pickup truck",
+     "field": "body_include",
+     "value": "pickup"
+    },
+    {
+     "evidence": "diesel",
+     "field": "fuel_include",
+     "value": "diesel"
+    },
+    {
+     "evidence": "under 20 lakh",
+     "field": "budget_max",
+     "value": 2000000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 868,
+  "tokens_out": 127
+ },
+ "sunroof and automatic gearbox in a petrol suv, 15 lakh max": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "sunroof",
+     "field": "feature_include",
+     "value": "sunroof"
+    },
+    {
+     "evidence": "automatic",
+     "field": "transmission_family",
+     "value": "automatic"
+    },
+    {
+     "evidence": "petrol",
+     "field": "fuel_include",
+     "value": "petrol"
+    },
+    {
+     "evidence": "suv",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "15 lakh max",
+     "field": "budget_max",
+     "value": 1500000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 868,
+  "tokens_out": 195
+ },
+ "suv with at least 450 litres boot space, under 20 lakh": {
+  "model": "gemini-3.5-flash-lite",
+  "raw": {
+   "constraints": [
+    {
+     "evidence": "SUV",
+     "field": "body_include",
+     "value": "suv"
+    },
+    {
+     "evidence": "450 litres boot space",
+     "field": "min_boot_space_litres",
+     "value": 450
+    },
+    {
+     "evidence": "under 20 lakh",
+     "field": "budget_max",
+     "value": 2000000
+    }
+   ],
+   "soft_preferences": []
+  },
+  "tokens_in": 870,
+  "tokens_out": 139
+ }
+}

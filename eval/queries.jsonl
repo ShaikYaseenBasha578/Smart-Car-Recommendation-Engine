@@ -1,0 +1,209 @@
+{"id": "plain-01", "query": "I want a petrol hatchback under 8 lakh", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "body_include": ["hatchback"], "budget_max": 800000}}
+{"id": "plain-02", "query": "diesel SUV under 20 lakh", "category": "plain_english", "expect": {"fuel_include": ["diesel"], "body_include": ["suv"], "budget_max": 2000000}}
+{"id": "plain-03", "query": "automatic sedan with sunroof", "category": "plain_english", "expect": {"transmission_family": "automatic", "body_include": ["sedan"], "required_features": ["sunroof"]}}
+{"id": "plain-04", "query": "7 seater diesel SUV under 25 lakh", "category": "plain_english", "expect": {"seats_min": 7, "fuel_include": ["diesel"], "body_include": ["suv"], "budget_max": 2500000}}
+{"id": "plain-05", "query": "electric car under 15 lakh", "category": "plain_english", "expect": {"fuel_include": ["electric"], "budget_max": 1500000}}
+{"id": "plain-06", "query": "CNG hatchback under 7 lakh", "category": "plain_english", "expect": {"fuel_include": ["cng"], "body_include": ["hatchback"], "budget_max": 700000}}
+{"id": "plain-07", "query": "SUV with ADAS and 360 camera", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["adas", "camera_360"]}}
+{"id": "plain-08", "query": "compact SUV with a sunroof under 15 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["sunroof"], "budget_max": 1500000}}
+{"id": "plain-09", "query": "manual petrol SUV under 12 lakh", "category": "plain_english", "expect": {"transmission_family": "manual", "fuel_include": ["petrol"], "body_include": ["suv"], "budget_max": 1200000}}
+{"id": "plain-10", "query": "6 airbags hatchback under 10 lakh", "category": "plain_english", "expect": {"numeric_min": {"airbags": 6}, "body_include": ["hatchback"], "budget_max": 1000000}}
+{"id": "plain-11", "query": "5 star safety rated SUV under 20 lakh", "category": "plain_english", "expect": {"numeric_min": {"safety_stars_adult": 5}, "body_include": ["suv"], "budget_max": 2000000}}
+{"id": "plain-12", "query": "hybrid SUV", "category": "plain_english", "expect": {"fuel_include": ["hybrid"], "body_include": ["suv"]}}
+{"id": "plain-13", "query": "MPV with 7 seats under 18 lakh", "category": "plain_english", "expect": {"body_include": ["mpv"], "seats_min": 7, "budget_max": 1800000}}
+{"id": "plain-14", "query": "petrol automatic hatchback under 9 lakh", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "transmission_family": "automatic", "body_include": ["hatchback"], "budget_max": 900000}}
+{"id": "plain-15", "query": "SUV with ventilated seats and cruise control under 30 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["ventilated_seats", "cruise_control"], "budget_max": 3000000}}
+{"id": "plain-16", "query": "Toyota hybrid", "category": "plain_english", "expect": {"makes_include": ["Toyota"], "fuel_include": ["hybrid"]}}
+{"id": "plain-17", "query": "Tata SUV under 15 lakh", "category": "plain_english", "expect": {"makes_include": ["Tata"], "body_include": ["suv"], "budget_max": 1500000}}
+{"id": "plain-18", "query": "Mahindra diesel SUV automatic", "category": "plain_english", "expect": {"makes_include": ["Mahindra"], "fuel_include": ["diesel"], "body_include": ["suv"], "transmission_family": "automatic"}}
+{"id": "plain-19", "query": "Hyundai SUV with Android Auto and wireless charging", "category": "plain_english", "expect": {"makes_include": ["Hyundai"], "body_include": ["suv"], "required_features": ["android_auto", "wireless_charging"]}}
+{"id": "plain-20", "query": "EV with at least 400 km range under 25 lakh", "category": "plain_english", "expect": {"fuel_include": ["electric"], "numeric_min": {"ev_range_km": 400}, "budget_max": 2500000}}
+{"id": "plain-21", "query": "SUV with ground clearance of at least 200 mm", "category": "plain_english", "expect": {"body_include": ["suv"], "numeric_min": {"ground_clearance_mm": 200}}}
+{"id": "plain-22", "query": "sedan under 12 lakh", "category": "plain_english", "expect": {"body_include": ["sedan"], "budget_max": 1200000}}
+{"id": "plain-23", "query": "diesel manual SUV under 15 lakh", "category": "plain_english", "expect": {"fuel_include": ["diesel"], "transmission_family": "manual", "body_include": ["suv"], "budget_max": 1500000}}
+{"id": "plain-24", "query": "CNG sedan", "category": "plain_english", "expect": {"fuel_include": ["cng"], "body_include": ["sedan"]}}
+{"id": "plain-25", "query": "automatic MPV under 20 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "body_include": ["mpv"], "budget_max": 2000000}}
+{"id": "plain-26", "query": "Kia SUV under 20 lakh", "category": "plain_english", "expect": {"makes_include": ["Kia"], "body_include": ["suv"], "budget_max": 2000000}}
+{"id": "plain-27", "query": "petrol SUV with heads up display", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "body_include": ["suv"], "required_features": ["heads_up_display"]}}
+{"id": "plain-28", "query": "DCT petrol under 15 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "transmission_include": ["dct"], "fuel_include": ["petrol"], "budget_max": 1500000}}
+{"id": "plain-29", "query": "AMT hatchback under 7 lakh", "category": "plain_english", "expect": {"transmission_family": "automatic", "transmission_include": ["amt"], "body_include": ["hatchback"], "budget_max": 700000}}
+{"id": "plain-30", "query": "SUV with sunroof and 6 airbags under 15 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["sunroof"], "numeric_min": {"airbags": 6}, "budget_max": 1500000}}
+{"id": "plain-31", "query": "turbo petrol DCT SUV", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "transmission_family": "automatic", "transmission_include": ["dct"], "body_include": ["suv"]}}
+{"id": "plain-32", "query": "Maruti Suzuki automatic hatchback", "category": "plain_english", "expect": {"makes_include": ["Maruti Suzuki"], "transmission_family": "automatic", "body_include": ["hatchback"]}}
+{"id": "plain-33", "query": "diesel automatic 7 seater", "category": "plain_english", "expect": {"fuel_include": ["diesel"], "transmission_family": "automatic", "seats_min": 7}}
+{"id": "plain-34", "query": "SUV between 12 and 18 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "budget_min": 1200000, "budget_max": 1800000}}
+{"id": "plain-35", "query": "electric SUV", "category": "plain_english", "expect": {"fuel_include": ["electric"], "body_include": ["suv"]}}
+{"id": "plain-36", "query": "petrol hatchback with mileage above 20 kmpl", "category": "plain_english", "expect": {"fuel_include": ["petrol"], "body_include": ["hatchback"], "numeric_min": {"mileage_kmpl": 20}}}
+{"id": "plain-37", "query": "CNG car with mileage above 25 km/kg", "category": "plain_english", "expect": {"fuel_include": ["cng"], "numeric_min": {"mileage_km_per_kg": 25}}}
+{"id": "plain-38", "query": "sedan with at least 400 litre boot", "category": "plain_english", "expect": {"body_include": ["sedan"], "numeric_min": {"boot_space_litres": 400}}}
+{"id": "plain-39", "query": "SUV with ADAS above 25 lakh", "category": "plain_english", "expect": {"body_include": ["suv"], "required_features": ["adas"], "budget_min": 2500000}}
+{"id": "plain-40", "query": "Honda sedan", "category": "plain_english", "expect": {"makes_include": ["Honda"], "body_include": ["sedan"]}}
+{"id": "hing-01", "query": "10 lakh tak automatic SUV chahiye", "category": "hinglish", "expect": {"budget_max": 1000000, "transmission_family": "automatic", "body_include": ["suv"]}}
+{"id": "hing-02", "query": "diesel nahi chahiye", "category": "hinglish", "expect": {"fuel_exclude": ["diesel"]}}
+{"id": "hing-03", "query": "7 seater gaadi chahiye 20 lakh ke andar", "category": "hinglish", "expect": {"seats_min": 7, "budget_max": 2000000}}
+{"id": "hing-04", "query": "petrol hatchback chahiye 6 lakh tak", "category": "hinglish", "expect": {"fuel_include": ["petrol"], "body_include": ["hatchback"], "budget_max": 600000}}
+{"id": "hing-05", "query": "automatic gaadi chahiye, manual nahi", "category": "hinglish", "expect": {"transmission_family": "automatic"}}
+{"id": "hing-06", "query": "sunroof wali SUV 15 lakh tak", "category": "hinglish", "expect": {"required_features": ["sunroof"], "body_include": ["suv"], "budget_max": 1500000}}
+{"id": "hing-07", "query": "CNG gaadi 8 lakh ke andar", "category": "hinglish", "expect": {"fuel_include": ["cng"], "budget_max": 800000}}
+{"id": "hing-08", "query": "Tata ki SUV chahiye", "category": "hinglish", "expect": {"makes_include": ["Tata"], "body_include": ["suv"]}}
+{"id": "hing-09", "query": "Mahindra nahi chahiye, SUV 15 lakh tak", "category": "hinglish", "expect": {"makes_exclude": ["Mahindra"], "body_include": ["suv"], "budget_max": 1500000}}
+{"id": "hing-10", "query": "diesel SUV chahiye lekin automatic nahi", "category": "hinglish", "expect": {"fuel_include": ["diesel"], "body_include": ["suv"], "transmission_family": "manual"}}
+{"id": "hing-11", "query": "10 se 15 lakh SUV chahiye", "category": "hinglish", "expect": {"budget_min": 1000000, "budget_max": 1500000, "body_include": ["suv"]}}
+{"id": "hing-12", "query": "electric car chahiye 400 km range wali", "category": "hinglish", "expect": {"fuel_include": ["electric"], "numeric_min": {"ev_range_km": 400}}}
+{"id": "hing-13", "query": "6 airbags wali SUV 12 lakh tak", "category": "hinglish", "expect": {"numeric_min": {"airbags": 6}, "body_include": ["suv"], "budget_max": 1200000}}
+{"id": "hing-14", "query": "ADAS wali gaadi chahiye", "category": "hinglish", "expect": {"required_features": ["adas"]}}
+{"id": "hing-15", "query": "family ke liye 7 seater petrol", "category": "hinglish", "expect": {"seats_min": 7, "fuel_include": ["petrol"]}}
+{"id": "hing-16", "query": "sasti automatic hatchback 7 lakh tak", "category": "hinglish", "expect": {"transmission_family": "automatic", "body_include": ["hatchback"], "budget_max": 700000}}
+{"id": "hing-17", "query": "AMT nahi chahiye, automatic hi chahiye", "category": "hinglish", "expect": {"transmission_family": "automatic", "transmission_exclude": ["amt"]}}
+{"id": "hing-18", "query": "hybrid gaadi chahiye", "category": "hinglish", "expect": {"fuel_include": ["hybrid"]}}
+{"id": "hing-19", "query": "papa ke liye automatic sedan 15 lakh tak", "category": "hinglish", "expect": {"transmission_family": "automatic", "body_include": ["sedan"], "budget_max": 1500000}}
+{"id": "hing-20", "query": "Hyundai ki petrol gaadi", "category": "hinglish", "expect": {"makes_include": ["Hyundai"], "fuel_include": ["petrol"]}}
+{"id": "hing-21", "query": "Maruti ki CNG hatchback", "category": "hinglish", "expect": {"makes_include": ["Maruti Suzuki"], "fuel_include": ["cng"], "body_include": ["hatchback"]}}
+{"id": "hing-22", "query": "5 star safety wali SUV chahiye", "category": "hinglish", "expect": {"numeric_min": {"safety_stars_adult": 5}, "body_include": ["suv"]}}
+{"id": "hing-23", "query": "ventilated seats wali SUV 25 lakh tak", "category": "hinglish", "expect": {"required_features": ["ventilated_seats"], "body_include": ["suv"], "budget_max": 2500000}}
+{"id": "hing-24", "query": "360 camera aur sunroof dono chahiye", "category": "hinglish", "expect": {"required_features": ["camera_360", "sunroof"]}}
+{"id": "hing-25", "query": "manual gaadi chahiye 6 lakh se kam", "category": "hinglish", "expect": {"transmission_family": "manual", "budget_max": 600000}}
+{"id": "hing-26", "query": "Kia ya Hyundai ki SUV, 18 lakh tak", "category": "hinglish", "expect": {"makes_include": ["Kia", "Hyundai"], "body_include": ["suv"], "budget_max": 1800000}}
+{"id": "hing-27", "query": "DCT wali gaadi chahiye", "category": "hinglish", "expect": {"transmission_family": "automatic", "transmission_include": ["dct"]}}
+{"id": "hing-28", "query": "Toyota ki hybrid SUV", "category": "hinglish", "expect": {"makes_include": ["Toyota"], "fuel_include": ["hybrid"], "body_include": ["suv"]}}
+{"id": "hing-29", "query": "electric nahi chahiye, petrol chahiye", "category": "hinglish", "expect": {"fuel_include": ["petrol"], "fuel_exclude": ["electric"]}}
+{"id": "hing-30", "query": "sedan nahi chahiye, SUV chahiye", "category": "hinglish", "expect": {"body_include": ["suv"], "body_exclude": ["sedan"]}}
+{"id": "hing-31", "query": "12 lakh tak ki diesel gaadi", "category": "hinglish", "expect": {"budget_max": 1200000, "fuel_include": ["diesel"]}}
+{"id": "hing-32", "query": "bada parivar hai, 7 seater MPV chahiye", "category": "hinglish", "expect": {"seats_min": 7, "body_include": ["mpv"]}}
+{"id": "hing-33", "query": "cruise control wali petrol SUV", "category": "hinglish", "expect": {"required_features": ["cruise_control"], "fuel_include": ["petrol"], "body_include": ["suv"]}}
+{"id": "hing-34", "query": "wireless charging wali gaadi, 20 lakh tak", "category": "hinglish", "expect": {"required_features": ["wireless_charging"], "budget_max": 2000000}}
+{"id": "budget-01", "query": "budget 12 lakh", "category": "budget_phrasing", "expect": {"budget_max": 1200000}}
+{"id": "budget-02", "query": "under 10 lac", "category": "budget_phrasing", "expect": {"budget_max": 1000000}}
+{"id": "budget-03", "query": "below 7.5 L", "category": "budget_phrasing", "expect": {"budget_max": 750000}}
+{"id": "budget-04", "query": "within ₹9 lakh", "category": "budget_phrasing", "expect": {"budget_max": 900000}}
+{"id": "budget-05", "query": "around 10 lakh", "category": "budget_phrasing", "expect": {"budget_around": 1000000}}
+{"id": "budget-06", "query": "10-15 lakh", "category": "budget_phrasing", "expect": {"budget_min": 1000000, "budget_max": 1500000}}
+{"id": "budget-07", "query": "between 8 and 12 lakh", "category": "budget_phrasing", "expect": {"budget_min": 800000, "budget_max": 1200000}}
+{"id": "budget-08", "query": "upto 6 lakhs", "category": "budget_phrasing", "expect": {"budget_max": 600000}}
+{"id": "budget-09", "query": "under 1 crore", "category": "budget_phrasing", "expect": {"budget_max": 10000000}}
+{"id": "budget-10", "query": "above 30 lakh", "category": "budget_phrasing", "expect": {"budget_min": 3000000}}
+{"id": "budget-11", "query": "Rs 12,50,000 budget", "category": "budget_phrasing", "expect": {"budget_max": 1250000}}
+{"id": "budget-12", "query": "budget is 800000", "category": "budget_phrasing", "expect": {"budget_max": 800000}}
+{"id": "budget-13", "query": "10 lakh se kam", "category": "budget_phrasing", "expect": {"budget_max": 1000000}}
+{"id": "budget-14", "query": "15 lakh ke aas paas", "category": "budget_phrasing", "expect": {"budget_around": 1500000}}
+{"id": "budget-15", "query": "8 to 10 lakh range", "category": "budget_phrasing", "expect": {"budget_min": 800000, "budget_max": 1000000}}
+{"id": "budget-16", "query": "less than 20 lakhs", "category": "budget_phrasing", "expect": {"budget_max": 2000000}}
+{"id": "budget-17", "query": "not more than 12 lakh", "category": "budget_phrasing", "expect": {"budget_max": 1200000}}
+{"id": "budget-18", "query": "over 25 lakh", "category": "budget_phrasing", "expect": {"budget_min": 2500000}}
+{"id": "budget-19", "query": "SUV under 1.2 crore", "category": "budget_phrasing", "expect": {"body_include": ["suv"], "budget_max": 12000000}}
+{"id": "budget-20", "query": "9.5 lakh tak", "category": "budget_phrasing", "expect": {"budget_max": 950000}}
+{"id": "neg-01", "query": "no diesel", "category": "negations", "expect": {"fuel_exclude": ["diesel"]}}
+{"id": "neg-02", "query": "SUV but not diesel", "category": "negations", "expect": {"body_include": ["suv"], "fuel_exclude": ["diesel"]}}
+{"id": "neg-03", "query": "avoid CNG and diesel", "category": "negations", "expect": {"fuel_exclude": ["cng", "diesel"]}}
+{"id": "neg-04", "query": "not an SUV", "category": "negations", "expect": {"body_exclude": ["suv"]}}
+{"id": "neg-05", "query": "no sedans", "category": "negations", "expect": {"body_exclude": ["sedan"]}}
+{"id": "neg-06", "query": "automatic but not AMT", "category": "negations", "expect": {"transmission_family": "automatic", "transmission_exclude": ["amt"]}}
+{"id": "neg-07", "query": "not automatic", "category": "negations", "expect": {"transmission_family": "manual"}}
+{"id": "neg-08", "query": "no sunroof", "category": "negations", "expect": {"excluded_features": ["sunroof"]}}
+{"id": "neg-09", "query": "without ADAS under 15 lakh", "category": "negations", "expect": {"excluded_features": ["adas"], "budget_max": 1500000}}
+{"id": "neg-10", "query": "sunroof nahi chahiye", "category": "negations", "expect": {"excluded_features": ["sunroof"]}}
+{"id": "neg-11", "query": "SUV without sunroof and without ventilated seats", "category": "negations", "expect": {"body_include": ["suv"], "excluded_features": ["sunroof", "ventilated_seats"]}}
+{"id": "neg-12", "query": "not Tata", "category": "negations", "expect": {"makes_exclude": ["Tata"]}}
+{"id": "neg-13", "query": "Maruti nahi chahiye", "category": "negations", "expect": {"makes_exclude": ["Maruti Suzuki"]}}
+{"id": "neg-14", "query": "anything except Mahindra", "category": "negations", "expect": {"makes_exclude": ["Mahindra"]}}
+{"id": "neg-15", "query": "no Hyundai or Kia", "category": "negations", "expect": {"makes_exclude": ["Hyundai", "Kia"]}}
+{"id": "neg-16", "query": "SUV under 15 lakh, not Mahindra", "category": "negations", "expect": {"body_include": ["suv"], "budget_max": 1500000, "makes_exclude": ["Mahindra"]}}
+{"id": "neg-17", "query": "petrol SUV without a 360 camera", "category": "negations", "expect": {"fuel_include": ["petrol"], "body_include": ["suv"], "excluded_features": ["camera_360"]}}
+{"id": "neg-18", "query": "no hatchback, no sedan", "category": "negations", "expect": {"body_exclude": ["hatchback", "sedan"]}}
+{"id": "neg-19", "query": "I don't want diesel", "category": "negations", "expect": {"fuel_exclude": ["diesel"]}}
+{"id": "neg-20", "query": "no manual, no diesel", "category": "negations", "expect": {"transmission_family": "automatic", "fuel_exclude": ["diesel"]}}
+{"id": "neg-21", "query": "hybrid not Toyota", "category": "negations", "expect": {"fuel_include": ["hybrid"], "makes_exclude": ["Toyota"]}}
+{"id": "neg-22", "query": "ADAS nahi chahiye, 10 lakh tak SUV", "category": "negations", "expect": {"excluded_features": ["adas"], "budget_max": 1000000, "body_include": ["suv"]}}
+{"id": "neg-23", "query": "no wireless charging, automatic SUV", "category": "negations", "expect": {"excluded_features": ["wireless_charging"], "transmission_family": "automatic", "body_include": ["suv"]}}
+{"id": "neg-24", "query": "electric nahi chahiye, Tata ki SUV", "category": "negations", "expect": {"fuel_exclude": ["electric"], "makes_include": ["Tata"], "body_include": ["suv"]}}
+{"id": "neg-25", "query": "without cruise control under 8 lakh", "category": "negations", "expect": {"excluded_features": ["cruise_control"], "budget_max": 800000}}
+{"id": "num-01", "query": "mileage under 30 km/kg", "category": "numeric_bounds", "expect": {"numeric_max": {"mileage_km_per_kg": 30}}}
+{"id": "num-02", "query": "CNG car with at most 26 km/kg", "category": "numeric_bounds", "expect": {"fuel_include": ["cng"], "numeric_max": {"mileage_km_per_kg": 26}}}
+{"id": "num-03", "query": "ground clearance below 180 mm", "category": "numeric_bounds", "expect": {"numeric_max": {"ground_clearance_mm": 180}}}
+{"id": "num-04", "query": "hatchback with boot space under 300 litres", "category": "numeric_bounds", "expect": {"body_include": ["hatchback"], "numeric_max": {"boot_space_litres": 300}}}
+{"id": "num-05", "query": "mileage at least 20 kmpl", "category": "numeric_bounds", "expect": {"numeric_min": {"mileage_kmpl": 20}}}
+{"id": "num-06", "query": "SUV with ground clearance of at least 210 mm", "category": "numeric_bounds", "expect": {"body_include": ["suv"], "numeric_min": {"ground_clearance_mm": 210}}}
+{"id": "num-07", "query": "EV with at least 500 km range", "category": "numeric_bounds", "expect": {"fuel_include": ["electric"], "numeric_min": {"ev_range_km": 500}}}
+{"id": "num-08", "query": "450 litre boot SUV", "category": "numeric_bounds", "expect": {"body_include": ["suv"], "numeric_min": {"boot_space_litres": 450}}}
+{"id": "num-09", "query": "at least 6 airbags", "category": "numeric_bounds", "expect": {"numeric_min": {"airbags": 6}}}
+{"id": "num-10", "query": "minimum 4 star safety rating", "category": "numeric_bounds", "expect": {"numeric_min": {"safety_stars_adult": 4}}}
+{"id": "num-11", "query": "EV range below 350 km", "category": "numeric_bounds", "expect": {"numeric_max": {"ev_range_km": 350}}}
+{"id": "num-12", "query": "petrol hatchback with mileage above 22 kmpl", "category": "numeric_bounds", "expect": {"fuel_include": ["petrol"], "body_include": ["hatchback"], "numeric_min": {"mileage_kmpl": 22}}}
+{"id": "num-13", "query": "25+ km/kg CNG", "category": "numeric_bounds", "expect": {"fuel_include": ["cng"], "numeric_min": {"mileage_km_per_kg": 25}}}
+{"id": "num-14", "query": "ground clearance under 190 mm hatchback", "category": "numeric_bounds", "expect": {"body_include": ["hatchback"], "numeric_max": {"ground_clearance_mm": 190}}}
+{"id": "num-15", "query": "mileage between 18 and 22 kmpl", "category": "numeric_bounds", "expect": {"numeric_min": {"mileage_kmpl": 18}, "numeric_max": {"mileage_kmpl": 22}}}
+{"id": "named-01", "query": "Hyundai Creta", "category": "named_make_model", "expect": {"makes_include": ["Hyundai"], "models_include": ["Creta"]}}
+{"id": "named-02", "query": "Scorpio N diesel automatic", "category": "named_make_model", "expect": {"models_include": ["Scorpio-N"], "fuel_include": ["diesel"], "transmission_family": "automatic"}}
+{"id": "named-03", "query": "Maruti Swift", "category": "named_make_model", "expect": {"makes_include": ["Maruti Suzuki"], "models_include": ["Swift"]}}
+{"id": "named-04", "query": "something like Creta", "category": "named_make_model", "expect": {"reference_models": ["Creta"]}}
+{"id": "named-05", "query": "cars similar to Nexon", "category": "named_make_model", "expect": {"reference_models": ["Nexon"]}}
+{"id": "named-06", "query": "Brezza alternatives", "category": "named_make_model", "expect": {"reference_models": ["Brezza"]}}
+{"id": "named-07", "query": "Innova Crysta", "category": "named_make_model", "expect": {"models_include": ["Innova Crysta"]}}
+{"id": "named-08", "query": "Thar Roxx", "category": "named_make_model", "expect": {"models_include": ["Thar Roxx"]}}
+{"id": "named-09", "query": "Tata Nexon EV", "category": "named_make_model", "expect": {"makes_include": ["Tata"], "models_include": ["Nexon EV"]}}
+{"id": "named-10", "query": "Kia Seltos or Hyundai Creta", "category": "named_make_model", "expect": {"makes_include": ["Kia", "Hyundai"], "models_include": ["Seltos", "Creta"]}}
+{"id": "named-11", "query": "like XUV 3XO under 14 lakh", "category": "named_make_model", "expect": {"reference_models": ["XUV 3XO"], "budget_max": 1400000}}
+{"id": "named-12", "query": "Fortuner", "category": "named_make_model", "expect": {"models_include": ["Fortuner"]}}
+{"id": "named-13", "query": "something similar to Swift but automatic", "category": "named_make_model", "expect": {"reference_models": ["Swift"], "transmission_family": "automatic"}}
+{"id": "named-14", "query": "Maruti Brezza CNG", "category": "named_make_model", "expect": {"makes_include": ["Maruti Suzuki"], "models_include": ["Brezza"], "fuel_include": ["cng"]}}
+{"id": "named-15", "query": "Creta jaisi SUV chahiye", "category": "named_make_model", "expect": {"reference_models": ["Creta"], "body_include": ["suv"]}}
+{"id": "empty-01", "query": "electric sedan under 8 lakh", "category": "over_constrained", "expect": {"fuel_include": ["electric"], "body_include": ["sedan"], "budget_max": 800000, "expect_empty": true}}
+{"id": "empty-02", "query": "7 seater hatchback under 6 lakh", "category": "over_constrained", "expect": {"seats_min": 7, "body_include": ["hatchback"], "budget_max": 600000, "expect_empty": true}}
+{"id": "empty-03", "query": "diesel hatchback automatic under 7 lakh with sunroof", "category": "over_constrained", "expect": {"fuel_include": ["diesel"], "body_include": ["hatchback"], "transmission_family": "automatic", "budget_max": 700000, "required_features": ["sunroof"], "expect_empty": true}}
+{"id": "empty-04", "query": "Tata SUV with ventilated seats under 8 lakh", "category": "over_constrained", "expect": {"makes_include": ["Tata"], "body_include": ["suv"], "required_features": ["ventilated_seats"], "budget_max": 800000, "expect_empty": true}}
+{"id": "empty-05", "query": "pickup truck under 10 lakh", "category": "over_constrained", "expect": {"body_include": ["pickup"], "budget_max": 1000000, "expect_empty": true}}
+{"id": "empty-06", "query": "CNG SUV with ADAS", "category": "over_constrained", "expect": {"fuel_include": ["cng"], "body_include": ["suv"], "required_features": ["adas"], "expect_empty": true}}
+{"id": "empty-07", "query": "7 seater EV under 10 lakh", "category": "over_constrained", "expect": {"seats_min": 7, "fuel_include": ["electric"], "budget_max": 1000000, "expect_empty": true}}
+{"id": "empty-08", "query": "electric car with 900 km range", "category": "over_constrained", "expect": {"fuel_include": ["electric"], "numeric_min": {"ev_range_km": 900}, "expect_empty": true}}
+{"id": "empty-09", "query": "Maruti 7 seater diesel", "category": "over_constrained", "expect": {"makes_include": ["Maruti Suzuki"], "seats_min": 7, "fuel_include": ["diesel"], "expect_empty": true}}
+{"id": "empty-10", "query": "Mahindra hatchback", "category": "over_constrained", "expect": {"makes_include": ["Mahindra"], "body_include": ["hatchback"], "expect_empty": true}}
+{"id": "empty-11", "query": "sunroof hatchback under 5 lakh", "category": "over_constrained", "expect": {"required_features": ["sunroof"], "body_include": ["hatchback"], "budget_max": 500000, "expect_empty": true}}
+{"id": "empty-12", "query": "5 lakh tak 7 seater automatic diesel SUV", "category": "over_constrained", "expect": {"budget_max": 500000, "seats_min": 7, "transmission_family": "automatic", "fuel_include": ["diesel"], "body_include": ["suv"], "expect_empty": true}}
+{"id": "empty-13", "query": "manual hybrid SUV with ADAS under 10 lakh", "category": "over_constrained", "expect": {"transmission_family": "manual", "fuel_include": ["hybrid"], "body_include": ["suv"], "required_features": ["adas"], "budget_max": 1000000, "expect_empty": true}}
+{"id": "empty-14", "query": "sedan with 8 seats", "category": "over_constrained", "expect": {"body_include": ["sedan"], "seats_min": 8, "expect_empty": true}}
+{"id": "empty-15", "query": "Honda diesel SUV", "category": "over_constrained", "expect": {"makes_include": ["Honda"], "fuel_include": ["diesel"], "body_include": ["suv"], "expect_empty": true}}
+{"id": "vague-01", "query": "good car", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-02", "query": "best car in India", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-03", "query": "suggest me a car", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-04", "query": "koi achhi gaadi batao", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-05", "query": "I need a car", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-06", "query": "what should I buy", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-07", "query": "mujhe gaadi leni hai", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-08", "query": "nice car for me", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-09", "query": "car recommend karo", "category": "vague", "expect": {"vague": true}}
+{"id": "vague-10", "query": "top cars", "category": "vague", "expect": {"vague": true}}
+{"id": "unsup-01", "query": "Mini Cooper", "category": "unsupported_brand", "expect": {"unsupported_brand": ["Mini"]}}
+{"id": "unsup-02", "query": "BMW 3 series", "category": "unsupported_brand", "expect": {"unsupported_brand": ["BMW"]}}
+{"id": "unsup-03", "query": "Mercedes C class", "category": "unsupported_brand", "expect": {"unsupported_brand": ["Mercedes-Benz"]}}
+{"id": "unsup-04", "query": "Jeep Compass", "category": "unsupported_brand", "expect": {"unsupported_brand": ["Jeep"]}}
+{"id": "unsup-05", "query": "Volvo XC40", "category": "unsupported_brand", "expect": {"unsupported_brand": ["Volvo"]}}
+{"id": "para-g01-a", "query": "automatic SUV under 15 lakh", "category": "paraphrase", "expect": {"transmission_family": "automatic", "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g01"}
+{"id": "para-g01-b", "query": "15 lakh tak automatic SUV chahiye", "category": "paraphrase", "expect": {"transmission_family": "automatic", "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g01"}
+{"id": "para-g01-c", "query": "I need an SUV with an automatic gearbox, maximum budget 15 lakh", "category": "paraphrase", "expect": {"transmission_family": "automatic", "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g01"}
+{"id": "para-g02-a", "query": "7 seater diesel car", "category": "paraphrase", "expect": {"seats_min": 7, "fuel_include": ["diesel"]}, "paraphrase_group": "g02"}
+{"id": "para-g02-b", "query": "diesel gaadi 7 seater wali", "category": "paraphrase", "expect": {"seats_min": 7, "fuel_include": ["diesel"]}, "paraphrase_group": "g02"}
+{"id": "para-g02-c", "query": "I want a diesel with 7 seats", "category": "paraphrase", "expect": {"seats_min": 7, "fuel_include": ["diesel"]}, "paraphrase_group": "g02"}
+{"id": "para-g03-a", "query": "electric hatchback", "category": "paraphrase", "expect": {"fuel_include": ["electric"], "body_include": ["hatchback"]}, "paraphrase_group": "g03"}
+{"id": "para-g03-b", "query": "electric hatchback chahiye", "category": "paraphrase", "expect": {"fuel_include": ["electric"], "body_include": ["hatchback"]}, "paraphrase_group": "g03"}
+{"id": "para-g03-c", "query": "EV hatchback", "category": "paraphrase", "expect": {"fuel_include": ["electric"], "body_include": ["hatchback"]}, "paraphrase_group": "g03"}
+{"id": "para-g04-a", "query": "CNG hatchback under 8 lakh", "category": "paraphrase", "expect": {"fuel_include": ["cng"], "body_include": ["hatchback"], "budget_max": 800000}, "paraphrase_group": "g04"}
+{"id": "para-g04-b", "query": "8 lakh tak CNG hatchback", "category": "paraphrase", "expect": {"fuel_include": ["cng"], "body_include": ["hatchback"], "budget_max": 800000}, "paraphrase_group": "g04"}
+{"id": "para-g04-c", "query": "hatchback with CNG, budget 8 lakh", "category": "paraphrase", "expect": {"fuel_include": ["cng"], "body_include": ["hatchback"], "budget_max": 800000}, "paraphrase_group": "g04"}
+{"id": "para-g05-a", "query": "sunroof SUV under 15 lakh", "category": "paraphrase", "expect": {"required_features": ["sunroof"], "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g05"}
+{"id": "para-g05-b", "query": "15 lakh ke andar sunroof wali SUV", "category": "paraphrase", "expect": {"required_features": ["sunroof"], "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g05"}
+{"id": "para-g05-c", "query": "SUV with a sunroof, budget 15 lakh", "category": "paraphrase", "expect": {"required_features": ["sunroof"], "body_include": ["suv"], "budget_max": 1500000}, "paraphrase_group": "g05"}
+{"id": "para-g06-a", "query": "petrol automatic, no diesel", "category": "paraphrase", "expect": {"fuel_include": ["petrol"], "fuel_exclude": ["diesel"], "transmission_family": "automatic"}, "paraphrase_group": "g06"}
+{"id": "para-g06-b", "query": "diesel nahi chahiye, petrol automatic chahiye", "category": "paraphrase", "expect": {"fuel_include": ["petrol"], "fuel_exclude": ["diesel"], "transmission_family": "automatic"}, "paraphrase_group": "g06"}
+{"id": "para-g06-c", "query": "automatic petrol car, not diesel", "category": "paraphrase", "expect": {"fuel_include": ["petrol"], "fuel_exclude": ["diesel"], "transmission_family": "automatic"}, "paraphrase_group": "g06"}
+{"id": "para-g07-a", "query": "Tata SUV", "category": "paraphrase", "expect": {"makes_include": ["Tata"], "body_include": ["suv"]}, "paraphrase_group": "g07"}
+{"id": "para-g07-b", "query": "Tata ki SUV chahiye", "category": "paraphrase", "expect": {"makes_include": ["Tata"], "body_include": ["suv"]}, "paraphrase_group": "g07"}
+{"id": "para-g07-c", "query": "SUV from Tata", "category": "paraphrase", "expect": {"makes_include": ["Tata"], "body_include": ["suv"]}, "paraphrase_group": "g07"}
+{"id": "para-g08-a", "query": "5 star safety SUV under 20 lakh", "category": "paraphrase", "expect": {"numeric_min": {"safety_stars_adult": 5}, "body_include": ["suv"], "budget_max": 2000000}, "paraphrase_group": "g08"}
+{"id": "para-g08-b", "query": "5 star safety wali SUV 20 lakh tak", "category": "paraphrase", "expect": {"numeric_min": {"safety_stars_adult": 5}, "body_include": ["suv"], "budget_max": 2000000}, "paraphrase_group": "g08"}
+{"id": "para-g08-c", "query": "SUV with 5-star safety rating, up to 20 lakh", "category": "paraphrase", "expect": {"numeric_min": {"safety_stars_adult": 5}, "body_include": ["suv"], "budget_max": 2000000}, "paraphrase_group": "g08"}
+{"id": "para-g09-a", "query": "SUV with ADAS under 25 lakh", "category": "paraphrase", "expect": {"required_features": ["adas"], "body_include": ["suv"], "budget_max": 2500000}, "paraphrase_group": "g09"}
+{"id": "para-g09-b", "query": "ADAS wali SUV 25 lakh tak", "category": "paraphrase", "expect": {"required_features": ["adas"], "body_include": ["suv"], "budget_max": 2500000}, "paraphrase_group": "g09"}
+{"id": "para-g09-c", "query": "I want an SUV having ADAS, max 25 lakh", "category": "paraphrase", "expect": {"required_features": ["adas"], "body_include": ["suv"], "budget_max": 2500000}, "paraphrase_group": "g09"}
+{"id": "para-g10-a", "query": "hybrid SUV", "category": "paraphrase", "expect": {"fuel_include": ["hybrid"], "body_include": ["suv"]}, "paraphrase_group": "g10"}
+{"id": "para-g10-b", "query": "hybrid SUV chahiye", "category": "paraphrase", "expect": {"fuel_include": ["hybrid"], "body_include": ["suv"]}, "paraphrase_group": "g10"}
+{"id": "para-g10-c", "query": "SUV with hybrid engine", "category": "paraphrase", "expect": {"fuel_include": ["hybrid"], "body_include": ["suv"]}, "paraphrase_group": "g10"}

@@ -28,7 +28,7 @@ Example queries:
 
 ## Data
 
-The catalogue (`data/catalogue.csv`) has 832 variants of 62 models from 12 brands. It was exported on 2026-10-31 from knowledge-base phase 10B-W6. The knowledge base is maintained separately and tracks where each value came from. It is not in this repository; only the exported catalogue is.
+The default catalogue (`data/catalogue_v3/catalogue.csv`) has 1,464 variants of 92 models from 12 brands. It was exported on 2026-11-14 from knowledge-base phase 11Q. The original 832-variant, 62-model catalogue (`data/catalogue.csv`, exported 2026-11-12, phase 11P) is kept and selected with `CARREC_CATALOGUE_DIR=data`. The knowledge base is maintained separately and tracks where each value came from. It is not in this repository; only the exported catalogue is.
 
 ## Evaluation
 
@@ -39,7 +39,7 @@ The oracle checks budget, fuel, transmission family (manual/automatic), body typ
 ## Limitations
 
 - 12 brands only: Honda, Hyundai, Kia, MG, Mahindra, Maruti Suzuki, Nissan, Renault, Skoda, Tata, Toyota, Volkswagen.
-- 56 of 62 models have a photo (22 older images, 34 from OEM brochures, captioned with their source). The other 6 show a body-type silhouette.
+- 60 of 92 models have a photo from an OEM brochure, captioned with its source. The other 32 (30 added with the 1,464-variant catalogue, plus Creta and Thar Roxx) show a body-type silhouette.
 - Mileage is unknown for about 40% of non-EV variants: 336 of 795 have no ARAI kmpl figure, and 299 have no mileage figure at all. Mileage minimums keep these cars, labelled "Unverified: mileage".
 - Safety stars come only from Bharat NCAP: 20 models / 363 variants are rated. Older Global NCAP ratings are not used.
 - Used-car search is off in the demo. It needs Selenium and headless Chrome and is enabled only with `ENABLE_USED_CARS=1`.
@@ -70,7 +70,19 @@ python app.py
 
 Then open http://127.0.0.1:5001.
 
-`DATA_SOURCE` picks the data path: `kb` (default) uses `data/catalogue.csv`; `legacy` uses the older 2021-era dataset in `car_recommendation_assets/`.
+`DATA_SOURCE` picks the data path: `kb` (default) uses the knowledge-base catalogue export; `legacy` uses the older 2021-era dataset in `car_recommendation_assets/`.
+
+### Engine and catalogue defaults (branch `feat/recsys-v3`)
+
+With no environment variables the app runs ranking engine v3 (`services/recsys/`) on the 1,464-variant catalogue (`data/catalogue_v3/`) with the review data in `data/`. The deployed app is unaffected until this branch is merged and deployed by the owner.
+
+| To get | Set |
+|---|---|
+| the old ranking engine (on whichever catalogue is selected) | `RANKER=current` |
+| the original 832-variant catalogue | `CARREC_CATALOGUE_DIR=data` |
+| the old behaviour completely | `RANKER=current CARREC_CATALOGUE_DIR=data python app.py` |
+
+`RANKER` accepts `v3` or unset (default), and `current` (also `old`, `v2`); any other value is treated as v3. `CARREC_CATALOGUE_DIR` is a directory holding `catalogue.csv` and `catalogue_meta.json`; a relative path is read from the repository root. The evaluation runner follows the same defaults (`eval/run_eval.py`; `--engine current` selects the old engine).
 
 ## Tech stack
 

@@ -16,6 +16,7 @@ NO_TRANS = {"family": None, "include_types": [], "exclude_types": []}
 def expected(**fields):
     base = {
         "budget": {"min": None, "max": None},
+        "corrections": [],
         "body_types": [],
         "fuel_types": [],
         "transmission": NO_TRANS,
@@ -29,13 +30,24 @@ def expected(**fields):
         "min_ev_range_km": None,
         "min_mileage_kmpl": None,
         "min_mileage_km_per_kg": None,
+        "max_ev_range_km": None,
+        "max_ground_clearance_mm": None,
+        "max_boot_space_litres": None,
+        "max_mileage_kmpl": None,
+        "max_mileage_km_per_kg": None,
         "use_case": None,
+        "cheap_intent": False,
+        "exclude_features": [],
+        "exclude_makes": [],
         "exclude_fuel_types": [],
         "exclude_body_types": [],
         "models": [],
         "reference_models": [],
         "unsupported_terms": [],
         "soft_preferences": [],
+        "assumed": {"body_types": [], "fuel_types": []},
+        "vague": False,
+        "unsupported_only": False,
     }
     for key, value in fields.items():
         assert key in base, key
@@ -72,9 +84,9 @@ CASES = [
     ("automatic but not AMT", expected(transmission=trans("automatic", exclude=["amt"]))),
     ("electric SUV", expected(fuel_types=["electric"], body_types=["suv"])),
     ("I need a car to drive at the office", expected(use_case="commute")),
-    ("something I can park at the mall", expected()),
+    ("something I can park at the mall", expected(vague=True)),
     ("need at least 5 seats", expected(seats_min=5)),
-    ("automatic or manual both fine", expected()),
+    ("automatic or manual both fine", expected(vague=True)),
     # --- Hinglish ---
     ("15 lakh tak automatic chahiye, AMT nahi",
      expected(budget=budget(hi=15 * L), transmission=trans("automatic", exclude=["amt"]))),
@@ -107,7 +119,16 @@ CASES = [
     ("cng with 25 km per kg", expected(fuel_types=["cng"], min_mileage_km_per_kg=25.0)),
     ("mileage 28 km/kg", expected(min_mileage_km_per_kg=28.0)),
     ("above 26.5 kmpkg", expected(min_mileage_km_per_kg=26.5)),
-    ("under 30 km/kg", expected()),
+    # upper bounds are honoured (step 2b); never read as a minimum
+    ("under 30 km/kg", expected(max_mileage_km_per_kg=30.0)),
+    ("mileage under 30 km/kg", expected(max_mileage_km_per_kg=30.0)),
+    ("CNG with at most 26 km/kg", expected(fuel_types=["cng"], max_mileage_km_per_kg=26.0)),
+    ("mileage between 18 and 22 kmpl", expected(min_mileage_kmpl=18.0, max_mileage_kmpl=22.0)),
+    ("mileage under 15 kmpl", expected(max_mileage_kmpl=15.0)),
+    ("ground clearance below 180 mm", expected(max_ground_clearance_mm=180.0)),
+    ("ground clearance under 190 mm hatchback", expected(body_types=["hatchback"], max_ground_clearance_mm=190.0)),
+    ("hatchback with boot space under 300 litres", expected(body_types=["hatchback"], max_boot_space_litres=300.0)),
+    ("EV range below 350 km", expected(max_ev_range_km=350.0)),
     ("20 kmpl petrol or 28 km/kg cng", expected(fuel_types=["petrol", "cng"], min_mileage_kmpl=20.0,
                                                  min_mileage_km_per_kg=28.0)),
     ("ADAS with adaptive cruise control", expected(required_features=["adas", "cruise_control"])),
@@ -115,7 +136,21 @@ CASES = [
     ("360 camera and ventilated seats", expected(required_features=["camera_360", "ventilated_seats"])),
     ("wireless charging, HUD, android auto and carplay",
      expected(required_features=["wireless_charging", "heads_up_display", "android_auto", "apple_carplay"])),
-    ("no sunroof needed", expected()),
+    # negated features are exclusions (step 2a), not dropped
+    ("no sunroof needed", expected(exclude_features=["sunroof"])),
+    ("no sunroof", expected(exclude_features=["sunroof"])),
+    ("without ADAS under 15 lakh", expected(exclude_features=["adas"], budget=budget(hi=15 * L))),
+    ("sunroof nahi chahiye", expected(exclude_features=["sunroof"])),
+    ("SUV without sunroof and without ventilated seats",
+     expected(body_types=["suv"], exclude_features=["sunroof", "ventilated_seats"])),
+    ("sunroof but no ADAS", expected(required_features=["sunroof"], exclude_features=["adas"])),
+    # negated makes are exclusions (step 2a)
+    ("not Tata", expected(exclude_makes=["Tata"])),
+    ("hybrid not Toyota", expected(fuel_types=["hybrid"], exclude_makes=["Toyota"])),
+    ("diesel not wanted", expected(exclude_fuel_types=["diesel"])),
+    ("Maruti nahi chahiye", expected(exclude_makes=["Maruti Suzuki"])),
+    ("no Hyundai or Kia", expected(exclude_makes=["Hyundai", "Kia"])),
+    ("SUV under 15 lakh, not Mahindra", expected(body_types=["suv"], budget=budget(hi=15 * L), exclude_makes=["Mahindra"])),
     ("7 seater with 6 airbags under 20 lakh", expected(seats_min=7, min_airbags=6, budget=budget(hi=20 * L))),
     # --- budget ---
     ("under 10 lakh", expected(budget=budget(hi=10 * L))),
@@ -129,12 +164,12 @@ CASES = [
     ("Rs 7,50,000 max", expected(budget=budget(hi=750_000))),
     ("1.2L turbo petrol", expected(fuel_types=["petrol"])),
     # --- vague: no invented constraints ---
-    ("good car", expected()),
-    ("best car for me", expected()),
-    ("I want a car", expected()),
-    ("which car should I buy?", expected()),
-    ("suggest something nice", expected()),
-    ("", expected()),
+    ("good car", expected(vague=True)),
+    ("best car for me", expected(vague=True)),
+    ("I want a car", expected(vague=True)),
+    ("which car should I buy?", expected(vague=True)),
+    ("suggest something nice", expected(vague=True)),
+    ("", expected(vague=True)),
     # --- v2.1: exclusions ---
     ("diesel nahi chahiye automatic SUV",
      expected(exclude_fuel_types=["diesel"], transmission=AUTO, body_types=["suv"])),
@@ -153,8 +188,9 @@ CASES = [
     ("Nexon EV vs Punch EV", expected(models=["Nexon EV", "Punch EV"])),
     # --- v2.1: unsupported brands ---
     ("BMW SUV", expected(unsupported_terms=["BMW"], body_types=["suv"])),
+    ("Jeep Compass", expected(unsupported_terms=["Jeep"], unsupported_only=True)),
     ("mercedes or audi sedan", expected(unsupported_terms=["Audi", "Mercedes-Benz"], body_types=["sedan"])),
-    ("Mini Cooper", expected(unsupported_terms=["Mini"])),
+    ("Mini Cooper", expected(unsupported_terms=["Mini"], unsupported_only=True)),
     ("mini SUV under 8 lakh", expected(body_types=["suv"], budget=budget(hi=8 * L))),
     # --- v2.1: soft preferences (never hard constraints) ---
     ("good mileage hatchback", expected(soft_preferences=["mileage"], body_types=["hatchback"])),
@@ -201,3 +237,39 @@ def test_rules_only_mode_has_no_ml_trace():
     out = parse_intent("family ke liye 7 seater diesel", use_ml=False)
     assert out["use_case"] == "family"
     assert not any(" <- ml " in t for t in out["trace"])
+
+
+# ---------------------------------------------------------------- negated ceilings and boot-space minimums
+
+@pytest.mark.parametrize("query", [
+    "I can't go above 8 lakh", "cannot go above 8 lakh", "can't exceed 8 lakh", "I can't go over 8 lakh",
+    "I won't spend more than 8 lakh", "not more than 8 lakh", "no more than 8 lakh",
+    "8 lakh se upar nahi ja sakta", "8 lakh se upar nahi jaunga", "8 lakh se zyada nahi chahiye",
+    "8 lakh se kam",
+])
+def test_negated_or_ceiling_phrasings_set_a_maximum_never_a_minimum(query):
+    budget = parse_intent(query)["budget"]
+    assert budget == {"min": None, "max": 8 * L}
+
+
+@pytest.mark.parametrize("query", ["above 8 lakh", "more than 8 lakh", "8 lakh se upar", "at least 8 lakh"])
+def test_plain_lower_bound_words_are_still_a_minimum(query):
+    assert parse_intent(query)["budget"] == {"min": 8 * L, "max": None}
+
+
+@pytest.mark.parametrize("query,litres", [
+    ("500 litres se zyada boot", 500), ("500 litre se zyada ka boot", 500), ("boot 400 litre se zyada", 400),
+    ("boot space more than 450 litres", 450), ("at least 400 L boot", 400), ("boot space at least 450 litres", 450),
+])
+def test_boot_space_minimum_is_parsed(query, litres):
+    out = parse_intent(query)
+    assert out["min_boot_space_litres"] == litres
+    assert out["max_boot_space_litres"] is None
+    assert out["budget"] == {"min": None, "max": None}     # the litres are not read as a price
+
+
+def test_boot_space_se_kam_is_a_maximum_and_ceiling_plus_boot_combine():
+    out = parse_intent("boot 400 litre se kam")
+    assert out["max_boot_space_litres"] == 400 and out["min_boot_space_litres"] is None
+    out = parse_intent("can't go above 8 lakh, boot space more than 450 litres")
+    assert out["budget"] == {"min": None, "max": 8 * L} and out["min_boot_space_litres"] == 450

@@ -1,0 +1,30 @@
+.git
+.github
+.venv
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.DS_Store
+# data that must never ship in an image
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+knowledge_base
+backups
+scratch
+eval
+tests
+docs
+scripts
+secrets*
+*.pem
+*.key
+# not needed at runtime
+ml_parser/parser_training_data.json
+ml_parser/parser_test_data.json
+ml_parser/parser_eval_results.json
+*.md

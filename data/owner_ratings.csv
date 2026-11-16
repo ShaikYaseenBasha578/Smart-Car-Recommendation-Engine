@@ -1,0 +1,737 @@
+model,aspect,value,rating_count,low_confidence,source,url,observed_at,raw_score,scale_max,source_aspect
+Aeris,comfort,0.954,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.77,5,Comfort and Space
+Aeris,design,0.938,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.69,5,Design and Styling
+Aeris,features,0.938,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.69,5,Features and Technology
+Aeris,performance,0.938,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.69,5,Performance
+Aeris,satisfaction,0.9,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.5,5,overall
+Aeris,service_cost,0.934,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.67,5,After Sales Cost and Experience
+Aeris,service_experience,0.934,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.67,5,After Sales Cost and Experience
+Aeris,value,0.976,109,false,CarWale,https://www.carwale.com/tata-cars/aeris/user-reviews/,2026-11-14T18:37:55Z,4.88,5,Value for Money
+Alcazar,comfort,0.93,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.65,5,Comfort and Space
+Alcazar,design,0.928,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.64,5,Design and Styling
+Alcazar,features,0.926,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.63,5,Features and Technology
+Alcazar,performance,0.926,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.63,5,Performance
+Alcazar,real_world_mileage,0.844,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.22,5,Fuel Economy
+Alcazar,satisfaction,0.918,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.59,5,overall
+Alcazar,service_cost,0.886,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.43,5,After Sales Cost and Experience
+Alcazar,service_experience,0.886,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.43,5,After Sales Cost and Experience
+Alcazar,value,0.912,123,false,CarWale,https://www.carwale.com/hyundai-cars/alcazar/user-reviews/,2026-11-14T18:37:43Z,4.56,5,Value for Money
+Alto K10,comfort,0.852,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.26,5,Comfort and Space
+Alto K10,design,0.882,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.41,5,Design and Styling
+Alto K10,features,0.864,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.32,5,Features and Technology
+Alto K10,performance,0.908,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.54,5,Performance
+Alto K10,real_world_mileage,0.916,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.58,5,Fuel Economy
+Alto K10,satisfaction,0.91,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.55,5,overall
+Alto K10,service_cost,0.92,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.6,5,After Sales Cost and Experience
+Alto K10,service_experience,0.92,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.6,5,After Sales Cost and Experience
+Alto K10,value,0.918,671,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/alto-k10/user-reviews/,2026-11-14T18:38:27Z,4.59,5,Value for Money
+Altroz,comfort,0.932,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.66,5,Comfort and Space
+Altroz,design,0.96,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.8,5,Design and Styling
+Altroz,features,0.938,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.69,5,Features and Technology
+Altroz,performance,0.91,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.55,5,Performance
+Altroz,real_world_mileage,0.834,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.17,5,Fuel Economy
+Altroz,satisfaction,0.93,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.65,5,overall
+Altroz,service_cost,0.852,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.26,5,After Sales Cost and Experience
+Altroz,service_experience,0.852,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.26,5,After Sales Cost and Experience
+Altroz,value,0.942,204,false,CarWale,https://www.carwale.com/tata-cars/altroz/user-reviews/,2026-11-14T18:37:11Z,4.71,5,Value for Money
+Amaze,comfort,0.918,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.59,5,Comfort and Space
+Amaze,design,0.922,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.61,5,Design and Styling
+Amaze,features,0.872,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.36,5,Features and Technology
+Amaze,performance,0.904,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.52,5,Performance
+Amaze,real_world_mileage,0.832,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.16,5,Fuel Economy
+Amaze,satisfaction,0.922,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.61,5,overall
+Amaze,service_cost,0.856,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.28,5,After Sales Cost and Experience
+Amaze,service_experience,0.856,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.28,5,After Sales Cost and Experience
+Amaze,value,0.912,207,false,CarWale,https://www.carwale.com/honda-cars/amaze/user-reviews/,2026-11-14T17:25:00Z,4.56,5,Value for Money
+Astor,comfort,0.91,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.55,5,Comfort and Space
+Astor,design,0.922,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.61,5,Design and Styling
+Astor,features,0.952,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.76,5,Features and Technology
+Astor,performance,0.836,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.18,5,Performance
+Astor,real_world_mileage,0.722,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,3.61,5,Fuel Economy
+Astor,satisfaction,0.854,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.27,5,overall
+Astor,service_cost,0.87,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.35,5,After Sales Cost and Experience
+Astor,service_experience,0.87,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.35,5,After Sales Cost and Experience
+Astor,value,0.87,394,false,CarWale,https://www.carwale.com/mg-cars/astor/user-reviews/,2026-11-14T18:41:57Z,4.35,5,Value for Money
+Aura,comfort,0.902,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.51,5,Comfort and Space
+Aura,design,0.908,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.54,5,Design and Styling
+Aura,features,0.894,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.47,5,Features and Technology
+Aura,performance,0.894,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.47,5,Performance
+Aura,real_world_mileage,0.862,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.31,5,Fuel Economy
+Aura,satisfaction,0.906,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.53,5,overall
+Aura,service_cost,0.888,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.44,5,After Sales Cost and Experience
+Aura,service_experience,0.888,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.44,5,After Sales Cost and Experience
+Aura,value,0.894,317,false,CarWale,https://www.carwale.com/hyundai-cars/aura/user-reviews/,2026-11-14T18:39:35Z,4.47,5,Value for Money
+Baleno,comfort,0.858,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,4.29,5,Comfort and Space
+Baleno,design,0.714,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,3.57,5,Design and Styling
+Baleno,features,0.814,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,4.07,5,Features and Technology
+Baleno,performance,0.7,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,3.5,5,Performance
+Baleno,satisfaction,0.742,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,3.71,5,overall
+Baleno,service_cost,0.858,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,4.29,5,After Sales Cost and Experience
+Baleno,service_experience,0.858,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,4.29,5,After Sales Cost and Experience
+Baleno,value,0.814,46,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/baleno/user-reviews/,2026-11-14T18:39:43Z,4.07,5,Value for Money
+Bayon,comfort,0.876,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.38,5,Comfort and Space
+Bayon,design,0.876,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.38,5,Design and Styling
+Bayon,features,0.924,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.62,5,Features and Technology
+Bayon,performance,0.914,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.57,5,Performance
+Bayon,satisfaction,0.858,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.29,5,overall
+Bayon,service_cost,0.9,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.5,5,After Sales Cost and Experience
+Bayon,service_experience,0.9,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.5,5,After Sales Cost and Experience
+Bayon,value,0.9,30,false,CarWale,https://www.carwale.com/hyundai-cars/bayon/user-reviews/,2026-11-14T18:38:57Z,4.5,5,Value for Money
+Bolero,comfort,0.89,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.45,5,Comfort and Space
+Bolero,design,0.922,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.61,5,Design and Styling
+Bolero,features,0.858,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.29,5,Features and Technology
+Bolero,performance,0.942,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.71,5,Performance
+Bolero,satisfaction,0.908,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.54,5,overall
+Bolero,service_cost,0.876,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.38,5,After Sales Cost and Experience
+Bolero,service_experience,0.876,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.38,5,After Sales Cost and Experience
+Bolero,value,0.942,122,false,CarWale,https://www.carwale.com/mahindra-cars/bolero/user-reviews/,2026-11-14T18:40:55Z,4.71,5,Value for Money
+Bolero Neo,comfort,0.908,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.54,5,Comfort and Space
+Bolero Neo,design,0.902,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.51,5,Design and Styling
+Bolero Neo,features,0.802,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.01,5,Features and Technology
+Bolero Neo,performance,0.926,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.63,5,Performance
+Bolero Neo,satisfaction,0.85,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.25,5,overall
+Bolero Neo,service_cost,0.804,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.02,5,After Sales Cost and Experience
+Bolero Neo,service_experience,0.804,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.02,5,After Sales Cost and Experience
+Bolero Neo,value,0.882,89,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo/user-reviews/,2026-11-14T18:40:41Z,4.41,5,Value for Money
+Bolero Neo Plus,comfort,0.93,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.65,5,Comfort and Space
+Bolero Neo Plus,design,0.912,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.56,5,Design and Styling
+Bolero Neo Plus,features,0.904,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.52,5,Features and Technology
+Bolero Neo Plus,performance,0.918,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.59,5,Performance
+Bolero Neo Plus,real_world_mileage,0.884,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.42,5,Fuel Economy
+Bolero Neo Plus,satisfaction,0.942,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.71,5,overall
+Bolero Neo Plus,service_cost,0.938,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.69,5,After Sales Cost and Experience
+Bolero Neo Plus,service_experience,0.938,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.69,5,After Sales Cost and Experience
+Bolero Neo Plus,value,0.954,76,false,CarWale,https://www.carwale.com/mahindra-cars/bolero-neo-plus/user-reviews/,2026-11-14T18:41:41Z,4.77,5,Value for Money
+Brezza,comfort,0.892,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.46,5,Comfort and Space
+Brezza,design,0.878,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.39,5,Design and Styling
+Brezza,features,0.778,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,3.89,5,Features and Technology
+Brezza,performance,0.856,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.28,5,Performance
+Brezza,satisfaction,0.864,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.32,5,overall
+Brezza,service_cost,0.888,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.44,5,After Sales Cost and Experience
+Brezza,service_experience,0.888,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.44,5,After Sales Cost and Experience
+Brezza,value,0.894,64,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/brezza/user-reviews/,2026-11-14T18:39:01Z,4.47,5,Value for Money
+Carens,comfort,0.94,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.7,5,Comfort and Space
+Carens,design,0.908,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.54,5,Design and Styling
+Carens,features,0.93,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.65,5,Features and Technology
+Carens,performance,0.892,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.46,5,Performance
+Carens,real_world_mileage,0.82,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.1,5,Fuel Economy
+Carens,satisfaction,0.892,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.46,5,overall
+Carens,service_cost,0.898,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.49,5,After Sales Cost and Experience
+Carens,service_experience,0.898,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.49,5,After Sales Cost and Experience
+Carens,value,0.898,300,false,CarWale,https://www.carwale.com/kia-cars/carens/user-reviews/,2026-11-14T18:41:19Z,4.49,5,Value for Money
+Carens Clavis,comfort,0.966,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.83,5,Comfort and Space
+Carens Clavis,design,0.944,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.72,5,Design and Styling
+Carens Clavis,features,0.936,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.68,5,Features and Technology
+Carens Clavis,performance,0.9,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.5,5,Performance
+Carens Clavis,real_world_mileage,0.832,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.16,5,Fuel Economy
+Carens Clavis,satisfaction,0.93,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.65,5,overall
+Carens Clavis,service_cost,0.862,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.31,5,After Sales Cost and Experience
+Carens Clavis,service_experience,0.862,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.31,5,After Sales Cost and Experience
+Carens Clavis,value,0.924,169,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis/user-reviews/,2026-11-14T18:36:35Z,4.62,5,Value for Money
+Carens Clavis EV,comfort,0.934,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.67,5,Comfort and Space
+Carens Clavis EV,design,0.94,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.7,5,Design and Styling
+Carens Clavis EV,features,0.946,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.73,5,Features and Technology
+Carens Clavis EV,performance,0.914,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.57,5,Performance
+Carens Clavis EV,satisfaction,0.932,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.66,5,overall
+Carens Clavis EV,service_cost,0.904,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.52,5,After Sales Cost and Experience
+Carens Clavis EV,service_experience,0.904,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.52,5,After Sales Cost and Experience
+Carens Clavis EV,value,0.918,42,false,CarWale,https://www.carwale.com/kia-cars/carens-clavis-ev/user-reviews/,2026-11-14T18:39:39Z,4.59,5,Value for Money
+Celerio,comfort,0.844,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.22,5,Comfort and Space
+Celerio,design,0.84,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.2,5,Design and Styling
+Celerio,features,0.87,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.35,5,Features and Technology
+Celerio,performance,0.848,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.24,5,Performance
+Celerio,real_world_mileage,0.894,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.47,5,Fuel Economy
+Celerio,satisfaction,0.812,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.06,5,overall
+Celerio,service_cost,0.9,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.5,5,After Sales Cost and Experience
+Celerio,service_experience,0.9,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.5,5,After Sales Cost and Experience
+Celerio,value,0.842,464,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/celerio/user-reviews/,2026-11-14T18:40:03Z,4.21,5,Value for Money
+City,comfort,0.922,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.61,5,Comfort and Space
+City,design,0.936,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.68,5,Design and Styling
+City,features,0.864,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.32,5,Features and Technology
+City,performance,0.868,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.34,5,Performance
+City,satisfaction,0.884,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.42,5,overall
+City,service_cost,0.924,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.62,5,After Sales Cost and Experience
+City,service_experience,0.924,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.62,5,After Sales Cost and Experience
+City,value,0.852,47,false,CarWale,https://www.carwale.com/honda-cars/city/user-reviews/,2026-11-14T18:39:59Z,4.26,5,Value for Money
+Creta,comfort,0.938,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.69,5,Comfort and Space
+Creta,design,0.93,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.65,5,Design and Styling
+Creta,features,0.912,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.56,5,Features and Technology
+Creta,performance,0.924,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.62,5,Performance
+Creta,real_world_mileage,0.838,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.19,5,Fuel Economy
+Creta,satisfaction,0.92,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.6,5,overall
+Creta,service_cost,0.926,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.63,5,After Sales Cost and Experience
+Creta,service_experience,0.926,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.63,5,After Sales Cost and Experience
+Creta,value,0.904,736,false,CarWale,https://www.carwale.com/hyundai-cars/creta/user-reviews/,2026-11-14T17:12:01Z,4.52,5,Value for Money
+Creta N Line,comfort,0.906,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.53,5,Comfort and Space
+Creta N Line,design,0.96,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.8,5,Design and Styling
+Creta N Line,features,0.942,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.71,5,Features and Technology
+Creta N Line,performance,0.932,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.66,5,Performance
+Creta N Line,real_world_mileage,0.808,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.04,5,Fuel Economy
+Creta N Line,satisfaction,0.922,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.61,5,overall
+Creta N Line,service_cost,0.8,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4,5,After Sales Cost and Experience
+Creta N Line,service_experience,0.8,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4,5,After Sales Cost and Experience
+Creta N Line,value,0.862,39,false,CarWale,https://www.carwale.com/hyundai-cars/creta-n-line/user-reviews/,2026-11-14T18:40:51Z,4.31,5,Value for Money
+Curvv,comfort,0.936,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.68,5,Comfort and Space
+Curvv,design,0.948,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.74,5,Design and Styling
+Curvv,features,0.94,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.7,5,Features and Technology
+Curvv,performance,0.916,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.58,5,Performance
+Curvv,real_world_mileage,0.874,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.37,5,Fuel Economy
+Curvv,satisfaction,0.93,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.65,5,overall
+Curvv,service_cost,0.87,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.35,5,After Sales Cost and Experience
+Curvv,service_experience,0.87,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.35,5,After Sales Cost and Experience
+Curvv,value,0.928,385,false,CarWale,https://www.carwale.com/tata-cars/curvv/user-reviews/,2026-11-14T18:37:39Z,4.64,5,Value for Money
+Curvv EV,comfort,0.886,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.43,5,Comfort and Space
+Curvv EV,design,0.922,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.61,5,Design and Styling
+Curvv EV,features,0.946,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.73,5,Features and Technology
+Curvv EV,performance,0.924,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.62,5,Performance
+Curvv EV,real_world_mileage,0.924,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.62,5,Fuel Economy
+Curvv EV,satisfaction,0.894,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.47,5,overall
+Curvv EV,service_cost,0.912,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.56,5,After Sales Cost and Experience
+Curvv EV,service_experience,0.912,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.56,5,After Sales Cost and Experience
+Curvv EV,value,0.902,103,false,CarWale,https://www.carwale.com/tata-cars/curvv-ev/user-reviews/,2026-11-14T18:41:49Z,4.51,5,Value for Money
+Duster,comfort,0.886,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.43,5,Comfort and Space
+Duster,design,0.954,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.77,5,Design and Styling
+Duster,features,0.912,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.56,5,Features and Technology
+Duster,performance,0.928,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.64,5,Performance
+Duster,satisfaction,0.918,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.59,5,overall
+Duster,service_cost,0.858,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.29,5,After Sales Cost and Experience
+Duster,service_experience,0.858,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.29,5,After Sales Cost and Experience
+Duster,value,0.914,91,false,CarWale,https://www.carwale.com/renault-cars/duster/user-reviews/,2026-11-14T18:37:15Z,4.57,5,Value for Money
+Dzire,comfort,0.938,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.69,5,Comfort and Space
+Dzire,design,0.946,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.73,5,Design and Styling
+Dzire,features,0.928,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.64,5,Features and Technology
+Dzire,performance,0.922,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.61,5,Performance
+Dzire,real_world_mileage,0.95,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.75,5,Fuel Economy
+Dzire,satisfaction,0.948,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.74,5,overall
+Dzire,service_cost,0.94,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.7,5,After Sales Cost and Experience
+Dzire,service_experience,0.94,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.7,5,After Sales Cost and Experience
+Dzire,value,0.954,616,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/dzire/user-reviews/,2026-11-14T18:39:05Z,4.77,5,Value for Money
+Eeco,comfort,0.888,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.44,5,Comfort and Space
+Eeco,design,0.874,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.37,5,Design and Styling
+Eeco,features,0.85,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.25,5,Features and Technology
+Eeco,performance,0.906,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.53,5,Performance
+Eeco,real_world_mileage,0.9,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.5,5,Fuel Economy
+Eeco,satisfaction,0.926,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.63,5,overall
+Eeco,service_cost,0.906,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.53,5,After Sales Cost and Experience
+Eeco,service_experience,0.906,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.53,5,After Sales Cost and Experience
+Eeco,value,0.912,343,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/eeco/user-reviews/,2026-11-14T18:41:03Z,4.56,5,Value for Money
+Elevate,comfort,0.95,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4.75,5,Comfort and Space
+Elevate,design,0.95,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4.75,5,Design and Styling
+Elevate,features,0.8,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4,5,Features and Technology
+Elevate,performance,0.75,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,3.75,5,Performance
+Elevate,satisfaction,0.85,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4.25,5,overall
+Elevate,service_cost,0.9,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4.5,5,After Sales Cost and Experience
+Elevate,service_experience,0.9,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4.5,5,After Sales Cost and Experience
+Elevate,value,0.8,28,true,CarWale,https://www.carwale.com/honda-cars/elevate/user-reviews/,2026-11-14T18:39:21Z,4,5,Value for Money
+Ertiga,comfort,0.904,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.52,5,Comfort and Space
+Ertiga,design,0.904,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.52,5,Design and Styling
+Ertiga,features,0.876,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.38,5,Features and Technology
+Ertiga,performance,0.898,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.49,5,Performance
+Ertiga,real_world_mileage,0.892,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.46,5,Fuel Economy
+Ertiga,satisfaction,0.916,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.58,5,overall
+Ertiga,service_cost,0.908,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.54,5,After Sales Cost and Experience
+Ertiga,service_experience,0.908,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.54,5,After Sales Cost and Experience
+Ertiga,value,0.906,901,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/ertiga/user-reviews/,2026-11-14T17:37:32Z,4.53,5,Value for Money
+Exter,comfort,0.936,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.68,5,Comfort and Space
+Exter,design,0.946,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.73,5,Design and Styling
+Exter,features,0.942,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.71,5,Features and Technology
+Exter,performance,0.918,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.59,5,Performance
+Exter,satisfaction,0.89,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.45,5,overall
+Exter,service_cost,0.908,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.54,5,After Sales Cost and Experience
+Exter,service_experience,0.908,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.54,5,After Sales Cost and Experience
+Exter,value,0.944,113,false,CarWale,https://www.carwale.com/hyundai-cars/exter/user-reviews/,2026-11-14T18:37:23Z,4.72,5,Value for Money
+Fortuner,comfort,0.912,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.56,5,Comfort and Space
+Fortuner,design,0.946,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.73,5,Design and Styling
+Fortuner,features,0.834,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.17,5,Features and Technology
+Fortuner,performance,0.942,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.71,5,Performance
+Fortuner,real_world_mileage,0.82,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.1,5,Fuel Economy
+Fortuner,satisfaction,0.908,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.54,5,overall
+Fortuner,service_cost,0.928,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.64,5,After Sales Cost and Experience
+Fortuner,service_experience,0.928,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.64,5,After Sales Cost and Experience
+Fortuner,value,0.868,667,false,CarWale,https://www.carwale.com/toyota-cars/fortuner/user-reviews/,2026-11-14T18:39:13Z,4.34,5,Value for Money
+Fronx,comfort,0.9,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.5,5,Comfort and Space
+Fronx,design,0.942,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.71,5,Design and Styling
+Fronx,features,0.892,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.46,5,Features and Technology
+Fronx,performance,0.904,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.52,5,Performance
+Fronx,real_world_mileage,0.886,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.43,5,Fuel Economy
+Fronx,satisfaction,0.918,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.59,5,overall
+Fronx,service_cost,0.926,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.63,5,After Sales Cost and Experience
+Fronx,service_experience,0.926,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.63,5,After Sales Cost and Experience
+Fronx,value,0.91,1125,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/fronx/user-reviews/,2026-11-14T18:38:31Z,4.55,5,Value for Money
+Glanza,comfort,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,Comfort and Space
+Glanza,design,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,Design and Styling
+Glanza,features,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,Features and Technology
+Glanza,performance,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,Performance
+Glanza,satisfaction,0.944,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,4.72,5,overall
+Glanza,service_cost,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,After Sales Cost and Experience
+Glanza,service_experience,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,After Sales Cost and Experience
+Glanza,value,1,18,true,CarWale,https://www.carwale.com/toyota-cars/glanza/user-reviews/,2026-11-14T18:39:55Z,5,5,Value for Money
+Grand Vitara,comfort,0.9,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.5,5,Comfort and Space
+Grand Vitara,design,0.916,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.58,5,Design and Styling
+Grand Vitara,features,0.894,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.47,5,Features and Technology
+Grand Vitara,performance,0.874,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.37,5,Performance
+Grand Vitara,real_world_mileage,0.884,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.42,5,Fuel Economy
+Grand Vitara,satisfaction,0.9,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.5,5,overall
+Grand Vitara,service_cost,0.904,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.52,5,After Sales Cost and Experience
+Grand Vitara,service_experience,0.904,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.52,5,After Sales Cost and Experience
+Grand Vitara,value,0.886,834,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/grand-vitara/user-reviews/,2026-11-14T18:36:47Z,4.43,5,Value for Money
+Grand i10 Nios,comfort,0.892,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.46,5,Comfort and Space
+Grand i10 Nios,design,0.918,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.59,5,Design and Styling
+Grand i10 Nios,features,0.9,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.5,5,Features and Technology
+Grand i10 Nios,performance,0.902,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.51,5,Performance
+Grand i10 Nios,real_world_mileage,0.836,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.18,5,Fuel Economy
+Grand i10 Nios,satisfaction,0.908,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.54,5,overall
+Grand i10 Nios,service_cost,0.858,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.29,5,After Sales Cost and Experience
+Grand i10 Nios,service_experience,0.858,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.29,5,After Sales Cost and Experience
+Grand i10 Nios,value,0.9,417,false,CarWale,https://www.carwale.com/hyundai-cars/grand-i10-nios/user-reviews/,2026-11-14T18:37:59Z,4.5,5,Value for Money
+Gravite,comfort,0.888,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.44,5,Comfort and Space
+Gravite,design,0.926,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.63,5,Design and Styling
+Gravite,features,0.918,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.59,5,Features and Technology
+Gravite,performance,0.9,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.5,5,Performance
+Gravite,satisfaction,0.888,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.44,5,overall
+Gravite,service_cost,0.862,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.31,5,After Sales Cost and Experience
+Gravite,service_experience,0.862,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.31,5,After Sales Cost and Experience
+Gravite,value,0.938,134,false,CarWale,https://www.carwale.com/nissan-cars/gravite/user-reviews/,2026-11-14T18:40:22Z,4.69,5,Value for Money
+Harrier,comfort,0.954,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.77,5,Comfort and Space
+Harrier,design,0.956,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.78,5,Design and Styling
+Harrier,features,0.91,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.55,5,Features and Technology
+Harrier,performance,0.936,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.68,5,Performance
+Harrier,real_world_mileage,0.87,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.35,5,Fuel Economy
+Harrier,satisfaction,0.936,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.68,5,overall
+Harrier,service_cost,0.85,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.25,5,After Sales Cost and Experience
+Harrier,service_experience,0.85,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.25,5,After Sales Cost and Experience
+Harrier,value,0.91,386,false,CarWale,https://www.carwale.com/tata-cars/harrier/user-reviews/,2026-11-14T18:36:23Z,4.55,5,Value for Money
+Harrier EV,comfort,0.936,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.68,5,Comfort and Space
+Harrier EV,design,0.954,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.77,5,Design and Styling
+Harrier EV,features,0.932,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.66,5,Features and Technology
+Harrier EV,performance,0.954,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.77,5,Performance
+Harrier EV,real_world_mileage,0.968,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.84,5,Fuel Economy
+Harrier EV,satisfaction,0.908,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.54,5,overall
+Harrier EV,service_cost,0.808,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.04,5,After Sales Cost and Experience
+Harrier EV,service_experience,0.808,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.04,5,After Sales Cost and Experience
+Harrier EV,value,0.908,174,false,CarWale,https://www.carwale.com/tata-cars/harrier-ev/user-reviews/,2026-11-14T18:38:03Z,4.54,5,Value for Money
+Hector,comfort,0.942,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.71,5,Comfort and Space
+Hector,design,0.972,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.86,5,Design and Styling
+Hector,features,0.94,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.7,5,Features and Technology
+Hector,performance,0.93,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.65,5,Performance
+Hector,satisfaction,0.91,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.55,5,overall
+Hector,service_cost,0.838,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.19,5,After Sales Cost and Experience
+Hector,service_experience,0.838,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.19,5,After Sales Cost and Experience
+Hector,value,0.914,41,false,CarWale,https://www.carwale.com/mg-cars/hector/user-reviews/,2026-11-14T18:38:07Z,4.57,5,Value for Money
+Hector Plus,comfort,0.8,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4,5,Comfort and Space
+Hector Plus,design,0.93,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4.65,5,Design and Styling
+Hector Plus,features,0.912,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4.56,5,Features and Technology
+Hector Plus,performance,0.9,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4.5,5,Performance
+Hector Plus,satisfaction,0.872,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4.36,5,overall
+Hector Plus,service_cost,0.76,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,3.8,5,After Sales Cost and Experience
+Hector Plus,service_experience,0.76,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,3.8,5,After Sales Cost and Experience
+Hector Plus,value,0.838,20,true,CarWale,https://www.carwale.com/mg-cars/hector-plus/user-reviews/,2026-11-14T18:42:03Z,4.19,5,Value for Money
+Hilux,comfort,0.666,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,3.33,5,Comfort and Space
+Hilux,design,0.934,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,4.67,5,Design and Styling
+Hilux,features,0.866,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,4.33,5,Features and Technology
+Hilux,performance,1,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,5,5,Performance
+Hilux,satisfaction,0.782,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,3.91,5,overall
+Hilux,service_cost,0.934,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,4.67,5,After Sales Cost and Experience
+Hilux,service_experience,0.934,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,4.67,5,After Sales Cost and Experience
+Hilux,value,0.6,11,true,CarWale,https://www.carwale.com/toyota-cars/hilux/user-reviews/,2026-11-14T18:41:35Z,3,5,Value for Money
+Innova Crysta,comfort,0.962,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.81,5,Comfort and Space
+Innova Crysta,design,0.976,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.88,5,Design and Styling
+Innova Crysta,features,0.928,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.64,5,Features and Technology
+Innova Crysta,performance,0.984,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.92,5,Performance
+Innova Crysta,satisfaction,0.938,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.69,5,overall
+Innova Crysta,service_cost,0.866,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.33,5,After Sales Cost and Experience
+Innova Crysta,service_experience,0.866,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.33,5,After Sales Cost and Experience
+Innova Crysta,value,0.96,33,false,CarWale,https://www.carwale.com/toyota-cars/innova-crysta/user-reviews/,2026-11-14T18:38:41Z,4.8,5,Value for Money
+Innova Hycross,comfort,0.946,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.73,5,Comfort and Space
+Innova Hycross,design,0.924,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.62,5,Design and Styling
+Innova Hycross,features,0.884,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.42,5,Features and Technology
+Innova Hycross,performance,0.91,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.55,5,Performance
+Innova Hycross,real_world_mileage,0.888,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.44,5,Fuel Economy
+Innova Hycross,satisfaction,0.916,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.58,5,overall
+Innova Hycross,service_cost,0.914,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.57,5,After Sales Cost and Experience
+Innova Hycross,service_experience,0.914,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.57,5,After Sales Cost and Experience
+Innova Hycross,value,0.874,400,false,CarWale,https://www.carwale.com/toyota-cars/innova-hycross/user-reviews/,2026-11-14T17:37:40Z,4.37,5,Value for Money
+Jimny,comfort,0.792,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,3.96,5,Comfort and Space
+Jimny,design,0.848,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,4.24,5,Design and Styling
+Jimny,features,0.848,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,4.24,5,Features and Technology
+Jimny,performance,0.822,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,4.11,5,Performance
+Jimny,real_world_mileage,0.762,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,3.81,5,Fuel Economy
+Jimny,satisfaction,0.74,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,3.7,5,overall
+Jimny,service_cost,0.89,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,4.45,5,After Sales Cost and Experience
+Jimny,service_experience,0.89,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,4.45,5,After Sales Cost and Experience
+Jimny,value,0.78,354,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/jimny/user-reviews/,2026-11-14T18:40:45Z,3.9,5,Value for Money
+Kiger,comfort,0.882,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.41,5,Comfort and Space
+Kiger,design,0.926,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.63,5,Design and Styling
+Kiger,features,0.884,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.42,5,Features and Technology
+Kiger,performance,0.852,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.26,5,Performance
+Kiger,satisfaction,0.89,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.45,5,overall
+Kiger,service_cost,0.834,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.17,5,After Sales Cost and Experience
+Kiger,service_experience,0.834,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.17,5,After Sales Cost and Experience
+Kiger,value,0.91,137,false,CarWale,https://www.carwale.com/renault-cars/kiger/user-reviews/,2026-11-14T18:37:51Z,4.55,5,Value for Money
+Kodiaq,comfort,0.894,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.47,5,Comfort and Space
+Kodiaq,design,0.958,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.79,5,Design and Styling
+Kodiaq,features,0.924,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.62,5,Features and Technology
+Kodiaq,performance,0.888,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.44,5,Performance
+Kodiaq,real_world_mileage,0.818,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.09,5,Fuel Economy
+Kodiaq,satisfaction,0.918,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.59,5,overall
+Kodiaq,service_cost,0.8,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4,5,After Sales Cost and Experience
+Kodiaq,service_experience,0.8,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4,5,After Sales Cost and Experience
+Kodiaq,value,0.866,37,false,CarWale,https://www.carwale.com/skoda-cars/kodiaq/user-reviews/,2026-11-14T18:41:31Z,4.33,5,Value for Money
+Kushaq,comfort,0.952,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.76,5,Comfort and Space
+Kushaq,design,0.952,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.76,5,Design and Styling
+Kushaq,features,0.898,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.49,5,Features and Technology
+Kushaq,performance,0.97,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.85,5,Performance
+Kushaq,satisfaction,0.952,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.76,5,overall
+Kushaq,service_cost,0.9,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.5,5,After Sales Cost and Experience
+Kushaq,service_experience,0.9,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.5,5,After Sales Cost and Experience
+Kushaq,value,0.912,52,false,CarWale,https://www.carwale.com/skoda-cars/kushaq/user-reviews/,2026-11-14T18:39:09Z,4.56,5,Value for Money
+Kwid,comfort,0.866,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.33,5,Comfort and Space
+Kwid,design,0.924,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.62,5,Design and Styling
+Kwid,features,0.85,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.25,5,Features and Technology
+Kwid,performance,0.824,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.12,5,Performance
+Kwid,satisfaction,0.896,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.48,5,overall
+Kwid,service_cost,0.688,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,3.44,5,After Sales Cost and Experience
+Kwid,service_experience,0.688,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,3.44,5,After Sales Cost and Experience
+Kwid,value,0.862,21,true,CarWale,https://www.carwale.com/renault-cars/kwid/user-reviews/,2026-11-14T18:41:11Z,4.31,5,Value for Money
+Kylaq,comfort,0.922,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.61,5,Comfort and Space
+Kylaq,design,0.944,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.72,5,Design and Styling
+Kylaq,features,0.906,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.53,5,Features and Technology
+Kylaq,performance,0.952,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.76,5,Performance
+Kylaq,real_world_mileage,0.862,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.31,5,Fuel Economy
+Kylaq,satisfaction,0.946,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.73,5,overall
+Kylaq,service_cost,0.858,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.29,5,After Sales Cost and Experience
+Kylaq,service_experience,0.858,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.29,5,After Sales Cost and Experience
+Kylaq,value,0.934,641,false,CarWale,https://www.carwale.com/skoda-cars/kylaq/user-reviews/,2026-11-14T17:37:36Z,4.67,5,Value for Money
+Magnite,comfort,0.906,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.53,5,Comfort and Space
+Magnite,design,0.926,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.63,5,Design and Styling
+Magnite,features,0.86,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.3,5,Features and Technology
+Magnite,performance,0.842,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.21,5,Performance
+Magnite,real_world_mileage,0.82,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.1,5,Fuel Economy
+Magnite,satisfaction,0.862,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.31,5,overall
+Magnite,service_cost,0.808,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.04,5,After Sales Cost and Experience
+Magnite,service_experience,0.808,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.04,5,After Sales Cost and Experience
+Magnite,value,0.902,225,false,CarWale,https://www.carwale.com/nissan-cars/magnite/user-reviews/,2026-11-14T18:37:07Z,4.51,5,Value for Money
+Majestor,comfort,0.972,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.86,5,Comfort and Space
+Majestor,design,0.938,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.69,5,Design and Styling
+Majestor,features,0.988,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.94,5,Features and Technology
+Majestor,performance,0.942,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.71,5,Performance
+Majestor,satisfaction,0.898,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.49,5,overall
+Majestor,service_cost,0.8,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4,5,After Sales Cost and Experience
+Majestor,service_experience,0.8,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4,5,After Sales Cost and Experience
+Majestor,value,0.894,29,true,CarWale,https://www.carwale.com/mg-cars/majestor/user-reviews/,2026-11-14T18:41:23Z,4.47,5,Value for Money
+Nexon,comfort,0.918,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.59,5,Comfort and Space
+Nexon,design,0.928,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.64,5,Design and Styling
+Nexon,features,0.902,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.51,5,Features and Technology
+Nexon,performance,0.904,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.52,5,Performance
+Nexon,real_world_mileage,0.852,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.26,5,Fuel Economy
+Nexon,satisfaction,0.918,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.59,5,overall
+Nexon,service_cost,0.826,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.13,5,After Sales Cost and Experience
+Nexon,service_experience,0.826,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.13,5,After Sales Cost and Experience
+Nexon,value,0.91,1068,false,CarWale,https://www.carwale.com/tata-cars/nexon/user-reviews/,2026-11-14T17:12:11Z,4.55,5,Value for Money
+Nexon EV,comfort,0.89,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.45,5,Comfort and Space
+Nexon EV,design,0.916,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.58,5,Design and Styling
+Nexon EV,features,0.932,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.66,5,Features and Technology
+Nexon EV,performance,0.902,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.51,5,Performance
+Nexon EV,real_world_mileage,0.876,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.38,5,Fuel Economy
+Nexon EV,satisfaction,0.88,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.4,5,overall
+Nexon EV,service_cost,0.84,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.2,5,After Sales Cost and Experience
+Nexon EV,service_experience,0.84,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.2,5,After Sales Cost and Experience
+Nexon EV,value,0.878,254,false,CarWale,https://www.carwale.com/tata-cars/nexon-ev/user-reviews/,2026-11-14T18:39:51Z,4.39,5,Value for Money
+Punch,comfort,0.926,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.63,5,Comfort and Space
+Punch,design,0.952,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.76,5,Design and Styling
+Punch,features,0.936,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.68,5,Features and Technology
+Punch,performance,0.92,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.6,5,Performance
+Punch,satisfaction,0.928,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.64,5,overall
+Punch,service_cost,0.876,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.38,5,After Sales Cost and Experience
+Punch,service_experience,0.876,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.38,5,After Sales Cost and Experience
+Punch,value,0.946,379,false,CarWale,https://www.carwale.com/tata-cars/punch/user-reviews/,2026-11-14T18:37:19Z,4.73,5,Value for Money
+Punch EV,comfort,0.91,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.55,5,Comfort and Space
+Punch EV,design,0.94,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.7,5,Design and Styling
+Punch EV,features,0.926,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.63,5,Features and Technology
+Punch EV,performance,0.942,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.71,5,Performance
+Punch EV,satisfaction,0.886,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.43,5,overall
+Punch EV,service_cost,0.858,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.29,5,After Sales Cost and Experience
+Punch EV,service_experience,0.858,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.29,5,After Sales Cost and Experience
+Punch EV,value,0.936,124,false,CarWale,https://www.carwale.com/tata-cars/punch-ev/user-reviews/,2026-11-14T18:40:26Z,4.68,5,Value for Money
+Rumion,comfort,0.942,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.71,5,Comfort and Space
+Rumion,design,0.932,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.66,5,Design and Styling
+Rumion,features,0.846,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.23,5,Features and Technology
+Rumion,performance,0.93,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.65,5,Performance
+Rumion,real_world_mileage,0.936,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.68,5,Fuel Economy
+Rumion,satisfaction,0.936,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.68,5,overall
+Rumion,service_cost,0.848,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.24,5,After Sales Cost and Experience
+Rumion,service_experience,0.848,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.24,5,After Sales Cost and Experience
+Rumion,value,0.922,186,false,CarWale,https://www.carwale.com/toyota-cars/rumion/user-reviews/,2026-11-14T18:38:23Z,4.61,5,Value for Money
+S-Presso,comfort,0.874,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.37,5,Comfort and Space
+S-Presso,design,0.868,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.34,5,Design and Styling
+S-Presso,features,0.84,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.2,5,Features and Technology
+S-Presso,performance,0.902,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.51,5,Performance
+S-Presso,real_world_mileage,0.896,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.48,5,Fuel Economy
+S-Presso,satisfaction,0.89,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.45,5,overall
+S-Presso,service_cost,0.9,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.5,5,After Sales Cost and Experience
+S-Presso,service_experience,0.9,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.5,5,After Sales Cost and Experience
+S-Presso,value,0.904,273,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/s-presso/user-reviews/,2026-11-14T18:38:15Z,4.52,5,Value for Money
+Safari,comfort,0.95,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.75,5,Comfort and Space
+Safari,design,0.952,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.76,5,Design and Styling
+Safari,features,0.916,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.58,5,Features and Technology
+Safari,performance,0.916,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.58,5,Performance
+Safari,real_world_mileage,0.862,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.31,5,Fuel Economy
+Safari,satisfaction,0.926,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.63,5,overall
+Safari,service_cost,0.82,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.1,5,After Sales Cost and Experience
+Safari,service_experience,0.82,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.1,5,After Sales Cost and Experience
+Safari,value,0.916,353,false,CarWale,https://www.carwale.com/tata-cars/safari/user-reviews/,2026-11-14T18:36:31Z,4.58,5,Value for Money
+Scorpio-N,comfort,0.926,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.63,5,Comfort and Space
+Scorpio-N,design,0.942,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.71,5,Design and Styling
+Scorpio-N,features,0.898,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.49,5,Features and Technology
+Scorpio-N,performance,0.942,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.71,5,Performance
+Scorpio-N,real_world_mileage,0.846,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.23,5,Fuel Economy
+Scorpio-N,satisfaction,0.94,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.7,5,overall
+Scorpio-N,service_cost,0.914,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.57,5,After Sales Cost and Experience
+Scorpio-N,service_experience,0.914,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.57,5,After Sales Cost and Experience
+Scorpio-N,value,0.92,1294,false,CarWale,https://www.carwale.com/mahindra-cars/scorpio-n/user-reviews/,2026-11-14T18:36:27Z,4.6,5,Value for Money
+Seltos,comfort,0.946,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.73,5,Comfort and Space
+Seltos,design,0.944,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.72,5,Design and Styling
+Seltos,features,0.932,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.66,5,Features and Technology
+Seltos,performance,0.882,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.41,5,Performance
+Seltos,satisfaction,0.89,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.45,5,overall
+Seltos,service_cost,0.872,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.36,5,After Sales Cost and Experience
+Seltos,service_experience,0.872,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.36,5,After Sales Cost and Experience
+Seltos,value,0.918,230,false,CarWale,https://www.carwale.com/kia-cars/seltos/user-reviews/,2026-11-14T17:36:48Z,4.59,5,Value for Money
+Sierra,comfort,0.96,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.8,5,Comfort and Space
+Sierra,design,0.978,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.89,5,Design and Styling
+Sierra,features,0.954,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.77,5,Features and Technology
+Sierra,performance,0.932,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.66,5,Performance
+Sierra,satisfaction,0.946,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.73,5,overall
+Sierra,service_cost,0.89,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.45,5,After Sales Cost and Experience
+Sierra,service_experience,0.89,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.45,5,After Sales Cost and Experience
+Sierra,value,0.946,443,false,CarWale,https://www.carwale.com/tata-cars/sierra/user-reviews/,2026-11-14T18:36:18Z,4.73,5,Value for Money
+Sierra EV,comfort,0.974,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.87,5,Comfort and Space
+Sierra EV,design,0.952,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.76,5,Design and Styling
+Sierra EV,features,0.944,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.72,5,Features and Technology
+Sierra EV,performance,0.966,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.83,5,Performance
+Sierra EV,satisfaction,0.85,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.25,5,overall
+Sierra EV,service_cost,0.866,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.33,5,After Sales Cost and Experience
+Sierra EV,service_experience,0.866,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.33,5,After Sales Cost and Experience
+Sierra EV,value,0.932,21,true,CarWale,https://www.carwale.com/tata-cars/sierra-ev/user-reviews/,2026-11-14T18:38:19Z,4.66,5,Value for Money
+Slavia,comfort,0.9,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.5,5,Comfort and Space
+Slavia,design,1,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,5,5,Design and Styling
+Slavia,features,0.85,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.25,5,Features and Technology
+Slavia,performance,0.85,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.25,5,Performance
+Slavia,satisfaction,0.93,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.65,5,overall
+Slavia,service_cost,0.85,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.25,5,After Sales Cost and Experience
+Slavia,service_experience,0.85,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.25,5,After Sales Cost and Experience
+Slavia,value,0.9,28,true,CarWale,https://www.carwale.com/skoda-cars/slavia/user-reviews/,2026-11-14T18:39:31Z,4.5,5,Value for Money
+Sonet,comfort,0.872,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.36,5,Comfort and Space
+Sonet,design,0.914,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.57,5,Design and Styling
+Sonet,features,0.914,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.57,5,Features and Technology
+Sonet,performance,0.872,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.36,5,Performance
+Sonet,real_world_mileage,0.806,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.03,5,Fuel Economy
+Sonet,satisfaction,0.862,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.31,5,overall
+Sonet,service_cost,0.83,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.15,5,After Sales Cost and Experience
+Sonet,service_experience,0.83,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.15,5,After Sales Cost and Experience
+Sonet,value,0.876,397,false,CarWale,https://www.carwale.com/kia-cars/sonet/user-reviews/,2026-11-14T18:37:31Z,4.38,5,Value for Money
+Sorento,satisfaction,0.978,9,true,CarWale,https://www.carwale.com/kia-cars/sorento/user-reviews/,2026-11-14T18:36:55Z,4.89,5,overall
+Swift,comfort,0.896,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.48,5,Comfort and Space
+Swift,design,0.918,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.59,5,Design and Styling
+Swift,features,0.878,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.39,5,Features and Technology
+Swift,performance,0.904,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.52,5,Performance
+Swift,real_world_mileage,0.924,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.62,5,Fuel Economy
+Swift,satisfaction,0.906,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.53,5,overall
+Swift,service_cost,0.904,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.52,5,After Sales Cost and Experience
+Swift,service_experience,0.904,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.52,5,After Sales Cost and Experience
+Swift,value,0.92,635,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/swift/user-reviews/,2026-11-14T17:12:14Z,4.6,5,Value for Money
+Syros,comfort,0.914,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.57,5,Comfort and Space
+Syros,design,0.92,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.6,5,Design and Styling
+Syros,features,0.936,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.68,5,Features and Technology
+Syros,performance,0.95,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.75,5,Performance
+Syros,satisfaction,0.942,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.71,5,overall
+Syros,service_cost,0.888,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.44,5,After Sales Cost and Experience
+Syros,service_experience,0.888,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.44,5,After Sales Cost and Experience
+Syros,value,0.892,30,false,CarWale,https://www.carwale.com/kia-cars/syros/user-reviews/,2026-11-14T17:37:08Z,4.46,5,Value for Money
+Taigun,comfort,0.934,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.67,5,Comfort and Space
+Taigun,design,0.944,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.72,5,Design and Styling
+Taigun,features,0.922,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.61,5,Features and Technology
+Taigun,performance,0.95,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.75,5,Performance
+Taigun,satisfaction,0.932,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.66,5,overall
+Taigun,service_cost,0.876,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.38,5,After Sales Cost and Experience
+Taigun,service_experience,0.876,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.38,5,After Sales Cost and Experience
+Taigun,value,0.894,80,false,CarWale,https://www.carwale.com/volkswagen-cars/taigun/user-reviews/,2026-11-14T18:39:17Z,4.47,5,Value for Money
+Tayron,satisfaction,1,8,true,CarWale,https://www.carwale.com/volkswagen-cars/tayron/user-reviews/,2026-11-14T18:41:53Z,5,5,overall
+Tekton,comfort,0.952,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.76,5,Comfort and Space
+Tekton,design,0.95,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.75,5,Design and Styling
+Tekton,features,0.934,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.67,5,Features and Technology
+Tekton,performance,0.876,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.38,5,Performance
+Tekton,satisfaction,0.938,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.69,5,overall
+Tekton,service_cost,0.876,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.38,5,After Sales Cost and Experience
+Tekton,service_experience,0.876,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.38,5,After Sales Cost and Experience
+Tekton,value,0.888,13,true,CarWale,https://www.carwale.com/nissan-cars/tekton/user-reviews/,2026-11-14T18:38:45Z,4.44,5,Value for Money
+Thar Roxx,comfort,0.914,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.57,5,Comfort and Space
+Thar Roxx,design,0.948,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.74,5,Design and Styling
+Thar Roxx,features,0.916,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.58,5,Features and Technology
+Thar Roxx,performance,0.936,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.68,5,Performance
+Thar Roxx,real_world_mileage,0.83,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.15,5,Fuel Economy
+Thar Roxx,satisfaction,0.928,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.64,5,overall
+Thar Roxx,service_cost,0.894,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.47,5,After Sales Cost and Experience
+Thar Roxx,service_experience,0.894,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.47,5,After Sales Cost and Experience
+Thar Roxx,value,0.91,584,false,CarWale,https://www.carwale.com/mahindra-cars/thar-roxx/user-reviews/,2026-11-14T18:37:35Z,4.55,5,Value for Money
+Tiago,comfort,0.902,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.51,5,Comfort and Space
+Tiago,design,0.934,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.67,5,Design and Styling
+Tiago,features,0.926,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.63,5,Features and Technology
+Tiago,performance,0.914,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.57,5,Performance
+Tiago,satisfaction,0.882,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.41,5,overall
+Tiago,service_cost,0.876,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.38,5,After Sales Cost and Experience
+Tiago,service_experience,0.876,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.38,5,After Sales Cost and Experience
+Tiago,value,0.94,199,false,CarWale,https://www.carwale.com/tata-cars/tiago/user-reviews/,2026-11-14T18:37:47Z,4.7,5,Value for Money
+Tiago EV,comfort,0.806,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.03,5,Comfort and Space
+Tiago EV,design,0.9,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.5,5,Design and Styling
+Tiago EV,features,0.898,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.49,5,Features and Technology
+Tiago EV,performance,0.866,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.33,5,Performance
+Tiago EV,satisfaction,0.904,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.52,5,overall
+Tiago EV,service_cost,0.808,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.04,5,After Sales Cost and Experience
+Tiago EV,service_experience,0.808,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.04,5,After Sales Cost and Experience
+Tiago EV,value,0.89,107,false,CarWale,https://www.carwale.com/tata-cars/tiago-ev/user-reviews/,2026-11-14T18:41:15Z,4.45,5,Value for Money
+Triber,comfort,0.934,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.67,5,Comfort and Space
+Triber,design,0.942,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.71,5,Design and Styling
+Triber,features,0.92,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.6,5,Features and Technology
+Triber,performance,0.892,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.46,5,Performance
+Triber,satisfaction,0.916,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.58,5,overall
+Triber,service_cost,0.894,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.47,5,After Sales Cost and Experience
+Triber,service_experience,0.894,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.47,5,After Sales Cost and Experience
+Triber,value,0.954,295,false,CarWale,https://www.carwale.com/renault-cars/triber/user-reviews/,2026-11-14T18:40:13Z,4.77,5,Value for Money
+Urban Cruiser Hyryder,comfort,0.892,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.46,5,Comfort and Space
+Urban Cruiser Hyryder,design,0.922,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.61,5,Design and Styling
+Urban Cruiser Hyryder,features,0.894,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.47,5,Features and Technology
+Urban Cruiser Hyryder,performance,0.902,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.51,5,Performance
+Urban Cruiser Hyryder,real_world_mileage,0.91,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.55,5,Fuel Economy
+Urban Cruiser Hyryder,satisfaction,0.886,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.43,5,overall
+Urban Cruiser Hyryder,service_cost,0.9,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.5,5,After Sales Cost and Experience
+Urban Cruiser Hyryder,service_experience,0.9,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.5,5,After Sales Cost and Experience
+Urban Cruiser Hyryder,value,0.884,654,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-hyryder/user-reviews/,2026-11-14T18:37:28Z,4.42,5,Value for Money
+Urban Cruiser Taisor,comfort,0.904,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.52,5,Comfort and Space
+Urban Cruiser Taisor,design,0.924,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.62,5,Design and Styling
+Urban Cruiser Taisor,features,0.89,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.45,5,Features and Technology
+Urban Cruiser Taisor,performance,0.906,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.53,5,Performance
+Urban Cruiser Taisor,real_world_mileage,0.892,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.46,5,Fuel Economy
+Urban Cruiser Taisor,satisfaction,0.92,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.6,5,overall
+Urban Cruiser Taisor,service_cost,0.93,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.65,5,After Sales Cost and Experience
+Urban Cruiser Taisor,service_experience,0.93,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.65,5,After Sales Cost and Experience
+Urban Cruiser Taisor,value,0.922,321,false,CarWale,https://www.carwale.com/toyota-cars/urban-cruiser-taisor/user-reviews/,2026-11-14T18:38:49Z,4.61,5,Value for Money
+Venue,comfort,0.942,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.71,5,Comfort and Space
+Venue,design,0.944,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.72,5,Design and Styling
+Venue,features,0.922,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.61,5,Features and Technology
+Venue,performance,0.904,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.52,5,Performance
+Venue,satisfaction,0.928,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.64,5,overall
+Venue,service_cost,0.936,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.68,5,After Sales Cost and Experience
+Venue,service_experience,0.936,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.68,5,After Sales Cost and Experience
+Venue,value,0.912,276,false,CarWale,https://www.carwale.com/hyundai-cars/venue/user-reviews/,2026-11-14T18:36:43Z,4.56,5,Value for Money
+Venue N Line,comfort,0.942,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.71,5,Comfort and Space
+Venue N Line,design,0.97,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.85,5,Design and Styling
+Venue N Line,features,0.93,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.65,5,Features and Technology
+Venue N Line,performance,0.958,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.79,5,Performance
+Venue N Line,satisfaction,0.958,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.79,5,overall
+Venue N Line,service_cost,0.972,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.86,5,After Sales Cost and Experience
+Venue N Line,service_experience,0.972,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.86,5,After Sales Cost and Experience
+Venue N Line,value,0.9,28,true,CarWale,https://www.carwale.com/hyundai-cars/venue-n-line/user-reviews/,2026-11-14T18:40:18Z,4.5,5,Value for Money
+Verna,comfort,0.972,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.86,5,Comfort and Space
+Verna,design,0.958,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.79,5,Design and Styling
+Verna,features,0.97,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.85,5,Features and Technology
+Verna,performance,0.964,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.82,5,Performance
+Verna,satisfaction,0.954,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.77,5,overall
+Verna,service_cost,0.962,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.81,5,After Sales Cost and Experience
+Verna,service_experience,0.962,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.81,5,After Sales Cost and Experience
+Verna,value,0.952,49,false,CarWale,https://www.carwale.com/hyundai-cars/verna/user-reviews/,2026-11-14T18:36:59Z,4.76,5,Value for Money
+Victoris,comfort,0.948,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.74,5,Comfort and Space
+Victoris,design,0.938,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.69,5,Design and Styling
+Victoris,features,0.924,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.62,5,Features and Technology
+Victoris,performance,0.906,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.53,5,Performance
+Victoris,satisfaction,0.906,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.53,5,overall
+Victoris,service_cost,0.946,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.73,5,After Sales Cost and Experience
+Victoris,service_experience,0.946,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.73,5,After Sales Cost and Experience
+Victoris,value,0.924,336,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/victoris/user-reviews/,2026-11-14T18:36:39Z,4.62,5,Value for Money
+Virtus,comfort,0.93,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.65,5,Comfort and Space
+Virtus,design,0.954,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.77,5,Design and Styling
+Virtus,features,0.914,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.57,5,Features and Technology
+Virtus,performance,0.954,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.77,5,Performance
+Virtus,real_world_mileage,0.822,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.11,5,Fuel Economy
+Virtus,satisfaction,0.934,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.67,5,overall
+Virtus,service_cost,0.886,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.43,5,After Sales Cost and Experience
+Virtus,service_experience,0.886,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.43,5,After Sales Cost and Experience
+Virtus,value,0.904,427,false,CarWale,https://www.carwale.com/volkswagen-cars/virtus/user-reviews/,2026-11-14T18:38:53Z,4.52,5,Value for Money
+Windsor EV,comfort,0.946,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.73,5,Comfort and Space
+Windsor EV,design,0.906,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.53,5,Design and Styling
+Windsor EV,features,0.9,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.5,5,Features and Technology
+Windsor EV,performance,0.912,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.56,5,Performance
+Windsor EV,real_world_mileage,0.902,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.51,5,Fuel Economy
+Windsor EV,satisfaction,0.876,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.38,5,overall
+Windsor EV,service_cost,0.76,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,3.8,5,After Sales Cost and Experience
+Windsor EV,service_experience,0.76,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,3.8,5,After Sales Cost and Experience
+Windsor EV,value,0.904,202,false,CarWale,https://www.carwale.com/mg-cars/windsor-ev/user-reviews/,2026-11-14T18:40:37Z,4.52,5,Value for Money
+XEV 9S,comfort,0.966,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.83,5,Comfort and Space
+XEV 9S,design,0.974,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.87,5,Design and Styling
+XEV 9S,features,0.978,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.89,5,Features and Technology
+XEV 9S,performance,0.976,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.88,5,Performance
+XEV 9S,satisfaction,0.924,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.62,5,overall
+XEV 9S,service_cost,0.9,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.5,5,After Sales Cost and Experience
+XEV 9S,service_experience,0.9,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.5,5,After Sales Cost and Experience
+XEV 9S,value,0.938,112,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9s/user-reviews/,2026-11-14T18:40:59Z,4.69,5,Value for Money
+XEV 9e,comfort,0.944,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.72,5,Comfort and Space
+XEV 9e,design,0.95,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.75,5,Design and Styling
+XEV 9e,features,0.954,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.77,5,Features and Technology
+XEV 9e,performance,0.944,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.72,5,Performance
+XEV 9e,real_world_mileage,0.914,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.57,5,Fuel Economy
+XEV 9e,satisfaction,0.934,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.67,5,overall
+XEV 9e,service_cost,0.888,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.44,5,After Sales Cost and Experience
+XEV 9e,service_experience,0.888,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.44,5,After Sales Cost and Experience
+XEV 9e,value,0.91,213,false,CarWale,https://www.carwale.com/mahindra-cars/xev-9e/user-reviews/,2026-11-14T18:41:45Z,4.55,5,Value for Money
+XL6,comfort,0.92,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.6,5,Comfort and Space
+XL6,design,0.906,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.53,5,Design and Styling
+XL6,features,0.89,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.45,5,Features and Technology
+XL6,performance,0.862,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.31,5,Performance
+XL6,real_world_mileage,0.86,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.3,5,Fuel Economy
+XL6,satisfaction,0.894,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.47,5,overall
+XL6,service_cost,0.914,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.57,5,After Sales Cost and Experience
+XL6,service_experience,0.914,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.57,5,After Sales Cost and Experience
+XL6,value,0.9,366,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/xl6/user-reviews/,2026-11-14T18:39:47Z,4.5,5,Value for Money
+XUV 3XO,comfort,0.932,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.66,5,Comfort and Space
+XUV 3XO,design,0.922,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.61,5,Design and Styling
+XUV 3XO,features,0.916,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.58,5,Features and Technology
+XUV 3XO,performance,0.934,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.67,5,Performance
+XUV 3XO,real_world_mileage,0.842,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.21,5,Fuel Economy
+XUV 3XO,satisfaction,0.93,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.65,5,overall
+XUV 3XO,service_cost,0.874,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.37,5,After Sales Cost and Experience
+XUV 3XO,service_experience,0.874,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.37,5,After Sales Cost and Experience
+XUV 3XO,value,0.92,959,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-3xo/user-reviews/,2026-11-14T17:37:28Z,4.6,5,Value for Money
+XUV 7XO,comfort,0.936,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.68,5,Comfort and Space
+XUV 7XO,design,0.918,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.59,5,Design and Styling
+XUV 7XO,features,0.94,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.7,5,Features and Technology
+XUV 7XO,performance,0.926,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.63,5,Performance
+XUV 7XO,satisfaction,0.886,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.43,5,overall
+XUV 7XO,service_cost,0.848,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.24,5,After Sales Cost and Experience
+XUV 7XO,service_experience,0.848,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.24,5,After Sales Cost and Experience
+XUV 7XO,value,0.924,218,false,CarWale,https://www.carwale.com/mahindra-cars/xuv-7xo/user-reviews/,2026-11-14T18:37:03Z,4.62,5,Value for Money
+e VITARA,comfort,0.9,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.5,5,Comfort and Space
+e VITARA,design,0.894,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.47,5,Design and Styling
+e VITARA,features,0.878,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.39,5,Features and Technology
+e VITARA,performance,0.892,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.46,5,Performance
+e VITARA,satisfaction,0.854,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.27,5,overall
+e VITARA,service_cost,0.896,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.48,5,After Sales Cost and Experience
+e VITARA,service_experience,0.896,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.48,5,After Sales Cost and Experience
+e VITARA,value,0.874,80,false,CarWale,https://www.carwale.com/maruti-suzuki-cars/e-vitara/user-reviews/,2026-11-14T18:41:07Z,4.37,5,Value for Money
+i20,comfort,0.924,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.62,5,Comfort and Space
+i20,design,0.944,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.72,5,Design and Styling
+i20,features,0.914,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.57,5,Features and Technology
+i20,performance,0.888,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.44,5,Performance
+i20,real_world_mileage,0.788,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,3.94,5,Fuel Economy
+i20,satisfaction,0.918,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.59,5,overall
+i20,service_cost,0.874,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.37,5,After Sales Cost and Experience
+i20,service_experience,0.874,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.37,5,After Sales Cost and Experience
+i20,value,0.892,406,false,CarWale,https://www.carwale.com/hyundai-cars/i20/user-reviews/,2026-11-14T18:38:11Z,4.46,5,Value for Money
+i20 N Line,comfort,0.892,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.46,5,Comfort and Space
+i20 N Line,design,0.966,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.83,5,Design and Styling
+i20 N Line,features,0.9,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.5,5,Features and Technology
+i20 N Line,performance,0.94,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.7,5,Performance
+i20 N Line,real_world_mileage,0.79,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,3.95,5,Fuel Economy
+i20 N Line,satisfaction,0.932,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.66,5,overall
+i20 N Line,service_cost,0.84,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.2,5,After Sales Cost and Experience
+i20 N Line,service_experience,0.84,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.2,5,After Sales Cost and Experience
+i20 N Line,value,0.896,71,false,CarWale,https://www.carwale.com/hyundai-cars/i20-n-line/user-reviews/,2026-11-14T18:40:32Z,4.48,5,Value for Money

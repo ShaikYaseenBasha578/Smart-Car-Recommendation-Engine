@@ -1,14 +1,16 @@
 """Hard filters + tri-state constraint matching over the KB catalogue.
 
 Hard filters (row must satisfy): budget, body include/exclude, fuel include/exclude,
-transmission, seats_min (>=), makes, models.
+transmission, seats_min (>=), makes, models, exclude_makes.
 
-Tri-state (required_features and every min_* constraint):
+Tri-state (required_features, exclude_features and every min_* / max_* constraint):
   meets                     -> matched
   null / unverified         -> kept, labelled "Unverified: <label>"
   known false / below       -> excluded
+For exclude_features the roles are swapped: known absent meets, known present is excluded, unknown is kept
+and labelled "Unverified: no <feature>". max_* are upper bounds (known value above the bound is excluded).
 A blank in a field that does not apply to the fuel type (e.g. ev_range_km on a petrol car,
-mileage on an EV) is "not applicable", not unverified: such a row cannot meet that minimum
+mileage on an EV) is "not applicable", not unverified: such a row cannot meet that bound
 and is excluded.
 
 Mileage: units are never mixed. min_mileage_kmpl is checked against mileage_kmpl only, and
@@ -58,6 +60,14 @@ MIN_COLUMNS = {
     "min_ev_range_km": ("ev_range_km", "EV range"),
     "min_mileage_kmpl": ("mileage_kmpl", "mileage"),
     "min_mileage_km_per_kg": ("mileage_km_per_kg", "CNG mileage"),
+}
+# intent max_* (upper bounds) -> (catalogue column, human label)
+MAX_COLUMNS = {
+    "max_boot_space_litres": ("boot_space_litres", "boot space"),
+    "max_ground_clearance_mm": ("ground_clearance_mm", "ground clearance"),
+    "max_ev_range_km": ("ev_range_km", "EV range"),
+    "max_mileage_kmpl": ("mileage_kmpl", "mileage"),
+    "max_mileage_km_per_kg": ("mileage_km_per_kg", "CNG mileage"),
 }
 UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
@@ -130,6 +140,9 @@ def _hard_filter(intent: dict, df: pd.DataFrame) -> pd.DataFrame:
         if length_band:
             mask &= df["length_mm"].between(*length_band) | df["length_mm"].isna()
 
+    if intent.get("exclude_makes"):
+        mask &= ~df["make"].isin(intent["exclude_makes"])
+
     mask &= df["transmission_type"].isin(allowed_transmission_types(intent.get("transmission") or {}))
 
     if intent.get("seats_min") is not None:
@@ -161,17 +174,26 @@ def _check_row(row, intent: dict):
         else:
             return False, [], [], False
 
-    for key, (col, label) in MIN_COLUMNS.items():
+    for feature in intent.get("exclude_features") or []:
+        col, label = FEATURE_COLUMNS[feature]
+        value = row[col]
+        if value is True and col not in unverified_fields:
+            return False, [], [], False
+        if value is None or col in unverified_fields:
+            unverified.append(f"Unverified: no {label}")
+
+    bounds = [(k, c, l, True) for k, (c, l) in MIN_COLUMNS.items()] + [(k, c, l, False) for k, (c, l) in MAX_COLUMNS.items()]
+    for key, col, label, is_min in bounds:
         threshold = intent.get(key)
         if threshold is None:
             continue
         value = row[col]
-        if key == "min_mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
+        if col == "mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
             # the KB's kmpl cell on CNG rows holds the CNG (km/kg) figure: unknown as kmpl
             unverified.append(f"Unverified: {label}")
             continue
         if not _is_nan(value):
-            if value >= threshold:
+            if (value >= threshold) if is_min else (value <= threshold):
                 matched.append(key)
                 continue
             return False, [], [], False

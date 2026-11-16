@@ -30,7 +30,9 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-EXPECTED_ROWS = 832
+# Sanity limits (replace the old fixed 832-row assertion; the KB grows between exports).
+ROW_COUNT_TOLERANCE = 0.05      # exported rows within 5% of (KB variant rows - rows the quarantine-aware view excludes)
+NON_NULL_DROP_LIMIT = 5.0       # a column's non-null rate may be at most this many points below the previous file
 
 BODY_TYPES = {"SUV", "Hatchback", "MPV", "Sedan", "Van", "Pickup"}
 
@@ -52,8 +54,13 @@ TRANSMISSION_MAP = {
     "CVT": "cvt",
     "e-CVT": "e_cvt",
     "Torque Converter": "torque_converter",
-    # "Automatic" is handled separately: single_speed_ev, and only for Electric rows.
+    # "Automatic" is handled separately: single_speed_ev for Electric rows, HYBRID_AUTOMATIC_TYPE for Petrol Hybrid rows.
 }
+# The 2026-11 KB holds three Renault Duster hybrids (1361, 1366, 1367) whose transmission is just "Automatic" (a
+# multi-mode hybrid gearbox). The engine's transmission vocabulary is closed, so the row needs one of its types to stay
+# findable under "automatic"; the nearest family for a series/parallel hybrid is e_cvt. The raw value is kept in
+# transmission_raw. Review item: a vocabulary entry of its own would be more honest (needs engine changes).
+HYBRID_AUTOMATIC_TYPE = "e_cvt"
 MANUAL_FAMILY = {"manual", "imt"}
 
 TESTING_BODY_MAP = {"bharat_ncap": "Bharat NCAP"}
@@ -242,9 +249,12 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
             raise ExportError(f"variant {vid}: unmapped fuel_type {r['fuel_raw']!r}")
         trans_raw = r["transmission_raw"]
         if trans_raw == "Automatic":
-            if r["fuel_raw"] != "Electric":
-                raise ExportError(f"variant {vid}: 'Automatic' transmission on non-EV ({r['fuel_raw']})")
-            trans_type = "single_speed_ev"
+            if r["fuel_raw"] == "Electric":
+                trans_type = "single_speed_ev"
+            elif r["fuel_raw"] == "Petrol Hybrid":
+                trans_type = HYBRID_AUTOMATIC_TYPE
+            else:
+                raise ExportError(f"variant {vid}: 'Automatic' transmission on {r['fuel_raw']}")
         elif trans_raw in TRANSMISSION_MAP:
             trans_type = TRANSMISSION_MAP[trans_raw]
         else:
@@ -295,9 +305,77 @@ def build_rows(conn: sqlite3.Connection) -> tuple[list[dict], dict[int, sqlite3.
         row["unverified_fields"] = ";".join(c for c in CHECKED_COLUMNS if c not in skip and row[c] == "")
         out.append(row)
 
-    if len(out) != EXPECTED_ROWS:
-        raise ExportError(f"row count {len(out)} != expected {EXPECTED_ROWS}")
     return out, safety
+
+
+def read_old_catalogue(path: Path | None) -> list[dict]:
+    if path is None or not path.is_file():
+        return []
+    with path.open(encoding="utf-8", newline="") as fh:
+        return list(csv.DictReader(fh))
+
+
+def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dict]) -> tuple[list[dict], list[str]]:
+    """Replaces the fixed row-count assertion. Returns (table, failures).
+
+    1. row count within ROW_COUNT_TOLERANCE of (KB variant rows - variants the view excludes)
+    2. no duplicate variant ids (also checked while building)
+    3. per column, the non-null rate (share of rows with a value; columns that do not apply to a row's fuel type count
+       as non-null there) of the rows that were already in the previous file ("carried": same variant id) must not be
+       worse than the previous file's rate for those same rows by more than NON_NULL_DROP_LIMIT points. This is the
+       only per-column check that can fail the export.
+    The rows that are new in this export are reported, never failed: a freshly added model often has blanks (the KB
+    records only what the source states), so a column where the new rows are more than NON_NULL_DROP_LIMIT points
+    sparser than the previous file is marked "new rows sparse" in the table (`new_rows_pct`, `new_rows_sparse`).
+    """
+    failures: list[str] = []
+    kb_variants = conn.execute("SELECT COUNT(*) FROM variant").fetchone()[0]
+    in_view = conn.execute("SELECT COUNT(*) FROM v_variant_canonical_q").fetchone()[0]
+    excluded = kb_variants - in_view
+    expected = kb_variants - excluded
+    if abs(len(rows) - expected) > ROW_COUNT_TOLERANCE * expected:
+        failures.append(f"row count {len(rows)} is not within {ROW_COUNT_TOLERANCE:.0%} of {expected} "
+                        f"(KB variants {kb_variants} - excluded {excluded})")
+    ids = [r["variant_id"] for r in rows]
+    if len(set(ids)) != len(ids):
+        failures.append("duplicate variant ids")
+
+    def rate(rs: list[dict], col: str) -> float | None:
+        if not rs:
+            return None
+        ok = 0
+        for r in rs:
+            na = col in NOT_APPLICABLE.get(r.get("fuel_type", ""), set())
+            ok += 1 if (r.get(col, "") != "" or na) else 0
+        return 100.0 * ok / len(rs)
+
+    old_ids = {r["variant_id"] for r in old_rows}
+    new_ids = set(ids)
+    carried = [r for r in rows if r["variant_id"] in old_ids]
+    added = [r for r in rows if r["variant_id"] not in old_ids]
+    old_carried = [r for r in old_rows if r["variant_id"] in new_ids]
+    table = []
+    for col in CHECKED_COLUMNS + SAFETY_COLUMNS:
+        new, old = rate(rows, col), rate(old_rows, col)
+        same, was = rate(carried, col), rate(old_carried, col)
+        fresh = rate(added, col)
+        delta = None if old is None else new - old
+        carried_delta = None if same is None or was is None else same - was
+        bad = carried_delta is not None and carried_delta < -NON_NULL_DROP_LIMIT
+        if bad:
+            failures.append(f"{col}: non-null rate of the {len(carried)} carried-over rows {same:.1f}% vs {was:.1f}% "
+                            f"before ({carried_delta:+.1f} points)")
+        sparse = fresh is not None and old is not None and fresh < old - NON_NULL_DROP_LIMIT
+        table.append({"column": col, "new_pct": round(new, 1), "old_pct": None if old is None else round(old, 1),
+                      "delta": None if delta is None else round(delta, 1), "worse_than_limit": bad,
+                      # same variant ids as the previous file: separates "new KB rows are sparse" from "old rows got worse"
+                      "carried_over_rows_pct": None if same is None else round(same, 1),
+                      "carried_over_before_pct": None if was is None else round(was, 1),
+                      "new_rows_pct": None if fresh is None else round(fresh, 1), "new_rows_sparse": sparse})
+    table.insert(0, {"column": "ROWS", "new_pct": len(rows), "old_pct": len(old_rows) or None, "delta": None,
+                     "worse_than_limit": False, "kb_variants": kb_variants, "excluded": excluded,
+                     "carried_over_rows": len(carried), "new_rows": len(added)})
+    return table, failures
 
 
 def quarantine_counts(conn: sqlite3.Connection, rows: list[dict], safety: dict[int, sqlite3.Row]) -> Counter:
@@ -346,6 +424,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--kb", required=True, type=Path, help="path to (a copy of) carrec_kb.db")
     parser.add_argument("--out-dir", default=Path("data"), type=Path)
+    parser.add_argument("--compare-to", type=Path, default=None,
+                        help="previous catalogue.csv for the non-null sanity check (default: OUT_DIR/catalogue.csv "
+                             "if it exists; read before it is overwritten)")
+    parser.add_argument("--force", action="store_true", help="write the files even if a sanity check fails")
     args = parser.parse_args(argv)
 
     if not args.kb.is_file():
@@ -353,22 +435,44 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     wal_path = Path(f"{args.kb}-wal")
+    old_rows = read_old_catalogue(args.compare_to or args.out_dir / "catalogue.csv")
     with tempfile.TemporaryDirectory(prefix="carrec_kb_") as tmp:
         copy = Path(tmp) / "kb.db"
         shutil.copyfile(args.kb, copy)
         if wal_path.exists():
             shutil.copyfile(wal_path, Path(f"{copy}-wal"))
-        conn = sqlite3.connect(f"file:{copy}?mode=ro", uri=True)
+        # the temp copy is throwaway; a WAL-mode file cannot be opened mode=ro without a -shm beside it
+        conn = sqlite3.connect(str(copy))
         conn.row_factory = sqlite3.Row
         try:
             rows, safety = build_rows(conn)
             quarantined = quarantine_counts(conn, rows, safety)
+            sanity, failures = sanity_checks(conn, rows, old_rows)
             phase = latest_phase(conn)
         except ExportError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 1
         finally:
             conn.close()
+
+    print("sanity table (non-null %, new vs previous file; carried = rows whose variant id was in the previous file, "
+          "before = the previous file's rate for those same rows; added = rows new in this export):")
+    for t in sanity:
+        print(f"  {t['column']:<26} new {t['new_pct']!s:>6}  old {t['old_pct']!s:>6}  delta {t['delta']!s:>6}"
+              f"  carried {t.get('carried_over_rows_pct')!s:>6}  before {t.get('carried_over_before_pct')!s:>6}"
+              f"  added {t.get('new_rows_pct')!s:>6}"
+              + ("  <-- CARRIED ROWS WORSE (fails)" if t["worse_than_limit"] else "")
+              + ("  <-- new rows sparse (reported, not a failure)" if t.get("new_rows_sparse") else ""))
+    sparse_cols = [t["column"] for t in sanity if t.get("new_rows_sparse")]
+    if sparse_cols:
+        print(f"{sparse_cols.__len__()} column(s) are sparser on the rows added in this export than in the previous file: "
+              + ", ".join(sparse_cols))
+    if failures:
+        for f in failures:
+            print(f"sanity check failed: {f}", file=sys.stderr)
+        if not args.force:
+            print("error: nothing written (use --force to write anyway)", file=sys.stderr)
+            return 1
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = args.out_dir / "catalogue.csv"
@@ -384,6 +488,7 @@ def main(argv: list[str] | None = None) -> int:
         "kb_wal_nonempty": wal_path.exists() and wal_path.stat().st_size > 0,
         "kb_latest_phase": phase,
         "row_count": len(rows),
+        "sanity": {"table": sanity, "failures": failures},
         "catalogue_sha256": sha256_file(csv_path),
         "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); "
                        "latest year_of_publication per model, tie -> highest safety_test.id; "

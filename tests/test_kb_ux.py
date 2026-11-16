@@ -2,11 +2,19 @@ import pandas as pd
 import pytest
 
 from services.catalogue import get_catalogue
+from services.images import get_manifest
 from services.filter_v2 import REFERENCE_LENGTH_TOLERANCE, REFERENCE_PRICE_BAND
 from services.new_car_service import MAX_KB_MODELS, MIN_MAKES_FOR_CAP, select_models
 from services.twins import TWIN_GROUPS, complete_twin_pairs
 
 NO_FILTER_INTENT = {"makes": [], "models": []}
+
+
+@pytest.fixture(autouse=True)
+def old_engine(monkeypatch):
+    """These tests pin the response contract of the old engine (RANKER=current): twin slots, relaxation hints,
+    `dropped`, `vague`. v3 is the default engine; its own contract is tested in tests/test_recsys_*.py."""
+    monkeypatch.setenv("RANKER", "current")
 
 
 def ranked(*cars):
@@ -139,7 +147,8 @@ def test_like_nexon_only_similar_length_suvs(client, monkeypatch):
 
 
 def test_empty_state_relaxation_hints(client, monkeypatch):
-    data = predict(client, monkeypatch, "CVT automatic hatchback")
+    # "CVT automatic hatchback" is no longer empty (the i20 CVT joined the catalogue); a 6 lakh cap makes it empty again
+    data = predict(client, monkeypatch, "CVT automatic hatchback under 6 lakh")
     assert data["recommendations"] == []
     hints = data["relaxation_hints"]
     assert 1 <= len(hints) <= 3
@@ -155,8 +164,13 @@ def test_non_empty_result_has_no_hints(client, monkeypatch):
 def test_covered_makes_and_brochure_images(client, monkeypatch):
     data = predict(client, monkeypatch, "Maruti hatchback")
     assert data["covered_makes"] == sorted(get_catalogue()["make"].unique())
-    # every Maruti Suzuki model has a brochure photo with its caption
+    # a Maruti Suzuki model with a brochure photo shows it with its caption; one without (Celerio, added with the
+    # 1,464-variant catalogue) shows the body-type silhouette and no caption, never a broken or invented image
     recs = data["recommendations"]
     assert recs
+    manifest = get_manifest()
     for r in recs:
-        assert r["carImage"].endswith(".webp") and r["imageAttribution"] == "Maruti Suzuki brochure"
+        if (r["Make"], r["Model"]) in manifest:
+            assert r["carImage"].endswith(".webp") and r["imageAttribution"] == "Maruti Suzuki brochure"
+        else:
+            assert r["carImage"].startswith("/static/car_images/placeholders/") and not r.get("imageAttribution")

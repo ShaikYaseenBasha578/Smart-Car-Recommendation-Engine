@@ -1,11 +1,20 @@
 """Intent schema v2: turn a free-text car query into structured constraints.
 
-A deterministic rule layer runs first. The existing ML parser (ml_parser/ml_intent_parser.py)
-only fills body_types / fuel_types / use_case when the rules saw no mention (positive or
-negated) of that field, and only for a confident (>= ML_MIN_CONFIDENCE), non-"unknown" label.
-The ML models see the query with already-parsed feature/number/budget phrases blanked out.
+A deterministic rule layer runs first and is the only source of HARD constraints (filters), including
+negated ones: excluded fuels, bodies, makes and features, and upper bounds on numeric fields.
 
-Not wired into the app yet. Vocabularies match data/catalogue.csv.
+The existing ML parser (ml_parser/ml_intent_parser.py) only runs when the rules saw no mention (positive
+or negated) of body type, fuel or use case, and only a confident (>= ML_MIN_CONFIDENCE), non-"unknown"
+label counts. Its body/fuel guesses never filter: they go into out["assumed"] (soft preferences that the
+response returns so the UI can show "assumed: SUV"). Its use_case guess fills use_case as before (a
+ranking hint, never a filter). The ML models see the query with already-parsed feature/number/budget
+phrases blanked out.
+
+out["vague"] is True when the rules found no usable constraint or preference at all; out["unsupported_only"]
+is True when the only content is a brand the catalogue does not carry. Both are judged before the ML
+fallback, so an ML guess cannot make a vague query look specific.
+
+Used by services/new_car_service.py (the KB path of /predict). Vocabularies match data/catalogue.csv.
 """
 
 from __future__ import annotations
@@ -14,7 +23,9 @@ import csv
 import re
 from pathlib import Path
 
-CATALOGUE_CSV = Path(__file__).resolve().parents[1] / "data" / "catalogue.csv"
+from services.typos import correct_typos
+
+from services.catalogue import CATALOGUE_CSV  # same file as the engine (CARREC_CATALOGUE_DIR honoured)
 
 BODY_TYPES = ["suv", "hatchback", "sedan", "mpv", "van", "pickup"]
 FUEL_TYPES = ["petrol", "diesel", "cng", "electric", "hybrid"]
@@ -119,11 +130,11 @@ REFERENCE_BEFORE = r"(?:like|similar\s*to|alternatives?\s*(?:to|for)|rivals?\s*(
                    r"|instead\s*of)\s*(?:a|an|the)?\s*$"
 REFERENCE_AFTER = r"^\s*(?:jaisi|jaisa|jaise|type|like|alternative|alternatives|rival|rivals)(?![a-z])"
 # Common words that are also model names: only a model when the make comes right before ("honda city").
-AMBIGUOUS_MODELS = {"City", "Venue", "Aura", "Elevate"}
+AMBIGUOUS_MODELS = {"City", "Venue", "Aura", "Elevate", "Punch"}
 MODEL_ALIASES = {
     "innova": ["Innova Crysta", "Innova Hycross"],
     "scorpio": ["Scorpio Classic", "Scorpio-N"],
-    "carens": ["Carens Clavis", "Carens Clavis EV"],
+    "carens": ["Carens", "Carens Clavis", "Carens Clavis EV"],
     "clavis": ["Carens Clavis", "Carens Clavis EV"],
     "vitara": ["Grand Vitara", "e VITARA"],
     "hyryder": ["Urban Cruiser Hyryder"],
@@ -137,6 +148,18 @@ MODEL_ALIASES = {
     "hycross": ["Innova Hycross"],
 }
 
+# Price-priority wording ("cheapest", "value for money", "paisa vasool", "sabse sasti", "kifayati" and close
+# variants). The ONE list: it sets intent["cheap_intent"] (price gets a large weight in the recommender) and is also
+# the "budget" use case below. A bare "budget" counts only as an adjective ("budget car", "budget friendly"), never
+# as the budget cue of "budget 12 lakh" / "my budget is".
+CHEAP_INTENT_PATTERN = (
+    r"cheap(?:est|er|ish|ly)?|inexpensive|low[- ]?(?:cost|price[ds]?)|affordable|economy\s*car|pocket[- ]friendly"
+    r"|wallet[- ]friendly|value[- ]?(?:for|4)[- ]?(?:money|mony|moneys)|vfm|paisa[- ]?vasool|paise[- ]?vasool"
+    r"|sast(?:i|a|e|ha|hi)|sabse\s*sast(?:i|a|e)|kam\s*(?:daam|dam|keemat|kimat|price)(?:\s*(?:ki|ka|wali|wala))?"
+    r"|kifayati|kifayat|budget[- ]?(?:friendly|car|cars|suv|suvs|hatchback|sedan|option|options|segment|wali|wala|gaadi|vehicle)"
+    r"|(?:lowest|least|minimum)\s*(?:price|priced|cost)"
+)
+
 # First match wins; same label set as the ML use_case model (minus "general").
 USE_CASE_PATTERNS = [
     ("premium", r"luxury|luxurious|premium"),
@@ -144,7 +167,7 @@ USE_CASE_PATTERNS = [
     ("family", r"family|families|parivar|ghar\s*wal(?:e|on)"),
     ("highway", r"highway|long\s*drives?|road\s*trips?|touring|outstation"),
     ("student", r"students?|college|first\s*car"),
-    ("budget", r"cheap|cheapest|affordable|low\s*cost|sasti|budget[- ]friendly|value\s*for\s*money"),
+    ("budget", CHEAP_INTENT_PATTERN),
     ("commute", r"commute|commuting|office|daily\s*(?:use|drive|driving)"),
     ("city", r"city|traffic|shehar"),
     ("enthusiast", r"enthusiast|performance|sporty|fun\s*to\s*drive|driving\s*pleasure"),
@@ -183,6 +206,8 @@ NEGATION_FILLER = {"a", "an", "the", "want", "wanna", "need", "like", "any", "pr
                    # coordination: "avoid diesel and CNG" negates both (earlier terms are already blanked)
                    "and", "or", "nor", "ya", "aur", "&", "/"}
 NEGATION_AFTER = {"nahi", "nahin", "nhi", "mat", "not", "na"}
+ENGLISH_NOT_AFTER = {"not", "na"}
+POSTFIX_NOT_TAIL = {"wanted", "needed", "required", "preferred", "desired", "please", "at", "all", "chahiye", "chaiye"}
 CLAUSE_BREAK = re.compile(r"[,.;!?]|\bbut\b|\bhowever\b|\bwhile\b|\blekin\b|\bpar\b")
 
 WORD = r"(?<![a-z0-9])(?:{})(?![a-z0-9])"
@@ -206,8 +231,12 @@ def _is_negated(text: str, start: int, end: int) -> bool:
         if word not in NEGATION_FILLER:
             break
     # "AMT nahi", "diesel nahi chahiye", "AMT wali nahi"
-    for word in CLAUSE_BREAK.split(text[end:])[0].split()[:3]:
+    after = CLAUSE_BREAK.split(text[end:])[0].split()[:3]
+    for i, word in enumerate(after):
         if word in NEGATION_AFTER:
+            # English "not"/"na" after a term only negates it as "diesel not wanted"; "hybrid not Toyota" is a new negation
+            if word in ENGLISH_NOT_AFTER and not set(after[i + 1:]) <= POSTFIX_NOT_TAIL:
+                break
             return True
         if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please"}:
             break
@@ -236,6 +265,26 @@ def _rupees(number: str, unit: str | None, cue: bool) -> int | None:
     return None
 
 
+# a number that is followed by a currency word is a price, never a clearance / boot figure ("clearance under 8 lakh")
+NOT_MONEY = r"(?!\d|\.\d|\s*(?:lakhs?|lacs?|lkh|crores?|cr|thousand)(?![a-z]))"
+# a bare number followed by one of these is a measurement, never a budget ("about 40 km", "minimum 200 mm")
+MEASURE_AFTER = re.compile(r"\s*(?:mm|cm|kms?|kmpl|kpl|kg|ltrs?|litres?|liters?|seats?|seaters?|airbags?|stars?|bhp|ps|hp|cc|nm"
+                           r"|people|persons|years?|yrs?|months?|days?|hours?|hrs?|minutes?)(?![a-z])")
+
+UPPER_PREFIX = r"(?:under|below|less\s*than|at\s*most|no\s*more\s*than|not\s*more\s*than|max(?:imum)?|upto|up\s*to)"
+# (intent field, patterns with ONE number group each). Mileage upper bounds are handled with the mileage code below.
+UPPER_BOUND_SPECS = [
+    ("max_ev_range_km", [rf"(?:ev\s*)?range\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM})\s*km",
+                         rf"{UPPER_PREFIX}\s*({NUM})\s*km\s*(?:of\s*)?(?:real\s*|claimed\s*|battery\s*)?range"]),
+    ("max_ground_clearance_mm", [rf"(?:ground\s*)?clearance\s*(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:mm)?",
+                                 rf"{UPPER_PREFIX}\s*({NUM})\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance"]),
+    ("max_boot_space_litres", [rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?{UPPER_PREFIX}\s*({NUM}){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?",
+                               rf"{UPPER_PREFIX}\s*({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk)",
+                               rf"(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*kam|ke\s*neeche)",
+                               rf"({NUM})\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*kam|ke\s*neeche)\s*(?:ka\s*|wala\s*|wali\s*|ki\s*)?(?:boot|luggage|trunk|dickey|dikki)"]),
+]
+
+
 def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
     specs = [
         ("seats_min", int, r"(\d+)\s*-?\s*(?:seater|seats?|seat)|(?:seating\s*(?:for|capacity\s*(?:of)?)|family\s*of)\s*(\d+)"
@@ -248,11 +297,21 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
         ("min_ev_range_km", int, r"(\d+)\s*\+?\s*km\s*(?:of\s*)?(?:real\s*|claimed\s*|battery\s*)?range"
                                  r"|range\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*)?(\d+)\s*\+?\s*km"),
         ("min_ground_clearance_mm", int, r"(\d+)\s*\+?\s*mm\s*(?:of\s*)?(?:ground\s*)?clearance|(\d+)\s*mm\s*gc"
-                                         r"|(?:ground\s*)?clearance\s*(?:of\s*)?(?:at\s*least\s*|above\s*)?(\d+)\s*(?:mm)?"),
-        ("min_boot_space_litres", int, r"(\d+)\s*\+?\s*(?:l|litres?|liters?|ltrs?)\s*(?:of\s*)?(?:boot|luggage|trunk|dickey|dikki)"
-                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*)?"
-                                       r"(\d+)\s*(?:l|litres?|liters?|ltrs?)?"),
+                                         rf"|(?:ground\s*)?clearance\s*(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|min(?:imum)?\s*)?(\d+){NOT_MONEY}\s*(?:mm)?"),
+        ("min_boot_space_litres", int, r"(\d+)\s*\+?\s*(?:l|litres?|liters?|ltrs?)\s*(?:se\s*(?:zyada|jyada|zyaada|upar|oopar)\s*(?:ka\s*|wala\s*|wali\s*|ki\s*)?)?"
+                                       r"(?:of\s*)?(?:boot|luggage|trunk|dickey|dikki)"
+                                       r"|(?:boot|luggage|trunk|dickey|dikki)\s*(?:space\s*)?(?:of\s*)?(?:at\s*least\s*|above\s*|over\s*|more\s*than\s*|greater\s*than\s*|min(?:imum)?\s*)?"
+                                       rf"(\d+){NOT_MONEY}\s*(?:l|litres?|liters?|ltrs?)?(?:\s*se\s*(?:zyada|jyada|zyaada|upar|oopar))?"),
     ]
+    # upper bounds first, so the lower-bound patterns below can't read "under 190 mm ground clearance" as a minimum
+    for field, patterns in UPPER_BOUND_SPECS:
+        for m in _find("|".join(patterns), text):
+            value = float(next(g for g in m.groups() if g))
+            if out[field] is None:
+                out[field] = value
+                trace.append(f"{field}={value:g} <- rule '{m.group(0).strip()}'")
+            text = _mask(text, m)
+
     for field, cast, pattern in specs:
         for m in _find(pattern, text):
             value = cast(next(g for g in m.groups() if g))
@@ -261,26 +320,35 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
                 trace.append(f"{field}={value} <- rule '{m.group(0).strip()}'")
             text = _mask(text, m)
 
-    # CNG mileage first: "25 km/kg", "25 km per kg", "above 25 km/kg". Its own field: a km/kg
-    # threshold is never compared with kmpl (and the kmpl rule below can't re-read it: it's masked)
+    # mileage ranges and upper bounds ("18 to 22 kmpl", "under 30 km/kg"), CNG (km/kg) and petrol/diesel (kmpl)
+    # kept apart: a km/kg threshold is never compared with kmpl
     kmkg = r"(?:km\s*/\s*kg|km\s*per\s*kg|kmpkg|km\s*kg)"
-    for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?(?:mileage\s*(?:of\s*)?)?({NUM})\s*\+?\s*(?:(?:to|-)\s*{NUM}\s*)?{kmkg}"
-                   rf"|(?:under|below|less\s*than|max(?:imum)?)\s*({NUM})\s*{kmkg}", text):
-        if m.group(2):
-            trace.append(f"min_mileage_km_per_kg ignored: upper bound only '{m.group(0).strip()}'")
-        elif out["min_mileage_km_per_kg"] is None:
+    kmpl = r"(?:kmpl|km\s*/\s*l|kpl|km\s*per\s*lit(?:re|er))"
+    for unit_re, lo_key, hi_key in ((kmkg, "min_mileage_km_per_kg", "max_mileage_km_per_kg"),
+                                    (kmpl, "min_mileage_kmpl", "max_mileage_kmpl")):
+        for m in _find(rf"(?:between\s*)?({NUM})\s*(?:to|-|and)\s*({NUM})\s*{unit_re}", text):
+            lo, hi = float(m.group(1)), float(m.group(2))
+            if lo < hi and out[lo_key] is None and out[hi_key] is None:
+                out[lo_key], out[hi_key] = lo, hi
+                trace.append(f"{lo_key}={lo:g} {hi_key}={hi:g} <- rule '{m.group(0).strip()}'")
+            text = _mask(text, m)
+        for m in _find(rf"(?:mileage\s*(?:of\s*)?)?{UPPER_PREFIX}\s*({NUM})\s*{unit_re}", text):
+            if out[hi_key] is None:
+                out[hi_key] = float(m.group(1))
+                trace.append(f"{hi_key}={out[hi_key]:g} <- rule '{m.group(0).strip()}'")
+            text = _mask(text, m)
+
+    # CNG mileage lower bound: "25 km/kg", "25 km per kg", "above 25 km/kg"
+    for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?(?:mileage\s*(?:of\s*)?)?({NUM})\s*\+?\s*{kmkg}", text):
+        if out["min_mileage_km_per_kg"] is None:
             out["min_mileage_km_per_kg"] = float(m.group(1))
             trace.append(f"min_mileage_km_per_kg={out['min_mileage_km_per_kg']} <- rule '{m.group(0).strip()}'")
         text = _mask(text, m)
 
-    # mileage: "20+ kmpl", "above 18 kmpl", "18 to 22 kmpl" (lower bound), "mileage above 20"
-    kmpl = r"(?:kmpl|km\s*/\s*l|kpl|km\s*per\s*lit(?:re|er))"
-    for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?({NUM})\s*\+?\s*(?:(?:to|-)\s*{NUM}\s*)?{kmpl}"
-                   rf"|mileage\s*(?:of\s*)?(?:above|over|at\s*least|more\s*than)?\s*({NUM})\s*\+?\s*(?:{kmpl})?"
-                   rf"|(?:under|below|less\s*than|max(?:imum)?)\s*({NUM})\s*{kmpl}", text):
-        if m.group(3):
-            trace.append(f"min_mileage_kmpl ignored: upper bound only '{m.group(0).strip()}'")
-        elif out["min_mileage_kmpl"] is None:
+    # mileage lower bound: "20+ kmpl", "above 18 kmpl", "mileage above 20"
+    for m in _find(rf"(?:(?:above|over|at\s*least|more\s*than|min(?:imum)?)\s*)?({NUM})\s*\+?\s*{kmpl}"
+                   rf"|mileage\s*(?:of\s*)?(?:above|over|at\s*least|more\s*than)?\s*({NUM})\s*\+?\s*(?:{kmpl})?", text):
+        if out["min_mileage_kmpl"] is None:
             out["min_mileage_kmpl"] = float(m.group(1) or m.group(2))
             trace.append(f"min_mileage_kmpl={out['min_mileage_kmpl']} <- rule '{m.group(0).strip()}'")
         text = _mask(text, m)
@@ -290,8 +358,14 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
 def _parse_budget(text: str, out: dict, trace: list) -> str:
     budget = out["budget"]
     cue = r"(?:budget|price|priced|cost(?:ing)?|under|below|within|upto|up\s*to)"
-    max_pre = r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than|<|budget\s*(?:is|of)?)"
-    max_post = r"(?:tak|ke\s*andar|ke\s*under|se\s*kam|ke\s*neeche|or\s*less|or\s*below|and\s*below|max(?:imum)?)"
+    # "can't go above 8 lakh", "cannot exceed", "won't spend more than": a stated ceiling, never a floor
+    cant = (r"(?:can'?t|cannot|can\s*not|won'?t|wont|will\s*not|don'?t|dont|do\s*not)\s*"
+            r"(?:go|spend|pay|stretch|exceed|afford|cross)?\s*(?:above|over|beyond|past|more\s*than)?")
+    max_pre = (r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than|<|budget\s*(?:is|of)?"
+               + "|exceed(?:ing)?|" + cant + ")")
+    # "8 lakh se upar nahi ja sakta": Hindi ceiling
+    max_post = (r"(?:tak|ke\s*andar|ke\s*under|se\s*kam|ke\s*neeche|or\s*less|or\s*below|and\s*below|max(?:imum)?"
+                r"|se\s*(?:upar|oopar|zyada|jyada|zyaada)\s*nahi(?:\s*(?:ja\s*sak\w*|jaun\w*|jan\w*|jayeg\w*|chahiye|chaiye|chalega|chalegi))?)")
     min_pre = r"(?:above|over|more\s*than|at\s*least|min(?:imum)?|starting|>)"
     min_post = r"(?:se\s*upar|se\s*zyada|and\s*above|or\s*more|plus|\+)"
     around_pre = r"(?:around|about|approx(?:imately)?\.?|roughly|near|~|lagbhag)"
@@ -326,7 +400,7 @@ def _parse_budget(text: str, out: dict, trace: list) -> str:
             groups = [g for g in m.groups()]
             number, unit = (groups[0], groups[1]) if groups[0] else (groups[2], groups[3])
             value = _rupees(number, unit, cue=True)
-            if value is None:
+            if value is None or (not unit and number and MEASURE_AFTER.match(text, m.end())):
                 continue
             record(kind, m, value if kind != "max" else None, value if kind == "max" else None)
 
@@ -373,6 +447,43 @@ def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str
     return found, negated, mentioned, text
 
 
+# ---------------------------------------------------------------------------
+# Typo tolerance vocabulary: word -> meaning group (see services/typos.py). Canonical spelling first in a group.
+# ---------------------------------------------------------------------------
+
+_TYPO_GROUPS = {
+    "petrol": ["petrol", "gasoline"], "diesel": ["diesel"], "electric": ["electric"], "hybrid": ["hybrid", "hybrids"],
+    "hatchback": ["hatchback", "hatchbacks", "hatch"], "sedan": ["sedan", "sedans"], "minivan": ["minivan"],
+    "pickup": ["pickup", "pickups"],
+    "automatic": ["automatic", "automatics", "autobox"], "manual": ["manual", "manuals"],
+    "clutchless": ["clutchless"], "converter": ["converter"],
+    "sunroof": ["sunroof", "moonroof", "panoramic"], "ventilated": ["ventilated"], "cruise": ["cruise"],
+    "wireless": ["wireless"], "charging": ["charging", "charger"], "android": ["android"], "carplay": ["carplay"],
+    "camera": ["camera"], "adaptive": ["adaptive"],
+    "lakh": ["lakhs", "lakh"], "crore": ["crores", "crore"], "seater": ["seater", "seaters", "seats", "seating"],
+    "budget": ["budget"], "mileage": ["mileage"], "airbags": ["airbags", "airbag"],
+}
+_typo_vocab: dict[str, str] | None = None
+
+
+def _typo_vocabulary() -> dict[str, str]:
+    global _typo_vocab
+    if _typo_vocab is None:
+        vocab: dict[str, str] = {}
+        for group, words in _TYPO_GROUPS.items():
+            for w in words:
+                vocab.setdefault(w, group)
+        _load_model_vocab()
+        names = [m for m in _model_info] + [make for make, _ in MAKE_PATTERNS] + [b for b, _ in UNSUPPORTED_BRAND_PATTERNS]
+        names += list(MODEL_ALIASES) + [info["make"] for info in _model_info.values()]
+        for name in names:
+            for w in re.findall(r"[a-z]+", name.lower()):
+                if len(w) >= 5:
+                    vocab.setdefault(w, "name:" + w)
+        _typo_vocab = vocab
+    return _typo_vocab
+
+
 def _model_regex(name: str) -> str:
     # "XUV 3XO" -> xuv[\s.-]*3[\s.-]*xo : matches "xuv 3xo", "xuv3xo", "XUV-3XO"
     chunks = re.findall(r"[a-z]+|\d+", name.lower())
@@ -391,7 +502,10 @@ def _load_model_vocab() -> list[tuple[str, str | None, list[str]]]:
                 _model_info.setdefault(row["model"], {"make": row["make"], "body_type": row["body_type"]})
         make_regex = dict(MAKE_PATTERNS)
         vocab = []
+        covered_by_alias = {(_model_regex(a), m) for a, ms in MODEL_ALIASES.items() for m in ms}
         for model, info in _model_info.items():
+            if (_model_regex(model), model) in covered_by_alias:   # the same-spelling alias entry names it (and its siblings)
+                continue
             needs_make = make_regex[info["make"]] if model in AMBIGUOUS_MODELS else None
             vocab.append((_model_regex(model), needs_make, [model]))
         for alias, models in MODEL_ALIASES.items():
@@ -508,6 +622,8 @@ def _ml_predict(query: str) -> dict[str, tuple[str, float]] | None:
 
 
 def _apply_ml(query: str, out: dict, mentioned: dict, trace: list) -> None:
+    """Fill unmentioned body/fuel/use_case from the ML models. Body and fuel guesses are only ever
+    "assumed" (soft, shown to the user, never a filter); use_case is a ranking hint as before."""
     need = [f for f in ("body", "fuel", "use_case") if not mentioned[f]]
     if not need:
         return
@@ -521,21 +637,53 @@ def _apply_ml(query: str, out: dict, mentioned: dict, trace: list) -> None:
         if label in ("unknown", "general") or p < ML_MIN_CONFIDENCE:
             continue
         if field == "body" and label in BODY_TYPES:
-            out["body_types"] = [label]
+            out["assumed"]["body_types"] = [label]
         elif field == "fuel" and label in FUEL_TYPES:
-            out["fuel_types"] = [label]
+            out["assumed"]["fuel_types"] = [label]
         elif field == "use_case":
             out["use_case"] = label
         else:
             continue
-        trace.append(f"{field}={label} <- ml p={p:.2f}")
+        trace.append(f"{field}={label} <- ml p={p:.2f}" + (" (assumed, not a filter)" if field != "use_case" else ""))
 
 
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
+_CONTENT_LIST_FIELDS = ["body_types", "fuel_types", "makes", "models", "reference_models", "required_features",
+                        "exclude_features", "exclude_makes", "exclude_fuel_types", "exclude_body_types",
+                        "soft_preferences"]
+_CONTENT_SCALAR_FIELDS = ["seats_min", "min_airbags", "min_safety_stars", "min_boot_space_litres",
+                          "min_ground_clearance_mm", "min_ev_range_km", "min_mileage_kmpl", "min_mileage_km_per_kg",
+                          "max_ev_range_km", "max_ground_clearance_mm", "max_boot_space_litres", "max_mileage_kmpl",
+                          "max_mileage_km_per_kg", "use_case"]
+
+
+def _classify_content(out: dict) -> tuple[bool, bool]:
+    """(vague, unsupported_only), judged on what the rules found. Vague: no constraint or preference of any
+    kind. Unsupported only: nothing but a brand the catalogue does not carry."""
+    trans = out["transmission"]
+    has_content = (
+        any(out[f] for f in _CONTENT_LIST_FIELDS)
+        or any(out[f] is not None for f in _CONTENT_SCALAR_FIELDS)
+        or out["cheap_intent"]
+        or out["budget"]["min"] is not None or out["budget"]["max"] is not None
+        or bool(trans["family"] or trans["include_types"] or trans["exclude_types"])
+    )
+    if has_content:
+        return False, False
+    return (not out["unsupported_terms"]), bool(out["unsupported_terms"])
+
+
 def parse_intent(text: str, use_ml: bool = True) -> dict:
+    return parse_intent_ex(text, use_ml)[0]
+
+
+def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
+    """parse_intent plus the RESIDUAL: the lower-cased (typo-corrected) query with every span the rules consumed
+    (brands, models, features, numbers, budgets, gearbox, fuel, body, makes) blanked out. Soft-preference and use-case
+    words are not blanked here (they only set weights); services/recsys/llm_parse.py decides what is "unexplained"."""
     out = {
         "budget": {"min": None, "max": None},
         "body_types": [],
@@ -551,17 +699,32 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         "min_ev_range_km": None,
         "min_mileage_kmpl": None,
         "min_mileage_km_per_kg": None,
+        "max_ev_range_km": None,
+        "max_ground_clearance_mm": None,
+        "max_boot_space_litres": None,
+        "max_mileage_kmpl": None,
+        "max_mileage_km_per_kg": None,
         "use_case": None,
+        "cheap_intent": False,
+        "exclude_features": [],
+        "exclude_makes": [],
         "exclude_fuel_types": [],
         "exclude_body_types": [],
         "models": [],
         "reference_models": [],
         "unsupported_terms": [],
+        "corrections": [],
         "soft_preferences": [],
+        "assumed": {"body_types": [], "fuel_types": []},
+        "vague": False,
+        "unsupported_only": False,
         "trace": [],
     }
     trace = out["trace"]
     work = " " + re.sub(r"\s+", " ", (text or "").lower().replace("₹", " rs ")) + " "
+    work, out["corrections"] = correct_typos(work, _typo_vocabulary())
+    for c in out["corrections"]:
+        trace.append(f"typo: read '{c['from']}' as '{c['to']}'")
 
     # brands we don't carry and model names go first, so "Mini Cooper" / "XUV 3XO" can't leak into other fields
     unsupported, _, _, work = _parse_vocab(UNSUPPORTED_BRAND_PATTERNS, work, "unsupported", trace)
@@ -573,10 +736,12 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
     use_case_text = work
 
     # then features, so "android auto" / "360 camera" / "level 2" can't leak into other fields
-    features, _, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace)
+    features, no_features, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace)
     if "adaptive_cruise" in features:
         features += ["adas", "cruise_control"]
     out["required_features"] = [f for f in FEATURES if f in features]
+    # "no sunroof", "without ADAS", "sunroof nahi chahiye" (a negated adaptive cruise names no single feature: ignored)
+    out["exclude_features"] = [f for f in FEATURES if f in no_features and f not in out["required_features"]]
 
     work = _parse_numeric_specs(work, out, trace)
     work = _parse_budget(work, out, trace)
@@ -598,8 +763,9 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
         out["body_types"] = [b for b in BODY_TYPES if b in ref_bodies]
         body_mentioned = True
         trace.append(f"body_types={out['body_types']} <- reference model {references}")
-    makes, _, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace)
+    makes, no_makes, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace)
     out["makes"] = sorted(makes)
+    out["exclude_makes"] = sorted(no_makes)  # "not Tata", "Maruti nahi chahiye"
 
     use_case_mentioned = False
     for label, pattern in USE_CASE_PATTERNS:
@@ -610,6 +776,13 @@ def parse_intent(text: str, use_ml: bool = True) -> dict:
             trace.append(f"use_case={label} <- rule '{m.group(0).strip()}'")
             break
 
+    cheap = next(iter(_find(CHEAP_INTENT_PATTERN, use_case_text)), None)
+    if cheap:
+        out["cheap_intent"] = True
+        trace.append(f"cheap_intent <- rule '{cheap.group(0).strip()}'")
+
+    out["vague"], out["unsupported_only"] = _classify_content(out)
+
     if use_ml:
         _apply_ml(ml_text, out, {"body": body_mentioned, "fuel": fuel_mentioned, "use_case": use_case_mentioned}, trace)
-    return out
+    return out, work
