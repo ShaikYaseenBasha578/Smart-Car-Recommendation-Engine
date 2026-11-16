@@ -1,41 +1,41 @@
 id,query,car_1,car_2,car_3,car_4,car_5,notes
-plain-01,I want a petrol hatchback under 8 lakh,,,,,,
-plain-02,diesel SUV under 20 lakh,,,,,,
-plain-03,automatic sedan with sunroof,,,,,,
-plain-04,7 seater diesel SUV under 25 lakh,,,,,,
-plain-05,electric car under 15 lakh,,,,,,
-plain-06,CNG hatchback under 7 lakh,,,,,,
-plain-08,compact SUV with a sunroof under 15 lakh,,,,,,
-plain-09,manual petrol SUV under 12 lakh,,,,,,
-plain-12,hybrid SUV,,,,,,
-plain-13,MPV with 7 seats under 18 lakh,,,,,,
-plain-16,Toyota hybrid,,,,,,
-plain-17,Tata SUV under 15 lakh,,,,,,
-plain-20,EV with at least 400 km range under 25 lakh,,,,,,
-plain-22,sedan under 12 lakh,,,,,,
-plain-25,automatic MPV under 20 lakh,,,,,,
-plain-28,DCT petrol under 15 lakh,,,,,,
-hing-01,10 lakh tak automatic SUV chahiye,,,,,,
-hing-03,7 seater gaadi chahiye 20 lakh ke andar,,,,,,
-hing-04,petrol hatchback chahiye 6 lakh tak,,,,,,
-hing-06,sunroof wali SUV 15 lakh tak,,,,,,
-hing-07,CNG gaadi 8 lakh ke andar,,,,,,
-hing-12,electric car chahiye 400 km range wali,,,,,,
-hing-15,family ke liye 7 seater petrol,,,,,,
-hing-19,papa ke liye automatic sedan 15 lakh tak,,,,,,
-hing-21,Maruti ki CNG hatchback,,,,,,
-hing-29,"electric nahi chahiye, petrol chahiye",,,,,,
-budget-19,SUV under 1.2 crore,,,,,,
-budget-05,around 10 lakh,,,,,,
-named-01,Hyundai Creta,,,,,,
-named-02,Scorpio N diesel automatic,,,,,,
-named-04,something like Creta,,,,,,
-named-06,Brezza alternatives,,,,,,
-named-07,Innova Crysta,,,,,,
-named-11,like XUV 3XO under 14 lakh,,,,,,
-num-06,SUV with ground clearance of at least 210 mm,,,,,,
-num-12,petrol hatchback with mileage above 22 kmpl,,,,,,
-neg-02,SUV but not diesel,,,,,,
-neg-08,no sunroof,,,,,,
-hing-34,"wireless charging wali gaadi, 20 lakh tak",,,,,,
-plain-31,turbo petrol DCT SUV,,,,,,
+plain-01,I want a petrol hatchback under 8 lakh,Maruti Suzuki Swift,Tata Tiago,Hyundai Grand i10 Nios,Maruti Suzuki Baleno,Maruti Suzuki WagonR,
+plain-02,diesel SUV under 20 lakh,Hyundai Creta,Kia Seltos,Mahindra Scorpio-N,Mahindra XUV 3XO,Tata Nexon,
+plain-03,automatic sedan with sunroof,Hyundai Verna,Skoda Slavia,Volkswagen Virtus,Honda City,Maruti Suzuki Dzire,Automatic + sunroof are available only on selected trims.
+plain-04,7 seater diesel SUV under 25 lakh,Mahindra Scorpio-N,Mahindra XUV 7XO,Mahindra Scorpio Classic,Mahindra Bolero,,
+plain-05,electric car under 15 lakh,Tata Punch EV,Tata Nexon EV,MG Windsor EV,Tata Tiago EV,,
+plain-06,CNG hatchback under 7 lakh,Maruti Suzuki WagonR,Tata Tiago,Maruti Suzuki Alto K10,Maruti Suzuki S-Presso,,
+plain-08,compact SUV with a sunroof under 15 lakh,Tata Nexon,Mahindra XUV 3XO,Hyundai Venue,Kia Syros,Maruti Suzuki Brezza,Sunroof and price limits are trim-dependent; each model has a qualifying compact-SUV variant.
+plain-09,manual petrol SUV under 12 lakh,Mahindra XUV 3XO,Tata Nexon,Skoda Kylaq,Hyundai Venue,Maruti Suzuki Brezza,
+plain-12,hybrid SUV,Maruti Suzuki Victoris,Maruti Suzuki Grand Vitara,Toyota Urban Cruiser Hyryder,,,
+plain-13,MPV with 7 seats under 18 lakh,Maruti Suzuki Ertiga,Kia Carens Clavis,Toyota Rumion,Renault Triber,Nissan Gravite,
+plain-16,Toyota hybrid,Toyota Urban Cruiser Hyryder,Toyota Innova Hycross,,,,
+plain-17,Tata SUV under 15 lakh,Tata Nexon,Tata Punch EV,Tata Nexon EV,Tata Harrier,,
+plain-20,EV with at least 400 km range under 25 lakh,Maruti Suzuki e VITARA,Tata Nexon EV,Kia Carens Clavis EV,MG Windsor EV,Tata Punch EV,Uses catalogue-claimed EV range; only qualifying variants below ₹25 lakh are included.
+plain-22,sedan under 12 lakh,Honda Amaze,Maruti Suzuki Dzire,Hyundai Aura,Tata Tigor,Skoda Slavia,
+plain-25,automatic MPV under 20 lakh,Kia Carens Clavis,Maruti Suzuki Ertiga,Toyota Rumion,Maruti Suzuki XL6,Toyota Innova Hycross,"Automatic includes AMT, torque-converter, CVT and DCT options."
+plain-28,DCT petrol under 15 lakh,Tata Nexon,Hyundai Venue,Kia Syros,Renault Duster,Tata Altroz,Only selected DCT petrol trims meet the budget; Duster fits narrowly.
+hing-01,10 lakh tak automatic SUV chahiye,Mahindra XUV 3XO,Nissan Magnite,Skoda Kylaq,Tata Nexon,Maruti Suzuki Fronx,"Automatic includes AMT, CVT and torque-converter options; qualifying trims are within ₹10 lakh."
+hing-03,7 seater gaadi chahiye 20 lakh ke andar,Kia Carens Clavis,Maruti Suzuki Ertiga,Mahindra XUV 7XO,Toyota Rumion,Toyota Innova Crysta,Some models have only lower trims under ₹20 lakh.
+hing-04,petrol hatchback chahiye 6 lakh tak,Maruti Suzuki WagonR,Tata Tiago,Maruti Suzuki Alto K10,Maruti Suzuki S-Presso,Hyundai Grand i10 Nios,Each model has at least one petrol variant at or below ₹6 lakh.
+hing-06,sunroof wali SUV 15 lakh tak,Tata Nexon,Mahindra XUV 3XO,Hyundai Venue,Kia Syros,Maruti Suzuki Brezza,
+hing-07,CNG gaadi 8 lakh ke andar,Maruti Suzuki WagonR,Tata Tiago,Hyundai Exter,Maruti Suzuki Alto K10,Maruti Suzuki Baleno,Each model has at least one CNG variant under ₹8 lakh.
+hing-12,electric car chahiye 400 km range wali,Maruti Suzuki e VITARA,Tata Nexon EV,Kia Carens Clavis EV,Tata Punch EV,MG Windsor EV,Uses catalogue-claimed EV range; no budget limit was specified.
+hing-15,family ke liye 7 seater petrol,Kia Carens Clavis,Toyota Innova Hycross,Maruti Suzuki Ertiga,Toyota Rumion,Mahindra XUV 7XO,All listed models have petrol-powered 7-seat variants.
+hing-19,papa ke liye automatic sedan 15 lakh tak,Honda Amaze,Maruti Suzuki Dzire,Honda City,Hyundai Verna,Skoda Slavia,Automatic variants below ₹15 lakh; higher trims may exceed the budget.
+hing-21,Maruti ki CNG hatchback,Maruti Suzuki WagonR,Maruti Suzuki Swift,Maruti Suzuki Baleno,Maruti Suzuki Alto K10,Maruti Suzuki S-Presso,
+hing-29,"electric nahi chahiye, petrol chahiye",Hyundai Creta,Tata Nexon,Maruti Suzuki Brezza,Maruti Suzuki Swift,Honda Amaze,No budget or body type was given; this is a broad petrol-only shortlist.
+budget-19,SUV under 1.2 crore,Toyota Fortuner,Mahindra XUV 7XO,Mahindra Scorpio-N,Mahindra Thar Roxx,Tata Harrier,The catalogue has no luxury SUVs; Toyota Fortuner is its highest-priced SUV.
+budget-05,around 10 lakh,Mahindra XUV 3XO,Tata Nexon,Maruti Suzuki Fronx,Maruti Suzuki Brezza,Hyundai Venue,No body type or fuel preference was given; shortlist spans popular options around ₹10 lakh.
+named-01,Hyundai Creta,Hyundai Creta,Kia Seltos,Volkswagen Taigun,Skoda Kushaq,Honda Elevate,
+named-02,Scorpio N diesel automatic,Mahindra Scorpio-N,Mahindra XUV 7XO,Mahindra Thar Roxx,Tata Harrier,Toyota Fortuner,Exact model first; remaining choices are diesel-automatic SUV alternatives.
+named-04,something like Creta,Kia Seltos,Volkswagen Taigun,Skoda Kushaq,Honda Elevate,Renault Duster,"Alternatives to Creta, not Creta itself."
+named-06,Brezza alternatives,Mahindra XUV 3XO,Tata Nexon,Hyundai Venue,Kia Syros,Skoda Kylaq,"Alternatives to Brezza, not Brezza itself."
+named-07,Innova Crysta,Toyota Innova Crysta,Toyota Innova Hycross,Kia Carens Clavis,Maruti Suzuki Ertiga,Toyota Rumion,
+named-11,like XUV 3XO under 14 lakh,Tata Nexon,Hyundai Venue,Kia Syros,Skoda Kylaq,Nissan Magnite,Alternatives to XUV 3XO; all have variants below ₹14 lakh.
+num-06,SUV with ground clearance of at least 210 mm,Mahindra Thar,Mahindra Thar Roxx,Honda Elevate,Renault Duster,Toyota Fortuner,
+num-12,petrol hatchback with mileage above 22 kmpl,Maruti Suzuki Swift,Maruti Suzuki S-Presso,Maruti Suzuki Alto K10,Toyota Glanza,Maruti Suzuki WagonR,
+neg-02,SUV but not diesel,Honda Elevate,Maruti Suzuki Brezza,Maruti Suzuki Grand Vitara,Volkswagen Taigun,Skoda Kushaq,
+neg-08,no sunroof,Nissan Magnite,Maruti Suzuki Ertiga,Toyota Rumion,Honda Amaze,Renault Triber,Selected models have no sunroof-equipped variants in the catalogue.
+hing-34,"wireless charging wali gaadi, 20 lakh tak",Mahindra XUV 3XO,Tata Nexon,Hyundai Venue,Kia Syros,Maruti Suzuki Grand Vitara,"Wireless charging is available only on selected variants, all within ₹20 lakh."
+plain-31,turbo petrol DCT SUV,Kia Seltos,Hyundai Creta,Skoda Kushaq,Volkswagen Taigun,Renault Duster,All listed models have turbo-petrol DCT SUV variants; no price cap was specified.
