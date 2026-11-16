@@ -94,3 +94,31 @@ def test_public_check_rejects_local_notes():
         except ValueError:
             continue
         raise AssertionError(bad)
+
+
+def test_header_is_one_compact_row_on_phones_and_keeps_the_theme_key(tmp_path):
+    out, _ = run(tmp_path, ["--app-base", "/"])
+    html = (out / "index.html").read_text()
+    css = html.split("<style>")[1].split("</style>")[0]
+    phone = css.split("@media (max-width:760px){")[1].split("\n}")[0]
+    assert "flex-wrap:nowrap" in phone and "overflow-x:auto" in phone and "height:63px" in phone
+    assert "localStorage.getItem('carrec-theme')" in html
+
+
+def test_engine_page_prefers_the_final_result_files_and_drops_the_unsaved_note(tmp_path):
+    import json
+    root = tmp_path / "rec"
+    (root / "eval" / "results").mkdir(parents=True)
+
+    def ev(engine, recall):
+        return {"engine": engine, "n_queries": 10, "summary": {
+            "constraint_satisfaction": {"queries_with_cars": 10, "queries_zero_violations": 10, "violations": []},
+            "relaxed_responses": {"n": 1, "truthfully_labelled": 1, "mislabelled": 0},
+            "empty_handling": {"expect_empty_queries": 2, "outcomes": {"empty": 0, "cars_returned_unmarked": 1}},
+            "unknown_probe": {"n_probes": 5, "still_returned": 5, "known_lacking_above": 1, "known_lacking_newly_above": 0},
+            "shortlist_agreement": {"filled": 3, "recall_at_8": recall, "mrr": recall}}, "records": []}
+    for name, e in [("final_v3_main", ev("v3", .9)), ("final_v3_heldout", ev("v3", .8)), ("final_current_main", ev("current", .7))]:
+        (root / "eval" / "results" / (name + ".json")).write_text(json.dumps(e))
+    E_ = dashboard.engine_data(str(root))
+    assert E_["v3_main"]["file"] == "final_v3_main.json" and E_["cur_main"]["file"] == "final_current_main.json"
+    assert E_["cur_held"] is None

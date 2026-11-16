@@ -677,15 +677,18 @@ def engine_data(recsys_dir):
             if e:
                 return e
         return None
-    E["v3_main"] = pick(["themes_on_main.json", "newcat_b_main.json"])
-    E["v3_held"] = pick(["themes_on_heldout.json", "newcat_b_heldout.json"])
-    E["cur_main"] = pick(["newcat_cur_new_main.json"])
-    E["cur_held"] = pick(["newcat_cur_new_heldout.json"])
+    E["v3_main"] = pick(["final_v3_main.json", "themes_on_main.json", "newcat_b_main.json"])
+    E["v3_held"] = pick(["final_v3_heldout.json", "themes_on_heldout.json", "newcat_b_heldout.json"])
+    E["cur_main"] = pick(["final_current_main.json", "newcat_cur_new_main.json"])
+    E["cur_held"] = pick(["final_current_heldout.json"])
     cat = csv_stats(os.path.join(root, "data", "catalogue_v3", "catalogue.csv"), "model")
     meta = read_json(os.path.join(root, "data", "catalogue_v3", "catalogue_meta.json")) or {}
     E["catalogue"] = {"rows": cat["rows"], "models": cat["models"]} if cat else None
     E["catalogue_models"] = sorted({r.get("model") for r in cat["data"] if r.get("model")}) if cat else []
     E["catalogue_fuel"] = meta.get("fuel_type_distribution")
+    newr = [r for r in (cat["data"] if cat else []) if (r.get("variant_id") or "").isdigit() and int(r["variant_id"]) > 833]
+    if newr:   # the rows added after the original 832 variants: how much of the fields once missing is now filled
+        E["added_fill"] = {"rows": len(newr), **{c: sum(1 for r in newr if r.get(c)) / len(newr) for c in ("length_mm", "abs", "esc", "adas_available")}}
     # shortlist size
     sheet = csv_stats(os.path.join(root, "eval", "shortlist_sheet.csv"), "id")
     if sheet:
@@ -792,6 +795,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .logo svg{width:28px;height:28px;color:var(--accent)}
 .hdr-right{display:flex;align-items:center;gap:var(--s0);flex-wrap:wrap}
 .nav{display:flex;gap:var(--s-1);flex-wrap:wrap}
+@media (max-width:760px){
+  .site-header .wrap{flex-wrap:nowrap;gap:var(--s0);height:63px;min-height:0;padding-block:0}
+  .logo{flex:none;font-size:1.125rem}
+  .hdr-right{flex:1;min-width:0;flex-wrap:nowrap;gap:var(--s-1)}
+  .nav{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 20px),transparent);padding-inline:12px 20px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{padding:var(--s0) 10px;font-size:.8125rem;flex:none}
+  .hdr-right .btn{flex:none;min-height:40px;padding-inline:12px}
+  .hdr-right .btn .lbl{display:none}
+}
 .nav a{padding:var(--s0) 12px;border-radius:var(--r-pill);font-size:var(--text-sm);font-weight:550;color:var(--ink-2);text-decoration:none;white-space:nowrap}
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .nav a[aria-current="page"]{color:var(--ink);background:var(--surface-2);font-weight:700}
@@ -989,9 +1003,11 @@ JS = r'''
 var root=document.documentElement,b=document.getElementById('themebtn'),modes=['auto','light','dark'],i=0;
 try{var s=localStorage.getItem('carrec-theme');if(s&&modes.indexOf(s)>-1)i=modes.indexOf(s);}catch(e){}
 function apply(){var m=modes[i];if(m==='auto')root.removeAttribute('data-theme');else root.setAttribute('data-theme',m);
-  if(b)b.textContent='Theme: '+m;try{localStorage.setItem('carrec-theme',m);}catch(e){}}
+  if(b)b.innerHTML='<span class="lbl">Theme: </span>'+m.charAt(0).toUpperCase()+m.slice(1);try{localStorage.setItem('carrec-theme',m);}catch(e){}}
 if(b)b.addEventListener('click',function(){i=(i+1)%3;apply();});
 apply();
+var cur=document.querySelector('.nav a[aria-current]'),nv=document.querySelector('.nav');
+if(cur&&nv&&nv.scrollWidth>nv.clientWidth){nv.scrollLeft=Math.max(0,cur.getBoundingClientRect().left-nv.getBoundingClientRect().left+nv.scrollLeft-nv.clientWidth/2+cur.offsetWidth/2);}
 document.querySelectorAll('table.sortable').forEach(function(t){
   var heads=t.querySelectorAll('thead th');
   heads.forEach(function(th,ci){var btn=th.querySelector('button');if(!btn)return;
@@ -1090,7 +1106,7 @@ def shell(cur, title, body, ctx, desc=""):
             '<title>%s</title>\n<meta name="description" content="%s">\n<style>%s</style>\n</head>\n<body>\n'
             '<header class="site-header"><div class="wrap"><a class="logo" href="%s" aria-label="CarRec home">%s CarRec</a>'
             '<div class="hdr-right"><nav class="nav" aria-label="Project pages">%s</nav>'
-            '<button class="btn" id="themebtn" type="button" aria-label="Change colour theme">Theme: auto</button></div></div></header>\n'
+            '<button class="btn" id="themebtn" type="button" aria-label="Change colour theme"><span class="lbl">Theme: </span>Auto</button></div></div></header>\n'
             '<main>\n%s\n</main>\n'
             '<footer class="site-footer"><div class="wrap"><p>Generated on <b>%s</b> from knowledge base snapshot <span class="mono">%s</span>. '
             'Every figure on this page is computed from the knowledge base, the pipeline run records or the recommender files, and the source is named beside it.</p>'
@@ -1782,7 +1798,7 @@ def page_engine(D, ctx):
     used = [e["file"] for e in (E_.get("v3_main"), E_.get("v3_held"), E_.get("cur_main"), E_.get("cur_held")) if e]
     fd = E_.get("final_doc")
     fnote = ""
-    if fd:
+    if fd and not str((E_.get("v3_main") or {}).get("file", "")).startswith("final_"):
         fnote = (' The review&rsquo;s last section reports %.3f recall@8 and %.3f MRR for the default build and %.3f and %.3f for the current engine, measured on a later build whose result files are not among the saved ones; this page shows the saved files.'
                  % (fd["v3_recall"], fd["v3_mrr"], fd["cur_recall"], fd["cur_mrr"]))
     sl = E_.get("shortlist") or {}
@@ -1798,14 +1814,18 @@ def page_engine(D, ctx):
     if vm:
         lim.append(("The shortlist test is small and dated.", "%s queries, %s picks, labelled against the older catalogue. The 30 models added later were never on a label, so a new model that ranks first can count as a miss." % (fmt(sl.get("queries")), fmt(sl.get("picks"))), "evaluation results; shortlist gap review"))
         lim.append(("The unknown-value probe is not met.", "When a feature is blanked on a good car, a car known to lack it ranks above it %s times out of %s probes (the target is 0)." % (fmt(vm["probe_newly_above"]), fmt(vm["probe_n"])), "evaluation results; review of 15 Nov"))
-        lim.append(("Some impossible requests return cars.", "%s of %s requests labelled impossible still returned cars with no relaxation label in both engines. The review does not explain them." % (fmt((vm.get("empty_outcomes") or {}).get("cars_returned_unmarked")), fmt(vm["empty_expected"])), "evaluation results"))
+        lim.append(("Some impossible requests return cars.", "%s of %s requests labelled impossible still returned cars with no relaxation label in both engines. In each case the returned cars have a blank (unknown) value for the thing asked for, and a blank is unknown, not no, so it passes the filter; the test calls a request impossible by its known values only." % (fmt((vm.get("empty_outcomes") or {}).get("cars_returned_unmarked")), fmt(vm["empty_expected"])), "evaluation results; checked against the catalogue file"))
     if vh and vh.get("violating"):
         lim.append(("Parser misses remain.", "On the held-out set %d queries returned a car that breaks a stated requirement (%s); both engines share these parser misses. Unknown values never count as violations in this test." % (len(vh["violating"]), ", ".join(vh["violating"])), "evaluation results"))
     if ass:
         lim.append(("Review coverage is partial.", "%s of %s catalogue models have no expert rows and %s models have owner ratings under 30 reviews. They get no review reasons and are not penalised." % (fmt(len(missing)), fmt((E_.get("catalogue") or {}).get("models")), fmt(own.get("low_conf_models"))), "review data files"))
         if ass.get("min10") is not None:
             lim.append(("Expert scores are compressed.", "Overall expert scores run from %.0f to %.0f out of 10, so the engine compares cars; it does not rescale them." % (ass["min10"], ass["max10"]), "review data files"))
-    lim.append(("Newer models are scored on less.", "The review notes say the models added most recently carry no dimension, ABS, ESC or ADAS values yet, so they are scored on more unknowns until the knowledge base is filled.", "review of 15 Nov"))
+    af = E_.get("added_fill")
+    if af and min(af["length_mm"], af["abs"], af["esc"]) >= .5:
+        lim.append(("Newer models are scored on a little less.", "The %s variants added after the first 832 now have length for %.0f%%, ABS for %.0f%%, ESC for %.0f%% and ADAS for %.0f%% of rows, filled from brochures; the rest stay unknown and are scored as unknown. The review notes written before this fill said these were empty." % (fmt(af["rows"]), af["length_mm"] * 100, af["abs"] * 100, af["esc"] * 100, af["adas_available"] * 100), "catalogue file; review of 15 Nov"))
+    else:
+        lim.append(("Newer models are scored on less.", "The review notes say the models added most recently carry no dimension, ABS, ESC or ADAS values yet, so they are scored on more unknowns until the knowledge base is filled.", "review of 15 Nov"))
     lim.append(("Owner themes are a sample.", "Theme counts are mentions in a sample of reviews per model, not in all reviews, and a theme&rsquo;s effect on the score is capped by design.".replace("&rsquo;", "’"), "review of 15 Nov"))
     lim.append(("The language-model query reader is off by default.", "The design plan wanted it on; it is optional, needs a key, and falls back to the rules.", "review of 14 Nov; API notes"))
     lh = '<ul class="limits">%s</ul>' % "".join("<li><b>%s</b> %s<em>%s</em></li>" % (E(a), E(b), E(c)) for a, b, c in lim)
