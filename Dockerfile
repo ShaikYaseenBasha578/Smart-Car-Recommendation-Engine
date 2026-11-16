@@ -21,6 +21,7 @@ COPY ml_parser ./ml_parser
 COPY api_service ./api_service
 COPY templates ./templates
 COPY static ./static
+COPY project_pages ./project_pages
 COPY data ./data
 COPY car_recommendation_assets ./car_recommendation_assets
 USER app

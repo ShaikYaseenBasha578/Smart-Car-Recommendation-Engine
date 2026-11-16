@@ -84,6 +84,16 @@ With no environment variables the app runs ranking engine v3 (`services/recsys/`
 
 `RANKER` accepts `v3` or unset (default), and `current` (also `old`, `v2`); any other value is treated as v3. `CARREC_CATALOGUE_DIR` is a directory holding `catalogue.csv` and `catalogue_meta.json`; a relative path is read from the repository root. The evaluation runner follows the same defaults (`eval/run_eval.py`; `--engine current` selects the old engine).
 
+## How it works pages
+
+The site serves four self-contained explainer pages: `/project` (overview), `/project/pipeline`, `/project/knowledge-base` and `/project/engine`. They live in `project_pages/` and are generated in another repository. To refresh them:
+
+```bash
+.venv/bin/python scripts/sync_project_pages.py --src <folder with index.html, pipeline.html, kb.html, engine.html>
+```
+
+The script copies the files and rewrites only their links between each other (`kb.html` becomes `/project/knowledge-base`, and so on). Running it again with the same source changes nothing.
+
 ## Tech stack
 
 Flask, pandas, scikit-learn, gunicorn, hosted on Render.
