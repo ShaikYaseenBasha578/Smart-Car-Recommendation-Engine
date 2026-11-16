@@ -19,7 +19,7 @@ applicable to other fuels -> excluded). A CNG car's mileage_kmpl cell is not tru
 ranking_adapter.KMPL_UNTRUSTED_FUELS), so a kmpl threshold leaves CNG cars unverified.
 
 min_safety_stars: rated and meets -> matched; rated below -> excluded; unrated -> kept with
-unrated_safety=True ("No Bharat NCAP rating on record").
+unrated_safety=True ("No crash-test rating on record").
 
 reference_models ("something like Creta"): the reference model itself is excluded, and unless
 the user gave a budget, price must sit in [0.8 x its cheapest, 1.2 x its dearest variant].
@@ -69,7 +69,7 @@ MAX_COLUMNS = {
     "max_mileage_kmpl": ("mileage_kmpl", "mileage"),
     "max_mileage_km_per_kg": ("mileage_km_per_kg", "CNG mileage"),
 }
-UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
+UNRATED_SAFETY_LABEL = "No crash-test rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
 REFERENCE_LENGTH_TOLERANCE = 0.08
 

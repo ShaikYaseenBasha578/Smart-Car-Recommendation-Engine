@@ -81,6 +81,8 @@ def _spec_reason(crit: str, row: pd.Series, value: float, intent: Any) -> Option
         if row["esc"] is True:
             parts.append("ESC")
             fields.append("esc")
+        if is_unknown(row["safety_stars_adult"]) and parts:
+            parts.append("no crash-test rating")      # never leave an unrated car's safety line sounding rated
         return {"text": "Safety: " + ", ".join(parts), "fields": fields} if parts else None
     if crit == "running_cost":
         fuel = row["fuel_type"]

@@ -73,7 +73,7 @@ const FEATURE_LABELS = {
     android_auto: "Android Auto",
     apple_carplay: "Apple CarPlay"
 };
-const NO_RATING_LABEL = "No Bharat NCAP rating on record";
+const NO_RATING_LABEL = "No crash-test rating on record";
 const MAX_REASONS = 4;
 const RIGHT_AT_BUDGET = 25000;   // within ₹25k of the user's max reads as "right at" it
 const MIN_FOR_STANDOUTS = 3;     // "…here" comparisons need at least this many results

@@ -29,7 +29,7 @@ from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
 
 APP_ROOT = Path(__file__).resolve().parents[2]
-UNRATED_SAFETY_LABEL = "No Bharat NCAP rating on record"
+UNRATED_SAFETY_LABEL = "No crash-test rating on record"
 TRANSMISSION_LABELS = {
     "manual": "Manual", "imt": "Manual (iMT, clutchless)", "amt": "Automatic (AMT)", "dct": "Automatic (DCT)",
     "cvt": "Automatic (CVT)", "e_cvt": "Automatic (e-CVT)", "torque_converter": "Automatic (torque converter)",

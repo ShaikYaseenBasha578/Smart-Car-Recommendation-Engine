@@ -328,10 +328,11 @@ def _safety(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -
     # prior = ONE STAR BELOW the segment median of known ratings, floored at 3 stars (config), so an unrated car never
     # outranks an otherwise identical rated car at the median
     med = ref.median("stars", seg, allc) * 5.0
-    prior = ((med - config.CRASH_PRIOR_STARS_BELOW_MEDIAN).clip(lower=config.CRASH_PRIOR_FLOOR_STARS) / 5.0
-             ).where(known.isna())
+    cut = config.CRASH_PRIOR_UNTESTED_DISCOUNT_STARS
+    prior_stars = (med - config.CRASH_PRIOR_STARS_BELOW_MEDIAN).clip(lower=config.CRASH_PRIOR_FLOOR_STARS) - cut
+    prior = (np.minimum(prior_stars, med - cut).clip(lower=0.0) / 5.0).where(known.isna())
     fields.append(("safety_stars_adult", stars, known.fillna(prior), 3.0,
-                   "absolute (stars/5); unrated = one star below the segment median (floor 3) as a prior, still unknown for coverage",
+                   "absolute (stars/5); unrated = one star below the segment median (floor 3), minus a further half star for being untested (always below the median), as a prior, still unknown for coverage",
                    None, prior.notna(), None))
     airbags = df["airbags"].map(num)
     fields.append(("airbags", airbags, ref.percentile("airbags", airbags, seg, allc), 2.0, "segment percentile", None, None,
