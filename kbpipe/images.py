@@ -341,9 +341,11 @@ def default_run_dir(app_repo=None):
     return os.path.join(base, time.strftime("images_%Y%m%dT%H%M%SZ", time.gmtime()))
 
 
-def run(app_repo, oem_dir, oem_new_dir, run_dir=None, only=None, top_n=TOP_N):
+def run(app_repo, oem_dir, oem_new_dir, run_dir=None, only=None, top_n=TOP_N, prefill=True, apply_repo=None):
     """Stage entry: list models without an image, extract and rank candidates, write candidates, contact sheet
-    and picks.json into run_dir. Returns the picks dict. Never touches the app repo or the brochure folders."""
+    and picks.json into run_dir. Returns the picks dict. Never touches the app repo or the brochure folders.
+    prefill=False leaves every choice empty (a person always picks). apply_repo is the repo recorded in picks.json for a later
+    --apply when the catalogue was read from somewhere else (the update's scratch clone)."""
     app_repo = os.path.expanduser(app_repo)
     run_dir = run_dir or default_run_dir()
     os.makedirs(os.path.join(run_dir, "candidates"), exist_ok=True)
@@ -374,13 +376,13 @@ def run(app_repo, oem_dir, oem_new_dir, run_dir=None, only=None, top_n=TOP_N):
                             "size": [c["width"], c["height"]], "text_frac": round(c["text_frac"], 3),
                             "pdf": c["pdf"], "pdf_sha1": sha1_file(c["pdf"])})
         conf = confidence(top)
-        confident = bool(top) and conf >= CONF_HIGH and (len(top) == 1 or top[0]["score"] - top[1]["score"] >= CONF_LEAD)
+        confident = prefill and bool(top) and conf >= CONF_HIGH and (len(top) == 1 or top[0]["score"] - top[1]["score"] >= CONF_LEAD)
         picks[key] = {"make": make, "model": model, "body_type": body, "candidates": entries,
                       "choice": 1 if confident else None, "crop": None, "confidence": conf,
                       "needs_human": not confident,
                       "note": "" if confident else "low confidence or no candidate: choose 1-3 by eye, or leave null to keep the placeholder"}
     with open(os.path.join(run_dir, "picks.json"), "w", encoding="utf-8") as f:
-        json.dump({"app_repo": app_repo, "no_brochure": no_brochure, "picks": picks}, f, indent=1, ensure_ascii=False)
+        json.dump({"app_repo": os.path.expanduser(apply_repo or app_repo), "no_brochure": no_brochure, "picks": picks}, f, indent=1, ensure_ascii=False)
     write_contact_sheet(run_dir, picks, no_brochure)
     return {"run_dir": run_dir, "picks": picks, "no_brochure": no_brochure}
 
@@ -479,11 +481,15 @@ def apply_picks(picks_path, app_repo=None, replace=False):
 
 
 # ---------------------------------------------------------------- stage hook and CLI
-def stage(cfg, run_dir, write=False, picks_path=None, replace=False):
-    """Hook for `kbpipe update`: after the brochure stage, before export. No-write: candidates only."""
-    res = run(cfg["app_repo"], cfg["oem_dir"], cfg["oem_new_dir"], run_dir=os.path.join(run_dir, "images"))
+def stage(cfg, run_dir, write=False, picks_path=None, replace=False, catalogue_repo=None):
+    """Hook for `kbpipe update`, after the export so models added in this update are seen. Candidates only: the measured
+    top pick matched a by-eye choice for 7 of 28 models, so no choice is pre-filled and a person always picks.
+    catalogue_repo: where the fresh catalogue is (the update's scratch clone); picks are applied to cfg["app_repo"]."""
+    res = run(catalogue_repo or cfg["app_repo"], cfg["oem_dir"], cfg["oem_new_dir"], run_dir=os.path.join(run_dir, "images"),
+              prefill=False, apply_repo=cfg["app_repo"])
     out = {"run_dir": res["run_dir"], "models": len(res["picks"]), "no_brochure": res["no_brochure"],
-           "need_human": sorted(k for k, p in res["picks"].items() if p["needs_human"])}
+           "need_human": sorted(k for k, p in res["picks"].items() if p["needs_human"] and p["candidates"]),
+           "no_candidate": sorted(k for k, p in res["picks"].items() if not p["candidates"])}
     if write and picks_path:
         out["apply"] = apply_picks(picks_path, cfg["app_repo"], replace=replace)
     return out

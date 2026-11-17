@@ -1,7 +1,7 @@
 """`kbpipe update`: the whole update (KB and app) as one resumable chain of stages. See knowledge_base/reports/KB_UPDATE_COMMAND_PLAN.md.
 
 This module is the runner: the stage list, the state file, stop / resume / redo / skip rules. What each stage does lives in
-update_stages.py (stages 1-7 and 12, which call the existing pipeline functions) and appstages.py (stages 8-11, the app repository).
+update_stages.py (stages 1-7, 12 and 13, which call the existing pipeline functions) and appstages.py (stages 8-11, the app repository).
 
 Rules (plan section 3):
   * a failed gate stops the update at that stage; later stages stay pending and do not run;
@@ -38,7 +38,8 @@ def default_stages():
             Stage("checks", 9, "App checks: tests, evaluation, golden files", appstages.checks),
             Stage("pages", 10, "Project pages", appstages.pages),
             Stage("pr", 11, "Branch, commit, push, pull request", appstages.pull_request),
-            Stage("summary", 12, "Final report", S.summary, always=True)]
+            Stage("images", 12, "Photo candidates for models without one", S.images),
+            Stage("summary", 13, "Final report", S.summary, always=True)]
 
 
 def utc():

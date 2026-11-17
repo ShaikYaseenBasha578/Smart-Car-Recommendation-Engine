@@ -1,4 +1,4 @@
-"""Stages 1-7 and 12 of `kbpipe update`. Each takes the runner's Ctx and returns {"status", "result", "run_dir", "data", "warnings"}.
+"""Stages 1-7, 12 and 13 of `kbpipe update`. Each takes the runner's Ctx and returns {"status", "result", "run_dir", "data", "warnings"}.
 They call the existing functions (pipeline.run, reviews.run, audit.run ...) directly; none of them shells out."""
 import hashlib
 import json
@@ -272,6 +272,31 @@ def audit(ctx):
 
 
 # ------------------------------------------------------------------ 12
+# ------------------------------------------------------------------ 12
+def images(ctx):
+    """Photo candidates from the makers' brochures on disk for catalogue models that have no photo. Local files only: nothing is
+    fetched, no model is called, and nothing is written outside the run folder. A person picks; `python -m kbpipe.images --apply`
+    then writes the app's image and manifest row."""
+    try:
+        from . import images as I
+    except ImportError as ex:
+        return {"status": SKIPPED, "result": "skipped: %s is not installed (pip install -r kbpipe/requirements.txt)" % (getattr(ex, "name", None) or ex),
+                "warnings": ["photo candidates were not prepared: %s" % ex]}
+    ws = ctx.data("export").get("workspace")
+    repo = ws if ws and os.path.isdir(ws) else os.path.expanduser(ctx.cfg["app_repo"])
+    if not os.path.exists(I.manifest_path(repo)):
+        return {"status": SKIPPED, "result": "skipped: no data/image_manifest.csv in %s" % repo}
+    if not I.models_without_image(repo):
+        return {"status": DONE, "result": "every catalogue model has a photo", "data": {"models": 0}}
+    out = I.stage(ctx.cfg, ctx.update_dir, catalogue_repo=repo)
+    folder = out["run_dir"]
+    data = {"models": out["models"], "need_human": out["need_human"], "no_candidate": out["no_candidate"], "no_brochure": out["no_brochure"],
+            "contact_sheet": os.path.join(folder, "contact_sheet.html"), "picks": os.path.join(folder, "picks.json")}
+    return {"status": DONE, "run_dir": folder, "data": data,
+            "result": "%d model(s) have candidates for you to pick from; %d have a brochure with no usable picture; %d have no brochure on disk" % (
+                len(out["need_human"]), len(out["no_candidate"]), len(out["no_brochure"]))}
+
+
 def _tsv_count(path, col):
     out = {}
     try:
@@ -396,7 +421,14 @@ def summary(ctx):
         if mdf:
             L.append("- %s: %d review item(s) in `%s` (source: `%s`). Tick them, then run `kbpipe apply-review <file>` and `%s`." % (
                 n, len(pend.get("items") or []), rel(os.path.join(ctx.sub_dir(n), mdf[0])), rel(os.path.join(ctx.sub_dir(n), "pending.json")), "./bin/kbpipe update --resume --redo export --label %s" % ctx.label))
-    if not revs:
+    im = ctx.data("images")
+    if im.get("need_human"):
+        L.append("- Photos: %d model(s) have brochure pictures to choose from. Open `%s`, set \"choice\" to 1, 2 or 3 in `%s` (leave null to keep the placeholder), "
+                 "then run `python -m kbpipe.images --apply %s` and open a pull request for the app." % (
+                     len(im["need_human"]), rel(im["contact_sheet"]), rel(im["picks"]), im["picks"]))
+    if im.get("no_brochure") or im.get("no_candidate"):
+        L.append("- Photos: no brochure picture for %s; they keep the placeholder." % ", ".join((im.get("no_brochure") or []) + (im.get("no_candidate") or [])))
+    if not revs and not im.get("need_human"):
         L.append("- No review file was produced yet.")
     L += ["", "## Pull request", ""]
     pr = ctx.data("pr")

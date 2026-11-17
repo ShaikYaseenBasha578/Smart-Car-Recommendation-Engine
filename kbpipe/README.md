@@ -59,7 +59,8 @@ One command brings the KB up to date with the market and prepares the app to sho
 | 9 checks | the app's tests and evaluation; golden snapshots regenerated only when the catalogue alone moved | no |
 | 10 pages | project pages regenerated (`--app-base /`) and synced | no |
 | 11 pr | branch `data/kb-update-<date>` from `origin/main`, commit of data, golden files and project pages only, push, pull request | no |
-| 12 summary | `UPDATE_SUMMARY.md` | no |
+| 12 images | photo candidates from the makers' brochures on disk for catalogue models without a photo: a contact sheet and `picks.json` in `update_<date>/images/`. Nothing is fetched and no choice is pre-filled; you pick | no |
+| 13 summary | `UPDATE_SUMMARY.md` | no |
 
 Folder: `knowledge_base/runs/update_<date>/` holds `state.json` (per stage: pending / done / failed / skipped / stopped_on_limit, start and finish times, KB hash before and after, the sub-run folder, one line of result) and `UPDATE_SUMMARY.md`. Each stage's own run folder is `knowledge_base/runs/update_<date>_<stage>/`.
 
@@ -92,6 +93,7 @@ Folder: `knowledge_base/runs/update_<date>/` holds `state.json` (per stage: pend
 
 - **The review file** (`REVIEW_<run>.md` in the specs run folder): tick items, then `kbpipe apply-review <file>`, then `./bin/kbpipe update --resume --redo export` to refresh stages 8 to 11. Changes to existing values, removals and held models always go there.
 - **Merging the pull request.** Merging is the deploy and stays your click.
+- **Choosing photos.** Open `update_<date>/images/contact_sheet.html`, set `"choice"` to 1, 2 or 3 in `picks.json` (null keeps the placeholder), then `python -m kbpipe.images --apply <picks.json>` writes the image and manifest row into the app worktree for you to commit. The automatic ranking matched a by-eye choice for only 7 of 28 models, so it never chooses for you.
 - Pushing the `kb/kbpipe` branch of this repository to GitHub.
 
 ### Where it stops and how to continue

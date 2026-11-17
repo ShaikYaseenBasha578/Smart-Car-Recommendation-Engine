@@ -457,3 +457,34 @@ def test_real_publisher_never_forces_or_merges(monkeypatch, tmp_path):
     flat = [a for c in seen for a in c]
     assert seen[0][:3] == ["git", "push", "-u"] and not any(a in ("--force", "-f", "--force-with-lease", "merge") for a in flat)
     assert seen[1][:3] == ["gh", "pr", "create"]
+
+
+# ------------------------------------------------------------------ stage 12: photo candidates
+def test_images_stage_is_after_pr_and_before_summary():
+    names = [s.name for s in update.default_stages()]
+    assert names.index("pr") < names.index("images") < names.index("summary") and names[-1] == "summary"
+    assert len({s.num for s in update.default_stages()}) == len(names)
+
+
+def test_images_stage_reads_the_export_workspace_and_never_prefills(tmp_path, monkeypatch):
+    from kbpipe import images as I, update_stages as S
+    ws, app = tmp_path / "ws", tmp_path / "app"
+    for d in (ws, app):
+        (d / "data" / "catalogue_v3").mkdir(parents=True)
+        (d / "data" / "image_manifest.csv").write_text("make,model,filename,source,license,attribution\nTata,Nexon,tata_nexon.webp,x,y,z\n")
+    (ws / "data" / "catalogue_v3" / "catalogue.csv").write_text("make,model,body_type\nTata,Nexon,SUV\nTata,Sierra,SUV\n")
+    (app / "data" / "catalogue_v3" / "catalogue.csv").write_text("make,model,body_type\nTata,Nexon,SUV\n")
+    seen = {}
+
+    def fake_run(repo, oem, oem_new, run_dir=None, only=None, top_n=3, prefill=True, apply_repo=None):
+        seen.update(repo=repo, prefill=prefill, apply_repo=apply_repo)
+        return {"run_dir": run_dir, "no_brochure": [], "picks": {"tata_sierra": {"needs_human": True, "candidates": [{"file": "c1.jpg"}]}}}
+    monkeypatch.setattr(I, "run", fake_run)
+    cfg = {"app_repo": str(app), "oem_dir": str(tmp_path), "oem_new_dir": str(tmp_path), "runs_dir": str(tmp_path / "runs")}
+    st = {"label": "u", "stages": {"export": {"data": {"workspace": str(ws)}}}, "created": "2026-11-17T00:00:00Z"}
+    ctx = update.Ctx(cfg, str(tmp_path / "upd"), {"no_write": True}, st, lambda *_: None, [])
+    r = S.images(ctx)
+    assert r["status"] == update.DONE and r["data"]["need_human"] == ["tata_sierra"]
+    assert seen == {"repo": str(ws), "prefill": False, "apply_repo": str(app)}     # the fresh catalogue is read; picks go to the real app repo
+    st["stages"]["export"] = {}
+    assert S.images(ctx)["result"] == "every catalogue model has a photo"             # fallback: the app repo, where Sierra is not listed
