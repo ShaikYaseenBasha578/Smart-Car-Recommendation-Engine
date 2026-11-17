@@ -1,0 +1,103 @@
+{
+ "created": "2026-11-17T05:53:54Z",
+ "halt": null,
+ "kb_sha1_start": "efaa259c254b030c508d90cf1cc28655c317b966",
+ "label": "update_images_check",
+ "opts": {
+  "max_models": null,
+  "no_pr": false,
+  "no_verify": false,
+  "no_write": true,
+  "quick": false,
+  "skip_stages": null
+ },
+ "stages": {
+  "audit": {
+   "num": 7,
+   "status": "pending",
+   "title": "Audit of what changed"
+  },
+  "brochures": {
+   "num": 3,
+   "status": "pending",
+   "title": "Brochures for new and blank-heavy models"
+  },
+  "checks": {
+   "num": 9,
+   "status": "pending",
+   "title": "App checks: tests, evaluation, golden files"
+  },
+  "export": {
+   "num": 8,
+   "status": "pending",
+   "title": "Export catalogue and review files to the app"
+  },
+  "images": {
+   "data": {
+    "contact_sheet": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_images_check/images/contact_sheet.html",
+    "models": 1,
+    "need_human": [],
+    "no_brochure": [
+     "MG/Hector Plus",
+     "Mahindra/Bolero Neo Plus",
+     "Nissan/Tekton"
+    ],
+    "no_candidate": [
+     "mahindra_thar_roxx"
+    ],
+    "picks": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_images_check/images/picks.json"
+   },
+   "finished": "2026-11-17T05:53:54Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 12,
+   "result": "0 model(s) have candidates for you to pick from; 1 have a brochure with no usable picture; 3 have no brochure on disk",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_images_check/images",
+   "seconds": 0.2,
+   "started": "2026-11-17T05:53:54Z",
+   "status": "done",
+   "title": "Photo candidates for models without one"
+  },
+  "pages": {
+   "num": 10,
+   "status": "pending",
+   "title": "Project pages"
+  },
+  "pr": {
+   "num": 11,
+   "status": "pending",
+   "title": "Branch, commit, push, pull request"
+  },
+  "preflight": {
+   "num": 1,
+   "status": "pending",
+   "title": "Preflight"
+  },
+  "reviews": {
+   "num": 4,
+   "status": "pending",
+   "title": "Reviews: expert scores and owner ratings"
+  },
+  "saved": {
+   "num": 6,
+   "status": "pending",
+   "title": "Saved Team-BHP pages"
+  },
+  "specs": {
+   "num": 2,
+   "status": "pending",
+   "title": "Specs: new models and variants, prices and specs"
+  },
+  "summary": {
+   "num": 13,
+   "status": "pending",
+   "title": "Final report"
+  },
+  "text": {
+   "num": 5,
+   "status": "pending",
+   "title": "Review text: notes and owner themes"
+  }
+ },
+ "version": 1
+}

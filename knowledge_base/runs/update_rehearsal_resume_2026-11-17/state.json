@@ -1,0 +1,219 @@
+{
+ "app_branch": "data/kb-update-2026-11-16",
+ "created": "2026-11-16T20:21:43Z",
+ "halt": null,
+ "kb_sha1_preflight": "efaa259c254b030c508d90cf1cc28655c317b966",
+ "kb_sha1_start": "efaa259c254b030c508d90cf1cc28655c317b966",
+ "label": "update_rehearsal_resume_2026-11-17",
+ "opts": {
+  "max_models": null,
+  "no_pr": false,
+  "no_verify": true,
+  "no_write": true,
+  "quick": true,
+  "skip_stages": [
+   "checks"
+  ]
+ },
+ "resumes": [
+  {
+   "at": "2026-11-16T20:22:16Z",
+   "kb_sha1": "efaa259c254b030c508d90cf1cc28655c317b966"
+  },
+  {
+   "at": "2026-11-16T23:32:05Z",
+   "kb_sha1": "efaa259c254b030c508d90cf1cc28655c317b966"
+  }
+ ],
+ "stages": {
+  "audit": {
+   "finished": "2026-11-16T23:32:06Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 7,
+   "result": "--no-verify: no verifier calls, so nothing to audit",
+   "seconds": 0.0,
+   "started": "2026-11-16T23:32:06Z",
+   "status": "skipped",
+   "title": "Audit of what changed"
+  },
+  "brochures": {
+   "num": 3,
+   "result": "skipped by --quick",
+   "status": "skipped",
+   "title": "Brochures for new and blank-heavy models"
+  },
+  "checks": {
+   "num": 9,
+   "result": "skipped by --skip-stages",
+   "status": "skipped",
+   "title": "App checks: tests, evaluation, golden files"
+  },
+  "export": {
+   "data": {
+    "baseline_golden_ok": true,
+    "branch": "data/kb-update-2026-11-16",
+    "changed_files": [
+     "data/catalogue_v3/catalogue.csv",
+     "data/catalogue_v3/catalogue_meta.json"
+    ],
+    "eval_before": {
+     "mrr": 0.7884,
+     "recall_at_8": 0.755,
+     "verified": "180 of 193",
+     "zero_violations": "193 of 193"
+    },
+    "kb_copy": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17/app/kb_read_copy.db",
+    "workspace": "/Users/shaikyaseenbasha/carrec_kb_cache/update_ws/update_rehearsal_resume_2026-11-17/app"
+   },
+   "finished": "2026-11-16T20:30:36Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 8,
+   "result": "exported into the workspace (2 file(s) differ from origin/main: data/catalogue_v3/catalogue.csv, data/catalogue_v3/catalogue_meta.json)",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17/app",
+   "seconds": 499.0,
+   "started": "2026-11-16T20:22:16Z",
+   "status": "done",
+   "title": "Export catalogue and review files to the app"
+  },
+  "pages": {
+   "data": {
+    "pages_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17/app/pages"
+   },
+   "finished": "2026-11-16T20:30:40Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 10,
+   "result": "project pages regenerated and synced into the workspace (updated: index.html, pipeline.html, kb.html, engine.html)",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17/app/pages",
+   "seconds": 4.0,
+   "started": "2026-11-16T20:30:36Z",
+   "status": "done",
+   "title": "Project pages"
+  },
+  "pr": {
+   "data": {
+    "branch": "data/kb-update-2026-11-16",
+    "commit": "dba5853",
+    "files": [
+     "data/catalogue_v3/catalogue.csv",
+     "data/catalogue_v3/catalogue_meta.json",
+     "project_pages/engine.html",
+     "project_pages/index.html",
+     "project_pages/kb.html",
+     "project_pages/pipeline.html"
+    ],
+    "url": null
+   },
+   "finished": "2026-11-16T20:30:41Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 11,
+   "result": "no-write: committed 6 file(s) to data/kb-update-2026-11-16 in the scratch workspace only (dba5853); nothing pushed, no pull request",
+   "seconds": 0.3,
+   "started": "2026-11-16T20:30:40Z",
+   "status": "done",
+   "title": "Branch, commit, push, pull request"
+  },
+  "preflight": {
+   "data": {
+    "disk_free_gb": 30.5,
+    "kb_sha1": "efaa259c254b030c508d90cf1cc28655c317b966",
+    "llm_budget_today": {
+     "claude_opus": "51 of 1000 calls today",
+     "claude_sonnet": "34 of 1000 calls today",
+     "gemini_alt": "17 of 3000 calls today"
+    }
+   },
+   "finished": "2026-11-16T20:21:44Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 1,
+   "result": "KB free, SHA-1 efaa259c, 31 GB free",
+   "seconds": 0.7,
+   "started": "2026-11-16T20:21:43Z",
+   "status": "done",
+   "title": "Preflight",
+   "warnings": []
+  },
+  "reviews": {
+   "data": {
+    "llm_calls": 0,
+    "models": 0,
+    "numbers_check": {},
+    "ops": 0,
+    "run": "update_rehearsal_resume_2026-11-17_reviews_2",
+    "text": {},
+    "wrote": false
+   },
+   "finished": "2026-11-16T23:32:06Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 4,
+   "previous": {
+    "finished": "2026-11-16T20:22:09Z",
+    "result": "0 model(s) read, 0 change(s) staged; no numbers re-check",
+    "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17_reviews",
+    "started": "2026-11-16T20:22:07Z",
+    "status": "done"
+   },
+   "result": "0 model(s) read, 0 change(s) staged; no numbers re-check",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17_reviews_2",
+   "seconds": 0.8,
+   "started": "2026-11-16T23:32:05Z",
+   "status": "done",
+   "title": "Reviews: expert scores and owner ratings",
+   "warnings": []
+  },
+  "saved": {
+   "num": 6,
+   "result": "skipped by --quick",
+   "status": "skipped",
+   "title": "Saved Team-BHP pages"
+  },
+  "specs": {
+   "data": {
+    "new_models": 16,
+    "ops": 1825,
+    "review_items": 27,
+    "robots_blocked": [],
+    "run": "update_rehearsal_resume_2026-11-17_specs",
+    "wrote": false
+   },
+   "finished": "2026-11-16T20:22:07Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 2,
+   "result": "discovery DISCONTINUED_CANDIDATE 1, EXISTING 91, NEW_MODEL 16, NOT_ON_SALE 289, ONE_SITE_ONLY 14, OUT_OF_SCOPE 11, REVIEW_MODEL 1, UPCOMING 88; 7 model(s) processed, 1825 change(s) staged only",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17_specs",
+   "seconds": 22.4,
+   "started": "2026-11-16T20:21:44Z",
+   "status": "done",
+   "title": "Specs: new models and variants, prices and specs",
+   "warnings": []
+  },
+  "summary": {
+   "data": {
+    "path": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17/UPDATE_SUMMARY.md"
+   },
+   "finished": "2026-11-16T23:32:30Z",
+   "kb_sha1_after": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "kb_sha1_before": "efaa259c254b030c508d90cf1cc28655c317b966",
+   "num": 12,
+   "result": "written",
+   "run_dir": "/Users/shaikyaseenbasha/carrec_worktrees/kb-kbpipe/knowledge_base/runs/update_rehearsal_resume_2026-11-17",
+   "seconds": 22.9,
+   "started": "2026-11-16T23:32:06Z",
+   "status": "done",
+   "title": "Final report"
+  },
+  "text": {
+   "num": 5,
+   "result": "skipped by --quick",
+   "status": "skipped",
+   "title": "Review text: notes and owner themes"
+  }
+ },
+ "version": 1
+}

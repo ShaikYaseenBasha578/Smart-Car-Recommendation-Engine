@@ -352,3 +352,29 @@ As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
 **Verifier:** 100.0% (23 of 23; 0 unreachable, 0 verifier errors).
 **Not done / held:** 320 review item(s) in runs/2026-11-13_2/REVIEW_2026-11-13_2.md.
 **Prod SHA-1:** `64ac467b…` → `60115040…`. Backup `pre_kbpipe_20261113_2_20261113T210607Z.db`, history tag `kb-run-2026-11-13_2`.
+
+## kbpipe reviews reviews_2026-11-15
+- 598 assessment rows, 650 owner_rating rows
+- KB SHA-1 a3388a46da56497ff97b98168df83ba656ee84bc -> bee4f613b123478ea5d0755de3d258d60b86828b; backup /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_reviews_20261115_20261114T191405Z.db
+
+## kbpipe reviews reviews_text_write_2026-11-15
+- 622 assessment rows, 650 owner_rating rows, 271 owner_theme rows
+- KB SHA-1 bee4f613b123478ea5d0755de3d258d60b86828b -> 26d27af0a43eb411d4b71c7256adb85c02071810; backup /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_reviews_text_write_20261115_20261115T060032Z.db
+
+## kbpipe reviews reviews_notes_write_2026-11-15
+- 622 assessment rows, 650 owner_rating rows, 271 owner_theme rows
+- KB SHA-1 26d27af0a43eb411d4b71c7256adb85c02071810 -> d84a94abc7c1cbb8990d2c1dac6af4b2fa864802; backup /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_reviews_notes_write_20261115_20261115T082158Z.db
+
+## kbpipe brochure_new_models_write_2026-11-16 — 2026-11-16 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 2201 cells written from two agreeing sites; 5094 existing cells given confirming evidence. Schema: none.
+**Verifier:** no checked cells.
+**Not done / held:** 11 review item(s) in runs/brochure_new_models_write_2026-11-16/REVIEW_brochure_new_models_write_2026-11-16.md.
+**Prod SHA-1:** `d84a94ab…` → `ae55f539…`. Backup `pre_kbpipe_brochure_new_models_write_20261116_20261116T083213Z.db`, history tag `kb-run-brochure_new_models_write_2026-11-16`.
+
+## kbpipe update_2026-11-17_specs — 2026-11-17 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 0 cells written from two agreeing sites; 1825 existing cells given confirming evidence. Schema: none.
+**Verifier:** no checked cells.
+**Not done / held:** 27 review item(s) in runs/update_2026-11-17_specs/REVIEW_update_2026-11-17_specs.md.
+**Prod SHA-1:** `efaa259c…` → `7e5478c5…`. Backup `pre_kbpipe_update_20261117_specs_20261117T060222Z.db`, history tag `kb-run-update_2026-11-17_specs`.
