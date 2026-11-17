@@ -1,0 +1,172 @@
+# CarRec handover (rewritten 17 Nov 2026, final Fable update)
+
+For whoever continues this work (Opus or a new session). Read this file first, then the documents it names. Nothing here depends on chat history. The file name keeps its old date so existing references still work.
+
+## 0. State in one minute
+
+- **Live site:** carrec.onrender.com, deployed by Render from `main` of the app repository. Recommender v3 on the 1,464-variant catalogue is the default. Pull requests 30/31, 32, 33, 34 and 35 are merged.
+- **KB:** 92 models, 1,464 variants, three evidence layers (specs and brochures, expert reviews, owner ratings and themes). Production file `knowledge_base/carrec_kb.db` in the main checkout.
+- **Pipeline:** `kbpipe` in `~/carrec_worktrees/kb-kbpipe`, branch `kb/kbpipe`, **pushed to GitHub on 17 Nov** as its own branch (not merged into `main`). One command, `./bin/kbpipe update`, runs 13 stages from discovery to a pull request.
+- **First real update done (17 Nov):** `./bin/kbpipe update --quick` ran all 13 stages and opened pull request 35 (merged by the owner). It added no models. See section 3.
+- **A copy of this file** is on GitHub in branch `kb/kbpipe` (`HANDOVER.md` at the root), as of 17 Nov.
+- **The real to-do list** is section 6. The blind audit (`knowledge_base/reports/BLIND_AUDIT_2026-11-16.md`) is the honest outside view; read its top ten findings.
+
+## 1. Rules the owner set
+
+- **Plan first.** Every new feature gets a written plan and the owner's approval before any code. Bug fixes against an approved plan need no new plan.
+- **Who does what.** The strongest model designs and reviews. Sonnet subagents write code and do bulk work. Free models (Gemini, Groq) where they work. Haiku is never a verifier (it gave false mismatches). A checker is never the same backend as the writer.
+- **Reuse.** Use what is on disk before building or downloading anything.
+- **UI.** Load the `impeccable` skill for all UI work, including in subagents.
+- **Never** force-push, merge a pull request, commit to `main`, or delete files without the owner's approval. The owner clicks merge, and merging to `main` is the deploy.
+- **KB policy** P1–P18 is in `CLAUDE.md` (repo root of the main checkout). The production KB is opened only through a controlled write: backup, script, dry run on a copy, idempotency re-run, apply, integrity check, compare.
+- **P11 side files.** Any `-wal` or `-shm` file beside the production KB means stop and ask. See section 5, item 1.
+- **Never write under** `knowledge_base/sources/oem/`.
+- **API keys** come from environment variables, never from code. No paid services without approval.
+- **Sources:** section 8.
+- **Images:** only from the maker's own brochure PDFs on disk. Nothing is downloaded from the web.
+- **GitHub branches** need tidying (about 30 local branches in the app repository). Lowest priority; never delete or merge without asking.
+- The paper has a frozen KB snapshot and is not the focus.
+
+## 2. Where things are
+
+| What | Where |
+|---|---|
+| Main checkout | `~/Car_recommender_app/Flask Based App with Used Cars Function`, branch `paper/v0`. Holds the KB, backups, brochures, reports and this file |
+| KB (production, not in git) | `knowledge_base/carrec_kb.db`. SHA-1 `7e5478c54f966c8dde64ef294d2463669da57483` after the 17 Nov update |
+| KB backups | `knowledge_base/backups/`. Latest: `pre_update_update_2026-11-17_20261117T060213Z.db`, before it `pre_safety_relink_20261116T191844Z.db` |
+| KB history | `~/carrec_kb_history` (local git, tags `kb-run-<date>`) |
+| Pipeline code | `~/carrec_worktrees/kb-kbpipe`, branch `kb/kbpipe`, head `353fd9b`, pushed to `origin/kb/kbpipe`. Docs: `kbpipe/README.md`. Own virtualenv `.venv-kbpipe`, created by `bin/kbpipe` |
+| Pipeline run folders | `~/carrec_worktrees/kb-kbpipe/knowledge_base/runs/<label>/` (`RUN_SUMMARY.md`, `changeset.json`, review file). Summaries and review files are committed; change-sets, logs and database copies are local only |
+| App repository | `~/carrec_worktrees/recsys-v3`, GitHub `ShaikYaseenBasha578/Smart-Car-Recommendation-Engine`. The worktree sits on `feat/new-model-images` (merged); `origin/main` is the truth |
+| Update scratch clone | `~/carrec_kb_cache/update_ws/<label>/app`. Stages 8–11 work here, never in the app worktree |
+| Plans | `knowledge_base/reports/`: `KBPIPE_DESIGN_SPEC.md`, `RECOMMENDER_DESIGN_PLAN.md`, `REVIEW_LAYERS_PLAN.md` (§9a text notes and themes), `KB_UPDATE_COMMAND_PLAN.md` (approved, decisions U1–U5) |
+| Surveys | `REVIEW_LAYERS_SITE_SURVEY.md`, `REVIEW_LAYERS_ALTERNATIVES_SURVEY.md` |
+| Audit | `knowledge_base/reports/BLIND_AUDIT_2026-11-16.md` |
+| Engine documents | in the app repository: `docs/V3_REVIEW_2026-11-14.md`, `docs/V3_SHORTLIST_GAP_2026-11-15.md`, `docs/API_AND_DEPLOY.md`, `docs/AUDIT_FIX_2026-11-16_CRASH_RATINGS.md` |
+| Evaluation | app repository `eval/run_eval.py`, results in `eval/results/` (`final_*.json`, `audit_fix_*.json`) |
+| Owner's shortlists | `eval/shortlist_sheet.csv` (40, partly stale). Refresh sheet for the owner to fill: `recsys_eval/shortlist_refresh_sheet.csv` in the main checkout (22 queries) |
+| Project pages | `/project`, `/project/pipeline`, `/project/knowledge-base`, `/project/engine` in the app, served from `project_pages/`. Generated by `python -m kbpipe.dashboard`, copied in by `scripts/sync_project_pages.py --src <app_build>` |
+| Memory notes | `~/.claude/projects/-Users-shaikyaseenbasha-Car-recommender-app-Flask-Based-App-with-Used-Cars-Function/memory/` |
+
+## 3. The first real update (17 Nov, finished)
+
+Command, from `~/carrec_worktrees/kb-kbpipe`: `./bin/kbpipe update --quick --label update_2026-11-17`. All 13 stages finished with exit code 0 in about 25 minutes. Report: `knowledge_base/runs/update_2026-11-17/UPDATE_SUMMARY.md`.
+
+| Stage | Result |
+|---|---|
+| 1 preflight | Backup written |
+| 2 specs | KB `efaa259c` → `7e5478c5`. 0 models, 0 variants, 0 cells written. 1,825 existing cells given confirming evidence. 27 review items |
+| 3, 5, 6 | Skipped by `--quick` |
+| 4 reviews | Nothing to refresh |
+| 7 audit | 154 cells: 153 match, 0 mismatch, 1 unreachable. First audit run inside `update` |
+| 8 export | Only `catalogue_meta.json` differs from `origin/main` |
+| 9 checks | 916 tests pass, 1 skipped. Evaluation unchanged: 193 of 193, verified 180 of 193 |
+| 10 pages | Regenerated and synced |
+| 11 pull request | **First real run. Opened https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/35** (catalogue timestamp and the four project pages). Not merged |
+| 12 images | No candidates: Thar Roxx's brochure has no usable picture; three models have no brochure |
+| 13 summary | Written |
+
+What it showed:
+
+- **The 16 "new models" cannot be added by the current rules.** Discovery lists them every run (ZR-V, Creta Electric, Syros EV, Comet EV, Hector Tomahawk EV and PHEV, ZS EV, BE 6 Sporteq, XUV 3XO EV, XUV400, Invicto, X-Trail, Tigor EV, Camry, Fortuner Legender, Urban Cruiser Ebella). On 13 Nov each got "no variant could be added": no variant of theirs links on both sites (mostly EVs whose variant names differ between sites, for example "34.5 kWh" against "345 kWh"). The pipeline remembers them as handled and skips them silently while their listings are unchanged. An earlier message to the owner said this update would add them; that was wrong. Adding them needs a decision: looser name matching for battery sizes, or accepting one site plus a brochure. That is a design change and needs a plan.
+- **The summary line is misleading.** Stage 2 prints "NEW_MODEL 16" and "1825 change(s) written", which reads as new data. They are 16 known-unaddable models and 1,825 confirmations. Worth rewording.
+- **Review file:** `knowledge_base/runs/update_2026-11-17_specs/REVIEW_update_2026-11-17_specs.md`, 27 items: 7 facelift flags (Elevate, Thar, Baleno, Brezza, Slavia, Glanza, Hilux), price changes on Syros (15 variants) and Elevate (7), 4 new Elevate ZX Plus variants, 27 Scorpio-N variants no longer listed, Tigor as a discontinued candidate.
+- Side files were left beside the KB after the write; fixed and removed the same day. See section 5, item 1.
+- `CLAUDE.md` production SHA line is updated. `KB_CHANGELOG.md` in the pipeline worktree has the update's entry (uncommitted).
+
+## 4. What exists
+
+### KB and pipeline
+- **Spec layer:** discovery and extraction from CarWale and CarDekho with no LLM, strict variant linking, reconciliation, gates (schema, provenance, rows, explained, reviews), safe write, review file for changes to existing values, independent verifier. Robots rules are checked on every fetch under the truthful identity `kbpipe/1.0 (personal research; contact via repository)`.
+- **Brochure layer** (`kbpipe/brochure.py`): Sonnet reads, Opus checks the page image, then Gemini. 2,201 blank cells filled for 23 of the 30 new models; no existing value changed.
+- **Review layers** (`kbpipe reviews`): Autocar India expert scores (622 rows, 78 models), 496 notes and 342 quotes; CarWale owner ratings (650 rows, 88 models); owner themes (271 rows, 67 models). Tables `professional_assessment`, `owner_rating`, `owner_theme`.
+- **Crash ratings:** six Bharat NCAP tests linked on 17 Nov by `kbpipe/migrations/safety_relink_20261116.py` (143 variants gained ratings).
+- **Update command** (`kbpipe/update.py`, `update_stages.py`, `appstages.py`): 13 stages, `state.json`, flags `--quick --no-write --resume --redo --only-stages --skip-stages --max-models --no-pr --no-verify --label`.
+- **Image step** (`kbpipe/images.py`, stage 12): candidates from brochures on disk for models without a photo. It never pre-fills a choice, because its top pick matched a by-eye choice for 7 of 28 models. Apply with `python -m kbpipe.images --apply <picks.json>`, then commit in the app worktree and open a pull request.
+- **Tests:** 140 pass (`.venv-kbpipe/bin/python -m pytest kbpipe/tests -q`).
+- **All LLM answers are cached on disk**, so reruns repeat no call.
+
+### Recommender and app
+- **v3** (`services/recsys/`): weighted multi-criteria score; class weights spec 0.60, expert 0.25, owner 0.15; a blank is never a match and every unmet or unverified requirement is named on the card; unrated crash score sits between 3-star and 4-star; "cheapest" is a price ordering; best-scoring variant per model with "also available from". Old engine: `RANKER=current` and `CARREC_CATALOGUE_DIR=data`.
+- **Front end:** v3 card renderer in `static/script.js` and `static/style.css`, used when the response has `engine == "v3"`.
+- **API, Docker, CI:** `api_service/` (FastAPI), `Dockerfile`, `docker-compose.yml` (web 5001, API 8000), `.github/workflows/ci.yml`. Docker builds and passes health checks locally. **CI has never run:** GitHub says the account is locked for a billing issue.
+- **Photos:** 88 of 92 models. Thar Roxx, Hector Plus, Bolero Neo Plus and Tekton use the placeholder.
+- **Tests:** 916 pass, 1 skipped.
+
+### Measured numbers (new catalogue, before the 17 Nov update)
+
+| Measure | v3 | Old engine |
+|---|---|---|
+| Shortlist recall@8 | 0.755 | 0.715 |
+| Shortlist MRR | 0.788 | 0.832 |
+| Constraint satisfaction, main set | 193 of 193 | 193 of 193 |
+| Constraint satisfaction, second set | 104 of 106 | 104 of 106 |
+| Verified satisfaction, main set | 180 of 193 | 175 of 193 |
+| Verified satisfaction, second set | 94 of 106 | not recorded here |
+
+The shortlists are partly stale (none of the owner's picks is a new model), so the MRR gap says little until they are refreshed. The second query set is no longer unseen.
+
+Evidence behind KB cells: brochure 14.9%, two or more sites 44.4%, one site 4.5%, June import only 32.6%, none 3.7%. 772 of 1,464 variants have only June price evidence.
+
+## 5. Next steps, in order
+
+1. **Side files: fixed 17 Nov (commit `4c20215` on `kb/kbpipe`), not yet seen through a real write.** This machine's SQLite keeps `-wal` and `-shm` after a clean close. `kb.remove_side_files` now runs after every backup, checkpoint and write; it removes only an empty `-wal`, only when nothing holds the database, and checks the hash before and after. `kb.preflight` refuses any side file, as P11 says. 140 kbpipe tests pass. The two files beside the KB were removed with the owner's approval; hash unchanged at `7e5478c5…`, integrity ok. After the next real write, confirm nothing is left beside the KB. A script outside the pipeline (the `sqlite3` shell, DB Browser) will still leave them.
+2. **Pull request 35 is merged** (17 Nov). **Pull request 36 (`kb/kbpipe` → `main`) must be closed, not merged:** GitHub offered it after the branch was pushed. The branch comes from the KB side of the repository, conflicts with the app, and merging to `main` is the deploy. Closing it keeps the branch. The owner has been told; it was still open when this was written.
+3. **Plan how to add the 16 unaddable models** (section 3). Needs the owner's approval before any code. Cheapest option to propose first: normalise battery-size spellings ("34.5 kWh" and "345 kWh") in variant matching, then measure how many of the 16 link.
+4. **Reword the stage 2 summary line** so "NEW_MODEL 16" and "1825 changes written" cannot be read as new data.
+5. **Engine page** still says the verified-satisfaction figure is "being added"; the generator does not read it. Fix, regenerate, sync.
+6. **Apply the owner's review ticks** when they arrive, then `./bin/kbpipe update --resume --redo export --label update_2026-11-17`.
+7. **Run a full (non-quick) update.** It uses subscription allowance for brochures and review text and will stop on the 5-hour limit; `--resume` continues.
+
+Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CHANGELOG.md` and run summaries committed; `CLAUDE.md` production SHA line updated (that edit is uncommitted in the main checkout, like this file).
+
+## 6. Open work
+
+### Needs the owner
+- Fill `recsys_eval/shortlist_refresh_sheet.csv` (22 queries). Top item for judging the engine.
+- Clear the GitHub billing lock so CI can run. Checked 17 Nov: the billing page is clean (GitHub Free, $0, nothing due), yet every job fails with "your account is locked due to a billing issue". Adding address details without a card did not lift it (re-run at 07:41 UTC failed). Community reports say a valid card or PayPal on file, cancelling any pending Copilot trial, or a GitHub Support ticket (Billing category) clears it. CI on this public repository costs nothing once unlocked.
+- Tick the KB review file. Before this update: 1,174 differing cells including 500 prices, 187 unlisted variants, 36 duplicate groups. The newest file is `update_2026-11-17_specs/REVIEW_update_2026-11-17_specs.md`. Then `kbpipe apply-review <file>` and `./bin/kbpipe update --resume --redo export`.
+- Decide the Punch and Tekton crash links (test 32 lists CNG variants only; test 21's variant list says Duster).
+- Decide whether third-party notes and quotes stay on the public site.
+- Read the tables `EXPERT_ASPECT_CRITERIA` and `OWNER_THEME_CRITERIA` in `services/recsys/config.py`; they were the builder's judgement, and most themes map to value for budget.
+- Read Team-BHP's terms before saving any pages.
+- Decide on a key for the LLM query parser (off by default, unproven).
+- Approve the branch tidy-up.
+
+### KB and pipeline
+- 16 listed models cannot be added under the two-site rule (section 3). Needs a plan.
+- Brochures downloaded but unread: Sierra, Sierra EV, Tayron. No usable brochure: Sorento, Hector Plus, Bolero Neo Plus, Tekton.
+- No Autocar review for Sorento, Tigor, Venue N Line, i20 N Line, Creta N Line, Hector Plus; Thar's page lacks one aspect.
+- Team-BHP import (`--import-saved`, `--teambhp-links`) is tested only on a synthetic file.
+- A model-year dimension would resolve the held models (Seltos, Brezza, Baleno, WagonR, Jimny, Kylaq). It needs a schema change and has never been planned.
+- Open defects listed in `CLAUDE.md` (editions 833, 821, 815, 816; unverified CNG figures; resolver fix before the ingestion freeze lifts).
+
+### Recommender
+- A fresh, unseen query set.
+- Four sedan probe cases: a car known to lack a feature ranks above a sedan whose comfort cells are blank. Known limit of the stress test; lowering the coverage penalty does not fix it.
+- Live latency not re-measured after the speed fix (0.64 s → 0.27 s locally).
+- The owner bar sits at 95–97 for most cars and separates them poorly. Dark mode and 360px width were not checked by hand.
+- Tool-calling advisor (plan §10) is not built.
+
+## 7. Lessons
+
+- Delegate building to Sonnet from the start; keep design and review with the strongest model.
+- Survey a source's terms and page structure before choosing it.
+- Run the evaluation on a prototype before building a scoring change. The cheapest-variant rule cost a day.
+- Run the planned re-check before a write, not after.
+- State results as measured, not expected. Two claims had to be corrected after the blind audit ("cheapest car" fixed; constraint satisfaction 100%), and "the update will add 16 new models" was a third.
+- Push before the owner merges. Pull request 32 was merged a minute before a late commit, which needed pull request 33.
+- Export to the app alongside every KB change, or the app silently lags.
+
+## 8. Source decisions (owner)
+
+- **Autocar India:** accepted as a non-commercial, terms-grey source. Robots obeyed, one page per model, off switch `reviews.sources.autocar.enabled`.
+- **CarWale** user ratings and written reviews: accepted.
+- **Team-BHP:** never fetched by any tool. The owner may save pages by hand (the SingleFile browser extension was suggested); the tool reads local files only. A request to build an auto-saver was declined.
+- **CarDekho expert scores, YouTube, Reddit:** not used. No permission emails.
+- A source that blocks a fetch is never worked around.
+
+## 9. Quotas
+
+- Gemini free: about 500 calls a day (`gemini-3.5-flash-lite`; `gemini-3.8-flash` hangs or returns 503). Groq free: refuses after about 250 calls or on token limits.
+- The Claude subscription's 5-hour limit stops Sonnet agents often. Resume the same agent with a message after the reset; do not start a new one.
