@@ -164,8 +164,7 @@ def test_non_empty_result_has_no_hints(client, monkeypatch):
 def test_covered_makes_and_brochure_images(client, monkeypatch):
     data = predict(client, monkeypatch, "Maruti hatchback")
     assert data["covered_makes"] == sorted(get_catalogue()["make"].unique())
-    # a Maruti Suzuki model with a brochure photo shows it with its caption; one without (Celerio, added with the
-    # 1,464-variant catalogue) shows the body-type silhouette and no caption, never a broken or invented image
+    # a Maruti Suzuki model with a brochure photo shows it with its caption; one without a brochure picture shows the body-type silhouette and no caption, never a broken or invented image
     recs = data["recommendations"]
     assert recs
     manifest = get_manifest()

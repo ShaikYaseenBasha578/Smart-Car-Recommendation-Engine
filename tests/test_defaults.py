@@ -71,8 +71,8 @@ def test_a_relative_catalogue_path_is_taken_from_the_repository_root(tmp_path):
 
 
 def test_a_model_without_an_image_shows_the_body_type_silhouette_and_no_caption():
-    r = run("Tata Punch")
-    cards = [c for c in r["cards"] if c["Model"] == "Punch"]
+    r = run("Mahindra Thar Roxx")   # no usable brochure picture on disk (3-page specification sheet)
+    cards = [c for c in r["cards"] if c["Model"] == "Thar Roxx"]
     assert cards, r["cards"]
     for c in cards:
         assert c["carImage"] == "/static/car_images/placeholders/suv.svg" and not c["imageAttribution"]

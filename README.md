@@ -39,7 +39,7 @@ The oracle checks budget, fuel, transmission family (manual/automatic), body typ
 ## Limitations
 
 - 12 brands only: Honda, Hyundai, Kia, MG, Mahindra, Maruti Suzuki, Nissan, Renault, Skoda, Tata, Toyota, Volkswagen.
-- 60 of 92 models have a photo from an OEM brochure, captioned with its source. The other 32 (30 added with the 1,464-variant catalogue, plus Creta and Thar Roxx) show a body-type silhouette.
+- 88 of 92 models have a photo from an OEM brochure, captioned with its source (`data/image_manifest.csv` records the PDF, page and, for the newest 28, the PDF SHA-1). The other 4 (Thar Roxx, Hector Plus, Bolero Neo Plus, Tekton) have no usable brochure picture on disk and show a body-type silhouette.
 - Mileage is unknown for about 40% of non-EV variants: 336 of 795 have no ARAI kmpl figure, and 299 have no mileage figure at all. Mileage minimums keep these cars, labelled "Unverified: mileage".
 - Safety stars come only from Bharat NCAP: 20 models / 363 variants are rated. Older Global NCAP ratings are not used.
 - Used-car search is off in the demo. It needs Selenium and headless Chrome and is enabled only with `ENABLE_USED_CARS=1`.

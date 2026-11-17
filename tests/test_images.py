@@ -10,13 +10,11 @@ ROOT = str(Path(__file__).resolve().parents[1])
 LICENSE = "OEM brochure — not licensed for reuse; replace for commercial use"
 PLACEHOLDERS = "/static/car_images/placeholders/"
 
-# The 30 models the 1,464-variant catalogue added; none has a brochure image yet (do not fabricate one: add a manifest
-# row and a file, then remove the model from this list).
-NEW_MODELS_WITHOUT_IMAGE = [
-    "Alcazar", "Bayon", "Creta N Line", "Venue N Line", "i20", "i20 N Line", "Carens", "Sonet", "Sorento", "Astor",
-    "Hector Plus", "Majestor", "Bolero Neo", "Bolero Neo Plus", "XEV 9S", "XEV 9e", "Celerio", "Tekton", "Kiger",
-    "Kwid", "Kodiaq", "Aeris", "Curvv", "Curvv EV", "Harrier EV", "Punch", "Safari", "Sierra", "Sierra EV", "Tayron",
-]
+# Catalogue models with no brochure image. Each one has no photo in a maker brochure on disk (Thar Roxx: the brochure
+# is a 3-page specification sheet; Hector Plus: the Hector brochure names it once, in an accessories line; Bolero Neo
+# Plus and Tekton: no brochure on disk). Nothing is fabricated: add a manifest row and a file, then remove it here.
+NO_IMAGE_MODELS = ["Thar Roxx", "Hector Plus", "Bolero Neo Plus", "Tekton"]
+NEW_IMAGE_COUNT = 28   # added from the brochures in knowledge_base/sources/oem_kbpipe (and Creta from sources/oem)
 
 
 def manifest_urls():
@@ -25,12 +23,13 @@ def manifest_urls():
 
 def test_manifest_has_brochure_images_only():
     manifest = get_manifest()
-    assert len(manifest) == 60
+    assert len(manifest) == 60 + NEW_IMAGE_COUNT
     for (make, _), r in manifest.items():
         assert r["filename"].endswith(".webp")
         assert (Path(ROOT) / "static" / "car_images" / r["filename"]).exists(), r["filename"]
         assert r["license"] == LICENSE and r["attribution"] == f"{make} brochure"
         assert ".pdf, p." in r["source"]
+        assert r["attribution"] and r["filename"] == Path(r["filename"]).name
 
 
 def test_every_catalogue_model_gets_a_manifest_image_or_a_placeholder():
@@ -42,8 +41,8 @@ def test_every_catalogue_model_gets_a_manifest_image_or_a_placeholder():
         assert (Path(ROOT) / url.lstrip("/")).exists()
     placeholders = [model for make, model, body_type in cars.itertuples(index=False)
                     if find_car_image(ROOT, make, model, body_type).startswith(PLACEHOLDERS)]
-    # no brochure image is on disk for these, and none is fabricated: they show the body-type silhouette
-    assert sorted(placeholders) == sorted(["Creta", "Thar Roxx"] + (NEW_MODELS_WITHOUT_IMAGE if len(get_catalogue()) > 832 else []))
+    # no usable brochure image is on disk for these, and none is fabricated: they show the body-type silhouette
+    assert sorted(placeholders) == sorted(NO_IMAGE_MODELS)
 
 
 def test_manifest_then_placeholder_never_a_filename(monkeypatch):
@@ -67,7 +66,33 @@ def test_brochure_images_have_captions():
     assert image_attribution(ROOT, "Maruti Suzuki", "Fronx") == "Maruti Suzuki brochure"
     assert find_car_image(ROOT, "Tata", "Nexon", "suv") == "/static/car_images/tata_nexon.webp"
     assert image_attribution(ROOT, "Tata", "Nexon") == "Tata brochure"
-    assert image_attribution(ROOT, "Hyundai", "Creta") is None
+    assert image_attribution(ROOT, "Hyundai", "Creta") == "Hyundai brochure"
+    assert image_attribution(ROOT, "Mahindra", "Thar Roxx") is None
+
+
+def test_new_brochure_rows_record_pdf_page_and_sha1():
+    import re
+    new = [r for r in get_manifest().values() if "SHA-1" in r["source"]]
+    assert len(new) == NEW_IMAGE_COUNT
+    for r in new:
+        assert re.fullmatch(r".+\.pdf, p\.\d+, SHA-1 [0-9a-f]{40}", r["source"]), r
+    assert not {m for m in NO_IMAGE_MODELS} & {r["model"] for r in get_manifest().values()}
+
+
+def test_new_images_are_small_webp_files():
+    for r in get_manifest().values():
+        data = (Path(ROOT) / "static" / "car_images" / r["filename"]).read_bytes()
+        assert data[:4] == b"RIFF" and data[8:12] == b"WEBP" and len(data) < 100_000, r["filename"]
+
+
+def test_new_images_are_small_800px_webp_without_metadata():
+    Image = pytest.importorskip("PIL.Image")   # Pillow is a build-time tool here, not a runtime dependency
+    new = [r for r in get_manifest().values() if "SHA-1" in r["source"]]
+    for r in new:
+        path = Path(ROOT) / "static" / "car_images" / r["filename"]
+        assert path.stat().st_size < 100_000, path
+        with Image.open(path) as im:
+            assert im.format == "WEBP" and im.width == 800 and not im.info.get("exif"), path
 
 
 @pytest.fixture(scope="module")
