@@ -117,4 +117,7 @@ def promote(cfg, cs, run_dir, stage_res, log):
     if ic != "ok" or not same:
         raise kb.Stop("post-apply verification failed (%s, prod==staging: %s). Backup: %s" % (ic, same, bpath))
     history_commit(cfg, db, "kb-run-%s-after" % cs["run"], "KB after kbpipe run %s (%s)" % (cs["run"], sha_post), log)
+    kb.remove_side_files(db)   # the comparison above reads prod again; leave nothing beside it (P11)
+    if kb.sha1(db) != sha_post:
+        raise kb.Stop("the KB hash changed after the post-apply checks. Backup: %s" % bpath)
     return res

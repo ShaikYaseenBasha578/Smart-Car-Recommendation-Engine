@@ -67,6 +67,8 @@ def run(path):
         raise
     out["integrity_check"] = c.execute("pragma integrity_check").fetchone()[0]
     c.close()
+    from kbpipe import kb
+    kb.checkpoint(path)   # truncates the WAL and removes the empty side files (P11)
     return out
 
 

@@ -46,10 +46,33 @@ def preflight(db, for_write=True):
     for cmd, pid, mode in holders(db):
         if not (cmd == ALLOWED_HOLDER and mode == "r"):
             raise Stop("KB is held by %s (pid %s, mode %s); P11 allows only a read-only %s" % (cmd, pid, mode, ALLOWED_HOLDER))
-    wal = db + "-wal"
-    if os.path.exists(wal) and os.path.getsize(wal) > 0:
-        raise Stop("non-empty -wal beside the KB (%d bytes); P11 says stop" % os.path.getsize(wal))
+    for side in (db + "-wal", db + "-shm"):
+        if os.path.exists(side):   # P11: any side file means stop. This pipeline removes its own after every backup and write.
+            raise Stop("side file beside the KB: %s (%d bytes); P11 says stop" % (os.path.basename(side), os.path.getsize(side)))
     return sha1(db)
+
+
+def remove_side_files(db):
+    """Remove the -wal and -shm files this pipeline's own SQLite connections leave behind. The SQLite on this machine keeps
+    them after a clean close, and P11 treats any side file as a reason to stop. Only an EMPTY -wal is ever removed (so no
+    content is lost; -shm is only an index), and only when no process holds the database or its side files."""
+    wal, shm = db + "-wal", db + "-shm"
+    if not (os.path.exists(wal) or os.path.exists(shm)):
+        return []
+    if os.path.exists(wal) and os.path.getsize(wal) > 0:
+        raise Stop("-wal beside %s is not empty (%d bytes); not removed" % (os.path.basename(db), os.path.getsize(wal)))
+    hs = [h for h in holders(db) if not (h[0] == ALLOWED_HOLDER and h[2] == "r")]
+    if hs:
+        raise Stop("side files beside %s are held by %s (pid %s); not removed" % (os.path.basename(db), hs[0][0], hs[0][1]))
+    before = sha1(db)
+    gone = []
+    for f in (wal, shm):
+        if os.path.exists(f):
+            os.remove(f)
+            gone.append(os.path.basename(f))
+    if sha1(db) != before:
+        raise Stop("the KB hash changed while its side files were removed")
+    return gone
 
 
 def copy_for_read(db, dest):
@@ -81,6 +104,8 @@ def backup(db, dest):
         raise Stop("backup failed: %s" % r.stderr.strip())
     if sha3(db) != sha3(dest):
         raise Stop("backup content differs from the KB")
+    remove_side_files(db)      # the sqlite3 shell leaves them beside whatever it read
+    remove_side_files(dest)
     return dest
 
 
@@ -91,6 +116,7 @@ def checkpoint(db):
     wal = db + "-wal"
     if os.path.exists(wal) and os.path.getsize(wal) > 0:
         raise Stop("-wal is not empty after checkpoint")
+    remove_side_files(db)
 
 
 def tables(c):
