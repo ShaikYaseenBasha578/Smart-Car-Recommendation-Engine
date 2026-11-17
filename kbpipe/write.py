@@ -105,11 +105,10 @@ def promote(cfg, cs, run_dir, stage_res, log):
             raise changeset.ApplyError("prod apply produced %d log rows, staging produced %d" % (len(applog), expected))
 
     applog = changeset.apply(db, cs, check=check)
-    kb.checkpoint(db)
-    c = sqlite3.connect("file:%s?mode=ro" % db, uri=True)
+    kb.checkpoint(db)          # WAL folded in and side files removed, so the file alone is the whole database
+    c = kb.ro(db)              # immutable read: mode=ro cannot open a WAL-mode file whose side files are gone
     ic = c.execute("pragma integrity_check").fetchone()[0]
     c.close()
-    kb.checkpoint(db)
     same = not kb.diff(staging, db)
     sha_post = kb.sha1(db)
     res = {"sha1_before": sha_pre, "sha1_after": sha_post, "backup": bpath, "history_tag": tag, "integrity_check": ic,

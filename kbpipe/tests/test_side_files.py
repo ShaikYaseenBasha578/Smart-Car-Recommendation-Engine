@@ -52,3 +52,15 @@ def test_a_wal_with_content_is_never_removed(tmp_path):
     with pytest.raises(kb.Stop, match="not empty"):
         kb.remove_side_files(p)
     assert os.path.getsize(p + "-wal") == 64
+
+
+def test_integrity_read_works_after_side_files_are_removed(tmp_path):
+    """Regression (17 Nov): promote() checkpointed, which removed the side files, then opened the KB with mode=ro,
+    which SQLite refuses for a WAL-mode file without them ("unable to open database file") after the write had committed."""
+    p = wal_db(tmp_path)
+    kb.checkpoint(p)
+    assert not os.path.exists(p + "-wal")
+    with pytest.raises(sqlite3.OperationalError):
+        sqlite3.connect("file:%s?mode=ro" % p, uri=True).execute("pragma integrity_check").fetchone()
+    assert kb.ro(p).execute("pragma integrity_check").fetchone()[0] == "ok"
+    assert not os.path.exists(p + "-wal") and not os.path.exists(p + "-shm")
