@@ -170,3 +170,26 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 
 - Gemini free: about 500 calls a day (`gemini-3.5-flash-lite`; `gemini-3.8-flash` hangs or returns 503). Groq free: refuses after about 250 calls or on token limits.
 - The Claude subscription's 5-hour limit stops Sonnet agents often. Resume the same agent with a message after the reset; do not start a new one.
+
+## Addendum, 17 Nov: a full update was started
+
+- Started at the owner's request, from `~/carrec_worktrees/kb-kbpipe`: `./bin/kbpipe update --label update_full_2026-11-17` (brochures and review text included). Log: `knowledge_base/runs/update_full_2026-11-17.log`. State: `knowledge_base/runs/update_full_2026-11-17/state.json`.
+- It was expected to stop on the subscription limit. Check `state.json`; continue with `./bin/kbpipe update --resume --label update_full_2026-11-17`. Finished stages are not repeated and cached LLM answers are reused.
+- It may have written to the KB. Afterwards: record the new production SHA-1 here and in `CLAUDE.md`, confirm no `-wal` or `-shm` file sits beside the KB (first real test of the side-file fix), and check whether stage 11 opened a pull request.
+
+## Addendum, 17 Nov evening: the full update finished (Opus)
+
+- `update_full_2026-11-17` ran all 13 stages after two resumes. **KB SHA-1 `37b583ab3323fcac1e02ca7993a4d21a16a178af`** (also in `CLAUDE.md`). No side files beside the KB.
+- Brochure stage: 21 models read across two writes. Net: 217 blank cells filled on 34 Sierra variants, 153 observations and 2,707 evidence rows added, no existing value changed. The 16 models missing from the KB gained no variants (matching rule unchanged). The final redo wrote nothing (hash unchanged), which confirms idempotency.
+- **Defect found and fixed** (`220b869`, pushed): the side-file clean-up made the post-write `mode=ro` integrity read fail after each write had committed. Now an immutable read; regression test added; 141 tests pass. The skipped post-write steps were done by hand and logged in `KB_CHANGELOG.md`.
+- Review stages: nothing new to read. Audit: 157 of 157 cells match. App: 916 tests pass; evaluation unchanged (193 of 193, verified 180 of 193); golden file regenerated.
+- **Pull request 37 merged by the owner (17 Nov, 14:45 UTC)**; no pull requests remain open (36 was closed): Sierra catalogue rows, timestamps, project pages and the regenerated golden file.
+
+## Addendum, 18 Nov (Opus)
+
+- **Pull request 38 open:** the engine page now shows the verified-satisfaction figures (180 of 193 main, 94 of 106 second set, old engine 175 of 193). The generator required every summary field to be a number and the file also has a text `scope` field. Fixed in `kbpipe/dashboard.py` with a test.
+- **Stage messages reworded** (`7245e0a`): stage lines and `UPDATE_SUMMARY.md` now say blanks filled, values changed and confirmations, and "KB unchanged" when the hash did not move. "NEW_MODEL 16" now reads "16 model(s) found on both sites but not in the KB (0 added)". 143 kbpipe tests pass.
+- **Plan for the 16 missing models:** `knowledge_base/reports/PLAN_ADD_MISSING_MODELS.md`, waiting for the owner. Measured cause: both sites list the variants, but none link. Blocks: battery size only in one site's name (8 models), "345 kWh" page spelling (XUV400), strong hybrids labelled "Petrol" by CarDekho (4), descriptor words (5), EV prices differing beyond 0.5%, and some genuinely different names. The earlier claim that the cause was mostly "34.5 vs 345 kWh" was wrong; that affects only XUV400.
+- **Policy conflict to settle:** `CLAUDE.md` on `kb/kbpipe` has an owner decision of 2026-11-12 allowing an empty `-wal` and a `-shm` beside the KB when no holder, and saying never delete them. On 17 Nov the side files were deleted twice with the owner's approval in chat, and the pipeline now removes them after its own writes (`kb.remove_side_files`) and its preflight refuses any. The owner must choose which rule stands; then align the code or the policy text.
+- **Commits to `paper/v0`:** none. P17 allows only a fast-forward of a `kb/*` branch, so the handover, plan and hash line are on `kb/kbpipe` (`HANDOVER.md`, `knowledge_base/reports/PLAN_ADD_MISSING_MODELS.md`, `CLAUDE.md`). The main checkout's copies are edited on disk but uncommitted.
+
