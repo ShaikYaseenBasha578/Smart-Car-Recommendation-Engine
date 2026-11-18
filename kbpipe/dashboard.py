@@ -965,6 +965,19 @@ def load_eval(path):
             "para_jaccard": (s.get("paraphrase_consistency") or {}).get("mean_jaccard_top5")}
 
 
+def verified_satisfaction(res_dir):
+    """{"v3_main": {...}, "v3_heldout": {...}, "current_main": {...}} from eval/results/audit_fix_*.json; each holds
+    queries_verified, queries_with_cars, share_verified, scope. Missing or malformed files are left out (never invented)."""
+    out = {}
+    for key in ("v3_main", "v3_heldout", "current_main"):
+        j = read_json(os.path.join(res_dir, "audit_fix_%s.json" % key))
+        v = ((j or {}).get("summary") or {}).get("verified_satisfaction") if isinstance(j, dict) else None
+        if isinstance(v, dict) and isinstance(v.get("queries_verified"), int) and isinstance(v.get("queries_with_cars"), int) and v["queries_with_cars"] > 0:
+            out[key] = {"verified": v["queries_verified"], "with_cars": v["queries_with_cars"], "scope": v.get("scope", ""),
+                        "source": "eval/results/audit_fix_%s.json" % key}
+    return out or None
+
+
 def engine_data(recsys_dir):
     root = os.path.expanduser(recsys_dir or "")
     if not root or not os.path.isdir(root):
@@ -995,19 +1008,7 @@ def engine_data(recsys_dir):
         E["blank_share"] = {col: sum(1 for r in cat["data"] if not (r.get(col) or "").strip()) / len(cat["data"]) for col in ("adas_available", "sunroof")
                             if col in cat["cols"]}
     # the later audit-style figure that counts a blank as not met, when its result file exists
-    af = read_json(os.path.join(res_dir, "audit_fix_v3_main.json"))
-    E["verified_satisfaction"] = None
-    if isinstance(af, dict):
-        def walk(o, path=""):
-            if isinstance(o, dict):
-                for k, v in o.items():
-                    if "verified" in str(k).lower() and "satisf" in (str(k) + path).lower() and isinstance(v, dict):
-                        return v
-                    r = walk(v, path + "/" + str(k))
-                    if r is not None:
-                        return r
-            return None
-        E["verified_satisfaction"] = walk(af.get("summary", af))
+    E["verified_satisfaction"] = verified_satisfaction(res_dir)
     # was the second query set used again after the parser changed? (read only: local git history)
     first = git(root, "log", "--diff-filter=A", "--format=%H %cI", "--", "eval/heldout_queries.jsonl")
     if first and first.strip():
@@ -2336,10 +2337,13 @@ def page_engine(D, ctx):
     hr = E_.get("heldout_reuse") or {}
     vs = E_.get("verified_satisfaction")
     vm_ = E_.get("v3_main") or {}
-    if vs and all(isinstance(x, (int, float)) for x in vs.values()):
-        vtxt = "A figure that counts a blank as not met: %s, beside the %s of %s above." % (
-            ", ".join("%s %s" % (k.replace("_", " "), fmt(v) if float(v).is_integer() else "%.3f" % v) for k, v in vs.items()),
-            fmt(vm_.get("zero_viol")), fmt(vm_.get("with_cars")))
+    if vs and vs.get("v3_main"):
+        lab = {"v3_main": "this engine on the main set", "v3_heldout": "this engine on the second set", "current_main": "the previous engine on the main set"}
+        parts = ["%s %s of %s (%.1f%%)" % (lab[k], fmt(vs[k]["verified"]), fmt(vs[k]["with_cars"]), 100.0 * vs[k]["verified"] / vs[k]["with_cars"])
+                 for k in ("v3_main", "v3_heldout", "current_main") if k in vs]
+        vtxt = ("Stricter count, where a blank value counts as not met. Queries whose results meet every hard requirement: %s. "
+                "The table below treats a blank as unknown, so it reads higher. Source: %s." % (
+                    "; ".join(parts), ", ".join(sorted(E(vs[k]["source"]) for k in vs))))
     else:
         vtxt = "A figure that counts a blank as not met is being added and is not on this page yet, so the 100% in the table below says nothing about requirements that were blank."
     trust = ['The query sets and their labels were written by the project&rsquo;s author, who also built the engine. No second person labelled them, so there is no agreement figure between raters.']

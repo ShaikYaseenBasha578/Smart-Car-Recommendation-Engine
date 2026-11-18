@@ -488,3 +488,22 @@ def test_images_stage_reads_the_export_workspace_and_never_prefills(tmp_path, mo
     assert seen == {"repo": str(ws), "prefill": False, "apply_repo": str(app)}     # the fresh catalogue is read; picks go to the real app repo
     st["stages"]["export"] = {}
     assert S.images(ctx)["result"] == "every catalogue model has a photo"             # fallback: the app repo, where Sierra is not listed
+
+
+# ------------------------------------------------------------------ stage summaries say what happened to the KB
+def test_summary_line_separates_fills_changes_and_confirmations(tmp_path):
+    import json
+    from kbpipe import update_stages as S
+    run = tmp_path / "r1"
+    run.mkdir()
+    ops = [{"op": "cell", "expect_old": "Petrol", "value": "Petrol"}] * 3 + [{"op": "cell", "expect_old": None, "value": 5},
+           {"op": "cell", "expect_old": 1, "value": 2}, {"op": "variant"}]
+    (run / "changeset.json").write_text(json.dumps({"ops": ops}))
+    (run / "run.json").write_text(json.dumps({"coverage_before": {"models": 92, "variants": 1464}, "coverage_after": {"models": 92, "variants": 1464}}))
+    ctx = update.Ctx({"runs_dir": str(tmp_path)}, str(tmp_path), opts(), {"label": "u", "stages": {}, "created": "x"}, lambda *_: None, [])
+    R = {"run": "r1", "processed": 7, "discovery": {"NEW_MODEL": 16, "EXISTING": 91, "UPCOMING": 88},
+         "write": {"sha1_before": "7e5478c5aa", "sha1_after": "7e5478c5aa"}}
+    _, line = S._summarise_pipeline(R, ctx, "specs")
+    assert "16 model(s) found on both sites but not in the KB (0 added)" in line and "91 already in the KB" in line
+    assert "1 blank cell(s) filled, 1 stored value(s) changed, 3 confirmed by fresh evidence" in line
+    assert "KB unchanged (7e5478c5)" in line and "NEW_MODEL" not in line

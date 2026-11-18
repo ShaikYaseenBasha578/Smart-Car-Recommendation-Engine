@@ -156,3 +156,19 @@ def test_price_freshness_bands_and_import_only(tmp_path):
     p = dashboard.price_freshness(c, vrows, "2026-11-16")
     assert (p["within30"], p["within90"], p["within180"], p["import_only"], p["no_evidence"]) == (1, 1, 1, 1, 0)
     assert p["import_age"] == 141
+
+
+def test_verified_satisfaction_reads_named_fields(tmp_path):
+    """Regression (18 Nov): the summary also holds a text "scope" field, and the page used to require every field to be a
+    number, so it always said the figure was "being added"."""
+    import json
+    from kbpipe import dashboard as D
+    def put(name, verified, cars):
+        (tmp_path / name).write_text(json.dumps({"summary": {"verified_satisfaction": {
+            "scope": "non-relaxed responses only", "queries_with_cars": cars, "queries_verified": verified,
+            "share_verified": verified / cars, "queries_with_unverified": cars - verified}}}))
+    put("audit_fix_v3_main.json", 180, 193)
+    put("audit_fix_current_main.json", 175, 193)
+    vs = D.verified_satisfaction(str(tmp_path))
+    assert vs["v3_main"]["verified"] == 180 and vs["current_main"]["with_cars"] == 193 and "v3_heldout" not in vs
+    assert D.verified_satisfaction(str(tmp_path / "missing")) is None

@@ -99,15 +99,54 @@ def _pipeline_stage(ctx, name, cfg, only=None, full=False, no_verify=True):
     return R
 
 
+def op_kinds(changeset_path):
+    """Count a change-set's operations by what they do to the KB: fill a blank, change a stored value, only add evidence
+    to a value already stored (a confirmation), or something else (new variant, new model, ...)."""
+    cs = _read_json(changeset_path, {}) or {}
+    out = {"filled": 0, "changed": 0, "confirmed": 0, "other": 0}
+    for o in cs.get("ops") or []:
+        if o.get("op") != "cell":
+            out["other"] += 1
+        elif o.get("expect_old") is None:
+            out["filled"] += 1
+        elif str(o.get("expect_old")) == str(o.get("value")):
+            out["confirmed"] += 1
+        else:
+            out["changed"] += 1
+    return out
+
+
+NEW_MODEL_WORDS = "found on both sites but not in the KB"
+
+
 def _summarise_pipeline(R, ctx, name):
+    """One line a person can read without knowing the internals: what discovery found, and what this stage did to the KB."""
     folder = os.path.join(ctx.cfg["runs_dir"], R["run"])
-    disc = R.get("discovery") or {}
-    ops = (R.get("stage") or {}).get("ops", 0)
+    disc = dict(R.get("discovery") or {})
+    rj = _read_json(os.path.join(folder, "run.json"), {}) or {}
+    cb, ca = rj.get("coverage_before") or {}, rj.get("coverage_after") or {}
+    added_models = (ca.get("models", 0) - cb.get("models", 0)) if cb and ca else 0
+    added_variants = (ca.get("variants", 0) - cb.get("variants", 0)) if cb and ca else 0
+    parts = []
+    if disc.get("NEW_MODEL"):
+        parts.append("%d model(s) %s (%d added)" % (disc.pop("NEW_MODEL"), NEW_MODEL_WORDS, max(added_models, 0)))
+    if disc.get("EXISTING"):
+        parts.append("%d already in the KB" % disc.pop("EXISTING"))
+    rest = ", ".join("%s %d" % (k.lower().replace("_", " "), v) for k, v in sorted(disc.items()) if v)
+    found = "discovery: %s%s" % ("; ".join(parts) or "nothing new", ("; other listings: " + rest) if rest else "")
+    k = op_kinds(os.path.join(folder, "changeset.json"))
     wrote = R.get("write")
-    res = "discovery %s; %d model(s) processed, %d change(s) %s" % (
-        ", ".join("%s %d" % (k, v) for k, v in sorted(disc.items())) or "none", R.get("processed", 0), ops,
-        ("written (%s -> %s)" % (wrote["sha1_before"][:8], wrote["sha1_after"][:8])) if wrote else ("staged only" if ops else "to write"))
-    return folder, res
+    what = "%d model(s) read; %d blank cell(s) filled, %d stored value(s) changed, %d confirmed by fresh evidence%s" % (
+        R.get("processed", 0), k["filled"], k["changed"], k["confirmed"],
+        (", %d variant(s) added" % added_variants) if added_variants > 0 else "")
+    if wrote:
+        b, a = wrote["sha1_before"][:8], wrote["sha1_after"][:8]
+        kbtxt = "KB %s -> %s" % (b, a) if b != a else "KB unchanged (%s): everything was already there" % b
+    elif (R.get("stopped") or "").startswith("write stopped"):
+        kbtxt = "write did not finish: %s" % R["stopped"][15:]
+    else:
+        kbtxt = "staged only, KB not written" if sum(k.values()) else "nothing to write"
+    return folder, "%s. %s. %s" % (found, what, kbtxt)
 
 
 def specs(ctx):
@@ -170,7 +209,7 @@ def brochures(ctx):
         return {"status": LIMIT, "run_dir": folder, "data": data, "result": "brochure layer stopped on an LLM limit after %d of %d model(s) (%s)" % (len(bro) - len(limited), len(models), bro[limited[0]]["status"][:120])}
     if st:
         return {"status": st[0], "run_dir": folder, "data": data, "result": st[1][:300]}
-    return {"status": DONE, "run_dir": folder, "data": data, "result": "%d model(s) (%d new, %d with many blanks): %d cell(s) from brochures; %s" % (len(models), len(new), len(models) - len(new), kept, res)}
+    return {"status": DONE, "run_dir": folder, "data": data, "result": "brochures read for %d model(s) (%d not yet in the KB, %d with many blank cells); %d cell value(s) read and confirmed by the checker. %s" % (len(models), len(new), len(models) - len(new), kept, res)}
 
 
 def _copy_prod(ctx, name):
@@ -352,7 +391,8 @@ def summary(ctx):
         if cb and ca:
             L.append("- **%s** (source: %s): models %d -> %d, variants %d -> %d, filled cells %d -> %d. Change-set (source: `%s`): %s." % (
                 n, pre, cb["models"], ca["models"], cb["variants"], ca["variants"], cb["cells_filled"], ca["cells_filled"],
-                rel(os.path.join(d, "changeset.json")), ", ".join("%s %d" % (k, v) for k, v in sorted(cs.items())) or "no operations"))
+                rel(os.path.join(d, "changeset.json")), (lambda k: "%d blank cell(s) filled, %d stored value(s) changed, %d confirmed by fresh evidence, %d other" % (
+                    k["filled"], k["changed"], k["confirmed"], k["other"]))(op_kinds(os.path.join(d, "changeset.json"))) if cs else "no operations"))
         else:
             L.append("- **%s** (source: %s): %d change(s) %s." % (n, pre, (rj.get("stage") or {}).get("ops", 0), "written" if rj.get("write") else "staged"))
         by_src = {}
