@@ -384,3 +384,28 @@ As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
 **What changed:** two writes, each through the gates. Run `update_full_2026-11-17_brochures` (stopped on the Claude usage limit after 11 of 21 models): 2,158 operations, `7e5478c5…` → `4b32d447…`. Run `update_full_2026-11-17_brochures_2` (resume, all 21 models): 2,341 operations, `4b32d447…` → `37b583ab…`. Net against `7e5478c5…`: 153 source observations and 2,707 provenance rows added; 217 blank variant cells filled on 34 variants of one model (dimensions, boot, fuel tank, drive modes, ESC); no existing value changed (only `updated_at`). Models not in the KB (ZR-V, Creta Electric and the others) gained no variant rows. Schema: none.
 **Defect found and fixed:** both writes committed, then the post-write integrity read crashed ("unable to open database file") because the new side-file clean-up removed the WAL files before a `mode=ro` open. Fixed in `kbpipe/write.py` (immutable read) with a regression test. The skipped steps were completed by hand on 2026-11-17: integrity_check ok, foreign_key_check 297 (the known orphans), prod identical to each run's staging copy (full EXCEPT diff), history tag `kb-run-update_full_2026-11-17_brochures_2-after`, no side files beside the KB.
 **Prod SHA-1:** `7e5478c5…` → `37b583ab3323fcac1e02ca7993a4d21a16a178af`. Backups `pre_kbpipe_update_full_20261117_brochures_20261117T083414Z.db` and `pre_kbpipe_update_full_20261117_brochures_2_20261117T132121Z.db`.
+
+## kbpipe update_full_2026-11-17_brochures_3 — 2026-11-17 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 0 cells written from two agreeing sites; 968 existing cells given confirming evidence. Schema: none.
+**Verifier:** no checked cells.
+**Not done / held:** 25 review item(s) in runs/update_full_2026-11-17_brochures_3/REVIEW_update_full_2026-11-17_brochures_3.md.
+**Prod SHA-1:** `37b583ab…` → `37b583ab…`. Backup `pre_kbpipe_update_full_20261117_brochures_3_20261117T132427Z.db`, history tag `kb-run-update_full_2026-11-17_brochures_3`.
+
+## kbpipe update_missing16_2026-11-18_specs — 2026-11-18 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 13 models and 155 variants added; 2914 cells written from two agreeing sites; 22935 existing cells given confirming evidence. Schema: none.
+**Verifier:** 100.0% (467 of 467; 1 unreachable, 0 verifier errors).
+**Not done / held:** 392 review item(s) in runs/update_missing16_2026-11-18_specs/REVIEW_update_missing16_2026-11-18_specs.md.
+**Prod SHA-1:** `37b583ab…` → `0d4082cf…`. Backup `pre_kbpipe_update_missing16_20261118_specs_20261118T140909Z.db`, history tag `kb-run-update_missing16_2026-11-18_specs`.
+
+## kbpipe update_missing16_2026-11-18_brochures — 2026-11-18 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 635 cells written from two agreeing sites; 2079 existing cells given confirming evidence. Schema: none.
+**Verifier:** no checked cells.
+**Not done / held:** 40 review item(s) in runs/update_missing16_2026-11-18_brochures/REVIEW_update_missing16_2026-11-18_brochures.md.
+**Prod SHA-1:** `0d4082cf…` → `f704c304…`. Backup `pre_kbpipe_update_missing16_20261118_brochures_20261118T141355Z.db`, history tag `kb-run-update_missing16_2026-11-18_brochures`.
+
+## kbpipe reviews update_missing16_2026-11-18_reviews
+- 72 assessment rows, 99 owner_rating rows
+- KB SHA-1 f704c304adc57542875489892b9ee8f9d3bb19ba -> 0c8156b72b813275a85c95b3fdde36db43295ab0; backup /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_update_missing16_20261118_reviews_20261118T141506Z.db
