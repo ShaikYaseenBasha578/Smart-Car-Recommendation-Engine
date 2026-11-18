@@ -2,7 +2,7 @@
 import json
 import sqlite3
 
-from kbpipe import discover, extract, kb
+from kbpipe import discover, extract, kb, match
 
 
 def cw_brand(models, gone=()):
@@ -86,10 +86,17 @@ def test_incremental_detection_unchanged_price_change_and_new_variant(cfg):
     d1 = [("Pure", 664990)]
     b = _bundle(cfg, v1, d1, {})
     assert b["changed"] is True and b["versions"][0]["fields_cd"]["airbags"] == 6       # first sight, linked on both sites
-    state = {"Tata/punch": {"fingerprint": b["fingerprint"], "applied": True}}
+    state = {"Tata/punch": {"fingerprint": b["fingerprint"], "applied": True, "linker": match.LINKER_VERSION}}
     assert _bundle(cfg, v1, d1, state)["changed"] is False                              # nothing changed -> skipped by the run
     assert _bundle(cfg, [(1, "Pure Petrol Manual", 674990)], [("Pure", 674990)], state)["changed"] is True      # price moved
     assert _bundle(cfg, v1 + [(2, "Smart Petrol Manual", 574990)], d1 + [("Smart", 574990)], state)["changed"] is True
+
+
+def test_a_model_processed_under_an_older_linker_is_processed_again(cfg):
+    v1, d1 = [(1, "Pure Petrol Manual", 664990)], [("Pure", 664990)]
+    b = _bundle(cfg, v1, d1, {})
+    old = {"Tata/punch": {"fingerprint": b["fingerprint"], "applied": True}}                  # state written before linker versions existed
+    assert _bundle(cfg, v1, d1, old)["changed"] is True
 
 
 def test_cardekho_page_for_another_variant_is_not_used(cfg):

@@ -6,6 +6,8 @@ words are removed. When several candidates share an identity (e.g. turbo and non
 match must pick exactly one, otherwise nothing is linked."""
 from .sources import common as c
 
+LINKER_VERSION = "2"     # bump when a linking rule changes: a model last processed under another version is processed again (extract.model_bundle)
+
 
 def identity(name, model, fuel, trans):
     return (fuel, c.trans_class(trans), c.trim_tokens(name, model))

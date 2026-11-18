@@ -6,7 +6,7 @@ import random
 import time
 from datetime import datetime, timezone
 
-from . import __version__, brochure, discover, extract, fetch, gates, kb, llm, plan, report, verify, write
+from . import __version__, brochure, discover, extract, fetch, gates, kb, llm, match, plan, report, verify, write
 from . import fields as F
 
 
@@ -131,7 +131,7 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
         processed += 1
         since += 1
         new_done += it["kind"] == "NEW_MODEL"
-        bundles_meta[key] = {"fingerprint": b["fingerprint"], "processed_at": fetch.now_iso(), "applied": False}
+        bundles_meta[key] = {"fingerprint": b["fingerprint"], "processed_at": fetch.now_iso(), "applied": False, "linker": match.LINKER_VERSION}
         log("extract", "%s %s: %d versions, %d linked on both sites" % (
             it["make"], it["model"], len(b["versions"]), sum(1 for v in b["versions"] if v["fields_cd"])))
         if vt and since >= cfg["verify_every_models"]:

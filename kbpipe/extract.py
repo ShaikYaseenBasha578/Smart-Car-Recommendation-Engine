@@ -62,7 +62,7 @@ def model_bundle(item, cfg, fetcher, log, state):
     fp = fingerprint([[v["id"], v["name"], v["status"], v["fields"]] for v in m["versions"]] +
                      [[v["name"], v["price"]] for v in cd_vars])
     st = state.get("%s/%s" % (make, key)) or {}
-    out = {"model": m, "versions": [], "problems": problems, "fingerprint": fp, "changed": st.get("fingerprint") != fp,
+    out = {"model": m, "versions": [], "problems": problems, "fingerprint": fp, "changed": st.get("fingerprint") != fp or st.get("linker") != match.LINKER_VERSION,
            "cw_url": item["cw"]["url"], "cd_url": item["cd"]["url"], "launched": m["launched"], "brochure": m.get("brochure")}
     cur_cw = [v for v in m["versions"] if v["status"] == "current"]
     strong_hybrid = bool(cur_cw) and all(v["fields"].get("fuel_type") == "Petrol Hybrid" for v in cur_cw)   # rule 2: every version
