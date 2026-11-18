@@ -1,0 +1,64 @@
+id	verdict	why
+P001	same	Both BE 6 Sporteq Three Plus 79 kWh; price gap is a consistent listing offset across this model.
+P002	same	Both XEV 9S Pack One Above 79 kWh 7-seater.
+P003	same	Both BE 6 Sporteq FE 79 kWh.
+P004	same	Both Nexon Fearless Plus PS diesel manual Red Dark edition, identical price.
+P005	different	A is HTX with 42 kWh battery; B is X-Line ER with 51.4 kWh.
+P006	same	Both XUV400 EL Pro 39.4 kWh, same price.
+P007	same	Both Sonet GTX Plus diesel automatic 1493 cc.
+P008	same	Both Comet EV Excite FC 17.4 kWh.
+P009	same	Both XL6 Alpha petrol automatic 1462 cc.
+P010	same	Both Carens Clavis EV HTX E 42 kWh 6-seater, same price.
+P011	different	A is the Launch Edition; B is the Three Plus trim.
+P012	same	Both Nexon Fearless Plus A PS petrol DCT, identical price.
+P013	same	Both Windsor EV Indulge 38 kWh, near-identical price.
+P014	same	Both Tigor EV XT 26 kWh, same price.
+P015	same	Both Duster Iconic petrol manual Launch Edition, same price.
+P016	same	Both Nexon Fearless Plus PS petrol manual, identical price.
+P017	same	Both XUV 3XO AX7 1.2 turbo petrol manual, identical price.
+P018	same	Both City ZX Plus e:HEV hybrid 1498 cc.
+P019	same	Both Invicto Zeta Plus hybrid 7-seater, same price.
+P020	same	Both XEV 9S Pack One Above 59 kWh 7-seater.
+P021	same	Both Invicto Zeta Plus hybrid 8-seater, same price.
+P022	same	Both Grand i10 Nios Sportz CNG manual.
+P023	same	Both Camry Sprint Edition hybrid, same price.
+P024	same	Both BE 6 Sporteq Launch Edition 79 kWh.
+P025	same	Both XUV 3XO AX7 diesel AMT, same price.
+P026	same	Both XUV400 EL Pro 34.5 kWh, same price.
+P027	same	Both XUV 3XO AX7 diesel manual, same price.
+P028	same	Both BE 6 Sporteq Three 70 kWh.
+P029	same	Both Gravite Tekna CNG 999 cc manual.
+P030	same	Both Nexon Creative Plus PS Dark diesel AMT, same price.
+P031	same	Both Creta Electric Excellence LR Knight 51.4 kWh, same price.
+P032	same	Both Magnite Visia Plus CNG manual.
+P033	same	Both ZS EV Executive 50.3 kWh.
+P034	same	Both Grand Vitara Alpha (2WD) petrol automatic.
+P035	different	A is Premium 42 kWh; B is Excellence LR HC Knight 51.4 kWh.
+P036	same	Both Syros EV HTX ER 51.4 kWh, same price.
+P037	same	Both Bolero B4 diesel manual.
+P038	same	Both Carens Clavis EV HTX Plus ER 51.4 kWh 6-seater, same price.
+P039	same	Both Invicto Alpha Plus hybrid 7-seater, same price.
+P040	same	Both Harrier Adventure X Plus diesel automatic.
+P041	same	Both Creta Electric Excellence Knight 42 kWh, same price.
+P042	same	Both XEV 9e Pack Three Select 59 kWh with 11.2 kW charger.
+P043	same	Both Creta Electric Excellence LR Knight HC 51.4 kWh, same price.
+P044	same	Both Creta Electric Smart (O) LR 51.4 kWh.
+P045	same	Both Windsor EV Essence 38 kWh.
+P046	same	Both Nexon Creative Plus PS Dark diesel manual, same price.
+P047	same	Both Bolero B6 diesel manual.
+P048	different	A is Invicto Alpha Plus; B is Zeta Plus.
+P049	same	Both Tigor EV XZ Plus LUX 26 kWh, same price.
+P050	same	Both Kwid Evolution CNG 999 cc manual.
+P051	different	A is XZ Plus LUX; B is the lower XZ Plus trim.
+P052	same	Both Creta Electric Excellence Knight HC dual tone 42 kWh, same price.
+P053	same	Both Carens Clavis EV HTX 42 kWh 6-seater, same price.
+P054	same	Both XUV400 EL Pro dual tone 39.4 kWh.
+P055	same	Both Windsor EV Essence Pro 52.9 kWh.
+P056	same	Both Syros EV HTX Plus ER 51.4 kWh, same price.
+P057	different	A is 4x4 manual; B is 4x2 automatic.
+P058	same	Both Thar Roxx MX3 RWD 2.2 diesel manual.
+P059	same	Both Fortuner Legender 4x2 diesel automatic, same price.
+P060	same	Both Harrier Adventure X Plus Dark diesel manual; names match despite a 4-lakh price gap.
+P061	same	Both XUV400 EC Pro 34.5 kWh.
+P062	same	Both Nexon Creative Plus PS Dark petrol manual, same price.
+P063	same	Both XUV400 EL Pro dual tone 34.5 kWh, same price.

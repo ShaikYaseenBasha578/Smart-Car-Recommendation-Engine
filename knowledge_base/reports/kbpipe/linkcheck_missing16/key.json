@@ -1,0 +1,632 @@
+{
+ "P001": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "BE 6 Sporteq",
+  "cw_url": "https://www.carwale.com/mahindra-cars/be-6-sporteq/#vid=25124",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_BE_6_SPORTEQ/Mahindra_BE_6_SPORTEQ_Three_Plus_79kWh.htm"
+ },
+ "P002": {
+  "cls": "price differs + battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "XEV 9S",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xev-9s/#vid=22563",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XEV_9S/Mahindra_XEV_9S_Pack_One_Above_79kWh_7-Seater.htm"
+ },
+ "P003": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "BE 6 Sporteq",
+  "cw_url": "https://www.carwale.com/mahindra-cars/be-6-sporteq/#vid=25126",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_BE_6_SPORTEQ/Mahindra_BE_6_SPORTEQ_FE_79kWh.htm"
+ },
+ "P004": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=24640",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Fearless_Plus_PS_Red_Dark_Diesel.htm"
+ },
+ "P005": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Kia",
+  "model": "Syros EV",
+  "cw_url": "https://www.carwale.com/kia-cars/syros-ev/#vid=24720",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Syros_EV/Kia_Syros_EV_X-Line_ER.htm"
+ },
+ "P006": {
+  "cls": "page spelling (XUV400)",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity",
+  "make": "Mahindra",
+  "model": "XUV400",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv400/#vid=16157",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV400_EV/Mahindra_XUV400_EV_EL_Pro_394_kWh.htm"
+ },
+ "P007": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Kia",
+  "model": "Sonet",
+  "cw_url": "https://www.carwale.com/kia-cars/sonet/#vid=19479",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Sonet/Kia_Sonet_GTX_Plus_Diesel_AT.htm"
+ },
+ "P008": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "MG",
+  "model": "Comet EV",
+  "cw_url": "https://www.carwale.com/mg-cars/comet-ev/#vid=20155",
+  "cd_url": "https://www.cardekho.com/overview/MG_Comet_EV/MG_Comet_EV_Excite_FC.htm"
+ },
+ "P009": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Maruti Suzuki",
+  "model": "XL6",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/xl6/#vid=21428",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_XL6/Maruti_XL6_Alpha_AT.htm"
+ },
+ "P010": {
+  "cls": "battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Kia",
+  "model": "Carens Clavis EV",
+  "cw_url": "https://www.carwale.com/kia-cars/carens-clavis-ev/#vid=23586",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Carens_Clavis_EV/Kia_Carens_Clavis_EV_HTX_E_6Str.htm"
+ },
+ "P011": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Mahindra",
+  "model": "BE 6 Sporteq",
+  "cw_url": "https://www.carwale.com/mahindra-cars/be-6-sporteq/#vid=25146",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_BE_6_SPORTEQ/Mahindra_BE_6_SPORTEQ_Three_Plus_79kWh.htm"
+ },
+ "P012": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=23750",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Fearless_Plus_A_PS_DT_DCA.htm"
+ },
+ "P013": {
+  "cls": "price differs + battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "MG",
+  "model": "Windsor EV",
+  "cw_url": "https://www.carwale.com/mg-cars/windsor-ev/#vid=25978",
+  "cd_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Indulge.htm"
+ },
+ "P014": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Tata",
+  "model": "Tigor EV",
+  "cw_url": "https://www.carwale.com/tata-cars/tigor-ev/#vid=11283",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Tigor_EV/Tata_Tigor_EV_XT.htm"
+ },
+ "P015": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Renault",
+  "model": "Duster",
+  "cw_url": "https://www.carwale.com/renault-cars/duster/#vid=23287",
+  "cd_url": "https://www.cardekho.com/overview/Renault_Duster/Renault_Duster_Iconic_Launch_Edition.htm"
+ },
+ "P016": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=22685",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Fearless_Plus_PS_DT.htm"
+ },
+ "P017": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Mahindra",
+  "model": "XUV 3XO",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv-3xo/#vid=17145",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV_3XO/Mahindra_XUV_3XO_AX7_Turbo.htm"
+ },
+ "P018": {
+  "cls": "descriptor",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity [descriptor words]",
+  "make": "Honda",
+  "model": "City",
+  "cw_url": "https://www.carwale.com/honda-cars/city/#vid=24346",
+  "cd_url": "https://www.cardekho.com/overview/Honda_City/Honda_City_ZX_Plus_Hybrid.htm"
+ },
+ "P019": {
+  "cls": "strong hybrid",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [strong-hybrid fuel]",
+  "make": "Maruti Suzuki",
+  "model": "Invicto",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/invicto/#vid=14361",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_Invicto/Maruti_Invicto_Zeta_Plus_7Str.htm"
+ },
+ "P020": {
+  "cls": "price differs + battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "XEV 9S",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xev-9s/#vid=22537",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XEV_9S/Mahindra_XEV_9S_Pack_One_Above_59kWh_7-Seater.htm"
+ },
+ "P021": {
+  "cls": "strong hybrid",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [strong-hybrid fuel]",
+  "make": "Maruti Suzuki",
+  "model": "Invicto",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/invicto/#vid=14457",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_Invicto/Maruti_Invicto_Zeta_Plus_8Str.htm"
+ },
+ "P022": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Hyundai",
+  "model": "Grand i10 Nios",
+  "cw_url": "https://www.carwale.com/hyundai-cars/grand-i10-nios/#vid=15785",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Grand_i10_Nios/Hyundai_Grand_i10_Nios_Sportz_CNG.htm"
+ },
+ "P023": {
+  "cls": "dual tone",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity + price [strong-hybrid fuel, dual tone on one site]",
+  "make": "Toyota",
+  "model": "Camry",
+  "cw_url": "https://www.carwale.com/toyota-cars/camry/#vid=21660",
+  "cd_url": "https://www.cardekho.com/overview/Toyota_Camry/Toyota_Camry_Sprint_Edition.htm"
+ },
+ "P024": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "BE 6 Sporteq",
+  "cw_url": "https://www.carwale.com/mahindra-cars/be-6-sporteq/#vid=25146",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_BE_6_SPORTEQ/Mahindra_BE_6_SPORTEQ_Launch_Edition_79kWh.htm"
+ },
+ "P025": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Mahindra",
+  "model": "XUV 3XO",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv-3xo/#vid=17167",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV_3XO/Mahindra_XUV_3XO_AX7_Diesel_AMT.htm"
+ },
+ "P026": {
+  "cls": "page spelling (XUV400)",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity",
+  "make": "Mahindra",
+  "model": "XUV400",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv400/#vid=16155",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV400_EV/Mahindra_XUV400_EV_EL_Pro_345_kWh.htm"
+ },
+ "P027": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Mahindra",
+  "model": "XUV 3XO",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv-3xo/#vid=17165",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV_3XO/Mahindra_XUV_3XO_AX7_Diesel.htm"
+ },
+ "P028": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Mahindra",
+  "model": "BE 6 Sporteq",
+  "cw_url": "https://www.carwale.com/mahindra-cars/be-6-sporteq/#vid=25118",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_BE_6_SPORTEQ/Mahindra_BE_6_SPORTEQ_Three_70kWh.htm"
+ },
+ "P029": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Nissan",
+  "model": "Gravite",
+  "cw_url": "https://www.carwale.com/nissan-cars/gravite/#vid=24074",
+  "cd_url": "https://www.cardekho.com/overview/Nissan_Gravite/Nissan_Gravite_Tekna_CNG.htm"
+ },
+ "P030": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=24638",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Creative_Plus_PS_Dark_Diesel_AMT.htm"
+ },
+ "P031": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=21949",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Excellence_LR_Knight.htm"
+ },
+ "P032": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Nissan",
+  "model": "Magnite",
+  "cw_url": "https://www.carwale.com/nissan-cars/magnite/#vid=20896",
+  "cd_url": "https://www.cardekho.com/overview/Nissan_Magnite/Nissan_Magnite_Visia_Plus_CNG.htm"
+ },
+ "P033": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "MG",
+  "model": "ZS EV",
+  "cw_url": "https://www.carwale.com/mg-cars/zs-ev/#vid=16373",
+  "cd_url": "https://www.cardekho.com/overview/MG_ZS_EV/MG_ZS_EV_Executive.htm"
+ },
+ "P034": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Maruti Suzuki",
+  "model": "Grand Vitara",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/grand-vitara/#vid=20379",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_Grand_Vitara/Maruti_Grand_Vitara_Alpha_AT.htm"
+ },
+ "P035": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=21885",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Excellence_LR_HC_Knight.htm"
+ },
+ "P036": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Kia",
+  "model": "Syros EV",
+  "cw_url": "https://www.carwale.com/kia-cars/syros-ev/#vid=24724",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Syros_EV/Kia_Syros_EV_HTX_ER.htm"
+ },
+ "P037": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Mahindra",
+  "model": "Bolero",
+  "cw_url": "https://www.carwale.com/mahindra-cars/bolero/#vid=22259",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_Bolero/Mahindra_Bolero_B4.htm"
+ },
+ "P038": {
+  "cls": "battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Kia",
+  "model": "Carens Clavis EV",
+  "cw_url": "https://www.carwale.com/kia-cars/carens-clavis-ev/#vid=23598",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Carens_Clavis_EV/Kia_Carens_Clavis_EV_HTX_Plus_ER_6Str.htm"
+ },
+ "P039": {
+  "cls": "strong hybrid",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [strong-hybrid fuel]",
+  "make": "Maruti Suzuki",
+  "model": "Invicto",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/invicto/#vid=14363",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_Invicto/Maruti_Invicto_Alpha_Plus_7Str.htm"
+ },
+ "P040": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Tata",
+  "model": "Harrier",
+  "cw_url": "https://www.carwale.com/tata-cars/harrier/#vid=21488",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Harrier/Tata_Harrier_Adventure_X_Plus_AT.htm"
+ },
+ "P041": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=21945",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Excellence_Knight.htm"
+ },
+ "P042": {
+  "cls": "battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Mahindra",
+  "model": "XEV 9e",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xev-9e/#vid=20751",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XEV_9e/Mahindra_XEV_9e_Pack_Three_Select_11.2kw_Charger.htm"
+ },
+ "P043": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=21951",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Excellence_LR_HC_Knight.htm"
+ },
+ "P044": {
+  "cls": "price differs + battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=21895",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Smart_(O)_LR.htm"
+ },
+ "P045": {
+  "cls": "price differs + battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "MG",
+  "model": "Windsor EV",
+  "cw_url": "https://www.carwale.com/mg-cars/windsor-ev/#vid=18297",
+  "cd_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence.htm"
+ },
+ "P046": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=22691",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Creative_Plus_PS_Dark_Diesel.htm"
+ },
+ "P047": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Mahindra",
+  "model": "Bolero",
+  "cw_url": "https://www.carwale.com/mahindra-cars/bolero/#vid=22261",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_Bolero/Mahindra_Bolero_B6.htm"
+ },
+ "P048": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Maruti Suzuki",
+  "model": "Invicto",
+  "cw_url": "https://www.carwale.com/maruti-suzuki-cars/invicto/#vid=14363",
+  "cd_url": "https://www.cardekho.com/overview/Maruti_Invicto/Maruti_Invicto_Zeta_Plus_7Str.htm"
+ },
+ "P049": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Tata",
+  "model": "Tigor EV",
+  "cw_url": "https://www.carwale.com/tata-cars/tigor-ev/#vid=11287",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Tigor_EV/Tata_Tigor_EV_XZ_Plus_LUX.htm"
+ },
+ "P050": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Renault",
+  "model": "Kwid",
+  "cw_url": "https://www.carwale.com/renault-cars/kwid/#vid=23411",
+  "cd_url": "https://www.cardekho.com/overview/Renault_KWID/Renault_KWID_Evolution_CNG.htm"
+ },
+ "P051": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Tata",
+  "model": "Tigor EV",
+  "cw_url": "https://www.carwale.com/tata-cars/tigor-ev/#vid=11287",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Tigor_EV/Tata_Tigor_EV_XZ_Plus.htm"
+ },
+ "P052": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Hyundai",
+  "model": "Creta Electric",
+  "cw_url": "https://www.carwale.com/hyundai-cars/creta-electric/#vid=22122",
+  "cd_url": "https://www.cardekho.com/overview/Hyundai_Creta_Electric/Hyundai_Creta_Electric_Excellence_HC_Knight_DT.htm"
+ },
+ "P053": {
+  "cls": "battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Kia",
+  "model": "Carens Clavis EV",
+  "cw_url": "https://www.carwale.com/kia-cars/carens-clavis-ev/#vid=23592",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Carens_Clavis_EV/Kia_Carens_Clavis_EV_HTX_6Str.htm"
+ },
+ "P054": {
+  "cls": "page spelling (XUV400)",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity",
+  "make": "Mahindra",
+  "model": "XUV400",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv400/#vid=16347",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV400_EV/Mahindra_XUV400_EV_EL_Pro_DT_394_kWh.htm"
+ },
+ "P055": {
+  "cls": "price differs + battery",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs) [battery]",
+  "make": "MG",
+  "model": "Windsor EV",
+  "cw_url": "https://www.carwale.com/mg-cars/windsor-ev/#vid=20591",
+  "cd_url": "https://www.cardekho.com/overview/MG_Windsor_EV/MG_Windsor_EV_Essence_Pro.htm"
+ },
+ "P056": {
+  "cls": "battery",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity [battery]",
+  "make": "Kia",
+  "model": "Syros EV",
+  "cw_url": "https://www.carwale.com/kia-cars/syros-ev/#vid=24728",
+  "cd_url": "https://www.cardekho.com/overview/Kia_Syros_EV/Kia_Syros_EV_HTX_Plus_ER.htm"
+ },
+ "P057": {
+  "cls": "PLANTED",
+  "group": "new model",
+  "truth": "different",
+  "reason": "planted control",
+  "make": "Toyota",
+  "model": "Fortuner Legender",
+  "cw_url": "https://www.carwale.com/toyota-cars/fortuner-legender/#vid=20077",
+  "cd_url": "https://www.cardekho.com/overview/Toyota_Fortuner_Legender/Toyota_Fortuner_Legender_4x2_AT.htm"
+ },
+ "P058": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Mahindra",
+  "model": "Thar Roxx",
+  "cw_url": "https://www.carwale.com/mahindra-cars/thar-roxx/#vid=17941",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_Thar_ROXX/Mahindra_Thar_ROXX_MX3_RWD_Diesel.htm"
+ },
+ "P059": {
+  "cls": "dual tone",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Toyota",
+  "model": "Fortuner Legender",
+  "cw_url": "https://www.carwale.com/toyota-cars/fortuner-legender/#vid=11369",
+  "cd_url": "https://www.cardekho.com/overview/Toyota_Fortuner_Legender/Toyota_Fortuner_Legender_4x2_AT.htm"
+ },
+ "P060": {
+  "cls": "price differs",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity (price differs)",
+  "make": "Tata",
+  "model": "Harrier",
+  "cw_url": "https://www.carwale.com/tata-cars/harrier/#vid=21498",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Harrier/Tata_Harrier_Adventure_X_Plus_Dark.htm"
+ },
+ "P061": {
+  "cls": "page spelling (XUV400)",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity",
+  "make": "Mahindra",
+  "model": "XUV400",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv400/#vid=16153",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV400_EV/Mahindra_XUV400_EV_EC_Pro_345_kWh.htm"
+ },
+ "P062": {
+  "cls": "dual tone",
+  "group": "existing model",
+  "truth": "linked",
+  "reason": "identity + price [dual tone on one site]",
+  "make": "Tata",
+  "model": "Nexon",
+  "cw_url": "https://www.carwale.com/tata-cars/nexon/#vid=22683",
+  "cd_url": "https://www.cardekho.com/overview/Tata_Nexon/Tata_Nexon_Creative_Plus_PS_Dark.htm"
+ },
+ "P063": {
+  "cls": "page spelling (XUV400)",
+  "group": "new model",
+  "truth": "linked",
+  "reason": "identity",
+  "make": "Mahindra",
+  "model": "XUV400",
+  "cw_url": "https://www.carwale.com/mahindra-cars/xuv400/#vid=16349",
+  "cd_url": "https://www.cardekho.com/overview/Mahindra_XUV400_EV/Mahindra_XUV400_EV_EL_Pro_DT_345_kWh.htm"
+ }
+}
