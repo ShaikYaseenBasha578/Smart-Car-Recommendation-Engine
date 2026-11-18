@@ -37,6 +37,35 @@ Each change is narrow, fails closed, and keeps the rule that a variant needs two
 - **D2. One-variant models** (ZR-V, X-Trail). Recommended: no special rule. X-Trail's prices agree and needs only rule 3; ZR-V follows D1.
 - **D3. Scope.** Recommended: these rules apply to every model in future runs, not only the 16, since the same mismatches will recur. Existing links can't change, because linking only adds.
 
+## 3a. Does the brochure settle a disagreement?
+
+**For specifications, yes, and it already does.** `kbpipe/reconcile.py` puts an agreeing set of brochure values first: when the brochure and the sites differ, the brochure value is written and the site values are kept as conflicting evidence (policy P1, P2).
+
+**For price, fuel and gearbox, no.** The brochure reader never reads them (`SKIP_FIELDS` in `kbpipe/brochure.py`). Brochures rarely print ex-showroom prices, and fuel and gearbox define which variant a row is. So a brochure cannot settle D1 (prices).
+
+**It can help with linking (proposed addition).** For blocks A and C, the model's own brochure lists the trims, battery sizes and powertrains. A link may use the brochure to confirm that a trim with that battery size or hybrid system exists (for example "Executive, 42 kWh"). It never creates a variant the brochure does not name. This uses brochures already read and cached on 17 Nov.
+
+## 3b. A third source: 91wheels (investigated 18 Nov)
+
+**Technically it would work well, and most of the code exists:**
+- The old parser (`knowledge_base/ingestion/source_91wheels/extractor_91wheels.py`) still reads today's pages. Invicto: 3 of 3 variants, specs complete. Creta Electric: 25 variants.
+- 91wheels gives the battery size as its own field ("42", "51.4") and labels strong hybrids "Hybrid" / "Strong Hybrid". That resolves blocks A and C directly.
+- It breaks price ties. Creta Electric Executive: 91wheels ₹18,02,800 = CarDekho ₹18,02,800; CarWale shows ₹14,57,159. Two of three agree.
+- Robots rules allow the brand and model pages for the pipeline's identity.
+- The old ingester cannot be reused. It imports modules missing from its folder, uses the frozen resolver (P15), and has the known unpacking crash. Only the parser and the field map are reusable. The KB already holds 845 91wheels observations from 9 Sep, 251 of them quarantined as mislinks.
+
+**But its terms forbid it.** The terms and conditions page (fetched 18 Nov) says users agree not to "scrape, copy, or distribute any Website content without permission", and limits use to personal, non-commercial purposes. That is an explicit prohibition, unlike Autocar, which was accepted as terms-grey. Under the rule "respect site terms", and the precedent of CarDekho expert scores (dropped because the terms prohibit), **91wheels should not go into the automated pipeline without written permission from 91wheels.** Four pages were fetched for this check (brand page, two model pages, terms page), politely and under the pipeline's identity. Nothing was stored in the KB.
+
+**Recommendation:** record 91wheels as a future source, conditional on permission. If the owner obtains permission, the build is:
+1. `kbpipe/sources/wheels91.py` in the same shape as `carwale.py` and `cardekho.py`, reusing the parser and field map (copied in, not imported from the frozen folder). Battery, fuel and price come as structured fields.
+2. Discovery maps 91wheels addresses by name (its slugs differ: `creta-ev` for Creta Electric).
+3. Linking stays anchored on CarWale; each other site is linked by the same identity rules. A variant is added when **two of three** sites link, and a value is written when two of three agree. A disagreement with no majority goes to the review file.
+4. Old 91wheels observations and their quarantines are left as they are. New observations are new rows.
+5. The P15 blind check (at least 98% on 50 auto-accepted links) and the P12 per-class check, before any write.
+6. About 120 extra page requests per full refresh at the existing 4-second spacing.
+
+**Without 91wheels**, the price tie (D1) stays as recommended: write non-price fields and send both prices to the review file.
+
 ## 4. Safeguards (KB policy)
 
 - **P12 blind check.** The new rules will decide more than 20 links, so a fresh subagent that never sees the rules checks a stratified sample (by block A–E, at least 10 per block, or all where fewer) against the two pages. **Agreement must be at least 95% in every block, or nothing is written.**
