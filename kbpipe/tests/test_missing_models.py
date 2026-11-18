@@ -53,6 +53,14 @@ def test_page_name_check_accepts_the_missing_decimal_only_with_a_matching_batter
     assert not extract._page_name_ok("Mahindra XUV400 EV EC Pro 394 kWh", hit)                  # other battery: still refused
 
 
+def test_page_name_check_accepts_the_model_name_the_list_left_out():
+    hit = X("Essence 7-Seater", "69.2 kWh, 517 km", price=2424800)
+    assert extract._page_name_ok("MG Hector Tomahawk EV Essence 7-Seater", hit, "MG Hector Tomahawk EV")
+    assert not extract._page_name_ok("MG Hector Tomahawk EV Essence 7-Seater", hit)                         # no model name known: refused as before
+    assert not extract._page_name_ok("MG Hector Tomahawk EV Exclusive 7-Seater", hit, "MG Hector Tomahawk EV")
+    assert not extract._page_name_ok("MG ZS EV Essence 7-Seater", hit, "MG Hector Tomahawk EV")
+
+
 def test_descriptor_words_are_the_enumerated_ones_only():
     m = "Honda City"
     assert c.relaxed_tokens("Exclusive Plug-in Hybrid (Electric + Petrol) Automatic", "MG Hector Tomahawk PHEV") == {"exclusive"}

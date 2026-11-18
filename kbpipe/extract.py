@@ -18,13 +18,18 @@ def _page_name(s):
     return " ".join(w for w in c.norm_name(s).split() if w != "suzuki")
 
 
-def _page_name_ok(page_name, hit):
-    """Page check: the variant page names the variant the list named. A page may drop the decimal point of the battery
-    ("EC Pro 345 kWh" for 34.5 kWh); that reading is allowed only when the model page's own name or sub-line says 34.5."""
-    pn = _page_name(page_name)
-    if pn == _page_name(hit["name"]):
+def _page_name_ok(page_name, hit, model_page_name=""):
+    """Page check: the variant page names the variant the list named. Two exact allowances, both only after the plain comparison fails:
+    (1) a page may drop the decimal point of the battery ("EC Pro 345 kWh" for 34.5 kWh), read as 34.5 only when the model page's
+        own name or sub-line says 34.5;
+    (2) the list may omit the model name that the page prints ("Essence 7-Seater" listed, "MG Hector Tomahawk EV Essence 7-Seater" on the
+        page): the page name must be exactly the model page's own name followed by the listed name."""
+    pn, ln = _page_name(page_name), _page_name(hit["name"])
+    if pn == ln:
         return True
-    return c.page_battery_fix(pn, hit.get("battery_kwh")) == _page_name(hit["name"])
+    if model_page_name and pn == _page_name(model_page_name) + " " + ln:
+        return True
+    return c.page_battery_fix(pn, hit.get("battery_kwh")) == ln
 
 
 def fingerprint(obj):
@@ -97,7 +102,7 @@ def model_bundle(item, cfg, fetcher, log, state):
             rule2 = "strong-hybrid fuel" in rec["link_reason"]
             if not pv:
                 problems.append("CarDekho variant page unreadable: %s" % hit["url"])
-            elif not _page_name_ok(pv["name"], hit):
+            elif not _page_name_ok(pv["name"], hit, (m2 or {}).get("name")):
                 problems.append("CarDekho served %r for %r; not used" % (pv["name"], hit["name"]))   # page check
             elif rule2 and pv["fields"].get("fuel_type") not in ("Petrol", "Petrol Hybrid"):
                 problems.append("CarDekho page for %r says fuel %r, which contradicts the strong-hybrid link; not used" % (hit["name"], pv["fields"].get("fuel_type")))
