@@ -647,6 +647,29 @@ def enrich(item, bundle, conn, cfg, fetcher, log, run_dir, chain=None, check_cha
     return summ
 
 
+def confirm_links(bundle):
+    """Rule 5 (missing-models plan): where a CarWale-CarDekho link used the battery rule or the strong-hybrid rule and the model's
+    brochure evidence (already attached by enrich, from the cached reads) names that trim with the same battery size, or with a
+    hybrid system, say so in the link reason. It only records: a missing or silent brochure never blocks or removes a link,
+    and nothing is created from the brochure."""
+    for v in bundle["versions"]:
+        why = v.get("link_reason") or ""
+        if not v.get("fields_cd") or ("battery" not in why and "strong-hybrid fuel" not in why):
+            continue
+        texts = []
+        for b in v.get("brochure") or []:
+            pl = b["obs"]["payload"]
+            texts += list((pl.get("printed") or {}).values()) + list((pl.get("qualifier") or {}).values())
+        notes = []
+        kwh = c.battery_kwh(v["name"])
+        if "battery" in why and kwh is not None and any(c.battery_agrees(kwh, x) for t in texts for x in c.battery_values(t)):
+            notes.append("brochure confirms trim and %g kWh" % kwh)
+        if "strong-hybrid fuel" in why and any(re.search(r"hybrid|e:?hev|e-?cvt|motor", t or "", re.I) for t in texts):
+            notes.append("brochure confirms trim and hybrid system")
+        if notes:
+            v["link_reason"] = "%s; %s" % (why, "; ".join(notes))
+
+
 def _write(S, summ):
     d = os.path.join(S.run_dir, "brochure")
     os.makedirs(d, exist_ok=True)

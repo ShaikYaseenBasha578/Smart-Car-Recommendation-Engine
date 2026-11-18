@@ -124,6 +124,7 @@ def run(cfg, full=False, max_models=None, only=None, no_write=False, no_verify=F
         n_ops = len(P["ops"])
         kept = {g for g in R["stopped_groups"]}
         brochure.enrich(it, b, conn, cfg, fetcher, log, run_dir)   # OEM brochure evidence onto each version's "brochure" list
+        brochure.confirm_links(b)                                  # record (never block) "brochure confirms" on battery and hybrid links
         plan.plan_model(it, b, conn, cfg, P)
         for g in kept:   # a stopped field group is not extracted any further
             _drop_group(P, P["ops"][n_ops:], g, "verification fell below the bar earlier in this run")

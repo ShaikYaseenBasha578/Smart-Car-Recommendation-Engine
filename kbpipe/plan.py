@@ -24,6 +24,8 @@ def okey(obs):
 
 def _cands(v, field, obs):
     out = []
+    if field == "price_ex_showroom" and v.get("price_disagrees"):
+        return out                       # D1: the sites disagree on this variant's price; neither is written (review item PRICE_DISAGREES)
     for tag, src in (("cw", "carwale"), ("cd", "cardekho")):
         fl = v.get("fields_" + tag)
         if fl and fl.get(field) is not None:
@@ -81,6 +83,22 @@ def plan_model(item, bundle, conn, cfg, P):
             hit, why = match.link(tgt, [x["_t"] for x in live if x["id"] not in matched], make + " " + model)
             hit = next((x for x in live if hit is not None and x["_t"] is hit), None)
         dec = {fld: R.decide(fld, _cands(v, fld, P["obs"]), cfg) for fld in ORDER}
+        if v.get("strong_hybrid_rule"):      # rule 2: fuel is CarWale's; CarDekho's own label stays visible as a logged difference
+            sh = v["strong_hybrid_rule"]
+            P["conflicts"].append({"field": "fuel_type", "kind": "strong_hybrid_label", "high": False, "resolved_value": sh["carwale_fuel"],
+                                   "values": [{"source": "carwale", "cls": R.AGG, "value": sh["carwale_fuel"]},
+                                              {"source": "cardekho", "cls": R.AGG, "value": sh["cardekho_fuel"]}],
+                                   "make": make, "model": model, "variant": v["name"], "kb_value": None,
+                                   "resolution": "carwale fuel kept: every CarWale version of the model is a strong hybrid"})
+        if v.get("price_disagrees"):
+            pd = v["price_disagrees"]
+            P["review"].append({"kind": "PRICE_DISAGREES", "make": make, "model": model, "impact": 1,
+                                "title": "%s %s %s: the sites disagree on the price" % (make, model, v["name"]),
+                                "why": "Linked on a unique identity; CarWale %s (%s), CarDekho %s (%s). No price is written until you pick one." % (
+                                    pd["carwale_price"], v["obs_cw"]["url"], pd["cardekho_price"], pd["cardekho_url"]),
+                                "carwale_price": pd["carwale_price"], "cardekho_price": pd["cardekho_price"],
+                                "carwale_url": v["obs_cw"]["url"], "cardekho_url": pd["cardekho_url"],
+                                "ops": [], "default": "hold"})
         P["links"].append({"make": make, "model": model, "carwale": v["name"], "carwale_fuel": f.get("fuel_type"),
                            "carwale_gearbox": f.get("transmission"), "carwale_price": f.get("price_ex_showroom"),
                            "cardekho": v.get("cd_name") or "", "cardekho_price": (v.get("fields_cd") or {}).get("price_ex_showroom"),
