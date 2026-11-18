@@ -25,7 +25,7 @@ def main(run_dir, out):
             page, _ = f.get(r["cardekho_url"])
             pv = cd.parse_variant(page) if page else None
             if pv and extract._page_name(pv["name"]) != extract._page_name(r["cardekho"]):
-                rule += "; page-name kWh spelling (page prints %r)" % pv["name"]
+                rule += "; page-name check allowance (page prints %r, list says %r)" % (pv["name"], r["cardekho"])
             rows.append([r["make"], r["model"], r["carwale"], r["carwale_url"], r["cardekho"], r["cardekho_url"], rule,
                          r["carwale_price"], r["cardekho_price"]])
     with open(out, "w", newline="") as fh:
