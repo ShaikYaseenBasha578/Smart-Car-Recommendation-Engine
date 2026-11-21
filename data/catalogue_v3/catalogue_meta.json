@@ -1,253 +1,636 @@
 {
-  "catalogue_sha256": "c43d8a55e113817857889f99bf6fb7df9fa6793074545d6c98c4c849559d3ffd",
+  "catalogue_sha256": "99d78e26687599ef2e50759d6c2c12c4ff63a14dcffeab4f0afde38bc902ef9f",
   "columns": {
     "abs": {
-      "non_null": 998,
+      "non_null": 1032,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 466
+      "unverified": 524
     },
     "adas_available": {
-      "non_null": 906,
+      "non_null": 932,
       "not_applicable_blank": 0,
       "quarantined": 1,
-      "unverified": 558
+      "unverified": 624
     },
     "airbags": {
-      "non_null": 1462,
+      "non_null": 1554,
       "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 2
     },
     "android_auto": {
-      "non_null": 1426,
+      "non_null": 1508,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 38
+      "unverified": 48
     },
     "apple_carplay": {
-      "non_null": 1426,
+      "non_null": 1508,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 38
+      "unverified": 48
     },
     "auto_climate_control": {
-      "non_null": 1421,
+      "non_null": 1512,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 43
+      "unverified": 44
     },
     "boot_space_litres": {
-      "non_null": 917,
+      "non_null": 923,
       "not_applicable_blank": 0,
       "quarantined": 2,
-      "unverified": 547
+      "unverified": 633
     },
     "camera_360": {
-      "non_null": 1309,
+      "non_null": 1386,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 155
+      "unverified": 170
     },
     "connected_car_features": {
-      "non_null": 901,
+      "non_null": 932,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 563
+      "unverified": 624
     },
     "cruise_control": {
-      "non_null": 1256,
+      "non_null": 1343,
       "not_applicable_blank": 0,
       "quarantined": 50,
-      "unverified": 208
+      "unverified": 213
     },
     "drivetrain": {
-      "non_null": 1443,
+      "non_null": 1534,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 21
+      "unverified": 22
     },
     "engine_cc": {
-      "non_null": 1387,
-      "not_applicable_blank": 77,
+      "non_null": 1420,
+      "not_applicable_blank": 136,
       "quarantined": 0,
       "unverified": 0
     },
     "esc": {
-      "non_null": 996,
+      "non_null": 1028,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 468
+      "unverified": 528
     },
     "ev_range_km": {
-      "non_null": 62,
-      "not_applicable_blank": 1387,
+      "non_null": 96,
+      "not_applicable_blank": 1420,
       "quarantined": 0,
-      "unverified": 15
+      "unverified": 40
     },
     "fuel_tank_litres": {
       "non_null": 1029,
-      "not_applicable_blank": 77,
+      "not_applicable_blank": 136,
       "quarantined": 0,
-      "unverified": 358
+      "unverified": 391
     },
     "ground_clearance_mm": {
-      "non_null": 891,
+      "non_null": 893,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 573
+      "unverified": 663
     },
     "heads_up_display": {
       "non_null": 481,
       "not_applicable_blank": 0,
       "quarantined": 122,
-      "unverified": 983
+      "unverified": 1075
     },
     "height_mm": {
-      "non_null": 1068,
+      "non_null": 1104,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 396
+      "unverified": 452
     },
     "hill_assist": {
-      "non_null": 1386,
+      "non_null": 1447,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 78
+      "unverified": 109
     },
     "kerb_weight_kg": {
       "non_null": 842,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 622
+      "unverified": 714
     },
     "length_mm": {
-      "non_null": 1106,
+      "non_null": 1142,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 358
+      "unverified": 414
     },
     "mileage_km_per_kg": {
       "non_null": 48,
-      "not_applicable_blank": 1340,
+      "not_applicable_blank": 1432,
       "quarantined": 0,
       "unverified": 76
     },
     "mileage_kmpl": {
-      "non_null": 597,
-      "not_applicable_blank": 201,
+      "non_null": 608,
+      "not_applicable_blank": 260,
       "quarantined": 5,
-      "unverified": 666
+      "unverified": 688
     },
     "paddle_shifters": {
-      "non_null": 597,
+      "non_null": 627,
       "not_applicable_blank": 0,
       "quarantined": 5,
-      "unverified": 867
+      "unverified": 929
     },
     "power_bhp": {
-      "non_null": 1414,
+      "non_null": 1499,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 50
+      "unverified": 57
     },
     "price_ex_showroom": {
-      "non_null": 1464,
+      "non_null": 1556,
       "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "rear_ac_vents": {
-      "non_null": 1416,
+      "non_null": 1503,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 48
+      "unverified": 53
     },
     "rear_camera": {
-      "non_null": 1345,
+      "non_null": 1429,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 119
+      "unverified": 127
     },
     "rear_parking_sensors": {
-      "non_null": 1464,
+      "non_null": 1556,
       "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "safety_stars_adult": {
-      "non_null": 618
+      "non_null": 654
     },
     "safety_stars_child": {
-      "non_null": 618
+      "non_null": 654
     },
     "safety_test_year": {
-      "non_null": 618
+      "non_null": 654
     },
     "safety_testing_body": {
-      "non_null": 618
+      "non_null": 654
     },
     "seats": {
-      "non_null": 1464,
+      "non_null": 1556,
       "not_applicable_blank": 0,
       "quarantined": 0,
       "unverified": 0
     },
     "sunroof": {
-      "non_null": 1359,
+      "non_null": 1433,
       "not_applicable_blank": 0,
       "quarantined": 4,
-      "unverified": 105
+      "unverified": 123
     },
     "torque_nm": {
-      "non_null": 1421,
+      "non_null": 1510,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 43
+      "unverified": 46
     },
     "tpms": {
-      "non_null": 1362,
+      "non_null": 1450,
       "not_applicable_blank": 0,
       "quarantined": 10,
-      "unverified": 102
+      "unverified": 106
     },
     "ventilated_front_seats": {
-      "non_null": 1296,
+      "non_null": 1369,
       "not_applicable_blank": 0,
       "quarantined": 15,
-      "unverified": 168
+      "unverified": 187
     },
     "wheelbase_mm": {
-      "non_null": 1099,
-      "not_applicable_blank": 0,
-      "quarantined": 0,
-      "unverified": 365
-    },
-    "width_mm": {
-      "non_null": 1096,
-      "not_applicable_blank": 0,
-      "quarantined": 0,
-      "unverified": 368
-    },
-    "wireless_charging": {
       "non_null": 1129,
       "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 427
+    },
+    "width_mm": {
+      "non_null": 1132,
+      "not_applicable_blank": 0,
+      "quarantined": 0,
+      "unverified": 424
+    },
+    "wireless_charging": {
+      "non_null": 1215,
+      "not_applicable_blank": 0,
       "quarantined": 81,
-      "unverified": 335
+      "unverified": 341
     }
   },
-  "export_utc": "2026-11-17T13:49:20Z",
+  "excluded_no_price": {
+    "count": 63,
+    "variants": [
+      {
+        "make": "Hyundai",
+        "model": "Creta Electric",
+        "variant": "Executive 42.0 kWh",
+        "variant_id": 1466
+      },
+      {
+        "make": "Hyundai",
+        "model": "Creta Electric",
+        "variant": "Smart (O) LR 51.4 kWh",
+        "variant_id": 1476
+      },
+      {
+        "make": "Hyundai",
+        "model": "Creta Electric",
+        "variant": "Excellence LR 51.4 kWh",
+        "variant_id": 1482
+      },
+      {
+        "make": "Hyundai",
+        "model": "Creta Electric",
+        "variant": "Excellence LR 51.4 kWh Dual Tone",
+        "variant_id": 1484
+      },
+      {
+        "make": "Kia",
+        "model": "Syros EV",
+        "variant": "HTK 42.0 kWh",
+        "variant_id": 1494
+      },
+      {
+        "make": "MG",
+        "model": "Comet EV",
+        "variant": "Executive 17.3 kWh",
+        "variant_id": 1501
+      },
+      {
+        "make": "MG",
+        "model": "Comet EV",
+        "variant": "Excite 17.3 kWh",
+        "variant_id": 1502
+      },
+      {
+        "make": "MG",
+        "model": "Comet EV",
+        "variant": "Excite FC 17.4 kWh",
+        "variant_id": 1503
+      },
+      {
+        "make": "MG",
+        "model": "Hector Tomahawk EV",
+        "variant": "Excite 69.2 kWh 7 STR",
+        "variant_id": 1504
+      },
+      {
+        "make": "MG",
+        "model": "Hector Tomahawk EV",
+        "variant": "Exclusive 69.2 kWh 7 STR",
+        "variant_id": 1505
+      },
+      {
+        "make": "MG",
+        "model": "Hector Tomahawk EV",
+        "variant": "Essence 69.2 kWh 5 STR",
+        "variant_id": 1506
+      },
+      {
+        "make": "MG",
+        "model": "Hector Tomahawk EV",
+        "variant": "Essence 69.2 kWh 7 STR",
+        "variant_id": 1507
+      },
+      {
+        "make": "MG",
+        "model": "ZS EV",
+        "variant": "Executive 50.3 kWh",
+        "variant_id": 1508
+      },
+      {
+        "make": "MG",
+        "model": "ZS EV",
+        "variant": "Excite Pro 50.3 kWh",
+        "variant_id": 1509
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "One 59.0 kWh No Charger",
+        "variant_id": 1510
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Two 59.0 kWh No Charger",
+        "variant_id": 1511
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Three 59.0 kWh No Charger",
+        "variant_id": 1512
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Three 70.0 kWh No Charger",
+        "variant_id": 1513
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Three Plus 70.0 kWh No Charger",
+        "variant_id": 1514
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "FE 79.0 kWh No Charger",
+        "variant_id": 1515
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Three Plus 79.0 kWh No Charger",
+        "variant_id": 1516
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "FE Four 79.0 kWh No Charger",
+        "variant_id": 1517
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Four 79.0 kWh No Charger",
+        "variant_id": 1518
+      },
+      {
+        "make": "Mahindra",
+        "model": "BE 6 Sporteq",
+        "variant": "Launch Edition 79.0 kWh No Charger",
+        "variant_id": 1519
+      },
+      {
+        "make": "Hyundai",
+        "model": "Creta",
+        "variant": "King Knight Edition Petrol 1.5L CVT Speed Automatic (CVT) Dual Tone",
+        "variant_id": 1538
+      },
+      {
+        "make": "Hyundai",
+        "model": "Grand i10 Nios",
+        "variant": "Sportz CNG Manual",
+        "variant_id": 1539
+      },
+      {
+        "make": "Kia",
+        "model": "Sonet",
+        "variant": "GTX Plus Petrol 1.0L Turbo Automatic (DCT)",
+        "variant_id": 1548
+      },
+      {
+        "make": "Kia",
+        "model": "Sonet",
+        "variant": "GTX Plus Diesel 1.5L Turbo Automatic (TC)",
+        "variant_id": 1549
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Excite 38.0 kWh",
+        "variant_id": 1550
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Exclusive 38.0 kWh",
+        "variant_id": 1551
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Essence 38.0 kWh",
+        "variant_id": 1552
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Exclusive Pro 52.9 kWh",
+        "variant_id": 1553
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Essence Pro 52.9 kWh",
+        "variant_id": 1554
+      },
+      {
+        "make": "MG",
+        "model": "Windsor EV",
+        "variant": "Indulge Edition 38.0 kWh",
+        "variant_id": 1555
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack One Above 59.0 kWh 7 STR No Charger",
+        "variant_id": 1556
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack One Above 79.0 kWh 7 STR No Charger",
+        "variant_id": 1557
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack Two Above 70.0 kWh 7 STR No Charger",
+        "variant_id": 1558
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack Two Above 79.0 kWh 7 STR No Charger",
+        "variant_id": 1559
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack Three 79.0 kWh 7 STR No Charger",
+        "variant_id": 1560
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9S",
+        "variant": "Pack Three Above 79.0 kWh 7 STR No Charger",
+        "variant_id": 1561
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9e",
+        "variant": "Pack One 59.0 kWh No Charger",
+        "variant_id": 1562
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9e",
+        "variant": "Pack Two 79.0 kWh No Charger",
+        "variant_id": 1563
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9e",
+        "variant": "Cineluxe Edition  79.0 kWh No Charger",
+        "variant_id": 1566
+      },
+      {
+        "make": "Mahindra",
+        "model": "XEV 9e",
+        "variant": "Pack Three 79.0 kWh No Charger",
+        "variant_id": 1569
+      },
+      {
+        "make": "Maruti Suzuki",
+        "model": "Victoris",
+        "variant": "ZXi Plus 2WD Petrol 1.5L Automatic (TC) Dual Tone",
+        "variant_id": 1590
+      },
+      {
+        "make": "Nissan",
+        "model": "Gravite",
+        "variant": "Visia CNG 1.0L Manual",
+        "variant_id": 1591
+      },
+      {
+        "make": "Nissan",
+        "model": "Gravite",
+        "variant": "Acenta CNG 1.0L Manual",
+        "variant_id": 1592
+      },
+      {
+        "make": "Nissan",
+        "model": "Gravite",
+        "variant": "N-Connecta CNG 1.0L Manual",
+        "variant_id": 1593
+      },
+      {
+        "make": "Nissan",
+        "model": "Gravite",
+        "variant": "Tekna CNG 1.0L Manual",
+        "variant_id": 1594
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "Visia CNG Manual",
+        "variant_id": 1595
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "Visia Plus CNG Manual",
+        "variant_id": 1596
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "Acenta CNG Manual",
+        "variant_id": 1597
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "N-Connecta CNG Manual",
+        "variant_id": 1598
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "Tekna CNG Manual",
+        "variant_id": 1599
+      },
+      {
+        "make": "Nissan",
+        "model": "Magnite",
+        "variant": "Tekna Plus CNG Manual",
+        "variant_id": 1600
+      },
+      {
+        "make": "Renault",
+        "model": "Kwid",
+        "variant": "Evolution CNG 1.0L Manual",
+        "variant_id": 1603
+      },
+      {
+        "make": "Renault",
+        "model": "Kwid",
+        "variant": "Climber CNG 1.0L Manual",
+        "variant_id": 1604
+      },
+      {
+        "make": "Tata",
+        "model": "Harrier",
+        "variant": "Adventure X Plus  Dark Edition Diesel 2.0L Turbo Manual",
+        "variant_id": 1608
+      },
+      {
+        "make": "Toyota",
+        "model": "Urban Cruiser Hyryder",
+        "variant": "G (O) 2WD Petrol 1.5L Manual Aero Black Edition",
+        "variant_id": 1616
+      },
+      {
+        "make": "Toyota",
+        "model": "Urban Cruiser Hyryder",
+        "variant": "G (O) 2WD Petrol 1.5L Automatic (TC) Aero Black Edition",
+        "variant_id": 1617
+      },
+      {
+        "make": "Toyota",
+        "model": "Urban Cruiser Hyryder",
+        "variant": "V 2WD Petrol 1.5L Manual Aero Black Edition",
+        "variant_id": 1618
+      },
+      {
+        "make": "Toyota",
+        "model": "Urban Cruiser Hyryder",
+        "variant": "V 2WD Petrol 1.5L Automatic (TC) Aero Black Edition",
+        "variant_id": 1619
+      },
+      {
+        "make": "Toyota",
+        "model": "Urban Cruiser Hyryder",
+        "variant": "V 2WD Hybrid (Electric + Petrol) 1.5L Automatic (e-CVT) Aero Black Edition",
+        "variant_id": 1620
+      }
+    ]
+  },
+  "export_utc": "2026-11-21T16:29:57Z",
   "fuel_type_distribution": {
     "cng": 124,
-    "diesel": 331,
-    "electric": 77,
-    "hybrid": 49,
-    "petrol": 883
+    "diesel": 341,
+    "electric": 136,
+    "hybrid": 53,
+    "petrol": 902
   },
   "kb_latest_phase": "AUDIT_FIX_20261116",
-  "kb_sha256": "6235ed9e77b7c969587e13f591bec93689eec3d2912e7cd53b29e2d1c8993138",
+  "kb_sha256": "b9915943e029fafc94b04f0fe79f41f13fbf6558b076de546890973eedb7bc27",
   "kb_wal_nonempty": false,
-  "row_count": 1464,
+  "row_count": 1556,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
   "sanity": {
     "failures": [],
@@ -257,9 +640,10 @@
         "column": "ROWS",
         "delta": null,
         "excluded": 0,
-        "kb_variants": 1464,
-        "new_pct": 1464,
-        "new_rows": 0,
+        "excluded_no_price": 63,
+        "kb_variants": 1619,
+        "new_pct": 1556,
+        "new_rows": 92,
         "old_pct": 1464,
         "worse_than_limit": false
       },
@@ -269,7 +653,7 @@
         "column": "price_ex_showroom",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": null,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -280,7 +664,7 @@
         "column": "seats",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": null,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -291,7 +675,7 @@
         "column": "engine_cc",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": null,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -300,9 +684,9 @@
         "carried_over_before_pct": 96.6,
         "carried_over_rows_pct": 96.6,
         "column": "power_bhp",
-        "delta": 0.0,
-        "new_pct": 96.6,
-        "new_rows_pct": null,
+        "delta": -0.2,
+        "new_pct": 96.3,
+        "new_rows_pct": 92.4,
         "new_rows_sparse": false,
         "old_pct": 96.6,
         "worse_than_limit": false
@@ -311,9 +695,9 @@
         "carried_over_before_pct": 97.1,
         "carried_over_rows_pct": 97.1,
         "column": "torque_nm",
-        "delta": 0.0,
-        "new_pct": 97.1,
-        "new_rows_pct": null,
+        "delta": -0.0,
+        "new_pct": 97.0,
+        "new_rows_pct": 96.7,
         "new_rows_sparse": false,
         "old_pct": 97.1,
         "worse_than_limit": false
@@ -324,7 +708,7 @@
         "column": "drivetrain",
         "delta": 0.0,
         "new_pct": 98.6,
-        "new_rows_pct": null,
+        "new_rows_pct": 98.9,
         "new_rows_sparse": false,
         "old_pct": 98.6,
         "worse_than_limit": false
@@ -333,9 +717,9 @@
         "carried_over_before_pct": 54.5,
         "carried_over_rows_pct": 54.5,
         "column": "mileage_kmpl",
-        "delta": 0.0,
-        "new_pct": 54.5,
-        "new_rows_pct": null,
+        "delta": 1.3,
+        "new_pct": 55.8,
+        "new_rows_pct": 76.1,
         "new_rows_sparse": false,
         "old_pct": 54.5,
         "worse_than_limit": false
@@ -344,9 +728,9 @@
         "carried_over_before_pct": 94.8,
         "carried_over_rows_pct": 94.8,
         "column": "mileage_km_per_kg",
-        "delta": 0.0,
-        "new_pct": 94.8,
-        "new_rows_pct": null,
+        "delta": 0.3,
+        "new_pct": 95.1,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 94.8,
         "worse_than_limit": false
@@ -355,99 +739,99 @@
         "carried_over_before_pct": 99.0,
         "carried_over_rows_pct": 99.0,
         "column": "ev_range_km",
-        "delta": 0.0,
-        "new_pct": 99.0,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -1.5,
+        "new_pct": 97.4,
+        "new_rows_pct": 72.8,
+        "new_rows_sparse": true,
         "old_pct": 99.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 60.3,
+        "carried_over_before_pct": 62.6,
         "carried_over_rows_pct": 62.6,
         "column": "boot_space_litres",
-        "delta": 2.3,
-        "new_pct": 62.6,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 60.3,
+        "delta": -3.3,
+        "new_pct": 59.3,
+        "new_rows_pct": 6.5,
+        "new_rows_sparse": true,
+        "old_pct": 62.6,
         "worse_than_limit": false
       },
       {
         "carried_over_before_pct": 60.9,
         "carried_over_rows_pct": 60.9,
         "column": "ground_clearance_mm",
-        "delta": 0.0,
-        "new_pct": 60.9,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -3.5,
+        "new_pct": 57.4,
+        "new_rows_pct": 2.2,
+        "new_rows_sparse": true,
         "old_pct": 60.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 73.2,
+        "carried_over_before_pct": 75.5,
         "carried_over_rows_pct": 75.5,
         "column": "length_mm",
-        "delta": 2.3,
-        "new_pct": 75.5,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 73.2,
+        "delta": -2.2,
+        "new_pct": 73.4,
+        "new_rows_pct": 39.1,
+        "new_rows_sparse": true,
+        "old_pct": 75.5,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 72.5,
+        "carried_over_before_pct": 74.9,
         "carried_over_rows_pct": 74.9,
         "column": "width_mm",
-        "delta": 2.3,
-        "new_pct": 74.9,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 72.5,
+        "delta": -2.1,
+        "new_pct": 72.8,
+        "new_rows_pct": 39.1,
+        "new_rows_sparse": true,
+        "old_pct": 74.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 70.6,
+        "carried_over_before_pct": 73.0,
         "carried_over_rows_pct": 73.0,
         "column": "height_mm",
-        "delta": 2.3,
-        "new_pct": 73.0,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 70.6,
+        "delta": -2.0,
+        "new_pct": 71.0,
+        "new_rows_pct": 39.1,
+        "new_rows_sparse": true,
+        "old_pct": 73.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 72.7,
+        "carried_over_before_pct": 75.1,
         "carried_over_rows_pct": 75.1,
         "column": "wheelbase_mm",
-        "delta": 2.3,
-        "new_pct": 75.1,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 72.7,
+        "delta": -2.5,
+        "new_pct": 72.6,
+        "new_rows_pct": 32.6,
+        "new_rows_sparse": true,
+        "old_pct": 75.1,
         "worse_than_limit": false
       },
       {
         "carried_over_before_pct": 57.5,
         "carried_over_rows_pct": 57.5,
         "column": "kerb_weight_kg",
-        "delta": 0.0,
-        "new_pct": 57.5,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -3.4,
+        "new_pct": 54.1,
+        "new_rows_pct": 0.0,
+        "new_rows_sparse": true,
         "old_pct": 57.5,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 73.2,
+        "carried_over_before_pct": 75.5,
         "carried_over_rows_pct": 75.5,
         "column": "fuel_tank_litres",
-        "delta": 2.3,
-        "new_pct": 75.5,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 73.2,
+        "delta": -0.7,
+        "new_pct": 74.9,
+        "new_rows_pct": 64.1,
+        "new_rows_sparse": true,
+        "old_pct": 75.5,
         "worse_than_limit": false
       },
       {
@@ -456,7 +840,7 @@
         "column": "airbags",
         "delta": 0.0,
         "new_pct": 99.9,
-        "new_rows_pct": null,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 99.9,
         "worse_than_limit": false
@@ -465,10 +849,10 @@
         "carried_over_before_pct": 68.2,
         "carried_over_rows_pct": 68.2,
         "column": "abs",
-        "delta": 0.0,
-        "new_pct": 68.2,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -1.8,
+        "new_pct": 66.3,
+        "new_rows_pct": 37.0,
+        "new_rows_sparse": true,
         "old_pct": 68.2,
         "worse_than_limit": false
       },
@@ -476,10 +860,10 @@
         "carried_over_before_pct": 97.4,
         "carried_over_rows_pct": 97.4,
         "column": "android_auto",
-        "delta": 0.0,
-        "new_pct": 97.4,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.5,
+        "new_pct": 96.9,
+        "new_rows_pct": 89.1,
+        "new_rows_sparse": true,
         "old_pct": 97.4,
         "worse_than_limit": false
       },
@@ -487,10 +871,10 @@
         "carried_over_before_pct": 97.4,
         "carried_over_rows_pct": 97.4,
         "column": "apple_carplay",
-        "delta": 0.0,
-        "new_pct": 97.4,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.5,
+        "new_pct": 96.9,
+        "new_rows_pct": 89.1,
+        "new_rows_sparse": true,
         "old_pct": 97.4,
         "worse_than_limit": false
       },
@@ -498,9 +882,9 @@
         "carried_over_before_pct": 85.8,
         "carried_over_rows_pct": 85.8,
         "column": "cruise_control",
-        "delta": 0.0,
-        "new_pct": 85.8,
-        "new_rows_pct": null,
+        "delta": 0.5,
+        "new_pct": 86.3,
+        "new_rows_pct": 94.6,
         "new_rows_sparse": false,
         "old_pct": 85.8,
         "worse_than_limit": false
@@ -509,10 +893,10 @@
         "carried_over_before_pct": 92.8,
         "carried_over_rows_pct": 92.8,
         "column": "sunroof",
-        "delta": 0.0,
-        "new_pct": 92.8,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.7,
+        "new_pct": 92.1,
+        "new_rows_pct": 80.4,
+        "new_rows_sparse": true,
         "old_pct": 92.8,
         "worse_than_limit": false
       },
@@ -520,10 +904,10 @@
         "carried_over_before_pct": 61.9,
         "carried_over_rows_pct": 61.9,
         "column": "adas_available",
-        "delta": 0.0,
-        "new_pct": 61.9,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -2.0,
+        "new_pct": 59.9,
+        "new_rows_pct": 28.3,
+        "new_rows_sparse": true,
         "old_pct": 61.9,
         "worse_than_limit": false
       },
@@ -531,10 +915,10 @@
         "carried_over_before_pct": 89.4,
         "carried_over_rows_pct": 89.4,
         "column": "camera_360",
-        "delta": 0.0,
-        "new_pct": 89.4,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.3,
+        "new_pct": 89.1,
+        "new_rows_pct": 83.7,
+        "new_rows_sparse": true,
         "old_pct": 89.4,
         "worse_than_limit": false
       },
@@ -542,10 +926,10 @@
         "carried_over_before_pct": 88.5,
         "carried_over_rows_pct": 88.5,
         "column": "ventilated_front_seats",
-        "delta": 0.0,
-        "new_pct": 88.5,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.5,
+        "new_pct": 88.0,
+        "new_rows_pct": 79.3,
+        "new_rows_sparse": true,
         "old_pct": 88.5,
         "worse_than_limit": false
       },
@@ -553,9 +937,9 @@
         "carried_over_before_pct": 77.1,
         "carried_over_rows_pct": 77.1,
         "column": "wireless_charging",
-        "delta": 0.0,
-        "new_pct": 77.1,
-        "new_rows_pct": null,
+        "delta": 1.0,
+        "new_pct": 78.1,
+        "new_rows_pct": 93.5,
         "new_rows_sparse": false,
         "old_pct": 77.1,
         "worse_than_limit": false
@@ -564,32 +948,32 @@
         "carried_over_before_pct": 32.9,
         "carried_over_rows_pct": 32.9,
         "column": "heads_up_display",
-        "delta": 0.0,
-        "new_pct": 32.9,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -1.9,
+        "new_pct": 30.9,
+        "new_rows_pct": 0.0,
+        "new_rows_sparse": true,
         "old_pct": 32.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 67.9,
+        "carried_over_before_pct": 68.0,
         "carried_over_rows_pct": 68.0,
         "column": "esc",
-        "delta": 0.1,
-        "new_pct": 68.0,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
-        "old_pct": 67.9,
+        "delta": -2.0,
+        "new_pct": 66.1,
+        "new_rows_pct": 34.8,
+        "new_rows_sparse": true,
+        "old_pct": 68.0,
         "worse_than_limit": false
       },
       {
         "carried_over_before_pct": 94.7,
         "carried_over_rows_pct": 94.7,
         "column": "hill_assist",
-        "delta": 0.0,
-        "new_pct": 94.7,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -1.7,
+        "new_pct": 93.0,
+        "new_rows_pct": 66.3,
+        "new_rows_sparse": true,
         "old_pct": 94.7,
         "worse_than_limit": false
       },
@@ -597,9 +981,9 @@
         "carried_over_before_pct": 93.0,
         "carried_over_rows_pct": 93.0,
         "column": "tpms",
-        "delta": 0.0,
-        "new_pct": 93.0,
-        "new_rows_pct": null,
+        "delta": 0.2,
+        "new_pct": 93.2,
+        "new_rows_pct": 95.7,
         "new_rows_sparse": false,
         "old_pct": 93.0,
         "worse_than_limit": false
@@ -610,7 +994,7 @@
         "column": "rear_parking_sensors",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": null,
+        "new_rows_pct": 100.0,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -619,9 +1003,9 @@
         "carried_over_before_pct": 91.9,
         "carried_over_rows_pct": 91.9,
         "column": "rear_camera",
-        "delta": 0.0,
-        "new_pct": 91.9,
-        "new_rows_pct": null,
+        "delta": -0.0,
+        "new_pct": 91.8,
+        "new_rows_pct": 91.3,
         "new_rows_sparse": false,
         "old_pct": 91.9,
         "worse_than_limit": false
@@ -630,9 +1014,9 @@
         "carried_over_before_pct": 97.1,
         "carried_over_rows_pct": 97.1,
         "column": "auto_climate_control",
-        "delta": 0.0,
-        "new_pct": 97.1,
-        "new_rows_pct": null,
+        "delta": 0.1,
+        "new_pct": 97.2,
+        "new_rows_pct": 98.9,
         "new_rows_sparse": false,
         "old_pct": 97.1,
         "worse_than_limit": false
@@ -641,9 +1025,9 @@
         "carried_over_before_pct": 96.7,
         "carried_over_rows_pct": 96.7,
         "column": "rear_ac_vents",
-        "delta": 0.0,
-        "new_pct": 96.7,
-        "new_rows_pct": null,
+        "delta": -0.1,
+        "new_pct": 96.6,
+        "new_rows_pct": 94.6,
         "new_rows_sparse": false,
         "old_pct": 96.7,
         "worse_than_limit": false
@@ -652,10 +1036,10 @@
         "carried_over_before_pct": 61.5,
         "carried_over_rows_pct": 61.5,
         "column": "connected_car_features",
-        "delta": 0.0,
-        "new_pct": 61.5,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -1.6,
+        "new_pct": 59.9,
+        "new_rows_pct": 33.7,
+        "new_rows_sparse": true,
         "old_pct": 61.5,
         "worse_than_limit": false
       },
@@ -663,10 +1047,10 @@
         "carried_over_before_pct": 40.8,
         "carried_over_rows_pct": 40.8,
         "column": "paddle_shifters",
-        "delta": 0.0,
-        "new_pct": 40.8,
-        "new_rows_pct": null,
-        "new_rows_sparse": false,
+        "delta": -0.5,
+        "new_pct": 40.3,
+        "new_rows_pct": 32.6,
+        "new_rows_sparse": true,
         "old_pct": 40.8,
         "worse_than_limit": false
       },
@@ -674,9 +1058,9 @@
         "carried_over_before_pct": 42.2,
         "carried_over_rows_pct": 42.2,
         "column": "safety_stars_adult",
-        "delta": 0.0,
-        "new_pct": 42.2,
-        "new_rows_pct": null,
+        "delta": -0.2,
+        "new_pct": 42.0,
+        "new_rows_pct": 39.1,
         "new_rows_sparse": false,
         "old_pct": 42.2,
         "worse_than_limit": false
@@ -685,9 +1069,9 @@
         "carried_over_before_pct": 42.2,
         "carried_over_rows_pct": 42.2,
         "column": "safety_stars_child",
-        "delta": 0.0,
-        "new_pct": 42.2,
-        "new_rows_pct": null,
+        "delta": -0.2,
+        "new_pct": 42.0,
+        "new_rows_pct": 39.1,
         "new_rows_sparse": false,
         "old_pct": 42.2,
         "worse_than_limit": false
@@ -696,9 +1080,9 @@
         "carried_over_before_pct": 42.2,
         "carried_over_rows_pct": 42.2,
         "column": "safety_testing_body",
-        "delta": 0.0,
-        "new_pct": 42.2,
-        "new_rows_pct": null,
+        "delta": -0.2,
+        "new_pct": 42.0,
+        "new_rows_pct": 39.1,
         "new_rows_sparse": false,
         "old_pct": 42.2,
         "worse_than_limit": false
@@ -707,9 +1091,9 @@
         "carried_over_before_pct": 42.2,
         "carried_over_rows_pct": 42.2,
         "column": "safety_test_year",
-        "delta": 0.0,
-        "new_pct": 42.2,
-        "new_rows_pct": null,
+        "delta": -0.2,
+        "new_pct": 42.0,
+        "new_rows_pct": 39.1,
         "new_rows_sparse": false,
         "old_pct": 42.2,
         "worse_than_limit": false
@@ -717,13 +1101,13 @@
     ]
   },
   "transmission_type_distribution": {
-    "amt": 138,
+    "amt": 140,
     "cvt": 70,
-    "dct": 131,
-    "e_cvt": 33,
+    "dct": 134,
+    "e_cvt": 37,
     "imt": 8,
-    "manual": 728,
-    "single_speed_ev": 77,
-    "torque_converter": 279
+    "manual": 746,
+    "single_speed_ev": 136,
+    "torque_converter": 285
   }
 }
