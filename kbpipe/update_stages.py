@@ -99,10 +99,10 @@ def _pipeline_stage(ctx, name, cfg, only=None, full=False, no_verify=True):
     return R
 
 
-def op_kinds(changeset_path):
+def op_kinds(changeset):
     """Count a change-set's operations by what they do to the KB: fill a blank, change a stored value, only add evidence
     to a value already stored (a confirmation), or something else (new variant, new model, ...)."""
-    cs = _read_json(changeset_path, {}) or {}
+    cs = changeset if isinstance(changeset, dict) else (_read_json(changeset, {}) or {})
     out = {"filled": 0, "changed": 0, "confirmed": 0, "other": 0}
     for o in cs.get("ops") or []:
         if o.get("op") != "cell":
@@ -351,8 +351,8 @@ def _tsv_count(path, col):
     return out
 
 
-def _cs_counts(path):
-    cs = _read_json(path, {})
+def _cs_counts(changeset):
+    cs = changeset if isinstance(changeset, dict) else (_read_json(changeset, {}) or {})
     c = {}
     for op in cs.get("ops", []):
         k = op.get("op")
@@ -386,19 +386,22 @@ def summary(ctx):
             continue
         any_run = True
         cb, ca = rj.get("coverage_before"), rj.get("coverage_after")
-        cs = _cs_counts(os.path.join(d, "changeset.json"))
+        cs_path = os.path.join(d, "changeset.json")
+        csd = _read_json(cs_path, {}) or {}  # parsed once per stage (it can be tens of MB)
+        observations = csd.get("observations") or {}
+        cs = _cs_counts(csd)
         pre = "`%s`" % rel(os.path.join(d, "run.json"))
         if cb and ca:
             L.append("- **%s** (source: %s): models %d -> %d, variants %d -> %d, filled cells %d -> %d. Change-set (source: `%s`): %s." % (
                 n, pre, cb["models"], ca["models"], cb["variants"], ca["variants"], cb["cells_filled"], ca["cells_filled"],
                 rel(os.path.join(d, "changeset.json")), (lambda k: "%d blank cell(s) filled, %d stored value(s) changed, %d confirmed by fresh evidence, %d other" % (
-                    k["filled"], k["changed"], k["confirmed"], k["other"]))(op_kinds(os.path.join(d, "changeset.json"))) if cs else "no operations"))
+                    k["filled"], k["changed"], k["confirmed"], k["other"]))(op_kinds(csd)) if cs else "no operations"))
         else:
             L.append("- **%s** (source: %s): %d change(s) %s." % (n, pre, (rj.get("stage") or {}).get("ops", 0), "written" if rj.get("write") else "staged"))
         by_src = {}
-        for op in _read_json(os.path.join(d, "changeset.json"), {}).get("ops", []):
+        for op in csd.get("ops", []):
             for ev in op.get("evidence", []) or []:
-                o = (_read_json(os.path.join(d, "changeset.json"), {}).get("observations") or {}).get(ev.get("obs"), {})
+                o = observations.get(ev.get("obs"), {})
                 if ev.get("decision") == "accepted" and o.get("source"):
                     by_src[o["source"]] = by_src.get(o["source"], 0) + 1
         if by_src:

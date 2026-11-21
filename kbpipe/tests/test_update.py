@@ -543,6 +543,52 @@ def test_summary_line_separates_fills_changes_and_confirmations(tmp_path):
     assert "KB unchanged (7e5478c5)" in line and "NEW_MODEL" not in line
 
 
+def _summary_ctx(tmp_path, n_ops=6, evs=4):
+    """A run dir for the specs stage whose change-set has several ops, each with evidence from two sources."""
+    ctx = update.Ctx({"runs_dir": str(tmp_path), "verify_bar": 0.95}, str(tmp_path), opts(),
+                     {"label": "u", "stages": {}, "created": "x"}, lambda *_: None, [])
+    d = ctx.sub_dir("specs")
+    os.makedirs(d)
+    obs = {"o%d" % i: {"source": "carwale" if i % 2 else "cardekho"} for i in range(evs)}
+    ops = [{"op": "cell", "expect_old": None, "value": i,
+            "evidence": [{"obs": "o%d" % j, "decision": "accepted" if j != 3 else "rejected"} for j in range(evs)]} for i in range(n_ops)]
+    with open(os.path.join(d, "changeset.json"), "w") as f:
+        json.dump({"ops": ops, "observations": obs}, f)
+    with open(os.path.join(d, "run.json"), "w") as f:
+        json.dump({"coverage_before": {"models": 1, "variants": 1, "cells_filled": 1},
+                   "coverage_after": {"models": 1, "variants": 1, "cells_filled": 1 + n_ops}}, f)
+    return ctx
+
+
+def test_summary_counts_cells_by_accepted_source(tmp_path):
+    from kbpipe import update_stages as S
+    ctx = _summary_ctx(tmp_path)
+    os.makedirs(ctx.update_dir, exist_ok=True)
+    text = open(S.summary(ctx)["data"]["path"]).read()
+    # 6 ops x accepted evidence o0 (cardekho), o1, o2 (carwale, cardekho); o3 (carwale) is rejected
+    assert "cells by accepted source: cardekho 12, carwale 6 " in text
+    assert "6 blank cell(s) filled" in text
+
+
+def test_summary_parses_each_changeset_a_constant_number_of_times(tmp_path, monkeypatch):
+    from kbpipe import update_stages as S
+    counts = []
+    for evs in (4, 40):
+        ctx = _summary_ctx(tmp_path / ("e%d" % evs), n_ops=10, evs=evs)
+        n = [0]
+        real = S._read_json
+
+        def counting(path, default=None, real=real, n=n):
+            if str(path).endswith("changeset.json"):
+                n[0] += 1
+            return real(path, default)
+        monkeypatch.setattr(S, "_read_json", counting)
+        S.summary(ctx)
+        monkeypatch.setattr(S, "_read_json", real)
+        counts.append(n[0])
+    assert counts[0] == counts[1] <= 2
+
+
 # ---------------------------------------------------------------- golden file naming (any catalogue size)
 @pytest.mark.parametrize("n,name", [(832, "golden_empty_evidence.json"), ("832", "golden_empty_evidence.json"),
                                     (1464, "golden_empty_evidence_1464.json"), ("1619", "golden_empty_evidence_1619.json")])
