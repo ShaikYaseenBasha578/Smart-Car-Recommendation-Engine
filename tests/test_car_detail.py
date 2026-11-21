@@ -35,7 +35,8 @@ def predict(client, query, drop=None):
 
 
 def test_every_model_resolves_by_slug():
-    n_models = {832: 62, 1464: 92}[len(get_catalogue())]     # the original catalogue, or the default 1,464-variant one
+    cat = get_catalogue()
+    n_models = 62 if len(cat) == 832 else int(cat[["make", "model"]].drop_duplicates().shape[0])   # original, or the default
     assert len(MODELS) == n_models
     slugs = {(safe_slug(mk), safe_slug(md)) for mk, md in MODELS}
     assert len(slugs) == n_models
