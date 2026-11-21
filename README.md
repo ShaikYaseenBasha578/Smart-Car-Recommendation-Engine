@@ -1,6 +1,6 @@
 # Smart Car Recommendation Engine (CarRec)
 
-A Flask app that turns a plain-language car query, in English or Hinglish, into recommendations for new cars currently on sale in India.
+A Flask app that turns a plain-language car query, in English or Hinglish, into recommendations for new cars currently on sale in India. Every number it shows comes from a source-tracked knowledge base, and every result says why it was picked and what is still unknown.
 
 **Live demo: https://carrec.onrender.com/**
 
@@ -10,38 +10,55 @@ The demo runs on Render's free tier, which sleeps when idle, so the first load c
 
 ## What it does
 
-Type what you want. CarRec reads the budget, body type, fuel, gearbox, seats, features, brands and exclusions, filters the catalogue, and returns the best variant of up to 8 models. Each result explains why it matched.
+Type what you want. CarRec reads the budget, body type, fuel, gearbox, seats, features, minimums, brands and exclusions. It keeps only the cars that meet every hard requirement, scores them, and returns the best variant of up to 8 different models. Each card explains the choice using only the numbers the score used.
 
 Example queries:
 
 - `sunroof wali SUV 12 lakh ke andar`
 - `petrol SUV under 15 lakh`
 - `automatic but not AMT`
+- `EV with at least 400 km range under 25 lakh`
 - `something like Creta`
 
 ## Highlights
 
-- **Exact transmission types.** Every result shows its gearbox: manual, iMT, AMT, DCT, CVT, e-CVT, torque converter or single-speed EV. A query like "automatic but not AMT" leaves out AMTs and keeps every other automatic.
-- **"Unverified" instead of guessing.** If a requested feature or minimum is unknown for a car, the car stays in the results, labelled "Unverified: …". Cars known to lack it are removed.
-- **Bharat NCAP ratings.** Safety stars come only from Bharat NCAP. Unrated cars say "No Bharat NCAP rating on record" and are never shown as zero stars.
-- **Hints when nothing matches.** An empty result lists up to 3 requirements you could drop, with how many models each would bring back.
+- **Ranking engine v3** (`services/recsys/`): the query is parsed, the catalogue filtered on the hard requirements, and each car scored on three kinds of evidence: specifications, expert reviews and owner ratings. Review weights scale with how much evidence a car has, so a car with few reviews is neither rewarded nor punished for it. Results are spread across models: one variant per model, then maximal marginal relevance. Design: [`docs/RECOMMENDER_DESIGN_PLAN.md`](docs/RECOMMENDER_DESIGN_PLAN.md).
+- **Explanations from the score itself.** Each reason is tied to the catalogue columns or review criteria behind it, with a source link where there is one. Unknowns are listed plainly.
+- **"Unverified" instead of guessing.** If a requested feature or minimum is unknown for a car, the car can still appear, labelled "Unverified: …". Cars known to lack it are removed.
+- **Named relaxations when nothing fits.** If no car meets every requirement, the engine finds the smallest named change that gives results (for example "budget +10%" or "any automatic instead of DCT") and says which one it used.
+- **Exact transmission types.** Manual, iMT, AMT, DCT, CVT, e-CVT, torque converter or single-speed EV. "Automatic but not AMT" keeps every other automatic.
+- **Bharat NCAP ratings only.** Unrated cars say "No Bharat NCAP rating on record" and are never shown as zero stars.
+- **Car pages.** `/car/<make>/<model>` shows a model's variants, specifications and review evidence with sources.
+- **Optional LLM parser.** Off by default. When on, it may only add requirements whose wording it quotes from the query; any failure falls back to the rule parser.
 
 ## Data
 
-The default catalogue (`data/catalogue_v3/catalogue.csv`) has 1,464 variants of 92 models from 12 brands. It was exported on 2026-11-14 from knowledge-base phase 11Q. The original 832-variant, 62-model catalogue (`data/catalogue.csv`, exported 2026-11-12, phase 11P) is kept and selected with `CARREC_CATALOGUE_DIR=data`. The knowledge base is maintained separately and tracks where each value came from. It is not in this repository; only the exported catalogue is.
+The default catalogue (`data/catalogue_v3/catalogue.csv`) has **1,464 variants of 92 models from 12 brands**, exported on 2026-11-17 from the CarRec knowledge base. `catalogue_meta.json` records the export time, the knowledge-base hash and the coverage of each column. Review evidence sits beside it: `data/assessments.csv` (Autocar India expert reviews, 78 models) and `data/owner_ratings.csv` (CarWale owner ratings, 88 models).
+
+The knowledge base is an SQLite database of variants, specifications, prices, crash tests and reviews. Every value keeps its source and its evidence class. A value is written only when two sites agree or the maker's brochure confirms it, and for specifications the brochure wins over the sites. Wrong values are quarantined, not deleted.
+
+It is maintained by `kbpipe`, a rerunnable pipeline (`./bin/kbpipe update`). The pipeline reads CarWale and CarDekho, the OEM brochures on disk and the review sources, re-checks the values it changed against their sources, exports the catalogue into this repository, runs the tests and the evaluation, and opens a pull request. The database file itself is not in git; the pipeline code lives on the `kb/*` branches.
+
+The original 832-variant, 62-model catalogue (`data/catalogue.csv`) is kept and selected with `CARREC_CATALOGUE_DIR=data`.
 
 ## Evaluation
 
-Results were checked against a research query set and its feasibility oracle: 213 phrasings plus 28 end-to-end queries, 241 in total. There were 0 hard-constraint violations and 0 false empties (no results returned when matching cars existed).
+`eval/run_eval.py` runs the engine on two query sets and checks every returned car against the query's hard requirements (budget, fuel, gearbox, body type, seats, features and minimums):
 
-The oracle checks budget, fuel, transmission family (manual/automatic), body type and seats only. Features, exact transmission types, safety stars, other minimums, brands, models and exclusions are covered by unit and end-to-end tests instead.
+| Query set | Queries | Answered with cars | No requirement violated | Every requirement verified |
+|---|---|---|---|---|
+| Main (`eval/queries.jsonl`) | 209 | 193 | 193 (100%) | 180 (93%) |
+| Held-out (`eval/heldout_queries.jsonl`) | 120 | 106 | 104 (98%) | 94 (89%) |
+
+"Verified" is the stricter measure: a car whose value is unknown for a hard requirement counts as not satisfied. The two held-out violations are sedans outside an "around 12 lakh" budget and non-hybrid cars returned for a hybrid query. On the 40 main queries with a hand-made shortlist, recall at 8 is 0.755 and MRR is 0.788. Results are in `eval/results/` (`audit_fix_*`).
 
 ## Limitations
 
 - 12 brands only: Honda, Hyundai, Kia, MG, Mahindra, Maruti Suzuki, Nissan, Renault, Skoda, Tata, Toyota, Volkswagen.
-- 88 of 92 models have a photo from an OEM brochure, captioned with its source (`data/image_manifest.csv` records the PDF, page and, for the newest 28, the PDF SHA-1). The other 4 (Thar Roxx, Hector Plus, Bolero Neo Plus, Tekton) have no usable brochure picture on disk and show a body-type silhouette.
-- Mileage is unknown for about 40% of non-EV variants: 336 of 795 have no ARAI kmpl figure, and 299 have no mileage figure at all. Mileage minimums keep these cars, labelled "Unverified: mileage".
-- Safety stars come only from Bharat NCAP: 20 models / 363 variants are rated. Older Global NCAP ratings are not used.
+- 88 of 92 models have a photo from an OEM brochure, captioned with its source (`data/image_manifest.csv`). Thar Roxx, Hector Plus, Bolero Neo Plus and Tekton show a body-type silhouette. Brochure images are not licensed for reuse.
+- Mileage is unknown for about half of the petrol, diesel and hybrid variants: 666 of 1,263 have no ARAI kmpl figure. Mileage minimums keep these cars, labelled "Unverified: mileage".
+- Bharat NCAP ratings cover 26 models (618 variants). Older Global NCAP ratings are not used.
+- Prices are ex-showroom figures from the listing sites on the export date and can lag the market.
 - Used-car search is off in the demo. It needs Selenium and headless Chrome and is enabled only with `ENABLE_USED_CARS=1`.
 
 ## Run locally
@@ -70,35 +87,42 @@ python app.py
 
 Then open http://127.0.0.1:5001.
 
-`DATA_SOURCE` picks the data path: `kb` (default) uses the knowledge-base catalogue export; `legacy` uses the older 2021-era dataset in `car_recommendation_assets/`.
+Run the tests (always the `tests/` directory, never the repository root):
 
-### Engine and catalogue defaults (branch `feat/recsys-v3`)
+```bash
+python -m pytest tests -q
+```
 
-With no environment variables the app runs ranking engine v3 (`services/recsys/`) on the 1,464-variant catalogue (`data/catalogue_v3/`) with the review data in `data/`. The deployed app is unaffected until this branch is merged and deployed by the owner.
+### Options
 
 | To get | Set |
 |---|---|
 | the old ranking engine (on whichever catalogue is selected) | `RANKER=current` |
 | the original 832-variant catalogue | `CARREC_CATALOGUE_DIR=data` |
-| the old behaviour completely | `RANKER=current CARREC_CATALOGUE_DIR=data python app.py` |
+| the 2021-era legacy dataset and code path | `DATA_SOURCE=legacy` |
+| the optional LLM parser | `LLM_PARSER=on`, with a key in `GEMINI_API_KEY` |
 
-`RANKER` accepts `v3` or unset (default), and `current` (also `old`, `v2`); any other value is treated as v3. `CARREC_CATALOGUE_DIR` is a directory holding `catalogue.csv` and `catalogue_meta.json`; a relative path is read from the repository root. The evaluation runner follows the same defaults (`eval/run_eval.py`; `--engine current` selects the old engine).
+Keys are read from the environment only.
+
+## API
+
+A small typed FastAPI service (`api_service/`) exposes the same engine through `GET /health` and `POST /v1/recommend`. Running it, the Docker setup and CI are described in [`docs/API_AND_DEPLOY.md`](docs/API_AND_DEPLOY.md).
 
 ## How it works pages
 
-The site serves four self-contained explainer pages: `/project` (overview), `/project/pipeline`, `/project/knowledge-base` and `/project/engine`. They live in `project_pages/` and are generated in another repository. To refresh them:
+The site serves four explainer pages: `/project` (overview), `/project/pipeline`, `/project/knowledge-base` and `/project/engine`. They live in `project_pages/` and the KB pipeline regenerates them on each update. To refresh them by hand:
 
 ```bash
 .venv/bin/python scripts/sync_project_pages.py --src <folder with index.html, pipeline.html, kb.html, engine.html>
 ```
 
-The script copies the files and rewrites only their links between each other (`kb.html` becomes `/project/knowledge-base`, and so on). Running it again with the same source changes nothing.
-
 ## Tech stack
 
-Flask, pandas, scikit-learn, gunicorn, hosted on Render.
+Flask, pandas, scikit-learn, FastAPI, gunicorn, Docker and GitHub Actions, hosted on Render.
 
 ## Branches
 
-- `main`: the production code that Render deploys.
+- `main`: the production code. Render deploys it on every merge.
+- `data/kb-update-<date>`: catalogue updates opened by the KB pipeline, one pull request per update.
+- `kb/*` and `paper/v0`: the knowledge-base pipeline and the research paper.
 - `deploy/new-car-v1`: the previous deploy branch, kept as a rollback reference.
