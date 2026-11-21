@@ -2,6 +2,7 @@
 power_bhp, airbags, boot_space_litres. Each is the catalogue value of the returned variant, or None."""
 
 import math
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -60,9 +61,24 @@ def test_card_fields_match_the_catalogue(client, monkeypatch, catalogue, query):
                 assert math.isclose(value, float(expected)), (field, value, expected)
 
 
-def test_every_ev_result_has_a_range(client, monkeypatch):
+def test_every_ev_result_has_a_range_or_none(client, monkeypatch):
+    # an EV whose range is not on record stays in the results and is shown as unknown (null), never 0
     recs = predict(client, monkeypatch, "EV under 15 lakh")
-    assert recs and all(isinstance(car["ev_range_km"], int) and car["ev_range_km"] > 0 for car in recs)
+    assert recs and all(car["ev_range_km"] is None or (isinstance(car["ev_range_km"], int) and car["ev_range_km"] > 0)
+                        for car in recs)
+    assert any(car["ev_range_km"] for car in recs)
+
+
+def test_an_ev_with_no_range_renders_as_unknown_not_zero_or_none():
+    import math
+    from services.car_detail import mileage_display
+    row = {"fuel_type": "electric", "ev_range_km": float("nan")}
+    assert math.isnan(row["ev_range_km"]) and mileage_display(row) == {"label": "Range", "value": None, "unit": "km"}
+    assert mileage_display({"fuel_type": "electric", "ev_range_km": 465.0})["value"] == "465 km"
+    assert number_or_none(float("nan"), whole=True) is None
+    # result card (static/script.js): no range -> text null -> shown as "Not listed"
+    js = (Path(__file__).resolve().parents[1] / "static" / "script.js").read_text()
+    assert 'text: v ? `${v} km` : null' in js and '[eff.label, eff.text || (eff.label === "CNG mileage" ? "not listed" : "Not listed")]' in js
 
 
 def test_cng_results_carry_km_per_kg(client, monkeypatch):

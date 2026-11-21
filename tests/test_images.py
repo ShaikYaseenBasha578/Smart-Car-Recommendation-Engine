@@ -39,10 +39,14 @@ def test_every_catalogue_model_gets_a_manifest_image_or_a_placeholder():
         url = find_car_image(ROOT, make, model, body_type)
         assert url in allowed or url == f"{PLACEHOLDERS}{body_type}.svg", (make, model, url)
         assert (Path(ROOT) / url.lstrip("/")).exists()
-    placeholders = [model for make, model, body_type in cars.itertuples(index=False)
-                    if find_car_image(ROOT, make, model, body_type).startswith(PLACEHOLDERS)]
-    # no usable brochure image is on disk for these, and none is fabricated: they show the body-type silhouette
-    assert sorted(placeholders) == sorted(NO_IMAGE_MODELS)
+    placeholders = {(make, model) for make, model, body_type in cars.itertuples(index=False)
+                    if find_car_image(ROOT, make, model, body_type).startswith(PLACEHOLDERS)}
+    # the models shown as a silhouette are exactly the ones with no row in image_manifest.csv (nothing is fabricated);
+    # so a model with a manifest row whose file is missing is a silhouette without being in this set, and fails here
+    manifest_models = set(get_manifest())
+    assert placeholders == {(mk, md) for mk, md, _ in cars.itertuples(index=False)} - manifest_models
+    if len(get_catalogue()) == 1464:       # the four known ones on the 1,464-variant catalogue
+        assert set(NO_IMAGE_MODELS) <= {md for _, md in placeholders}
 
 
 def test_manifest_then_placeholder_never_a_filename(monkeypatch):

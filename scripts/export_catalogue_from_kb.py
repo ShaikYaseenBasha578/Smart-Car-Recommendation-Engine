@@ -339,7 +339,15 @@ def read_old_catalogue(path: Path | None) -> list[dict]:
         return list(csv.DictReader(fh))
 
 
-def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dict]) -> tuple[list[dict], list[str]]:
+def split_unpriced(rows: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Owner decision 2026-11: a variant with no price (price_ex_showroom NULL in v_variant_canonical_q, which already
+    masks quarantined cells) is left out of the app catalogue until the KB has a price. Returns (kept, left_out)."""
+    kept = [r for r in rows if r["price_ex_showroom"] != ""]
+    return kept, [r for r in rows if r["price_ex_showroom"] == ""]
+
+
+def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dict],
+                  no_price: int = 0) -> tuple[list[dict], list[str]]:
     """Replaces the fixed row-count assertion. Returns (table, failures).
 
     1. row count within ROW_COUNT_TOLERANCE of (KB variant rows - variants the view excludes)
@@ -356,10 +364,10 @@ def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dic
     kb_variants = conn.execute("SELECT COUNT(*) FROM variant").fetchone()[0]
     in_view = conn.execute("SELECT COUNT(*) FROM v_variant_canonical_q").fetchone()[0]
     excluded = kb_variants - in_view
-    expected = kb_variants - excluded
+    expected = kb_variants - excluded - no_price      # no_price: variants deliberately left out (split_unpriced)
     if abs(len(rows) - expected) > ROW_COUNT_TOLERANCE * expected:
         failures.append(f"row count {len(rows)} is not within {ROW_COUNT_TOLERANCE:.0%} of {expected} "
-                        f"(KB variants {kb_variants} - excluded {excluded})")
+                        f"(KB variants {kb_variants} - excluded {excluded} - no price {no_price})")
     ids = [r["variant_id"] for r in rows]
     if len(set(ids)) != len(ids):
         failures.append("duplicate variant ids")
@@ -397,7 +405,7 @@ def sanity_checks(conn: sqlite3.Connection, rows: list[dict], old_rows: list[dic
                       "carried_over_before_pct": None if was is None else round(was, 1),
                       "new_rows_pct": None if fresh is None else round(fresh, 1), "new_rows_sparse": sparse})
     table.insert(0, {"column": "ROWS", "new_pct": len(rows), "old_pct": len(old_rows) or None, "delta": None,
-                     "worse_than_limit": False, "kb_variants": kb_variants, "excluded": excluded,
+                     "worse_than_limit": False, "kb_variants": kb_variants, "excluded": excluded, "excluded_no_price": no_price,
                      "carried_over_rows": len(carried), "new_rows": len(added)})
     return table, failures
 
@@ -470,9 +478,10 @@ def main(argv: list[str] | None = None) -> int:
         conn.row_factory = sqlite3.Row
         try:
             rows, safety = build_rows(conn)
+            rows, unpriced = split_unpriced(rows)
             quarantined = quarantine_counts(conn, rows, safety)
             unlinked = unlinked_safety_tests(conn)
-            sanity, failures = sanity_checks(conn, rows, old_rows)
+            sanity, failures = sanity_checks(conn, rows, old_rows, no_price=len(unpriced))
             phase = latest_phase(conn)
         except ExportError as exc:
             print(f"error: {exc}", file=sys.stderr)
@@ -516,6 +525,10 @@ def main(argv: list[str] | None = None) -> int:
         "kb_wal_nonempty": wal_path.exists() and wal_path.stat().st_size > 0,
         "kb_latest_phase": phase,
         "row_count": len(rows),
+        # variants in the KB view with no price: left out of this catalogue until the KB has one (owner decision)
+        "excluded_no_price": {"count": len(unpriced),
+                              "variants": [{"variant_id": int(r["variant_id"]), "make": r["make"], "model": r["model"],
+                                            "variant": r["variant"]} for r in unpriced]},
         "sanity": {"table": sanity, "failures": failures},
         "catalogue_sha256": sha256_file(csv_path),
         "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); "
@@ -540,6 +553,8 @@ def main(argv: list[str] | None = None) -> int:
     meta_path = args.out_dir / "catalogue_meta.json"
     meta_path.write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
+    print(f"left out {len(unpriced)} variant(s) with no price: "
+          + (", ".join(sorted({f"{r['make']} {r['model']}" for r in unpriced})) or "none"))
     print(f"wrote {len(rows)} rows -> {csv_path} (sha256 {meta['catalogue_sha256']})")
     print(f"wrote {meta_path}")
     return 0

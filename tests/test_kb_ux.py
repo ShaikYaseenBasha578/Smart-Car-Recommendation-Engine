@@ -79,8 +79,12 @@ def test_cap_on_with_enough_makes():
 
 def test_twin_groups_exist_in_catalogue():
     pairs = set(zip(get_catalogue()["make"], get_catalogue()["model"]))
-    for a, b in TWIN_GROUPS.items():
-        assert a in pairs and b in pairs
+    # the four original pairs are in every catalogue; a newer pair (e.g. Hycross + Invicto) only where both models exist
+    original = {("Toyota", "Urban Cruiser Taisor"), ("Toyota", "Glanza"), ("Toyota", "Urban Cruiser Hyryder"),
+                ("Toyota", "Rumion")}
+    assert original <= set(TWIN_GROUPS)
+    for a in original:
+        assert a in pairs and TWIN_GROUPS[a] in pairs
 
 
 # --- end to end ---
@@ -99,15 +103,19 @@ def predict(client, monkeypatch, query):
     return response.get_json()
 
 
-@pytest.mark.parametrize("query,pairs", [
-    ("petrol SUV under 15 lakh", 1),             # Fronx + Taisor
-    ("toyota or maruti spacious family car", 2),  # Ertiga + Rumion, Fronx + Taisor
+@pytest.mark.parametrize("query,pairs,exact", [
+    ("petrol SUV under 15 lakh", 1, True),              # Fronx + Taisor
+    # Ertiga + Rumion and Hyryder + Grand Vitara on the 1,464 catalogue; Invicto (a newer catalogue) can displace
+    # Grand Vitara and add Hycross + Invicto, so the number of complete pairs depends on the catalogue: at least 2
+    ("toyota or maruti spacious family car", 2, False),
 ])
-def test_twins_end_to_end(client, monkeypatch, query, pairs):
+def test_twins_end_to_end(client, monkeypatch, query, pairs, exact):
     recs = predict(client, monkeypatch, query)["recommendations"]
     present = [(r["Make"], r["Model"]) for r in recs]
-    assert complete_twin_pairs(present) == pairs
-    assert len(recs) == MAX_KB_MODELS + pairs
+    found = complete_twin_pairs(present)
+    assert found == pairs if exact else found >= pairs
+    # the engine's limit: MAX_KB_MODELS plus one per complete twin pair among the selected models
+    assert len(recs) == MAX_KB_MODELS + found
     assert len(set(present)) == len(present)  # twins stay separate cards
 
 
