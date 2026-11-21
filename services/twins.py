@@ -17,6 +17,7 @@ TWIN_GROUPS = {
     ("Toyota", "Glanza"): ("Maruti Suzuki", "Baleno"),
     ("Toyota", "Urban Cruiser Hyryder"): ("Maruti Suzuki", "Grand Vitara"),
     ("Toyota", "Rumion"): ("Maruti Suzuki", "Ertiga"),
+    ("Toyota", "Innova Hycross"): ("Maruti Suzuki", "Invicto"),
 }
 
 
