@@ -507,3 +507,56 @@ def test_summary_line_separates_fills_changes_and_confirmations(tmp_path):
     assert "16 model(s) found on both sites but not in the KB (0 added)" in line and "91 already in the KB" in line
     assert "1 blank cell(s) filled, 1 stored value(s) changed, 3 confirmed by fresh evidence" in line
     assert "KB unchanged (7e5478c5)" in line and "NEW_MODEL" not in line
+
+
+# ---------------------------------------------------------------- golden file naming (any catalogue size)
+@pytest.mark.parametrize("n,name", [(832, "golden_empty_evidence.json"), ("832", "golden_empty_evidence.json"),
+                                    (1464, "golden_empty_evidence_1464.json"), ("1619", "golden_empty_evidence_1619.json")])
+def test_golden_name_rule(n, name):
+    assert appstages.golden_name(n) == name
+
+
+def test_golden_name_is_accepted_by_the_pr_whitelist():
+    assert appstages._allowed("tests/data/" + appstages.golden_name(1619))
+
+
+def test_golden_template_prefers_existing_file_then_largest_sized_then_base(tmp_path):
+    d = str(tmp_path)
+    assert appstages.golden_template(d, "golden_empty_evidence_1619.json") is None
+    (tmp_path / "golden_empty_evidence.json").write_text("{}")
+    assert appstages.golden_template(d, "golden_empty_evidence_1619.json") == "golden_empty_evidence.json"
+    (tmp_path / "golden_empty_evidence_1464.json").write_text("{}")
+    (tmp_path / "golden_empty_evidence_999.json").write_text("{}")
+    assert appstages.golden_template(d, "golden_empty_evidence_1619.json") == "golden_empty_evidence_1464.json"
+    (tmp_path / "golden_empty_evidence_1619.json").write_text("{}")
+    assert appstages.golden_template(d, "golden_empty_evidence_1619.json") == "golden_empty_evidence_1619.json"
+    assert appstages.golden_template(str(tmp_path / "missing"), "x.json") is None
+
+
+def test_regen_writes_a_new_file_with_format_and_queries_from_the_template(tmp_path):
+    """REGEN run against a stub app: new file name written, queries and dump format come from the existing golden file."""
+    pkg = tmp_path / "services" / "recsys"
+    pkg.mkdir(parents=True)
+    (tmp_path / "services" / "__init__.py").write_text("")
+    (pkg / "__init__.py").write_text("")
+    (tmp_path / "services" / "catalogue.py").write_text("def get_catalogue():\n    return [0] * 1619\n")
+    (pkg / "api.py").write_text("def recommend(q, evidence=None):\n    return {'recommendations': [{'variant_id': len(q), 'scores': {}, 'ranking_score': 1.0, 'criteria': []}]}\n")
+    (pkg / "evidence.py").write_text("class Evidence:\n    pass\n")
+    data = tmp_path / "tests" / "data"
+    data.mkdir(parents=True)
+    old = {"suv": [], "city car": []}
+    tmpl = data / "golden_empty_evidence_1464.json"
+    tmpl.write_text(json.dumps(old, indent=1, sort_keys=False, ensure_ascii=True) + "\n")
+    raw = tmpl.read_text()
+    kw, end = appstages._detect_dump(raw, json.loads(raw))
+    assert kw is not None
+    import sys
+    r = subprocess.run([sys.executable, "-c", appstages.REGEN, json.dumps(kw), end,
+                        appstages.golden_name(1619), "golden_empty_evidence_1464.json"],
+                       cwd=str(tmp_path), capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    out = data / "golden_empty_evidence_1619.json"
+    assert out.exists() and tmpl.read_text() == raw       # template untouched
+    new = json.loads(out.read_text())
+    assert sorted(new) == ["city car", "suv"] and new["suv"][0]["variant_id"] == 3
+    assert out.read_text() == json.dumps(new, indent=1, sort_keys=False, ensure_ascii=True) + "\n"

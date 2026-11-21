@@ -177,24 +177,42 @@ def _detect_dump(raw, obj):
     return None, None
 
 
+def golden_name(n):
+    """Golden snapshot file for a catalogue of n variants (same rule as tests/test_recsys_thin_evidence.py)."""
+    n = int(n)
+    return "golden_empty_evidence.json" if n == 832 else "golden_empty_evidence_%d.json" % n
+
+
+def golden_template(data_dir, name):
+    """The existing golden file to copy the query set and dump format from: the file `name` if present, else the
+    golden_empty_evidence_<n>.json with the largest n, else golden_empty_evidence.json. None if there is none."""
+    if os.path.exists(os.path.join(data_dir, name)):
+        return name
+    sized = []
+    for f in os.listdir(data_dir) if os.path.isdir(data_dir) else []:
+        m = re.fullmatch(r"golden_empty_evidence_(\d+)\.json", f)
+        if m:
+            sized.append((int(m.group(1)), f))
+    if sized:
+        return max(sized)[1]
+    return "golden_empty_evidence.json" if os.path.exists(os.path.join(data_dir, "golden_empty_evidence.json")) else None
+
+
 REGEN = r'''
 import json, sys
 from pathlib import Path
 from services.catalogue import get_catalogue
 from services.recsys.api import recommend
 from services.recsys.evidence import Evidence
-files = {832: "golden_empty_evidence.json", 1464: "golden_empty_evidence_1464.json"}
 n = len(get_catalogue())
-if n not in files:
-    print("NO_GOLDEN_FOR_%d" % n); sys.exit(3)
-p = Path("tests/data") / files[n]
-raw = p.read_text()
-old = json.loads(raw)
+# argv: dump kwargs (json), line ending, output file name, template file name (existing golden file with the query set)
+kw, end, out_name, tmpl_name = json.loads(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4]
+p = Path("tests/data") / out_name
+old = json.loads((Path("tests/data") / tmpl_name).read_text())
 new = {}
 for q in sorted(old):
     r = recommend(q, evidence=Evidence())
     new[q] = [{"variant_id": c["variant_id"], "scores": c["scores"], "ranking_score": c["ranking_score"], "criteria": c["criteria"]} for c in r["recommendations"]]
-kw, end = json.loads(sys.argv[1]), sys.argv[2]
 p.write_text(json.dumps(new, **kw) + end)
 print(str(p))
 '''
@@ -232,17 +250,18 @@ def checks(ctx):
             return {"status": FAILED, "data": data, "run_dir": app_dir, "result": "app tests failed (%s); golden files NOT regenerated: %s" % (tally, why)}
         # attributable to the catalogue: regenerate the snapshot for this catalogue size and show the diff
         raw_name = sh([app_python(ctx), "-c", "from services.catalogue import get_catalogue;print(len(get_catalogue()))"], cwd=ws)[1].strip().splitlines()[-1]
-        gname = {"832": "golden_empty_evidence.json", "1464": "golden_empty_evidence_1464.json"}.get(raw_name)
-        if not gname:
-            return {"status": FAILED, "data": data, "result": "no golden file is defined for a catalogue of %s variants; add one by hand" % raw_name}
-        raw = open(os.path.join(ws, "tests", "data", gname)).read()
+        gname = golden_name(raw_name)
+        tmpl = golden_template(os.path.join(ws, "tests", "data"), gname)
+        if not tmpl:
+            return {"status": FAILED, "data": data, "result": "no golden file exists in tests/data to take the query set and format from; add one by hand"}
+        raw = open(os.path.join(ws, "tests", "data", tmpl)).read()
         kw, end = _detect_dump(raw, json.loads(raw))
         if kw is None:
-            return {"status": FAILED, "data": data, "result": "cannot reproduce the format of tests/data/%s; regenerate it by hand" % gname}
-        rc2, out2 = sh([app_python(ctx), "-c", REGEN, json.dumps(kw), end], cwd=ws)
+            return {"status": FAILED, "data": data, "result": "cannot reproduce the format of tests/data/%s; regenerate it by hand" % tmpl}
+        rc2, out2 = sh([app_python(ctx), "-c", REGEN, json.dumps(kw), end, gname, tmpl], cwd=ws)
         if rc2:
             return {"status": FAILED, "data": data, "result": "golden regeneration failed: %s" % out2.strip()[-200:]}
-        stat = sh(["git", "diff", "--stat", "--", "tests/data/%s" % gname], cwd=ws)[1].strip()
+        stat = sh(["git", "diff", "--stat", "--", "tests/data/%s" % gname], cwd=ws)[1].strip() or "new file tests/data/%s (format and queries taken from %s)" % (gname, tmpl)
         data["golden_regenerated"] = ["tests/data/%s" % gname]
         data["golden_diff_stat"] = stat
         log2 = os.path.join(app_dir, "tests_after_golden.log")
