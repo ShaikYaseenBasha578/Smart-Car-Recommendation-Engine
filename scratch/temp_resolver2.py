@@ -23,15 +23,17 @@ def compute_similarity(s1, s2):
         s = s.replace('turbo', '').replace('vtvt', '').replace('mpi', '').replace('crdi', '')
         s = s.replace('+', ' plus ')
         s = s.replace('(o)', ' optional ')
-        return set(s.split())
-        
-    tokens1 = get_tokens(s1)
-    tokens2 = get_tokens(s2)
+    s1, s2 = s1.lower(), s2.lower()
+    if s1 == s2: return 1.0
     
-    if not tokens1 or not tokens2: return 0.0
-    if tokens1 == tokens2: return 1.0
+    s1 = s1.replace('+', ' plus ').replace('(o)', ' optional ')
+    s2 = s2.replace('+', ' plus ').replace('(o)', ' optional ')
+    # Exact token inclusion
+    tokens1 = set(s1.split())
+    tokens2 = set(s2.split())
     
-    config_words = {'petrol', 'diesel', 'cng', 'ev', 'mt', 'at', 'cvt', 'dct', 'amt', 'awd', '4x4', 'fwd', 'rwd', 'hybrid', 'electric'}
+    config_words = {'petrol', 'diesel', 'cng', 'ev', 'electric', 'hybrid', 
+                    'mt', 'at', 'amt', 'cvt', 'dct', 'ags', 'ivt', 'manual', 'automatic'}
     
     id1 = tokens1 - config_words
     id2 = tokens2 - config_words
@@ -46,26 +48,27 @@ def compute_similarity(s1, s2):
     
     overlap = len(tokens1.intersection(tokens2))
     if overlap == len(tokens1) or overlap == len(tokens2): 
-        # But wait! If one is a subset, e.g. "VXi Petrol Manual" vs "VXi CNG Manual", overlap is NOT subset.
-        # "VXi Petrol Manual" -> vxi, petrol, mt
-        # "VXi CNG Manual" -> vxi, cng, mt
-        # overlap = 2. It will fall to SequenceMatcher.
-        return 0.8
+        # TIE BREAKER: Penalize extra mismatched identity words
+        unmatched_id = len(id1.symmetric_difference(id2))
+        return 0.8 - (unmatched_id * 0.06)
         
     str1 = ' '.join(sorted(list(tokens1)))
     str2 = ' '.join(sorted(list(tokens2)))
     return SequenceMatcher(None, str1, str2).ratio()
 
+AUTO_TRANSMISSIONS = {'automatic', 'at', 'amt', 'cvt', 'dct', 'dsg', 'dca', 'tc', 'ivt', 'torque converter', 'e-cvt'}
+# Source fuel -> canonical powertrain.fuel_type values it is compatible with (beyond an exact match).
+FUEL_FAMILIES = {'cng': {'cng'}, 'hybrid': {'petrol hybrid'}, 'diesel': {'diesel mild hybrid'}}
+
 def validate_structured(c, fuel, trans, cc, price):
     warnings = []
     if fuel and c['fuel_type']:
         f1, f2 = fuel.lower(), c['fuel_type'].lower()
-        if f1 != f2:
-            if not (f1 == 'cng' and 'petrol' in f2):
-                warnings.append('fuel_mismatch')
+        if f1 != f2 and f2 not in FUEL_FAMILIES.get(f1, ()):
+            warnings.append('fuel_mismatch')
     if trans and c['transmission']:
-        t1 = 'auto' if trans.lower() in ['automatic', 'amt', 'cvt', 'dct', 'tc', 'ivt', 'dca', 'torque converter', 'e-cvt'] else 'manual'
-        t2 = 'auto' if c['transmission'].lower() in ['automatic', 'amt', 'cvt', 'dct', 'tc', 'ivt', 'torque converter', 'e-cvt'] else 'manual'
+        t1 = 'auto' if trans.lower() in AUTO_TRANSMISSIONS else 'manual'
+        t2 = 'auto' if c['transmission'].lower() in AUTO_TRANSMISSIONS else 'manual'
         if t1 != t2:
             warnings.append('transmission_mismatch')
     if cc and c['engine_cc'] and abs(cc - c['engine_cc']) > 50:
@@ -73,6 +76,15 @@ def validate_structured(c, fuel, trans, cc, price):
     if price and c['price_ex_showroom'] and abs(price - c['price_ex_showroom']) > 300000:
         warnings.append('price_mismatch')
     return warnings
+
+import re
+def normalize_engine_string(engine_str):
+    if not engine_str: return ""
+    s = engine_str.lower()
+    s = re.sub(r'(\d\.\d)\s*l(?!\w)', r'\1', s)
+    s = s.replace('petrol', '').replace('diesel', '').replace('cng', '')
+    s = s.replace('bi-fuel', '').replace('with hy-', '')
+    return re.sub(r'\s+', ' ', s).strip()
 
 def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fuel, trans, cc, price, generation_id=None, active_only=False, source_name=None, engine_name=None, edition=None):
     cur = conn.cursor()
@@ -126,7 +138,8 @@ def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fue
         if cand:
             warnings = validate_structured(cand, fuel, trans, cc, price)
             if warnings:
-                if row['is_verified'] == 1:
+                # A fuel/transmission conflict discards the alias even when verified (fail closed).
+                if row['is_verified'] == 1 and not {'fuel_mismatch', 'transmission_mismatch'} & set(warnings):
                     return c_id, 'resolved_with_warning', None
                 # Discard bad historical alias
             else:
@@ -134,6 +147,9 @@ def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fue
                 if row['needs_review']: status = 'resolved_with_warning'
                 return c_id, status, None
                 
+    # Normalize inputs
+    norm_engine = normalize_engine_string(engine_name) if engine_name else ""
+    
     # 1. Exact Match Check First (Highest Priority)
     for c in all_variants:
         warnings = validate_structured(c, fuel, trans, cc, price)
@@ -159,15 +175,25 @@ def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fue
         warnings = validate_structured(c, fuel, trans, cc, price)
         if warnings: continue
         
+        # Test 1: Just variant name
         test_name = variant_name
-        if edition and edition.lower() not in variant_name.lower():
-            test_name = f"{variant_name} {edition}".strip()
+        if edition and edition.lower() not in test_name.lower():
+            test_name = f"{test_name} {edition}".strip()
+            
+        # Test 2: Variant name + Engine
+        test_name_with_engine = test_name
+        if norm_engine:
+            test_name_with_engine = f"{test_name} {norm_engine}".strip()
             
         test_slug = variant_slug.replace('-', ' ')
         if edition and edition.lower() not in test_slug.lower():
             test_slug = f"{test_slug} {edition}".strip()
             
-        score = max(compute_similarity(test_name, c['name']), compute_similarity(test_slug, c['name']))
+        score = max(
+            compute_similarity(test_name, c['name']), 
+            compute_similarity(test_name_with_engine, c['name']),
+            compute_similarity(test_slug, c['name'])
+        )
         
         # Block cross-edition fuzzy matching
         source_has_edition = bool(edition) or any(kw in test_name.lower() or kw in variant_slug.lower() for kw in EDITION_STRIP_HEURISTICS)
@@ -187,11 +213,12 @@ def resolve_variant(conn, make_slug, model_slug, variant_name, variant_slug, fue
             if len(candidates) > 1:
                 second_best_score = candidates[1][0]
                 if (best_score - second_best_score) < 0.05:
-                    return None, 'unresolved', None
+                    best_match = None
                     
-            warnings = validate_structured(best_match, fuel, trans, cc, price)
-            if warnings: return best_match['id'], 'needs_review', None
-            return best_match['id'], 'resolved', None
+            if best_match:
+                warnings = validate_structured(best_match, fuel, trans, cc, price)
+                if warnings: return best_match['id'], 'needs_review', None
+                return best_match['id'], 'resolved', None
 
     # EDITION FALLBACK
 
