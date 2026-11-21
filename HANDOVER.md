@@ -4,8 +4,8 @@ For whoever continues this work (Opus or a new session). Read this file first, t
 
 ## 0. State in one minute
 
-- **Live site:** carrec.onrender.com, deployed by Render from `main` of the app repository. Recommender v3 on the 1,464-variant catalogue is the default. Pull requests 30/31, 32, 33, 34 and 35 are merged.
-- **KB:** 92 models, 1,464 variants, three evidence layers (specs and brochures, expert reviews, owner ratings and themes). Production file `knowledge_base/carrec_kb.db` in the main checkout.
+- **Live site:** carrec.onrender.com, deployed by Render from `main` of the app repository. Recommender v3 on the 1,556-variant, 101-model catalogue is the default (since pull request 41, merged 21 Nov). See the 21 Nov addendum.
+- **KB:** 105 models, 1,619 variants (SHA-1 `0c8156b7…`; 101 models and 1,556 priced variants reach the app), three evidence layers (specs and brochures, expert reviews, owner ratings and themes). Production file `knowledge_base/carrec_kb.db` in the main checkout.
 - **Pipeline:** `kbpipe` in `~/carrec_worktrees/kb-kbpipe`, branch `kb/kbpipe`, **pushed to GitHub on 17 Nov** as its own branch (not merged into `main`). One command, `./bin/kbpipe update`, runs 13 stages from discovery to a pull request.
 - **First real update done (17 Nov):** `./bin/kbpipe update --quick` ran all 13 stages and opened pull request 35 (merged by the owner). It added no models. See section 3.
 - **A copy of this file** is on GitHub in branch `kb/kbpipe` (`HANDOVER.md` at the root), as of 17 Nov.
@@ -203,3 +203,12 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 - **Step 6 (write), `update_missing16_2026-11-18`, stopped at stage 7 (audit) on the free Gemini quota after 27 of 337 cells.** Stages 1-4 wrote: **KB 37b583ab -> 0c8156b72b813275a85c95b3fdde36db43295ab0**, 92 -> 105 models, 1,464 -> 1,619 variants (13 new models plus new variants on existing models), 2,605 + 635 blank cells filled, 0 stored values changed, 72 expert and 99 owner rating rows. Integrity ok, foreign keys 297, no side files. The process was then stopped from the app; nothing was mid-write.
 - **Next:** when the Gemini quota resets, run `./bin/kbpipe update --resume --label update_missing16_2026-11-18` (audit, export, app checks, pages, pull request). Review file: `runs/update_missing16_2026-11-18_specs/REVIEW_*.md` (78 PRICE_DISAGREES, 56 NEW_VARIANT, 44 PRICE_CHANGE, 134 VALUE_CHANGE, and others). Held: ZR-V, X-Trail, Hector Tomahawk PHEV (names genuinely differ).
 
+## Addendum, 21 Nov: the 16-model update finished (Opus orchestrating, Sonnet building)
+
+- **`update_missing16_2026-11-18` ran to the end.** Audit: 337 cells, 333 match, 0 mismatch, 2 unreachable. No KB write after 18 Nov; prod SHA-1 is still `0c8156b72b813275a85c95b3fdde36db43295ab0`.
+- **App pull requests, all merged by the owner:** 39 (README rewrite), 40 (tests and exporter made catalogue-independent: golden file per catalogue size, size and model counts read from the catalogue, unpriced variants left out of the export, EV range may be missing, Innova Hycross/Invicto added as the fifth twin pair), 41 (the data update itself: 1,556 variants of 101 models, 63 unpriced variants excluded and listed in `catalogue_meta.json`, `tests/data/golden_empty_evidence_1556.json`).
+- **Evaluation on the new catalogue:** main 193 of 193 answered with zero violations, 181 verified; held-out 107 answered, 105 zero violations (the same two known cases), 91 verified; recall@8 0.745, MRR 0.789 (40 shortlists).
+- **Open README pull request 42** refreshes the README figures (owner to merge).
+- **kbpipe fixes on `kb/kbpipe`:** f899ece (golden regeneration for any catalogue size), 3a6ea9d (`ensure_workspace` fetches origin, so a redo export never builds on a stale `main`), 54826ab (summary stage parsed the 17 MB change-set once per evidence item and ran for hours; now once per stage). 182 kbpipe tests pass.
+- **Lesson:** a resumed run must not overlap an older run of the same label. Two processes were alive at once on 21 Nov; the stale one was stopped before it could overwrite `state.json`. Check `pgrep -fl "kbpipe update"` before resuming.
+- **Still needs the owner:** tick the review files (392 specs items, 40 brochure items), mainly prices, so the 63 unpriced variants (including Comet EV, Hector Tomahawk EV, ZS EV and BE 6 Sporteq, which are absent entirely) can reach the app; pick photos for the 5 models with brochure candidates (13 models show a silhouette); 46 new EVs have no range.
