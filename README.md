@@ -33,7 +33,7 @@ Example queries:
 
 ## Data
 
-The default catalogue (`data/catalogue_v3/catalogue.csv`) has **1,464 variants of 92 models from 12 brands**, exported on 2026-11-17 from the CarRec knowledge base. `catalogue_meta.json` records the export time, the knowledge-base hash and the coverage of each column. Review evidence sits beside it: `data/assessments.csv` (Autocar India expert reviews, 78 models) and `data/owner_ratings.csv` (CarWale owner ratings, 88 models).
+The default catalogue (`data/catalogue_v3/catalogue.csv`) has **1,556 variants of 101 models from 12 brands**, exported on 2026-11-21 from the CarRec knowledge base. Variants with no known price are left out (63 in this export) and listed in `catalogue_meta.json`, which also records the export time, the knowledge-base hash and the coverage of each column. Review evidence sits beside it: `data/assessments.csv` (Autocar India expert reviews, 85 models) and `data/owner_ratings.csv` (CarWale owner ratings, 97 models).
 
 The knowledge base is an SQLite database of variants, specifications, prices, crash tests and reviews. Every value keeps its source and its evidence class. A value is written only when two sites agree or the maker's brochure confirms it, and for specifications the brochure wins over the sites. Wrong values are quarantined, not deleted.
 
@@ -47,17 +47,17 @@ The original 832-variant, 62-model catalogue (`data/catalogue.csv`) is kept and 
 
 | Query set | Queries | Answered with cars | No requirement violated | Every requirement verified |
 |---|---|---|---|---|
-| Main (`eval/queries.jsonl`) | 209 | 193 | 193 (100%) | 180 (93%) |
-| Held-out (`eval/heldout_queries.jsonl`) | 120 | 106 | 104 (98%) | 94 (89%) |
+| Main (`eval/queries.jsonl`) | 209 | 193 | 193 (100%) | 181 (94%) |
+| Held-out (`eval/heldout_queries.jsonl`) | 120 | 107 | 105 (98%) | 91 (85%) |
 
-"Verified" is the stricter measure: a car whose value is unknown for a hard requirement counts as not satisfied. The two held-out violations are sedans outside an "around 12 lakh" budget and non-hybrid cars returned for a hybrid query. On the 40 main queries with a hand-made shortlist, recall at 8 is 0.755 and MRR is 0.788. Results are in `eval/results/` (`audit_fix_*`).
+"Verified" is the stricter measure: a car whose value is unknown for a hard requirement counts as not satisfied. The two held-out violations are sedans outside an "around 12 lakh" budget and non-hybrid cars returned for a hybrid query. On the 40 main queries with a hand-made shortlist, recall at 8 is 0.745 and MRR is 0.789. These figures are for the 1,556-variant catalogue; earlier runs are in `eval/results/`.
 
 ## Limitations
 
 - 12 brands only: Honda, Hyundai, Kia, MG, Mahindra, Maruti Suzuki, Nissan, Renault, Skoda, Tata, Toyota, Volkswagen.
-- 88 of 92 models have a photo from an OEM brochure, captioned with its source (`data/image_manifest.csv`). Thar Roxx, Hector Plus, Bolero Neo Plus and Tekton show a body-type silhouette. Brochure images are not licensed for reuse.
-- Mileage is unknown for about half of the petrol, diesel and hybrid variants: 666 of 1,263 have no ARAI kmpl figure. Mileage minimums keep these cars, labelled "Unverified: mileage".
-- Bharat NCAP ratings cover 26 models (618 variants). Older Global NCAP ratings are not used.
+- 88 of 101 models have a photo from an OEM brochure, captioned with its source (`data/image_manifest.csv`). The other 13 show a body-type silhouette: Bolero Neo Plus, Camry, Creta Electric, Fortuner Legender, Hector Plus, Invicto, Syros EV, Tekton, Thar Roxx, Tigor EV, Urban Cruiser Ebella, XUV 3XO EV and XUV400. Brochure images are not licensed for reuse.
+- Mileage is unknown for about half of the petrol, diesel and hybrid variants: 688 of 1,296 have no ARAI kmpl figure. Mileage minimums keep these cars, labelled "Unverified: mileage".
+- Bharat NCAP ratings cover 26 models (654 variants). Older Global NCAP ratings are not used.
 - Prices are ex-showroom figures from the listing sites on the export date and can lag the market.
 - Used-car search is off in the demo. It needs Selenium and headless Chrome and is enabled only with `ENABLE_USED_CARS=1`.
 
