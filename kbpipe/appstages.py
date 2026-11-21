@@ -77,7 +77,13 @@ def ensure_workspace(ctx):
     the app repository last fetched (no network). Returns the path."""
     ws, src = ws_dir(ctx), app_repo(ctx)
     branch = ctx.state.get("app_branch") or branch_name(ctx)
-    if os.path.isdir(os.path.join(ws, ".git")):
+    if os.path.isdir(os.path.join(ws, ".git")):      # an existing workspace still needs the current origin/main (a --redo export resets to it)
+        if ctx.no_write:
+            rc, out = sh(["git", "fetch", "--quiet", src, "+refs/remotes/origin/main:refs/remotes/origin/main"], cwd=ws)
+        else:
+            rc, out = sh(["git", "fetch", "--quiet", "origin"], cwd=ws)
+        if rc:
+            raise RuntimeError("cannot update origin/main: %s" % out.strip()[-300:])
         return ws
     os.makedirs(os.path.dirname(ws), exist_ok=True)
     rc, out = sh(["git", "clone", "--local", "--quiet", "--no-checkout", src, ws])

@@ -378,6 +378,40 @@ def pr_ctx(cfg, app, tmp_path, no_write=False, no_pr=False, created="2026-11-17T
     return ctx, ws
 
 
+def _advance_upstream(up):
+    (up / "README.md").write_text("moved\n")
+    git("commit", "-qam", "main moved", cwd=up)
+    return git("rev-parse", "HEAD", cwd=up)
+
+
+def test_existing_workspace_is_refreshed_to_current_origin_main_real(cfg, app, tmp_path):
+    up, local = app
+    ctx, ws = pr_ctx(cfg, app, tmp_path)
+    new = _advance_upstream(up)
+    assert git("rev-parse", "origin/main", cwd=ws) != new
+    assert appstages.ensure_workspace(ctx) == ws
+    assert git("rev-parse", "origin/main", cwd=ws) == new
+
+
+def test_existing_workspace_refresh_failure_raises_real(cfg, app, tmp_path):
+    up, local = app
+    ctx, ws = pr_ctx(cfg, app, tmp_path)
+    git("remote", "set-url", "origin", str(tmp_path / "gone"), cwd=ws)
+    with pytest.raises(RuntimeError, match="cannot update origin/main"):
+        appstages.ensure_workspace(ctx)
+
+
+def test_existing_workspace_is_refreshed_from_app_repo_no_write(cfg, app, tmp_path):
+    up, local = app
+    ctx, ws = pr_ctx(cfg, app, tmp_path, no_write=True)
+    new = _advance_upstream(up)
+    appstages.ensure_workspace(ctx)
+    assert git("rev-parse", "origin/main", cwd=ws) != new          # no network: the app repository has not fetched yet
+    git("fetch", "-q", "origin", cwd=local)
+    assert appstages.ensure_workspace(ctx) == ws
+    assert git("rev-parse", "origin/main", cwd=ws) == new
+
+
 def test_stage11_commits_only_allowed_files_pushes_and_opens_pr_via_the_fake(cfg, app, tmp_path, monkeypatch):
     fake = FakePublisher()
     monkeypatch.setattr(appstages, "PUBLISHER", fake)
