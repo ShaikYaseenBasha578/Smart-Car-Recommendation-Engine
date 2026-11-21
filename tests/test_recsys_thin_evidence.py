@@ -13,11 +13,15 @@ from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
 from tests.recsys_frames import make_frame
 
-# One snapshot per catalogue: the original 832-variant file (CARREC_CATALOGUE_DIR=data) and the default 1,464-variant one.
-# The 1,464 snapshot differs from the 832 one only because the 30 added models are candidates and move the segment
-# reference populations; same code, same queries.
-_GOLDEN_FILES = {832: "golden_empty_evidence.json", 1464: "golden_empty_evidence_1464.json"}
-GOLDEN = json.loads((Path(__file__).parent / "data" / _GOLDEN_FILES[len(get_catalogue())]).read_text())
+# One snapshot per catalogue size N: golden_empty_evidence.json for the original 832-variant catalogue
+# (CARREC_CATALOGUE_DIR=data), golden_empty_evidence_<N>.json for any other size (e.g. _1464). A snapshot differs between
+# sizes only because added models are candidates and move the segment reference populations; same code, same queries.
+# A catalogue with no snapshot yet must not break collection and must not skip: the test below fails with a clear message
+# (the data pipeline regenerates the file when only this test fails and the catalogue changed).
+_CATALOGUE_SIZE = len(get_catalogue())
+_GOLDEN_NAME = "golden_empty_evidence.json" if _CATALOGUE_SIZE == 832 else f"golden_empty_evidence_{_CATALOGUE_SIZE}.json"
+_GOLDEN_PATH = Path(__file__).parent / "data" / _GOLDEN_NAME
+GOLDEN = json.loads(_GOLDEN_PATH.read_text()) if _GOLDEN_PATH.exists() else None
 
 
 def intent(**kw):
@@ -157,8 +161,10 @@ def test_full_evidence_car_with_three_sources_gets_three_quarters_of_the_class_w
 
 # ------------------------------------------------------------------ empty files = before
 
-@pytest.mark.parametrize("q", sorted(GOLDEN))
+@pytest.mark.parametrize("q", sorted(GOLDEN) if GOLDEN is not None else [None])
 def test_empty_evidence_gives_the_same_results_as_before_this_change(q):
+    assert GOLDEN is not None, (f"no golden snapshot for a catalogue of {_CATALOGUE_SIZE} variants "
+                                f"(tests/data/{_GOLDEN_NAME})")
     r = recommend(q, evidence=Evidence())
     got = [{"variant_id": c["variant_id"], "scores": c["scores"], "ranking_score": c["ranking_score"],
             "criteria": c["criteria"]} for c in r["recommendations"]]
