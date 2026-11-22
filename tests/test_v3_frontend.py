@@ -705,7 +705,7 @@ def test_picking_a_variant_marks_the_row_busy_then_redraws_only_the_spec_section
     assert str(a["selected"]) == "2" and a["cur"] == [None, "true"] and a["pressed"] == ["false", "true"]
     assert a["region"].startswith('<section class="detail-section"><h2>Specifications</h2>') and a["regionHasVariants"] is False
     assert a["urls"] == ["/car/tata/nexon?q=suv&variant_id=2"]                                      # replaceState keeps q and gains variant_id
-    assert r["log"][0] == ["fetch", "/api/car/tata/nexon?q=suv&variant_id=2"]
+    assert r["log"][0] == ["fetch", "/api/car/tata/nexon?variant_id=2"]                    # no q: the server does not re-rank for a spec swap
 
 
 def test_a_failed_variant_fetch_clears_the_spinner_and_says_so_in_the_status_line():

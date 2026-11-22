@@ -1006,7 +1006,8 @@ async function pickVariant(body, opts, row) {
     status.textContent = `Loading specs for ${name}…`;
     control.focus({ preventScroll: true });
     try {
-        const response = await fetch(detailUrl("/api/car", { ...opts, variantId: id }));
+        // the search is left out of the request: the spec sections do not depend on it, and without it the server skips re-running the ranking
+        const response = await fetch(detailUrl("/api/car", { make: opts.make, model: opts.model, variantId: id }));
         const data = await response.json();
         if (seq !== pickSeq) return;
         if (!response.ok) throw new Error(data.error || "not found");
