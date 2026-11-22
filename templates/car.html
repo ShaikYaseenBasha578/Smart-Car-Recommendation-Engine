@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <a class="skip-link" href="#car-detail">Skip to details</a>
     {% include "_header.html" %}
     <main class="car-page">
         <div class="wrap">
             <p class="back-link"><a href="{{ url_for('recommend_page') }}{% if request.query_string %}?{{ request.query_string.decode() }}{% endif %}">← Back to search</a></p>
-            <article id="car-detail" class="detail-body detail-body--page">{% if not_found %}
+            <article id="car-detail" class="detail-body detail-body--page" tabindex="-1">{% if not_found %}
                 <div class="state"><h1>We don't have that car</h1><p>It may be discontinued or the link is wrong.</p><p><a class="btn btn-primary" href="{{ url_for('recommend_page') }}">Search cars</a></p></div>
             {% endif %}</article>
         </div>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <a class="skip-link" href="#results">Skip to results</a>
     {% set active = 'search' %}{% include "_header.html" %}
     <main class="results-page">
         <div class="wrap">
@@ -22,7 +23,7 @@
                 <div data-suggestions class="chips" aria-label="Example searches"></div>
             </form>
             <p id="search-status" class="sr-only" role="status"></p>
-            <div id="results" class="thread" data-variant-count="{{ variant_count_raw }}"></div>
+            <div id="results" class="thread" tabindex="-1" data-variant-count="{{ variant_count_raw }}"></div>
             <form id="followup" hidden onsubmit="sendFollowup(event)" class="followup search-form" role="search">
                 <h2>Try another search</h2>
                 <div class="search">

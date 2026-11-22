@@ -134,10 +134,10 @@ def card_checks(page, base, tag, w, shots):
         if key == "cng":
             kmkg = [c for c in cards if "km/kg" in c["facts"]]
             check(f"{tag} [cng]: a card shows km/kg", kmkg, len(kmkg))
-            # cards whose response has mileage_km_per_kg must never say Not listed
+            # cards whose response has mileage_km_per_kg must never say Not verified
             data = page.evaluate("q => fetch('/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({query: q})}).then(r => r.json())", q)
             have = {f"{r['Make']} {r['Model']}" for r in data["recommendations"] if r.get("mileage_km_per_kg")}
-            bad = [c["name"] for c in cards if c["name"] in have and ("Not listed" in c["facts"] or "km/kg" not in c["facts"])]
+            bad = [c["name"] for c in cards if c["name"] in have and ("Not verified" in c["facts"] or "km/kg" not in c["facts"])]
             check(f"{tag} [cng]: km/kg shown wherever it exists", have and not bad, bad or f"{len(have)} with km/kg")
         if key == "ev":
             bad = [c["facts"] for c in cards if not re.search(r"Range: \d+ km", c["facts"])]

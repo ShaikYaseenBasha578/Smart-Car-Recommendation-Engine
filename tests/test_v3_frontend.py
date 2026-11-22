@@ -295,9 +295,9 @@ def test_toggle_is_a_real_button_collapsed_by_default_with_aria():
 
 
 def test_toggle_label_counts_the_items_behind_it():
-    # 2 expert lines + 2 owner lines + 2 extra "why" bullets = 6
+    # 2 expert lines + 2 owner lines = 4; the extra "why" reasons have their own "+N more reasons" button (PR G)
     html = render(response([many_lines()]))
-    assert "Reviews and owner feedback (6)" in html and "Show more from reviews" not in html
+    assert "Reviews and owner feedback (4)" in html and "Show more from reviews" not in html
     caveat = owner(theme="recurring_fault", label="clutch judder", direction="negative", mentions=3, posts_sampled=60,
                    share=0.05, note="Judder.", kind="reported_fault")
     one = render(response([car(expert_notes=[expert()], owner_notes=[], caveats=[caveat])]))   # 1 expert + 1 caveat
@@ -318,7 +318,8 @@ def test_reviewers_owners_and_caveats_sit_behind_the_toggle_and_the_card_shows_t
     for needle in ("What reviewers say", "What owners say", "expert 0", "owner 0", "Judder at low speed.", 'aria-label="Caveats from owners"'):
         assert needle not in before
     visible_why = before.split('aria-label="Why this car"')[1].split("</section>")[0]
-    assert visible_why.count("<li>") == 2 and visible_why.count("data-more hidden") == 2     # reasons 3 and 4 wait behind the toggle
+    assert visible_why.count("<li>") == 2 and visible_why.count("data-more-reason hidden") == 2   # reasons 3 and 4 wait behind their own button
+    assert "data-more hidden" not in visible_why                                                   # ... not behind the reviews toggle
 
 
 def test_card_has_at_most_one_caveat_line_and_it_is_a_single_pill():
@@ -797,7 +798,8 @@ def test_compare_button_is_on_every_v3_card_unpressed_with_the_variant_id_and_a_
     assert html.count('data-compare="') == 2
     assert 'data-compare="71"' in html and 'aria-pressed="false"' in html
     assert 'class="btn btn-quiet btn-compare"' in html
-    assert '<span class="sr-only">Compare Tata Nexon Smart</span>' in html
+    assert 'aria-label="Compare Tata Nexon Smart"' in html and 'aria-pressed="false"' in html   # one accessible name, no sr-only twin
+    assert '<span class="compare-text">Compare</span>' in html and "sr-only" not in html.split("data-compare=")[1].split("</button>")[0]
     assert html.index("data-detail") < html.index("data-compare=")           # after "View details"
     assert "data-compare=" not in render(response([car()]))                    # no variant id, no button
     assert "data-compare=" not in render({"recommendations": [{"Make": "Tata", "Model": "Nexon", "Variant": "Smart",

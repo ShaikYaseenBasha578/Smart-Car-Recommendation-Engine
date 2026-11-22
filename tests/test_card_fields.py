@@ -76,9 +76,9 @@ def test_an_ev_with_no_range_renders_as_unknown_not_zero_or_none():
     assert math.isnan(row["ev_range_km"]) and mileage_display(row) == {"label": "Range", "value": None, "unit": "km"}
     assert mileage_display({"fuel_type": "electric", "ev_range_km": 465.0})["value"] == "465 km"
     assert number_or_none(float("nan"), whole=True) is None
-    # result card (static/script.js): no range -> text null -> shown as "Not listed"
+    # result card (static/script.js): no range -> text null -> shown as "Not verified"
     js = (Path(__file__).resolve().parents[1] / "static" / "script.js").read_text()
-    assert 'text: v ? `${v} km` : null' in js and '[eff.label, eff.text || (eff.label === "CNG mileage" ? "not listed" : "Not listed")]' in js
+    assert 'text: v ? `${v} km` : null' in js and '[eff.label, eff.text || "Not verified"]' in js
 
 
 def test_cng_results_carry_km_per_kg(client, monkeypatch):

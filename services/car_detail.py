@@ -101,6 +101,11 @@ def _number(value: float) -> str:
     return f"{value:,.0f}" if float(value).is_integer() else f"{value:g}"
 
 
+def _one_decimal(value: float) -> str:
+    """Mileage as the card shows it: one decimal, none when it is whole (24.08 -> '24.1', 26.0 -> '26')."""
+    return f"{float(value):.1f}".rstrip("0").rstrip(".")
+
+
 def _status(row, col: str) -> str:
     if col in NOT_APPLICABLE.get(row["fuel_type"], set()):
         return "not_applicable"
@@ -135,6 +140,8 @@ def spec_item(row, col: str | None, label: str, kind: str) -> dict:
         display = str(value)
     elif kind == "warranty":
         display = warranty_display(row, col)
+    elif col in ("mileage_kmpl", "mileage_km_per_kg"):
+        display = _one_decimal(value) + kind   # display only; the API's numeric fields stay unrounded
     else:
         display = _number(value) + kind
     return {"label": label, "value_display": display, "status": "ok"}
@@ -148,9 +155,9 @@ def mileage_display(row) -> dict:
         return {"label": "Range", "value": None if _blank(v) else f"{v:.0f} km", "unit": "km"}
     if fuel == "cng":
         v = row["mileage_km_per_kg"]
-        return {"label": "Mileage", "value": None if _blank(v) else f"{v:g} km/kg (CNG)", "unit": "km/kg"}
+        return {"label": "Mileage", "value": None if _blank(v) else f"{_one_decimal(v)} km/kg (CNG)", "unit": "km/kg"}
     v = row["mileage_kmpl"]
-    return {"label": "Mileage", "value": None if _blank(v) else f"{v:g} kmpl", "unit": "kmpl"}
+    return {"label": "Mileage", "value": None if _blank(v) else f"{_one_decimal(v)} kmpl", "unit": "kmpl"}
 
 
 def _unverified_labels(row) -> list[str]:
