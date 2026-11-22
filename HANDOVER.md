@@ -230,3 +230,31 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - Not done: A step 4 (paced on/off measurement, after the owner ticks the hard-query labels), and C's live evaluation and blind groundedness review. Both need the free LLM quota.
 - **Rule-parser bug found (not fixed, owner to decide):** a word before "not" is negated too. "Tata SUV not diesel under 15 lakh" excludes Tata and SUVs; "Hyundai sedan not petrol" excludes Hyundai and sedans. No eval query uses this phrasing.
 - **Worktrees added:** `kb-near-rule` (merged, can go), `app-llm-parser`, `app-rag`.
+
+## Addendum, 22 Nov evening: merges, RAG evaluation, UI/UX plan
+
+- **Merged by the owner:**
+  - #43, #45 and #46. The negation bug in the line above is fixed by #46.
+  - #44 landed in `feat/llm-parser-pacing` (it was stacked), so #47 carried it to `main`; also merged.
+  - **Lesson:** don't stack PRs; branch each from the latest `main`.
+- **RAG live evaluation (Gemini 3.5 Flash Lite, free tier):**
+  - 113 live answers plus 9 cached, then the quota ran out; 198 queries fell back to the template text.
+  - The checker passed about 97% of the cars the model actually wrote about.
+  - Latency p50 3.1 s, p95 6.2 s, max 11.1 s. The 2 s default timeout would miss 107 of 113 calls; the new timeout is the owner's decision.
+  - The rest of the run resumes from `eval/results/rag_cache.json` in `app-rag`, untracked. The prompt is now `rag2`, so old answers no longer match.
+- **Blind groundedness check of 50 sentences:** 46 supported, 4 unsupported, 0 wrong.
+  - The checker was tightened in **PR #48** (open): sentences citing only the query are rejected, and fit claims are allowed only when every requirement is met.
+- **Groq vs Gemini:** the owner asked about the trade-off.
+  - Groq is much faster, but its free-tier token limits are tight for our ~4,500-token calls.
+  - A 50-query Groq trial was offered, not run.
+- **UI/UX:**
+  - Blind review of the live site: `knowledge_base/reports/plans/UIUX_REVIEW_2026-11-22.md`, 22 changes.
+  - Plan: `PLAN_UIUX_2026-11-22.md`, approved with the default decisions. It is six PRs (A to F), built one at a time from the latest `main`.
+  - **PR #49 (A, 12 quick wins)** is open. Next is PR B (the result card), after #49 merges.
+- **Worktrees:**
+  - added `app-uiux` (PR A);
+  - can go once their PRs merge: `app-llm-parser`, `app-negation` and `kb-near-rule` now; `app-rag` after #48.
+- **Still waiting on the owner:**
+  - the hard-query labels (`eval/HARD_QUERIES_REVIEW.md`, all 40 unticked), which block Plan A step 4;
+  - the review items (prices, the Windsor EV items);
+  - the RAG timeout choice.
