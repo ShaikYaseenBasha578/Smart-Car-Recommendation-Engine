@@ -2,6 +2,8 @@
 
 import contextlib
 import io
+import re
+from pathlib import Path
 from urllib.parse import quote
 
 import pytest
@@ -14,6 +16,9 @@ from services.new_car_service import apply_drops, safe_slug
 
 GROUPS = ["Engine & performance", "Dimensions & capacity", "Comfort & convenience", "Technology", "Safety", "Warranty"]
 MODELS = get_catalogue()[["make", "model"]].drop_duplicates().values.tolist()
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture(scope="module")
@@ -172,3 +177,45 @@ def test_warranty_row_shows_only_brochure_cited_figures():
     assert item("Nexon EV", "Battery warranty")["value_display"] == "8 years / 160,000 km"
     assert item("Nexon EV", "Standard warranty")["value_display"] == "3 years / 125,000 km"
     assert item("Creta", "Battery warranty")["status"] == "not_applicable"
+
+
+def test_unknown_car_page_is_a_real_404_with_its_own_copy_and_title(client):
+    r = get(client, "/car/tata/nonexistent")
+    assert r.status_code == 404
+    body = r.data.decode()
+    assert "<title>Car not found | CarRec</title>" in body
+    assert "We don&#39;t have that car" in body or "We don't have that car" in body
+    assert "Search cars" in body and "Something went wrong" not in body
+
+
+def test_car_page_title_is_rendered_by_the_server_and_has_no_live_region(client):
+    body = get(client, "/car/skoda/slavia").data.decode()
+    assert "<title>Skoda Slavia | CarRec</title>" in body
+    assert "aria-live" not in body
+
+
+def test_results_page_has_one_status_line_and_no_live_thread(client):
+    body = get(client, "/recommend").data.decode()
+    assert 'id="results"' in body and 'role="status"' in body and 'id="search-status"' in body
+    assert "aria-live" not in body
+    assert re.search(r'data-variant-count="\d+"', body)
+
+
+def test_detail_sections_are_h2_on_the_car_page_and_h3_in_the_inline_panel():
+    script = """
+const vm = require('vm'), fs = require('fs');
+const ctx = vm.createContext({ console, URL, URLSearchParams, location: { origin: 'http://x', pathname: '/car/a/b', search: '' } });
+vm.runInContext(fs.readFileSync(process.argv.at(-1), 'utf8'), ctx);
+const data = { make: 'A', model: 'B', image: '/x.png', summary: 's', variants: [{variant_id: 1, variant: 'V', price: 1, matches_query: false, transmission_label: 'MT', fuel_label: 'Petrol', mileage_display: {value: '1 kmpl'}}],
+  selected_variant_id: 1, specs: [{group: 'Safety', items: []}, {group: 'Technology', items: [{label: 'x', value_display: 'y', status: 'ok'}]}], safety: null, price_range: null, cardekho_link: 'https://x.test', data_as_of: null };
+ctx.d = data;
+process.stdout.write(JSON.stringify([vm.runInContext('renderDetail(d, {standalone: true, q: ""})', ctx), vm.runInContext('renderDetail(d, {q: ""})', ctx)]));
+"""
+    import json, shutil, subprocess
+    if shutil.which("node") is None:
+        pytest.skip("node is not installed")
+    out = subprocess.run(["node", "-e", script, str(ROOT / "static" / "script.js")], capture_output=True, text=True, cwd=ROOT)
+    assert out.returncode == 0, out.stderr
+    page, panel = json.loads(out.stdout)
+    assert "<h2>Summary</h2>" in page and "<h3>Technology</h3>" in page and "<h3>Summary</h3>" not in page
+    assert "<h3>Summary</h3>" in panel and "<h2>" not in panel

@@ -346,10 +346,12 @@ def run(base, shots):
             check(f"{tag}: feature chip (Sunroof)", page.locator(".tag--feature", has_text="Sunroof").count() > 0)
             check(f"{tag}: matching_variant_count chip", page.locator(".tag", has_text=re.compile(r"\d+ matching variants?")).count() > 0)
             check(f"{tag}: safety chip or no-rating chip", page.locator(".tag--safety").count() + page.locator(".tag", has_text="No crash-test rating on record").count() > 0)
-            link = first.locator(".car-actions a")
-            check(f"{tag}: primary action is external on-road price link",
-                  link.inner_text().startswith("Check on-road price") and link.get_attribute("target") == "_blank"
+            link = first.locator(".car-price a.price-link")
+            check(f"{tag}: on-road price is a quiet external link under the price",
+                  link.inner_text().startswith("On-road price on CarDekho") and link.get_attribute("target") == "_blank"
                   and "new tab" in link.inner_text())
+            check(f"{tag}: View details is the primary button", first.locator(".car-actions .btn-primary[data-detail]").count() == 1)
+            check(f"{tag}: results thread is not a live region", page.locator("#results[aria-live]").count() == 0)
             check(f"{tag}: data stamp", page.locator(".data-stamp").count() == 1)
             check(f"{tag}: copy link button", page.locator("[data-copy-link]").count() == 1)
             page_checks(page, f"{tag} results")

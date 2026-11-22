@@ -340,3 +340,99 @@ def test_old_engine_html_has_none_of_the_new_markup():
                                         "ranking_score": 80.0, "Fuel_Type": "Petrol", "Transmission": "Manual"}]})
     for needle in ("data-reviews", "meter-cap", "meters-note", "data-more"):
         assert needle not in html
+
+
+# ------------------------------------------------------------------ UI quick wins (PR A)
+
+def test_data_stamp_has_no_pipeline_id_in_its_text():
+    html = render(response([car()], data_as_of={"exported": "2026-11-22", "kb_phase": "kbpipe-ev_range_2026-11-22-review"}))
+    stamp = re.search(r'<p class="data-stamp"([^>]*)>([^<]*)</p>', html)
+    assert stamp.group(2) == "Prices and specs updated 22 Nov 2026"
+    assert "kbpipe" not in stamp.group(2) and "knowledge base" not in stamp.group(2)
+    assert 'title="Data run: kbpipe-ev_range_2026-11-22-review"' in stamp.group(1)   # still there for debugging
+
+
+def test_top_pick_only_when_nothing_unmet_or_unverified():
+    assert ">Top pick<" in render(response([car()]))
+    unmet = car(violations=[{"constraint": "seats", "text": "5 seats, 7+ asked", "amount": 2, "unit": "seats"}])
+    unverified = car(not_verified=["ground clearance not verified"])
+    for weak in (unmet, unverified):
+        html = render(response([weak]))
+        assert 'class="rank rank--close">Closest match<' in html and "Top pick" not in html
+    html = render(response([car(), car(Model="Punch")]))          # only rank 1 is badged
+    assert html.count('class="rank') == 1
+
+
+def test_closest_match_pill_is_quieter_in_css():
+    css = (ROOT / "static" / "style.css").read_text()
+    assert ".rank--close { background: var(--surface-2); color: var(--ink-2); }" in css
+
+
+def test_exclusions_are_echoed_as_chips():
+    intent = {"budget": {"min": None, "max": None}, "body_types": [], "transmission": {"family": None}, "seats_min": 7,
+              "fuel_types": ["diesel"], "exclude_makes": ["Mahindra"], "exclude_features": ["sunroof"]}
+    html = render(response([car()], intent=intent))
+    echo = html.split('<ul class="echo-list">')[1].split("</ul>")[0]
+    assert "No Mahindra" in echo and "No sunroof" in echo
+
+
+def test_view_details_is_primary_and_on_road_price_is_a_text_link_under_the_price():
+    html = render(response([car()]))
+    assert '<button type="button" class="btn btn-primary" data-detail' in html
+    price = html.split('<p class="car-price">')[1].split("</p>")[0]
+    assert 'class="price-link"' in price and "On-road price on CarDekho" in price and 'target="_blank"' in price
+    assert "Check on-road price" not in html
+    assert 'class="price-link"' not in render(response([car(carDekhoLink=None)]))
+
+
+def test_car_name_links_to_the_car_page():
+    html = render(response([car(Make="Maruti Suzuki", Model="Grand Vitara")]))
+    assert '<h3 class="car-title"><a href="/car/maruti-suzuki/grand-vitara">Maruti Suzuki Grand Vitara</a></h3>' in html
+
+
+def test_owner_note_already_in_caveats_is_not_repeated_under_what_owners_say():
+    fault = owner(theme="service_experience", direction="negative", mentions=4, posts_sampled=31, note="Slow service.")
+    other = owner(theme="satisfaction", note="Owners are happy.")
+    html = render(response([car(owner_notes=[fault, other], caveats=[fault])]))
+    block = html.split('aria-label="What owners say"')[1].split("</section>")[0]
+    assert "Slow service." not in block and "Owners are happy." in block
+    assert html.count("Slow service.") == 1
+    only = render(response([car(owner_notes=[fault], caveats=[fault])]))          # nothing else to show: falls back, no repeat
+    assert only.split('aria-label="What owners say"')[1].split("</section>")[0].count("Slow service.") == 0
+
+
+def test_suggestion_chips_no_longer_auto_rotate():
+    js = (ROOT / "static" / "script.js").read_text()
+    assert "setInterval" not in js and "SUGGESTION_ROTATE_MS" not in js
+    assert "data-more-ideas" in js                                                  # the manual button stays
+
+
+def test_status_sentence_for_the_hidden_status_line():
+    status = """
+const vm = require('vm'), fs = require('fs');
+const ctx = vm.createContext({ console, URL, location: { origin: 'http://x', pathname: '/recommend', search: '' } });
+vm.runInContext(fs.readFileSync(process.argv.at(-1), 'utf8'), ctx);
+process.stdout.write(JSON.stringify(vm.runInContext(
+  '[searchStatusText({recommendations: new Array(8), relaxation: {}}, true, "7 seater diesel, no Mahindra"),'
+  + 'searchStatusText({recommendations: new Array(1)}, true, "x"), searchStatusText({recommendations: []}, true, "q"), searchStatusText({}, false, "q")]', ctx)));
+"""
+    out = subprocess.run(["node", "-e", status, str(ROOT / "static" / "script.js")], capture_output=True, text=True, cwd=ROOT)
+    assert out.returncode == 0, out.stderr
+    assert json.loads(out.stdout) == ["8 cars found for 7 seater diesel, no Mahindra. Nothing matched every requirement.",
+                                      "1 car found for x.", "No cars found for q.", "The search didn't go through."]
+
+
+def test_loading_skeleton_is_static_under_reduced_motion_and_has_no_hard_coded_count():
+    js = (ROOT / "static" / "script.js").read_text()
+    assert "1,556" not in js and "1556" not in js and "dataset" in js.split("function showSearchLoading")[1][:400]
+    css = (ROOT / "static" / "style.css").read_text()
+    assert "@media (prefers-reduced-motion: no-preference)" in css and "animation: shimmer" in css
+    assert css.count("animation: shimmer") == 1 and css.split("animation: shimmer")[0].rsplit("@media", 1)[1].startswith(" (prefers-reduced-motion: no-preference)")
+
+
+def test_interactive_borders_use_the_darker_control_token():
+    css = (ROOT / "static" / "style.css").read_text()
+    assert "--line-ctl: #8f897c" in css and "--line-ctl: #6a6d75" in css
+    for rule in (".chip-btn {", ".btn-quiet {", ".hint-btn {"):
+        block = css.split(rule)[1].split("}")[0]
+        assert "var(--line-ctl)" in block and "--line-strong" not in block
