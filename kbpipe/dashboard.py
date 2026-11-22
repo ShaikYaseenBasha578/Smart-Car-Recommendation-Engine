@@ -1558,7 +1558,7 @@ def price_view(D):
     if B:
         pend = ("<p class=\"plain\" style=\"margin-top:var(--s2)\">The pipeline has found %s changed prices on existing variants (run %s). None has been applied: changed prices wait for the owner&rsquo;s approval, so the stored price can differ from the current showroom price.</p>"
                 % (fmt(B["price_still_pending"]), E(B["run"])))
-    return ('<p class="plain">Prices are ex-showroom list prices and may be out of date. %s of %s variants (%s) have price evidence from a listing site or brochure within 180 days of the page date. '
+    return ('<p class="plain">Prices are ex-showroom list prices and may be out of date. %s of the %s variants with a price (%s) have price evidence from a listing site or brochure within 180 days of the page date. '
             '%s variants (%s) rest only on the June 2026 import. %s</p><div style="margin-top:var(--s2)">%s</div>%s%s%s'
             % (fmt(P["within180"]), fmt(P["n"]), pct(P["within180"] / n), fmt(P["import_only"]), pct(P["import_only"] / n), imp, bars, pend, dates,
                src("price evidence rows (accepted or confirmed, quarantine excluded) joined to the date each page was read; pending changes from the review file of run %s" % (B["run"] if B else "n/a"))))
@@ -1677,9 +1677,11 @@ def page_index(D, ctx):
                   eng, "See how it ranks"))
     cs = "".join('<a class="card pcard" href="%s"><h2>%s</h2><p>%s</p>%s<span class="go">%s &rarr;</span></a>' % (h, E(t), E(p), f, E(b)) for h, t, p, f, b in cards)
     P_ = H["price"]
-    lede = ("CarRec recommends new cars sold in India from a knowledge base of %s variants. The strongest evidence for %s of the stored values is the June 2026 import, which recorded no source, "
-            "and %s of %s variants have no price evidence newer than that import. A pipeline builds and updates the knowledge base, and a recommendation engine ranks cars from it. Each part has its own page."
-            % (fmt(g["variants"]), pct(cl["import"] / tot), fmt(P_["import_only"]), fmt(P_["n"])))
+    lede = ("CarRec helps you choose a new car sold in India. You describe what you want in your own words; it lists the cars that fit, says why, and says which facts it could not confirm. "
+            "Three parts make it work, and each has its own page: a pipeline that collects car data from makers' brochures and two listing sites, a knowledge base that stores every value with the evidence behind it, "
+            "and an engine that ranks cars for a request. The knowledge base stores %s variants; the app shows the %s that have a price." % (fmt(g["variants"]), fmt(P_["n"])))
+    audit = ("The strongest evidence for %s of the stored values is the June 2026 import, which recorded no source, and %s of the %s variants with a price have no price evidence newer than that import. "
+             % (pct(cl["import"] / tot), fmt(P_["import_only"]), fmt(P_["n"])))
     body = (page_head("CarRec", lede, ctx)
             + '<section class="section"><div class="wrap"><div class="panel" style="padding:24px 16px">%s</div></div></section>' % three_box(ctx)
             + '<section class="section"><div class="wrap"><div class="grid g3">%s</div>%s</div></section>'
@@ -1687,7 +1689,7 @@ def page_index(D, ctx):
                % (E(P.get("run") or "n/a"), E(T["run"] if T else "n/a")))
             + section("evidence", "How well the stored values are backed", "", '<p class="plain">%s</p><div style="margin-top:var(--s2)">%s</div>'
                       '<div class="legend" style="margin-top:12px">%s</div><p class="note"><a href="kb.html#evidence">Breakdown, price age and known gaps on the knowledge base page</a></p>%s'
-                      % (E(evidence_sentence(g)), evidence_bar(g),
+                      % (E(audit + evidence_sentence(g)), evidence_bar(g),
                          "".join('<span><i class="sw %s"></i>%s %s</span>' % (EV_CLS[k], E(EV_LABEL[k]), pct(cl[k] / tot)) for k in EV_ORDER),
                          src("live evidence rows by source for every stored value, knowledge base snapshot")))
             + '<section class="section"><div class="wrap"><div class="notice"><strong>What &ldquo;verified&rdquo; means here.</strong> %s</div></div></section>' % E(verified_sentence(T)))
@@ -2067,7 +2069,7 @@ def trust_blocks(T, per_run):
 def page_kb(D, ctx):
     g, T, rev, rx = D["glance"], D["trust"], D["reviews"], D["reviews_extra"]
     ent = D["entities"]
-    facts = [(g["variants"], "variants"), (g["models"], "models"), (g["makes"], "manufacturers"), (g["powertrains"], "powertrains"), (g["values"], "filled values across %d fields" % g["n_fields"]),
+    facts = [(g["variants"], "variants stored"), (D["honest"]["price"]["n"], "with a price, shown in the app"), (g["models"], "models"), (g["makes"], "manufacturers"), (g["powertrains"], "powertrains"), (g["values"], "filled values across %d fields" % g["n_fields"]),
              (g["classes"]["brochure"], "values backed by a brochure page"), (g["classes"]["import"], "values backed only by the June 2026 import"), (ent.get("source_observation"), "page and brochure observations"), (ent.get("field_provenance"), "provenance rows"),
              (ent.get("evidence_quarantine"), "evidence rows set aside (quarantined)"), (g["expert_rows"] + g["owner_rows"], "current review scores"), (ent.get("owner_theme"), "owner theme rows"),
              (ent.get("safety_test"), "crash tests recorded")]
@@ -2360,8 +2362,8 @@ def page_engine(D, ctx):
     trust.append("Both engines are the project&rsquo;s own, run on the project&rsquo;s own queries. The tables show that the code does what it was written to do on these queries; they do not show that the recommendations are good.%s" % fnote)
     box = '<div class="notice warn"><strong>How far to trust these numbers.</strong><ul>%s</ul></div>' % "".join("<li>%s</li>" % t if "&rsquo;" in t else "<li>%s</li>" % t for t in trust)
     ev = ('%s<div style="margin-top:var(--s3)">%s</div>'
-          '<div class="sub">%s</div><p class="src"><b>Files used:</b> %s. Both engines ran with the language-model query reader off, so results do not depend on a network call. The two engines are compared on the same catalogue of %s variants and %s models.</p>'
-          % (box, tb, bars and ('<h3>Same numbers as bars</h3>' + bars), E(", ".join(used)), fmt((E_.get("catalogue") or {}).get("rows")), fmt(cat_models)))
+          '<div class="sub">%s</div><p class="src"><b>Files used:</b> %s. Both engines ran with the language-model query reader off, so results do not depend on a network call. The two engines are compared on the app&rsquo;s catalogue: %s variants with a price (of %s stored) and %s models.</p>'
+          % (box, tb, bars and ('<h3>Same numbers as bars</h3>' + bars), E(", ".join(used)), fmt((E_.get("catalogue") or {}).get("rows")), fmt(D["glance"]["variants"]), fmt(cat_models)))
     parts.append(section("evaluation", "What was measured", "The project's own tests of the current engine and the new one, on the same queries and catalogue. They are not proof of quality.", ev))
     # limits
     vm, vh = E_["v3_main"], E_["v3_held"]
