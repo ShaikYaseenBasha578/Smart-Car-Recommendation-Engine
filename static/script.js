@@ -556,10 +556,55 @@ function buildOwnerBlock(car) {
 
 // the card gets the toggle when something sits behind it: a second line, a quote, or a note long enough to be clamped
 function hasMoreReviews(car) {
+    if (car.explanation_rag) return true;
     if ((car.reasons || []).slice(0, MAX_V3_REASONS).length > V3_REASONS_SHOWN) return true;
     const ex = (car.expert_notes || []).slice(0, 2), ow = (car.owner_notes || []).slice(0, 2);
     return ex.length > 1 || ow.length > 1 || ex.some(n => n.quote && n.quote.text)
         || ex.concat(ow).some(n => String(n.note || "").length > CLAMP_NOTE_CHARS);
+}
+
+// grounded explanation: the sentences with numbered source markers, then the numbered sources (hidden until the card is expanded)
+function buildWhyRag(car, reasons, reviewsId) {
+    const rag = car.explanation_rag;
+    const facts = rag.facts || {};
+    const order = [];                      // fact ids in order of first use
+    const numberOf = id => order.indexOf(id) + 1;
+    const sentences = (rag.sentences || []).map(s => {
+        const markers = (s.cites || []).filter(id => facts[id]).map(id => {
+            if (!order.includes(id)) order.push(id);
+            const n = numberOf(id);
+            return `<a class="cite" href="#src-${reviewsId}-${n}" data-cite aria-label="${escapeHtml(`Source ${n}: ${facts[id].label || ""}`)}">${n}</a>`;
+        }).join("");
+        return `${escapeHtml(s.text)}${markers}`;
+    }).join(" ");
+    const sources = order.map((id, i) => {
+        const f = facts[id], n = i + 1;
+        const url = String(f.source_url || "");
+        const name = f.source ? (/^https?:\/\//i.test(url)
+            ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(f.source)}<span class="sr-only"> (opens in a new tab)</span></a>`
+            : escapeHtml(f.source)) : "";
+        const date = monthYear(f.date);
+        return `<li id="src-${reviewsId}-${n}" tabindex="-1">${escapeHtml(f.label || "")}${name ? ` · ${name}` : ""}${date ? ` · ${escapeHtml(date)}` : ""}</li>`;
+    }).join("");
+    const template = reasons.length
+        ? `<p class="why-sub" data-more hidden>How the engine scored it</p><ul class="reasons reasons--v3">${reasons.map(r => `<li data-more hidden>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul>` : "";
+    return `<section class="why" aria-label="Why this car"><h4>Why this car</h4>
+        <p class="why-rag">${sentences}</p>
+        <p class="why-rag-note">${ICONS.info}<span>Written by AI from the numbered sources, and checked against them before showing.</span></p>
+        ${order.length ? `<ol class="why-sources" data-more hidden>${sources}</ol>` : ""}${template}</section>`;
+}
+
+function followCite(link) {
+    const card = link.closest(".car--v3");
+    const target = card && card.querySelector(`[id="${link.getAttribute("href").slice(1)}"]`);
+    if (!card || !target) return;
+    if (card.dataset.reviews === "collapsed") {
+        const button = card.querySelector("[data-reviews-toggle]");
+        if (button) toggleReviews(button);
+    }
+    target.focus();
+    target.classList.add("is-target");
+    setTimeout(() => target.classList.remove("is-target"), 1600);
 }
 
 function buildReviewsToggle(controlsId) {
@@ -646,7 +691,7 @@ function buildV3Card(car, index, hard, personalised) {
             </div>
             <div class="v3-more">
                 <div class="evi-grid" id="${reviewsId}">
-                ${reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
+                ${car.explanation_rag ? buildWhyRag(car, reasons, reviewsId) : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
                     ${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
                 ${more ? buildReviewsToggle(reviewsId) : ""}
                 ${buildCaveats(car)}
@@ -1099,6 +1144,8 @@ function initNewCarPage() {
         if (details) toggleDetail(details);
         const reviews = e.target.closest("[data-reviews-toggle]");
         if (reviews) toggleReviews(reviews);
+        const cite = e.target.closest("[data-cite]");
+        if (cite) { e.preventDefault(); followCite(cite); }
     });
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {
