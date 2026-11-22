@@ -357,3 +357,4 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - The eval is byte-identical, 1188 tests pass, and the compare gate passes 36/36.
   - After #56: PR I (Back cache) and PR J (car page) are only planned if the owner asks.
 - **23 Nov:** the owner chose to merge #56 as is. No further phone-density pass for now. PR I (Back cache) and PR J (car page) stay unplanned until asked.
+- **23 Nov:** #56 merged. The follow-up plan (PR G and PR H) is complete.
