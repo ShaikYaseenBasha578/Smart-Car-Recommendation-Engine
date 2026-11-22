@@ -335,3 +335,12 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - a skip link.
   - **PR H**, mobile density: target a median mobile card of at most 560 px, and the first card visible after a search.
   - Five owner decisions, with defaults.
+- **23 Nov:** the follow-up plan was approved with its defaults. **PR #55 (follow-up G, bugs and correctness)** is open.
+  - **Search box:** it is re-sized after the code sets the text, so it is no longer clipped on load or Back (mobile 72/48 → 72/72).
+  - **Car link:** it carries `variant_id`. The Sonet case was checked: the HTK Plus Diesel AT card now opens on that variant, not the HTE Petrol MT.
+  - **Reasons:** they have their own "+N more reasons" toggle, and the budget reason is always shown (found by `fields == ["price_ex_showroom"]`).
+  - **Wording:** "Not met: SUV, not a sedan" (mapped in the browser; `relax.py` untouched), and "Not verified" everywhere.
+  - **Mileage:** 1 decimal on the car page and compare.
+  - **Accessibility:** the Compare button's `aria-label` is read once, and there are skip links.
+  - The eval is byte-identical, 1169 tests pass, and the compare gate passes 36/36.
+  - Next is PR H (mobile density), after #55 merges.
