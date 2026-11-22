@@ -681,7 +681,9 @@ function buildCaveatPill(car) {
     return `<p class="caveat-pill" title="${escapeHtml(text)}">${ICONS.info}<span>${escapeHtml(text)}</span></p>`;
 }
 
-function v3Chips(car) {
+// unverified requirements are already named as pills under the match label on personalised cards; repeat them here
+// only when no match label lists them (general, non-personalised picks)
+function v3Chips(car, personalised) {
     const chips = [];
     (car.matched_features || []).forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
     const notVerified = car.not_verified || [];
@@ -691,7 +693,7 @@ function v3Chips(car) {
     } else if (!notVerified.some(t => /crash rating/i.test(t))) {
         chips.push({ text: NO_RATING_LABEL, kind: "unverified", icon: ICONS.info });
     }
-    notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
+    if (personalised === false) notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
     if (car.matching_variant_count) {
         const n = car.matching_variant_count;
         chips.push({ text: `${n} matching variant${n === 1 ? "" : "s"}`, kind: "plain", icon: "" });
@@ -713,7 +715,7 @@ function buildV3Card(car, index, hard, personalised) {
         ? `<p class="also">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
     const detail = Array.isArray(label.detail) && label.detail.length
         ? `<ul class="unmet" aria-label="Requirements this car does not meet or could not confirm">${label.detail.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ul>` : "";
-    const chips = v3Chips(car);
+    const chips = v3Chips(car, personalised);
     const behind = behindCount(car);
     const reviewsId = `reviews-${++reviewsSeq}`;
     const why = car.explanation_rag ? buildWhyRag(car, reasons, reviewsId)

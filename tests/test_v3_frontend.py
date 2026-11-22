@@ -164,8 +164,14 @@ def test_match_wording_comes_from_data_not_great_match():
 def test_not_verified_tags_and_also_available_from():
     html = render(response([car(not_verified=["ground clearance not verified"],
                                 also_available_from={"variant_id": 3, "variant": "Smart Lite", "Ex-Showroom_Price": 700000.0})]))
-    assert "Ground clearance not verified" in html and "tag--unverified" in html
+    # personalised card: named once, as a pill under the match label, not repeated as a chip
+    assert "Not verified: ground clearance" in html and "Ground clearance not verified" not in html
     assert "Also available from" in html and "Smart Lite" in html and "₹7 lakh" in html
+
+
+def test_not_verified_chip_only_on_general_picks():
+    html = render(response([car(not_verified=["ground clearance not verified"])], personalised=False))
+    assert "Ground clearance not verified" in html and "tag--unverified" in html
 
 
 def test_query_echo_marks_assumed_and_corrected_values():
