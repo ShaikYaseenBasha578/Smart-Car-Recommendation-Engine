@@ -441,3 +441,23 @@ def test_prompt_contains_only_given_facts():
     assert [c["id"] for c in user["cars"]] == ["7", "8"]
     assert {f["id"] for f in user["cars"][0]["facts"]} == {f.id for f in f1}
     assert "English" in R.build_system_prompt() and "[f2,f5]" in R.build_system_prompt()
+
+
+def test_price_fact_carries_catalogue_source():
+    price = [f for f in facts() if f.kind == "price"]
+    assert len(price) == 1 and price[0].source == "CarRec catalogue"
+    assert price[0].public()["source"] == "CarRec catalogue"
+
+
+def test_eval_latency_summary_counts_live_calls_only():
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location("rag_eval", Path(__file__).resolve().parents[1] / "eval" / "rag_eval.py")
+    ev = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ev)
+    rows = [{"rag": {"cached": False, "latency_ms": ms}} for ms in (1000, 3000, 5000, 9000)]
+    rows.append({"rag": {"cached": True, "latency_ms": None}})
+    s = ev.latency_summary(rows)
+    assert s["calls"] == 4 and s["max"] == 9000 and s["p50"] in (3000, 5000)
+    assert s["over_ms"] == {"2000": 3, "4000": 2, "6000": 1, "8000": 1}
+    assert ev.latency_summary([{"rag": {"cached": True, "latency_ms": None}}]) == {"calls": 0}

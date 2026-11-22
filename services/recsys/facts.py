@@ -175,7 +175,7 @@ def build_facts(card: dict, row=None, requirements: Optional[List[str]] = None) 
     add("identity", "Car", f"Car: {card['Make']} {card['Model']} {card['Variant']}")
     price = num(card.get("Ex-Showroom_Price"))
     if price is not None:
-        add("price", "Price", f"Ex-showroom price: {format_rupees(price)} (₹{int(round(price)):,})")
+        add("price", "Price", f"Ex-showroom price: {format_rupees(price)} (₹{int(round(price)):,})", source="CarRec catalogue")
     else:
         add("unknown", "Price", "Unknown: price")
     for label, text in _unit_line(card, row):
