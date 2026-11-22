@@ -264,3 +264,9 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - Desktop card medians are 330–373 px; they were 639–742.
     - Mobile medians are 719–797 px; they were 1,353–1,495. That is still 0–80 px over the 720 target. Going lower needs the owner's say on hiding "Also available from", the chips or a why bullet.
   - Next is PR C (details panel and car page), after #50 merges.
+  - #50 was merged. **PR #51 (UI plan C, details panel and car page)** is open.
+    - The inline panel went from 6,013 px to 833 px.
+    - The variant table shows 8 matching rows and scrolls in its own box with a sticky header.
+    - Variant pick: instant feedback, focus kept, `variant_id` in the URL.
+    - The car page shows reviews when opened from a search; there is a gap when the model isn't in that search's results.
+    - Next is PR D (unused words, uncovered brands, relaxation choices), after #51 merges.
