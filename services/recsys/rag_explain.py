@@ -44,7 +44,7 @@ from services.recsys.facts import (COMPARING_KINDS, NCAP_KINDS, Fact, build_fact
 
 log = logging.getLogger("carrec.rag_explain")
 
-PROMPT_VERSION = "rag1"
+PROMPT_VERSION = "rag2"
 MAX_SENTENCES = 3
 MAX_SENTENCE_CHARS = 240
 CITE_RE = re.compile(r"\[\s*(f\d+(?:\s*,\s*f\d+)*)\s*\]", re.IGNORECASE)
@@ -61,6 +61,11 @@ COMPARATIVE_RE = re.compile(
     r"competitors?|alternatives?|unlike|whereas)\b|\bother cars\b", re.IGNORECASE)
 ABSENCE_RE = re.compile(r"\b(lacks?|lacking|without|missing|absent|doesn't|does not|do not|isn't|is not|not have|"
                         r"no)\b", re.IGNORECASE)
+
+# "meets your requirement(s)", "fits your request", "matches what you asked for": a claim that the car satisfies the query.
+FIT_RE = re.compile(r"\b(meets?|meeting|fits?|fitting|matches|matching|satisf(?:y|ies|ying)|ticks?|checks?)\b[^.]{0,40}?"
+                    r"\b(?:your|the|all|every)\b[^.]{0,20}?\b(requirements?|request|needs?|criteria|search|query|wish ?list|asked)\b",
+                    re.IGNORECASE)
 FEATURE_TERMS = sorted({v.lower() for v in BOOL_LABELS.values()} | {
     "sunroof", "cruise control", "adas", "360", "ventilated", "wireless charging", "head-up", "heads-up", "android auto",
     "carplay", "apple carplay", "connected-car", "turbo", "paddle shifters", "isofix", "autonomous braking",
@@ -113,9 +118,12 @@ def _inc(key: str, n: int = 1) -> None:
 class CarContext:
     """What the checker knows about one shown car."""
 
-    def __init__(self, car_id: str, make: str, model: str, facts: List[Fact]):
+    def __init__(self, car_id: str, make: str, model: str, facts: List[Fact], fully_met: bool = False):
         self.car_id, self.make, self.model = str(car_id), make, model
         self.facts = facts
+        # True when the engine found no unmet, unverified or missing requirement for this car; only then may a sentence
+        # say the car fits the query
+        self.fully_met = bool(fully_met)
         self.by_id = {f.id: f for f in facts}
 
 
@@ -225,6 +233,11 @@ def check_sentence(text: str, cites: List[str], ctx: CarContext, names: Dict[str
             why.append(f"attribute_not_in_facts:{term}")
             break
 
+    if all(f.kind == "query" for f in cited):
+        why.append("query_only_citation")
+    elif FIT_RE.search(text) and not ctx.fully_met:
+        why.append("fit_claim_with_unmet_requirement")
+
     am = ABSENCE_RE.search(text)
     if am and not any(f.kind.startswith("unknown") or f.text.lower().startswith("unknown") for f in cited) \
             and not _word_re(am.group(0).lower()).search(cited_text):
@@ -288,6 +301,7 @@ Rules:
 - Never compare a car with other cars and never name another car or brand, unless a cited fact itself makes the comparison.
 - Say anything about crash tests, stars or safety only if you cite the crash-test fact.
 - If something the query asked for is "Unknown" in the facts, you may say it is not confirmed; never guess or fill it in.
+- Never write a sentence that only restates the query. Say the car fits the request only together with the fact that shows it (its price, gearbox, feature), citing that fact.
 - No marketing words, no advice, no facts from memory. The query may be Hinglish: always answer in English.
 Answer with ONE JSON object and nothing else:
 {{"cars": [{{"id": "<car id exactly as given>", "sentences": ["Sentence one. [f1,f3]", "Sentence two. [f4]"]}}]}}
@@ -387,7 +401,9 @@ def attach(cards: List[dict], rows: List[Any], intent: Any, requirements: List[s
         contexts: Dict[str, CarContext] = {}
         for card, row in zip(cards, rows):
             cid = str(card["variant_id"])
-            contexts[cid] = CarContext(cid, str(card["Make"]), str(card["Model"]), build_facts(card, row, requirements))
+            met = not (card.get("violations") or card.get("not_verified") or card.get("missing_features"))
+            contexts[cid] = CarContext(cid, str(card["Make"]), str(card["Model"]), build_facts(card, row, requirements),
+                                       fully_met=met)
         names = _names(catalogue)
         use_client = client if client is not None else CLIENT_OVERRIDE
         raw, gen = _generate(query, contexts, intent, use_client)

@@ -90,6 +90,17 @@ def run(queries, client=None, progress=False):
     return rows
 
 
+def latency_summary(attempted):
+    """p50 / p95 / max of the live (uncached) provider calls, and how many would have missed common timeouts. Cached
+    answers have no latency. The eval runs with a long timeout, so these are the times a production budget must cover."""
+    ms = sorted(r["rag"]["latency_ms"] for r in attempted if not r["rag"]["cached"] and r["rag"].get("latency_ms") is not None)
+    if not ms:
+        return {"calls": 0}
+    pick = lambda q: ms[min(len(ms) - 1, int(round(q * (len(ms) - 1))))]
+    return {"calls": len(ms), "p50": pick(0.5), "p95": pick(0.95), "max": ms[-1],
+            "over_ms": {str(t): sum(1 for m in ms if m > t) for t in (2000, 4000, 6000, 8000)}}
+
+
 def summarise(rows):
     attempted = [r for r in rows if r["rag"]]
     car_total = car_pass = 0
@@ -121,6 +132,7 @@ def summarise(rows):
         "query_pass_rate": round(q_pass / len(attempted), 4) if attempted else None,
         "whole_call_fallback_reasons": dict(whole), "car_failure_reasons": dict(reasons.most_common()),
         "cached_answers": sum(1 for r in attempted if r["rag"]["cached"]),
+        "live_latency_ms": latency_summary(attempted),
         "per_query": per_query,
     }
 

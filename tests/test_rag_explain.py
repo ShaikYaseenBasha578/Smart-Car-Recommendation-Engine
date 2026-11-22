@@ -441,3 +441,42 @@ def test_prompt_contains_only_given_facts():
     assert [c["id"] for c in user["cars"]] == ["7", "8"]
     assert {f["id"] for f in user["cars"][0]["facts"]} == {f.id for f in f1}
     assert "English" in R.build_system_prompt() and "[f2,f5]" in R.build_system_prompt()
+
+
+def test_price_fact_carries_catalogue_source():
+    price = [f for f in facts() if f.kind == "price"]
+    assert len(price) == 1 and price[0].source == "CarRec catalogue"
+    assert price[0].public()["source"] == "CarRec catalogue"
+
+
+def test_eval_latency_summary_counts_live_calls_only():
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location("rag_eval", Path(__file__).resolve().parents[1] / "eval" / "rag_eval.py")
+    ev = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ev)
+    rows = [{"rag": {"cached": False, "latency_ms": ms}} for ms in (1000, 3000, 5000, 9000)]
+    rows.append({"rag": {"cached": True, "latency_ms": None}})
+    s = ev.latency_summary(rows)
+    assert s["calls"] == 4 and s["max"] == 9000 and s["p50"] in (3000, 5000)
+    assert s["over_ms"] == {"2000": 3, "4000": 2, "6000": 1, "8000": 1}
+    assert ev.latency_summary([{"rag": {"cached": True, "latency_ms": None}}]) == {"calls": 0}
+
+
+def test_rejects_sentence_citing_only_the_query():
+    fs = facts()
+    q = fid(fs, "Your query asked for")
+    out, why = check([f"It meets your requirement for an SUV under ₹15 lakh. [{q}]"], fs)
+    assert out is None and "query_only_citation" in why
+
+
+def test_fit_claim_needs_every_requirement_met():
+    fs = facts()
+    price, q = fid(fs, "Ex-showroom"), fid(fs, "Your query asked for")
+    p = next(f for f in fs if f.id == price).text.split(": ", 1)[1].split(" (")[0]
+    sent = [f"At {p} ex-showroom it fits your request. [{price},{q}]"]
+    unmet = R.check_car(sent, R.CarContext("7", "Hyundai", "Creta", fs, fully_met=False), NAMES)
+    assert unmet[0] is None and "fit_claim_with_unmet_requirement" in unmet[1]
+    met = R.check_car(sent, R.CarContext("7", "Hyundai", "Creta", fs, fully_met=True), NAMES)
+    assert met[0] is not None, met[1]
+
