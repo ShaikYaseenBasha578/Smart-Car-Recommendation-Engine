@@ -258,3 +258,9 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - the hard-query labels (`eval/HARD_QUERIES_REVIEW.md`, all 40 unticked), which block Plan A step 4;
   - the review items (prices, the Windsor EV items);
   - the RAG timeout choice.
+- **Later, 22 Nov:**
+  - #48 and #49 were merged.
+  - **PR #50 (UI plan B, the result card)** is open.
+    - Desktop card medians are 330–373 px; they were 639–742.
+    - Mobile medians are 719–797 px; they were 1,353–1,495. That is still 0–80 px over the 720 target. Going lower needs the owner's say on hiding "Also available from", the chips or a why bullet.
+  - Next is PR C (details panel and car page), after #50 merges.
