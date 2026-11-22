@@ -1,17 +1,17 @@
 {
-  "catalogue_sha256": "99d78e26687599ef2e50759d6c2c12c4ff63a14dcffeab4f0afde38bc902ef9f",
+  "catalogue_sha256": "7fcf2ad366a17d0aff48cb6e34ee39ab2f176ef01d8da4d0af77ab417eb4d2c5",
   "columns": {
     "abs": {
-      "non_null": 1032,
+      "non_null": 1040,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 524
+      "unverified": 516
     },
     "adas_available": {
-      "non_null": 932,
+      "non_null": 938,
       "not_applicable_blank": 0,
       "quarantined": 1,
-      "unverified": 624
+      "unverified": 618
     },
     "airbags": {
       "non_null": 1554,
@@ -50,10 +50,10 @@
       "unverified": 170
     },
     "connected_car_features": {
-      "non_null": 932,
+      "non_null": 940,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 624
+      "unverified": 616
     },
     "cruise_control": {
       "non_null": 1343,
@@ -74,16 +74,16 @@
       "unverified": 0
     },
     "esc": {
-      "non_null": 1028,
+      "non_null": 1036,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 528
+      "unverified": 520
     },
     "ev_range_km": {
-      "non_null": 96,
+      "non_null": 110,
       "not_applicable_blank": 1420,
       "quarantined": 0,
-      "unverified": 40
+      "unverified": 26
     },
     "fuel_tank_litres": {
       "non_null": 1029,
@@ -104,10 +104,10 @@
       "unverified": 1075
     },
     "height_mm": {
-      "non_null": 1104,
+      "non_null": 1112,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 452
+      "unverified": 444
     },
     "hill_assist": {
       "non_null": 1447,
@@ -122,10 +122,10 @@
       "unverified": 714
     },
     "length_mm": {
-      "non_null": 1142,
+      "non_null": 1150,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 414
+      "unverified": 406
     },
     "mileage_km_per_kg": {
       "non_null": 48,
@@ -140,10 +140,10 @@
       "unverified": 688
     },
     "paddle_shifters": {
-      "non_null": 627,
+      "non_null": 635,
       "not_applicable_blank": 0,
       "quarantined": 5,
-      "unverified": 929
+      "unverified": 921
     },
     "power_bhp": {
       "non_null": 1499,
@@ -224,10 +224,10 @@
       "unverified": 427
     },
     "width_mm": {
-      "non_null": 1132,
+      "non_null": 1140,
       "not_applicable_blank": 0,
       "quarantined": 0,
-      "unverified": 424
+      "unverified": 416
     },
     "wireless_charging": {
       "non_null": 1215,
@@ -619,7 +619,7 @@
       }
     ]
   },
-  "export_utc": "2026-11-21T16:29:57Z",
+  "export_utc": "2026-11-22T07:24:01Z",
   "fuel_type_distribution": {
     "cng": 124,
     "diesel": 341,
@@ -627,8 +627,8 @@
     "hybrid": 53,
     "petrol": 902
   },
-  "kb_latest_phase": "AUDIT_FIX_20261116",
-  "kb_sha256": "b9915943e029fafc94b04f0fe79f41f13fbf6558b076de546890973eedb7bc27",
+  "kb_latest_phase": "kbpipe-ev_range_windsor_brochure_2026-11-22-review",
+  "kb_sha256": "e7bd37cf2ebfcb7c0e2fabbde2267f8cfe5dd388014c087a95ad1b0819538642",
   "kb_wal_nonempty": false,
   "row_count": 1556,
   "safety_rule": "Bharat NCAP via v_safety_applicability_q (resolved_model only); latest year_of_publication per model, tie -> highest safety_test.id; legacy safety_rating unused",
@@ -636,15 +636,15 @@
     "failures": [],
     "table": [
       {
-        "carried_over_rows": 1464,
+        "carried_over_rows": 1556,
         "column": "ROWS",
         "delta": null,
         "excluded": 0,
         "excluded_no_price": 63,
         "kb_variants": 1619,
         "new_pct": 1556,
-        "new_rows": 92,
-        "old_pct": 1464,
+        "new_rows": 0,
+        "old_pct": 1556,
         "worse_than_limit": false
       },
       {
@@ -653,7 +653,7 @@
         "column": "price_ex_showroom",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -664,7 +664,7 @@
         "column": "seats",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
@@ -675,31 +675,31 @@
         "column": "engine_cc",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 96.6,
-        "carried_over_rows_pct": 96.6,
+        "carried_over_before_pct": 96.3,
+        "carried_over_rows_pct": 96.3,
         "column": "power_bhp",
-        "delta": -0.2,
+        "delta": 0.0,
         "new_pct": 96.3,
-        "new_rows_pct": 92.4,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 96.6,
+        "old_pct": 96.3,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 97.1,
-        "carried_over_rows_pct": 97.1,
+        "carried_over_before_pct": 97.0,
+        "carried_over_rows_pct": 97.0,
         "column": "torque_nm",
-        "delta": -0.0,
+        "delta": 0.0,
         "new_pct": 97.0,
-        "new_rows_pct": 96.7,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 97.1,
+        "old_pct": 97.0,
         "worse_than_limit": false
       },
       {
@@ -708,130 +708,130 @@
         "column": "drivetrain",
         "delta": 0.0,
         "new_pct": 98.6,
-        "new_rows_pct": 98.9,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 98.6,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 54.5,
-        "carried_over_rows_pct": 54.5,
+        "carried_over_before_pct": 55.8,
+        "carried_over_rows_pct": 55.8,
         "column": "mileage_kmpl",
-        "delta": 1.3,
+        "delta": 0.0,
         "new_pct": 55.8,
-        "new_rows_pct": 76.1,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 54.5,
+        "old_pct": 55.8,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 94.8,
-        "carried_over_rows_pct": 94.8,
+        "carried_over_before_pct": 95.1,
+        "carried_over_rows_pct": 95.1,
         "column": "mileage_km_per_kg",
-        "delta": 0.3,
+        "delta": 0.0,
         "new_pct": 95.1,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 94.8,
+        "old_pct": 95.1,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 99.0,
-        "carried_over_rows_pct": 99.0,
+        "carried_over_before_pct": 97.4,
+        "carried_over_rows_pct": 98.3,
         "column": "ev_range_km",
-        "delta": -1.5,
-        "new_pct": 97.4,
-        "new_rows_pct": 72.8,
-        "new_rows_sparse": true,
-        "old_pct": 99.0,
+        "delta": 0.9,
+        "new_pct": 98.3,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 97.4,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 62.6,
-        "carried_over_rows_pct": 62.6,
+        "carried_over_before_pct": 59.3,
+        "carried_over_rows_pct": 59.3,
         "column": "boot_space_litres",
-        "delta": -3.3,
+        "delta": 0.0,
         "new_pct": 59.3,
-        "new_rows_pct": 6.5,
-        "new_rows_sparse": true,
-        "old_pct": 62.6,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 59.3,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 60.9,
-        "carried_over_rows_pct": 60.9,
+        "carried_over_before_pct": 57.4,
+        "carried_over_rows_pct": 57.4,
         "column": "ground_clearance_mm",
-        "delta": -3.5,
+        "delta": 0.0,
         "new_pct": 57.4,
-        "new_rows_pct": 2.2,
-        "new_rows_sparse": true,
-        "old_pct": 60.9,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 57.4,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 75.5,
-        "carried_over_rows_pct": 75.5,
+        "carried_over_before_pct": 73.4,
+        "carried_over_rows_pct": 73.9,
         "column": "length_mm",
-        "delta": -2.2,
-        "new_pct": 73.4,
-        "new_rows_pct": 39.1,
-        "new_rows_sparse": true,
-        "old_pct": 75.5,
+        "delta": 0.5,
+        "new_pct": 73.9,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 73.4,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 72.8,
+        "carried_over_rows_pct": 73.3,
+        "column": "width_mm",
+        "delta": 0.5,
+        "new_pct": 73.3,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 72.8,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 71.0,
+        "carried_over_rows_pct": 71.5,
+        "column": "height_mm",
+        "delta": 0.5,
+        "new_pct": 71.5,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 71.0,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 72.6,
+        "carried_over_rows_pct": 72.6,
+        "column": "wheelbase_mm",
+        "delta": 0.0,
+        "new_pct": 72.6,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 72.6,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 54.1,
+        "carried_over_rows_pct": 54.1,
+        "column": "kerb_weight_kg",
+        "delta": 0.0,
+        "new_pct": 54.1,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 54.1,
         "worse_than_limit": false
       },
       {
         "carried_over_before_pct": 74.9,
         "carried_over_rows_pct": 74.9,
-        "column": "width_mm",
-        "delta": -2.1,
-        "new_pct": 72.8,
-        "new_rows_pct": 39.1,
-        "new_rows_sparse": true,
-        "old_pct": 74.9,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 73.0,
-        "carried_over_rows_pct": 73.0,
-        "column": "height_mm",
-        "delta": -2.0,
-        "new_pct": 71.0,
-        "new_rows_pct": 39.1,
-        "new_rows_sparse": true,
-        "old_pct": 73.0,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 75.1,
-        "carried_over_rows_pct": 75.1,
-        "column": "wheelbase_mm",
-        "delta": -2.5,
-        "new_pct": 72.6,
-        "new_rows_pct": 32.6,
-        "new_rows_sparse": true,
-        "old_pct": 75.1,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 57.5,
-        "carried_over_rows_pct": 57.5,
-        "column": "kerb_weight_kg",
-        "delta": -3.4,
-        "new_pct": 54.1,
-        "new_rows_pct": 0.0,
-        "new_rows_sparse": true,
-        "old_pct": 57.5,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 75.5,
-        "carried_over_rows_pct": 75.5,
         "column": "fuel_tank_litres",
-        "delta": -0.7,
+        "delta": 0.0,
         "new_pct": 74.9,
-        "new_rows_pct": 64.1,
-        "new_rows_sparse": true,
-        "old_pct": 75.5,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 74.9,
         "worse_than_limit": false
       },
       {
@@ -840,152 +840,152 @@
         "column": "airbags",
         "delta": 0.0,
         "new_pct": 99.9,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 99.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 68.2,
-        "carried_over_rows_pct": 68.2,
+        "carried_over_before_pct": 66.3,
+        "carried_over_rows_pct": 66.8,
         "column": "abs",
-        "delta": -1.8,
-        "new_pct": 66.3,
-        "new_rows_pct": 37.0,
-        "new_rows_sparse": true,
-        "old_pct": 68.2,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 97.4,
-        "carried_over_rows_pct": 97.4,
-        "column": "android_auto",
-        "delta": -0.5,
-        "new_pct": 96.9,
-        "new_rows_pct": 89.1,
-        "new_rows_sparse": true,
-        "old_pct": 97.4,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 97.4,
-        "carried_over_rows_pct": 97.4,
-        "column": "apple_carplay",
-        "delta": -0.5,
-        "new_pct": 96.9,
-        "new_rows_pct": 89.1,
-        "new_rows_sparse": true,
-        "old_pct": 97.4,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 85.8,
-        "carried_over_rows_pct": 85.8,
-        "column": "cruise_control",
         "delta": 0.5,
+        "new_pct": 66.8,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 66.3,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 96.9,
+        "carried_over_rows_pct": 96.9,
+        "column": "android_auto",
+        "delta": 0.0,
+        "new_pct": 96.9,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 96.9,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 96.9,
+        "carried_over_rows_pct": 96.9,
+        "column": "apple_carplay",
+        "delta": 0.0,
+        "new_pct": 96.9,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 96.9,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 86.3,
+        "carried_over_rows_pct": 86.3,
+        "column": "cruise_control",
+        "delta": 0.0,
         "new_pct": 86.3,
-        "new_rows_pct": 94.6,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 85.8,
+        "old_pct": 86.3,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 92.8,
-        "carried_over_rows_pct": 92.8,
+        "carried_over_before_pct": 92.1,
+        "carried_over_rows_pct": 92.1,
         "column": "sunroof",
-        "delta": -0.7,
+        "delta": 0.0,
         "new_pct": 92.1,
-        "new_rows_pct": 80.4,
-        "new_rows_sparse": true,
-        "old_pct": 92.8,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 61.9,
-        "carried_over_rows_pct": 61.9,
-        "column": "adas_available",
-        "delta": -2.0,
-        "new_pct": 59.9,
-        "new_rows_pct": 28.3,
-        "new_rows_sparse": true,
-        "old_pct": 61.9,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 89.4,
-        "carried_over_rows_pct": 89.4,
-        "column": "camera_360",
-        "delta": -0.3,
-        "new_pct": 89.1,
-        "new_rows_pct": 83.7,
-        "new_rows_sparse": true,
-        "old_pct": 89.4,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 88.5,
-        "carried_over_rows_pct": 88.5,
-        "column": "ventilated_front_seats",
-        "delta": -0.5,
-        "new_pct": 88.0,
-        "new_rows_pct": 79.3,
-        "new_rows_sparse": true,
-        "old_pct": 88.5,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 77.1,
-        "carried_over_rows_pct": 77.1,
-        "column": "wireless_charging",
-        "delta": 1.0,
-        "new_pct": 78.1,
-        "new_rows_pct": 93.5,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 77.1,
+        "old_pct": 92.1,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 32.9,
-        "carried_over_rows_pct": 32.9,
+        "carried_over_before_pct": 59.9,
+        "carried_over_rows_pct": 60.3,
+        "column": "adas_available",
+        "delta": 0.4,
+        "new_pct": 60.3,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 59.9,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 89.1,
+        "carried_over_rows_pct": 89.1,
+        "column": "camera_360",
+        "delta": 0.0,
+        "new_pct": 89.1,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 89.1,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 88.0,
+        "carried_over_rows_pct": 88.0,
+        "column": "ventilated_front_seats",
+        "delta": 0.0,
+        "new_pct": 88.0,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 88.0,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 78.1,
+        "carried_over_rows_pct": 78.1,
+        "column": "wireless_charging",
+        "delta": 0.0,
+        "new_pct": 78.1,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 78.1,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 30.9,
+        "carried_over_rows_pct": 30.9,
         "column": "heads_up_display",
-        "delta": -1.9,
+        "delta": 0.0,
         "new_pct": 30.9,
-        "new_rows_pct": 0.0,
-        "new_rows_sparse": true,
-        "old_pct": 32.9,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 30.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 68.0,
-        "carried_over_rows_pct": 68.0,
+        "carried_over_before_pct": 66.1,
+        "carried_over_rows_pct": 66.6,
         "column": "esc",
-        "delta": -2.0,
-        "new_pct": 66.1,
-        "new_rows_pct": 34.8,
-        "new_rows_sparse": true,
-        "old_pct": 68.0,
-        "worse_than_limit": false
-      },
-      {
-        "carried_over_before_pct": 94.7,
-        "carried_over_rows_pct": 94.7,
-        "column": "hill_assist",
-        "delta": -1.7,
-        "new_pct": 93.0,
-        "new_rows_pct": 66.3,
-        "new_rows_sparse": true,
-        "old_pct": 94.7,
+        "delta": 0.5,
+        "new_pct": 66.6,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 66.1,
         "worse_than_limit": false
       },
       {
         "carried_over_before_pct": 93.0,
         "carried_over_rows_pct": 93.0,
-        "column": "tpms",
-        "delta": 0.2,
-        "new_pct": 93.2,
-        "new_rows_pct": 95.7,
+        "column": "hill_assist",
+        "delta": 0.0,
+        "new_pct": 93.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 93.0,
+        "worse_than_limit": false
+      },
+      {
+        "carried_over_before_pct": 93.2,
+        "carried_over_rows_pct": 93.2,
+        "column": "tpms",
+        "delta": 0.0,
+        "new_pct": 93.2,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 93.2,
         "worse_than_limit": false
       },
       {
@@ -994,108 +994,108 @@
         "column": "rear_parking_sensors",
         "delta": 0.0,
         "new_pct": 100.0,
-        "new_rows_pct": 100.0,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
         "old_pct": 100.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 91.9,
-        "carried_over_rows_pct": 91.9,
+        "carried_over_before_pct": 91.8,
+        "carried_over_rows_pct": 91.8,
         "column": "rear_camera",
-        "delta": -0.0,
+        "delta": 0.0,
         "new_pct": 91.8,
-        "new_rows_pct": 91.3,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 91.9,
+        "old_pct": 91.8,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 97.1,
-        "carried_over_rows_pct": 97.1,
+        "carried_over_before_pct": 97.2,
+        "carried_over_rows_pct": 97.2,
         "column": "auto_climate_control",
-        "delta": 0.1,
+        "delta": 0.0,
         "new_pct": 97.2,
-        "new_rows_pct": 98.9,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 97.1,
+        "old_pct": 97.2,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 96.7,
-        "carried_over_rows_pct": 96.7,
+        "carried_over_before_pct": 96.6,
+        "carried_over_rows_pct": 96.6,
         "column": "rear_ac_vents",
-        "delta": -0.1,
+        "delta": 0.0,
         "new_pct": 96.6,
-        "new_rows_pct": 94.6,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 96.7,
+        "old_pct": 96.6,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 61.5,
-        "carried_over_rows_pct": 61.5,
+        "carried_over_before_pct": 59.9,
+        "carried_over_rows_pct": 60.4,
         "column": "connected_car_features",
-        "delta": -1.6,
-        "new_pct": 59.9,
-        "new_rows_pct": 33.7,
-        "new_rows_sparse": true,
-        "old_pct": 61.5,
+        "delta": 0.5,
+        "new_pct": 60.4,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 59.9,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 40.8,
+        "carried_over_before_pct": 40.3,
         "carried_over_rows_pct": 40.8,
         "column": "paddle_shifters",
-        "delta": -0.5,
-        "new_pct": 40.3,
-        "new_rows_pct": 32.6,
-        "new_rows_sparse": true,
-        "old_pct": 40.8,
+        "delta": 0.5,
+        "new_pct": 40.8,
+        "new_rows_pct": null,
+        "new_rows_sparse": false,
+        "old_pct": 40.3,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 42.2,
-        "carried_over_rows_pct": 42.2,
+        "carried_over_before_pct": 42.0,
+        "carried_over_rows_pct": 42.0,
         "column": "safety_stars_adult",
-        "delta": -0.2,
+        "delta": 0.0,
         "new_pct": 42.0,
-        "new_rows_pct": 39.1,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 42.2,
+        "old_pct": 42.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 42.2,
-        "carried_over_rows_pct": 42.2,
+        "carried_over_before_pct": 42.0,
+        "carried_over_rows_pct": 42.0,
         "column": "safety_stars_child",
-        "delta": -0.2,
+        "delta": 0.0,
         "new_pct": 42.0,
-        "new_rows_pct": 39.1,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 42.2,
+        "old_pct": 42.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 42.2,
-        "carried_over_rows_pct": 42.2,
+        "carried_over_before_pct": 42.0,
+        "carried_over_rows_pct": 42.0,
         "column": "safety_testing_body",
-        "delta": -0.2,
+        "delta": 0.0,
         "new_pct": 42.0,
-        "new_rows_pct": 39.1,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 42.2,
+        "old_pct": 42.0,
         "worse_than_limit": false
       },
       {
-        "carried_over_before_pct": 42.2,
-        "carried_over_rows_pct": 42.2,
+        "carried_over_before_pct": 42.0,
+        "carried_over_rows_pct": 42.0,
         "column": "safety_test_year",
-        "delta": -0.2,
+        "delta": 0.0,
         "new_pct": 42.0,
-        "new_rows_pct": 39.1,
+        "new_rows_pct": null,
         "new_rows_sparse": false,
-        "old_pct": 42.2,
+        "old_pct": 42.0,
         "worse_than_limit": false
       }
     ]
