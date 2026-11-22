@@ -324,3 +324,14 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - the search text is set after the box is fitted, so it is clipped on load and on Back.
   - Mobile density is the main open area: results start about 740 px down, a card is about a screen tall, and compare shows 1.3 columns.
   - Any follow-up PR waits for the owner.
+- **23 Nov:** follow-up plan written: `knowledge_base/reports/plans/PLAN_UIUX_FOLLOWUP_2026-11-23.md`. It is **awaiting owner approval**.
+  - **PR G**, bugs and correctness:
+    - the search box clipped on load;
+    - the car link variant;
+    - reasons hidden behind the reviews toggle;
+    - "Not met: suv";
+    - one "Not verified" wording;
+    - the Compare button's name;
+    - a skip link.
+  - **PR H**, mobile density: target a median mobile card of at most 560 px, and the first card visible after a search.
+  - Five owner decisions, with defaults.
