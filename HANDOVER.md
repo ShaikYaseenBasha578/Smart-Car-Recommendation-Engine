@@ -270,3 +270,22 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - Variant pick: instant feedback, focus kept, `variant_id` in the URL.
     - The car page shows reviews when opened from a search; there is a gap when the model isn't in that search's results.
     - Next is PR D (unused words, uncovered brands, relaxation choices), after #51 merges.
+- **23 Nov:** #51 merged. **PR #52 (UI plan D, what the search didn't use)** is open.
+  - "Didn't use: X" chips come from an allow-list of car attributes (`services/recsys/ignored.py`). A stop-list was dropped because it would have put chips on 113 of the 369 eval queries.
+  - The blind checks ran in three rounds. Shown chips were correct 80/80. Queries with no chip were right only 84–87% of the time, below the 95% bar. **The owner chose to ship the chips as built.**
+  - Uncovered brands (Ferrari and 9 others) now show "We don't cover X".
+  - The relaxation notice now has "Without <req> · n models" buttons (`relaxation.alternatives`).
+  - The echo shows DCT, "No CVT" and "No AMT".
+  - The eval is byte-identical and 1086 tests pass.
+  - Vague queries are slow because every variant is scored (0.7 s locally, about 10 s on Render). The fix is in scoring, and the owner decides on it.
+  - **Parser follow-up (its own PR, it changes parses):**
+    - "nothing above 13 lakh" is read as above;
+    - "under 4 metres" is read as a ₹4 lakh budget;
+    - "tow a trailer" is read as the Triber;
+    - "sunroof bilkul nahi" is read as Sunroof;
+    - "can't drive a manual" is read as Manual;
+    - "450 km range" and "high ground clearance" are not parsed;
+    - "fast charging" is read as performance;
+    - "nexon or punch" keeps only the Nexon;
+    - "AMT nahi" adds Automatic.
+  - Next is PR E (compare and sort), after #52 merges.
