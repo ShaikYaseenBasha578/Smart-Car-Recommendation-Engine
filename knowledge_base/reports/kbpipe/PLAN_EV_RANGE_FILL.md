@@ -59,3 +59,12 @@ CarWale pages do carry range-like fields, but most are not the claimed figure: "
 
 - Without new brochures: the 8 Clavis EV variants, plus whatever step 3 turns into two-site agreement (up to 17 more, if CarWale prints the claimed figure).
 - With your 5 brochures: potentially all 40.
+
+## Owner decisions
+
+- 22 Nov: plan approved; step 1 done (`EV_RANGE_DIAGNOSTIC.md`).
+- 22 Nov: CarWale's version-level "Expected Range" (itemId 459, unit km) is accepted as the claimed range, under these conditions:
+  - It is read only from the version's `specsSummary`, never from the model-level tested, owner-reported or mileage blocks.
+  - It is dropped when the version's battery capacity contradicts the kWh in its name.
+  - It is written only where it agrees with CarDekho, through the existing two-site gate.
+  - A blind check by a fresh agent must reach at least 95% agreement in every class first (P12).
