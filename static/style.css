@@ -423,9 +423,8 @@ button { cursor: pointer; }
 .car-price { text-align: right; line-height: 1.15; }
 .car-price strong { display: block; font-size: 1.375rem; letter-spacing: -0.02em; font-weight: 780; white-space: nowrap; }
 .car-price span { font-size: 0.8125rem; color: var(--ink-3); }
-.car-price .price-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 0.9375rem; color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.car-price .price-link { display: flex; justify-content: flex-end; align-items: center; gap: 4px; margin-top: 6px; white-space: nowrap; font-size: 0.9375rem; color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
 .car-price .price-link:hover { color: var(--accent-hover); }
-.car-price .price-link { display: flex; justify-content: flex-end; }
 .price-link svg { width: 14px; height: 14px; flex: none; }
 
 .facts { display: flex; flex-wrap: wrap; gap: 4px var(--s2); padding-block: 10px; border-block: 1px solid var(--line); font-size: 0.9375rem; }
@@ -460,7 +459,8 @@ button { cursor: pointer; }
   .car-actions { grid-column: 1; }
   .car-actions .btn { width: 100%; }
   .car-head { flex-direction: column; }
-  .car-price { display: flex; align-items: baseline; gap: var(--s0); text-align: left; }
+  .car-price { display: flex; align-items: baseline; gap: var(--s0); text-align: left; flex-wrap: wrap; }
+  .car-price .price-link { flex-basis: 100%; justify-content: flex-start; margin-top: 2px; }
 }
 @media (min-width: 1024px) {
   .car { grid-template-columns: 39% minmax(0, 1fr); }
