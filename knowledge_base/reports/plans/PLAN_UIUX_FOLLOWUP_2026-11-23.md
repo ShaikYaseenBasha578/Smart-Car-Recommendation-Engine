@@ -70,3 +70,4 @@ Claude checked these claims against `main` (6e1090f) before planning:
 ## Owner decision
 
 - 23 Nov: plan approved with the five default decisions. PR G started.
+- 23 Nov: PR H (#56) missed two phone targets (median card 621 vs 560; first card at 360 vs 300). The owner chose to merge it as is, with no further density pass for now.
