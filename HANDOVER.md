@@ -289,3 +289,14 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - "nexon or punch" keeps only the Nexon;
     - "AMT nahi" adds Automatic.
   - Next is PR E (compare and sort), after #52 merges.
+- **23 Nov:** #52 merged. **PR #53 (UI plan E, compare and sort)** is open.
+  - Each result card has a Compare toggle (up to 4 cars, kept in sessionStorage). A tray is fixed to the bottom of the results page.
+  - The new `/compare?ids=…` page is server-rendered (`services/compare.py`, `templates/compare.html`):
+    - 12 rows. Spec cells go through the car page's `spec_item`, so unverified cells read "Not verified".
+    - "Best" is marked per row. Mileage is ranked only within the same unit, and thin owner samples never win.
+    - The first column is sticky on mobile.
+  - Sort offers Best match, Price, Mileage and Safety, kept in `&sort=`. "Top pick" shows only in Best match order.
+  - Desktop cards grew by 24 px (tallest 396 px, against the 380 px target), because the chips now sit on their own line above the three buttons.
+  - The eval is byte-identical, 1115 tests pass, and the new compare gate passes 36/36.
+  - **Stale:** the existing `tests/ui_gates.py` fails on main the same way. Its 340 px limit and the old panel headings predate PRs A–C, and it crashes at the detail-panel step. Updating it is a small follow-up.
+  - Next is PR F (/project header and theme), after #53 merges. Then the final blind re-review.
