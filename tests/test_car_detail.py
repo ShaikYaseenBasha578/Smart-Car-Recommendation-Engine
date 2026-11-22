@@ -219,3 +219,21 @@ process.stdout.write(JSON.stringify([vm.runInContext('renderDetail(d, {standalon
     page, panel = json.loads(out.stdout)
     assert "<h2>Summary</h2>" in page and "<h3>Technology</h3>" in page and "<h3>Summary</h3>" not in page
     assert "<h3>Summary</h3>" in panel and "<h2>" not in panel
+
+
+# ------------------------------------------------------------------ PR C: review notes for a car page opened from a search
+def test_reviews_are_added_only_with_a_query_and_are_read_only_card_data(client):
+    q = "automatic SUV under 15 lakh with sunroof"
+    d = get(client, f"/api/car/tata/nexon?q={quote(q)}").get_json()
+    rv = d["reviews"]
+    assert set(rv) == {"expert_notes", "owner_notes", "caveats", "expert_standing", "owner_standing", "scores"}
+    card = next(c for c in predict(client, q)["recommendations"] if c["Model"] == "Nexon")
+    for key in rv:                                     # the very data the result card was drawn from
+        assert rv[key] == card[key], key
+    assert get(client, "/api/car/tata/nexon").get_json()["reviews"] is None
+    assert get(client, "/api/car/tata/not-a-car?q=suv").status_code == 404
+
+
+def test_reviews_are_none_when_the_model_is_not_in_the_search_results(client):
+    d = get(client, "/api/car/tata/punch-ev?q=" + quote("petrol manual hatchback under 6 lakh")).get_json()
+    assert d["reviews"] is None

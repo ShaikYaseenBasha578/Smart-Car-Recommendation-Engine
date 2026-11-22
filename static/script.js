@@ -778,8 +778,9 @@ function renderV3Results(box, data, banner, link) {
 }
 
 // --- car detail (inline panel under a card, and the /car/<make>/<model> permalink page) ---
-// One component: renderDetail() draws GET /api/car/... for both. Sections, in order: Summary,
-// Variants, Specifications, Safety, Warranty, then the data stamp and actions.
+// One component: renderDetail() draws GET /api/car/... for both. The inline panel is short: Summary, Key specs and a
+// "Full details" link. The car page runs: Summary, (reviewers, owners and caveats when opened from a search),
+// Specifications, Safety, Warranty (for the selected variant), then Variants, the data stamp and actions.
 const DETAIL_SPEC_GROUPS = ["Engine & performance", "Dimensions & capacity", "Comfort & convenience", "Technology"];
 
 function detailUrl(base, opts) {
@@ -806,20 +807,32 @@ function variantMileage(v) {
     return m.value || (m.unit === "km/kg" ? "CNG mileage not listed" : "Not listed");
 }
 
+const VARIANT_ROWS_SHOWN = 8;
+
+// With a search, the table opens on the variants the server says match it (matches_query: the same filter /predict used for
+// the card's "N matching variants"); without one, on the first rows by price. Either way at most VARIANT_ROWS_SHOWN rows, the
+// selected variant always among them, and a button shows or hides the rest in place. All rows are in the HTML; the extra ones are hidden.
 function buildVariantsTable(data, hasQuery) {
     const rows = [...data.variants].sort((a, b) =>
         (b.matches_query - a.matches_query) || ((a.price || 0) - (b.price || 0)) || (a.variant_id - b.variant_id));
     const matching = rows.filter(v => v.matches_query).length;
+    const matchMode = hasQuery && matching > 0;
+    let visible = (matchMode ? rows.filter(v => v.matches_query) : rows).slice(0, VARIANT_ROWS_SHOWN);
+    const selectedRow = rows.find(v => v.variant_id === data.selected_variant_id);
+    if (selectedRow && !visible.includes(selectedRow)) visible = [...visible.slice(0, VARIANT_ROWS_SHOWN - 1), selectedRow];
     const note = hasQuery
-        ? (matching ? `${matching} of ${rows.length} variants match your search.` : `None of the ${rows.length} variants match your search; all are listed below.`)
+        ? (matching ? `${matching} of ${rows.length} variants match your search.` : `None of the ${rows.length} variants match your search.`)
         : `${rows.length} variants.`;
+    const toggle = rows.length > visible.length
+        ? `<button type="button" class="btn btn-quiet variants-toggle" data-variants-toggle data-total="${rows.length}" data-match-mode="${matchMode}" aria-expanded="false" aria-controls="variants-table">Show all ${rows.length} variants</button>` : "";
     return `<p class="detail-note">${note} Select a variant to see its specifications.</p>
-        <div class="table-wrap" tabindex="0" role="region" aria-label="Variants">
+        <p class="pick-status" id="pick-status" role="status"></p>
+        <div class="table-wrap" id="variants-table" tabindex="0" role="region" aria-label="Variants">
         <table class="variants">
             <thead><tr><th scope="col">Variant</th><th scope="col">Price</th><th scope="col">Gearbox</th><th scope="col">Fuel</th><th scope="col">Mileage</th></tr></thead>
             <tbody>${rows.map(v => {
                 const selected = v.variant_id === data.selected_variant_id;
-                return `<tr data-variant-id="${v.variant_id}" class="${v.matches_query ? "is-match" : ""}${selected ? " is-selected" : ""}"${selected ? ' aria-current="true"' : ""}>
+                return `<tr data-variant-id="${v.variant_id}" class="${v.matches_query ? "is-match" : ""}${selected ? " is-selected" : ""}"${selected ? ' aria-current="true"' : ""}${visible.includes(v) ? "" : " data-extra hidden"}>
                     <td><button type="button" class="variant-pick" data-variant-id="${v.variant_id}" aria-pressed="${selected}">${escapeHtml(v.variant)}</button>
                         ${v.matches_query ? '<span class="match-badge">Matches your search</span>' : ""}</td>
                     <td>${formatPrice(v.price)}</td>
@@ -828,7 +841,17 @@ function buildVariantsTable(data, hasQuery) {
                     <td>${escapeHtml(variantMileage(v))}</td>
                 </tr>`;
             }).join("")}</tbody>
-        </table></div>`;
+        </table></div>${toggle}`;
+}
+
+function toggleVariants(button) {
+    const expand = button.getAttribute("aria-expanded") !== "true";
+    const wrap = button.parentElement.querySelector(".table-wrap");
+    button.setAttribute("aria-expanded", String(expand));
+    wrap.querySelectorAll("tr[data-extra]").forEach(tr => { tr.hidden = !expand; });
+    button.textContent = expand ? (button.dataset.matchMode === "true" ? "Show matching only" : `Show first ${VARIANT_ROWS_SHOWN}`)
+        : `Show all ${button.dataset.total} variants`;
+    if (!expand) wrap.scrollTop = 0;
 }
 
 function buildSafetySection(data) {
@@ -840,15 +863,69 @@ function buildSafetySection(data) {
     return rating + (group ? specList(group.items) : "");
 }
 
-function renderDetail(data, opts) {
+// what the inline panel shows of the selected variant
+const KEY_SPEC_LABELS = ["Engine", "Power", "Gearbox", "Fuel", "Mileage (ARAI)", "CNG mileage (ARAI)", "Range (claimed)",
+    "Seats", "Boot space", "Airbags", "Sunroof", "ADAS"];
+
+function keySpecs(data) {
+    const items = data.specs.flatMap(g => g.items)
+        .filter(i => i.status !== "not_applicable" && KEY_SPEC_LABELS.includes(i.label))
+        .sort((a, b) => KEY_SPEC_LABELS.indexOf(a.label) - KEY_SPEC_LABELS.indexOf(b.label));
+    return specList(items);
+}
+
+// the selected variant's name and price, as the line above its specs
+function selectedNote(data) {
     const selected = data.variants.find(v => v.variant_id === data.selected_variant_id);
+    return selected ? `For <strong>${escapeHtml(selected.variant)}</strong> · ${formatPrice(selected.price)}` : "";
+}
+
+// Specifications, Safety and Warranty for the selected variant: the part that is redrawn when another variant is picked
+function buildSpecRegion(data, sh, sub) {
+    const specGroups = data.specs.filter(g => DETAIL_SPEC_GROUPS.includes(g.group))
+        .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><${sub}>${escapeHtml(g.group)}</${sub}>${list}</div>` : ""; })
+        .join("");
+    const warranty = data.specs.find(g => g.group === "Warranty");
+    return `<section class="detail-section"><${sh}>Specifications</${sh}>
+            <p class="detail-note">${selectedNote(data)} · <a class="detail-jump" href="#detail-variants">Change variant ↓</a></p>
+            <div class="spec-groups">${specGroups}</div></section>
+        <section class="detail-section"><${sh}>Safety</${sh}>${buildSafetySection(data)}</section>
+        <section class="detail-section"><${sh}>Warranty</${sh}>${warranty ? specList(warranty.items) : ""}
+            <p class="detail-note">${warranty && warranty.items.some(i => i.status === "ok")
+                ? "From the manufacturer's brochure. Confirm the terms with the dealer."
+                : "We couldn't verify this car's warranty from a brochure; check with the dealer."}</p></section>`;
+}
+
+// the same blocks as a result card's expanded panel, for a car page opened from a search; its headings sit under the page's h2
+function buildReviewsSection(reviews) {
+    if (!reviews) return "";
+    const h3 = html => html.replace(/<h4>/g, "<h3>").replace(/<\/h4>/g, "</h3>");
+    return `<section class="detail-section detail-reviews"><h2>What reviewers and owners say</h2>
+        ${buildRatingsLine(reviews)}
+        <div class="evi-grid">${h3(buildExpertBlock(reviews))}${h3(buildOwnerBlock(reviews))}</div>
+        ${h3(buildCaveats(reviews))}</section>`;
+}
+
+function renderDetail(data, opts) {
     const hasQuery = Boolean(opts.q);
-    const permalink = location.origin + detailUrl("/car", { ...opts, variantId: data.selected_variant_id });
+    const selectedId = data.selected_variant_id;
+    const permalink = location.origin + detailUrl("/car", { ...opts, variantId: selectedId });
+    const summary = `<section class="detail-section"><${opts.standalone ? "h2" : "h3"}>Summary</${opts.standalone ? "h2" : "h3"}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>`;
+    if (!opts.standalone) {
+        // the inline panel: Summary, Key specs and the way to the whole page, carrying this search and variant
+        const full = detailUrl("/car", { ...opts, variantId: selectedId });
+        return `${summary}
+        <section class="detail-section"><h3>Key specs</h3><p class="detail-note">${selectedNote(data)}</p>${keySpecs(data)}</section>
+        <footer class="detail-foot">
+            ${buildDataStamp(data)}
+            <div class="detail-actions"><a class="btn btn-primary detail-full" href="${escapeHtml(full)}">Full details →</a></div>
+        </footer>`;
+    }
     const range = data.price_range
         ? (data.price_range.min === data.price_range.max ? formatPrice(data.price_range.min)
             : `${formatPrice(data.price_range.min)} – ${formatPrice(data.price_range.max)}`)
         : "";
-    const head = opts.standalone ? `
+    const head = `
         <header class="detail-hero">
             <figure class="detail-photo"><img src="${escapeHtml(data.image)}" alt="${escapeHtml(data.make + " " + data.model)}">
                 ${data.image_attribution ? `<figcaption>Image: ${escapeHtml(data.image_attribution)}</figcaption>` : ""}</figure>
@@ -857,24 +934,12 @@ function renderDetail(data, opts) {
                 ${range ? `<p class="detail-range">${range} <span>ex-showroom</span></p>` : ""}
                 ${hasQuery ? `<p class="detail-note">For your search “${escapeHtml(opts.q)}”</p>` : ""}
             </div>
-        </header>` : "";
-    const sub = opts.standalone ? "h3" : "h4";
-    const specGroups = data.specs.filter(g => DETAIL_SPEC_GROUPS.includes(g.group))
-        .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><${sub}>${escapeHtml(g.group)}</${sub}>${list}</div>` : ""; })
-        .join("");
-    const warranty = data.specs.find(g => g.group === "Warranty");
-    const sh = opts.standalone ? "h2" : "h3";  // the car page has an h1; the inline panel sits under a card's h3
+        </header>`;
     return `${head}
-        <section class="detail-section"><${sh}>Summary</${sh}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>
-        <section class="detail-section"><${sh}>Variants</${sh}>${buildVariantsTable(data, hasQuery)}</section>
-        <section class="detail-section"><${sh}>Specifications</${sh}>
-            <p class="detail-note">For <strong>${escapeHtml(selected ? selected.variant : "")}</strong>${selected ? ` · ${formatPrice(selected.price)}` : ""}</p>
-            <div class="spec-groups">${specGroups}</div></section>
-        <section class="detail-section"><${sh}>Safety</${sh}>${buildSafetySection(data)}</section>
-        <section class="detail-section"><${sh}>Warranty</${sh}>${warranty ? specList(warranty.items) : ""}
-            <p class="detail-note">${warranty && warranty.items.some(i => i.status === "ok")
-                ? "From the manufacturer's brochure. Confirm the terms with the dealer."
-                : "We couldn't verify this car's warranty from a brochure; check with the dealer."}</p></section>
+        ${summary}
+        ${hasQuery ? buildReviewsSection(data.reviews) : ""}
+        <div class="detail-specs" id="detail-specs" tabindex="-1">${buildSpecRegion(data, "h2", "h3")}</div>
+        <section class="detail-section variants-block" id="detail-variants"><h2>Variants</h2>${buildVariantsTable(data, hasQuery)}</section>
         <footer class="detail-foot">
             ${buildDataStamp(data)}
             <div class="detail-actions">
@@ -913,15 +978,76 @@ async function loadDetail(body, opts) {
     body.removeAttribute("aria-busy");
 }
 
-// variant rows: clicking a row (or its button) reloads the detail for that variant
+// Picking a variant on the car page: the row shows it is working at once (aria-busy and a small spinner), only the
+// Specifications, Safety and Warranty sections are redrawn, focus stays on the row's button, the URL gains variant_id and one
+// status line says what is shown. The latest pick wins; a failure clears the busy state and says so in the status line.
+let pickSeq = 0;
+
+function clearPickBusy(body) {
+    body.querySelectorAll("tr[aria-busy]").forEach(tr => {
+        tr.removeAttribute("aria-busy");
+        const spin = tr.querySelector(".spinner"); if (spin) spin.remove();
+    });
+    const region = body.querySelector("#detail-specs"); if (region) region.removeAttribute("aria-busy");
+}
+
+async function pickVariant(body, opts, row) {
+    const id = Number(row.dataset.variantId);
+    if (String(id) === body.dataset.selected) return;
+    const seq = ++pickSeq;
+    const control = row.querySelector(".variant-pick");
+    const name = control.textContent.trim();
+    const status = body.querySelector("#pick-status"), region = body.querySelector("#detail-specs");
+    clearPickBusy(body);
+    row.setAttribute("aria-busy", "true");
+    row.firstElementChild.insertAdjacentHTML("afterbegin", '<span class="spinner spinner--sm" aria-hidden="true"></span>');
+    region.setAttribute("aria-busy", "true");
+    status.className = "pick-status";
+    status.textContent = `Loading specs for ${name}…`;
+    control.focus({ preventScroll: true });
+    try {
+        // the search is left out of the request: the spec sections do not depend on it, and without it the server skips re-running the ranking
+        const response = await fetch(detailUrl("/api/car", { make: opts.make, model: opts.model, variantId: id }));
+        const data = await response.json();
+        if (seq !== pickSeq) return;
+        if (!response.ok) throw new Error(data.error || "not found");
+        region.innerHTML = buildSpecRegion(data, "h2", "h3");
+        body.dataset.selected = data.selected_variant_id;
+        body.querySelectorAll("tr[data-variant-id]").forEach(tr => {
+            const on = Number(tr.dataset.variantId) === data.selected_variant_id;
+            tr.classList.toggle("is-selected", on);
+            if (on) tr.setAttribute("aria-current", "true"); else tr.removeAttribute("aria-current");
+            tr.querySelector(".variant-pick").setAttribute("aria-pressed", String(on));
+        });
+        opts.variantId = id;
+        try { history.replaceState(history.state, "", detailUrl("/car", opts)); } catch (e) { /* the page still works without it */ }
+        status.innerHTML = `Showing specs for ${escapeHtml(name)} <a href="#detail-specs" data-jump-specs>Jump to specs ↓</a>`;
+    } catch (error) {
+        if (seq !== pickSeq) return;
+        status.className = "pick-status pick-status--error";
+        status.textContent = `Couldn't load the specs for ${name}. Select it again to retry.`;
+    } finally {
+        if (seq === pickSeq) {
+            clearPickBusy(body);
+            control.focus({ preventScroll: true });
+        }
+    }
+}
+
 function bindVariantPicks(body, opts) {
     body.addEventListener("click", e => {
+        const toggle = e.target.closest("[data-variants-toggle]");
+        if (toggle) return toggleVariants(toggle);
+        const jump = e.target.closest("[data-jump-specs]");
+        if (jump) {
+            e.preventDefault();
+            const region = body.querySelector("#detail-specs");
+            region.scrollIntoView({ block: "start", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+            return region.focus({ preventScroll: true });
+        }
         const row = e.target.closest("tr[data-variant-id]");
         if (!row || e.target.closest("a")) return;
-        const variantId = Number(row.dataset.variantId);
-        if (String(variantId) === body.dataset.selected) return;
-        opts.variantId = variantId;
-        loadDetail(body, opts);
+        pickVariant(body, opts, row);
     });
 }
 
@@ -954,7 +1080,6 @@ function toggleDetail(button) {
         q: turn.dataset.q, drop: turn.dataset.drop ? turn.dataset.drop.split(",") : []
     };
     const body = panel.querySelector(".detail-body");
-    bindVariantPicks(body, opts);
     loadDetail(body, opts);
 }
 
