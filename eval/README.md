@@ -16,7 +16,13 @@ One command runs everything, no network, no LLM:
   over_constrained 15, vague 10, unsupported_brand 5, paraphrase 30 (10 groups of 3, one Hinglish wording each).
 - `shortlist_sheet.csv` + `SHORTLIST_INSTRUCTIONS.md` : 40 queries the owner labels by hand (five cars each).
 - `results/` : JSON output of runs (`baseline_current.json` is the engine before any change).
+- `hard_queries.jsonl` : 40 DRAFT queries the rule parser does not fully explain (plus 8 controls), same label schema, every
+  line `"draft": true` until the owner approves them (`HARD_QUERIES_REVIEW.md`). Run: `--queries eval/hard_queries.jsonl`.
 - `run_eval.py` : the runner.
+  Paced, resumable LLM runs: `run_eval.py --llm on --llm-pace 6 [--llm-max-wait 1800] [--llm-cache FILE]`. Answers are
+  written to the cache file after every live call, so re-running the same command continues where it stopped. In this
+  mode only, a 429/503 is waited out (Retry-After or backoff) and the same query is asked again, up to the max total wait,
+  then the remaining queries fall back to the rules. Progress lines show n of N, live calls, cache hits and fallbacks.
 
 ## Label format (`expect`)
 
