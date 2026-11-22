@@ -42,6 +42,7 @@ const ICONS = {
     plus: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11"/></svg>',
     external: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5H5a1.5 1.5 0 0 0-1.5 1.5v9A1.5 1.5 0 0 0 5 16.5h9a1.5 1.5 0 0 0 1.5-1.5v-3M11.5 3.5h5v5M16.5 3.5L9 11"/></svg>',
     arrow: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>',
+    close: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>',
     alert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.2v.3"/></svg>'
 };
 
@@ -257,11 +258,12 @@ function buildDataStamp(data) {
     return `<p class="data-stamp"${run}>Prices and specs updated ${escapeHtml(date)}</p>`;
 }
 
-// dropped-constraint banner + data stamp on the left, "Copy link" on the right
-function buildResultsToolbar(data, link) {
+// dropped-constraint banner + data stamp on the left; the sort control (v3 results with 2+ cars) and "Copy link" on the right
+function buildResultsToolbar(data, link, sortable = false) {
     return `<div class="toolbar">
         <div class="toolbar-info">${buildDroppedBanner(data)}${buildDataStamp(data)}</div>
-        <button type="button" data-copy-link="${escapeHtml(link)}" class="btn btn-quiet">Copy link</button>
+        <div class="toolbar-actions">${sortable ? buildSortControl() : ""}<button type="button" data-copy-link="${escapeHtml(link)}" class="btn btn-quiet">Copy link</button></div>
+        ${sortable ? '<p class="sort-note" data-sort-note hidden></p>' : ""}
     </div>`;
 }
 
@@ -756,7 +758,7 @@ function buildV3Card(car, index, hard, personalised) {
     const why = car.explanation_rag ? buildWhyRag(car, reasons, reviewsId)
         : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : "";
     return `
-        <article class="car car--v3${index === 0 ? " car--top" : ""}"${behind ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
+        <article class="car car--v3${index === 0 ? " car--top" : ""}" data-rank-index="${index}"${behind ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
                 ${rankBadge(car, index)}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
@@ -783,6 +785,7 @@ function buildV3Card(car, index, hard, personalised) {
                     ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
                     <div class="car-actions">
                         <button type="button" class="btn btn-primary" data-detail aria-expanded="false">View details</button>
+                        ${buildCompareButton(car)}
                         ${behind ? buildReviewsToggle(reviewsId, behind) : ""}
                     </div>
                 </div>
@@ -803,12 +806,263 @@ function buildSourcesFooter(recs, data) {
     return `<p class="sources">Expert scores and notes are from Autocar India${span ? ` (reviews dated ${escapeHtml(span)}, each note shows its own date)` : ""}; owner ratings and themes are from CarWale user reviews${exported ? ` (data exported ${exported})` : ""}. Notes are short summaries, not the original text: use the links to read the originals.</p>`;
 }
 
+// ============================================
+// Compare (up to 4 cars) and sort
+// ============================================
+// Selection is page-level and lives in sessionStorage so it survives new searches and the trip to /compare and back.
+// Every storage call is in try/catch; without storage the selection still works for the life of the page.
+const COMPARE_KEY = "carrec.compare";
+const COMPARE_MAX = 4;
+let compareMemory = [];
+
+function compareName(item) {
+    return `${item.model || item.name} ${item.variant || ""}`.trim();
+}
+
+function compareState() {
+    try {
+        const list = JSON.parse(sessionStorage.getItem(COMPARE_KEY) || "[]");
+        if (Array.isArray(list)) {
+            compareMemory = list.filter(x => x && Number(x.variant_id) > 0).slice(0, COMPARE_MAX);
+        }
+    } catch (error) { /* storage blocked or unreadable: keep the in-page copy */ }
+    return compareMemory.slice();
+}
+
+function saveCompareState(list) {
+    compareMemory = list.slice(0, COMPARE_MAX);
+    try { sessionStorage.setItem(COMPARE_KEY, JSON.stringify(compareMemory)); } catch (error) { /* in-page copy only */ }
+}
+
+// Pure: the list after pressing Compare on `item`. action is "added", "removed" or "full" (a fifth car changes nothing).
+function toggleCompare(list, item) {
+    const id = Number(item.variant_id);
+    if (list.some(x => Number(x.variant_id) === id)) return { list: list.filter(x => Number(x.variant_id) !== id), action: "removed" };
+    if (list.length >= COMPARE_MAX) return { list: list.slice(), action: "full" };
+    return { list: [...list, { variant_id: id, name: item.name, model: item.model, variant: item.variant }], action: "added" };
+}
+
+// /compare?ids=1,2,3&q=...&drop=...&sort=...  (the commas in ids stay readable; sort is left out for best match)
+function compareUrl(list, q, drop, sort) {
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    const d = Array.isArray(drop) ? drop.join(",") : (drop || "");
+    if (d) params.set("drop", d);
+    if (sort && sort !== "best") params.set("sort", sort);
+    const rest = params.toString();
+    return `/compare?ids=${list.map(x => Number(x.variant_id)).join(",")}${rest ? "&" + rest : ""}`;
+}
+
+function buildCompareButton(car) {
+    if (car.variant_id == null) return "";
+    const name = `${car.Make} ${car.Model}`;
+    return `<button type="button" class="btn btn-quiet btn-compare" data-compare="${escapeHtml(car.variant_id)}" data-compare-name="${escapeHtml(name)}" data-compare-model="${escapeHtml(car.Model)}" data-compare-variant="${escapeHtml(car.Variant || "")}" aria-pressed="false"><span class="compare-text" aria-hidden="true">Compare</span><span class="sr-only">Compare ${escapeHtml(`${name} ${car.Variant || ""}`.trim())}</span></button>`;
+}
+
+// the inner markup of the tray; "" when nothing is selected. Wide screens list the cars as pills; narrow ones show a count.
+function buildCompareTray(list, q, drop, sort) {
+    const n = list.length;
+    if (!n) return "";
+    const pills = list.map(x => `<li class="compare-pill"><span>${escapeHtml(compareName(x))}</span><button type="button" data-compare-remove="${escapeHtml(x.variant_id)}" aria-label="Remove ${escapeHtml(`${x.name} ${x.variant || ""}`.trim())}">${ICONS.close}</button></li>`).join("");
+    const go = n < 2
+        ? '<span class="btn btn-primary" aria-disabled="true">Compare</span>'
+        : `<a class="btn btn-primary" href="${escapeHtml(compareUrl(list, q, drop, sort))}">Compare<span class="compare-more"> ${n} cars</span></a>`;
+    return `<div class="wrap">
+        <ul class="compare-pills" aria-label="Cars to compare">${pills}</ul>
+        ${n < 2 ? '<p class="compare-hint">Pick 1 more car to compare</p>' : `<p class="compare-count">${n} cars selected</p>`}
+        <button type="button" class="btn btn-quiet" data-compare-clear aria-label="Clear the comparison">Clear</button>
+        ${go}
+    </div>`;
+}
+
+// the search the tray's link should open the comparison from: the latest turn, else the URL
+function compareContext() {
+    const turns = document.querySelectorAll("[data-turn]");
+    const last = turns[turns.length - 1];
+    if (!last) { const u = searchFromUrl(); return { q: u.q, drop: u.drop, sort: u.sort }; }
+    const cards = last.querySelector(".cards");
+    return { q: last.dataset.q || "", drop: last.dataset.drop || "", sort: cards ? cards.dataset.sort : "" };
+}
+
+function renderCompareTray() {
+    if (typeof document === "undefined") return;
+    const page = document.querySelector(".results-page");
+    if (!page) return;
+    let tray = document.getElementById("compare-tray");
+    if (!tray) {
+        tray = document.createElement("div");
+        tray.id = "compare-tray";
+        tray.className = "compare-tray";
+        tray.setAttribute("role", "region");
+        tray.setAttribute("aria-label", "Compare cars");
+        tray.hidden = true;
+        tray.addEventListener("click", e => {
+            const remove = e.target.closest("[data-compare-remove]");
+            if (remove) changeCompare(list => {
+                const item = list.find(x => String(x.variant_id) === remove.dataset.compareRemove);
+                return item ? toggleCompare(list, item) : { list, action: "none", item };
+            });
+            if (e.target.closest("[data-compare-clear]")) {
+                saveCompareState([]);
+                refreshCompare();
+                setSearchStatus("Comparison cleared.");
+            }
+        });
+        page.appendChild(tray);
+    }
+    const list = compareState();
+    const ctx = compareContext();
+    tray.innerHTML = buildCompareTray(list, ctx.q, ctx.drop, ctx.sort);
+    tray.hidden = list.length === 0;
+    document.body.classList.toggle("has-compare-tray", list.length > 0);
+}
+
+// every Compare button mirrors the selection; with 4 selected the others stay focusable but are marked aria-disabled
+function syncCompareButtons(root) {
+    const list = compareState();
+    const full = list.length >= COMPARE_MAX;
+    (root || document).querySelectorAll("[data-compare]").forEach(btn => {
+        const on = list.some(x => String(x.variant_id) === btn.dataset.compare);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.classList.toggle("is-added", on);
+        const text = btn.querySelector(".compare-text");
+        if (text) text.textContent = on ? "Added" : "Compare";
+        const icon = btn.querySelector("svg");
+        if (on && !icon) btn.insertAdjacentHTML("afterbegin", ICONS.check);
+        if (!on && icon) icon.remove();
+        if (full && !on) { btn.setAttribute("aria-disabled", "true"); btn.title = "You can compare up to 4 cars"; }
+        else { btn.removeAttribute("aria-disabled"); btn.removeAttribute("title"); }
+    });
+}
+
+function refreshCompare() {
+    renderCompareTray();
+    syncCompareButtons(document);
+}
+
+// `change(list)` returns { list, action, item? }; saves, redraws and says what happened in the status line
+function changeCompare(change) {
+    const before = compareState();
+    const result = change(before);
+    if (result.action === "full") {
+        setSearchStatus("You can compare up to 4 cars. Remove one first.");
+        return;
+    }
+    if (result.action === "none") return;
+    saveCompareState(result.list);
+    refreshCompare();
+    const item = before.concat(result.list).find(x => !(result.action === "added" ? before : result.list).some(y => y.variant_id === x.variant_id));
+    const name = item ? compareName(item) : "Car";
+    setSearchStatus(result.action === "added"
+        ? `${name} added to compare. ${result.list.length} of ${COMPARE_MAX} selected.`
+        : `${name} removed from compare. ${result.list.length} of ${COMPARE_MAX} selected.`);
+}
+
+function onCompareButton(btn) {
+    if (btn.getAttribute("aria-disabled") === "true") {
+        setSearchStatus("You can compare up to 4 cars. Remove one first.");
+        return;
+    }
+    changeCompare(list => toggleCompare(list, {
+        variant_id: Number(btn.dataset.compare), name: btn.dataset.compareName,
+        model: btn.dataset.compareModel, variant: btn.dataset.compareVariant
+    }));
+}
+
+// --- sort ---
+const SORT_OPTIONS = [
+    { key: "best", label: "Best match", said: "best match" },
+    { key: "price", label: "Price", said: "price, lowest first" },
+    { key: "mileage", label: "Mileage", said: "mileage, highest first" },
+    { key: "safety", label: "Safety", said: "safety rating, most adult stars first" }
+];
+const SORT_KEYS = SORT_OPTIONS.map(o => o.key);
+const MILEAGE_GROUPS = ["kmpl", "kmkg", "range"];
+let sortSeq = 0;
+const sortableRecs = new WeakMap();   // the turn's cards in best-match order, keyed by the turn's result box
+
+// New order as an array of indices into recs. Stable: ties keep best-match order. Unknown values go last.
+function sortCars(recs, key) {
+    const idx = recs.map((_, i) => i);
+    const cmpNullLast = (a, b, dir) => (a == null) - (b == null) || (a == null ? 0 : dir * (a - b));
+    let cmp;
+    if (key === "price") {
+        cmp = (a, b) => cmpNullLast(Number(recs[a]["Ex-Showroom_Price"]) || null, Number(recs[b]["Ex-Showroom_Price"]) || null, 1);
+    } else if (key === "mileage") {
+        // one unit per group, so a litre of petrol is never ranked against a kilogram of CNG or a battery
+        cmp = (a, b) => {
+            const ea = efficiency(recs[a]), eb = efficiency(recs[b]);
+            return (MILEAGE_GROUPS.indexOf(ea.kind) - MILEAGE_GROUPS.indexOf(eb.kind)) || cmpNullLast(ea.value, eb.value, -1);
+        };
+    } else if (key === "safety") {
+        const stars = c => (c.safety && c.safety.stars_adult != null ? Number(c.safety.stars_adult) : null);
+        const bags = c => (Number(c.airbags) || 0);
+        cmp = (a, b) => cmpNullLast(stars(recs[a]), stars(recs[b]), -1) || (stars(recs[a]) == null ? 0 : bags(recs[b]) - bags(recs[a]));
+    } else {
+        return idx;
+    }
+    return idx.sort((a, b) => cmp(a, b) || a - b);
+}
+
+// the one-line caveat under the toolbar when a sort mixes things that are not strictly alike
+function sortNote(recs, key) {
+    if (key === "mileage" && new Set(recs.map(r => efficiency(r).kind)).size > 1) {
+        return "Petrol and diesel cars sort by kmpl, CNG by km/kg and electric cars by range, each in its own group.";
+    }
+    if (key === "safety" && new Set(recs.filter(r => r.safety && r.safety.stars_adult != null).map(r => r.safety.testing_body)).size > 1) {
+        return "Global NCAP and Bharat NCAP stars are sorted together, but the tests differ.";
+    }
+    return "";
+}
+
+// segmented control from 600px, select below; both are in the page and drive the same sort
+function buildSortControl() {
+    const id = ++sortSeq;
+    const radios = SORT_OPTIONS.map(o => `<input type="radio" name="sort-${id}" id="sort-${id}-${o.key}" value="${o.key}" data-sort-key${o.key === "best" ? " checked" : ""}><label for="sort-${id}-${o.key}">${o.label}</label>`).join("");
+    const options = SORT_OPTIONS.map(o => `<option value="${o.key}">${o.label}</option>`).join("");
+    return `<fieldset class="sort-seg"><legend>Sort</legend><div class="sort-opts">${radios}</div></fieldset>`
+        + `<label class="sort-select"><span>Sort</span><select data-sort-select>${options}</select></label>`;
+}
+
+function applySort(turn, key) {
+    if (!SORT_KEYS.includes(key)) return;
+    const box = turn.querySelector("[data-turn-body]");
+    const recs = box && sortableRecs.get(box);
+    const cards = turn.querySelector(".cards");
+    if (!recs || !cards) return;
+    // move the existing nodes instead of redrawing: open detail panels and expanded reviews stay as they are
+    const byIndex = {};
+    cards.querySelectorAll(":scope > article.car").forEach(c => { byIndex[c.dataset.rankIndex] = c; });
+    sortCars(recs, key).forEach(i => { if (byIndex[i]) cards.appendChild(byIndex[i]); });
+    cards.dataset.sort = key;
+    turn.querySelectorAll("input[data-sort-key]").forEach(r => { r.checked = r.value === key; });
+    turn.querySelectorAll("select[data-sort-select]").forEach(sel => { sel.value = key; });
+    const note = turn.querySelector("[data-sort-note]");
+    if (note) {
+        note.textContent = sortNote(recs, key);
+        note.hidden = !note.textContent;
+    }
+    // the shareable link carries the order; the address bar follows only the latest search
+    const suffix = key === "best" ? "" : `&sort=${key}`;
+    const copy = turn.querySelector("[data-copy-link]");
+    if (copy) copy.dataset.copyLink = location.origin + searchUrl(turn.dataset.q || "", turn.dataset.drop ? turn.dataset.drop.split(",") : []) + suffix;
+    const turns = document.querySelectorAll("[data-turn]");
+    if (turns[turns.length - 1] === turn) {
+        const params = new URLSearchParams(location.search);
+        if (key === "best") params.delete("sort"); else params.set("sort", key);
+        window.history.replaceState(window.history.state, "", `${location.pathname}?${params}`);
+    }
+    setSearchStatus(`Sorted by ${SORT_OPTIONS.find(o => o.key === key).said}.`);
+    renderCompareTray();
+}
+
 function renderV3Results(box, data, banner, link) {
     const recs = data.recommendations || [];
     const { hard } = understoodChips(data);
     const personalised = data.personalised;
-    box.innerHTML = banner + buildRelaxedNotice(data) + buildQueryEcho(data) + buildResultsToolbar(data, link)
-        + `<div class="cards">${recs.map((car, i) => buildV3Card(car, i, hard, personalised)).join("")}</div>`
+    sortableRecs.set(box, recs);
+    box.innerHTML = banner + buildRelaxedNotice(data) + buildQueryEcho(data) + buildResultsToolbar(data, link, recs.length >= 2)
+        + `<div class="cards" data-sort="best">${recs.map((car, i) => buildV3Card(car, i, hard, personalised)).join("")}</div>`
         + buildSourcesFooter(recs, data);
 }
 
@@ -1143,16 +1397,18 @@ function initCarPage() {
 const MAX_TURNS = 10;
 let turnCount = 0;
 
-function searchUrl(q, drop) {
+function searchUrl(q, drop, sort) {
     const params = new URLSearchParams({ q });
     if (drop.length) params.set("drop", drop.join(","));
+    if (sort && sort !== "best") params.set("sort", sort);   // only when re-opening a shared link; a new search starts at best match
     return `${location.pathname}?${params}`;
 }
 
 function searchFromUrl() {
     const params = new URLSearchParams(location.search);
     const drop = (params.get("drop") || "").split(",").filter(Boolean);
-    return { q: params.get("q") || "", drop };
+    const sort = params.get("sort") || "";
+    return { q: params.get("q") || "", drop, sort: SORT_KEYS.includes(sort) ? sort : "" };   // unknown values are ignored
 }
 
 function prefersReducedMotion() {
@@ -1237,11 +1493,11 @@ function errorState(message) {
 }
 
 // push: add a history entry (a new search) or replace the current one (page load, back/forward)
-async function runSearch(query, drop = [], push = true) {
+async function runSearch(query, drop = [], push = true, sort = "") {
     if (!query.trim()) return;
 
     const turn = appendTurn(query, drop);
-    const url = searchUrl(query, drop);
+    const url = searchUrl(query, drop, sort);
     const state = { q: query, drop, turn: turn.dataset.turn };
     if (push && url !== location.pathname + location.search) window.history.pushState(state, "", url);
     else window.history.replaceState(state, "", url);
@@ -1266,6 +1522,9 @@ async function runSearch(query, drop = [], push = true) {
         if (!turn.isConnected) return;  // thread was cleared meanwhile
         renderResults(box, data, response.ok, location.origin + url);
         linkCarTitles(box, query, drop);
+        if (sort && sort !== "best") applySort(turn, sort);
+        syncCompareButtons(box);
+        renderCompareTray();   // the tray's link follows the latest search
         setSearchStatus(searchStatusText(data, response.ok, query));
         if (scroll) {
             scrollToTurn(turn);
@@ -1420,7 +1679,14 @@ function initNewCarPage() {
         if (reviews) toggleReviews(reviews);
         const cite = e.target.closest("[data-cite]");
         if (cite) { e.preventDefault(); followCite(cite); }
+        const compare = e.target.closest("[data-compare]");
+        if (compare) onCompareButton(compare);
     });
+    thread.addEventListener("change", e => {
+        const control = e.target.closest("input[data-sort-key], select[data-sort-select]");
+        if (control) applySort(control.closest("[data-turn]"), control.value);
+    });
+    refreshCompare();
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {
         const input = box.closest("form").querySelector("input, textarea");
@@ -1443,7 +1709,7 @@ function initNewCarPage() {
 
     // back/forward: scroll to that search's turn if it is still in the thread, else start over with it
     window.addEventListener("popstate", e => {
-        const { q, drop } = searchFromUrl();
+        const { q, drop, sort } = searchFromUrl();
         const turn = e.state && e.state.turn && thread.querySelector(`[data-turn="${e.state.turn}"]`);
         document.getElementById("userQuery").value = q;
         if (turn) {
@@ -1451,7 +1717,7 @@ function initNewCarPage() {
             return;
         }
         clearThread();
-        if (q) runSearch(q, drop, false);
+        if (q) runSearch(q, drop, false, sort);
     });
 
     const fromUrl = searchFromUrl();
@@ -1460,7 +1726,7 @@ function initNewCarPage() {
     const first = fromUrl.q ? fromUrl : (saved ? { q: saved, drop: [] } : null);
     if (first) {
         document.getElementById("userQuery").value = first.q;
-        runSearch(first.q, first.drop, false);
+        runSearch(first.q, first.drop, false, first.sort);
     }
 }
 

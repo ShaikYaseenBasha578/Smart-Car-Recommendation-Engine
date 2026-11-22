@@ -788,3 +788,159 @@ def test_uncovered_brand_notice_nothing_understood():
     intent = {"budget": {"min": None, "max": None}, "body_types": [], "transmission": {"family": None}}
     html = render(response([car()], intent=intent, unsupported_terms=["Ferrari"]))
     assert "Showing general picks instead." in html and "We don" in html
+
+
+# ------------------------------------------------------------------ PR E: compare and sort
+
+def test_compare_button_is_on_every_v3_card_unpressed_with_the_variant_id_and_a_hidden_name():
+    html = render(response([car(variant_id=71), car(Model="Punch", variant_id=72)]))
+    assert html.count('data-compare="') == 2
+    assert 'data-compare="71"' in html and 'aria-pressed="false"' in html
+    assert 'class="btn btn-quiet btn-compare"' in html
+    assert '<span class="sr-only">Compare Tata Nexon Smart</span>' in html
+    assert html.index("data-detail") < html.index("data-compare=")           # after "View details"
+    assert "data-compare=" not in render(response([car()]))                    # no variant id, no button
+    assert "data-compare=" not in render({"recommendations": [{"Make": "Tata", "Model": "Nexon", "Variant": "Smart",
+                                                               "Ex-Showroom_Price": 800000.0, "ranking_score": 80.0, "variant_id": 7}]})
+
+
+def test_compare_button_text_is_escaped():
+    html = render(response([car(variant_id=5, Variant=SCRIPT_NOTE)]))
+    assert "<script>alert(1)</script>" not in html
+
+
+def test_toggle_compare_adds_removes_and_stops_at_four():
+    code = """(() => {
+      const it = n => ({ variant_id: n, name: 'Tata Nexon', model: 'Nexon', variant: 'V' + n });
+      let list = [], actions = [];
+      for (const n of [1, 2, 3, 4, 5]) { const r = toggleCompare(list, it(n)); list = r.list; actions.push(r.action); }
+      const removed = toggleCompare(list, it(2));
+      return { ids: list.map(x => x.variant_id), actions, removed: removed.list.map(x => x.variant_id), removedAction: removed.action };
+    })()"""
+    r = run_detail(code)
+    assert r == {"ids": [1, 2, 3, 4], "actions": ["added"] * 4 + ["full"], "removed": [1, 3, 4], "removedAction": "removed"}
+
+
+def test_compare_state_works_without_storage():
+    r = run_detail("(() => { saveCompareState([{ variant_id: 3, name: 'A', variant: 'B' }]); return compareState(); })()")
+    assert r == [{"variant_id": 3, "name": "A", "variant": "B"}]       # sessionStorage does not exist here: the in-page copy is used
+
+
+def test_compare_url_encodes_the_search_and_leaves_best_match_out():
+    url = run_detail("compareUrl([{variant_id: 3}, {variant_id: 9}], 'SUV & sunroof', ['budget', 'adas'], 'price')")
+    assert url == "/compare?ids=3,9&q=SUV+%26+sunroof&drop=budget%2Cadas&sort=price"
+    assert run_detail("compareUrl([{variant_id: 3}, {variant_id: 9}], '', [], 'best')") == "/compare?ids=3,9"
+
+
+def tray(n, q="family SUV", sort="price"):
+    items = [{"variant_id": i + 1, "name": "Tata Nexon", "model": "Nexon", "variant": f"Var <{i}>"} for i in range(n)]
+    return run_detail("buildCompareTray(input.items, input.q, [], input.sort)", items=items, q=q, sort=sort)
+
+
+def test_compare_tray_for_zero_one_and_three_cars():
+    assert tray(0) == ""
+    one = tray(1)
+    assert "Pick 1 more car to compare" in one
+    assert '<span class="btn btn-primary" aria-disabled="true">Compare</span>' in one and "<a " not in one
+    three = tray(3)
+    assert "Compare<span class=\"compare-more\"> 3 cars</span>" in three and "3 cars selected" in three
+    href = [l for l in links(three) if "btn-primary" in (l.get("class") or "")][0]["href"]
+    assert href == "/compare?ids=1,2,3&q=family+SUV&sort=price"
+    assert three.count("data-compare-remove=") == 3 and 'aria-label="Remove Tata Nexon Var &lt;0&gt;"' in three
+    assert "data-compare-clear" in three and "Var <0>" not in three
+
+
+def test_sort_control_only_with_two_or_more_v3_cards():
+    one = render(response([car(variant_id=1)]))
+    two = render(response([car(variant_id=1), car(variant_id=2, Model="Punch")]))
+    assert "sort-seg" not in one and "data-sort-select" not in one
+    assert "<legend>Sort</legend>" in two and two.count('type="radio"') == 4 and "data-sort-select" in two
+    assert 'name="sort-' in two and 'value="best" data-sort-key checked' in two
+    assert '<div class="cards" data-sort="best">' in two
+    assert two.index("sort-seg") < two.index("data-copy-link")             # left of "Copy link"
+    old = render({"recommendations": [{"Make": "Tata", "Model": "Nexon", "Variant": "Smart", "Ex-Showroom_Price": 8e5, "ranking_score": 80.0},
+                                      {"Make": "Tata", "Model": "Punch", "Variant": "Pure", "Ex-Showroom_Price": 7e5, "ranking_score": 70.0}]})
+    assert "sort-seg" not in old
+
+
+def test_sort_radio_names_are_unique_per_turn():
+    code = "[buildSortControl(), buildSortControl()].map(h => h.match(/name=\"(sort-\\d+)\"/)[1])"
+    a, b = run_detail(code)
+    assert a != b
+
+
+def sort_order(cars, key):
+    return run_detail("sortCars(input.cars, input.key)", cars=cars, key=key)
+
+
+def test_sort_by_price_is_ascending_with_unknown_last_and_stable_ties():
+    cars = [{"Ex-Showroom_Price": p} for p in (900000, None, 700000, 900000, 700000)]
+    assert sort_order(cars, "price") == [2, 4, 0, 3, 1]
+    assert sort_order(cars, "best") == [0, 1, 2, 3, 4]
+    assert sort_order(cars, "unknown-key") == [0, 1, 2, 3, 4]
+
+
+def test_sort_by_mileage_groups_by_unit_and_ranks_highest_first_within_each():
+    cars = [
+        {"Fuel_Type": "Electric", "ev_range_km": 300},                                  # 0 range
+        {"Fuel_Type": "CNG", "mileage_km_per_kg": 26.0},                                # 1 km/kg
+        {"Fuel_Type": "Petrol", "ARAI_Certified_Mileage": 18.0},                        # 2 kmpl
+        {"Fuel_Type": "Petrol", "ARAI_Certified_Mileage": None},                        # 3 kmpl unknown
+        {"Fuel_Type": "Diesel", "ARAI_Certified_Mileage": 21.0},                        # 4 kmpl
+        {"Fuel_Type": "Electric", "ev_range_km": 450},                                  # 5 range
+        {"Fuel_Type": "CNG", "mileage_km_per_kg": 33.0},                                # 6 km/kg
+        {"Fuel_Type": "CNG", "mileage_km_per_kg": None},                                # 7 km/kg unknown
+        {"Fuel_Type": "Petrol", "ARAI_Certified_Mileage": 18.0},                        # 8 kmpl, ties with 2
+    ]
+    assert sort_order(cars, "mileage") == [4, 2, 8, 3, 6, 1, 7, 5, 0]
+
+
+def test_sort_by_safety_puts_most_adult_stars_first_then_airbags_and_unrated_last():
+    cars = [
+        {"safety": None, "airbags": 6},
+        {"safety": {"stars_adult": 4}, "airbags": 6},
+        {"safety": {"stars_adult": 5}, "airbags": 2},
+        {"safety": {"stars_adult": 5}, "airbags": 6},
+        {"safety": {"stars_adult": 5}, "airbags": 6},
+        {"safety": {"stars_adult": 3}, "airbags": None},
+    ]
+    assert sort_order(cars, "safety") == [3, 4, 2, 1, 5, 0]
+
+
+def test_sort_notes_appear_only_when_the_sort_mixes_units_or_testing_bodies():
+    mixed = [{"Fuel_Type": "Petrol", "ARAI_Certified_Mileage": 20}, {"Fuel_Type": "Electric", "ev_range_km": 300}]
+    same = [{"Fuel_Type": "Petrol", "ARAI_Certified_Mileage": 20}, {"Fuel_Type": "Diesel", "ARAI_Certified_Mileage": 22}]
+    code = "sortNote(input.cars, input.key)"
+    assert "each in its own group" in run_detail(code, cars=mixed, key="mileage")
+    assert run_detail(code, cars=same, key="mileage") == "" and run_detail(code, cars=mixed, key="price") == ""
+    bodies = [{"safety": {"stars_adult": 5, "testing_body": "Global NCAP"}}, {"safety": {"stars_adult": 4, "testing_body": "Bharat NCAP"}}, {"safety": None}]
+    assert "Global NCAP and Bharat NCAP stars are sorted together, but the tests differ." in run_detail(code, cars=bodies, key="safety")
+    assert run_detail(code, cars=bodies[:1] + bodies[2:], key="safety") == ""
+
+
+def test_search_from_url_reads_sort_and_ignores_unknown_values():
+    def parse(search):
+        out = subprocess.run(["node", "-e", """
+const vm = require('vm'), fs = require('fs');
+const ctx = vm.createContext({ console, URL, URLSearchParams, location: { origin: 'http://x', pathname: '/recommend', search: process.argv[1] } });
+vm.runInContext(fs.readFileSync(process.argv.at(-1), 'utf8'), ctx);
+process.stdout.write(JSON.stringify(vm.runInContext('searchFromUrl()', ctx)));""", search, str(ROOT / "static" / "script.js")],
+                             capture_output=True, text=True, cwd=ROOT)
+        assert out.returncode == 0, out.stderr
+        return json.loads(out.stdout)
+    assert parse("?q=suv&sort=price")["sort"] == "price"
+    assert parse("?q=suv&sort=banana")["sort"] == "" and parse("?q=suv")["sort"] == ""
+
+
+def test_search_url_keeps_sort_only_when_given():
+    assert run_detail("searchUrl('suv', [], 'price')") == "/car/tata/nexon?q=suv&sort=price"
+    assert run_detail("searchUrl('suv', [])") == "/car/tata/nexon?q=suv"
+
+
+def test_compare_css_rank_rule_and_reduced_motion_entrance():
+    css = (ROOT / "static" / "style.css").read_text()
+    assert '.cards[data-sort]:not([data-sort="best"]) .rank { display: none; }' in css
+    assert "@media (prefers-reduced-motion: no-preference) { .compare-tray:not([hidden]) { animation: compare-tray-in 200ms ease-out; } }" in css
+    assert "body.has-compare-tray" in css and "env(safe-area-inset-bottom)" in css
+    assert "font-variant-numeric: tabular-nums" in css.split(".compare-table {")[1].split("}")[0]
+    assert "position: sticky; left: 0" in css.split(".compare-table .compare-corner")[1].split("}")[0]

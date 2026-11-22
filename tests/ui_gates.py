@@ -274,6 +274,37 @@ def last_turn(page):
     return page.locator("[data-turn]").last
 
 
+def compare_checks(page, base, tag):
+    """Select two cards -> tray -> /compare loads with both cars and no sideways page scroll; sort re-orders without a redraw."""
+    predict(page, lambda: page.goto(base + "/recommend?q=" + quote("SUV under 15 lakh")))
+    buttons = page.locator("[data-compare]")
+    check(f"{tag}: every v3 card has a Compare button", buttons.count() == page.locator("article.car").count() > 1)
+    tray = page.locator("#compare-tray")
+    check(f"{tag}: tray hidden until a car is selected", tray.is_hidden())
+    buttons.nth(0).click()
+    check(f"{tag}: one car -> 'Pick 1 more car' and a disabled Compare", "Pick 1 more car" in tray.inner_text() and tray.locator("span[aria-disabled=true]").count() == 1)
+    buttons.nth(1).click()
+    check(f"{tag}: two cars -> Compare link", tray.is_visible() and tray.locator("a.btn-primary").count() == 1)
+    check(f"{tag}: pressed state", buttons.nth(0).get_attribute("aria-pressed") == "true")
+    names = [page.locator("article.car").nth(i).get_attribute("aria-label") for i in (0, 1)]
+    tray.locator("a.btn-primary").click()
+    page.wait_for_selector("table.compare-table")
+    sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+    check(f"{tag}: /compare has no horizontal page scroll", sw <= vw, f"{sw} > {vw}")
+    body = page.inner_text("table.compare-table")
+    check(f"{tag}: /compare shows both cars", all(n.split(" ", 1)[1] in body for n in names), names)
+    page.go_back()
+    page.wait_for_selector("article.car")
+    check(f"{tag}: selection survives coming back", page.locator("#compare-tray").is_visible())
+    if page.locator(".sort-seg").is_visible():
+        first = page.locator("article.car").first.get_attribute("aria-label")
+        page.locator(".sort-seg label", has_text="Price").first.click()
+        check(f"{tag}: sort writes ?sort= and hides the rank badge", "sort=price" in page.url and page.locator(".rank").first.is_hidden())
+    else:
+        page.locator("select[data-sort-select]").first.select_option("price")
+        check(f"{tag}: sort (select) writes ?sort=", "sort=price" in page.url)
+
+
 def run(base, shots):
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -360,6 +391,7 @@ def run(base, shots):
 
             card_checks(page, base, tag, w, shots)
             detail_checks(page, base, tag, w, shots)
+            compare_checks(page, base, tag)
 
             # transmission label
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("DCT petrol under 15 lakh")))
