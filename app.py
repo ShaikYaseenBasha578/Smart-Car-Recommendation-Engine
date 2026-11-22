@@ -152,7 +152,8 @@ def compare_page():
     drop = request.args.get("drop", "")[:200]
     sort = request.args.get("sort", "")
     sort = sort if sort in COMPARE_SORTS and sort != "best" else ""
-    data = get_compare(ids, app.root_path)
+    diff = request.args.get("diff") == "1"
+    data = get_compare(ids, app.root_path, diff=diff)
     cars = data["cars"]
 
     def search_args(**extra):
@@ -163,14 +164,18 @@ def compare_page():
     back_url = "/recommend" + ("?" + urlencode(search_args()) if q else "")
     for car in cars:
         left = ",".join(str(c["variant_id"]) for c in cars if c is not car)
-        car["remove_url"] = "/compare?" + urlencode(search_args(ids=left), safe=",")
+        car["remove_url"] = "/compare?" + urlencode(search_args(ids=left, **({"diff": "1"} if diff else {})), safe=",")
     shown = len(cars) >= 2
+    # "Show differences only" is a plain link to the same comparison with diff=1 added (or removed), so it works without JavaScript
+    all_ids = ",".join(str(c["variant_id"]) for c in cars)
+    diff_url = "/compare?" + urlencode(search_args(ids=all_ids, **({} if diff else {"diff": "1"})), safe=",")
     names = [c["model"] for c in cars]
     title = " vs ".join(names) + " | CarRec" if shown else "Compare cars | CarRec"
     if shown and len(title) > 60:
         title = f"Compare {len(cars)} cars | CarRec"
     return render_template("compare.html", page_title=title, shown=shown, cars=cars, rows=data["rows"],
-                           missing=data["missing"], stamp=_stamp_date(data["data_as_of"]), q=q, back_url=back_url)
+                           missing=data["missing"], stamp=_stamp_date(data["data_as_of"]), q=q, back_url=back_url,
+                           diff=diff and shown, diff_url=diff_url, all_equal=data["all_equal"] and shown)
 
 
 @app.route("/used")

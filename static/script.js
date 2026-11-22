@@ -286,6 +286,18 @@ function buildPriceLink(link) {
     return `<a class="price-link" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">On-road price on CarDekho ${ICONS.external}<span class="sr-only">(opens in a new tab)</span></a>`;
 }
 
+// v3 card: one quiet line under the price, "22 matching variants · On-road price on CarDekho". The first goes to the car page's variants
+// section (linkCarTitles adds the search to it); either part is left out when the card has no data for it
+function buildPriceLinks(car) {
+    const n = Number(car.matching_variant_count) || 0;
+    const vid = Number(car.variant_id) || 0;
+    const href = `/car/${encodeURIComponent(slug(car.Make))}/${encodeURIComponent(slug(car.Model))}${vid ? `?variant_id=${vid}` : ""}#detail-variants`;
+    const variants = n ? `<a class="variants-link" data-variants-link href="${escapeHtml(href)}">${n} matching variant${n === 1 ? "" : "s"}</a>` : "";
+    const road = buildPriceLink(car.carDekhoLink);
+    if (!variants && !road) return "";
+    return `<p class="price-links">${variants}${variants && road ? '<span class="link-sep" aria-hidden="true">·</span>' : ""}${road}</p>`;
+}
+
 // rank 1 is "Top pick" only when nothing is unmet or unverified; otherwise it is the closest match we found
 function rankBadge(car, index) {
     if (index !== 0) return "";
@@ -562,21 +574,47 @@ function standingWords(st, withSegment) {
     return tail.replace(/^((?:above|below) average)\b.*$/, "$1");
 }
 
+// the parts of the ratings line, one per source that has data: label, score, scale, the "from N ratings" lead, the bracket words
+function ratingEntries(car) {
+    const ex = car.expert_standing, ow = car.owner_standing, out = [];
+    if (ex && typeof ex === "object" && ex.score != null && ex.scale_max != null)
+        out.push({ label: "Reviewers", score: ex.score, scale: ex.scale_max, lead: "", count: "", low: false, bracket: [ex.source, standingWords(ex, true)] });
+    if (ow && typeof ow === "object" && ow.rating != null && ow.scale_max != null) {
+        const n = ow.rating_count != null && !isNaN(ow.rating_count) ? Number(ow.rating_count).toLocaleString("en-IN") : "";
+        const low = ow.band === "low_confidence";
+        out.push({ label: "Owners", score: ow.rating, scale: ow.scale_max, count: n, low,
+            lead: n ? `from ${low ? "only " : ""}${n} rating${Number(ow.rating_count) === 1 ? "" : "s"}` : "", bracket: [standingWords(ow, false)] });
+    }
+    return out;
+}
+
 function ratingPart(label, value, scale, lead, bracket) {
     const inner = bracket.filter(Boolean).map(escapeHtml).join(", ");
     return `<span class="rating-part">${label}: <strong>${trimNumber(Number(value), 1)}/${trimNumber(Number(scale), 0)}</strong>${lead ? " " + escapeHtml(lead) : ""}${inner ? ` (${inner})` : ""}</span>`;
 }
 
+// the full line (car page and reviews panel): source and standing in words
 function buildRatingsLine(car) {
-    const ex = car.expert_standing, ow = car.owner_standing, parts = [];
-    if (ex && typeof ex === "object" && ex.score != null && ex.scale_max != null)
-        parts.push(ratingPart("Reviewers", ex.score, ex.scale_max, "", [ex.source, standingWords(ex, true)]));
-    if (ow && typeof ow === "object" && ow.rating != null && ow.scale_max != null) {
-        const n = ow.rating_count != null && !isNaN(ow.rating_count) ? Number(ow.rating_count).toLocaleString("en-IN") : "";
-        const lead = n ? `from ${ow.band === "low_confidence" ? "only " : ""}${n} rating${Number(ow.rating_count) === 1 ? "" : "s"}` : "";
-        parts.push(ratingPart("Owners", ow.rating, ow.scale_max, lead, [standingWords(ow, false)]));
-    }
+    const parts = ratingEntries(car).map(e => ratingPart(e.label, e.score, e.scale, e.lead, e.bracket));
     return parts.length ? `<p class="ratings">${parts.join('<span class="rating-sep" aria-hidden="true"> · </span>')}</p>` : "";
+}
+
+// the collapsed card's line: "Reviewers 8/10 · Owners 4.6/5 (1,068)". The source and the standing words ("above average for SUVs",
+// shown only when the server made a standing claim) are in the title, and in the full line inside the reviews panel.
+function buildRatingsOneLine(car) {
+    const entries = ratingEntries(car);
+    if (!entries.length) return "";
+    const score = e => `${trimNumber(Number(e.score), 1)}/${trimNumber(Number(e.scale), 0)}`;
+    const parts = entries.map(e => `<span class="rating-part">${e.label} <strong>${score(e)}</strong>${e.count ? ` (${e.low ? "only " : ""}${escapeHtml(e.count)})` : ""}</span>`);
+    const tip = entries.map(e => {
+        const inner = e.bracket.filter(Boolean).join(", ");
+        return `${e.label}: ${score(e)}${e.lead ? " " + e.lead : ""}${inner ? ` (${inner})` : ""}`;
+    }).join(" · ");
+    return `<p class="ratings" title="${escapeHtml(tip)}">${parts.join('<span class="rating-sep" aria-hidden="true"> · </span>')}</p>`;
+}
+
+function hasStandingWords(car) {
+    return ratingEntries(car).some(e => e.bracket.some((b, i) => b && (e.label === "Owners" || i > 0)));
 }
 
 // --- reviews ---
@@ -655,7 +693,7 @@ function ragOrder(rag) {
     return order;
 }
 
-// items behind the "Reviews and owner feedback" toggle; the button is drawn only when this is above 0
+// items behind the "Reviews" toggle; the button is drawn only when this is above 0
 function behindCount(car) {
     const reasons = (car.reasons || []).slice(0, MAX_V3_REASONS).length;
     let n = (car.expert_notes || []).slice(0, 2).length + (car.caveats || []).length;
@@ -750,7 +788,7 @@ function followCite(link) {
 }
 
 function buildReviewsToggle(controlsId, n) {
-    return `<button type="button" class="btn btn-quiet btn-reviews" data-reviews-toggle aria-expanded="false" aria-controls="${controlsId}"><span>Reviews and owner feedback (${n})</span>${ICONS.chevron}</button>`;
+    return `<button type="button" class="btn btn-quiet btn-reviews" data-reviews-toggle aria-expanded="false" aria-controls="${controlsId}"><span>Reviews (${n})</span>${ICONS.chevron}</button>`;
 }
 
 function toggleReviews(button) {
@@ -773,21 +811,38 @@ function buildCaveats(car) {
         }).join("") + `</ul></section>`;
 }
 
-// collapsed card: the first caveat as one line, the rest (and the notes) behind the toggle
+// collapsed card: the first caveat as one line (a list item: it wraps in the same row as the tags), the rest (and the notes) behind the toggle
 function buildCaveatPill(car) {
     const items = car.caveats || [];
     if (!items.length) return "";
     const c = items[0];
     const what = c.label || THEME_LABELS[c.theme] || String(c.theme || "").replace(/_/g, " ");
     const text = `Owners report: ${what.charAt(0).toLowerCase()}${what.slice(1)}${items.length > 1 ? ` (+${items.length - 1} more)` : ""}`;
-    return `<p class="caveat-pill" title="${escapeHtml(text)}">${ICONS.info}<span>${escapeHtml(text)}</span></p>`;
+    return `<li class="caveat-pill" title="${escapeHtml(text)}">${ICONS.info}<span>${escapeHtml(text)}</span></li>`;
 }
 
 // unverified requirements are already named as pills under the match label on personalised cards; repeat them here
 // only when no match label lists them (general, non-personalised picks)
-function v3Chips(car, personalised) {
+// catalogue columns behind each feature key (the same ones the server's reasons list in `fields`)
+const FEATURE_FIELDS = {
+    sunroof: "sunroof", adas: "adas_available", camera_360: "camera_360", ventilated_seats: "ventilated_front_seats",
+    cruise_control: "cruise_control", wireless_charging: "wireless_charging", heads_up_display: "heads_up_display",
+    android_auto: "android_auto", apple_carplay: "apple_carplay"
+};
+
+// does a reason on the card already say this feature ("Has sunroof, as you asked")? Compared by the feature's column when the reason lists
+// its fields, else by the label in the text.
+function reasonCoversFeature(reasons, key) {
+    const label = String(FEATURE_LABELS[key] || key).toLowerCase();
+    return reasons.some(r => (Array.isArray(r.fields) && r.fields.includes(FEATURE_FIELDS[key]))
+        || String(r.text || "").toLowerCase().includes(label));
+}
+
+// `shown`: the reasons the collapsed card actually shows; a feature tag that repeats one of them is dropped
+function v3Chips(car, personalised, shown = []) {
     const chips = [];
-    (car.matched_features || []).forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
+    (car.matched_features || []).filter(f => !reasonCoversFeature(shown, f))
+        .forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
     const notVerified = car.not_verified || [];
     if (car.safety) {
         const year = car.safety.year ? ` (${car.safety.year})` : "";
@@ -796,14 +851,11 @@ function v3Chips(car, personalised) {
         chips.push({ text: NO_RATING_LABEL, kind: "unverified", icon: ICONS.info });
     }
     if (personalised === false) notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
-    if (car.matching_variant_count) {
-        const n = car.matching_variant_count;
-        chips.push({ text: `${n} matching variant${n === 1 ? "" : "s"}`, kind: "plain", icon: "" });
-    }
     return chips;
 }
 
-function buildV3Card(car, index, hard, personalised, intent) {
+// `quietLabel`: every card in this search meets every requirement, which the turn says once, so the card drops its own label
+function buildV3Card(car, index, hard, personalised, intent, quietLabel = false) {
     const name = `${car.Make} ${car.Model}`;
     const image = car.carImage || "/static/pic.avif";
     const caption = car.imageAttribution
@@ -813,11 +865,15 @@ function buildV3Card(car, index, hard, personalised, intent) {
     const reasons = orderReasons((car.reasons || []).slice(0, MAX_V3_REASONS), intent);
     const link = car.carDekhoLink;
     const also = car.also_available_from;
-    const alsoHtml = also && also["Ex-Showroom_Price"]
-        ? `<p class="also">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
+    const alsoText = also && also["Ex-Showroom_Price"] ? `Also available from ${formatPrice(also["Ex-Showroom_Price"])}${also.variant ? ` (${also.variant})` : ""}` : "";
+    // on phones the line is cut to one row (CSS); the whole text stays in the title
+    const alsoHtml = alsoText
+        ? `<p class="also" title="${escapeHtml(alsoText)}">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
     const detail = Array.isArray(label.detail) && label.detail.length
         ? `<ul class="unmet" aria-label="Requirements this car does not meet or could not confirm">${label.detail.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ul>` : "";
-    const chips = v3Chips(car, personalised);
+    const shownReasons = car.explanation_rag ? [] : reasons.slice(0, V3_REASONS_SHOWN);
+    const chips = v3Chips(car, personalised, shownReasons);
+    const caveat = buildCaveatPill(car);
     const behind = behindCount(car);
     const reviewsId = `reviews-${++reviewsSeq}`;
     const why = car.explanation_rag ? buildWhyRag(car, reasons, reviewsId)
@@ -835,27 +891,27 @@ function buildV3Card(car, index, hard, personalised, intent) {
                         <h3 class="car-title"><a href="${escapeHtml(`/car/${encodeURIComponent(slug(car.Make))}/${encodeURIComponent(slug(car.Model))}`)}">${escapeHtml(name)}</a></h3>
                         ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
                     </div>
-                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span>${buildPriceLink(link)}</p>
+                    <div class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span>${buildPriceLinks(car)}</div>
                 </div>
                 ${alsoHtml}
                 ${buildFacts(car)}
                 <div class="v3-fit">
-                    <p class="fit-label fit-label--${label.key}">${escapeHtml(label.text)}</p>
+                    ${quietLabel ? "" : `<p class="fit-label fit-label--${label.key}">${escapeHtml(label.text)}</p>`}
                     ${detail}
-                    ${buildRatingsLine(car)}
+                    ${buildRatingsOneLine(car)}
                 </div>
                 ${why}
-                ${buildCaveatPill(car)}
                 <div class="car-foot">
-                    ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
+                    ${caveat || chips.length ? `<ul class="tags" aria-label="Caveats, features, safety and what is not verified">${caveat}${buildExtraChips(chips)}</ul>` : ""}
                     <div class="car-actions">
-                        <button type="button" class="btn btn-primary" data-detail aria-expanded="false">View details</button>
+                        <button type="button" class="btn btn-quiet btn-specs" data-detail aria-expanded="false">${DETAIL_LABEL}</button>
                         ${buildCompareButton(car)}
                         ${behind ? buildReviewsToggle(reviewsId, behind) : ""}
                     </div>
                 </div>
             </div>
             ${behind ? `<div class="v3-more" id="${reviewsId}" data-more hidden>
+                ${hasStandingWords(car) ? buildRatingsLine(car) : ""}
                 <div class="evi-grid">${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
                 ${buildCaveats(car)}
             </div>` : ""}
@@ -924,10 +980,23 @@ function buildCompareButton(car) {
     return `<button type="button" class="btn btn-quiet btn-compare" data-compare="${escapeHtml(car.variant_id)}" data-compare-name="${escapeHtml(name)}" data-compare-model="${escapeHtml(car.Model)}" data-compare-variant="${escapeHtml(car.Variant || "")}" aria-label="${escapeHtml(`Compare ${name} ${car.Variant || ""}`.trim())}" aria-pressed="false"><span class="compare-text">Compare</span></button>`;
 }
 
+// Pure: should the tray be a small pill? Yes when none of the selected cars is in the latest results, unless the person opened it
+// (pref "open") or closed it (pref "closed") by hand since the last search or change.
+function trayCollapsed(list, resultIds, pref) {
+    if (pref === "open") return false;
+    if (pref === "closed") return true;
+    const here = resultIds.map(String);
+    return !list.some(x => here.includes(String(x.variant_id)));
+}
+
 // the inner markup of the tray; "" when nothing is selected. Wide screens list the cars as pills; narrow ones show a count.
-function buildCompareTray(list, q, drop, sort) {
+// collapsed: just the "Compare (2)" pill, which opens the tray; the open tray has a button that folds it back.
+function buildCompareTray(list, q, drop, sort, collapsed = false) {
     const n = list.length;
     if (!n) return "";
+    if (collapsed) {
+        return `<button type="button" class="compare-fab" data-compare-expand aria-expanded="false" aria-controls="compare-tray" aria-label="Compare, ${n} car${n === 1 ? "" : "s"} selected. Open the compare bar.">Compare (${n})</button>`;
+    }
     const pills = list.map(x => `<li class="compare-pill"><span>${escapeHtml(compareName(x))}</span><button type="button" data-compare-remove="${escapeHtml(x.variant_id)}" aria-label="Remove ${escapeHtml(`${x.name} ${x.variant || ""}`.trim())}">${ICONS.close}</button></li>`).join("");
     const go = n < 2
         ? '<span class="btn btn-primary" aria-disabled="true">Compare</span>'
@@ -937,6 +1006,7 @@ function buildCompareTray(list, q, drop, sort) {
         ${n < 2 ? '<p class="compare-hint">Pick 1 more car to compare</p>' : `<p class="compare-count">${n} cars selected</p>`}
         <button type="button" class="btn btn-quiet" data-compare-clear aria-label="Clear the comparison">Clear</button>
         ${go}
+        <button type="button" class="compare-fold" data-compare-collapse aria-expanded="true" aria-controls="compare-tray" aria-label="Hide the compare bar">${ICONS.chevron}</button>
     </div>`;
 }
 
@@ -947,6 +1017,22 @@ function compareContext() {
     if (!last) { const u = searchFromUrl(); return { q: u.q, drop: u.drop, sort: u.sort }; }
     const cards = last.querySelector(".cards");
     return { q: last.dataset.q || "", drop: last.dataset.drop || "", sort: cards ? cards.dataset.sort : "" };
+}
+
+let trayPref = "";   // "open" / "closed" after a tap on the pill / the fold button; reset by a new search or a change to the selection
+
+// variant ids of the cards in the latest turn
+function latestResultIds() {
+    const turns = document.querySelectorAll("[data-turn]");
+    const last = turns[turns.length - 1];
+    return last ? [...last.querySelectorAll("[data-compare]")].map(b => b.dataset.compare) : [];
+}
+
+// the page's bottom padding follows what the tray really covers (pill or bar), so the last card's buttons are never hidden
+function syncTrayPadding(tray) {
+    // offsetHeight, not the bounding box: the tray slides in with a transform. The pill also floats above the bottom edge.
+    const covered = tray && !tray.hidden ? Math.ceil(tray.offsetHeight + (parseFloat(getComputedStyle(tray).bottom) || 0)) : 0;
+    document.documentElement.style.setProperty("--tray-h", `${Math.max(covered, 0)}px`);
 }
 
 function renderCompareTray() {
@@ -968,18 +1054,30 @@ function renderCompareTray() {
                 return item ? toggleCompare(list, item) : { list, action: "none", item };
             });
             if (e.target.closest("[data-compare-clear]")) {
+                trayPref = "";
                 saveCompareState([]);
                 refreshCompare();
                 setSearchStatus("Comparison cleared.");
+            }
+            const expand = e.target.closest("[data-compare-expand]");
+            if (expand || e.target.closest("[data-compare-collapse]")) {
+                trayPref = expand ? "open" : "closed";
+                renderCompareTray();
+                const next = tray.querySelector(expand ? "[data-compare-collapse]" : "[data-compare-expand]");
+                if (next) next.focus();
+                setSearchStatus(expand ? "Compare bar opened." : "Compare bar hidden.");
             }
         });
         page.appendChild(tray);
     }
     const list = compareState();
     const ctx = compareContext();
-    tray.innerHTML = buildCompareTray(list, ctx.q, ctx.drop, ctx.sort);
+    const collapsed = trayCollapsed(list, latestResultIds(), trayPref);
+    tray.innerHTML = buildCompareTray(list, ctx.q, ctx.drop, ctx.sort, collapsed);
     tray.hidden = list.length === 0;
+    tray.classList.toggle("compare-tray--collapsed", collapsed);
     document.body.classList.toggle("has-compare-tray", list.length > 0);
+    syncTrayPadding(tray);
 }
 
 // every Compare button mirrors the selection; with 4 selected the others stay focusable but are marked aria-disabled
@@ -1014,6 +1112,7 @@ function changeCompare(change) {
         return;
     }
     if (result.action === "none") return;
+    trayPref = "";
     saveCompareState(result.list);
     refreshCompare();
     const item = before.concat(result.list).find(x => !(result.action === "added" ? before : result.list).some(y => y.variant_id === x.variant_id));
@@ -1100,6 +1199,7 @@ function applySort(turn, key) {
     cards.querySelectorAll(":scope > article.car").forEach(c => { byIndex[c.dataset.rankIndex] = c; });
     sortCars(recs, key).forEach(i => { if (byIndex[i]) cards.appendChild(byIndex[i]); });
     cards.dataset.sort = key;
+    showTurnCount(turn, key);
     turn.querySelectorAll("input[data-sort-key]").forEach(r => { r.checked = r.value === key; });
     turn.querySelectorAll("select[data-sort-select]").forEach(sel => { sel.value = key; });
     const note = turn.querySelector("[data-sort-note]");
@@ -1121,14 +1221,50 @@ function applySort(turn, key) {
     renderCompareTray();
 }
 
+// Pure: true when a search with 2+ cars and at least one requirement has every car meeting every one of them (nothing unmet, nothing
+// unverified). The turn then says so once and the cards drop their own "Meets all your requirements".
+function allMeetEveryRequirement(recs, hard, personalised) {
+    return personalised !== false && hard > 0 && recs.length >= 2
+        && recs.every(c => !(c.violations || []).length && !(c.not_verified || []).length);
+}
+
+function buildAllMeetLine(n) {
+    return `<p class="all-meet">${ICONS.check}<span>All ${n} meet every requirement</span></p>`;
+}
+
+// Pure: the line under a turn's heading, "8 cars · sorted by best match" ("8 closest cars · ..." when the search was relaxed).
+// A single car has nothing to sort.
+function turnCountText(n, relaxed, sortKey) {
+    const noun = `${relaxed ? "closest " : ""}${n === 1 ? "car" : "cars"}`;
+    if (n < 2) return `${n} ${noun}`;
+    const opt = SORT_OPTIONS.find(o => o.key === sortKey) || SORT_OPTIONS[0];
+    return `${n} ${noun} · sorted by ${opt.said}`;
+}
+
 function renderV3Results(box, data, banner, link) {
     const recs = data.recommendations || [];
     const { hard } = understoodChips(data);
     const personalised = data.personalised;
+    const allMeet = allMeetEveryRequirement(recs, hard, personalised);
     sortableRecs.set(box, recs);
     box.innerHTML = banner + buildRelaxedNotice(data) + buildQueryEcho(data) + buildResultsToolbar(data, link, recs.length >= 2)
-        + `<div class="cards" data-sort="best">${recs.map((car, i) => buildV3Card(car, i, hard, personalised, data.intent)).join("")}</div>`
+        + (allMeet ? buildAllMeetLine(recs.length) : "")
+        + `<div class="cards" data-sort="best">${recs.map((car, i) => buildV3Card(car, i, hard, personalised, data.intent, allMeet)).join("")}</div>`
         + buildSourcesFooter(recs, data);
+    const turn = box.closest && box.closest("[data-turn]");
+    if (turn) {
+        turn.dataset.count = String(recs.length);
+        turn.dataset.relaxed = data.relaxation ? "1" : "";
+        showTurnCount(turn, "best");
+    }
+}
+
+function showTurnCount(turn, sortKey) {
+    const el = turn.querySelector("[data-turn-count]");
+    if (!el) return;
+    const n = Number(turn.dataset.count) || 0;
+    el.textContent = n ? turnCountText(n, Boolean(turn.dataset.relaxed), sortKey) : "";
+    el.hidden = !n;
 }
 
 // --- car detail (inline panel under a card, and the /car/<make>/<model> permalink page) ---
@@ -1189,10 +1325,10 @@ function buildVariantsTable(data, hasQuery) {
                 return `<tr data-variant-id="${v.variant_id}" class="${v.matches_query ? "is-match" : ""}${selected ? " is-selected" : ""}"${selected ? ' aria-current="true"' : ""}${visible.includes(v) ? "" : " data-extra hidden"}>
                     <td><button type="button" class="variant-pick" data-variant-id="${v.variant_id}" aria-pressed="${selected}">${escapeHtml(v.variant)}</button>
                         ${v.matches_query ? '<span class="match-badge">Matches your search</span>' : ""}</td>
-                    <td>${formatPrice(v.price)}</td>
-                    <td>${escapeHtml(v.transmission_label)}</td>
-                    <td>${escapeHtml(v.fuel_label)}</td>
-                    <td>${escapeHtml(variantMileage(v))}</td>
+                    <td class="variant-meta" data-label="Price">${formatPrice(v.price)}</td>
+                    <td class="variant-meta" data-label="Gearbox">${escapeHtml(v.transmission_label)}</td>
+                    <td class="variant-meta" data-label="Fuel">${escapeHtml(v.fuel_label)}</td>
+                    <td class="variant-meta" data-label="Mileage">${escapeHtml(variantMileage(v))}</td>
                 </tr>`;
             }).join("")}</tbody>
         </table></div>${toggle}`;
@@ -1406,13 +1542,15 @@ function bindVariantPicks(body, opts) {
     });
 }
 
+const DETAIL_LABEL = "Specs & variants";
+
 function toggleDetail(button) {
     const card = button.closest("article.car");
     const turn = card.closest("[data-turn]");
     const open = card.nextElementSibling && card.nextElementSibling.matches(".detail") ? card.nextElementSibling : null;
     const close = (panel, btn) => {
         btn.setAttribute("aria-expanded", "false");
-        btn.textContent = "View details";
+        btn.textContent = DETAIL_LABEL;
         panel.classList.remove("open");
         const remove = () => panel.remove();
         if (prefersReducedMotion()) remove(); else setTimeout(remove, 350);
@@ -1428,7 +1566,7 @@ function toggleDetail(button) {
     const panel = card.nextElementSibling;
     button.setAttribute("aria-expanded", "true");
     button.setAttribute("aria-controls", id);
-    button.textContent = "Hide details";
+    button.textContent = "Hide specs & variants";
     requestAnimationFrame(() => panel.classList.add("open"));
     const opts = {
         make: card.dataset.makeSlug, model: card.dataset.modelSlug,
@@ -1507,6 +1645,7 @@ function appendTurn(query, drop) {
     thread.insertAdjacentHTML("beforeend", `
         <section data-turn="${id}" class="turn">
             <h2 data-turn-heading tabindex="-1" class="turn-head"><span class="turn-label">You searched for</span><span class="turn-query">“${escapeHtml(query)}”</span></h2>
+            <p class="turn-count" data-turn-count hidden></p>
             <div data-turn-body class="turn-body"></div>
         </section>`);
     while (thread.children.length > MAX_TURNS) thread.firstElementChild.remove();
@@ -1514,6 +1653,8 @@ function appendTurn(query, drop) {
     turn.dataset.q = query;
     turn.dataset.drop = drop.join(",");
     document.getElementById("followup").hidden = false;
+    const page = document.querySelector(".results-page");
+    if (page) page.classList.add("has-turns");   // phones: the top box's example searches step aside (CSS); the follow-up box has its own
     fitSearchBox(document.getElementById("followupQuery"));
     return turn;
 }
@@ -1521,6 +1662,8 @@ function appendTurn(query, drop) {
 function clearThread() {
     document.getElementById("results").innerHTML = "";
     document.getElementById("followup").hidden = true;
+    const page = document.querySelector(".results-page");
+    if (page) page.classList.remove("has-turns");
 }
 
 // One polite sentence per search goes to the visually hidden status line; the results themselves are not a live region.
@@ -1554,7 +1697,10 @@ function linkCarTitles(box, query, drop) {
     box.querySelectorAll("article.car").forEach(card => {
         const a = card.querySelector(".car-title a");
         // the card's own variant, so the car page opens on the one the card showed (not the model's cheapest)
-        if (a) a.href = detailUrl("/car", { make: card.dataset.makeSlug, model: card.dataset.modelSlug, q: query, drop, variantId: Number(card.dataset.variantId) || null });
+        const opts = { make: card.dataset.makeSlug, model: card.dataset.modelSlug, q: query, drop, variantId: Number(card.dataset.variantId) || null };
+        if (a) a.href = detailUrl("/car", opts);
+        const variants = card.querySelector("[data-variants-link]");   // the same page, opened at its variants section
+        if (variants) variants.href = `${detailUrl("/car", opts)}#detail-variants`;
     });
 }
 
@@ -1574,6 +1720,9 @@ async function runSearch(query, drop = [], push = true, sort = "") {
     // the first turn sits right under the top box; later turns are scrolled into view, again once
     // their results are in (the page may be too short to bring the heading up before that)
     const scroll = Boolean(turn.previousElementSibling);
+    // on a phone the first search also brings its heading up under the header once the results are in, unless the user scrolled meanwhile
+    const phone = window.matchMedia("(max-width: 767px)").matches;
+    const startY = window.scrollY;
 
     const box = turn.querySelector("[data-turn-body]");
     setSearchStatus("Searching…");
@@ -1594,11 +1743,14 @@ async function runSearch(query, drop = [], push = true, sort = "") {
         linkCarTitles(box, query, drop);
         if (sort && sort !== "best") applySort(turn, sort);
         syncCompareButtons(box);
-        renderCompareTray();   // the tray's link follows the latest search
+        trayPref = "";
+        renderCompareTray();   // the tray's link follows the latest search, and it folds to a pill when none of its cars is in these results
         setSearchStatus(searchStatusText(data, response.ok, query));
         if (scroll) {
             scrollToTurn(turn);
             turn.querySelector("[data-turn-heading]").focus({ preventScroll: true });  // later searches: keyboard and screen-reader users land on the new results
+        } else if (phone && response.ok && Math.abs(window.scrollY - startY) < 8) {
+            scrollToTurn(turn);
         }
     } catch (error) {
         stopLoading();
@@ -1759,6 +1911,7 @@ function initNewCarPage() {
         if (control) applySort(control.closest("[data-turn]"), control.value);
     });
     refreshCompare();
+    window.addEventListener("resize", () => syncTrayPadding(document.getElementById("compare-tray")));
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {
         const input = box.closest("form").querySelector("input, textarea");
@@ -1924,6 +2077,34 @@ function initSearchBoxes() {
     });
 }
 
+// --- compare page on a phone: which cars are in view ("Cars 1–2 of 4") and a fade at the right edge while more columns wait ---
+function initComparePage() {
+    const frame = document.querySelector("[data-compare-frame]");
+    const scroller = frame && frame.querySelector(".compare-scroll");
+    if (!scroller) return;
+    const label = document.querySelector("[data-compare-range]");
+    const cols = [...scroller.querySelectorAll("thead th[scope=col]")];
+    const update = () => {
+        const wide = scroller.scrollWidth > scroller.clientWidth + 2;
+        frame.classList.toggle("has-more", wide && scroller.scrollLeft + scroller.clientWidth < scroller.scrollWidth - 2);
+        if (!label) return;
+        label.hidden = !wide;
+        if (!wide) return;
+        const box = scroller.getBoundingClientRect();
+        const corner = scroller.querySelector(".compare-corner");
+        const from = box.left + (corner ? corner.getBoundingClientRect().width : 0);
+        // a car counts as in view when at least half of its column is beside the label column
+        const seen = cols.map((c, i) => [i + 1, c.getBoundingClientRect()])
+            .filter(([, r]) => Math.min(r.right, box.right) - Math.max(r.left, from) >= r.width / 2).map(([n]) => n);
+        if (!seen.length) return;
+        const first = seen[0], last = seen[seen.length - 1];
+        label.textContent = first === last ? `Car ${first} of ${cols.length}` : `Cars ${first}–${last} of ${cols.length}`;
+    };
+    scroller.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+}
+
 // --- theme: one control on every page. auto follows the OS; light and dark are set on <html data-theme>.
 // The saved choice is applied before first paint by templates/_theme_head.html; this wires the button.
 const THEME_KEY = "carrec-theme";
@@ -1955,4 +2136,5 @@ function initTheme() {
 if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", initSearchBoxes);
     document.addEventListener("DOMContentLoaded", initTheme);
+    document.addEventListener("DOMContentLoaded", initComparePage);
 }

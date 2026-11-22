@@ -129,7 +129,12 @@ def _owners_cell(model: str, evidence) -> tuple[dict, float | None]:
     return _cell(text), None if low else float(st["rating"])   # a thin sample is shown but never wins
 
 
-def get_compare(ids: list[int], app_root_path: str = ".") -> dict:
+def differing_rows(rows: list[dict]) -> list[dict]:
+    """The rows whose cells do not all show the same text ("Show differences only"). Display only: nothing is re-ranked."""
+    return [r for r in rows if len({c["display"] for c in r["cells"]}) > 1]
+
+
+def get_compare(ids: list[int], app_root_path: str = ".", diff: bool = False) -> dict:
     from services.recsys.evidence import get_evidence
 
     cat = get_catalogue()
@@ -184,4 +189,8 @@ def get_compare(ids: list[int], app_root_path: str = ".") -> dict:
         own = [_owners_cell(r["model"], evidence) for r in rows]
         add("Owners", [x[0] for x in own], mark_best([x[1] for x in own], True, TOLERANCE["rating"]))
 
-    return {"cars": cars, "rows": out_rows, "missing": missing, "data_as_of": data_as_of()}
+    total = len(out_rows)
+    if diff:
+        out_rows = differing_rows(out_rows)
+    return {"cars": cars, "rows": out_rows, "missing": missing, "data_as_of": data_as_of(),
+            "diff": diff, "all_equal": bool(diff and total and not out_rows)}

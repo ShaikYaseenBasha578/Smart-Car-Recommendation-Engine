@@ -218,7 +218,7 @@ def detail_checks(page, base, tag, w, shots):
     panel_btn = page.locator("article.car").first.locator("[data-detail]")
     panel_btn.click()
     page.wait_for_timeout(450)
-    check(f"{tag} [detail]: panel collapses", page.locator(".cards > .detail").count() == 0 and panel_btn.inner_text() == "View details")
+    check(f"{tag} [detail]: panel collapses", page.locator(".cards > .detail").count() == 0 and panel_btn.inner_text() == "Specs & variants")
 
     # CNG: no kmpl presented as CNG mileage; km/kg always labelled (CNG)
     predict(page, lambda: page.goto(base + "/recommend?q=" + quote(CARD_QUERIES["cng"])))
@@ -374,14 +374,22 @@ def run(base, shots):
             check(f"{tag}: match labels", labels and all(l in ("Great match", "Good match", "Fair match") for l in labels), labels[:3])
             reasons = [c.locator(".reasons li").count() for c in cards.all()]
             check(f"{tag}: at most 4 reasons per card", all(n <= 4 for n in reasons), reasons)
-            check(f"{tag}: feature chip (Sunroof)", page.locator(".tag--feature", has_text="Sunroof").count() > 0)
-            check(f"{tag}: matching_variant_count chip", page.locator(".tag", has_text=re.compile(r"\d+ matching variants?")).count() > 0)
+            # a feature tag that repeats a shown reason is dropped, so the sunroof is a reason ("Has sunroof, as you asked") or a tag
+            check(f"{tag}: sunroof shown once, as a reason or a tag",
+                  page.locator(".tag--feature", has_text="Sunroof").count() + page.locator(".reasons--v3 li", has_text=re.compile("sunroof", re.I)).count() > 0)
+            vlink = first.locator("[data-variants-link]")
+            check(f"{tag}: matching variants is a link to the car page's variants section",
+                  vlink.count() == 1 and re.search(r"\d+ matching variants?", vlink.inner_text()) and vlink.get_attribute("href").endswith("#detail-variants")
+                  and "q=" in vlink.get_attribute("href"), vlink.get_attribute("href") if vlink.count() else None)
+            counts = page.locator("[data-turn-count]").first.inner_text()
+            check(f"{tag}: count line under the heading", re.fullmatch(r"\d+ (closest )?cars?( · sorted by .+)?", counts) is not None, counts)
             check(f"{tag}: safety chip or no-rating chip", page.locator(".tag--safety").count() + page.locator(".tag", has_text="No crash-test rating on record").count() > 0)
             link = first.locator(".car-price a.price-link")
             check(f"{tag}: on-road price is a quiet external link under the price",
                   link.inner_text().startswith("On-road price on CarDekho") and link.get_attribute("target") == "_blank"
                   and "new tab" in link.inner_text())
-            check(f"{tag}: View details is the primary button", first.locator(".car-actions .btn-primary[data-detail]").count() == 1)
+            check(f"{tag}: Specs & variants is a quiet button, no filled button on the card",
+                  first.locator(".car-actions .btn-quiet[data-detail]").inner_text() == "Specs & variants" and first.locator(".car-actions .btn-primary").count() == 0)
             check(f"{tag}: results thread is not a live region", page.locator("#results[aria-live]").count() == 0)
             check(f"{tag}: data stamp", page.locator(".data-stamp").count() == 1)
             check(f"{tag}: copy link button", page.locator("[data-copy-link]").count() == 1)
