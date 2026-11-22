@@ -22,7 +22,7 @@
                 <form class="search" action="{{ url_for('recommend_page') }}" method="get" role="search" onsubmit="return this.q.value.trim() !== ''">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
                     <label for="search" class="sr-only">Describe the car you want</label>
-                    <input id="search" name="q" type="search" autocomplete="off" placeholder="e.g. safe family SUV under 15 lakh with good mileage">
+                    <textarea id="search" name="q" rows="1" enterkeyhint="search" autocomplete="off" placeholder="e.g. family SUV under 15 lakh"></textarea>
                     <button type="submit" class="btn btn-primary">Find cars</button>
                 </form>
                 <div data-suggestions class="chips chips--hero" aria-label="Example searches"></div>

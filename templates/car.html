@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car details | CarRec</title>
+    <title>{{ page_title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -11,7 +11,9 @@
     <main class="car-page">
         <div class="wrap">
             <p class="back-link"><a href="{{ url_for('recommend_page') }}{% if request.query_string %}?{{ request.query_string.decode() }}{% endif %}">← Back to search</a></p>
-            <article id="car-detail" class="detail-body detail-body--page" aria-live="polite"></article>
+            <article id="car-detail" class="detail-body detail-body--page">{% if not_found %}
+                <div class="state"><h1>We don't have that car</h1><p>It may be discontinued or the link is wrong.</p><p><a class="btn btn-primary" href="{{ url_for('recommend_page') }}">Search cars</a></p></div>
+            {% endif %}</article>
         </div>
     </main>
     <footer class="site-footer">
