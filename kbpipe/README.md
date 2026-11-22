@@ -7,6 +7,7 @@ One run does five things:
 1. **Discovery.** Reads the brand pages of CarWale and CarDekho and compares them with the KB: new models, new variants, models and variants no longer listed, changed prices and specs.
 2. **Extraction.** Reads the structured data both sites embed in their pages. No LLM is used for this. Every value keeps its URL, fetch time and method.
 3. **Reconciliation.** Applies the precedence rule and logs every disagreement.
+   - Near-range rule (owner decision 22 Nov 2026): for `claimed_ev_range_km` only, when CarWale and CarDekho differ by 10 km or less, the higher figure is taken (reason stays AGGREGATOR_AGREED_UNVERIFIED; the lower source is recorded as confirmed with `near_gap_km`, and the pair is logged as a non-high `near_take_higher` conflict). Gaps above 10 km stay a held CONFLICT. A brochure value still wins over both sites. A stored value that differs from the chosen figure goes to review, never auto-changed. No other field uses this rule.
 4. **Verification.** A separate step sends sampled values back to their sources and asks a different model whether the source supports them.
 5. **Gates and report.** Four scripted checks decide whether the staged changes reach the KB. Then it writes the summary and the review file.
 

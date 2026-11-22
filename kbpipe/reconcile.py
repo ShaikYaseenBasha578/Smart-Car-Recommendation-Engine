@@ -104,6 +104,21 @@ def decide(field, candidates, cfg):
                "value": F.norm(field, c["value"])} for c in sources]
         ev.sort(key=lambda e: e["decision"] != "accepted")
         return {"status": "VALUE", "value": val, "reason": "AGGREGATOR_AGREED_UNVERIFIED", "evidence": ev, "conflict": cf}
+    near = (cfg.get("near_take_higher_km") or {}).get(field)
+    if near is not None:
+        # Owner decision 2026-11-22: for this field only, two aggregators within `near` km take the HIGHER value.
+        vals = [F.norm(field, c["value"]) for c in sources]
+        gap = max(vals) - min(vals)
+        if gap <= near:
+            hi = max(range(len(sources)), key=lambda i: vals[i])
+            val = vals[hi]
+            ev = [{"obs": sources[hi]["obs"], "decision": "accepted", "value": val}]
+            # "confirmed" (not a new label): dashboard/report queries count only accepted/confirmed evidence
+            ev += [dict({"obs": c["obs"], "decision": "confirmed", "value": vals[i]}, **({"near_gap_km": gap} if vals[i] != val else {}))
+                   for i, c in enumerate(sources) if i != hi]
+            cf = conflict("near_take_higher", val)
+            cf["high"] = False
+            return {"status": "VALUE", "value": val, "reason": "AGGREGATOR_AGREED_UNVERIFIED", "evidence": ev, "conflict": cf}
     if all(agree(field, first["value"], c["value"], agree_tol) for c in sources[1:]):
         val = F.norm(field, first["value"])
         ev = [{"obs": first["obs"], "decision": "accepted", "value": val}]

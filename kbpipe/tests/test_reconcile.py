@@ -86,3 +86,40 @@ def test_real_gearbox_disagreements_are_still_conflicts():
     assert R.decide("transmission", [A("Manual"), B("Automatic")], CFG)["status"] == "NULL"
     assert R.decide("transmission", [A("DCT"), B("CVT")], CFG)["status"] == "NULL"
     assert R.decide("transmission", [A("AMT"), B("Manual")], CFG)["conflict"]["high"] is True
+
+
+NCFG = dict(CFG, near_take_higher_km={"claimed_ev_range_km": 10})
+EV = "claimed_ev_range_km"
+
+
+def test_near_range_takes_higher():
+    for lo_hi, want in (((331, 332), 332), ((332, 331), 332), ((310, 320), 320), ((330, 330), 330)):
+        d = R.decide(EV, [A(lo_hi[0]), B(lo_hi[1])], NCFG)
+        assert d["status"] == "VALUE" and d["value"] == want and d["reason"] == "AGGREGATOR_AGREED_UNVERIFIED"
+        assert d["evidence"][0]["decision"] == "accepted"
+    d = R.decide(EV, [A(331), B(332)], NCFG)
+    assert d["evidence"][0]["obs"] == "b" and d["evidence"][1] == {"obs": "a", "decision": "confirmed", "value": 331, "near_gap_km": 1}
+    assert d["conflict"]["kind"] == "near_take_higher" and d["conflict"]["high"] is False
+
+
+def test_near_range_larger_gaps_stay_conflict():
+    for pair in ((522, 542), (456, 375)):
+        d = R.decide(EV, [A(pair[0]), B(pair[1])], NCFG)
+        assert d["status"] == "NULL" and d["reason"] == "CONFLICT"
+
+
+def test_near_range_brochure_wins():
+    d = R.decide(EV, [O(325), A(331), B(332)], NCFG)
+    assert d["value"] == 325 and d["reason"] == "OEM_BROCHURE"
+
+
+def test_near_range_other_field_unchanged():
+    d = R.decide("power_bhp", [A(100), B(110)], NCFG)
+    assert d["reason"] == "CONFLICT"
+    d = R.decide("power_bhp", [A(87), B(86.6)], NCFG)
+    assert d["value"] == 87
+
+
+def test_near_range_existing_differing_value_goes_to_review():
+    d = R.decide(EV, [A(331), B(332)], NCFG)
+    assert R.route(d, True, 331, EV) == "REVIEW_CHANGE"

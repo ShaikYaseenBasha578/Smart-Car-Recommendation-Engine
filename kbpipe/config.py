@@ -26,6 +26,8 @@ DEFAULTS = {
     "refresh_days": {"listing": 0.5, "model_page": 1, "price": 30, "spec": 90, "brochure": 90},
     "link_price_tolerance": 0.005,
     "agree_tolerance": 0.01,
+    # Owner decision 2026-11-22: EV claimed range, two aggregators within this many km -> take the higher value (this field only)
+    "near_take_higher_km": {"claimed_ev_range_km": 10},
     "model_aliases": {},
     # scope (D-scope in the design spec): makes already in the KB, base price cap in rupees
     "scope_makes": ["Honda", "Hyundai", "Kia", "MG", "Mahindra", "Maruti Suzuki", "Nissan", "Renault", "Skoda",
