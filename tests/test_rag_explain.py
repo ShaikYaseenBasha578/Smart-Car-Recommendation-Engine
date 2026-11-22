@@ -461,3 +461,22 @@ def test_eval_latency_summary_counts_live_calls_only():
     assert s["calls"] == 4 and s["max"] == 9000 and s["p50"] in (3000, 5000)
     assert s["over_ms"] == {"2000": 3, "4000": 2, "6000": 1, "8000": 1}
     assert ev.latency_summary([{"rag": {"cached": True, "latency_ms": None}}]) == {"calls": 0}
+
+
+def test_rejects_sentence_citing_only_the_query():
+    fs = facts()
+    q = fid(fs, "Your query asked for")
+    out, why = check([f"It meets your requirement for an SUV under ₹15 lakh. [{q}]"], fs)
+    assert out is None and "query_only_citation" in why
+
+
+def test_fit_claim_needs_every_requirement_met():
+    fs = facts()
+    price, q = fid(fs, "Ex-showroom"), fid(fs, "Your query asked for")
+    p = next(f for f in fs if f.id == price).text.split(": ", 1)[1].split(" (")[0]
+    sent = [f"At {p} ex-showroom it fits your request. [{price},{q}]"]
+    unmet = R.check_car(sent, R.CarContext("7", "Hyundai", "Creta", fs, fully_met=False), NAMES)
+    assert unmet[0] is None and "fit_claim_with_unmet_requirement" in unmet[1]
+    met = R.check_car(sent, R.CarContext("7", "Hyundai", "Creta", fs, fully_met=True), NAMES)
+    assert met[0] is not None, met[1]
+
