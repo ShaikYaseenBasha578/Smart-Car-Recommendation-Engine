@@ -9,6 +9,7 @@ import json
 import re
 
 from . import common as c
+from .. import fields as F
 
 NAME = "carwale"
 BASE = "https://www.carwale.com"
@@ -73,6 +74,40 @@ def _items(lst):
     return d
 
 
+RANGE_LABELS = ("Driving Range", "Range", "Expected Range")   # itemId 459 is "Expected Range" on version pages
+RANGE_ITEM_ID, BATTERY_ITEM_ID = 459, 466
+_PLAIN_NUM = re.compile(r"\d+(?:\.\d+)?")
+
+
+def _ev_range(v, name):
+    """Claimed EV range (km) from this version's own specsSummary only (never the model-level mileage/keySpecs/FAQ
+    blocks). Needs unit km (or no unit and a plain number) and a value inside the schema's plausible range.
+    Dropped when a pack size in the version name (e.g. "59.0 kWh") differs by > 1 kWh from the version's Battery
+    Capacity item: CarWale has served another pack's payload under such a name. Missing capacity never blocks."""
+    items = [it for it in (v.get("specsSummary") or []) if isinstance(it, dict)]
+    cand = [it for it in items if it.get("itemId") == RANGE_ITEM_ID] or \
+           [it for it in items if (it.get("itemName") or "").strip() in RANGE_LABELS]
+    if not cand:
+        return None
+    it = cand[0]
+    val, unit = str(it.get("value") or "").strip().replace(",", ""), (it.get("unitType") or "").strip().lower()
+    if not _PLAIN_NUM.fullmatch(val) or unit not in ("km", ""):
+        return None
+    rng = float(val)
+    lo, hi = F.RANGES["claimed_ev_range_km"]
+    if not lo <= rng <= hi:
+        return None
+    m = re.search(r"(\d+(?:\.\d+)?)\s*kwh", name, re.I)
+    if m:
+        for b in items:
+            if b.get("itemId") == BATTERY_ITEM_ID or (b.get("itemName") or "").strip() == "Battery Capacity":
+                cap = c.num(b.get("value"))
+                if cap and abs(cap - float(m.group(1))) > 1:
+                    return None
+                break
+    return rng
+
+
 def _map_version(v):
     """KB fields from one version dict. Only what the payload states for this versionId."""
     name = (v.get("versionName") or "").strip()
@@ -94,9 +129,10 @@ def _map_version(v):
             f["mileage_arai_km_per_kg"] = c.num(mil)
         elif "kmpl" in unit.lower() or "km/l" in unit.lower():
             f["mileage_arai_kmpl"] = c.num(mil)
-    rng = g(sp, "Driving Range") or g(sp, "Range")
-    if fuel == "Electric" and rng:
-        f["claimed_ev_range_km"] = c.num(rng)
+    if fuel == "Electric":
+        rng = _ev_range(v, name)
+        if rng is not None:
+            f["claimed_ev_range_km"] = rng
     f["airbags"] = c.num(g(ft, "Airbags"))
     f["hill_assist"] = c.yes_no(g(ft, "Hill Hold Control"))
     f["cruise_control"] = c.yes_no(g(ft, "Cruise Control"))
