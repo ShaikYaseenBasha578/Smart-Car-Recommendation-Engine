@@ -735,3 +735,56 @@ def test_car_page_with_a_search_shows_reviewer_owner_and_caveat_blocks_under_sum
     assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {**opts, "q": ""})  # no search, no blocks
     assert "What reviewers say" not in render_detail(detail_data(reviews=None), opts)                # model not on the card list
     assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {"make": "tata", "model": "nexon", "q": "suv"})  # inline panel
+
+
+# ---- didn't-use chips, relaxed notice with alternatives, uncovered brand notice
+
+def test_ignored_terms_chip():
+    html = render(response([car()], ignored_terms=["convertible", "4x4 / AWD"]))
+    import html as H
+    text = H.unescape(html)
+    assert html.count("echo--ignored") == 2 and "Didn't use: convertible" in text and "Didn't use: 4x4 / AWD" in text
+    assert "We can't filter on this yet, so it didn't change the results." in text
+    assert "echo-off" not in html.split("echo--ignored")[1].split("</li>")[0]
+    assert "echo--ignored" not in render(response([car()], ignored_terms=[]))
+
+
+RELAX = {"moves": [{"key": "fuel", "label": "any fuel type"}, {"key": "seats", "label": "5+ seats instead of 7+"}],
+         "keys": ["fuel", "seats"], "far": False, "seats_relaxed": True,
+         "message": "No car is confirmed to have all of: x. Showing the closest. Not confirmed in our data for the cars shown: sunroof, ADAS.",
+         "alternatives": [{"key": "feature:sunroof", "label": "sunroof", "models": 3}, {"key": "budget", "label": "budget", "models": 1}]}
+
+
+def test_relaxed_notice_pills_and_alternatives():
+    html = render(response([car()], relaxation=RELAX, message="m"))
+    assert "No car matches everything you asked for." in html
+    assert html.count('class="relax-pill"') == 2 and "any fuel type" in html and "5+ seats instead of 7+" in html
+    assert "Not confirmed for the cars shown: sunroof, ADAS." in html
+    assert "Or drop one requirement instead:" in html
+    assert 'data-drop-key="feature:sunroof"' in html and "sunroof <span" in html and "3 models" in html
+    assert 'data-drop-key="budget"' in html and "1 model<" in html
+
+
+def test_relaxed_notice_far_and_no_alternatives():
+    html = render(response([car()], relaxation={**RELAX, "far": True, "alternatives": []}))
+    assert "Nothing close exists in our catalogue; these are the nearest cars." in html
+    assert "Or drop one requirement" not in html
+
+
+def test_relaxed_notice_old_shape_still_renders():
+    html = render(response([car()], relaxation={"message": "Old message here", "keys": []}))
+    assert "Old message here" in html
+
+
+def test_uncovered_brand_notice_with_budget():
+    intent = {"budget": {"min": None, "max": 1000000}, "body_types": [], "transmission": {"family": None}}
+    html = render(response([car()], intent=intent, unsupported_terms=["Ferrari"]))
+    import html as H
+    text = H.unescape(html)
+    assert "We don't cover Ferrari." in text and "Showing cars under ₹10L instead." in text
+
+
+def test_uncovered_brand_notice_nothing_understood():
+    intent = {"budget": {"min": None, "max": None}, "body_types": [], "transmission": {"family": None}}
+    html = render(response([car()], intent=intent, unsupported_terms=["Ferrari"]))
+    assert "Showing general picks instead." in html and "We don" in html

@@ -24,6 +24,7 @@ from services.recsys.criteria import catalogue_reference
 from services.recsys.diversify import diversify
 from services.recsys.evidence import Evidence, get_evidence
 from services.recsys.explain import explain, not_verified_labels
+from services.recsys.ignored import ignored_terms
 from services.recsys.relax import find_relaxation, format_rupees, violations_for
 from services.recsys.score import score_candidates
 from services.recsys.weights import build_weights
@@ -116,6 +117,18 @@ def _drop_table(intent: dict) -> List[Tuple[str, str, dict]]:
             rows.append((f"assumed:{kind}", f"assumed {kind.replace('_types', '')} {'/'.join(guess)}",
                          without(assumed={**rest, kind: []})))
     return rows
+
+
+def _relaxation_alternatives(intent: dict, df: pd.DataFrame, relaxed_keys) -> List[dict]:
+    """Single constraints the shopper could give up instead, each with how many distinct models it would open up."""
+    out = []
+    for key, label, new_intent in _drop_table(intent):
+        if key.startswith("assumed:") or key in relaxed_keys:
+            continue
+        n = int(filter_candidates(new_intent, df)["model"].nunique())
+        if n > 0:
+            out.append({"key": key, "label": label, "models": n})
+    return out
 
 
 def apply_drops(intent: dict, drop_keys) -> Tuple[dict, List[dict]]:
@@ -287,11 +300,13 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
     app_root = str(app_root_path or APP_ROOT)
     meta = get_meta()
 
+    ignored: List[str] = []
     if intent is not None:
         parsed, llm_info = intent, {"used": False, "accepted": [], "rejected": 0, "latency_ms": None,
                                     "reason": "intent_supplied", "cached": False}
     else:
         parsed, residual = parse_intent_ex(query)
+        ignored = ignored_terms(residual)
         # optional LLM parser (env LLM_PARSER=on): only adds evidence-quoted constraints for what the rules left unexplained
         parsed, llm_info = llm_parse.refine(query, parsed, residual)
     intent, dropped = apply_drops(parsed, drop)
@@ -307,6 +322,7 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         "llm": {k: v for k, v in llm_info.items() if k != "rejected_detail"},
         "corrections": list(intent.get("corrections") or []),  # typos read as vocabulary words ("automtic" -> "automatic")
         "covered_makes": sorted(df["make"].unique().tolist()),
+        "ignored_terms": ignored,
     }
     assumed = {k: v for k, v in (intent.get("assumed") or {}).items() if v} if isinstance(intent.get("assumed"), dict) else {}
     vague = bool(intent.get("vague"))
@@ -399,7 +415,8 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         response["message"] = " ".join(filter(None, [unsupported_note, VAGUE_MESSAGE]))
     if relaxation:
         response["relaxation"] = {"moves": relaxation["moves"], "keys": relaxed_keys, "far": relaxation["far"],
-                                  "seats_relaxed": relaxation["seats_relaxed"], "message": relaxation["message"]}
+                                  "seats_relaxed": relaxation["seats_relaxed"], "message": relaxation["message"],
+                                  "alternatives": _relaxation_alternatives(intent, df, relaxed_keys)}
         response["message"] = " ".join(filter(None, [unsupported_note, relaxation["message"]]))
     elif unsupported_note and "no_confirmed" not in response:
         response["message"] = unsupported_note + " Showing the closest matches."

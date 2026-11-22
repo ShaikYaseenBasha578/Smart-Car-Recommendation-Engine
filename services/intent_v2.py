@@ -111,6 +111,16 @@ UNSUPPORTED_BRAND_PATTERNS = [
     ("Fiat", r"fiat"),
     ("Chevrolet", r"chevrolet|chevy"),
     ("Datsun", r"datsun"),
+    ("Ferrari", r"ferrari"),
+    ("Lamborghini", r"lamborghini"),
+    ("Rolls-Royce", r"rolls[\s-]*royce"),
+    ("Bentley", r"bentley"),
+    ("Aston Martin", r"aston\s*martin"),
+    ("Maserati", r"maserati"),
+    ("McLaren", r"mc\s*laren"),
+    ("Lotus", r"lotus"),
+    ("Tesla", r"tesla"),
+    ("VinFast", r"vin\s*fast"),
 ]
 
 # Vague wishes -> soft preferences (ranking boosts only, never filters).
