@@ -165,23 +165,27 @@ def find_model(make_slug: str, model_slug: str) -> pd.DataFrame | None:
     return None if rows.empty else rows
 
 
-def _query_matches(q: str, drop: list[str], model: str) -> tuple[set[int], int | None]:
-    """(variant_ids of this model passing the query's filters, the variant /predict would show)."""
+REVIEW_KEYS = ("expert_notes", "owner_notes", "caveats", "expert_standing", "owner_standing", "scores")
+
+
+def _query_matches(q: str, drop: list[str], model: str) -> tuple[set[int], int | None, dict | None]:
+    """(variant_ids of this model passing the query's filters, the variant /predict would show, that model's v3 card or None)."""
     intent, _ = apply_drops(parse_intent(q), drop)
     candidates = filter_candidates(intent, get_catalogue())
     mine = candidates[candidates["model"] == model]
     if mine.empty:
-        return set(), None
-    shown = _v3_card_variant(q, drop, model) if ranker_name() == "v3" else None
+        return set(), None, None
+    card = _v3_card(q, drop, model) if ranker_name() == "v3" else None
+    shown = int(card["variant_id"]) if card is not None else None
     if shown is not None and shown in set(mine["variant_id"].astype(int)):
-        return set(mine["variant_id"].astype(int)), shown
+        return set(mine["variant_id"].astype(int)), shown, card
     ranked, _ = rank_candidates(intent, candidates)
     best = ranked.loc[ranked["model"] == model, "variant_id"]
-    return set(mine["variant_id"].astype(int)), int(best.iloc[0])
+    return set(mine["variant_id"].astype(int)), int(best.iloc[0]), None
 
 
-def _v3_card_variant(q: str, drop: list[str], model: str) -> int | None:
-    """The variant the v3 engine shows on this model's card for the query (None when the model is not in the list)."""
+def _v3_card(q: str, drop: list[str], model: str) -> dict | None:
+    """The card the v3 engine shows for this model and query (None when the model is not in the list)."""
     from services.recsys.api import recommend
     try:
         response = recommend(q, drop=drop or None)
@@ -189,8 +193,13 @@ def _v3_card_variant(q: str, drop: list[str], model: str) -> int | None:
         return None
     for card in response.get("recommendations") or []:
         if card.get("Model") == model and card.get("variant_id") is not None:
-            return int(card["variant_id"])
+            return card
     return None
+
+
+def _reviews(card: dict | None) -> dict | None:
+    """The card's stored review notes, read-only: what the result card's expanded panel draws (None without a card)."""
+    return None if card is None else {k: card.get(k) for k in REVIEW_KEYS}
 
 
 def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str] | None = None,
@@ -201,7 +210,7 @@ def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str]
     rows = rows.sort_values(["price_ex_showroom", "variant_id"])
     first = rows.iloc[0]
 
-    matching, best = _query_matches(q, drop or [], first["model"]) if q.strip() else (set(), None)
+    matching, best, card = _query_matches(q, drop or [], first["model"]) if q.strip() else (set(), None, None)
     ids = set(rows["variant_id"].astype(int))
     if variant_id in ids:
         selected = variant_id
@@ -245,6 +254,7 @@ def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str]
         "data_as_of": data_as_of(),
         "summary": build_summary(rows, TRANSMISSION_LABELS),
         "query": {"q": q, "drop": drop or [], "matching_variant_count": len(matching)} if q.strip() else None,
+        "reviews": _reviews(card),
         "variants": variants,
         "selected_variant_id": selected,
         "specs": [
