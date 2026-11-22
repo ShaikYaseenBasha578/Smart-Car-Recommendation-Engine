@@ -231,7 +231,9 @@ def _mask(text: str, match: re.Match) -> str:
     return text[:match.start()] + " " * (match.end() - match.start()) + text[match.end():]
 
 
-def _is_negated(text: str, start: int, end: int) -> bool:
+def _is_negated(text: str, start: int, end: int, original: str | None = None) -> bool:
+    """`text` is the masked text; `original` (same length, unmasked) is used for the English postfix-"not" tail check,
+    so terms already blanked ("diesel", "under 15 lakh") still count as a new clause after "SUV not ..."."""
     before = CLAUSE_BREAK.split(text[:start])[-1].split()
     # negation word, then only fillers, then the term: "no AMT", "do not want an AMT"
     for i in range(len(before) - 1, max(len(before) - 5, -1), -1):
@@ -245,8 +247,11 @@ def _is_negated(text: str, start: int, end: int) -> bool:
     for i, word in enumerate(after):
         if word in NEGATION_AFTER:
             # English "not"/"na" after a term only negates it as "diesel not wanted"; "hybrid not Toyota" is a new negation
-            if word in ENGLISH_NOT_AFTER and not set(after[i + 1:]) <= POSTFIX_NOT_TAIL:
-                break
+            if word in ENGLISH_NOT_AFTER:
+                tail_src = original if original is not None and len(original) == len(text) else text
+                tail = CLAUSE_BREAK.split(tail_src[end:])[0].split()[:3]
+                if not set(tail[i + 1:]) <= POSTFIX_NOT_TAIL:
+                    break
             return True
         if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please"}:
             break
@@ -435,7 +440,7 @@ def _parse_budget(text: str, out: dict, trace: list) -> str:
 # Categorical fields
 # ---------------------------------------------------------------------------
 
-def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str], list[str], bool, str]:
+def _parse_vocab(patterns, text: str, field: str, trace: list, original: str | None = None) -> tuple[list[str], list[str], bool, str]:
     """Return (positive labels, negated labels, any mention, masked text)."""
     found, negated, mentioned = [], [], False
     matches = []
@@ -446,7 +451,7 @@ def _parse_vocab(patterns, text: str, field: str, trace: list) -> tuple[list[str
     # negation is judged with every term of this vocab blanked, so list order doesn't matter
     for label, m in sorted(matches, key=lambda lm: lm[1].start()):
         mentioned = True
-        if _is_negated(text, m.start(), m.end()):
+        if _is_negated(text, m.start(), m.end(), original):
             if label not in negated:
                 negated.append(label)
                 trace.append(f"{field}-={label} <- negated '{m.group(0).strip()}'")
@@ -560,14 +565,14 @@ def _short_transmission_tokens(text: str):
             yield SHORT_TRANSMISSION[w.group(0)], w
 
 
-def _parse_transmission(text: str, out: dict, trace: list) -> str:
+def _parse_transmission(text: str, out: dict, trace: list, original: str | None = None) -> str:
     hits = []  # (label, negated, match)
     for label, pattern in TRANSMISSION_PATTERNS:
         for m in _find(pattern, text):
-            hits.append((label, _is_negated(text, m.start(), m.end()), m))
+            hits.append((label, _is_negated(text, m.start(), m.end(), original), m))
             text = _mask(text, m)
     for label, m in list(_short_transmission_tokens(text)):
-        hits.append((label, _is_negated(text, m.start(), m.end()), m))
+        hits.append((label, _is_negated(text, m.start(), m.end(), original), m))
         text = _mask(text, m)
 
     families, include, exclude = set(), [], []
@@ -734,11 +739,12 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
     trace = out["trace"]
     work = " " + re.sub(r"\s+", " ", (text or "").lower().replace("₹", " rs ")) + " "
     work, out["corrections"] = correct_typos(work, _typo_vocabulary())
+    original = work  # masking keeps positions, so later stages can look back at the unmasked clause
     for c in out["corrections"]:
         trace.append(f"typo: read '{c['from']}' as '{c['to']}'")
 
     # brands we don't carry and model names go first, so "Mini Cooper" / "XUV 3XO" can't leak into other fields
-    unsupported, _, _, work = _parse_vocab(UNSUPPORTED_BRAND_PATTERNS, work, "unsupported", trace)
+    unsupported, _, _, work = _parse_vocab(UNSUPPORTED_BRAND_PATTERNS, work, "unsupported", trace, original)
     out["unsupported_terms"] = sorted(unsupported)
     references, work = _parse_models(work, out, trace)
     out["models"] = sorted(out["models"])
@@ -747,7 +753,7 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
     use_case_text = work
 
     # then features, so "android auto" / "360 camera" / "level 2" can't leak into other fields
-    features, no_features, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace)
+    features, no_features, _, work = _parse_vocab(FEATURE_PATTERNS, work, "feature", trace, original)
     if "adaptive_cruise" in features:
         features += ["adas", "cruise_control"]
     out["required_features"] = [f for f in FEATURES if f in features]
@@ -758,14 +764,14 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
     work = _parse_budget(work, out, trace)
     # ML sees the text with feature/number/budget phrases removed, so "budget 12 lakh" can't become use_case=budget
     ml_text = work
-    soft, _, _, _ = _parse_vocab(SOFT_PREFERENCE_PATTERNS, work, "soft", trace)
+    soft, _, _, _ = _parse_vocab(SOFT_PREFERENCE_PATTERNS, work, "soft", trace, original)
     out["soft_preferences"] = [s for s in SOFT_PREFERENCES if s in soft]
-    work = _parse_transmission(work, out, trace)
+    work = _parse_transmission(work, out, trace, original)
 
-    fuels, no_fuels, fuel_mentioned, work = _parse_vocab(FUEL_PATTERNS, work, "fuel", trace)
+    fuels, no_fuels, fuel_mentioned, work = _parse_vocab(FUEL_PATTERNS, work, "fuel", trace, original)
     out["fuel_types"] = [f for f in FUEL_TYPES if f in fuels]
     out["exclude_fuel_types"] = [f for f in FUEL_TYPES if f in no_fuels]
-    bodies, no_bodies, body_mentioned, work = _parse_vocab(BODY_PATTERNS, work, "body", trace)
+    bodies, no_bodies, body_mentioned, work = _parse_vocab(BODY_PATTERNS, work, "body", trace, original)
     out["body_types"] = [b for b in BODY_TYPES if b in bodies]
     out["exclude_body_types"] = [b for b in BODY_TYPES if b in no_bodies]
     if references and not body_mentioned:
@@ -774,7 +780,7 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
         out["body_types"] = [b for b in BODY_TYPES if b in ref_bodies]
         body_mentioned = True
         trace.append(f"body_types={out['body_types']} <- reference model {references}")
-    makes, no_makes, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace)
+    makes, no_makes, _, work = _parse_vocab(MAKE_PATTERNS, work, "make", trace, original)
     out["makes"] = sorted(makes)
     out["exclude_makes"] = sorted(no_makes)  # "not Tata", "Maruti nahi chahiye"
 

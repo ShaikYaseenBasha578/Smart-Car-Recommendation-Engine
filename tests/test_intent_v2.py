@@ -274,3 +274,44 @@ def test_boot_space_se_kam_is_a_maximum_and_ceiling_plus_boot_combine():
     assert out["max_boot_space_litres"] == 400 and out["min_boot_space_litres"] is None
     out = parse_intent("can't go above 8 lakh, boot space more than 450 litres")
     assert out["budget"] == {"min": None, "max": 8 * L} and out["min_boot_space_litres"] == 450
+
+
+def _filters(query):
+    o = parse_intent(query)
+    return {k: o[k] for k in ("makes", "exclude_makes", "body_types", "exclude_body_types", "fuel_types", "exclude_fuel_types")}
+
+
+def test_not_after_a_term_followed_by_a_new_term_does_not_negate_the_first_term():
+    out = parse_intent("Tata SUV not diesel under 15 lakh")
+    assert out["makes"] == ["Tata"] and out["body_types"] == ["suv"]
+    assert out["exclude_fuel_types"] == ["diesel"] and out["fuel_types"] == []
+    assert out["exclude_makes"] == [] and out["exclude_body_types"] == []
+    assert out["budget"] == {"min": None, "max": 15 * L}
+    out = parse_intent("Hyundai sedan not petrol")
+    assert out["makes"] == ["Hyundai"] and out["body_types"] == ["sedan"] and out["exclude_fuel_types"] == ["petrol"]
+    assert out["exclude_makes"] == [] and out["exclude_body_types"] == []
+    out = parse_intent("SUV not diesel under 15 lakh")
+    assert out["body_types"] == ["suv"] and out["exclude_body_types"] == [] and out["exclude_fuel_types"] == ["diesel"]
+
+
+def test_automatic_not_amt_excludes_amt_and_keeps_the_automatic_family():
+    t = parse_intent("automatic not AMT")["transmission"]
+    assert t["family"] == "automatic" and t["exclude_types"] == ["amt"]
+
+
+@pytest.mark.parametrize("query,field,value", [
+    ("diesel not wanted", "exclude_fuel_types", ["diesel"]),
+    ("diesel not at all", "exclude_fuel_types", ["diesel"]),
+    ("no diesel SUV", "exclude_fuel_types", ["diesel"]),
+    ("SUV, diesel nahi", "exclude_fuel_types", ["diesel"]),
+    ("avoid diesel and CNG", "exclude_fuel_types", ["diesel", "cng"]),
+    ("not Tata", "exclude_makes", ["Tata"]),
+    ("hybrid not Toyota", "exclude_makes", ["Toyota"]),
+])
+def test_genuine_negations_still_negate(query, field, value):
+    assert _filters(query)[field] == value
+
+
+def test_amt_wali_nahi_chahiye_and_hybrid_not_toyota_keep_the_right_side():
+    assert parse_intent("AMT wali nahi chahiye")["transmission"]["exclude_types"] == ["amt"]
+    assert _filters("hybrid not Toyota")["fuel_types"] == ["hybrid"]
