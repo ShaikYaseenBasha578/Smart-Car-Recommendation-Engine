@@ -213,3 +213,20 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 - **Lesson:** a resumed run must not overlap an older run of the same label. Two processes were alive at once on 21 Nov; the stale one was stopped before it could overwrite `state.json`. Check `pgrep -fl "kbpipe update"` before resuming.
 - **Still needs the owner:** tick the review files (392 specs items, 40 brochure items), mainly prices, so the 63 unpriced variants (including Comet EV, Hector Tomahawk EV, ZS EV and BE 6 Sporteq, which are absent entirely) can reach the app; pick photos for the 5 models with brochure candidates (13 models show a silhouette); 46 new EVs have no range.
 - **Branch cleanup (22 Nov, owner-approved):** 28 clean worktrees removed and 47 branches deleted (local and GitHub), each checked to be fully contained in `main` or `kb/kbpipe` first. Kept: `main`, `paper/v0` (local only, 52 commits not on GitHub), `kb/kbpipe`, `kb/10i-resolver` and `kb/policy-20261106` (the Phase 10I resolver fix, not in `kb/kbpipe`), `kb/enrich-claude` (one unique commit), `deploy/new-car-v1` (rollback), `feat/new-model-images` (checked out in `recsys-v3`, which holds the app `.venv`). Worktrees left: main checkout, `carrec-deploy`, `kb-10i`, `kb-enrich-claude`, `kb-kbpipe`, `recsys-v3`. Worktrees named elsewhere in this file (`app-*`, `kb-10e`…`kb-10h`, `kb-main`, `kb-enrich-flash`, `carrec-*` except `carrec-deploy`) no longer exist; recreate with `git worktree add` if needed.
+
+## Addendum, 22 Nov: EV range fill, Plans A and C (Opus orchestrating, Sonnet building)
+
+- **EV range fill:**
+  - KB `0c8156b7…` → `b15b7dcb…`; details are in the `KB_CHANGELOG.md` summary of 22 Nov.
+  - Data pull request 45 (14 app ranges, plus Clavis EV dimensions and safety cells from its brochure). App EVs without a range: 40 → 26.
+  - The brochure-run audits stopped on the free verifier quota; resume them with `--resume-audit`.
+- **Owner rules of 22 Nov:**
+  - CarWale "Expected Range" counts as the claimed range.
+  - For EV range only, two sites within 10 km take the higher value.
+  - Both are in memory and in kbpipe (`reconcile.decide`, `config.near_take_higher_km`).
+- **Plan `reports/plans/PLAN_LLM_ML_RAG_2026-11-22.md`:** A and C approved, B on hold.
+  - Pull request 43 (A: LLM parser pacing, 429 cool-down, resumable eval, 40 draft hard queries for the owner to tick).
+  - Pull request 44 (C: cited explanations behind `RAG_EXPLAIN`, stacked on 43, with UI and screenshots).
+  - Not done: A step 4 (paced on/off measurement, after the owner ticks the hard-query labels), and C's live evaluation and blind groundedness review. Both need the free LLM quota.
+- **Rule-parser bug found (not fixed, owner to decide):** a word before "not" is negated too. "Tata SUV not diesel under 15 lakh" excludes Tata and SUVs; "Hyundai sedan not petrol" excludes Hyundai and sedans. No eval query uses this phrasing.
+- **Worktrees added:** `kb-near-rule` (merged, can go), `app-llm-parser`, `app-rag`.
