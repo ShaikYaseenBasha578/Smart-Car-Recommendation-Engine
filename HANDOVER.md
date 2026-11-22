@@ -344,3 +344,15 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - **Accessibility:** the Compare button's `aria-label` is read once, and there are skip links.
   - The eval is byte-identical, 1169 tests pass, and the compare gate passes 36/36.
   - Next is PR H (mobile density), after #55 merges.
+- **23 Nov:** #55 merged. **PR #56 (follow-up H, mobile density)** is open.
+  - Measured at 375 px, main → this PR:
+    - median card 772 → 621 (target 560, **missed**);
+    - first card's top after a search 777 → 360 (target 300, **missed**);
+    - compare: 1 → 2 full columns;
+    - the variants table no longer scrolls inside the page.
+  - Desktop median 396 → 353.
+  - Going further needs an owner call: text under 13 px, buttons under 44 px, or dropping a piece of the results header (about 290 px above the first card).
+  - The phone compare header is not sticky; a sticky header would need an inner scroll trap.
+  - "Show differences only" (`/compare?diff=1`) is server-side.
+  - The eval is byte-identical, 1188 tests pass, and the compare gate passes 36/36.
+  - After #56: PR I (Back cache) and PR J (car page) are only planned if the owner asks.
