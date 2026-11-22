@@ -544,3 +544,194 @@ def test_citation_click_keeps_the_citation_in_view_and_focuses_the_source():
     assert "getBoundingClientRect().top" in body and "scrollBy(0, drift)" in body          # the clicked citation stays put
     assert "focus({ preventScroll: true })" in body                                           # focus moves without the browser's own scroll
     assert 'scrollIntoView({ block: "nearest"' in body                                       # the source is scrolled only as far as needed
+
+
+# ------------------------------------------------------------------ PR C: details panel and car page
+DETAIL_HARNESS = """
+const vm = require('vm'), fs = require('fs');
+const ctx = vm.createContext({ console, URL, URLSearchParams, setTimeout, location: { origin: 'http://x', pathname: '/car/tata/nexon', search: '' },
+  window: { matchMedia: () => ({ matches: false }) }, history: { replaceState(a, b, url) { ctx.__urls.push(url); } }, __urls: [] });
+vm.runInContext(fs.readFileSync(process.argv.at(-1), 'utf8'), ctx);
+const input = JSON.parse(fs.readFileSync(0, 'utf8'));
+ctx.input = input;
+const out = vm.runInContext(input.code, ctx);
+Promise.resolve(out).then(v => process.stdout.write(JSON.stringify(v)));
+"""
+
+SPEC_ITEMS = [{"label": l, "value_display": "v", "status": "ok"} for l in
+              ["Engine", "Power", "Gearbox", "Fuel", "Mileage (ARAI)", "Seats", "Boot space", "Airbags", "Sunroof", "ADAS", "Torque", "Length"]]
+
+
+def detail_data(n=12, matching=3, selected=1, **kw):
+    variants = [{"variant_id": i, "variant": f"Var {i}", "price": 800000 + i * 1000, "matches_query": i <= matching,
+                 "transmission_label": "Manual", "fuel_label": "Petrol", "mileage_display": {"value": "19 kmpl", "unit": "kmpl"}}
+                for i in range(1, n + 1)]
+    base = {"make": "Tata", "model": "Nexon", "image": "/x.png", "summary": "A compact SUV.", "variants": variants,
+            "selected_variant_id": selected, "price_range": None, "cardekho_link": "https://x.test", "data_as_of": None,
+            "specs": [{"group": "Engine & performance", "items": SPEC_ITEMS[:6] + [SPEC_ITEMS[10]]},
+                      {"group": "Dimensions & capacity", "items": SPEC_ITEMS[6:7] + [SPEC_ITEMS[11]]},
+                      {"group": "Comfort & convenience", "items": [SPEC_ITEMS[8]]},
+                      {"group": "Safety", "items": [SPEC_ITEMS[7], SPEC_ITEMS[9]]}, {"group": "Warranty", "items": []}],
+            "safety": None, "reviews": None}
+    return {**base, **kw}
+
+
+def run_detail(code, **data):
+    out = subprocess.run(["node", "-e", DETAIL_HARNESS, str(ROOT / "static" / "script.js")], input=json.dumps({"code": code, **data}),
+                         capture_output=True, text=True, cwd=ROOT)
+    assert out.returncode == 0, out.stderr
+    return json.loads(out.stdout)
+
+
+def render_detail(data, opts):
+    return run_detail("renderDetail(input.data, input.opts)", data=data, opts=opts)
+
+
+def test_inline_panel_has_only_summary_key_specs_and_a_full_details_link_that_carries_the_search():
+    html = render_detail(detail_data(selected=5), {"make": "tata", "model": "nexon", "q": "automatic SUV & sunroof", "drop": ["adas", "budget"]})
+    assert "<h3>Summary</h3>" in html and "<h3>Key specs</h3>" in html
+    assert "Variants" not in html and "<table" not in html and "variant-pick" not in html
+    for hidden in ("Torque", "Length", "Specifications", "<h3>Safety</h3>", "Warranty"):
+        assert hidden not in html
+    for shown in ("Engine", "Power", "Gearbox", "Mileage (ARAI)", "Seats", "Boot space", "Airbags", "Sunroof", "ADAS"):
+        assert f"<dt>{shown}</dt>" in html
+    href = [l for l in links(html) if "detail-full" in (l.get("class") or "")][0]["href"]
+    assert "Full details →" in html
+    assert href.startswith("/car/tata/nexon?")
+    from urllib.parse import parse_qs, urlparse
+    assert parse_qs(urlparse(href).query) == {"q": ["automatic SUV & sunroof"], "drop": ["adas,budget"], "variant_id": ["5"]}
+
+
+def test_car_page_section_order_is_summary_specs_safety_warranty_then_variants():
+    html = render_detail(detail_data(), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
+    order = [html.index(f"<h2>{h}</h2>") for h in ("Summary", "Specifications", "Safety", "Warranty", "Variants")]
+    assert order == sorted(order)
+    assert html.index('id="detail-specs"') < html.index('id="detail-variants"')
+
+
+def rows(html):
+    return re.findall(r'<tr data-variant-id="(\d+)"([^>]*)>', html)
+
+
+def visible_ids(html):
+    return [i for i, attrs in rows(html) if " hidden" not in attrs]
+
+
+def test_variant_table_without_a_query_shows_the_first_eight_and_a_show_all_toggle():
+    html = render_detail(detail_data(n=20), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
+    assert len(rows(html)) == 20 and len(visible_ids(html)) == 8
+    assert re.search(r'<button type="button" class="btn btn-quiet variants-toggle"[^>]*aria-expanded="false"[^>]*>Show all 20 variants</button>', html)
+    few = render_detail(detail_data(n=6, matching=0), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
+    assert len(visible_ids(few)) == 6 and "variants-toggle" not in few
+
+
+def test_variant_table_with_a_query_shows_only_matching_variants_up_to_eight():
+    opts = {"make": "tata", "model": "nexon", "q": "suv", "standalone": True}
+    html = render_detail(detail_data(n=20, matching=3), opts)
+    assert visible_ids(html) == ["1", "2", "3"] and "Show all 20 variants" in html
+    assert 'data-match-mode="true"' in html and "3 of 20 variants match your search." in html
+    many = render_detail(detail_data(n=30, matching=15), opts)
+    assert len(visible_ids(many)) == 8 and all(int(i) <= 15 for i in visible_ids(many))
+    none = render_detail(detail_data(n=12, matching=0), opts)                  # nothing matches: the first eight of all, said plainly
+    assert len(visible_ids(none)) == 8 and "None of the 12 variants match your search." in none and 'data-match-mode="false"' in none
+
+
+def test_selected_variant_stays_visible_when_it_is_outside_the_first_rows():
+    html = render_detail(detail_data(n=20, matching=3, selected=17), {"make": "tata", "model": "nexon", "q": "suv", "standalone": True})
+    assert len(visible_ids(html)) <= 8 and "17" in visible_ids(html)
+
+
+def test_show_all_toggle_expands_in_place_and_goes_back_to_matching_only():
+    code = """(() => {
+      const mk = () => ({ hidden: true }), extra = [mk(), mk()];
+      const wrap = { scrollTop: 50, querySelectorAll: () => extra };
+      const attrs = { 'aria-expanded': 'false' };
+      const button = { dataset: { total: '20', matchMode: 'true' }, textContent: 'Show all 20 variants', parentElement: { querySelector: () => wrap },
+        getAttribute: k => attrs[k], setAttribute: (k, v) => { attrs[k] = v; } };
+      const log = [];
+      toggleVariants(button); log.push([button.textContent, attrs['aria-expanded'], extra.map(e => e.hidden)]);
+      toggleVariants(button); log.push([button.textContent, attrs['aria-expanded'], extra.map(e => e.hidden), wrap.scrollTop]);
+      return log; })()"""
+    first, second = run_detail(code)
+    assert first == ["Show matching only", "true", [False, False]]
+    assert second == ["Show all 20 variants", "false", [True, True], 0]
+
+
+def test_table_wrap_scrolls_on_its_own_so_the_sticky_header_works():
+    css = (ROOT / "static" / "style.css").read_text()
+    rule = css.split(".table-wrap {")[1].split("}")[0]
+    assert "max-height: 420px" in rule and "overflow: auto" in rule
+    assert "position: sticky" in css.split(".variants th {")[1].split("}")[0]
+
+
+PICK_HARNESS = """(async () => {
+  const log = [], el = () => ({ attrs: {}, setAttribute(k, v) { this.attrs[k] = v; }, removeAttribute(k) { delete this.attrs[k]; } });
+  const status = Object.assign(el(), { textContent: '', innerHTML: '', className: '' });
+  const region = Object.assign(el(), { innerHTML: '' });
+  const rowEl = id => { const r = el(), control = Object.assign(el(), { textContent: 'Var ' + id, focused: 0, focus(o) { this.focused++; this.opt = o; } });
+    Object.assign(r, { dataset: { variantId: String(id) }, control, spinners: 0, classes: new Set(),
+      firstElementChild: { insertAdjacentHTML(w, h) { r.spinners++; r.spinnerHtml = h; } },
+      querySelector(sel) { return sel === '.variant-pick' ? control : (sel === '.spinner' && r.spinners ? { remove() { r.spinners = 0; } } : null); },
+      classList: { toggle(c, on) { on ? r.classes.add(c) : r.classes.delete(c); } } }); return r; };
+  const rows = [rowEl(1), rowEl(2)];
+  const body = { dataset: { selected: '1' },
+    querySelector: s => s === '#pick-status' ? status : s === '#detail-specs' ? region : null,
+    querySelectorAll: s => s === 'tr[aria-busy]' ? rows.filter(r => r.attrs['aria-busy']) : rows };
+  const opts = { make: 'tata', model: 'nexon', q: 'suv', drop: [] };
+  let release;
+  globalThis.fetch = (url) => { log.push(['fetch', url]); return new Promise((res, rej) => { release = (ok) => ok
+      ? res({ ok: true, status: 200, json: async () => Object.assign(input.data, { selected_variant_id: 2 }) })
+      : res({ ok: false, status: 500, json: async () => ({ error: 'boom' }) }); }); };
+  const done = pickVariant(body, opts, rows[1]);
+  const busy = { rowBusy: rows[1].attrs['aria-busy'], spinner: rows[1].spinners, spinnerSmall: /spinner--sm/.test(rows[1].spinnerHtml || ''),
+    status: status.textContent, regionBusy: region.attrs['aria-busy'], focused: rows[1].control.focused, regionHtmlBefore: region.innerHTML };
+  release(input.ok);
+  await done;
+  return { log, busy, after: { rowBusy: rows[1].attrs['aria-busy'] ?? null, spinner: rows[1].spinners, regionBusy: region.attrs['aria-busy'] ?? null, status: status.innerHTML,
+    statusText: status.textContent, cls: status.className, focused: rows[1].control.focused, preventScroll: rows[1].control.opt.preventScroll,
+    selected: body.dataset.selected, region: region.innerHTML.slice(0, 80), regionHasVariants: /variants-table|<table/.test(region.innerHTML),
+    cur: rows.map(r => r.attrs['aria-current'] || null), classes: rows.map(r => [...r.classes]), pressed: rows.map(r => r.control.attrs['aria-pressed']), urls: __urls } };
+})()"""
+
+
+def test_picking_a_variant_marks_the_row_busy_then_redraws_only_the_spec_sections():
+    r = run_detail(PICK_HARNESS, data=detail_data(selected=2), ok=True)
+    assert r["busy"] == {"rowBusy": "true", "spinner": 1, "spinnerSmall": True, "status": "Loading specs for Var 2…",
+                         "regionBusy": "true", "focused": 1, "regionHtmlBefore": ""}               # feedback before the fetch resolves
+    a = r["after"]
+    assert a["rowBusy"] is None and a["spinner"] == 0 and a["regionBusy"] is None                  # never left busy
+    assert a["status"] == 'Showing specs for Var 2 <a href="#detail-specs" data-jump-specs>Jump to specs ↓</a>'
+    assert a["focused"] == 2 and a["preventScroll"] is True                                          # focus is on the row's control
+    assert str(a["selected"]) == "2" and a["cur"] == [None, "true"] and a["pressed"] == ["false", "true"]
+    assert a["region"].startswith('<section class="detail-section"><h2>Specifications</h2>') and a["regionHasVariants"] is False
+    assert a["urls"] == ["/car/tata/nexon?q=suv&variant_id=2"]                                      # replaceState keeps q and gains variant_id
+    assert r["log"][0] == ["fetch", "/api/car/tata/nexon?q=suv&variant_id=2"]
+
+
+def test_a_failed_variant_fetch_clears_the_spinner_and_says_so_in_the_status_line():
+    r = run_detail(PICK_HARNESS, data=detail_data(selected=2), ok=False)
+    a = r["after"]
+    assert a["rowBusy"] is None and a["spinner"] == 0 and a["regionBusy"] is None
+    assert a["statusText"] == "Couldn't load the specs for Var 2. Select it again to retry." and "pick-status--error" in a["cls"]
+    assert str(a["selected"]) == "1" and a["urls"] == [] and a["focused"] == 2
+
+
+def test_variant_spinner_is_16px_and_static_under_reduced_motion_and_the_status_is_one_live_line():
+    css = (ROOT / "static" / "style.css").read_text()
+    assert "width: 16px; height: 16px" in css.split(".spinner--sm {")[1].split("}")[0]
+    assert re.search(r"@media \(prefers-reduced-motion: reduce\) \{ \.spinner--sm \{ animation: none; \} \}", css)
+    html = render_detail(detail_data(), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
+    assert html.count('role="status"') == 1 and 'id="pick-status"' in html
+
+
+def test_car_page_with_a_search_shows_reviewer_owner_and_caveat_blocks_under_summary():
+    reviews = {"expert_notes": [expert()], "owner_notes": [owner()], "caveats": [owner(theme="recurring_fault", label="Clutch", direction="negative", note="Slow service.")],
+               "expert_standing": None, "owner_standing": None, "scores": {"expert": 0.7, "owner": 0.8}}
+    opts = {"make": "tata", "model": "nexon", "q": "suv", "standalone": True}
+    html = render_detail(detail_data(reviews=reviews), opts)
+    assert html.index("<h2>Summary</h2>") < html.index("What reviewers say") < html.index("What owners say") < html.index("Caveats") < html.index("<h2>Specifications</h2>")
+    assert "Soaks up rough roads." in html and "Owners are happy." in html and "Slow service." in html
+    assert "<h4>" not in html                                                                       # headings step h2 to h3
+    assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {**opts, "q": ""})  # no search, no blocks
+    assert "What reviewers say" not in render_detail(detail_data(reviews=None), opts)                # model not on the card list
+    assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {"make": "tata", "model": "nexon", "q": "suv"})  # inline panel

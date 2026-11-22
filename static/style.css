@@ -492,10 +492,10 @@ button { cursor: pointer; }
 .detail-note { font-size: 0.9375rem; color: var(--ink-3); margin-bottom: 12px; }
 .detail-section > .detail-note:last-child { margin: 12px 0 0; }
 
-.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-ctl); -webkit-overflow-scrolling: touch; }
+.table-wrap { max-height: 420px; overflow: auto; border: 1px solid var(--line); border-radius: var(--r-ctl); -webkit-overflow-scrolling: touch; }
 .table-wrap:focus-visible { outline-offset: 2px; }
 .variants { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
-.variants th { position: sticky; top: 0; text-align: left; font-size: 0.8125rem; font-weight: 650; color: var(--ink-3); background: var(--surface-2); padding: 10px 12px; white-space: nowrap; }
+.variants th { position: sticky; top: 0; z-index: 1; box-shadow: 0 1px 0 var(--line); text-align: left; font-size: 0.8125rem; font-weight: 650; color: var(--ink-3); background: var(--surface-2); padding: 10px 12px; white-space: nowrap; }
 .variants td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
 .variants td:first-child { white-space: normal; min-width: 220px; }
 .variants tbody tr { cursor: pointer; transition: background-color 0.15s; }
@@ -504,6 +504,20 @@ button { cursor: pointer; }
 .variants tr.is-match:hover { background: color-mix(in srgb, var(--good-soft) 70%, var(--surface-2)); }
 .variants tr.is-selected td { box-shadow: inset 0 2px 0 var(--accent), inset 0 -2px 0 var(--accent); }
 .variants tr.is-selected td:first-child { box-shadow: inset 3px 0 0 var(--accent), inset 0 2px 0 var(--accent), inset 0 -2px 0 var(--accent); }
+.variants-toggle { margin-top: var(--s0); }
+.detail-jump, .pick-status a { color: var(--accent-text); font-weight: 600; text-underline-offset: 0.2em; }
+.detail-specs { display: flex; flex-direction: column; gap: var(--s3); }
+.detail-specs:focus { outline: none; }
+.detail-specs[aria-busy="true"] { opacity: 0.6; transition: opacity 0.15s; }
+.pick-status { min-height: 1.5em; margin-bottom: 8px; font-size: 0.9375rem; font-weight: 600; color: var(--ink-2); }
+.pick-status:empty { display: none; }
+.pick-status a { margin-left: 8px; white-space: nowrap; }
+.pick-status--error { color: var(--warn-text); }
+.spinner--sm { display: inline-block; width: 16px; height: 16px; border-width: 2px; margin-right: 8px; vertical-align: -3px; }
+@media (prefers-reduced-motion: reduce) { .spinner--sm { animation: none; } }
+.detail-reviews { display: flex; flex-direction: column; gap: 14px; }
+.detail-reviews h2 { margin-bottom: 0; }
+.detail-reviews .ratings { margin: 0; }
 .variant-pick { padding: 0; border: 0; background: none; text-align: left; font-weight: 650; color: var(--ink); }
 .variant-pick:hover { color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.2em; }
 .match-badge { display: inline-block; margin-top: 4px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--surface); color: var(--good); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
@@ -582,7 +596,7 @@ button { cursor: pointer; }
 
 /* the collapsed card's bullets carry their own meaning (check marks under the match label); the heading stays for screen readers */
 .why h4 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.evi h4, .caveats h4 { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+.evi h3, .caveats h3, .evi h4, .caveats h4 { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
 .reasons--v3 { display: grid; grid-template-columns: 1fr; gap: 4px; }
 .evi-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .lines { display: flex; flex-direction: column; gap: 10px; }
@@ -596,8 +610,8 @@ button { cursor: pointer; }
 .v3-link svg { width: 14px; height: 14px; }
 
 .caveats { padding: 12px 14px; border-radius: var(--r-ctl); background: var(--warn-soft); color: var(--warn-text); border-left: 4px solid currentColor; }
-.caveats h4 { display: flex; align-items: center; gap: 6px; color: inherit; }
-.caveats h4 svg { width: 16px; height: 16px; flex: none; }
+.caveats h3, .caveats h4 { display: flex; align-items: center; gap: 6px; color: inherit; }
+.caveats h3 svg, .caveats h4 svg { width: 16px; height: 16px; flex: none; }
 .caveats .line-meta, .caveats .line-note { color: inherit; }
 .caveats .few { background: transparent; box-shadow: inset 0 0 0 1px currentColor; color: inherit; }
 
