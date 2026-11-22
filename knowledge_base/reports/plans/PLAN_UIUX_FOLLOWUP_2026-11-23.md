@@ -66,3 +66,7 @@ Claude checked these claims against `main` (6e1090f) before planning:
 3. **#5 reasons shown:** keep 2 plus "+N more" (default, which protects the card height), or show 3 as the reviewer suggests.
 4. **#14 variants table on phones:** stacked rows (default), or keep the scroll box.
 5. **Order:** PR G first, then PR H (default). PR I (Back cache) and PR J (car page) are only planned if you ask.
+
+## Owner decision
+
+- 23 Nov: plan approved with the five default decisions. PR G started.
