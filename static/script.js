@@ -37,6 +37,7 @@ function formatBudget(num) {
 const ICONS = {
     check: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
     star: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.7.7-4.2 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.2-4 5.7-.7z"/></svg>',
+    chevron: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>',
     info: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v4.5M10 6.3v.2"/></svg>',
     plus: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11"/></svg>',
     external: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5H5a1.5 1.5 0 0 0-1.5 1.5v9A1.5 1.5 0 0 0 5 16.5h9a1.5 1.5 0 0 0 1.5-1.5v-3M11.5 3.5h5v5M16.5 3.5L9 11"/></svg>',
@@ -341,12 +342,6 @@ const MIN_LABELS = {
     min_mileage_kmpl: v => `${v}+ kmpl`, min_mileage_km_per_kg: v => `${v}+ km/kg`,
     min_safety_stars: v => `${v}+ star safety`
 };
-const SCORE_PARTS = [
-    { key: "spec", label: "Specs", sub: "fit to your search", tip: "How well the car's own figures (price, features, safety, space, running cost) fit what you asked for." },
-    { key: "expert", label: "Expert", sub: "Autocar India", tip: "Where the model's Autocar India overall score stands among rated models of its body type." },
-    { key: "owner", label: "Owners", sub: "CarWale", tip: "Where the model's CarWale owner rating stands among rated models of its body type." }
-];
-
 function safeUrl(url) {
     try {
         const u = new URL(String(url));
@@ -435,7 +430,25 @@ function buildQueryEcho(data) {
     </section>`;
 }
 
+// a vague search ("good car") is not personalised: instead of a paragraph, four ways to narrow it down. Each phrase is added to the
+// search and run again; every one is read by the parser (budget, seats and use, gearbox and use, mileage).
+const REFINERS = [
+    { label: "Under ₹10 lakh", add: "under 10 lakh" },
+    { label: "Family / 7 seats", add: "family 7 seater" },
+    { label: "City / automatic", add: "city automatic" },
+    { label: "Best mileage", add: "best mileage" }
+];
+
+function buildVagueNotice() {
+    return `<div class="notice notice--vague" role="status">${ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ')}<div>
+        <strong>This is a general shortlist, not personalised</strong>
+        <p>Tap one to narrow it down:</p>
+        <div class="refiners">${REFINERS.map(r => `<button type="button" class="refiner" data-refine="${escapeHtml(r.add)}">${escapeHtml(r.label)}</button>`).join("")}</div>
+    </div></div>`;
+}
+
 function buildRelaxedNotice(data) {
+    if (data.personalised === false && data.recommendations && data.recommendations.length) return buildVagueNotice();
     if (!data.relaxation && !(data.message && data.recommendations && data.recommendations.length)) return "";
     const text = data.relaxation ? data.relaxation.message : data.message;
     return `<div class="notice" role="status">${ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ')}<div>
@@ -465,67 +478,58 @@ function v3MatchLabel(car, hard, personalised) {
     return { key: "ok", text: hard === 1 ? "Meets your requirement" : "Meets all your requirements", detail: "" };
 }
 
-// --- sub-score meters ---
-// Expert and Owners show where the model stands among rated models of its segment (body type), computed on the server
-// (car.expert_standing / car.owner_standing: value 0-100, caption with the raw rating and the wording). Raw ratings cluster
-// (owners give 4.5 of 5 to nearly everything), so the raw-score bar would read 90+ for every car. Where there is no standing
-// (a small segment, or too few ratings) the bar is left empty and the raw rating is shown instead: no claim is made.
-const STANDING_FIELD = { expert: "expert_standing", owner: "owner_standing" };
+// --- ratings line ---
+// One line of real values, no bars: the raw rating and its source, then the standing as words ("above average among SUVs").
+// The standing words come from the server's own caption (car.expert_standing / car.owner_standing) and are shown only when the
+// server made a standing claim (band top/upper/lower/bottom); a small segment or too few ratings shows the rating alone.
+// A part is left out when its data is missing, and the whole line when both are.
+const STANDING_BANDS = ["top", "upper", "lower", "bottom"];
 
-function rawRating(key, st) {
-    if (key === "owner" && st.rating != null) return `${trimNumber(Number(st.rating), 1)}/${trimNumber(Number(st.scale_max), 0)}`;
-    if (key === "expert" && st.score != null) return `${trimNumber(Number(st.score), 1)}/${trimNumber(Number(st.scale_max), 0)}`;
-    return "n/a";
+// the standing as words: the server's wording for the reviewers ("above average for SUVs"); for owners the average bands alone, since the
+// segment was just named on the reviewers' side of the same line
+function standingWords(st, withSegment) {
+    if (!STANDING_BANDS.includes(st.band)) return "";
+    const tail = String(st.caption || "").split(" · ").pop();
+    if (!/^(among|above|below) /.test(tail)) return "";
+    if (withSegment) return tail.replace(/^(above|below) average among /, "$1 average for ");
+    return tail.replace(/^((?:above|below) average)\b.*$/, "$1");
 }
 
-function buildMeter(car, p) {
-    const st = car[STANDING_FIELD[p.key]];
-    if (st && typeof st === "object") {
-        const caption = st.caption ? `<p class="meter-cap">${escapeHtml(st.caption)}</p>` : "";
-        if (st.value != null && !isNaN(st.value)) {
-            const pct = Math.max(0, Math.min(100, Math.round(Number(st.value))));
-            return `<div class="meter meter--standing" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div>`
-                + `<div class="meter-row"><span class="meter-track" role="img" aria-label="${p.label} standing: ${pct} out of 100 among rated models of its body type"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span></div>${caption}</div>`;
-        }
-        return `<div class="meter meter--standing" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div>`
-            + `<div class="meter-row"><span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--raw">${escapeHtml(rawRating(p.key, st))}</span><span class="sr-only">${p.label}: no standing shown</span></div>${caption}</div>`;
+function ratingPart(label, value, scale, lead, bracket) {
+    const inner = bracket.filter(Boolean).map(escapeHtml).join(", ");
+    return `<span class="rating-part">${label}: <strong>${trimNumber(Number(value), 1)}/${trimNumber(Number(scale), 0)}</strong>${lead ? " " + escapeHtml(lead) : ""}${inner ? ` (${inner})` : ""}</span>`;
+}
+
+function buildRatingsLine(car) {
+    const ex = car.expert_standing, ow = car.owner_standing, parts = [];
+    if (ex && typeof ex === "object" && ex.score != null && ex.scale_max != null)
+        parts.push(ratingPart("Reviewers", ex.score, ex.scale_max, "", [ex.source, standingWords(ex, true)]));
+    if (ow && typeof ow === "object" && ow.rating != null && ow.scale_max != null) {
+        const n = ow.rating_count != null && !isNaN(ow.rating_count) ? Number(ow.rating_count).toLocaleString("en-IN") : "";
+        const lead = n ? `from ${ow.band === "low_confidence" ? "only " : ""}${n} rating${Number(ow.rating_count) === 1 ? "" : "s"}` : "";
+        parts.push(ratingPart("Owners", ow.rating, ow.scale_max, lead, [standingWords(ow, false)]));
     }
-    const v = (car.scores || {})[p.key];
-    const has = v != null && !isNaN(v);
-    const pct = has ? Math.round(Number(v) * 100) : null;
-    const bar = has
-        ? `<span class="meter-track" role="img" aria-label="${p.label}: ${pct} out of 100"><span class="meter-fill" style="width:${pct}%"></span></span><span class="meter-num">${pct}</span>`
-        : `<span class="meter-track meter-track--empty" aria-hidden="true"></span><span class="meter-num meter-num--none">no data</span><span class="sr-only">${p.label}: no data</span>`;
-    return `<div class="meter" title="${escapeHtml(p.tip)}"><div class="meter-name"><strong>${p.label}</strong> <span>${escapeHtml(p.sub)}</span></div><div class="meter-row">${bar}</div></div>`;
-}
-
-function buildMeters(car) {
-    const anyStanding = ["expert", "owner"].some(k => car[STANDING_FIELD[k]] && typeof car[STANDING_FIELD[k]] === "object");
-    return `<div class="meters" aria-label="Match breakdown, 0 to 100">` + SCORE_PARTS.map(p => buildMeter(car, p)).join("") + `</div>`
-        + (anyStanding ? `<p class="meters-note">Expert and Owners show standing among rated models of the same body type, not absolute quality.</p>` : "");
+    return parts.length ? `<p class="ratings">${parts.join('<span class="rating-sep" aria-hidden="true"> · </span>')}</p>` : "";
 }
 
 // --- reviews ---
-// Collapsed by default: one expert line and one owner line. The second line of each and the quotes carry `data-more` + `hidden`
-// and are shown by the card's "Show more from reviews" button; while collapsed a note is clamped to 3 lines (CSS) and the
-// button is the way to read the rest. Caveats are never behind it.
-const CLAMP_NOTE_CHARS = 110;   // a note longer than this may be clamped in the collapsed card, so the card gets the button
+// The collapsed card shows the one-line ratings summary, at most 2 "why" bullets and one caveat pill. "What reviewers say",
+// "What owners say" and the full Caveats sit in one panel (`data-more` + `hidden`) that the card's "Reviews and owner feedback (n)"
+// button opens; n counts the items in it.
 let reviewsSeq = 0;
-
-function moreAttr(i) { return i > 0 ? " data-more hidden" : ""; }
 
 function buildExpertBlock(car) {
     const notes = (car.expert_notes || []).slice(0, 2);
     const hasScore = car.scores && car.scores.expert != null;
     let body;
     if (notes.length) {
-        body = notes.map((n, i) => {
+        body = notes.map(n => {
             const meta = metaLine([n.source, sentenceCase(n.source_aspect),
                 `${trimNumber(Number(n.score), 1)}/${trimNumber(Number(n.scale_max), 0)}`, monthYear(n.published_on)]);
             const q = n.quote && n.quote.text
-                ? `<blockquote class="v3-quote" data-more hidden><p>“${escapeHtml(n.quote.text)}”</p>${externalLink(n.quote.source_url || n.source_url, "Read the review")}</blockquote>`
+                ? `<blockquote class="v3-quote"><p>“${escapeHtml(n.quote.text)}”</p>${externalLink(n.quote.source_url || n.source_url, "Read the review")}</blockquote>`
                 : "";
-            return `<li${moreAttr(i)}><p class="line-meta">${meta}</p><p class="line-note">${escapeHtml(n.note)}</p>${q}</li>`;
+            return `<li><p class="line-meta">${meta}</p><p class="line-note">${escapeHtml(n.note)}</p>${q}</li>`;
         }).join("");
         body = `<ul class="lines">${body}</ul>`;
     } else if (hasScore) {
@@ -563,8 +567,8 @@ function buildOwnerBlock(car) {
     const st = car.owner_standing;
     let body;
     if (notes.length) {
-        body = `<ul class="lines">` + notes.map((n, i) => {
-            return `<li${moreAttr(i)}><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
+        body = `<ul class="lines">` + notes.map(n => {
+            return `<li><p class="line-meta">${ownerMetaHtml(n)}</p>${n.note ? `<p class="line-note">${escapeHtml(n.note)}</p>` : ""}</li>`;
         }).join("") + `</ul>`;
     } else if (st && st.summary) {
         // no theme line has enough verified mentions: the ratings summary instead of an empty block
@@ -577,24 +581,31 @@ function buildOwnerBlock(car) {
     return `<section class="evi" aria-label="What owners say"><h4>What owners say</h4>${body}</section>`;
 }
 
-// the card gets the toggle when something sits behind it: a second line, a quote, or a note long enough to be clamped
-function hasMoreReviews(car) {
-    if (car.explanation_rag) return true;
-    if ((car.reasons || []).slice(0, MAX_V3_REASONS).length > V3_REASONS_SHOWN) return true;
-    const ex = (car.expert_notes || []).slice(0, 2), ow = ownerNotesShown(car);
-    return ex.length > 1 || ow.length > 1 || ex.some(n => n.quote && n.quote.text)
-        || ex.concat(ow).some(n => String(n.note || "").length > CLAMP_NOTE_CHARS);
+// fact ids the grounded explanation cites, in order of first use (they become the numbered sources)
+function ragOrder(rag) {
+    const facts = rag.facts || {}, order = [];
+    (rag.sentences || []).forEach(s => (s.cites || []).filter(id => facts[id]).forEach(id => { if (!order.includes(id)) order.push(id); }));
+    return order;
+}
+
+// items behind the "Reviews and owner feedback" toggle; the button is drawn only when this is above 0
+function behindCount(car) {
+    const reasons = (car.reasons || []).slice(0, MAX_V3_REASONS).length;
+    let n = (car.expert_notes || []).slice(0, 2).length + (car.caveats || []).length;
+    const ow = ownerNotesShown(car).length;
+    n += ow || (car.owner_standing && car.owner_standing.summary ? 1 : 0);
+    n += car.explanation_rag ? ragOrder(car.explanation_rag).length + reasons : Math.max(reasons - V3_REASONS_SHOWN, 0);
+    return n;
 }
 
 // grounded explanation: the sentences with numbered source markers, then the numbered sources (hidden until the card is expanded)
 function buildWhyRag(car, reasons, reviewsId) {
     const rag = car.explanation_rag;
     const facts = rag.facts || {};
-    const order = [];                      // fact ids in order of first use
+    const order = ragOrder(rag);           // fact ids in order of first use
     const numberOf = id => order.indexOf(id) + 1;
     const sentences = (rag.sentences || []).map(s => {
         const markers = (s.cites || []).filter(id => facts[id]).map(id => {
-            if (!order.includes(id)) order.push(id);
             const n = numberOf(id);
             return `<a class="cite" href="#src-${reviewsId}-${n}" data-cite aria-label="${escapeHtml(`Source ${n}: ${facts[id].label || ""}`)}">${n}</a>`;
         }).join("");
@@ -617,21 +628,27 @@ function buildWhyRag(car, reasons, reviewsId) {
         ${order.length ? `<ol class="why-sources" data-more hidden>${sources}</ol>` : ""}${template}</section>`;
 }
 
+// A citation opens the card to show its source. The clicked citation stays where it is on screen (the source list opens below
+// it), focus moves to the source item without the browser's own scroll, and the source is scrolled only as far as needed.
 function followCite(link) {
     const card = link.closest(".car--v3");
     const target = card && card.querySelector(`[id="${link.getAttribute("href").slice(1)}"]`);
     if (!card || !target) return;
+    const before = link.getBoundingClientRect().top;
     if (card.dataset.reviews === "collapsed") {
         const button = card.querySelector("[data-reviews-toggle]");
         if (button) toggleReviews(button);
     }
-    target.focus();
+    const drift = link.getBoundingClientRect().top - before;
+    if (drift) window.scrollBy(0, drift);
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ block: "nearest", behavior: prefersReducedMotion() ? "auto" : "smooth" });
     target.classList.add("is-target");
     setTimeout(() => target.classList.remove("is-target"), 1600);
 }
 
-function buildReviewsToggle(controlsId) {
-    return `<div class="more-toggle"><button type="button" class="btn btn-quiet" data-reviews-toggle aria-expanded="false" aria-controls="${controlsId}">Show more from reviews</button></div>`;
+function buildReviewsToggle(controlsId, n) {
+    return `<button type="button" class="btn btn-quiet btn-reviews" data-reviews-toggle aria-expanded="false" aria-controls="${controlsId}"><span>Reviews and owner feedback (${n})</span>${ICONS.chevron}</button>`;
 }
 
 function toggleReviews(button) {
@@ -639,11 +656,11 @@ function toggleReviews(button) {
     if (!card) return;
     const open = button.getAttribute("aria-expanded") !== "true";
     button.setAttribute("aria-expanded", String(open));
-    button.textContent = open ? "Show fewer reviews" : "Show more from reviews";
     card.dataset.reviews = open ? "expanded" : "collapsed";
     card.querySelectorAll("[data-more]").forEach(el => { el.hidden = !open; });
 }
 
+// full list, shown behind the toggle
 function buildCaveats(car) {
     const items = car.caveats || [];
     if (!items.length) return "";
@@ -654,7 +671,19 @@ function buildCaveats(car) {
         }).join("") + `</ul></section>`;
 }
 
-function v3Chips(car) {
+// collapsed card: the first caveat as one line, the rest (and the notes) behind the toggle
+function buildCaveatPill(car) {
+    const items = car.caveats || [];
+    if (!items.length) return "";
+    const c = items[0];
+    const what = c.label || THEME_LABELS[c.theme] || String(c.theme || "").replace(/_/g, " ");
+    const text = `Owners report: ${what.charAt(0).toLowerCase()}${what.slice(1)}${items.length > 1 ? ` (+${items.length - 1} more)` : ""}`;
+    return `<p class="caveat-pill" title="${escapeHtml(text)}">${ICONS.info}<span>${escapeHtml(text)}</span></p>`;
+}
+
+// unverified requirements are already named as pills under the match label on personalised cards; repeat them here
+// only when no match label lists them (general, non-personalised picks)
+function v3Chips(car, personalised) {
     const chips = [];
     (car.matched_features || []).forEach(f => chips.push({ text: FEATURE_LABELS[f] || f, kind: "feature", icon: ICONS.check }));
     const notVerified = car.not_verified || [];
@@ -664,7 +693,7 @@ function v3Chips(car) {
     } else if (!notVerified.some(t => /crash rating/i.test(t))) {
         chips.push({ text: NO_RATING_LABEL, kind: "unverified", icon: ICONS.info });
     }
-    notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
+    if (personalised === false) notVerified.forEach(t => chips.push({ text: upperFirst(t), kind: "unverified", icon: ICONS.info }));
     if (car.matching_variant_count) {
         const n = car.matching_variant_count;
         chips.push({ text: `${n} matching variant${n === 1 ? "" : "s"}`, kind: "plain", icon: "" });
@@ -686,11 +715,13 @@ function buildV3Card(car, index, hard, personalised) {
         ? `<p class="also">Also available from <strong>${formatPrice(also["Ex-Showroom_Price"])}</strong>${also.variant ? ` (${escapeHtml(also.variant)})` : ""}</p>` : "";
     const detail = Array.isArray(label.detail) && label.detail.length
         ? `<ul class="unmet" aria-label="Requirements this car does not meet or could not confirm">${label.detail.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ul>` : "";
-    const chips = v3Chips(car);
-    const more = hasMoreReviews(car);
+    const chips = v3Chips(car, personalised);
+    const behind = behindCount(car);
     const reviewsId = `reviews-${++reviewsSeq}`;
+    const why = car.explanation_rag ? buildWhyRag(car, reasons, reviewsId)
+        : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : "";
     return `
-        <article class="car car--v3${index === 0 ? " car--top" : ""}"${more ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
+        <article class="car car--v3${index === 0 ? " car--top" : ""}"${behind ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
                 ${rankBadge(car, index)}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
@@ -709,22 +740,22 @@ function buildV3Card(car, index, hard, personalised) {
                 <div class="v3-fit">
                     <p class="fit-label fit-label--${label.key}">${escapeHtml(label.text)}</p>
                     ${detail}
-                    ${buildMeters(car)}
+                    ${buildRatingsLine(car)}
                 </div>
-            </div>
-            <div class="v3-more">
-                <div class="evi-grid" id="${reviewsId}">
-                ${car.explanation_rag ? buildWhyRag(car, reasons, reviewsId) : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : ""}
-                    ${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
-                ${more ? buildReviewsToggle(reviewsId) : ""}
-                ${buildCaveats(car)}
+                ${why}
+                ${buildCaveatPill(car)}
                 <div class="car-foot">
                     ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
                     <div class="car-actions">
                         <button type="button" class="btn btn-primary" data-detail aria-expanded="false">View details</button>
+                        ${behind ? buildReviewsToggle(reviewsId, behind) : ""}
                     </div>
                 </div>
             </div>
+            ${behind ? `<div class="v3-more" id="${reviewsId}" data-more hidden>
+                <div class="evi-grid">${buildExpertBlock(car)}${buildOwnerBlock(car)}</div>
+                ${buildCaveats(car)}
+            </div>` : ""}
         </article>`;
 }
 
@@ -1215,6 +1246,11 @@ function initNewCarPage() {
             const turn = hint.closest("[data-turn]");
             const drop = turn.dataset.drop ? turn.dataset.drop.split(",") : [];
             runSearch(turn.dataset.q, [...drop, hint.dataset.dropKey]);
+        }
+        const refine = e.target.closest("[data-refine]");
+        if (refine) {
+            const turn = refine.closest("[data-turn]");
+            runSearch(`${turn.dataset.q} ${refine.dataset.refine}`, turn.dataset.drop ? turn.dataset.drop.split(",") : []);
         }
         const copy = e.target.closest("[data-copy-link]");
         if (copy) copyLink(copy);
