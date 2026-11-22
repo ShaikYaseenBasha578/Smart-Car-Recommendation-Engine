@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include "_header.html" %}
+    <main class="compare-page">
+        <div class="wrap">
+            <h1 class="compare-title">Compare cars</h1>
+            <p class="compare-back"><a class="back-link-a" href="{{ back_url }}">{% if q %}<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10H4M9 5l-5 5 5 5"/></svg>Back to your results{% else %}Search cars{% endif %}</a></p>
+            {% if missing %}<p class="compare-note">{{ missing }} car{{ "s" if missing != 1 }} in this link {{ "are" if missing != 1 else "is" }} no longer in our catalogue.</p>{% endif %}
+            {% if shown %}
+            <div class="compare-scroll" role="region" aria-label="Comparison table" tabindex="0">
+                <table class="compare-table" style="--n: {{ cars|length }}">
+                    <caption class="sr-only">Side-by-side comparison of {{ cars | map(attribute="model") | join(", ") }}</caption>
+                    <thead>
+                        <tr>
+                            <td class="compare-corner"></td>
+                            {% for car in cars %}
+                            <th scope="col" class="compare-car">
+                                <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" loading="eager" decoding="async">
+                                <a class="compare-name" href="{{ car.url }}">{{ car.make }} {{ car.model }}</a>
+                                <span class="compare-variant">{{ car.variant }}</span>
+                                <a class="compare-remove" href="{{ car.remove_url }}" aria-label="Remove {{ car.make }} {{ car.model }} {{ car.variant }} from the comparison">Remove</a>
+                            </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                        <tr>
+                            <th scope="row">{{ row.label }}</th>
+                            {% for cell in row.cells %}
+                            <td>{% if cell.status != "ok" %}<span class="not-verified">{{ cell.display }}</span>{% elif cell.best %}<strong>{{ cell.display }}</strong> <span class="best-pill">Best<span class="sr-only"> (best of these cars)</span></span>{% else %}{{ cell.display }}{% endif %}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="compare-foot">Mileage is compared only between cars with the same unit. Prices are ex-showroom. Prices and specs updated {{ stamp }}.</p>
+            {% else %}
+            <div class="state compare-empty">
+                <h2>Pick two to four cars to compare</h2>
+                <p>Tap Compare on the result cards, then open the comparison from the bar at the bottom of the page.</p>
+                <p><a class="btn btn-primary" href="{{ back_url }}">{% if q %}Back to your results{% else %}Search cars{% endif %}</a></p>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">Prices are ex-showroom. Car images are taken from manufacturer brochures.</div>
+    </footer>
+</body>
+</html>

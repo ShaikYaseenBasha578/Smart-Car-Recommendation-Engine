@@ -717,3 +717,89 @@ button { cursor: pointer; }
 .relax-alt:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
 .relax-alt:active { transform: translateY(1px); }
 .relax-alt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- compare (page, toggle, tray) and sort ---------- */
+.compare-page { padding-block: var(--s4) var(--s6); }
+.compare-title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); line-height: 1.2; letter-spacing: -0.025em; font-weight: 750; }
+.compare-back { margin-top: var(--s0); }
+.compare-back a { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-text); text-decoration: none; }
+.compare-back a:hover { text-decoration: underline; }
+.compare-back svg { width: 16px; height: 16px; flex: none; }
+.compare-note { margin-top: var(--s1); font-size: var(--text-sm); color: var(--ink-3); }
+.compare-foot { margin-top: var(--s1); font-size: var(--text-sm); color: var(--ink-3); max-width: 70ch; }
+.compare-empty { margin-top: var(--s3); }
+
+/* the scroll container keeps the page itself from scrolling sideways; the first column stays put */
+.compare-scroll { --label: 112px; position: relative; margin-top: var(--s2); overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow); }
+@media (min-width: 600px) { .compare-scroll { --label: 170px; } }
+.compare-table { table-layout: fixed; width: 100%; min-width: calc(var(--label) + var(--n, 2) * 150px); border-collapse: separate; border-spacing: 0; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+.compare-table th, .compare-table td { padding: 12px var(--s1); text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.compare-table tbody tr:last-child > * { border-bottom: 0; }
+.compare-table .compare-corner, .compare-table th[scope="row"] { position: sticky; left: 0; z-index: 1; width: var(--label); background: var(--surface); border-right: 1px solid var(--line); }
+.compare-table th[scope="row"] { font-size: var(--text-sm); font-weight: 650; color: var(--ink-2); }
+.compare-car { font-weight: inherit; }
+.compare-car img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; background: var(--surface-2); }
+.compare-car img[src$=".svg"] { object-fit: contain; padding: var(--s0); }
+.compare-name { display: block; margin-top: var(--s0); font-size: 1.0625rem; font-weight: 750; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+.compare-name:hover { text-decoration: underline; }
+.compare-variant { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: 500; color: var(--ink-2); }
+.compare-remove { display: inline-block; margin-top: var(--s0); padding-block: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-text); }
+.compare-scroll:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.best-pill { display: inline-block; margin-left: 4px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--good-soft); color: var(--good); font-size: 0.8125rem; font-weight: 700; line-height: 1.5; vertical-align: 1px; }
+
+/* Compare toggle on a result card */
+.btn-compare { gap: 6px; }
+.btn-compare svg { width: 16px; height: 16px; }
+.btn-compare[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-text); }
+.btn-compare[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+
+/* the tray: fixed to the bottom while at least one car is selected */
+.compare-tray {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  background: var(--surface); border-top: 1px solid var(--line); box-shadow: var(--shadow-lift);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.compare-tray .wrap { display: flex; align-items: center; gap: var(--s1); min-height: 64px; }
+.compare-pills { display: flex; flex: 1 1 auto; align-items: center; gap: var(--s0); min-width: 0; overflow: hidden; }
+.compare-pill { display: inline-flex; flex: 0 1 auto; align-items: center; gap: 2px; min-width: 0; max-width: 200px; padding: 2px 4px 2px 12px; border-radius: var(--r-pill); background: var(--surface-2); color: var(--ink); font-size: var(--text-sm); font-weight: 600; white-space: nowrap; }
+.compare-pill > span { overflow: hidden; text-overflow: ellipsis; }
+.compare-pill button { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--ink-2); }
+.compare-pill button:hover { background: var(--line); color: var(--ink); }
+.compare-pill svg { width: 14px; height: 14px; }
+.compare-hint, .compare-count { flex: 1 1 auto; min-width: 0; font-size: var(--text-sm); font-weight: 600; color: var(--ink-2); }
+.compare-tray .btn { min-height: 44px; padding: 9px var(--s2); font-size: 0.9375rem; }
+.compare-tray .btn-quiet { min-height: 44px; }
+.compare-tray .btn[aria-disabled="true"] { background: var(--surface-2); color: var(--ink-3); cursor: not-allowed; }
+.compare-count { display: block; }
+.compare-more { display: none; white-space: pre; }
+.compare-tray a.btn-primary { gap: 0; }  /* the space before "3 cars" is in the text, so screen readers read "Compare 3 cars" */
+.compare-pills { display: none; }
+@media (min-width: 600px) { .compare-pills { display: flex; } .compare-count { display: none; } .compare-more { display: inline; } }
+body.has-compare-tray { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+@keyframes compare-tray-in { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) { .compare-tray:not([hidden]) { animation: compare-tray-in 200ms ease-out; } }
+
+/* sort control: a segmented control from 600px, a select below; both are in the DOM and kept in step */
+.toolbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1); }
+.sort-seg { display: none; margin: 0; padding: 0; border: 0; min-width: 0; }
+.sort-seg legend { float: left; padding: 0; margin-right: var(--s0); line-height: 42px; font-size: var(--text-sm); font-weight: 600; color: var(--ink-3); }
+.sort-seg .sort-opts { display: inline-flex; border: 1px solid var(--line-ctl); border-radius: var(--r-pill); overflow: hidden; }
+.sort-seg input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.sort-seg label { display: inline-flex; align-items: center; min-height: 40px; padding: 6px var(--s1); font-size: var(--text-sm); font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.sort-seg .sort-opts > label:not(:first-of-type) { border-left: 1px solid var(--line-ctl); }
+.sort-seg label:hover { color: var(--ink); background: var(--surface-2); }
+.sort-seg input:checked + label { background: var(--ink); color: var(--bg); }
+.sort-seg input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: var(--r-pill); }
+.sort-select { display: inline-flex; align-items: center; gap: var(--s0); font-size: var(--text-sm); font-weight: 600; color: var(--ink-3); }
+.sort-select select { min-height: 40px; padding: 6px 28px 6px 12px; border: 1px solid var(--line-ctl); border-radius: var(--r-ctl); background-color: var(--surface); color: var(--ink); font: inherit; font-size: var(--text-sm); font-weight: 600; }
+@media (min-width: 600px) { .sort-seg { display: block; } .sort-select { display: none; } }
+.sort-note { font-size: var(--text-sm); color: var(--ink-3); }
+/* "Top pick" / "Closest match" describe the best-match order only */
+.cards[data-sort]:not([data-sort="best"]) .rank { display: none; }
+
+/* with three actions (View details, Compare, Reviews) the chips no longer fit beside them: chips take a line of their own,
+   the actions the line below, so chips never wrap inside a pill */
+@media (min-width: 600px) {
+  .car--v3 .car-foot { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .car--v3 .car-actions { grid-column: 1; flex-wrap: wrap; }
+}

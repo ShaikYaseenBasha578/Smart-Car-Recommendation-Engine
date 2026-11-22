@@ -119,6 +119,50 @@ def recommend_page():
     return render_template("recommend.html", variant_count_raw=len(get_catalogue()))
 
 
+COMPARE_SORTS = {"best", "price", "mileage", "safety"}
+
+
+def _stamp_date(data_as_of):
+    """'14 Nov 2026', the same format as the results page's "Prices and specs updated" line."""
+    from datetime import date
+    try:
+        d = date.fromisoformat(str(data_as_of["exported"]))
+    except (KeyError, TypeError, ValueError):
+        return str((data_as_of or {}).get("exported") or "")
+    return f"{d.day} {d:%b} {d.year}"
+
+
+@app.route("/compare")
+def compare_page():
+    from urllib.parse import urlencode
+    from services.compare import get_compare, parse_ids
+
+    ids = parse_ids(request.args.get("ids", ""))
+    q = request.args.get("q", "")[:500]
+    drop = request.args.get("drop", "")[:200]
+    sort = request.args.get("sort", "")
+    sort = sort if sort in COMPARE_SORTS and sort != "best" else ""
+    data = get_compare(ids, app.root_path)
+    cars = data["cars"]
+
+    def search_args(**extra):
+        args = {k: v for k, v in {"q": q, "drop": drop, "sort": sort}.items() if v}
+        args.update(extra)
+        return args
+
+    back_url = "/recommend" + ("?" + urlencode(search_args()) if q else "")
+    for car in cars:
+        left = ",".join(str(c["variant_id"]) for c in cars if c is not car)
+        car["remove_url"] = "/compare?" + urlencode(search_args(ids=left), safe=",")
+    shown = len(cars) >= 2
+    names = [c["model"] for c in cars]
+    title = " vs ".join(names) + " | CarRec" if shown else "Compare cars | CarRec"
+    if shown and len(title) > 60:
+        title = f"Compare {len(cars)} cars | CarRec"
+    return render_template("compare.html", page_title=title, shown=shown, cars=cars, rows=data["rows"],
+                           missing=data["missing"], stamp=_stamp_date(data["data_as_of"]), q=q, back_url=back_url)
+
+
 @app.route("/used")
 def used_page():
     if not ENABLE_USED_CARS:
