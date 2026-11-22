@@ -300,3 +300,13 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - The eval is byte-identical, 1115 tests pass, and the new compare gate passes 36/36.
   - **Stale:** the existing `tests/ui_gates.py` fails on main the same way. Its 340 px limit and the old panel headings predate PRs A–C, and it crashes at the detail-panel step. Updating it is a small follow-up.
   - Next is PR F (/project header and theme), after #53 merges. Then the final blind re-review.
+- **23 Nov:** #53 merged. **PR #54 (UI plan F, /project header, intro and theme)** is open.
+  - The /project pages get the site header at serve time (`templates/_project_header.html`, main links from the `_nav.html` macro). The generated pages themselves are not hand-edited.
+  - One "Theme: Auto/Light/Dark" control works across the site (key `carrec-theme`). A head script applies the saved choice before first paint, and the `style.css` dark blocks honour `data-theme`.
+  - Generator change (`kbpipe/dashboard.py`, 43fe321): the overview opens with a plain intro, and every page now uses one count wording.
+    - The plan's "1,556 on sale" was wrong: the 63 variants the app leaves out have **no price**. Pages now say "1,619 stored; the app shows the 1,556 that have a price".
+    - Pages were regenerated from a read-only copy (b15b7dcb). The only other differences are the date, the engine commit count (9 → 13) and the price age (147 → 148 days).
+  - The owner reported a scrollbar in the search box. Fixed: the follow-up box was sized while its form was hidden (height 0), and search boxes no longer draw a scrollbar.
+  - The eval is byte-identical, and 1130 tests pass.
+  - **Open:** the engine page (367 px) and KB page (332 px at 320) are wider than small phones, from their generated content, same as on main. It's a generator follow-up.
+  - All six UI plan PRs are done once #54 merges. Next is the final blind re-review of the live site (same brief, fresh Opus), after Render deploys.
