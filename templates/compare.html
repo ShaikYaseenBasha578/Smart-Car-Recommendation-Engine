@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page_title }}</title>
+    {% include "_theme_head.html" %}
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -55,5 +56,6 @@
     <footer class="site-footer">
         <div class="wrap">Prices are ex-showroom. Car images are taken from manufacturer brochures.</div>
     </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
