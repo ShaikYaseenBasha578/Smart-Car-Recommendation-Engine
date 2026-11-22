@@ -409,3 +409,44 @@ As of phase 11P (prod `b174b0ac06a53bf190c557cb7c6f8b23e938cdd1`).
 ## kbpipe reviews update_missing16_2026-11-18_reviews
 - 72 assessment rows, 99 owner_rating rows
 - KB SHA-1 f704c304adc57542875489892b9ee8f9d3bb19ba -> 0c8156b72b813275a85c95b3fdde36db43295ab0; backup /Users/shaikyaseenbasha/Car_recommender_app/Flask Based App with Used Cars Function/knowledge_base/backups/pre_kbpipe_update_missing16_20261118_reviews_20261118T141506Z.db
+
+## kbpipe ev_range_2026-11-22 — 2026-11-22 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 22 cells written from two agreeing sites; 907 existing cells given confirming evidence. Schema: none.
+**Verifier:** 99.5% (192 of 193; 4 unreachable, 0 verifier errors).
+**Not done / held:** 31 review item(s) in runs/ev_range_2026-11-22/REVIEW_ev_range_2026-11-22.md.
+**Prod SHA-1:** `0c8156b7…` → `28aa2a59…`. Backup `pre_kbpipe_ev_range_20261122_20261122T055038Z.db`, history tag `kb-run-ev_range_2026-11-22`.
+
+## kbpipe ev_range_clavis_brochure_2026-11-22_b — 2026-11-22 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 75 cells written from two agreeing sites; 104 existing cells given confirming evidence. Schema: none.
+**Verifier:** 98.1% (103 of 105; 0 unreachable, 0 verifier errors).
+**Not done / held:** 16 review item(s) in runs/ev_range_clavis_brochure_2026-11-22_b/REVIEW_ev_range_clavis_brochure_2026-11-22_b.md.
+**Prod SHA-1:** `28aa2a59…` → `aac5c6be…`. Backup `pre_kbpipe_ev_range_clavis_brochure_20261122_b_20261122T064042Z.db`, history tag `kb-run-ev_range_clavis_brochure_2026-11-22_b`.
+
+## kbpipe ev_range_windsor_brochure_2026-11-22 — 2026-11-22 — automated enrichment run
+**Why:** scheduled pipeline run (discovery, extraction from CarWale and CarDekho, reconciliation, verification).
+**What changed:** 0 models and 0 variants added; 50 cells written from two agreeing sites; 116 existing cells given confirming evidence. Schema: none.
+**Verifier:** 100.0% (1 of 1; 0 unreachable, 0 verifier errors).
+**Not done / held:** 17 review item(s) in runs/ev_range_windsor_brochure_2026-11-22/REVIEW_ev_range_windsor_brochure_2026-11-22.md.
+**Prod SHA-1:** `aac5c6be…` → `5eb47b67…`. Backup `pre_kbpipe_ev_range_windsor_brochure_20261122_20261122T072100Z.db`, history tag `kb-run-ev_range_windsor_brochure_2026-11-22`.
+
+## kbpipe ev_range_windsor_brochure_2026-11-22-review — review decisions applied
+**What changed:** 1 approved item(s) (R002), 4 change(s). **Prod SHA-1:** `5eb47b67…` → `b15b7dcb…`.
+
+## EV range fill — 2026-11-22 — summary (owner-approved plan `reports/kbpipe/PLAN_EV_RANGE_FILL.md`)
+- **Why:** 40 electric variants in the app showed "Range: Not listed". CarWale states range only as "Expected Range" (itemId 459), which kbpipe did not read (`EV_RANGE_DIAGNOSTIC.md`).
+- **Code:**
+  - CarWale parser reads Expected Range (8b1149a), blind-checked 66/66 (`blindcheck_ev_range/`).
+  - Owner rule: two sites within 10 km take the higher value, EV range only (cf7ed16).
+- **Writes:**
+  - 22 two-site range fills (`ev_range_2026-11-22`).
+  - Clavis EV brochure: 75 blank cells, including 5 ranges (`ev_range_clavis_brochure_2026-11-22_b`).
+  - Windsor EV brochure: 50 blank cells; it prints no range (`ev_range_windsor_brochure_2026-11-22`).
+  - Windsor EV 38 kWh range 331 → 332 on 4 variants via review item R002, ticked on the owner's instruction (`…-review`).
+  - No other stored value changed.
+- **Prod SHA-1:** `0c8156b7…` → `28aa2a59…` → `aac5c6be…` → `5eb47b67…` → `b15b7dcb5017db4867106e687e19e3de6299834b`. Integrity ok after each step; foreign keys show only the 297 known orphans.
+- **Open:**
+  - The audits of the two brochure runs stopped on the free verifier quota (100/175 and 0/175). Resume with `kbpipe run --audit changed --resume-audit <run folder>`.
+  - Still held: Sierra EV (sites 23–26% apart), XUV400 EL PRO 34.5 kWh (456 vs 375) and XEV 9e Pack Three Select 59 kWh (542 vs 522). These need brochures.
+  - EVs without a range: 34 in the KB, 26 in the app.
