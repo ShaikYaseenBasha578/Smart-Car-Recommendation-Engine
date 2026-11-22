@@ -315,3 +315,30 @@ def test_genuine_negations_still_negate(query, field, value):
 def test_amt_wali_nahi_chahiye_and_hybrid_not_toyota_keep_the_right_side():
     assert parse_intent("AMT wali nahi chahiye")["transmission"]["exclude_types"] == ["amt"]
     assert _filters("hybrid not Toyota")["fuel_types"] == ["hybrid"]
+
+
+def test_a_recognised_term_between_the_negation_word_and_a_term_blocks_the_negation():
+    out = parse_intent("no diesel SUV")
+    assert out["body_types"] == ["suv"] and out["exclude_body_types"] == [] and out["exclude_fuel_types"] == ["diesel"]
+    out = parse_intent("no diesel SUV under 12 lakh")
+    assert out["body_types"] == ["suv"] and out["exclude_body_types"] == [] and out["budget"]["max"] == 12 * L
+    out = parse_intent("no sunroof SUV")
+    assert out["body_types"] == ["suv"] and out["exclude_body_types"] == [] and out["exclude_features"] == ["sunroof"]
+    out = parse_intent("avoid diesel and CNG SUV")
+    assert out["exclude_fuel_types"] == ["diesel", "cng"] and out["body_types"] == ["suv"] and out["exclude_body_types"] == []
+
+
+@pytest.mark.parametrize("query,field,value", [
+    ("avoid diesel and CNG", "exclude_fuel_types", ["diesel", "cng"]),
+    ("no diesel or CNG", "exclude_fuel_types", ["diesel", "cng"]),
+    ("not Tata or Mahindra", "exclude_makes", ["Mahindra", "Tata"]),
+])
+def test_coordinated_negations_still_reach_every_term(query, field, value):
+    assert _filters(query)[field] == value
+
+
+def test_prefix_negation_of_amt_still_works():
+    assert parse_intent("no AMT")["transmission"]["exclude_types"] == ["amt"]
+    assert parse_intent("do not want an AMT")["transmission"]["exclude_types"] == ["amt"]
+    out = parse_intent("without AMT Creta")
+    assert out["transmission"]["exclude_types"] == ["amt"] and out["models"] == ["Creta"]

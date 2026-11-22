@@ -215,6 +215,7 @@ NEGATION_FILLER = {"a", "an", "the", "want", "wanna", "need", "like", "any", "pr
                    "have", "do", "i", "an", "using", "with",
                    # coordination: "avoid diesel and CNG" negates both (earlier terms are already blanked)
                    "and", "or", "nor", "ya", "aur", "&", "/"}
+COORDINATORS = {"and", "or", "nor", "ya", "aur", "&", "/"}
 NEGATION_AFTER = {"nahi", "nahin", "nhi", "mat", "not", "na"}
 ENGLISH_NOT_AFTER = {"not", "na"}
 POSTFIX_NOT_TAIL = {"wanted", "needed", "required", "preferred", "desired", "please", "at", "all", "chahiye", "chaiye"}
@@ -234,14 +235,32 @@ def _mask(text: str, match: re.Match) -> str:
 def _is_negated(text: str, start: int, end: int, original: str | None = None) -> bool:
     """`text` is the masked text; `original` (same length, unmasked) is used for the English postfix-"not" tail check,
     so terms already blanked ("diesel", "under 15 lakh") still count as a new clause after "SUV not ..."."""
-    before = CLAUSE_BREAK.split(text[:start])[-1].split()
+    use_original = original is not None and len(original) == len(text)
+    if use_original:
+        # walk the ORIGINAL words; a word that is blank in the masked text is an already-recognised term
+        # ("no [diesel] SUV"), which blocks the negation unless a coordinator sits right after it
+        # ("avoid [diesel] and CNG").
+        segment = CLAUSE_BREAK.split(original[:start])[-1]
+        seg_start = start - len(segment)
+        words = [(m.group(0), not text[seg_start + m.start():seg_start + m.end()].strip())
+                 for m in re.finditer(r"\S+", segment)]
+    else:
+        words = [(w, False) for w in CLAUSE_BREAK.split(text[:start])[-1].split()]
     # negation word, then only fillers, then the term: "no AMT", "do not want an AMT"
-    for i in range(len(before) - 1, max(len(before) - 5, -1), -1):
-        word = before[i].strip("'\"")
+    after_coordinator = False
+    for i in range(len(words) - 1, max(len(words) - 5, -1), -1):
+        word, blank = words[i]
+        word = word.strip("'\"")
+        if blank:
+            if not after_coordinator:
+                break
+            after_coordinator = False
+            continue
         if word in NEGATION_BEFORE:
             return True
         if word not in NEGATION_FILLER:
             break
+        after_coordinator = word in COORDINATORS
     # "AMT nahi", "diesel nahi chahiye", "AMT wali nahi"
     after = CLAUSE_BREAK.split(text[end:])[0].split()[:3]
     for i, word in enumerate(after):
