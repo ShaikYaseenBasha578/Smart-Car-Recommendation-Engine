@@ -16,6 +16,14 @@
             <p class="compare-back"><a class="back-link-a" href="{{ back_url }}">{% if q %}<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10H4M9 5l-5 5 5 5"/></svg>Back to your results{% else %}Search cars{% endif %}</a></p>
             {% if missing %}<p class="compare-note">{{ missing }} car{{ "s" if missing != 1 }} in this link {{ "are" if missing != 1 else "is" }} no longer in our catalogue.</p>{% endif %}
             {% if shown %}
+            <div class="compare-tools">
+                <p class="compare-range" data-compare-range hidden></p>
+                <a class="compare-diff" href="{{ diff_url }}">{{ "Show all rows" if diff else "Show differences only" }}</a>
+            </div>
+            {% if all_equal %}
+            <p class="compare-note compare-same" id="comparison" tabindex="-1">These cars show the same on every row we compare. Use "Show all rows" to see the values.</p>
+            {% else %}
+            <div class="compare-frame" data-compare-frame>
             <div class="compare-scroll" id="comparison" role="region" aria-label="Comparison table" tabindex="0">
                 <table class="compare-table" style="--n: {{ cars|length }}">
                     <caption class="sr-only">Side-by-side comparison of {{ cars | map(attribute="model") | join(", ") }}</caption>
@@ -24,10 +32,12 @@
                             <td class="compare-corner"></td>
                             {% for car in cars %}
                             <th scope="col" class="compare-car">
-                                <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" loading="eager" decoding="async">
-                                <a class="compare-name" href="{{ car.url }}">{{ car.make }} {{ car.model }}</a>
-                                <span class="compare-variant">{{ car.variant }}</span>
-                                <a class="compare-remove" href="{{ car.remove_url }}" aria-label="Remove {{ car.make }} {{ car.model }} {{ car.variant }} from the comparison">Remove</a>
+                                <div class="compare-carhead">
+                                    <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" loading="eager" decoding="async">
+                                    <a class="compare-name" href="{{ car.url }}" title="{{ car.make }} {{ car.model }} {{ car.variant }}"><span class="compare-make">{{ car.make }} </span>{{ car.model }}</a>
+                                    <span class="compare-variant">{{ car.variant }}</span>
+                                    <a class="compare-remove" href="{{ car.remove_url }}" aria-label="Remove {{ car.make }} {{ car.model }} {{ car.variant }} from the comparison">Remove</a>
+                                </div>
                             </th>
                             {% endfor %}
                         </tr>
@@ -44,6 +54,8 @@
                     </tbody>
                 </table>
             </div>
+            </div>
+            {% endif %}
             <p class="compare-foot">Mileage is compared only between cars with the same unit. Prices are ex-showroom. Prices and specs updated {{ stamp }}.</p>
             {% else %}
             <div class="state compare-empty" id="comparison" tabindex="-1">

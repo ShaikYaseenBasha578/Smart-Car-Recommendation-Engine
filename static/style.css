@@ -705,9 +705,7 @@ button { cursor: pointer; }
 .refiner:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
 .refiner:active { transform: translateY(1px); }
 @media (max-width: 599px) {
-  .car--v3 .car-photo img { aspect-ratio: 21 / 9; max-height: 140px; }
-  .ratings .rating-part { display: block; }
-  .rating-sep { display: none; }
+  .car--v3 .car-photo img { aspect-ratio: 21 / 9; max-height: 120px; }
   .refiners { display: grid; grid-template-columns: 1fr 1fr; }
   .refiner { padding-inline: 8px; font-size: 0.875rem; white-space: nowrap; }
   /* the two buttons share a row when they fit, else they stack full width (the old rule would stack them always) */
@@ -787,7 +785,7 @@ button { cursor: pointer; }
 .compare-empty { margin-top: var(--s3); }
 
 /* the scroll container keeps the page itself from scrolling sideways; the first column stays put */
-.compare-scroll { --label: 112px; position: relative; margin-top: var(--s2); overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow); }
+.compare-scroll { --label: 96px; position: relative; margin-top: var(--s2); overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow); }
 @media (min-width: 600px) { .compare-scroll { --label: 170px; } }
 .compare-table { table-layout: fixed; width: 100%; min-width: calc(var(--label) + var(--n, 2) * 150px); border-collapse: separate; border-spacing: 0; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
 .compare-table th, .compare-table td { padding: 12px var(--s1); text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
@@ -832,7 +830,7 @@ button { cursor: pointer; }
 .compare-tray a.btn-primary { gap: 0; }  /* the space before "3 cars" is in the text, so screen readers read "Compare 3 cars" */
 .compare-pills { display: none; }
 @media (min-width: 600px) { .compare-pills { display: flex; } .compare-count { display: none; } .compare-more { display: inline; } }
-body.has-compare-tray { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+body.has-compare-tray { padding-bottom: calc(var(--tray-h, 64px) + var(--s1)); }   /* --tray-h: what the pill or bar really covers, set by script.js */
 @keyframes compare-tray-in { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) { .compare-tray:not([hidden]) { animation: compare-tray-in 200ms ease-out; } }
 
@@ -859,4 +857,137 @@ body.has-compare-tray { padding-bottom: calc(64px + env(safe-area-inset-bottom))
 @media (min-width: 600px) {
   .car--v3 .car-foot { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .car--v3 .car-actions { grid-column: 1; flex-wrap: wrap; }
+}
+
+/* ---------- PR H: mobile density ---------- */
+
+/* the line under a turn's heading: "8 cars · sorted by best match" */
+.turn-count { margin-top: calc(var(--s-1) - var(--s2)); font-size: var(--text-sm); color: var(--ink-2); }
+.all-meet { display: flex; align-items: center; gap: 6px; font-size: 1rem; font-weight: 720; line-height: 1.3; color: var(--good); }
+.all-meet svg { width: 18px; height: 18px; flex: none; }
+
+/* under the price: "22 matching variants · On-road price on CarDekho" */
+.car-price .price-links { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0 6px; margin-top: 4px; font-size: 0.9375rem; }
+.car-price .price-links .price-link { margin-top: 0; flex-basis: auto; }
+.car--v3 .car-price .price-links .price-link { margin-top: 0; }
+.car-price .price-links a { min-height: 24px; }
+.variants-link { display: inline-flex; align-items: center; white-space: nowrap; color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.variants-link:hover { color: var(--accent-hover); }
+.car-price .link-sep { color: var(--ink-3); font-size: 0.9375rem; }
+
+/* the caveat and the tags are one wrapping row */
+.tags .caveat-pill { width: auto; flex: 0 1 auto; min-width: 0; }
+
+/* specs button is a quiet outline; the filled accent stays on Find cars and the tray */
+.car-actions .btn-specs { color: var(--ink); }
+.btn-reviews span { white-space: nowrap; }
+
+@media (max-width: 767px) {
+  /* html's scroll-padding-top is 88px (header + gap); -16px lands the heading 72px down, just under the 64px header */
+  .thread > .turn:first-child .turn-head { scroll-margin-top: -16px; }
+  /* once a search exists, the follow-up box has its own examples */
+  .results-page.has-turns .search-form:not(.followup) [data-suggestions] { display: none; }
+}
+
+@media (max-width: 599px) {
+  .turn { gap: var(--s0); }
+  .turn-count { margin-top: 0; }
+  .turn-body { gap: 12px; }
+  .turn-query { font-size: 1.25rem; margin-top: 2px; }
+
+  /* facts on one line: "Automatic (AMT) · Diesel · 24.1 kmpl"; the labels stay for screen readers */
+  .facts .fact-k { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .car--v3 .facts { gap: 2px 6px; }
+  .facts li + li::before { content: "·"; content: "·" / ""; margin-right: 6px; color: var(--ink-3); font-weight: 400; }
+
+  .car--v3 .also { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+  .car-price .price-links { flex-basis: 100%; justify-content: flex-start; margin-top: 0; font-size: 0.8125rem; }
+  .car-price .price-links .price-link, .car-price .link-sep { font-size: 0.8125rem; }
+  .car--v3 .car-price { width: 100%; }
+  .price-links .price-link svg { display: none; }   /* the new-tab icon makes the line too wide for one row; the screen-reader text stays */
+  .car-price .price-links { gap: 0 3px; }
+  .car--v3 .car-body { gap: 4px; }
+  .car--v3 .tags { gap: 4px; }
+  .tags .caveat-pill { padding: 2px 8px; }
+  .tags .tag { padding: 2px 8px; }
+
+  /* the echo chips and the sort row sit closer, so the first card starts sooner */
+  .echo-box { gap: 4px 6px; }
+  .echo { padding: 2px 10px; font-size: 0.8125rem; }
+  .toolbar { gap: var(--s0) var(--s1); }
+  .toolbar-info { gap: 0; }
+
+  /* actions: Specs & variants and Compare share a row; Reviews is a full-width text-style toggle below */
+  .car--v3 .car-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .car--v3 .car-actions .btn { width: 100%; min-height: 44px; padding-inline: 8px; }
+  .car--v3 .car-actions .btn-reviews { grid-column: 1 / -1; border-color: transparent; color: var(--accent-text); font-weight: 600; }
+  .car--v3 .car-actions .btn-reviews:hover { border-color: transparent; text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* ---------- PR H: compare tray as a pill ---------- */
+.compare-tray--collapsed {
+  left: auto; right: var(--s1); bottom: calc(var(--s1) + env(safe-area-inset-bottom));
+  background: transparent; border: 0; box-shadow: none; padding-bottom: 0;
+}
+.compare-fab {
+  min-height: 44px; padding: 0 var(--s2); border-radius: var(--r-pill);
+  background: var(--surface); color: var(--accent-text); border: 2px solid var(--accent);
+  font-size: 0.9375rem; font-weight: 700; box-shadow: var(--shadow-lift);
+}
+.compare-fab:hover { background: var(--accent-soft); }
+.compare-fold { display: inline-grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--ink-2); }
+.compare-fold:hover { background: var(--surface-2); color: var(--ink); }
+.compare-fold svg { width: 20px; height: 20px; }
+@media (max-width: 599px) { .compare-tray .wrap { gap: var(--s0); } }
+
+/* ---------- PR H: compare page on phones ---------- */
+.compare-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s0) var(--s1); margin-top: var(--s2); }
+.compare-range { display: none; font-size: var(--text-sm); font-weight: 600; color: var(--ink-2); }
+.compare-diff { display: inline-flex; align-items: center; min-height: 40px; margin-left: auto; padding: 8px var(--s1); border: 1px solid var(--line-ctl); border-radius: var(--r-ctl); font-size: var(--text-sm); font-weight: 550; color: var(--ink-2); text-decoration: none; }
+.compare-diff:hover { border-color: var(--ink-3); color: var(--ink); }
+.compare-frame { position: relative; margin-top: var(--s1); }
+.compare-frame > .compare-scroll { margin-top: 0; }
+.compare-same { margin-top: var(--s2); padding: var(--s2); border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); font-size: var(--text-base); }
+.compare-carhead { display: block; }
+@media (max-width: 599px) {
+  .compare-range { display: block; }
+  .compare-scroll {
+    --col: calc((100vw - 2 * var(--s1) - 2px - var(--label)) / 2 - 2px);   /* two cars fill the room beside the label column */
+  }
+  .compare-table { min-width: calc(var(--label) + var(--n, 2) * var(--col)); }
+  .compare-table th, .compare-table td { padding: 10px 8px; }
+  .compare-table th[scope="row"] { font-size: 0.8125rem; }
+  /* no inner vertical scroll on phones (a scroll box inside the page traps the swipe), so the header row is not sticky here;
+     it is kept short instead: a 48 px thumbnail and the model name */
+  .compare-carhead { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 2px 6px; align-items: start; }
+  .compare-car img { grid-row: 1 / span 2; width: 48px; height: 36px; aspect-ratio: auto; border-radius: 6px; }
+  .compare-car img[src$=".svg"] { padding: 2px; }
+  .compare-name { margin-top: 0; font-size: 0.8125rem; line-height: 1.2; letter-spacing: 0; overflow-wrap: anywhere; }
+  .compare-make, .compare-variant { display: none; }
+  .compare-remove { margin-top: 0; padding-block: 4px; font-size: 0.8125rem; }
+  .compare-frame.has-more::after {
+    content: ""; position: absolute; top: 1px; right: 1px; bottom: 1px; width: 40px; pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--surface)); border-radius: 0 var(--r-card) var(--r-card) 0;
+  }
+}
+
+/* ---------- PR H: car page on phones ---------- */
+.variant-pick { min-height: 24px; }
+@media (max-width: 599px) {
+  /* no card around the page: sections run to the page gutter */
+  .detail-body--page { margin-top: var(--s1); padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+
+  /* each variant a stacked row: the name, then "price · gearbox · fuel · mileage"; no scroll box */
+  .table-wrap { max-height: none; overflow: visible; }
+  .variants, .variants tbody { display: block; }
+  .variants thead { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .variants tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 0; padding: 10px 12px; border-top: 1px solid var(--line); }
+  .variants tbody tr:first-child { border-top: 0; }
+  .variants td { display: inline; padding: 0; border: 0; white-space: normal; font-size: 0.9375rem; color: var(--ink-2); }
+  .variants td:first-child { flex: 0 0 100%; min-width: 0; color: var(--ink); }
+  .variants td:not(:first-child) { white-space: nowrap; }
+  .variants td:nth-child(n+2):not(:last-child)::after { content: "·"; margin-inline: 6px; color: var(--ink-3); }
+  .variants tr.is-selected { box-shadow: inset 0 0 0 2px var(--accent); }
+  .variants tr.is-selected td, .variants tr.is-selected td:first-child { box-shadow: none; }
 }

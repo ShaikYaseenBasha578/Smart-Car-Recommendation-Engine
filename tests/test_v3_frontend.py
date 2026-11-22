@@ -221,30 +221,40 @@ def text(fragment):
 
 
 def ratings_line(html):
-    m = re.search(r'<p class="ratings">(.*?)</p>', html, re.S)
+    """The collapsed card's one-line ratings (the first .ratings paragraph)."""
+    m = re.search(r'<p class="ratings"[^>]*>(.*?)</p>', html, re.S)
     return text(m.group(1)) if m else None
+
+
+def ratings_title(html):
+    m = re.search(r'<p class="ratings" title="([^"]*)">', html)
+    return m.group(1) if m else None
 
 
 def test_no_score_bars_and_no_specs_fit_number_in_the_card():
     html = render(response([with_standing(), car()]))
-    for gone in ("Specs", "fit to your search", "meter", "Match breakdown", "Expert and Owners show standing", ">81<"):
+    for gone in (">Specs<", "fit to your search", "meter", "Match breakdown", "Expert and Owners show standing", ">81<"):
         assert gone not in html
     css = (ROOT / "static" / "style.css").read_text()
     assert ".meter" not in css
 
 
-def test_ratings_line_gives_raw_values_source_and_standing_in_words():
+def test_ratings_line_is_one_compact_line_with_the_words_in_the_title_and_the_panel():
     html = render(response([with_standing()]))
-    assert ratings_line(html) == ("Reviewers: 8/10 (Autocar India, above average for SUVs) · "
-                                  "Owners: 4.6/5 from 1,068 ratings (above average)")
-    assert html.count('class="ratings"') == 1 and 'class="ratings"' in html.split('class="v3-fit"')[1]   # in the collapsed card
+    assert ratings_line(html) == "Reviewers 8/10 · Owners 4.6/5 (1,068)"
+    assert ratings_title(html) == ("Reviewers: 8/10 (Autocar India, above average for SUVs) · "
+                                   "Owners: 4.6/5 from 1,068 ratings (above average)")
+    assert 'class="ratings"' in html.split('class="v3-fit"')[1].split('class="v3-more"')[0]            # in the collapsed card
+    panel = html.split('class="v3-more"')[1]                                                           # the full words are in the reviews panel
+    assert re.search(r'<p class="ratings">.*above average for SUVs', panel, re.S)
+    assert "above average" not in ratings_line(html)
 
 
 def test_ratings_line_is_one_part_when_the_other_is_missing_and_absent_when_both_are():
     assert ratings_line(render(response([car(owner_standing=standing(band="upper"), expert_standing=None)]))) == \
-        "Owners: 4.6/5 from 1,068 ratings (above average)"
+        "Owners 4.6/5 (1,068)"
     assert ratings_line(render(response([car(owner_standing=None, expert_standing=expert_standing())]))) == \
-        "Reviewers: 8/10 (Autocar India, above average for SUVs)"
+        "Reviewers 8/10"
     no_overall = expert_standing(score=None, scale_max=None, value=None, band="no_overall")
     assert ratings_line(render(response([car(owner_standing=standing(rating=None), expert_standing=no_overall)]))) is None
     assert 'class="ratings"' not in render(response([car()]))                    # no standing objects at all: no line
@@ -253,16 +263,19 @@ def test_ratings_line_is_one_part_when_the_other_is_missing_and_absent_when_both
 def test_ratings_line_makes_no_standing_claim_for_small_segments_or_few_ratings():
     small = standing(value=None, band="small_segment", caption="4.6/5 from 1068 ratings · only 7 rated sedans, too few to compare")
     low = standing(value=None, band="low_confidence", rating=4.4, rating_count=12, caption="4.4/5 from only 12 ratings · too few to compare")
-    for st, expect in ((small, "Owners: 4.6/5 from 1,068 ratings"), (low, "Owners: 4.4/5 from only 12 ratings")):
-        line = ratings_line(render(response([car(owner_standing=st, expert_standing=None)])))
+    for st, expect in ((small, "Owners 4.6/5 (1,068)"), (low, "Owners 4.4/5 (only 12)")):
+        html = render(response([car(owner_standing=st, expert_standing=None)]))
+        line = ratings_line(html)
         assert line == expect
         assert not re.search(r"best-rated|average|lowest-rated|too few", line)
+        assert not re.search(r"best-rated|average|lowest-rated|too few", ratings_title(html))   # no standing claim anywhere either
 
 
 def test_ratings_line_top_and_bottom_bands_keep_the_wording():
     top = standing(band="top", caption="4.8/5 from 900 ratings · among the best-rated SUVs", rating=4.8, rating_count=900)
-    assert ratings_line(render(response([car(owner_standing=top, expert_standing=None)]))) == \
-        "Owners: 4.8/5 from 900 ratings (among the best-rated SUVs)"
+    html = render(response([car(owner_standing=top, expert_standing=None)]))
+    assert ratings_line(html) == "Owners 4.8/5 (900)"
+    assert ratings_title(html) == "Owners: 4.8/5 from 900 ratings (among the best-rated SUVs)"
 
 
 def test_ratings_line_is_escaped():
@@ -297,13 +310,13 @@ def test_toggle_is_a_real_button_collapsed_by_default_with_aria():
 def test_toggle_label_counts_the_items_behind_it():
     # 2 expert lines + 2 owner lines = 4; the extra "why" reasons have their own "+N more reasons" button (PR G)
     html = render(response([many_lines()]))
-    assert "Reviews and owner feedback (4)" in html and "Show more from reviews" not in html
+    assert "Reviews (4)" in html and "Show more from reviews" not in html
     caveat = owner(theme="recurring_fault", label="clutch judder", direction="negative", mentions=3, posts_sampled=60,
                    share=0.05, note="Judder.", kind="reported_fault")
     one = render(response([car(expert_notes=[expert()], owner_notes=[], caveats=[caveat])]))   # 1 expert + 1 caveat
-    assert "Reviews and owner feedback (2)" in one
+    assert "Reviews (2)" in one
     only_summary = render(response([car(expert_notes=[], owner_notes=[], owner_standing=standing())]))
-    assert "Reviews and owner feedback (1)" in only_summary                                   # the ratings summary counts
+    assert "Reviews (1)" in only_summary                                   # the ratings summary counts
 
 
 def test_reviewers_owners_and_caveats_sit_behind_the_toggle_and_the_card_shows_two_why_bullets():
@@ -327,7 +340,7 @@ def test_card_has_at_most_one_caveat_line_and_it_is_a_single_pill():
                     note=f"Note {lab}.", kind="reported_fault") for lab in ("fit and finish", "clutch judder", "ac cooling")]
     html = render(response([car(caveats=faults)]))
     assert html.count('class="caveat-pill"') == 1
-    pill = re.search(r'<p class="caveat-pill" title="([^"]*)">', html).group(1)
+    pill = re.search(r'<li class="caveat-pill" title="([^"]*)">', html).group(1)
     assert pill == "Owners report: fit and finish (+2 more)"
     assert html.index('class="caveat-pill"') < html.index('class="v3-more"')                  # shown in the collapsed card
     assert html.split('class="v3-more"')[0].count("Note clutch judder.") == 0                 # the notes are not
@@ -347,7 +360,7 @@ def test_no_toggle_and_no_panel_when_nothing_sits_behind_it():
     bare = car(expert_notes=[], owner_notes=[], caveats=[], reasons=[{"text": "one", "evidence_class": "spec"}])
     html = render(response([bare]))
     assert "data-reviews-toggle" not in html and "data-reviews=" not in html and "data-more" not in html
-    assert "Reviews and owner feedback" not in html and 'class="v3-more"' not in html
+    assert "Reviews (" not in html and 'class="v3-more"' not in html
 
 
 def test_a_long_note_is_in_the_dom_in_full_and_no_longer_clamped():
@@ -420,10 +433,11 @@ def test_exclusions_are_echoed_as_chips():
     assert "No Mahindra" in echo and "No sunroof" in echo
 
 
-def test_view_details_is_primary_and_on_road_price_is_a_text_link_under_the_price():
+def test_specs_is_a_quiet_button_and_on_road_price_is_a_text_link_under_the_price():
     html = render(response([car()]))
-    assert '<button type="button" class="btn btn-primary" data-detail' in html
-    price = html.split('<p class="car-price">')[1].split("</p>")[0]
+    assert 'class="btn btn-quiet btn-specs" data-detail' in html and "btn-primary" not in html.split('class="car-actions"')[1]
+    assert ">Specs & variants<" in html
+    price = html.split('<div class="car-price">')[1].split("</p>")[0]
     assert 'class="price-link"' in price and "On-road price on CarDekho" in price and 'target="_blank"' in price
     assert "Check on-road price" not in html
     assert 'class="price-link"' not in render(response([car(carDekhoLink=None)]))
@@ -535,7 +549,7 @@ def test_cited_explanation_stays_in_the_collapsed_card_and_its_sources_count_beh
     assert before.count('data-cite') == 3 and "It has the sunroof you asked for." in before
     assert '<ol class="why-sources" data-more hidden>' in before                    # sources open with the toggle
     assert "Priced at 8 lakh" not in before.split('<ol class="why-sources"')[0]      # the template bullet is not shown next to it
-    assert "Reviews and owner feedback (6)" in html                                  # 3 sources + 1 template bullet + 1 expert + 1 owner
+    assert "Reviews (6)" in html                                  # 3 sources + 1 template bullet + 1 expert + 1 owner
     assert "What reviewers say" in after
 
 
@@ -946,3 +960,156 @@ def test_compare_css_rank_rule_and_reduced_motion_entrance():
     assert "body.has-compare-tray" in css and "env(safe-area-inset-bottom)" in css
     assert "font-variant-numeric: tabular-nums" in css.split(".compare-table {")[1].split("}")[0]
     assert "position: sticky; left: 0" in css.split(".compare-table .compare-corner")[1].split("}")[0]
+
+
+# ------------------------------------------------------------------ PR H: mobile density
+
+def two_cars(**kw):
+    return [car(variant_id=1, **kw), car(variant_id=2, Model="Punch", **kw)]
+
+
+def test_all_meet_line_is_said_once_and_the_per_card_label_goes():
+    html = render(response(two_cars()))
+    assert html.count("All 2 meet every requirement") == 1
+    assert "Meets all your requirements" not in html and "fit-label" not in html
+    assert html.index("All 2 meet every requirement") < html.index('<div class="cards"')       # above the cards
+    assert "All 8 meet every requirement" in render(response([car(variant_id=i, Model=f"M{i}") for i in range(8)]))
+
+
+def test_per_card_label_stays_when_cards_differ_or_there_is_only_one():
+    unmet = car(variant_id=2, Model="Punch", violations=[{"constraint": "budget", "text": "₹40,000 over budget", "amount": 40000, "unit": "INR"}])
+    html = render(response([car(variant_id=1), unmet]))
+    assert "meet every requirement" not in html
+    assert "Meets all your requirements" in html and "Meets 1 of 2 requirements" in html and "Not met: ₹40,000 over budget" in html
+    unverified = render(response([car(variant_id=1), car(variant_id=2, Model="Punch", not_verified=["ground clearance not verified"])]))
+    assert "meet every requirement" not in unverified and "Meets all your requirements" in unverified
+    one = render(response([car(variant_id=1)]))
+    assert "meet every requirement" not in one and "Meets all your requirements" in one
+    general = render(response(two_cars(), personalised=False))
+    assert "meet every requirement" not in general
+
+
+def sunroof_reasons(fields=("sunroof",)):
+    return [{"text": "Has sunroof, as you asked", "evidence_class": "spec", "fields": list(fields)},
+            {"text": "Priced at 8 lakh, 80% of your 10 lakh budget", "evidence_class": "spec", "fields": ["price_ex_showroom"]}]
+
+
+def tag_texts(html):
+    return re.findall(r'<li class="tag tag--[a-z]+">(?:<svg.*?</svg>)?<span>(.*?)</span>', html, re.S)
+
+
+def test_feature_tag_that_repeats_a_shown_reason_is_dropped():
+    html = render(response([car(matched_features=["sunroof", "adas"], reasons=sunroof_reasons())]))
+    tags = tag_texts(html)
+    assert "Sunroof" not in tags and "ADAS" in tags                      # ADAS says something the reasons do not
+    assert "Has sunroof, as you asked" in html
+    by_label = render(response([car(matched_features=["sunroof"], reasons=sunroof_reasons(fields=()))]))   # no fields: compared by label
+    assert "Sunroof" not in tag_texts(by_label)
+
+
+def test_feature_tag_stays_when_its_reason_is_not_shown_on_the_card():
+    reasons = [{"text": f"reason {i}", "evidence_class": "spec", "fields": []} for i in range(2)] + sunroof_reasons()[:1]
+    html = render(response([car(matched_features=["sunroof"], reasons=reasons)]))   # the sunroof reason is third: behind "+N more reasons"
+    assert "Sunroof" in tag_texts(html)
+    assert "Sunroof" in tag_texts(render(response([car(matched_features=["sunroof"], reasons=[])])))
+
+
+def test_matching_variants_is_a_quiet_link_on_the_on_road_line():
+    html = render(response([car(variant_id=71, matching_variant_count=22)]))
+    line = re.search(r'<p class="price-links">(.*?)</p>', html, re.S).group(1)
+    assert '<a class="variants-link" data-variants-link href="/car/tata/nexon?variant_id=71#detail-variants">22 matching variants</a>' in line
+    assert '<span class="link-sep" aria-hidden="true">·</span>' in line and "On-road price on CarDekho" in line
+    assert line.index("variants-link") < line.index("link-sep") < line.index("price-link")
+    assert "matching variants</span>" not in html and "tag--plain" not in html           # no longer a pill
+    assert "1 matching variant<" in render(response([car(variant_id=1, matching_variant_count=1)]))
+    only = re.search(r'<p class="price-links">(.*?)</p>', render(response([car(matching_variant_count=0)])), re.S).group(1)
+    assert "variants-link" not in only and "link-sep" not in only and "On-road price" in only
+
+
+def test_linking_the_card_title_also_points_the_variants_link_at_the_search():
+    js = (ROOT / "static" / "script.js").read_text()
+    assert 'variants.href = `${detailUrl("/car", opts)}#detail-variants`' in js
+
+
+def test_caveat_and_tags_share_one_list():
+    caveat = owner(theme="recurring_fault", label="clutch judder", direction="negative", mentions=3, posts_sampled=60,
+                   share=0.05, note="Judder.", kind="reported_fault")
+    html = render(response([car(caveats=[caveat])]))
+    row = re.search(r'<ul class="tags"[^>]*>(.*?)</ul>', html, re.S).group(1)
+    assert row.startswith('<li class="caveat-pill"') and 'class="tag tag--' in row
+
+
+def test_new_action_labels():
+    html = render(response([car()]))
+    actions = html.split('class="car-actions"')[1].split("</article>")[0]
+    assert ">Specs & variants<" in actions and "View details" not in html
+    assert "<span>Reviews (1)</span>" in actions or "<span>Reviews (" in actions
+    assert "Reviews and owner feedback" not in html
+    js = (ROOT / "static" / "script.js").read_text()
+    assert '"Hide specs & variants"' in js
+
+
+def test_also_available_from_keeps_its_whole_text_in_the_title():
+    html = render(response([car(also_available_from={"variant_id": 3, "variant": "Smart Lite", "Ex-Showroom_Price": 700000.0})]))
+    assert '<p class="also" title="Also available from ₹7 lakh (Smart Lite)">' in html
+
+
+def test_count_line_text_for_best_price_and_relaxed():
+    f = lambda n, relaxed, key: run_detail("turnCountText(input.n, input.relaxed, input.key)", n=n, relaxed=relaxed, key=key)
+    assert f(8, False, "best") == "8 cars · sorted by best match"
+    assert f(8, False, "price") == "8 cars · sorted by price, lowest first"
+    assert f(5, False, "mileage") == "5 cars · sorted by mileage, highest first"
+    assert f(3, True, "best") == "3 closest cars · sorted by best match"
+    assert f(1, False, "best") == "1 car" and f(1, True, "best") == "1 closest car"
+    assert f(4, False, "nonsense") == "4 cars · sorted by best match"
+
+
+def test_turn_has_a_visible_count_line_under_its_heading():
+    js = (ROOT / "static" / "script.js").read_text()
+    assert '<p class="turn-count" data-turn-count hidden></p>' in js
+    tpl = js.split('<section data-turn="${id}"')[1].split("</section>")[0]
+    assert tpl.index("data-turn-heading") < tpl.index("data-turn-count") < tpl.index("data-turn-body")
+
+
+def tray_state(n, collapsed):
+    items = [{"variant_id": i + 1, "name": "Tata Nexon", "model": "Nexon", "variant": f"V{i}"} for i in range(n)]
+    return run_detail("buildCompareTray(input.items, 'q', [], 'best', input.collapsed)", items=items, collapsed=collapsed)
+
+
+def test_tray_collapsed_is_a_pill_and_expanded_has_a_fold_button():
+    pill = tray_state(2, True)
+    assert pill.count("<button") == 1 and "data-compare-expand" in pill and ">Compare (2)<" in pill
+    assert 'aria-expanded="false"' in pill and "compare-pills" not in pill and "<a " not in pill
+    assert ">Compare (1)<" in tray_state(1, True)
+    open_ = tray_state(2, False)
+    assert "data-compare-collapse" in open_ and 'aria-expanded="true"' in open_ and "2 cars selected" in open_ and "data-compare-expand" not in open_
+    assert tray_state(0, True) == ""
+
+
+def test_tray_collapses_only_when_no_selected_car_is_in_the_results():
+    f = lambda sel, here, pref="": run_detail("trayCollapsed(input.list, input.here, input.pref)",
+                                              list=[{"variant_id": i} for i in sel], here=here, pref=pref)
+    assert f([1, 2], ["7", "8"]) is True and f([1, 2], []) is True
+    assert f([1, 2], ["2", "8"]) is False                                # a selected car is in the current results
+    assert f([1, 2], ["7"], "open") is False and f([1, 2], ["2"], "closed") is True
+
+
+def test_tray_css_is_a_44px_accent_outlined_pill_and_padding_follows_its_height():
+    css = (ROOT / "static" / "style.css").read_text()
+    pill = re.search(r"\.compare-fab \{([^}]*)\}", css).group(1)
+    assert "min-height: 44px" in pill and "border: 2px solid var(--accent)" in pill
+    assert "right: var(--s1)" in css.split(".compare-tray--collapsed {")[1].split("}")[0]
+    assert "padding-bottom: calc(var(--tray-h, 64px)" in css
+
+
+def test_car_page_variant_rows_carry_their_meta_cells_for_the_stacked_phone_layout():
+    html = render_detail(detail_data(n=3, matching=1), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
+    row = re.search(r"<tr data-variant-id=\"1\".*?</tr>", html, re.S).group(0)
+    for label in ("Price", "Gearbox", "Fuel", "Mileage"):
+        assert f'<td class="variant-meta" data-label="{label}">' in row
+    css = (ROOT / "static" / "style.css").read_text()
+    phone = css.split("PR H: car page on phones")[1]
+    assert ".table-wrap { max-height: none; overflow: visible; }" in phone
+    assert ".variants td:first-child { flex: 0 0 100%" in phone
+    assert "max-height: 420px" in css                                          # desktop keeps the scroll box
+    assert ".detail-body--page { margin-top: var(--s1); padding: 0; border: 0; border-radius: 0;" in phone

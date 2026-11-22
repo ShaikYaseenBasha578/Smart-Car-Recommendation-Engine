@@ -174,3 +174,66 @@ def test_table_markup_has_headers_a_scroll_region_and_a_footnote(client):
     assert 'role="region" aria-label="Comparison table" tabindex="0"' in raw
     assert "Mileage is compared only between cars with the same unit." in raw and "Prices and specs updated" in raw
     assert "/car/maruti-suzuki/swift?variant_id=" in raw
+
+
+# ------------------------------------------------------------------ PR H: "Show differences only" (works without JavaScript)
+
+def _two(client_path_extra=""):
+    return first_id("Swift", "petrol"), first_id("Nexon", "petrol")
+
+
+def _labels(body):
+    return re.findall(r'<th scope="row">(.*?)</th>', body)
+
+
+def test_diff_view_drops_rows_whose_cells_all_match_and_keeps_the_rest(client):
+    a, b = _two()
+    full = get(client, f"/compare?ids={a},{b}").get_data(as_text=True)
+    diff = get(client, f"/compare?ids={a},{b}&diff=1").get_data(as_text=True)
+    all_rows, kept = _labels(full), _labels(diff)
+    data = get_compare([a, b])
+    equal = [r["label"] for r in data["rows"] if len({c["display"] for c in r["cells"]}) == 1]
+    differing = [r["label"] for r in data["rows"] if len({c["display"] for c in r["cells"]}) > 1]
+    assert "Price (ex-showroom)" in differing and equal, "the pair should differ on price and match on something"
+    assert [H.unescape(x) for x in kept] == differing
+    assert all(H.unescape(l) not in [H.unescape(x) for x in kept] for l in equal)
+    assert len(kept) < len(all_rows) == 12
+    assert diff.count('<th scope="col"') == 2                      # both cars stay in the header
+
+
+def test_diff_toggle_link_goes_both_ways_and_keeps_the_search(client):
+    a, b = _two()
+    plain = get(client, f"/compare?ids={a},{b}&q=suv&drop=budget&sort=price").get_data(as_text=True)
+    on = H.unescape(re.search(r'<a class="compare-diff" href="([^"]*)">Show differences only</a>', plain).group(1))
+    assert f"ids={a},{b}" in on and "diff=1" in on and "q=suv" in on and "drop=budget" in on and "sort=price" in on
+    shown = get(client, on).get_data(as_text=True)
+    off = H.unescape(re.search(r'<a class="compare-diff" href="([^"]*)">Show all rows</a>', shown).group(1))
+    assert "diff" not in off and f"ids={a},{b}" in off and "q=suv" in off
+    assert "Show differences only" not in shown
+    removes = [H.unescape(h) for h in re.findall(r'<a class="compare-remove" href="([^"]*)"', shown)]
+    assert removes and all("diff=1" in h for h in removes)         # removing a car keeps the view
+
+
+def test_diff_view_of_identical_cars_says_so_instead_of_an_empty_table(client, monkeypatch):
+    import services.compare as sc
+    a, b = _two()
+    real = sc.get_compare
+    # two cars that show the same on every row: rows made equal on purpose, so the test does not depend on the catalogue
+    def same(ids, app_root_path=".", diff=False):
+        data = real(ids, app_root_path)
+        for row in data["rows"]:
+            row["cells"] = [dict(row["cells"][0]) for _ in row["cells"]]
+        if diff:
+            data["rows"] = sc.differing_rows(data["rows"])
+        return {**data, "diff": diff, "all_equal": bool(diff and not data["rows"])}
+    monkeypatch.setattr(sc, "get_compare", same)
+    body = get(client, f"/compare?ids={a},{b}&diff=1").get_data(as_text=True)
+    assert "These cars show the same on every row we compare." in body and "<table" not in body and "Show all rows" in body
+    assert "<table" in get(client, f"/compare?ids={a},{b}").get_data(as_text=True)      # all rows: still the table
+
+
+def test_diff_filter_is_a_pure_display_filter():
+    from services.compare import differing_rows
+    rows = [{"label": "A", "cells": [{"display": "x"}, {"display": "x"}]}, {"label": "B", "cells": [{"display": "x"}, {"display": "y"}]}]
+    assert [r["label"] for r in differing_rows(rows)] == ["B"] and len(rows) == 2
+    assert get_compare([first_id("Swift", "petrol"), first_id("Nexon", "petrol")], diff=False)["all_equal"] is False
