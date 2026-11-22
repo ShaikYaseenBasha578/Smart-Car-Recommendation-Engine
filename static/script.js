@@ -1446,6 +1446,7 @@ function appendTurn(query, drop) {
     turn.dataset.q = query;
     turn.dataset.drop = drop.join(",");
     document.getElementById("followup").hidden = false;
+    fitSearchBox(document.getElementById("followupQuery"));
     return turn;
 }
 
@@ -1826,12 +1827,17 @@ async function sendUsedQuery(event) {
 }
 
 // --- search box: a textarea that grows to two lines, so a long query stays visible while typing; Enter still searches ---
+// fits the box to its text, up to the two lines the CSS allows. A box inside a hidden form has no height to measure
+// (the follow-up form starts hidden): sizing it then would set 0px and its one line would overflow, so it waits until shown.
+function fitSearchBox(box) {
+    if (!box || typeof box.getClientRects !== "function" || !box.getClientRects().length) return;
+    box.style.height = "auto";
+    box.style.height = box.scrollHeight + "px";
+}
+
 function initSearchBoxes() {
     document.querySelectorAll(".search textarea").forEach(box => {
-        const fit = () => {
-            box.style.height = "auto";
-            box.style.height = box.scrollHeight + "px";
-        };
+        const fit = () => fitSearchBox(box);
         box.addEventListener("input", fit);
         box.addEventListener("keydown", e => {
             if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
@@ -1843,4 +1849,35 @@ function initSearchBoxes() {
     });
 }
 
-if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded", initSearchBoxes);
+// --- theme: one control on every page. auto follows the OS; light and dark are set on <html data-theme>.
+// The saved choice is applied before first paint by templates/_theme_head.html; this wires the button.
+const THEME_KEY = "carrec-theme";
+const THEME_MODES = ["auto", "light", "dark"];
+
+function initTheme() {
+    const btn = document.getElementById("themebtn");
+    let mode = "auto";
+    try {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (THEME_MODES.includes(saved)) mode = saved;
+    } catch (e) { /* storage unavailable: stay on auto */ }
+    const apply = () => {
+        const root = document.documentElement;
+        if (mode === "auto") root.removeAttribute("data-theme");
+        else root.setAttribute("data-theme", mode);
+        const label = btn && btn.querySelector("[data-theme-label]");
+        if (label) label.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+    };
+    apply();
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+        mode = THEME_MODES[(THEME_MODES.indexOf(mode) + 1) % THEME_MODES.length];
+        apply();
+        try { localStorage.setItem(THEME_KEY, mode); } catch (e) { /* not saved */ }
+    });
+}
+
+if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", initSearchBoxes);
+    document.addEventListener("DOMContentLoaded", initTheme);
+}

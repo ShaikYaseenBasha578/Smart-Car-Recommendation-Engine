@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import os
 import pickle
+import re
 import traceback
 
 from services.new_car_service import get_new_car_recommendations
@@ -101,6 +102,10 @@ PROJECT_PAGES = {
 }
 
 
+# the generated pages carry their own header; it is swapped at serve time for the app's shared one (templates/_project_header.html)
+_PROJECT_HEADER = re.compile(r'<header class="site-header".*?</header>', re.S)
+
+
 @app.route("/project", defaults={"name": ""})
 @app.route("/project/<name>")
 def project_page(name):
@@ -109,6 +114,11 @@ def project_page(name):
         abort(404)
     with open(os.path.join(BASE_DIR, "project_pages", filename), "rb") as fh:
         body = fh.read()
+    html = body.decode("utf-8")
+    if _PROJECT_HEADER.search(html):
+        header = render_template("_project_header.html", current=name)
+        html = _PROJECT_HEADER.sub(lambda _m: header, html, count=1)
+        body = html.encode("utf-8")
     return Response(body, mimetype="text/html", headers={"Cache-Control": "public, max-age=300"})
 
 

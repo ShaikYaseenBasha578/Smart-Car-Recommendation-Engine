@@ -1,0 +1,7 @@
+{# The main links, shared by the app header and the header the /project pages are served with. #}
+{% macro main_links(active='', enabled=False) -%}
+<a href="/recommend"{% if active == 'search' %} aria-current="page"{% endif %}>Find a car</a>
+<a href="/#how-it-works" class="nav-extra">How it works</a>
+<a href="/project"{% if active == 'project' %} aria-current="page"{% endif %}>The project</a>
+{% if enabled %}<a href="/used">Used cars</a>{% endif %}
+{%- endmacro %}

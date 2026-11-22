@@ -1,3 +1,4 @@
+{% from "_nav.html" import main_links %}
 <header class="site-header{% if over_hero %} site-header--over{% endif %}">
     <div class="wrap">
         <a href="/" class="logo" aria-label="CarRec home">
@@ -5,10 +6,8 @@
             CarRec
         </a>
         <nav class="nav" aria-label="Main">
-            <a href="/recommend"{% if active == 'search' %} aria-current="page"{% endif %}>Find a car</a>
-            <a href="/#how-it-works" class="nav-extra">How it works</a>
-            <a href="/project">The project</a>
-            {% if used_cars_enabled %}<a href="/used">Used cars</a>{% endif %}
+            {{ main_links(active, used_cars_enabled) }}
         </nav>
+        <button type="button" class="btn btn-quiet theme-btn" id="themebtn"><span class="lbl">Theme: </span><span data-theme-label>Auto</span></button>
     </div>
 </header>
