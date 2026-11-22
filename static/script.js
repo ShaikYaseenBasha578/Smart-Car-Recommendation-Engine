@@ -269,13 +269,13 @@ function buildResultsToolbar(data, link, sortable = false) {
 
 // --- result card ---
 // facts: electric -> "Range: 465 km"; CNG -> "Mileage: 26.4 km/kg" (never kmpl);
-// others -> "Mileage: 19.2 kmpl". "Not listed" only when that value is truly null.
+// others -> "Mileage: 19.2 kmpl". "Not verified" (the car page and compare use the same word) only when that value is truly null.
 function buildFacts(car) {
     const eff = efficiency(car);
     const facts = [
-        ["Gearbox", car.transmission_label || car.Transmission || "Not listed"],
-        ["Fuel", car.Fuel_Type || "Not listed"],
-        [eff.label, eff.text || (eff.label === "CNG mileage" ? "not listed" : "Not listed")]
+        ["Gearbox", car.transmission_label || car.Transmission || "Not verified"],
+        ["Fuel", car.Fuel_Type || "Not verified"],
+        [eff.label, eff.text || "Not verified"]
     ];
     return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${escapeHtml(v)}</span></li>`).join("") + `</ul>`;
 }
@@ -343,7 +343,7 @@ function buildCarCard(car, index, recs, topScore, intent) {
 
 const FEW_OWNERS_BELOW = 0.15;   // an owner line resting on under 15% of the sampled reviews is labelled "a few owners"
 const MAX_V3_REASONS = 4;
-const V3_REASONS_SHOWN = 2;      // the collapsed card shows this many "Why this car" lines; the rest sit behind the reviews toggle
+const V3_REASONS_SHOWN = 2;      // the collapsed card shows this many "Why this car" lines; the rest sit behind their own "+N more reasons" button
 const THEME_LABELS = {
     reliability: "Reliability", service_cost: "Service cost", service_experience: "Service experience",
     real_world_mileage: "Real-world mileage", build_issues: "Build issues", recurring_fault: "Reported fault",
@@ -495,13 +495,43 @@ function buildRelaxedNotice(data) {
 }
 
 // --- match wording from the data ---
+// relax.py words a violation with raw catalogue values ("suv, not sedan", "diesel, not petrol/cng"); it is not edited from the
+// UI, so the display words are made here. Every body_type, fuel_type and transmission_family value in the catalogue is covered.
+const TERM_WORDS = {
+    suv: "SUV", muv: "MUV", mpv: "MPV", sedan: "sedan", hatchback: "hatchback", van: "van", pickup: "pickup",
+    petrol: "petrol", diesel: "diesel", cng: "CNG", electric: "electric", hybrid: "hybrid",
+    manual: "manual", automatic: "automatic"
+};
+const BODY_TERMS = ["suv", "muv", "mpv", "sedan", "hatchback", "van", "pickup"];
+
+function displayTerm(raw) {
+    const key = String(raw).trim().toLowerCase();
+    return Object.prototype.hasOwnProperty.call(TERM_WORDS, key) ? TERM_WORDS[key] : key.replace(/_/g, " ");
+}
+
+// "<a>, not <b1>/<b2>" -> "SUV, not a sedan" / "Diesel, not petrol or CNG". Make names (already proper case) and anything that
+// does not match the pattern come back unchanged.
+function humanViolation(text) {
+    const m = /^([^,]+), not (.+)$/.exec(String(text));
+    if (!m) return String(text);
+    const known = t => Object.prototype.hasOwnProperty.call(TERM_WORDS, t.trim().toLowerCase()) || /^[a-z]+(_[a-z]+)+$/.test(t.trim());
+    const first = m[1], rest = m[2].split("/");
+    if (!known(first) || !rest.every(known)) return String(text);
+    const words = rest.map(displayTerm);
+    const single = rest.length === 1 && BODY_TERMS.includes(rest[0].trim().toLowerCase());
+    // "a SUV" would be wrong: an acronym read letter by letter ("an SUV", "an MPV") takes "an"
+    const article = single ? (/^(SUV|MUV|MPV|[aeiou])/.test(words[0]) ? "an " : "a ") : "";
+    const lead = displayTerm(first);
+    return `${lead.charAt(0).toUpperCase()}${lead.slice(1)}, not ${article}${words.join(" or ")}`;
+}
+
 function v3MatchLabel(car, hard, personalised) {
     if (personalised === false) return { key: "neutral", text: car.match_label || "General pick, not personalised", detail: "" };
     // a blank value is not a pass: any unmet or unverified requirement is named on the card and the card never says "meets all"
     const violations = car.violations || [];
     const notVerified = car.not_verified || [];
     const detail = [
-        ...violations.map(v => `Not met: ${v.text}`),
+        ...violations.map(v => `Not met: ${humanViolation(v.text)}`),
         ...notVerified.map(t => `Not verified: ${t.replace(/ not verified$/, "")}`),
     ];
     if (violations.length) {
@@ -631,8 +661,43 @@ function behindCount(car) {
     let n = (car.expert_notes || []).slice(0, 2).length + (car.caveats || []).length;
     const ow = ownerNotesShown(car).length;
     n += ow || (car.owner_standing && car.owner_standing.summary ? 1 : 0);
-    n += car.explanation_rag ? ragOrder(car.explanation_rag).length + reasons : Math.max(reasons - V3_REASONS_SHOWN, 0);
+    if (car.explanation_rag) n += ragOrder(car.explanation_rag).length + reasons;  // reasons past the shown 2 have their own button, not this toggle
     return n;
+}
+
+// the budget-fit reason is the spec reason for the value_for_budget criterion: fields ["price_ex_showroom"] alone (the price
+// criterion also lists body_type). Only looked for when the search has a budget.
+function isBudgetReason(r) {
+    const f = r && r.fields;
+    return Array.isArray(f) && f.length === 1 && f[0] === "price_ex_showroom" && r.evidence_class === "spec";
+}
+
+// the reasons in display order: a budget search always shows its budget-fit reason among the first V3_REASONS_SHOWN
+function orderReasons(reasons, intent) {
+    const budget = intent && intent.budget && intent.budget.max;
+    const at = budget ? reasons.findIndex(isBudgetReason) : -1;
+    if (at < V3_REASONS_SHOWN) return reasons;
+    const out = reasons.slice();
+    out.splice(V3_REASONS_SHOWN - 1, 0, out.splice(at, 1)[0]);
+    return out;
+}
+
+// the reasons list; those past the shown 2 start hidden behind an inline "+N more reasons" button
+function buildReasonsList(reasons, id) {
+    const extra = reasons.length - V3_REASONS_SHOWN;
+    const items = reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more-reason hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("");
+    const button = extra > 0
+        ? `<button type="button" class="reasons-toggle" data-reasons-toggle data-more-count="${extra}" aria-expanded="false" aria-controls="${id}">+${extra} more reason${extra === 1 ? "" : "s"}</button>` : "";
+    return `<ul class="reasons reasons--v3" id="${id}">${items}</ul>${button}`;
+}
+
+function toggleReasons(button) {
+    const open = button.getAttribute("aria-expanded") !== "true";
+    const list = document.getElementById(button.getAttribute("aria-controls"));
+    button.setAttribute("aria-expanded", String(open));
+    const n = Number(button.dataset.moreCount);
+    button.textContent = open ? "Fewer reasons" : `+${n} more reason${n === 1 ? "" : "s"}`;
+    if (list) list.querySelectorAll("[data-more-reason]").forEach(el => { el.hidden = !open; });
 }
 
 // grounded explanation: the sentences with numbered source markers, then the numbered sources (hidden until the card is expanded)
@@ -738,14 +803,14 @@ function v3Chips(car, personalised) {
     return chips;
 }
 
-function buildV3Card(car, index, hard, personalised) {
+function buildV3Card(car, index, hard, personalised, intent) {
     const name = `${car.Make} ${car.Model}`;
     const image = car.carImage || "/static/pic.avif";
     const caption = car.imageAttribution
         ? `Image: ${car.imageAttribution}`
         : (/\.svg$/.test(image) ? "Illustration: no photo of this model yet" : "");
     const label = v3MatchLabel(car, hard, personalised);
-    const reasons = (car.reasons || []).slice(0, MAX_V3_REASONS);
+    const reasons = orderReasons((car.reasons || []).slice(0, MAX_V3_REASONS), intent);
     const link = car.carDekhoLink;
     const also = car.also_available_from;
     const alsoHtml = also && also["Ex-Showroom_Price"]
@@ -756,9 +821,9 @@ function buildV3Card(car, index, hard, personalised) {
     const behind = behindCount(car);
     const reviewsId = `reviews-${++reviewsSeq}`;
     const why = car.explanation_rag ? buildWhyRag(car, reasons, reviewsId)
-        : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4><ul class="reasons reasons--v3">${reasons.map((r, i) => `<li${i >= V3_REASONS_SHOWN ? " data-more hidden" : ""}>${ICONS.check}<span>${escapeHtml(r.text)}</span></li>`).join("")}</ul></section>` : "";
+        : reasons.length ? `<section class="why" aria-label="Why this car"><h4>Why this car</h4>${buildReasonsList(reasons, `reasons-${reviewsId}`)}</section>` : "";
     return `
-        <article class="car car--v3${index === 0 ? " car--top" : ""}" data-rank-index="${index}"${behind ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
+        <article class="car car--v3${index === 0 ? " car--top" : ""}" data-rank-index="${index}"${behind ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}"${car.variant_id != null ? ` data-variant-id="${escapeHtml(car.variant_id)}"` : ""}>
             <figure class="car-photo">
                 ${rankBadge(car, index)}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
@@ -856,7 +921,7 @@ function compareUrl(list, q, drop, sort) {
 function buildCompareButton(car) {
     if (car.variant_id == null) return "";
     const name = `${car.Make} ${car.Model}`;
-    return `<button type="button" class="btn btn-quiet btn-compare" data-compare="${escapeHtml(car.variant_id)}" data-compare-name="${escapeHtml(name)}" data-compare-model="${escapeHtml(car.Model)}" data-compare-variant="${escapeHtml(car.Variant || "")}" aria-pressed="false"><span class="compare-text" aria-hidden="true">Compare</span><span class="sr-only">Compare ${escapeHtml(`${name} ${car.Variant || ""}`.trim())}</span></button>`;
+    return `<button type="button" class="btn btn-quiet btn-compare" data-compare="${escapeHtml(car.variant_id)}" data-compare-name="${escapeHtml(name)}" data-compare-model="${escapeHtml(car.Model)}" data-compare-variant="${escapeHtml(car.Variant || "")}" aria-label="${escapeHtml(`Compare ${name} ${car.Variant || ""}`.trim())}" aria-pressed="false"><span class="compare-text">Compare</span></button>`;
 }
 
 // the inner markup of the tray; "" when nothing is selected. Wide screens list the cars as pills; narrow ones show a count.
@@ -1062,7 +1127,7 @@ function renderV3Results(box, data, banner, link) {
     const personalised = data.personalised;
     sortableRecs.set(box, recs);
     box.innerHTML = banner + buildRelaxedNotice(data) + buildQueryEcho(data) + buildResultsToolbar(data, link, recs.length >= 2)
-        + `<div class="cards" data-sort="best">${recs.map((car, i) => buildV3Card(car, i, hard, personalised)).join("")}</div>`
+        + `<div class="cards" data-sort="best">${recs.map((car, i) => buildV3Card(car, i, hard, personalised, data.intent)).join("")}</div>`
         + buildSourcesFooter(recs, data);
 }
 
@@ -1093,7 +1158,7 @@ function specList(items) {
 
 function variantMileage(v) {
     const m = v.mileage_display;
-    return m.value || (m.unit === "km/kg" ? "CNG mileage not listed" : "Not listed");
+    return m.value || "Not verified";
 }
 
 const VARIANT_ROWS_SHOWN = 8;
@@ -1202,6 +1267,7 @@ function renderDetail(data, opts) {
     const summary = `<section class="detail-section"><${opts.standalone ? "h2" : "h3"}>Summary</${opts.standalone ? "h2" : "h3"}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>`;
     if (!opts.standalone) {
         // the inline panel: Summary, Key specs and the way to the whole page, carrying this search and variant
+        // selectedId is the variant the panel is showing: the card's own (asked for in opts), or one the user picked
         const full = detailUrl("/car", { ...opts, variantId: selectedId });
         return `${summary}
         <section class="detail-section"><h3>Key specs</h3><p class="detail-note">${selectedNote(data)}</p>${keySpecs(data)}</section>
@@ -1366,7 +1432,8 @@ function toggleDetail(button) {
     requestAnimationFrame(() => panel.classList.add("open"));
     const opts = {
         make: card.dataset.makeSlug, model: card.dataset.modelSlug,
-        q: turn.dataset.q, drop: turn.dataset.drop ? turn.dataset.drop.split(",") : []
+        q: turn.dataset.q, drop: turn.dataset.drop ? turn.dataset.drop.split(",") : [],
+        variantId: Number(card.dataset.variantId) || null   // the panel shows the card's own variant, so "Full details" opens the same one
     };
     const body = panel.querySelector(".detail-body");
     loadDetail(body, opts);
@@ -1430,6 +1497,7 @@ function sendFollowup(event) {
     const query = input.value;
     input.value = "";
     input.style.height = "";
+    fitSearchBox(input);
     return runSearch(query, []);
 }
 
@@ -1485,7 +1553,8 @@ function showSearchLoading(box) {
 function linkCarTitles(box, query, drop) {
     box.querySelectorAll("article.car").forEach(card => {
         const a = card.querySelector(".car-title a");
-        if (a) a.href = detailUrl("/car", { make: card.dataset.makeSlug, model: card.dataset.modelSlug, q: query, drop });
+        // the card's own variant, so the car page opens on the one the card showed (not the model's cheapest)
+        if (a) a.href = detailUrl("/car", { make: card.dataset.makeSlug, model: card.dataset.modelSlug, q: query, drop, variantId: Number(card.dataset.variantId) || null });
     });
 }
 
@@ -1678,6 +1747,8 @@ function initNewCarPage() {
         if (details) toggleDetail(details);
         const reviews = e.target.closest("[data-reviews-toggle]");
         if (reviews) toggleReviews(reviews);
+        const reasonsBtn = e.target.closest("[data-reasons-toggle]");
+        if (reasonsBtn) toggleReasons(reasonsBtn);
         const cite = e.target.closest("[data-cite]");
         if (cite) { e.preventDefault(); followCite(cite); }
         const compare = e.target.closest("[data-compare]");
@@ -1693,8 +1764,9 @@ function initNewCarPage() {
         const input = box.closest("form").querySelector("input, textarea");
         initSuggestions(box, q => {
             input.value = q;
+            fitSearchBox(input);
             runSearch(q, []);
-            if (input.id === "followupQuery") { input.value = ""; input.style.height = ""; }
+            if (input.id === "followupQuery") { input.value = ""; input.style.height = ""; fitSearchBox(input); }
         }, Number(box.dataset.count) || SUGGESTION_COUNT);
     });
 
@@ -1703,6 +1775,7 @@ function initNewCarPage() {
         const input = document.getElementById("userQuery");
         input.value = "";
         input.style.height = "";
+        fitSearchBox(input);
         window.history.pushState({}, "", location.pathname);
         window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
         input.focus();
@@ -1713,6 +1786,7 @@ function initNewCarPage() {
         const { q, drop, sort } = searchFromUrl();
         const turn = e.state && e.state.turn && thread.querySelector(`[data-turn="${e.state.turn}"]`);
         document.getElementById("userQuery").value = q;
+        fitSearchBox(document.getElementById("userQuery"));
         if (turn) {
             scrollToTurn(turn);
             return;
@@ -1727,6 +1801,7 @@ function initNewCarPage() {
     const first = fromUrl.q ? fromUrl : (saved ? { q: saved, drop: [] } : null);
     if (first) {
         document.getElementById("userQuery").value = first.q;
+        fitSearchBox(document.getElementById("userQuery"));
         runSearch(first.q, first.drop, false, first.sort);
     }
 }
