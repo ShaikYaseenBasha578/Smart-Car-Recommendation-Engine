@@ -114,7 +114,9 @@ def project_page(name):
 
 @app.route("/recommend")
 def recommend_page():
-    return render_template("recommend.html")
+    from services.catalogue import get_catalogue
+    # the loading skeleton says "Checking N variants…" with the same catalogue size the landing page shows
+    return render_template("recommend.html", variant_count_raw=len(get_catalogue()))
 
 
 @app.route("/used")
@@ -202,8 +204,11 @@ def car_detail_api(make_slug, model_slug):
 def car_page(make_slug, model_slug):
     from services.car_detail import find_model
 
-    status = 200 if find_model(make_slug, model_slug) is not None else 404
-    return render_template("car.html"), status
+    rows = find_model(make_slug, model_slug)
+    if rows is None:
+        return render_template("car.html", page_title="Car not found | CarRec", not_found=True), 404
+    first = rows.iloc[0]
+    return render_template("car.html", page_title=f"{first['make']} {first['model']} | CarRec", not_found=False), 200
 
 
 if __name__ == "__main__":

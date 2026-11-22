@@ -240,7 +240,9 @@ function buildDataStamp(data) {
     const date = y && m && d
         ? new Date(y, m - 1, d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
         : data.data_as_of.exported;
-    return `<p class="data-stamp">Car data updated ${escapeHtml(date)} · knowledge base <span class="nowrap">${escapeHtml(data.data_as_of.kb_phase)}</span></p>`;
+    // the pipeline run name is for debugging, not for shoppers: it sits in the tooltip only
+    const run = data.data_as_of.kb_phase ? ` title="Data run: ${escapeHtml(data.data_as_of.kb_phase)}"` : "";
+    return `<p class="data-stamp"${run}>Prices and specs updated ${escapeHtml(date)}</p>`;
 }
 
 // dropped-constraint banner + data stamp on the left, "Copy link" on the right
@@ -264,6 +266,19 @@ function buildFacts(car) {
     return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${escapeHtml(v)}</span></li>`).join("") + `</ul>`;
 }
 
+// the external CarDekho link is a quiet text link under the price; "View details" is the primary action
+function buildPriceLink(link) {
+    if (!link) return "";
+    return `<a class="price-link" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">On-road price on CarDekho ${ICONS.external}<span class="sr-only">(opens in a new tab)</span></a>`;
+}
+
+// rank 1 is "Top pick" only when nothing is unmet or unverified; otherwise it is the closest match we found
+function rankBadge(car, index) {
+    if (index !== 0) return "";
+    const clean = !(car.violations || []).length && !(car.not_verified || []).length;
+    return clean ? '<span class="rank">Top pick</span>' : '<span class="rank rank--close">Closest match</span>';
+}
+
 function buildCarCard(car, index, recs, topScore, intent) {
     const name = `${car.Make} ${car.Model}`;
     const image = car.carImage || "/static/pic.avif";
@@ -278,17 +293,17 @@ function buildCarCard(car, index, recs, topScore, intent) {
     return `
         <article class="car${index === 0 ? " car--top" : ""}" aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
-                ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
+                ${rankBadge(car, index)}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
                 ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
             </figure>
             <div class="car-body">
                 <div class="car-head">
                     <div>
-                        <h3 class="car-title">${escapeHtml(name)}</h3>
+                        <h3 class="car-title"><a href="${escapeHtml(`/car/${encodeURIComponent(slug(car.Make))}/${encodeURIComponent(slug(car.Model))}`)}">${escapeHtml(name)}</a></h3>
                         ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
                     </div>
-                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span></p>
+                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span>${buildPriceLink(link)}</p>
                 </div>
                 ${buildFacts(car)}
                 <div class="car-fit">
@@ -298,8 +313,7 @@ function buildCarCard(car, index, recs, topScore, intent) {
                 <div class="car-foot">
                     ${tags ? `<ul class="tags" aria-label="Features and safety">${tags}</ul>` : ""}
                     <div class="car-actions">
-                        <button type="button" class="btn btn-quiet" data-detail aria-expanded="false">View details</button>
-                        ${link ? `<a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>` : ""}
+                        <button type="button" class="btn btn-primary" data-detail aria-expanded="false">View details</button>
                     </div>
                 </div>
             </div>
@@ -391,6 +405,8 @@ function understoodChips(data) {
     (it.models || []).forEach(x => need(x));
     (it.required_features || []).forEach(x => need(FEATURE_LABELS[x] || x.replace(/_/g, " ")));
     Object.keys(MIN_LABELS).forEach(k => { if (it[k] != null) need(MIN_LABELS[k](it[k])); });
+    (it.exclude_makes || []).forEach(x => need(`No ${x}`));
+    (it.exclude_features || []).forEach(x => need(`No ${String(FEATURE_LABELS[x] || x.replace(/_/g, " ")).toLowerCase()}`));
     (it.exclude_body_types || []).forEach(x => need(`not ${x}`));
     (it.exclude_fuel_types || []).forEach(x => need(`not ${x}`));
     if (it.use_case) chips.push({ text: `for ${String(it.use_case).replace(/_/g, " ")}`, kind: "soft" });
@@ -535,8 +551,15 @@ function ownerMetaHtml(n) {
     return metaLine(m.parts, m.few ? ' <span class="few">a few owners</span>' : "");
 }
 
+// owner lines shown under "What owners say": a theme already listed under Caveats is not repeated here
+function ownerNotesShown(car) {
+    const key = n => `${n.theme}|${n.label || ""}`;
+    const seen = new Set((car.caveats || []).map(key));
+    return (car.owner_notes || []).filter(n => !seen.has(key(n))).slice(0, 2);
+}
+
 function buildOwnerBlock(car) {
-    const notes = (car.owner_notes || []).slice(0, 2);
+    const notes = ownerNotesShown(car);
     const st = car.owner_standing;
     let body;
     if (notes.length) {
@@ -558,7 +581,7 @@ function buildOwnerBlock(car) {
 function hasMoreReviews(car) {
     if (car.explanation_rag) return true;
     if ((car.reasons || []).slice(0, MAX_V3_REASONS).length > V3_REASONS_SHOWN) return true;
-    const ex = (car.expert_notes || []).slice(0, 2), ow = (car.owner_notes || []).slice(0, 2);
+    const ex = (car.expert_notes || []).slice(0, 2), ow = ownerNotesShown(car);
     return ex.length > 1 || ow.length > 1 || ex.some(n => n.quote && n.quote.text)
         || ex.concat(ow).some(n => String(n.note || "").length > CLAMP_NOTE_CHARS);
 }
@@ -669,17 +692,17 @@ function buildV3Card(car, index, hard, personalised) {
     return `
         <article class="car car--v3${index === 0 ? " car--top" : ""}"${more ? ' data-reviews="collapsed"' : ""} aria-label="${escapeHtml(name)}" data-make-slug="${escapeHtml(slug(car.Make))}" data-model-slug="${escapeHtml(slug(car.Model))}">
             <figure class="car-photo">
-                ${index === 0 ? '<span class="rank">Top pick</span>' : ""}
+                ${rankBadge(car, index)}
                 <img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
                 ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
             </figure>
             <div class="car-body">
                 <div class="car-head">
                     <div>
-                        <h3 class="car-title">${escapeHtml(name)}</h3>
+                        <h3 class="car-title"><a href="${escapeHtml(`/car/${encodeURIComponent(slug(car.Make))}/${encodeURIComponent(slug(car.Model))}`)}">${escapeHtml(name)}</a></h3>
                         ${car.Variant ? `<p class="car-variant">${escapeHtml(car.Variant)}</p>` : ""}
                     </div>
-                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span></p>
+                    <p class="car-price"><strong>${formatPrice(car["Ex-Showroom_Price"])}</strong><span>ex-showroom</span>${buildPriceLink(link)}</p>
                 </div>
                 ${alsoHtml}
                 ${buildFacts(car)}
@@ -698,8 +721,7 @@ function buildV3Card(car, index, hard, personalised) {
                 <div class="car-foot">
                     ${chips.length ? `<ul class="tags" aria-label="Features, safety and what is not verified">${buildExtraChips(chips)}</ul>` : ""}
                     <div class="car-actions">
-                        <button type="button" class="btn btn-quiet" data-detail aria-expanded="false">View details</button>
-                        ${link ? `<a class="btn btn-primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>` : ""}
+                        <button type="button" class="btn btn-primary" data-detail aria-expanded="false">View details</button>
                     </div>
                 </div>
             </div>
@@ -805,18 +827,20 @@ function renderDetail(data, opts) {
                 ${hasQuery ? `<p class="detail-note">For your search “${escapeHtml(opts.q)}”</p>` : ""}
             </div>
         </header>` : "";
+    const sub = opts.standalone ? "h3" : "h4";
     const specGroups = data.specs.filter(g => DETAIL_SPEC_GROUPS.includes(g.group))
-        .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><h4>${escapeHtml(g.group)}</h4>${list}</div>` : ""; })
+        .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><${sub}>${escapeHtml(g.group)}</${sub}>${list}</div>` : ""; })
         .join("");
     const warranty = data.specs.find(g => g.group === "Warranty");
+    const sh = opts.standalone ? "h2" : "h3";  // the car page has an h1; the inline panel sits under a card's h3
     return `${head}
-        <section class="detail-section"><h3>Summary</h3><p class="detail-summary">${escapeHtml(data.summary)}</p></section>
-        <section class="detail-section"><h3>Variants</h3>${buildVariantsTable(data, hasQuery)}</section>
-        <section class="detail-section"><h3>Specifications</h3>
+        <section class="detail-section"><${sh}>Summary</${sh}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>
+        <section class="detail-section"><${sh}>Variants</${sh}>${buildVariantsTable(data, hasQuery)}</section>
+        <section class="detail-section"><${sh}>Specifications</${sh}>
             <p class="detail-note">For <strong>${escapeHtml(selected ? selected.variant : "")}</strong>${selected ? ` · ${formatPrice(selected.price)}` : ""}</p>
             <div class="spec-groups">${specGroups}</div></section>
-        <section class="detail-section"><h3>Safety</h3>${buildSafetySection(data)}</section>
-        <section class="detail-section"><h3>Warranty</h3>${warranty ? specList(warranty.items) : ""}
+        <section class="detail-section"><${sh}>Safety</${sh}>${buildSafetySection(data)}</section>
+        <section class="detail-section"><${sh}>Warranty</${sh}>${warranty ? specList(warranty.items) : ""}
             <p class="detail-note">${warranty && warranty.items.some(i => i.status === "ok")
                 ? "From the manufacturer's brochure. Confirm the terms with the dealer."
                 : "We couldn't verify this car's warranty from a brochure; check with the dealer."}</p></section>
@@ -829,6 +853,12 @@ function renderDetail(data, opts) {
         </footer>`;
 }
 
+// an unknown make/model: retrying cannot help, so say so and offer a search
+function notFoundState(standalone) {
+    const h = standalone ? "h1" : "h3";
+    return `<div class="state"><${h}>We don't have that car</${h}><p>It may be discontinued or the link is wrong.</p><p><a class="btn btn-primary" href="/recommend">Search cars</a></p></div>`;
+}
+
 // fills `body` with the detail for opts {make, model, q, drop, variantId, standalone}
 async function loadDetail(body, opts) {
     body.setAttribute("aria-busy", "true");
@@ -836,6 +866,12 @@ async function loadDetail(body, opts) {
     try {
         const response = await fetch(detailUrl("/api/car", opts));
         const data = await response.json();
+        if (response.status === 404) {
+            body.innerHTML = notFoundState(opts.standalone);
+            if (opts.standalone) document.title = "Car not found | CarRec";
+            body.removeAttribute("aria-busy");
+            return;
+        }
         if (!response.ok) throw new Error(data.error || "not found");
         body.innerHTML = renderDetail(data, opts);
         body.dataset.selected = data.selected_variant_id;
@@ -946,6 +982,7 @@ function sendFollowup(event) {
     const input = document.getElementById("followupQuery");
     const query = input.value;
     input.value = "";
+    input.style.height = "";
     return runSearch(query, []);
 }
 
@@ -970,6 +1007,40 @@ function clearThread() {
     document.getElementById("followup").hidden = true;
 }
 
+// One polite sentence per search goes to the visually hidden status line; the results themselves are not a live region.
+function setSearchStatus(text) {
+    const el = document.getElementById("search-status");
+    if (el) el.textContent = text;
+}
+
+function searchStatusText(data, ok, query) {
+    if (!ok) return "The search didn't go through.";
+    const n = (data.recommendations || []).length;
+    if (!n) return `No cars found for ${query}.`;
+    return `${n} ${n === 1 ? "car" : "cars"} found for ${query}.` + (data.relaxation ? " Nothing matched every requirement." : "");
+}
+
+// three skeleton cards and staged copy while /predict runs (3-10 s); the shimmer is off under prefers-reduced-motion (CSS).
+// The visible copy is aria-hidden: the status line above announces "Searching…" once instead of every stage.
+function showSearchLoading(box) {
+    const count = Number(((document.getElementById("results") || {}).dataset || {}).variantCount);
+    const checking = count > 0 ? `Checking ${count.toLocaleString("en-IN")} variants…` : "Checking every current variant…";
+    const card = `<div class="skeleton"><div class="skeleton-body"><div class="skeleton-line skeleton-line--title"></div><div class="skeleton-line"></div><div class="skeleton-line skeleton-line--short"></div></div></div>`;
+    box.innerHTML = `<div class="loading-steps" aria-hidden="true"><p class="loading-status" data-loading-step>Reading your request…</p>${card.repeat(3)}</div>`;
+    const label = box.querySelector("[data-loading-step]");
+    const timers = [[2000, checking], [6000, "Ranking by reviews and owner feedback…"]]
+        .map(([ms, text]) => setTimeout(() => { label.textContent = text; }, ms));
+    return () => timers.forEach(clearTimeout);
+}
+
+// each card name links to its own page (opens in a new tab, can be shared); the search is added once the turn is known
+function linkCarTitles(box, query, drop) {
+    box.querySelectorAll("article.car").forEach(card => {
+        const a = card.querySelector(".car-title a");
+        if (a) a.href = detailUrl("/car", { make: card.dataset.makeSlug, model: card.dataset.modelSlug, q: query, drop });
+    });
+}
+
 function errorState(message) {
     return `<div class="state state--error" role="alert"><h3>Something went wrong</h3><p>${escapeHtml(message)} Please try again.</p></div>`;
 }
@@ -988,7 +1059,8 @@ async function runSearch(query, drop = [], push = true) {
     const scroll = Boolean(turn.previousElementSibling);
 
     const box = turn.querySelector("[data-turn-body]");
-    box.innerHTML = `<div class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Finding cars that match…</div>`;
+    setSearchStatus("Searching…");
+    const stopLoading = showSearchLoading(box);
     if (scroll) scrollToTurn(turn);
 
     try {
@@ -999,12 +1071,20 @@ async function runSearch(query, drop = [], push = true) {
         });
 
         const data = await response.json();
+        stopLoading();
         if (!turn.isConnected) return;  // thread was cleared meanwhile
         renderResults(box, data, response.ok, location.origin + url);
-        if (scroll) scrollToTurn(turn);
+        linkCarTitles(box, query, drop);
+        setSearchStatus(searchStatusText(data, response.ok, query));
+        if (scroll) {
+            scrollToTurn(turn);
+            turn.querySelector("[data-turn-heading]").focus({ preventScroll: true });  // later searches: keyboard and screen-reader users land on the new results
+        }
     } catch (error) {
+        stopLoading();
         if (!turn.isConnected) return;
         box.innerHTML = errorState("We couldn't reach the server.");
+        setSearchStatus("We couldn't reach the server.");
     }
 }
 
@@ -1052,7 +1132,7 @@ async function copyLink(button) {
 // --- suggestion chips ---
 const SUGGESTION_COUNT = 5;
 const SUGGESTION_MIN_CATEGORIES = 3;
-const SUGGESTION_ROTATE_MS = 8000;
+const SUGGESTION_MOBILE_MAX_CHARS = 28;
 
 function shuffled(items) {
     const out = [...items];
@@ -1087,6 +1167,10 @@ async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
     } catch (error) {
         return;  // suggestions are optional
     }
+    // on a phone the chips are one swipeable row and long ones are cut off: prefer the short ideas (up to 28 characters)
+    const phone = window.matchMedia("(max-width: 599px)").matches;
+    const short = all.filter(s => s.query.length <= SUGGESTION_MOBILE_MAX_CHARS);
+    if (phone && short.length >= count) all = short;
     let shown = [];
     const render = () => {
         shown = pickSuggestions(all, shown, count).map(s => s.query);
@@ -1104,13 +1188,7 @@ async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
         else if (e.target.closest("[data-more-ideas]")) render();
     });
 
-    if (prefersReducedMotion()) return;
-    let hovered = false;
-    box.addEventListener("mouseenter", () => { hovered = true; });
-    box.addEventListener("mouseleave", () => { hovered = false; });
-    setInterval(() => {
-        if (!hovered && !box.contains(document.activeElement)) render();
-    }, SUGGESTION_ROTATE_MS);
+    // no auto-rotation: chips only change when the user presses "More ideas" (WCAG 2.2.2)
 }
 
 // --- homepage hero mosaic (brochure thumbnails from static/hero_images.json) ---
@@ -1149,11 +1227,11 @@ function initNewCarPage() {
     });
 
     document.querySelectorAll("[data-suggestions]").forEach(box => {
-        const input = box.closest("form").querySelector("input");
+        const input = box.closest("form").querySelector("input, textarea");
         initSuggestions(box, q => {
             input.value = q;
             runSearch(q, []);
-            if (input.id === "followupQuery") input.value = "";
+            if (input.id === "followupQuery") { input.value = ""; input.style.height = ""; }
         }, Number(box.dataset.count) || SUGGESTION_COUNT);
     });
 
@@ -1161,6 +1239,7 @@ function initNewCarPage() {
         clearThread();
         const input = document.getElementById("userQuery");
         input.value = "";
+        input.style.height = "";
         window.history.pushState({}, "", location.pathname);
         window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
         input.focus();
@@ -1283,3 +1362,23 @@ async function sendUsedQuery(event) {
         resultsBox.innerHTML = `<div class="p-4 border border-danger-900 bg-danger-900/10 text-danger-400 rounded-xl font-mono text-sm">Frontend Error: ${error.message}</div>`;
     }
 }
+
+// --- search box: a textarea that grows to two lines, so a long query stays visible while typing; Enter still searches ---
+function initSearchBoxes() {
+    document.querySelectorAll(".search textarea").forEach(box => {
+        const fit = () => {
+            box.style.height = "auto";
+            box.style.height = box.scrollHeight + "px";
+        };
+        box.addEventListener("input", fit);
+        box.addEventListener("keydown", e => {
+            if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+                e.preventDefault();
+                if (box.form) box.form.requestSubmit();
+            }
+        });
+        fit();
+    });
+}
+
+if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded", initSearchBoxes);

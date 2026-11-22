@@ -15,18 +15,19 @@
                 <div class="search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
                     <label for="userQuery" class="sr-only">Describe the car you want</label>
-                    <input id="userQuery" type="search" autocomplete="off" placeholder="e.g. 7 seater diesel for the family">
+                    <textarea id="userQuery" name="q" rows="1" enterkeyhint="search" autocomplete="off" placeholder="e.g. family SUV under 15 lakh"></textarea>
                     <button type="submit" class="btn btn-primary">Find cars</button>
                 </div>
                 <div data-suggestions class="chips" aria-label="Example searches"></div>
             </form>
-            <div id="results" class="thread" aria-live="polite"></div>
+            <p id="search-status" class="sr-only" role="status"></p>
+            <div id="results" class="thread" data-variant-count="{{ variant_count_raw }}"></div>
             <form id="followup" hidden onsubmit="sendFollowup(event)" class="followup search-form" role="search">
                 <h2>Try another search</h2>
                 <div class="search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
                     <label for="followupQuery" class="sr-only">Another search</label>
-                    <input id="followupQuery" type="search" autocomplete="off" placeholder="e.g. same budget, but automatic">
+                    <textarea id="followupQuery" name="q" rows="1" enterkeyhint="search" autocomplete="off" placeholder="e.g. same budget, but automatic"></textarea>
                     <button type="submit" class="btn btn-primary">Find cars</button>
                 </div>
                 <div data-suggestions data-count="3" class="chips" aria-label="Example searches"></div>
