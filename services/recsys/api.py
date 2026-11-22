@@ -18,7 +18,7 @@ from services.catalogue import get_catalogue, get_meta
 from services.filter_v2 import FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, filter_candidates
 from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent_ex
-from services.recsys import config, llm_parse
+from services.recsys import config, llm_parse, rag_explain
 from services.recsys.common import is_unknown, num, to_jsonable
 from services.recsys.criteria import catalogue_reference
 from services.recsys.diversify import diversify
@@ -372,6 +372,10 @@ def recommend(query: str, drop=None, weight_overrides: Optional[Dict[str, Any]] 
         cards.append(card)
 
     response["recommendations"] = cards
+    if cards and rag_explain.enabled():
+        # optional (env RAG_EXPLAIN=on): grounded, cited sentences per car; only cars whose text passed the checker get
+        # `explanation_rag`, every template field stays as it is
+        response["rag"] = rag_explain.attach(cards, list(chosen), intent, requirement_phrases(intent), query, catalogue=df)
     # a blank is not a pass: when no car shown is confirmed on every requirement, say so first and name everything
     # unmet or unverified (never only one of them)
     nv_union = list(dict.fromkeys(t for c in cards for t in c["not_verified"]))
