@@ -262,17 +262,27 @@ def _is_negated(text: str, start: int, end: int, original: str | None = None) ->
             break
         after_coordinator = word in COORDINATORS
     # "AMT nahi", "diesel nahi chahiye", "AMT wali nahi"
-    after = CLAUSE_BREAK.split(text[end:])[0].split()[:3]
-    for i, word in enumerate(after):
+    if use_original:
+        # forward walk over the ORIGINAL words: an already-recognised term ("SUV [diesel] nahi") stops it unless a
+        # coordinator sits right before it ("diesel aur [CNG] nahi")
+        seg = CLAUSE_BREAK.split(original[end:])[0]
+        after = [(m.group(0), not text[end + m.start():end + m.end()].strip()) for m in re.finditer(r"\S+", seg)][:5]
+    else:
+        after = [(w, False) for w in CLAUSE_BREAK.split(text[end:])[0].split()[:3]]
+    after_coordinator = False
+    for i, (word, blank) in enumerate(after):
+        if blank:
+            if not after_coordinator:
+                break
+            after_coordinator = False
+            continue
         if word in NEGATION_AFTER:
             # English "not"/"na" after a term only negates it as "diesel not wanted"; "hybrid not Toyota" is a new negation
-            if word in ENGLISH_NOT_AFTER:
-                tail_src = original if original is not None and len(original) == len(text) else text
-                tail = CLAUSE_BREAK.split(tail_src[end:])[0].split()[:3]
-                if not set(tail[i + 1:]) <= POSTFIX_NOT_TAIL:
-                    break
+            if word in ENGLISH_NOT_AFTER and not {w for w, _ in after[i + 1:i + 4]} <= POSTFIX_NOT_TAIL:
+                break
             return True
-        if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please"}:
+        after_coordinator = use_original and word in COORDINATORS
+        if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please"} and not after_coordinator:
             break
     return False
 

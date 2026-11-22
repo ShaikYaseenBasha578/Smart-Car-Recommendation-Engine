@@ -342,3 +342,19 @@ def test_prefix_negation_of_amt_still_works():
     assert parse_intent("do not want an AMT")["transmission"]["exclude_types"] == ["amt"]
     out = parse_intent("without AMT Creta")
     assert out["transmission"]["exclude_types"] == ["amt"] and out["models"] == ["Creta"]
+
+
+@pytest.mark.parametrize("query,make", [("SUV diesel nahi", []), ("SUV diesel nahi chahiye", []), ("Tata SUV diesel nahi", ["Tata"])])
+def test_postfix_nahi_after_a_later_term_negates_only_that_term(query, make):
+    out = parse_intent(query)
+    assert out["exclude_fuel_types"] == ["diesel"] and out["body_types"] == ["suv"] and out["exclude_body_types"] == []
+    assert out["makes"] == make and out["exclude_makes"] == []
+
+
+@pytest.mark.parametrize("query,fuels", [
+    ("diesel nahi", ["diesel"]), ("diesel aur CNG nahi", ["cng", "diesel"]), ("diesel ya CNG nahi chahiye", ["cng", "diesel"]),
+    ("SUV, diesel nahi", ["diesel"]),
+])
+def test_postfix_nahi_still_reaches_coordinated_terms(query, fuels):
+    assert sorted(parse_intent(query)["exclude_fuel_types"]) == fuels
+    assert parse_intent(query)["fuel_types"] == []
