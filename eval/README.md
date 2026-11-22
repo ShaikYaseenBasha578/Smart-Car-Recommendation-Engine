@@ -86,3 +86,9 @@ A key that is absent means the query says nothing about it. Vocabulary is the ca
 - **g. Shortlist agreement.** If `shortlist_sheet.csv` has filled rows (`car_1`..`car_5` as "Make Model"), recall@8 and
   mean reciprocal rank of the engine's top 8 against them (make + model, case-insensitive); otherwise the runner prints
   "no shortlists filled in yet". The sheet is filled by the owner, never by the runner.
+
+## Grounded explanations (RAG_EXPLAIN)
+
+`rag_eval.py` runs the queries with `RAG_EXPLAIN=on` and reports the checker pass rate per car and per query, the failure
+reasons and a blind review sheet (see its docstring). Offline smoke test: `.venv/bin/python eval/rag_eval.py --mock --out /tmp/rag_eval.json`.
+Real run (paced, resumable; needs a provider key in the environment): `.venv/bin/python eval/rag_eval.py --pace 6 --cache eval/results/rag_cache.json --sheet /tmp/sheet.csv --key /tmp/key.csv`.
