@@ -310,3 +310,17 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
   - The eval is byte-identical, and 1130 tests pass.
   - **Open:** the engine page (367 px) and KB page (332 px at 320) are wider than small phones, from their generated content, same as on main. It's a generator follow-up.
   - All six UI plan PRs are done once #54 merges. Next is the final blind re-review of the live site (same brief, fresh Opus), after Render deploys.
+- **23 Nov:** #54 merged and deployed. **Final blind re-review done** (fresh Opus, same brief, live site). The report is `knowledge_base/reports/plans/UIUX_REVIEW_2026-11-23.md`.
+  - Scores, 22 Nov → 23 Nov:
+    - first impression 8 → 8;
+    - clarity 7 → 8;
+    - result card 5 → 6;
+    - detail page 5 → 6;
+    - mobile 6 → **5**;
+    - accessibility 7 → 7;
+    - polish 7 → 7.
+  - Two bugs are confirmed in code:
+    - the title link has no `variant_id`;
+    - the search text is set after the box is fitted, so it is clipped on load and on Back.
+  - Mobile density is the main open area: results start about 740 px down, a card is about a screen tall, and compare shows 1.3 columns.
+  - Any follow-up PR waits for the owner.
