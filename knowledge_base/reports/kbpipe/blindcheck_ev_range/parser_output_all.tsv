@@ -1,0 +1,208 @@
+version	versionId	cache_file(url unknown; sha256 of model URL)	range	guard_blocked
+XEV 9S Pack One Above 59.0 kWh 7 STR No Charger	22537	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack One Above 79.0 kWh 7 STR No Charger	22563	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 70.0 kWh 7 STR No Charger	22565	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 79.0 kWh 7 STR No Charger	22539	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack One Above 59.0 kWh 7 STR 11.2kW Charger	22901	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three 79.0 kWh 7 STR No Charger	22541	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack One Above 79.0 kWh 7 STR 11.2kW Charger	22903	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three Above 79.0 kWh 7 STR No Charger	22733	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 70.0 kWh 6 STR No Charger	25195	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 70.0 kWh 7 STR 11.2kW Charger	22905	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 70.0 kWh 6 STR 11.2kW Charger	25189	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 79.0 kWh 6 STR No Charger	25197	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 79.0 kWh 7 STR 11.2kW Charger	22907	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Two Above 79.0 kWh 6 STR 11.2kW Charger	25191	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three 79.0 kWh 6 STR No Charger	25254	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three 79.0 kWh 7 STR 11.2kW Charger	22909	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three 79.0 kWh 6 STR 11.2kW Charger	25242	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three Above 79.0 kWh 6 STR No Charger	25193	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three Above 79.0 kWh 7 STR 11.2kW Charger	22911	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+XEV 9S Pack Three Above 79.0 kWh 6 STR 11.2kW Charger	25187	05cf872b496e7dd4422d75e7353ba6c8a40e297c09dbf9a52a58d3df3dae9166.body		0
+Syros EV HTK 42.0 kWh	24718	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	443.0	0
+Syros EV HTK+  42.0 kWh	24716	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	443.0	0
+Syros EV HTX 42.0 kWh	24720	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	443.0	0
+Syros EV HTK+ ER  51.4 kWh	24722	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	526.0	0
+Syros EV HTX ER  51.4 kWh	24724	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	526.0	0
+Syros EV HTX+ ER  51.4 kWh	24728	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	526.0	0
+Syros EV X-Line ER 51.4 kWh	24726	1f283d100c4996fbf431b9643603a4ed0a9700f43286632b376942b639fdf950.body	526.0	0
+Harrier EV Adventure 2WD 65.0 kWh No Charger	15249	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Adventure 2WD 65.0 kWh 7.2kW Charger	21086	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Adventure S  2WD 65.0 kWh No Charger	21078	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Adventure S  2WD 65.0 kWh 7.2kW Charger	21088	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Fearless Plus 2WD 65.0 kWh No Charger	15253	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Fearless Plus 2WD 65.0 kWh 7.2kW Charger	21090	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	445.0	0
+Harrier EV Fearless Plus 2WD 75.0 kWh No Charger	21080	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Fearless Plus 2WD 75.0 kWh 7.2kW Charger	21092	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Fearless Plus AWD 75.0 kWh No Charger	23680	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Harrier EV Fearless Plus AWD 75.0 kWh 7.2kW Charger	24618	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Harrier EV Empowered 2WD 75.0 kWh No Charger	15251	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Empowered 2WD 75.0 kWh 7.2kW Charger	21094	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Empowered Stealth Edition 2WD 75.0 kWh No Charger	21144	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Empowered Stealth Edition 2WD 75.0 kWh 7.2kW Charger	21146	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	505.0	0
+Harrier EV Empowered AWD 75.0 kWh No Charger	21082	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Harrier EV Empowered AWD 75.0 kWh 7.2kW Charger	21142	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Harrier EV Empowered Stealth Edition AWD 75.0 kWh No Charger	20966	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Harrier EV Empowered Stealth Edition AWD 75.0 kWh 7.2kW Charger	21140	2fd3134496b8e8c1b7fca5d2b3b882da6a2ad3854e57792a7dd5634140135bca.body	490.0	0
+Windsor EV Excite 38.0 kWh	18293	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	331.0	0
+Windsor EV Exclusive 38.0 kWh	18295	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	331.0	0
+Windsor EV Essence 38.0 kWh	18297	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	331.0	0
+Windsor EV Exclusive Pro 52.9 kWh	20833	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	449.0	0
+Windsor EV Essence Pro 52.9 kWh	20591	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	449.0	0
+Windsor EV Indulge Edition 38.0 kWh	25978	3262d4101f49bedd1dc53ff6173e9cb994e63011b9405f5e3016f9c3feeba947.body	331.0	0
+Carens Clavis EV HTK Plus 42.0 kWh 7 STR	21246	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	404.0	0
+Carens Clavis EV HTX E 42.0 kWh 6 STR	23586	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	404.0	0
+Carens Clavis EV HTX E 42.0 kWh 7 STR	22409	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	404.0	0
+Carens Clavis EV HTX 42.0 kWh 7 STR	21248	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	404.0	0
+Carens Clavis EV HTX 42.0 kWh 6 STR	23592	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	404.0	0
+Carens Clavis EV HTX E ER 51.4 kWh 6 STR	23630	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV HTX E ER 51.4 kWh 7 STR	22411	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV HTX ER 51.4 kWh 7 STR	21250	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV HTX ER 51.4 kWh 6 STR	23590	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV GTX ER 51.4 kWh 6 STR	23594	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV GTX ER 51.4 kWh 7 STR	23604	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV HTX Plus ER 51.4 kWh 7 STR	21252	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV HTX Plus ER 51.4 kWh 6 STR	23598	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV X-Line ER 51.4 kWh 7 STR	23588	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV GTX Plus ER 51.4 kWh 7 STR	23606	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV GTX Plus ER 51.4 kWh 6 STR	23596	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Carens Clavis EV X-Line ER 51.4 kWh 6 STR	23600	329ffa2f7c2ab70c64f891430046554fd20e4ddd4aa77f1e081119f1ee78c510.body	490.0	0
+Sierra EV Pure 2WD 63.0 kWh No Charger	23468	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Pure 2WD 63.0 kWh 7.2kW Charger	24556	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Pure S 2WD 63.0 kWh No Charger	23470	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Pure S 2WD 63.0 kWh 7.2kW Charger	24558	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Adventure 2WD 63.0 kWh No Charger	23478	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Adventure 2WD 63.0 kWh 7.2kW Charger	24570	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Adventure 2WD 75.0 kWh No Charger	23466	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Adventure 2WD 75.0 kWh 7.2kW Charger	24560	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Empowered 2WD 63.0 kWh No Charger	24552	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Empowered 2WD 63.0 kWh 7.2kW Charger	24562	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	460.0	0
+Sierra EV Empowered 2WD 75.0 kWh No Charger	23474	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Empowered 2WD 75.0 kWh 7.2kW Charger	24564	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Empowered A 2WD 75.0 kWh No Charger	24554	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Empowered A 2WD 75.0 kWh 7.2kW Charger	24568	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	530.0	0
+Sierra EV Empowered A AWD 75.0 kWh No Charger	23476	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	500.0	0
+Sierra EV Empowered A AWD 75.0 kWh 7.2kW Charger	24566	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body	500.0	0
+Sierra EV Empowered AWD 75 kWh Dark	24678	36913388b6131d1c4f2fcaed5f9af16a1f8b28e0a2dc04bd172c5673401cb745.body		0
+Nexon EV Creative 45.0 kWh	18457	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+Nexon EV Creative Plus 30.0 kWh	14895	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	230.0	0
+Nexon EV Fearless 30.0 kWh	14909	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	230.0	0
+Nexon EV Fearless 45.0 kWh	18459	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+Nexon EV Empowered 45.0 kWh	18461	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+Nexon EV Empowered Plus A  45.0 kWh	22019	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+Nexon EV Empowered Plus A  45.0 kWh Dark Edition	22021	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+Nexon EV Empowered Plus A  45.0 kWh Red Dark Edition	22023	4b63f7585c1d2c91578a1396f1d2a7224f7168129a8b82b13a64a790f5fb3bc8.body	375.0	0
+e Vitara Delta 49.0 kWh	19341	4c7013f98d44c5b885c3d9f377c7ec21952bc5553a19476ce3b856c923ca591d.body	440.0	0
+e Vitara Zeta 61.0 kWh	19643	4c7013f98d44c5b885c3d9f377c7ec21952bc5553a19476ce3b856c923ca591d.body	543.0	0
+e Vitara Alpha 61.0 kWh	19343	4c7013f98d44c5b885c3d9f377c7ec21952bc5553a19476ce3b856c923ca591d.body	543.0	0
+e Vitara Alpha 61.0 kWh Dual Tone	23423	4c7013f98d44c5b885c3d9f377c7ec21952bc5553a19476ce3b856c923ca591d.body	543.0	0
+Punch EV Smart 30.0 kWh	23371	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	275.0	0
+Punch EV Smart Plus 30.0 kWh	23373	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	275.0	0
+Punch EV Smart Plus 40.0 kWh	23424	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	355.0	0
+Punch EV Adventure 40.0 kWh	23375	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	355.0	0
+Punch EV Empowered  40.0 kWh	23379	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	355.0	0
+Punch EV Empowered Plus S 40.0 kWh	23385	4e40c5112f0b1065d7bfd91709978c8a0b1d4628942c6f3f68338bf7b3505db4.body	355.0	0
+XUV400 EC PRO 34.5 kWh	16153	5765d09e105fd98ff76703162dc7131feb3e903958f79b537b989a7bcd84e49b.body	375.0	0
+XUV400 EL PRO 34.5 kWh	16155	5765d09e105fd98ff76703162dc7131feb3e903958f79b537b989a7bcd84e49b.body	456.0	0
+XUV400 EL PRO 34.5 kWh Dual Tone	16349	5765d09e105fd98ff76703162dc7131feb3e903958f79b537b989a7bcd84e49b.body	456.0	0
+XUV400 EL PRO 39.4 kWh	16157	5765d09e105fd98ff76703162dc7131feb3e903958f79b537b989a7bcd84e49b.body	456.0	0
+XUV400 EL PRO 39.4 kWh Dual Tone	16347	5765d09e105fd98ff76703162dc7131feb3e903958f79b537b989a7bcd84e49b.body	456.0	0
+Hector Tomahawk EV Excite 69.2 kWh 7 STR	25262	5a73f89a0f291e0e86f1365aae30059528ab84bdbe9713b6b5e2f310c920ed68.body	517.0	0
+Hector Tomahawk EV Exclusive 69.2 kWh 7 STR	25264	5a73f89a0f291e0e86f1365aae30059528ab84bdbe9713b6b5e2f310c920ed68.body	517.0	0
+Hector Tomahawk EV Essence 69.2 kWh 5 STR	25268	5a73f89a0f291e0e86f1365aae30059528ab84bdbe9713b6b5e2f310c920ed68.body	517.0	0
+Hector Tomahawk EV Essence 69.2 kWh 7 STR	25266	5a73f89a0f291e0e86f1365aae30059528ab84bdbe9713b6b5e2f310c920ed68.body	517.0	0
+Curvv EV Accomplished X 55.0 kWh	24084	5fbd8fe4a4f46849fdaa13b5de2677396d01c783701f6d3b1b45ac639cb9e880.body	502.0	0
+Curvv EV Empowered X 55.0 kWh	24086	5fbd8fe4a4f46849fdaa13b5de2677396d01c783701f6d3b1b45ac639cb9e880.body	502.0	0
+Curvv EV Empowered X 55.0 kWh Dark edition	24088	5fbd8fe4a4f46849fdaa13b5de2677396d01c783701f6d3b1b45ac639cb9e880.body	502.0	0
+XEV 9e Pack One 59.0 kWh No Charger	18957	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Two 79.0 kWh No Charger	21180	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack One 59.0 kWh 7.2kW Charger	20745	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack One 59.0 kWh 11.2kW Charger	20743	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Cineluxe Edition  79.0 kWh No Charger	23480	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	656.0	0
+XEV 9e Pack Two 59.0 kWh No Charger	19315	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Two 59.0 kWh 7.2kW Charger	20749	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Three 79.0 kWh No Charger	18993	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	656.0	0
+XEV 9e Pack Two 59.0 kWh 11.2kW Charger	20747	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Two 79.0 kWh 7.2kW Charger	21182	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Two 79.0 kWh 11.2kW Charger	21178	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		0
+XEV 9e Pack Three 59.0 kWh No Charger	19317	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	542.0	0
+XEV 9e Pack Three Select 59.0 kWh 7.2kW Charger	20753	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	542.0	0
+XEV 9e Pack Three Select 59.0 kWh 11.2kW Charger	20751	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body		1
+XEV 9e Cineluxe Edition  79.0 kWh 11.2kW Charger	24234	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	656.0	0
+XEV 9e Pack Three 79.0 kWh 7.2kW Charger	20757	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	656.0	0
+XEV 9e Pack Three 79.0 kWh 11.2kW Charger	20755	6db76769c3d3fd7ae6402724c964e3f925eeee330cb2d7c54601ff510667587a.body	656.0	0
+ZS EV Executive 50.3 kWh	16373	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV Excite Pro 50.3 kWh	16585	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV Exclusive Plus 50.3 kWh Dark Grey	16587	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV Exclusive Plus 50.3 kWh Dual Tone Iconic Ivory	16591	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV 100-Year 50.3 kWh Dual Tone	17339	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV Essence 50.3 kWh Dark Grey	16589	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+ZS EV Essence 50.3 kWh Iconic Ivory	16593	769ada6cdf05ff19c864331ae1b791527d96d91b01cee408b7a0bafbbc472acc.body	461.0	0
+Creta Electric Executive 42.0 kWh	21881	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Executive Tech 42.0 kWh	21883	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Premium 42.0 kWh	21885	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Executive (O) LR 51.4 kWh	21893	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Premium 42.0 kWh Dual Tone	20487	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Premium 42.0 kWh (HC)	21887	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Premium 42.0 kWh Dual Tone (HC)	20495	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence 42.0 kWh	21889	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence Knight Edition 42.0 kWh	21945	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence 42.0 kWh Dual Tone	22114	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Smart (O) LR 51.4 kWh	21895	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence Knight Edition 42.0 kWh Dual Tone	22116	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence 42.0 kWh (HC)	25816	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence Knight Edition 42.0 kWh (HC)	21947	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence 51.4 kWh Dual Tone	22120	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Smart (O) LR 51.4 kWh (HC)	21897	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence Knight Edition 42.0 kWh Dual Tone (HC)	22122	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh	21899	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR Knight Edition 51.4 kWh	21949	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Dual Tone	22124	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Dual Tone Knight Edition	22126	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Lounge Edition	25542	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh (HC)	21901	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Dual Tone Lounge Edition	25544	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR Knight Edition 51.4 kWh (HC)	21951	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Dual Tone (HC)	22128	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR 51.4 kWh Dual Tone (HC) Knight Edition	22130	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR Lounge Edition 51.4 kWh (HC)	25548	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Creta Electric Excellence LR Lounge Edition 51.4 kWh Dual Tone (HC)	25546	8e2a0fb1e40d45f10ddf8329d20bafa4ee2c193c6906c59fdc998c67b2095867.body		0
+Tigor EV XE 26.0 kWh	11281	a62df58e427f5a77367c428f9767c223ddeb8b18c0848f5c4d52d904898cc463.body		0
+Tigor EV XT 26.0 kWh	11283	a62df58e427f5a77367c428f9767c223ddeb8b18c0848f5c4d52d904898cc463.body		0
+Tigor EV XZ Plus 26.0 kWh	11285	a62df58e427f5a77367c428f9767c223ddeb8b18c0848f5c4d52d904898cc463.body		0
+Tigor EV XZ Plus LUX 26.0 kWh	11287	a62df58e427f5a77367c428f9767c223ddeb8b18c0848f5c4d52d904898cc463.body		0
+XUV 3XO EV AX5 39.4 kWh with No Charger	23105	abca6f065ac7ed68fc863a8fddf2c0a35c909ab77a14789372ecb6e29d324961.body		0
+XUV 3XO EV AX5 39.4 kWh with Charger	23109	abca6f065ac7ed68fc863a8fddf2c0a35c909ab77a14789372ecb6e29d324961.body		0
+XUV 3XO EV AX7 L 39.4 kWh with No Charger	23107	abca6f065ac7ed68fc863a8fddf2c0a35c909ab77a14789372ecb6e29d324961.body		0
+XUV 3XO EV AX7 L 39.4 kWh with Charger	23111	abca6f065ac7ed68fc863a8fddf2c0a35c909ab77a14789372ecb6e29d324961.body		0
+BE 6 Sporteq One 59.0 kWh No Charger	25112	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Two 59.0 kWh No Charger	25114	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three 59.0 kWh No Charger	25116	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three 70.0 kWh No Charger	25118	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three Plus 70.0 kWh No Charger	25122	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq FE 79.0 kWh No Charger	25126	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three Plus 79.0 kWh No Charger	25124	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq One 59.0 kWh 11.2kW Charger	25144	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Two 59.0 kWh 11.2kW Charger	25128	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq FE Four 79.0 kWh No Charger	25148	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Four 79.0 kWh No Charger	25120	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Launch Edition 79.0 kWh No Charger	25146	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three 59.0 kWh 11.2kW Charger	25134	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three 70.0 kWh 11.2kW Charger	25136	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three Plus 70.0 kWh 11.2kW Charger	25142	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq FE 79.0 kWh 11.2kW Charger	25110	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Three Plus 79.0 kWh 11.2kW Charger	25140	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq FE Four 79.0 kWh 11.2kW Charger	25130	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Launch Edition 79.0 kWh 11.2kW Charger	25132	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+BE 6 Sporteq Four 79.0 kWh 11.2kW Charger	25138	c2452bffa29c0fb567d70a11e7aa8776e62ee488140ed3378b501f00f1b0977a.body		0
+Urban Cruiser Ebella E3 61.0 kWh	19363	f240a61b23a2d2e394f2595b1d33608f3f2fb323d201b5b80cac2e7254f677d8.body	543.0	0
+Urban Cruiser Ebella E3 61.0 kWh Dual Tone	24648	f240a61b23a2d2e394f2595b1d33608f3f2fb323d201b5b80cac2e7254f677d8.body	543.0	0
+Tiago EV Smart 19.2 kWh	23500	fad592164162728e0a6dc100277ca2769075de1ec8a63f8b590fd4dea16b114f.body	170.0	0
+Tiago EV Pure Plus 19.2 kWh	23502	fad592164162728e0a6dc100277ca2769075de1ec8a63f8b590fd4dea16b114f.body	170.0	0
+Tiago EV Pure Plus 24.0 kWh	24376	fad592164162728e0a6dc100277ca2769075de1ec8a63f8b590fd4dea16b114f.body	215.0	0
+Tiago EV Creative Plus 24.0 kWh	23504	fad592164162728e0a6dc100277ca2769075de1ec8a63f8b590fd4dea16b114f.body	215.0	0
+Comet EV Executive 17.3 kWh	16575	fc13a7247a08f6d47062d7a4ffbf541e947b6e28e4fd25b2faaeb8c0460474d0.body	230.0	0
+Comet EV Excite 17.3 kWh	20153	fc13a7247a08f6d47062d7a4ffbf541e947b6e28e4fd25b2faaeb8c0460474d0.body	230.0	0
+Comet EV Excite FC 17.4 kWh	20155	fc13a7247a08f6d47062d7a4ffbf541e947b6e28e4fd25b2faaeb8c0460474d0.body	230.0	0
+Comet EV Exclusive 17.3 kWh Dual Tone	20157	fc13a7247a08f6d47062d7a4ffbf541e947b6e28e4fd25b2faaeb8c0460474d0.body	230.0	0
+Comet EV Exclusive FC 17.4 kWh Dual Tone	20159	fc13a7247a08f6d47062d7a4ffbf541e947b6e28e4fd25b2faaeb8c0460474d0.body	230.0	0

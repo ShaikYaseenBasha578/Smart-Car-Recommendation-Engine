@@ -1,0 +1,67 @@
+item	outcome	range_km	battery_kwh_found	name_matches	evidence
+B01	RANGE	440	49	yes	{"itemId":459,"value":"440","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B02	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B03	RANGE	275	30	yes	{"itemId":459,"value":"275","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B04	RANGE	461	50.3	yes	{"itemId":459,"value":"461","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B05	RANGE	530	75	yes	{"itemId":459,"value":"530","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B06	RANGE	502	55	yes	{"itemId":459,"value":"502","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B07	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B08	RANGE	230	17.3	yes	{"itemId":459,"value":"230","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B09	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B10	RANGE	460	63	yes	{"itemId":459,"value":"460","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B11	RANGE	490	51.4	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B12	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B13	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B14	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B15	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B16	RANGE	375	45	yes	{"itemId":459,"value":"375","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B17	RANGE	490	51.4	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B18	NONE		70	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B19	RANGE	490	51.4	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B20	RANGE	543	61	yes	{"itemId":459,"value":"543","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B21	RANGE	355	40	yes	{"itemId":459,"value":"355","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B22	RANGE	331	38	yes	{"itemId":459,"value":"331","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B23	NONE		59	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B24	RANGE	490	51.4	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B25	RANGE	460	63	yes	{"itemId":459,"value":"460","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B26	RANGE	275	30	yes	{"itemId":459,"value":"275","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B27	RANGE	530	75	yes	{"itemId":459,"value":"530","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B28	RANGE	456	39.4	yes	{"itemId":459,"value":"456","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B29	RANGE	460	63	yes	{"itemId":459,"value":"460","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B30	RANGE	443	42	yes	{"itemId":459,"value":"443","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B31	NONE		59	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B32	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B33	RANGE	500	75	yes	{"itemId":459,"value":"500","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B34	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B35	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B36	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B37	RANGE	505	75	yes	{"itemId":459,"value":"505","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B38	RANGE	461	50.3	yes	{"itemId":459,"value":"461","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B39	RANGE	404	42	yes	{"itemId":459,"value":"404","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B40	RANGE	526	51.4	yes	{"itemId":459,"value":"526","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B41	NONE		42	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B42	RANGE	449	52.9	yes	{"itemId":459,"value":"449","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B43	RANGE	355	40	yes	{"itemId":459,"value":"355","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B44	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B45	RANGE	461	50.3	yes	{"itemId":459,"value":"461","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B46	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B47	RANGE	230	17.3	yes	{"itemId":459,"value":"230","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B48	BLOCKED	656	79	yes	{"itemId":466,"value":"79","itemName":"Battery Capacity","unitType":"kWh","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B49	RANGE	230	30	yes	{"itemId":459,"value":"230","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B50	RANGE	490	75	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B51	RANGE	517	69.2	yes	{"itemId":459,"value":"517","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B52	RANGE	375	45	yes	{"itemId":459,"value":"375","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B53	RANGE	517	69.2	yes	{"itemId":459,"value":"517","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B54	NONE		42	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B55	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B56	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B57	RANGE	375	45	yes	{"itemId":459,"value":"375","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B58	NONE		79	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B59	RANGE	461	50.3	yes	{"itemId":459,"value":"461","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B60	RANGE	449	52.9	yes	{"itemId":459,"value":"449","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B61	RANGE	490	51.4	yes	{"itemId":459,"value":"490","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B62	NONE		59	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B63	RANGE	445	65	yes	{"itemId":459,"value":"445","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":3,"isHighlighted":false}
+B64	NONE		51.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B65	NONE		59	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
+B66	NONE		39.4	yes	{"itemId":459,"value":"","itemName":"Expected Range","unitType":"km","customTypeId":-1,"DataTypeId":-1,"isHighlighted":false}
