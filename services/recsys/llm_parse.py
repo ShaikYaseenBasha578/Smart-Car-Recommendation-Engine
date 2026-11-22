@@ -23,6 +23,10 @@ Providers (env): LLM_PARSER_PROVIDER = gemini | openai (default: openai if LLM_P
           LLM_PARSER_MODEL, key from the env var named by LLM_PARSER_KEY_ENV (e.g. GROQ_API_KEY).
 Other env: LLM_PARSER_TIMEOUT (seconds, total, default 2.0), LLM_PARSER_DAILY_CAP (live calls per UTC day, default 400),
 LLM_PARSER_CACHE_FILE (optional on-disk JSON cache of raw model answers, for evaluation runs).
+Pacing: LLM_PARSER_RPM (live requests per minute, default 10, 0 = no local limit) is a token bucket; with no token the
+request answers from the rules at once (fallback "rate_local"). After a 429 or 503 no call is made until Retry-After
+(seconds or HTTP date), or a 30 s backoff doubling to 10 min, has passed (fallback "cooldown"); a success clears it.
+Production never waits for either: only eval/run_eval.py (configure_eval) sleeps and retries.
 Keys are read from the environment only and never logged.
 """
 
@@ -37,6 +41,7 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from email.utils import parsedate_to_datetime
 from collections import Counter, OrderedDict
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional, Tuple
@@ -48,6 +53,10 @@ log = logging.getLogger("carrec.llm_parse")
 DEFAULT_MODEL = "gemini-3.5-flash-lite"
 DEFAULT_TIMEOUT = 2.0
 DEFAULT_DAILY_CAP = 400
+DEFAULT_RPM = 10          # conservative free-tier requests per minute; 0 turns the local limiter off
+BACKOFF_START = 30.0      # seconds of cool-down after a 429/503 without Retry-After; doubles up to BACKOFF_MAX
+BACKOFF_MAX = 600.0
+RETRY_AFTER_MAX = 3600.0  # a larger Retry-After from the provider is clamped to this
 LRU_SIZE = 2000
 MAX_EVIDENCE_WORDS = 10
 
@@ -225,6 +234,160 @@ def reset_cap() -> None:
         _cap_state.update(day=None, calls=0)
 
 
+# --------------------------------------------------------------------------- pacing: token bucket + cool-down
+
+def _rpm() -> float:
+    try:
+        return max(0.0, float(os.environ.get("LLM_PARSER_RPM", DEFAULT_RPM)))
+    except ValueError:
+        return float(DEFAULT_RPM)
+
+
+def _now() -> float:
+    return time.monotonic()
+
+
+def _sleep(seconds: float) -> None:
+    time.sleep(seconds)
+
+
+def parse_retry_after(value: Any, now: Optional[datetime] = None) -> Optional[float]:
+    """Retry-After header: delta-seconds or an HTTP date. Seconds to wait (>= 0, clamped), or None when absent/bad."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        secs = float(text)
+    except ValueError:
+        try:
+            when = parsedate_to_datetime(text)
+        except (TypeError, ValueError, IndexError):
+            return None
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=timezone.utc)
+        secs = (when - (now or datetime.now(timezone.utc))).total_seconds()
+    if secs != secs:  # NaN
+        return None
+    return min(max(secs, 0.0), RETRY_AFTER_MAX)
+
+
+class TokenBucket:
+    """Thread-safe token bucket: capacity = rpm tokens, refilled at rpm per minute. rpm <= 0 means unlimited."""
+
+    def __init__(self, rpm: float, now: Optional[float] = None):
+        self.rpm = rpm
+        self._lock = threading.Lock()
+        self._tokens = float(rpm)
+        self._t = _now() if now is None else now
+
+    def take(self, now: Optional[float] = None) -> float:
+        """0.0 when a token was taken; otherwise the seconds until one will be available (nothing is taken)."""
+        if self.rpm <= 0:
+            return 0.0
+        with self._lock:
+            t = _now() if now is None else now
+            self._tokens = min(float(self.rpm), self._tokens + max(0.0, t - self._t) * self.rpm / 60.0)
+            self._t = t
+            if self._tokens >= 1.0:
+                self._tokens -= 1.0
+                return 0.0
+            return (1.0 - self._tokens) * 60.0 / self.rpm
+
+
+_pace_lock = threading.Lock()
+_bucket: Optional[TokenBucket] = None
+_cool = {"until": 0.0, "backoff": 0.0}
+_eval_cfg: Optional[dict] = None  # set by configure_eval(); None in production (never waits)
+
+
+def _bucket_take() -> float:
+    global _bucket
+    rpm = _rpm()
+    with _pace_lock:
+        if _bucket is None or _bucket.rpm != rpm:
+            _bucket = TokenBucket(rpm)
+        b = _bucket
+    return b.take()
+
+
+def reset_pacing() -> None:
+    global _bucket
+    with _pace_lock:
+        _bucket = None
+        _cool.update(until=0.0, backoff=0.0)
+        if _eval_cfg is not None:
+            _eval_cfg.update(waited=0.0, last_call=None)
+
+
+def cooldown_remaining() -> float:
+    with _pace_lock:
+        return max(0.0, _cool["until"] - _now())
+
+
+def _note_failure(retry_after: Optional[float]) -> float:
+    """Start a cool-down after a 429/503; returns its length in seconds."""
+    with _pace_lock:
+        if retry_after is not None:
+            delay = retry_after
+        else:
+            _cool["backoff"] = min(BACKOFF_MAX, _cool["backoff"] * 2 if _cool["backoff"] else BACKOFF_START)
+            delay = _cool["backoff"]
+        _cool["until"] = _now() + delay
+        return delay
+
+
+def _note_success() -> None:
+    with _pace_lock:
+        _cool.update(until=0.0, backoff=0.0)
+
+
+def configure_eval(pace: float = 0.0, max_wait: float = 1800.0) -> None:
+    """Eval mode ONLY (eval/run_eval.py): wait out the limiter, cool-downs and a pause between live calls instead of
+    falling back at once. `max_wait` is the total seconds the run may spend waiting; after that it falls back again."""
+    global _eval_cfg
+    _eval_cfg = {"pace": max(0.0, pace), "max_wait": max(0.0, max_wait), "waited": 0.0, "last_call": None}
+
+
+def clear_eval() -> None:
+    global _eval_cfg
+    _eval_cfg = None
+
+
+def eval_waited() -> float:
+    return 0.0 if _eval_cfg is None else _eval_cfg["waited"]
+
+
+def _pre_call_block() -> Optional[Tuple[str, float]]:
+    """None when a live call may go out now (a limiter token is then taken); else (fallback reason, seconds to wait)."""
+    left = cooldown_remaining()
+    if left > 0:
+        return "cooldown", left
+    cfg = _eval_cfg
+    if cfg is not None and cfg["pace"] > 0 and cfg["last_call"] is not None:
+        gap = cfg["last_call"] + cfg["pace"] - _now()
+        if gap > 0:
+            return "pace", gap
+    wait = _bucket_take()
+    if wait > 0:
+        return "rate_local", wait
+    return None
+
+
+def _eval_wait(seconds: float, counted: bool = True) -> bool:
+    """Eval mode: sleep `seconds` if the wait budget allows. Always False in production."""
+    cfg = _eval_cfg
+    if cfg is None:
+        return False
+    if counted and cfg["waited"] + seconds > cfg["max_wait"]:
+        return False
+    if counted:
+        cfg["waited"] += seconds
+    _sleep(max(0.0, seconds))
+    return True
+
+
 def normalise_query(query: str) -> str:
     return re.sub(r"\s+", " ", (query or "").lower()).strip()
 
@@ -359,9 +522,11 @@ def number_grounded(value: float, evidence: str) -> bool:
 
 
 class Rejection(Exception):
-    def __init__(self, reason: str):
+    def __init__(self, reason: str, retry_after: Optional[float] = None, cooldown: bool = False):
         super().__init__(reason)
         self.reason = reason
+        self.retry_after = retry_after  # seconds from a Retry-After header, when the provider sent one
+        self.cooldown = cooldown        # True for 429 / 503: stop calling for a while
 
 
 def _wish_label(evidence: str) -> Optional[str]:
@@ -581,9 +746,11 @@ def merge(rules: dict, verdict: dict) -> dict:
 class LLMError(Exception):
     """A failure to get an answer; `reason` is the fallback label (timeout, quota, http_error, no_key, ...)."""
 
-    def __init__(self, reason: str):
+    def __init__(self, reason: str, retry_after: Optional[float] = None, cooldown: bool = False):
         super().__init__(reason)
         self.reason = reason
+        self.retry_after = retry_after  # seconds from a Retry-After header, when the provider sent one
+        self.cooldown = cooldown        # True for 429 / 503: stop calling for a while
 
 
 class ClientResult:
@@ -601,7 +768,9 @@ def _post_json(url: str, headers: dict, body: dict, timeout: float) -> dict:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
-        raise LLMError("quota" if exc.code == 429 else "http_error") from None  # never echo headers/URL
+        retry_after = parse_retry_after(exc.headers.get("Retry-After") if exc.headers is not None else None)
+        raise LLMError("quota" if exc.code == 429 else "http_error", retry_after=retry_after,
+                       cooldown=exc.code in (429, 503)) from None  # never echo headers/URL
     except (TimeoutError, OSError) as exc:  # URLError and socket.timeout are OSErrors
         raise LLMError("timeout" if "timed out" in str(exc).lower() else "network_error") from None
     except ValueError:
@@ -727,23 +896,40 @@ def _refine(query: str, rules: dict, residual: str, client: Any) -> Tuple[dict, 
         _stats.inc("cache_hits")
         raw = entry["raw"]
     else:
-        if not _take_call_slot():
-            _stats.fallback("daily_cap")
-            return rules, _info(reason="daily_cap")
-        try:
-            cl = client if client is not None else make_client()
-            t0 = time.monotonic()
-            _stats.inc("called")
+        res = None
+        while res is None:
+            block = _pre_call_block()
+            if block is not None:
+                reason, wait = block
+                if _eval_wait(wait, counted=(reason != "pace")):
+                    continue
+                _stats.fallback(reason)
+                return rules, _info(reason=reason)
+            if not _take_call_slot():
+                _stats.fallback("daily_cap")
+                return rules, _info(reason="daily_cap")
             try:
-                res = cl.complete(build_system_prompt(), query, _timeout())
-            finally:
-                latency_ms = (time.monotonic() - t0) * 1000.0
-                _stats.latency(latency_ms)
-            raw = _parse_model_json(res.text)
-        except LLMError as exc:
-            _stats.fallback(exc.reason)
-            log.info("llm parser fallback: %s", exc.reason)
-            return rules, _info(reason=exc.reason, latency_ms=None if latency_ms is None else round(latency_ms, 1))
+                cl = client if client is not None else make_client()
+                t0 = time.monotonic()
+                _stats.inc("called")
+                try:
+                    res = cl.complete(build_system_prompt(), query, _timeout())
+                finally:
+                    latency_ms = (time.monotonic() - t0) * 1000.0
+                    _stats.latency(latency_ms)
+                    if _eval_cfg is not None:
+                        _eval_cfg["last_call"] = _now()
+                raw = _parse_model_json(res.text)
+            except LLMError as exc:
+                res = None
+                if exc.cooldown:
+                    delay = _note_failure(exc.retry_after)
+                    if _eval_wait(delay):  # eval only: wait out the cool-down and ask the same query again
+                        continue
+                _stats.fallback(exc.reason)
+                log.info("llm parser fallback: %s", exc.reason)
+                return rules, _info(reason=exc.reason, latency_ms=None if latency_ms is None else round(latency_ms, 1))
+        _note_success()
         for k, v in (("tokens_in", res.tokens_in), ("tokens_out", res.tokens_out)):
             if isinstance(v, int):
                 _stats.inc(k, v)

@@ -21,11 +21,11 @@ class Fake:
 
 @pytest.fixture(autouse=True)
 def clean(monkeypatch):
-    for k in ("LLM_PARSER", "LLM_PARSER_CACHE_FILE", "LLM_PARSER_DAILY_CAP", "LLM_PARSER_TIMEOUT"):
+    for k in ("LLM_PARSER", "LLM_PARSER_CACHE_FILE", "LLM_PARSER_DAILY_CAP", "LLM_PARSER_TIMEOUT", "LLM_PARSER_RPM"):
         monkeypatch.delenv(k, raising=False)
-    L.reset_stats(); L.clear_cache(); L.reset_cap()
+    L.reset_stats(); L.clear_cache(); L.reset_cap(); L.reset_pacing()
     yield
-    L.reset_stats(); L.clear_cache(); L.reset_cap()
+    L.reset_stats(); L.clear_cache(); L.reset_cap(); L.reset_pacing()
 
 
 def rules(q):

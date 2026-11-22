@@ -431,10 +431,19 @@ def intent_fingerprint(intent: dict | None) -> str:
     }, sort_keys=True, default=str)
 
 
-def evaluate(engine_name: str, queries: list[dict]) -> dict:
+def _progress_line(i: int, n: int) -> str:
+    from services.recsys import llm_parse
+    st = llm_parse.stats()
+    return (f"[llm] {i} of {n} queries | live calls {st['llm_called']} | cache hits {st['cache_hits']} | "
+            f"fallbacks {st['fallbacks_total']} {st['fallbacks'] or ''} | waited {llm_parse.eval_waited():.0f}s")
+
+
+def evaluate(engine_name: str, queries: list[dict], progress: bool = False) -> dict:
     run = make_engine(engine_name)
     records = []
-    for q in queries:
+    for i, q in enumerate(queries, 1):
+        if progress and i > 1:
+            print(_progress_line(i - 1, len(queries)), flush=True)
         try:
             resp = run(q["query"])
             error = None
@@ -475,6 +484,8 @@ def evaluate(engine_name: str, queries: list[dict]) -> dict:
                 for v in unverified_requirements(row, q["expect"]):
                     rec["unverified"].append({"car": f"{row['model']} / {row['variant']}", "constraint": v})
         records.append(rec)
+    if progress:
+        print(_progress_line(len(queries), len(queries)), flush=True)
 
     summary = summarise(records)
     llm_env = os.environ.get("LLM_PARSER")
@@ -871,6 +882,14 @@ def main() -> None:
     ap.add_argument("--compare", nargs=2, metavar=("A.json", "B.json"), help="print a side-by-side table of two result files")
     ap.add_argument("--llm", choices=["on", "off"], default="off",
                     help="v3 only: LLM_PARSER on/off. 'on' uses eval/results/llm_cache.json (committed) so reruns spend no quota")
+    ap.add_argument("--llm-pace", type=float, default=0.0, metavar="SECONDS",
+                    help="with --llm on: minimum seconds between live LLM calls (eval only; production never waits)")
+    ap.add_argument("--llm-max-wait", type=float, default=1800.0, metavar="SECONDS",
+                    help="with --llm on: total seconds the run may wait on 429/Retry-After/rate limits before it falls "
+                         "back to the rules for the remaining queries (default 1800). Re-run the same command to resume: "
+                         "answers already in the cache cost no call")
+    ap.add_argument("--llm-cache", default=str(ROOT / "eval" / "results" / "llm_cache.json"),
+                    help="with --llm on: the on-disk answer cache (resume file)")
     ap.add_argument("--check-labels", action="store_true", help="only sanity-check the labels against the catalogue")
     args = ap.parse_args()
 
@@ -881,13 +900,15 @@ def main() -> None:
         sys.exit("--llm on needs --engine v3")
     os.environ["LLM_PARSER"] = args.llm
     if args.llm == "on":
-        os.environ["LLM_PARSER_CACHE_FILE"] = str(ROOT / "eval" / "results" / "llm_cache.json")
+        os.environ["LLM_PARSER_CACHE_FILE"] = args.llm_cache
+        from services.recsys import llm_parse
+        llm_parse.configure_eval(pace=args.llm_pace, max_wait=args.llm_max_wait)
     QUERIES_PATH = Path(args.queries)
     queries = load_queries()
     if args.check_labels:
         sys.exit(1 if check_labels(queries) else 0)
 
-    result = evaluate(args.engine, queries)
+    result = evaluate(args.engine, queries, progress=(args.llm == "on"))
     print_table(result)
     if result.get("llm_stats"):
         print("\nLLM parser stats:", json.dumps(result["llm_stats"]))
