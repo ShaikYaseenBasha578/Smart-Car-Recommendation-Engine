@@ -206,6 +206,17 @@ function buildExtraChips(chips) {
 function buildUnsupportedBanner(data) {
     if (!data.unsupported_terms || !data.unsupported_terms.length) return "";
     const brands = data.unsupported_terms.join(", ");
+    if (data.recommendations && data.recommendations.length) {
+        // the brand part was ignored and the rest of the search ran: say what the list is based on instead
+        const asked = understoodChips(data).chips.filter(c => c.kind === "ask").map(c => c.text);
+        let instead = "Showing general picks instead.";
+        if (asked.length === 1 && /^(Under|Above) /.test(asked[0])) instead = `Showing cars ${asked[0].charAt(0).toLowerCase()}${asked[0].slice(1)} instead.`;
+        else if (asked.length) instead = `Showing cars matching ${asked.join(", ")} instead.`;
+        return `<div class="notice" role="status">${ICONS.alert}<div>
+        <strong>We don't cover ${escapeHtml(brands)}.</strong>
+        <p>${escapeHtml(instead)}</p>
+    </div></div>`;
+    }
     const covered = data.covered_makes || [];
     const coveredText = covered.length
         ? ` Showing the closest matches from the ${covered.length} brands we cover: ${covered.join(", ")}.`
@@ -395,6 +406,10 @@ function understoodChips(data) {
     (it.fuel_types || []).forEach(x => need(x === "cng" ? "CNG" : upperFirst(x)));
     const t = it.transmission || {};
     if (t.family) need(upperFirst(t.family));
+    // gearbox types asked for or ruled out ("DCT", "no CVT"); e-CVT rides along with a CVT exclusion, so it isn't repeated
+    const GEARBOX = { manual: "Manual", imt: "iMT", amt: "AMT", dct: "DCT", cvt: "CVT", e_cvt: "e-CVT", torque_converter: "Torque converter", single_speed_ev: "Single-speed EV" };
+    (t.include_types || []).forEach(x => need(GEARBOX[x] || x));
+    (t.exclude_types || []).filter(x => !(x === "e_cvt" && (t.exclude_types || []).includes("cvt"))).forEach(x => need(`No ${GEARBOX[x] || x}`));
     if (it.seats_min != null) need(`${it.seats_min}+ seats`);
     (it.makes || []).forEach(x => need(x));
     (it.models || []).forEach(x => need(x));
@@ -412,6 +427,8 @@ function understoodChips(data) {
         (values || []).forEach(v => chips.push({ text: kind === "fuel_types" && v === "cng" ? "CNG" : (v === "suv" || v === "mpv" ? v.toUpperCase() : upperFirst(v)), kind: "assumed", dropKey: opt ? opt.key : "" }));
     });
     (data.corrections || []).forEach(c => chips.push({ text: `${c.from} → ${c.to}`, kind: "corrected" }));
+    // attributes the catalogue cannot filter on: shown so the shopper knows they changed nothing
+    (data.ignored_terms || []).forEach(x => chips.push({ text: `Didn't use: ${x}`, kind: "ignored" }));
     return { chips, hard };
 }
 
@@ -422,7 +439,8 @@ function buildQueryEcho(data) {
     const items = chips.map(c => {
         const mark = tag[c.kind] ? `<span class="echo-mark">${tag[c.kind]}</span>` : "";
         const off = c.dropKey ? `<button type="button" class="echo-off" data-drop-key="${escapeHtml(c.dropKey)}" aria-label="Remove assumption: ${escapeHtml(c.text)}">Remove</button>` : "";
-        return `<li class="echo echo--${c.kind}"><span>${escapeHtml(c.text)}</span>${mark}${off}</li>`;
+        const tip = c.kind === "ignored" ? ` title="We can't filter on this yet, so it didn't change the results."` : "";
+        return `<li class="echo echo--${c.kind}"${tip}><span>${escapeHtml(c.text)}</span>${mark}${off}</li>`;
     }).join("");
     return `<section class="echo-box" aria-label="What we understood from your search">
         <h3 class="echo-title">What we understood</h3>
@@ -450,10 +468,27 @@ function buildVagueNotice() {
 function buildRelaxedNotice(data) {
     if (data.personalised === false && data.recommendations && data.recommendations.length) return buildVagueNotice();
     if (!data.relaxation && !(data.message && data.recommendations && data.recommendations.length)) return "";
-    const text = data.relaxation ? data.relaxation.message : data.message;
-    return `<div class="notice" role="status">${ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ')}<div>
-        <strong>${data.relaxation ? "Nothing matched every requirement" : (data.no_confirmed ? "Requirements not confirmed" : "Please note")}</strong>
+    const icon = ICONS.info.replace("<svg ", '<svg style="color:var(--accent-text)" ');
+    const rx = data.relaxation;
+    if (!rx || !Array.isArray(rx.moves)) {
+        // the uncovered-brand banner already says this; don't repeat it in a second notice
+        if (!rx && !data.no_confirmed && (data.unsupported_terms || []).length && /isn't in our catalogue/.test(data.message || "")) return "";
+        const text = rx ? rx.message : data.message;
+        return `<div class="notice" role="status">${icon}<div>
+        <strong>${rx ? "Nothing matched every requirement" : (data.no_confirmed ? "Requirements not confirmed" : "Please note")}</strong>
         <p>${escapeHtml(text)}</p>
+    </div></div>`;
+    }
+    const head = rx.far ? "Nothing close exists in our catalogue; these are the nearest cars."
+        : "No car matches everything you asked for.";
+    const pills = rx.moves.map(m => `<li class="relax-pill">${escapeHtml(m.label)}</li>`).join("");
+    const nv = /Not confirmed in our data for the cars shown: (.+?)\.\s*$/.exec(rx.message || "");
+    const alts = (rx.alternatives || []).map(a => `<li><button type="button" class="relax-alt" data-drop-key="${escapeHtml(a.key)}">Without ${escapeHtml(a.label)} <span aria-hidden="true">·</span> ${a.models} ${a.models === 1 ? "model" : "models"}</button></li>`).join("");
+    return `<div class="notice notice--relaxed" role="status">${icon}<div>
+        <strong>${escapeHtml(head)}</strong>
+        ${pills ? `<div class="relax-line">We relaxed: <ul class="relax-pills">${pills}</ul></div>` : ""}
+        ${nv ? `<p>Not confirmed for the cars shown: ${escapeHtml(nv[1])}.</p>` : ""}
+        ${alts ? `<p class="relax-line">Or drop one requirement instead:</p><ul class="relax-alts">${alts}</ul>` : ""}
     </div></div>`;
 }
 

@@ -578,6 +578,7 @@ button { cursor: pointer; }
 .echo { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: var(--r-pill); font-size: 0.875rem; font-weight: 600; background: var(--surface-2); color: var(--ink); }
 .echo--ask { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); }
 .echo--assumed, .echo--corrected { background: var(--warn-soft); color: var(--warn-text); box-shadow: inset 0 0 0 1px currentColor; }
+.echo--ignored { background: transparent; color: var(--ink-3); font-size: 0.8125rem; font-weight: 500; padding: 2px 10px; box-shadow: none; border: 1px dashed var(--line-strong); }
 .echo-mark { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
 .echo-off { padding: 2px 4px; margin-right: -6px; border-radius: 6px; font: inherit; font-size: 0.8125rem; font-weight: 600; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; background: none; }
 
@@ -705,3 +706,14 @@ button { cursor: pointer; }
   .car--v3 .reasons--v3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .car--v3 .car-actions .btn { min-height: 40px; }
 }
+
+/* relaxed-results notice: what was relaxed, and one-tap alternatives */
+.notice--relaxed > div { min-width: 0; }
+.relax-line { margin-top: 4px; }
+.relax-line .relax-pills { display: inline-flex; flex-wrap: wrap; gap: 6px; vertical-align: middle; margin-left: 4px; }
+.relax-pill { padding: 2px 10px; border-radius: var(--r-pill); font-size: 0.875rem; font-weight: 550; color: var(--ink-2); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.relax-alts { display: flex; flex-wrap: wrap; gap: var(--s0); margin-top: 6px; }
+.relax-alt { min-height: 44px; padding: 8px var(--s2); border-radius: var(--r-pill); border: 1px solid var(--line-ctl); background: var(--surface); color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.relax-alt:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
+.relax-alt:active { transform: translateY(1px); }
+.relax-alt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
