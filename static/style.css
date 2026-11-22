@@ -579,19 +579,10 @@ button { cursor: pointer; }
 .unmet { display: flex; flex-wrap: wrap; gap: 4px 6px; }
 .unmet li { padding: 2px 10px; border-radius: var(--r-pill); font-size: 0.8125rem; font-weight: 600; background: var(--warn-soft); color: var(--warn-text); box-shadow: inset 0 0 0 1px currentColor; }
 
-.meters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s1); }
-.meter { min-width: 0; }
-.meter-name { font-size: 0.8125rem; line-height: 1.3; color: var(--ink-3); }
-.meter-name strong { color: var(--ink); font-weight: 700; }
-.meter-name span { display: block; }
-.meter-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
-.meter-track { position: relative; flex: 1 1 auto; height: 8px; border-radius: var(--r-pill); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
-.meter-track--empty { background: repeating-linear-gradient(135deg, var(--surface-2) 0 6px, transparent 6px 12px); }
-.meter-fill { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
-.meter-num { flex: none; min-width: 2ch; font-size: 0.875rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-.meter-num--none { font-weight: 550; font-size: 0.8125rem; color: var(--ink-3); }
 
-.why h4, .evi h4, .caveats h4 { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+/* the collapsed card's bullets carry their own meaning (check marks under the match label); the heading stays for screen readers */
+.why h4 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.evi h4, .caveats h4 { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
 .reasons--v3 { display: grid; grid-template-columns: 1fr; gap: 4px; }
 .evi-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .lines { display: flex; flex-direction: column; gap: 10px; }
@@ -612,35 +603,41 @@ button { cursor: pointer; }
 
 .sources { font-size: var(--text-sm); line-height: 1.5; color: var(--ink-3); max-width: 80ch; }
 
-@media (max-width: 599px) {
-  .meters { gap: var(--s0); }
-  .meter-row { gap: 4px; }
-}
 .seg--keep { white-space: nowrap; }
-.v3-more { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px; padding: 0 var(--s1) var(--s1); min-width: 0; }
-@media (min-width: 700px) { .v3-more { padding: 0 var(--s2) var(--s2); } .evi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s2); } .evi-grid .why { grid-column: 1 / -1; } }
-@media (min-width: 1024px) { .car--v3 .car-body { padding-bottom: var(--s1); } .evi-grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr) minmax(0, 1fr); } .evi-grid .why { grid-column: auto; } }
+.v3-more { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px; padding: var(--s1) var(--s1) var(--s1); border-top: 1px solid var(--line); min-width: 0; }
+@media (min-width: 700px) { .v3-more { padding: var(--s2); } .evi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s2); } }
 
 /* v3 cards, second pass: standing bars, collapsed reviews */
 .car--v3 [hidden] { display: none !important; }
-.meter-cap { margin-top: 3px; font-size: 0.8125rem; line-height: 1.35; color: var(--ink-2); text-wrap: pretty; }
-.meter-num--raw { font-weight: 650; font-size: 0.8125rem; color: var(--ink-2); white-space: nowrap; }
-.meters-note { margin-top: -2px; font-size: 0.8125rem; line-height: 1.4; color: var(--ink-3); text-wrap: pretty; }
 .owner-summary { margin-top: 0; }
-.more-toggle { display: flex; }
-.more-toggle .btn { min-height: 40px; }
-/* collapsed: a note shows 3 lines; "Show more from reviews" reads the rest (expanded notes are never clamped) */
-.car--v3[data-reviews="collapsed"] .evi .line-note { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+
+/* one line of real values in place of the bars */
+.ratings { font-size: 0.875rem; line-height: 1.4; color: var(--ink-2); text-wrap: pretty; }
+.ratings .rating-part { display: inline-block; }
+.ratings strong { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.rating-sep { color: var(--ink-3); }
+
+/* the first caveat, one line; the full list is behind the toggle */
+.caveat-pill { display: flex; align-items: center; gap: 6px; max-width: 100%; width: fit-content; padding: 3px 12px; border-radius: var(--r-pill); font-size: 0.8125rem; font-weight: 600; line-height: 1.4; background: var(--warn-soft); color: var(--warn-text); box-shadow: inset 0 0 0 1px currentColor; }
+.caveat-pill svg { width: 14px; height: 14px; flex: none; }
+.caveat-pill span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.btn-reviews { gap: 6px; }
+.btn-reviews svg { width: 16px; height: 16px; flex: none; transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.btn-reviews[aria-expanded="true"] svg { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .btn-reviews svg { transition: none; } }
+
+/* vague search: four ways to narrow it down */
+.refiners { display: flex; flex-wrap: wrap; gap: var(--s0); margin-top: var(--s0); }
+.refiner { min-height: 44px; padding: 9px var(--s2); border-radius: var(--r-pill); border: 1px solid var(--line-ctl); background: var(--surface); color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.refiner:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
+.refiner:active { transform: translateY(1px); }
 @media (max-width: 599px) {
-  /* phone: one row per bar (name | bar + number), caption under the bar, so the captions get the full width */
-  .meters { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .meter { display: grid; grid-template-columns: 6.25rem minmax(0, 1fr); column-gap: 10px; align-items: start; }
-  .meter-name { grid-row: 1 / span 2; }
-  .meter-row { margin-top: 0; min-height: 20px; }
-  .meter-cap { grid-column: 2; margin-top: 2px; }
-}
-@media (max-width: 599px) {
-  .car--v3 .car-photo img { aspect-ratio: 21 / 9; }
+  .car--v3 .car-photo img { aspect-ratio: 21 / 9; max-height: 140px; }
+  .ratings .rating-part { display: block; }
+  .rating-sep { display: none; }
+  .refiners { display: grid; grid-template-columns: 1fr 1fr; }
+  .refiner { padding-inline: 8px; font-size: 0.875rem; white-space: nowrap; }
   /* the two buttons share a row when they fit, else they stack full width (the old rule would stack them always) */
   .car--v3 .car-actions { flex-wrap: wrap; }
   .car--v3 .car-actions .btn { flex: 1 1 auto; width: auto; padding-inline: 12px; }
@@ -670,3 +667,27 @@ button { cursor: pointer; }
 .why-sources li:focus { outline: none; }
 .why-sub { margin-top: var(--s1); font-size: 0.8125rem; font-weight: 650; color: var(--ink-3); }
 @media (prefers-reduced-motion: reduce) { .why-sources li { transition: none; } }
+
+/* collapsed v3 card, tightened so it reads as a summary: about 380 px tall on a desktop, the photo a third of the width */
+.car--v3 .car-body { gap: 10px; }
+.car--v3 .v3-fit { gap: 6px; }
+.car--v3 .facts { padding-block: 8px; }
+.car--v3 .reasons--v3 { gap: 2px var(--s2); }
+@media (max-width: 599px) {
+  .car--v3 .car-body { gap: 6px; padding: 12px var(--s1) var(--s1); }
+  .car--v3 .also { margin-top: -2px; line-height: 1.35; }
+  .car--v3 .facts { gap: 2px var(--s1); padding-block: 6px; }
+  .car--v3 .car-head { gap: 2px; }
+  .car--v3 .car-foot { gap: 6px; }
+  .car--v3 .tags { gap: 4px; }
+  .car--v3 .car-actions { gap: 6px; }
+  .car--v3 .car-actions .btn { min-height: 40px; padding-block: 6px; }
+}
+@media (min-width: 1024px) {
+  .car--v3 { grid-template-columns: 33% minmax(0, 1fr); }
+  .car--v3 .car-body { padding: 14px var(--s2); gap: 8px; }
+  .car--v3 .car-price strong { display: inline; margin-right: 4px; }
+  .car--v3 .car-price .price-link { margin-top: 2px; }
+  .car--v3 .reasons--v3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .car--v3 .car-actions .btn { min-height: 40px; }
+}
