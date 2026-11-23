@@ -209,6 +209,31 @@ def _reviews(card: dict | None) -> dict | None:
     return None if card is None else {k: card.get(k) for k in REVIEW_KEYS}
 
 
+def _model_reviews(model: str) -> dict | None:
+    """The model's stored review notes with no search behind them (read-only, same code the result cards use, called with no
+    query weights: expert_lines / owner_lines accept every note and rank by strength alone). The standing words ("above average
+    among SUVs") are the card's too: they compare the model's overall rating with the rated models of its whole body-type
+    segment and never depend on a query, so they are honest here. None when the model has no review data at all."""
+    from services.recsys.evidence import get_evidence
+    from services.recsys.explain import expert_lines, expert_standing, owner_lines, owner_standing
+    try:
+        ev = get_evidence()
+        e_lines = expert_lines(model, None, ev)
+        o_lines, caveats = owner_lines(model, None, ev)
+        e_st, o_st = expert_standing(model, ev), owner_standing(model, ev)
+    except Exception:  # reviews are extra: the page must open without them
+        return None
+    if not (e_lines or o_lines or caveats or e_st or o_st):
+        return None
+
+    def share(st, key):  # a 0-1 presence flag for the UI ("has a score"), from the standing's own rating
+        if not st or st.get(key) is None or not st.get("scale_max"):
+            return None
+        return round(float(st[key]) / float(st["scale_max"]), 3)
+    return {"expert_notes": e_lines, "owner_notes": o_lines, "caveats": caveats, "expert_standing": e_st,
+            "owner_standing": o_st, "scores": {"expert": share(e_st, "score"), "owner": share(o_st, "rating")}}
+
+
 def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str] | None = None,
                    variant_id: int | None = None, app_root_path: str = ".") -> dict | None:
     rows = find_model(make_slug, model_slug)
@@ -261,7 +286,7 @@ def get_car_detail(make_slug: str, model_slug: str, q: str = "", drop: list[str]
         "data_as_of": data_as_of(),
         "summary": build_summary(rows, TRANSMISSION_LABELS),
         "query": {"q": q, "drop": drop or [], "matching_variant_count": len(matching)} if q.strip() else None,
-        "reviews": _reviews(card),
+        "reviews": _reviews(card) if q.strip() else _model_reviews(first["model"]),
         "variants": variants,
         "selected_variant_id": selected,
         "specs": [

@@ -577,7 +577,6 @@ button { cursor: pointer; }
 .detail-reviews .ratings { margin: 0; }
 .variant-pick { padding: 0; border: 0; background: none; text-align: left; font-weight: 650; color: var(--ink); }
 .variant-pick:hover { color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.2em; }
-.match-badge { display: inline-block; margin-top: 4px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--surface); color: var(--good); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
 
 .spec-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--s2) var(--s3); }
 .spec-group h3, .spec-group h4 { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--s0); }
@@ -991,4 +990,43 @@ body.has-compare-tray { padding-bottom: calc(var(--tray-h, 64px) + var(--s1)); }
   .variants td:nth-child(n+2):not(:last-child)::after { content: "·"; margin-inline: 6px; color: var(--ink-3); }
   .variants tr.is-selected { box-shadow: inset 0 0 0 2px var(--accent); }
   .variants tr.is-selected td, .variants tr.is-selected td:first-child { box-shadow: none; }
+}
+
+/* 320 px phones: the header (logo, three links, theme button) was 37 px wider than the screen, so every page scrolled sideways */
+@media (max-width: 359px) {
+  .site-header .wrap { gap: 4px; padding-inline: 12px; }
+  .logo { font-size: 1rem; gap: 4px; }
+  .logo svg { width: 24px; height: 24px; }
+  .nav a { padding-inline: 5px; font-size: 0.75rem; }
+  .theme-btn { padding-inline: 8px; font-size: 0.8125rem; }
+}
+
+/* ---------- PR J: car page (legend, section menu, compare) ---------- */
+.variants-legend { display: flex; align-items: center; gap: var(--s0); margin: 0 0 12px; font-size: var(--text-sm); color: var(--ink-3); }
+.legend-swatch { flex: none; width: 20px; height: 14px; border-radius: 4px; background: var(--good-soft); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.table-wrap--all { max-height: none; }   /* every matching row is on the page; no inner scroll box to hunt through */
+
+.detail-compare { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s0); margin-top: var(--s1); }
+.compare-status { margin: 0; font-size: var(--text-sm); color: var(--ink-3); }
+.compare-status:empty { display: none; }
+
+.section-menu {
+  position: sticky; top: var(--site-header-h, 65px); z-index: 10;
+  margin: var(--s2) 0 0; background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.section-menu ul { display: flex; gap: var(--s-1); margin: 0; padding: 0; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.section-menu ul::-webkit-scrollbar { display: none; }
+.section-menu a {
+  display: block; min-height: 48px; padding: 13px var(--s1) 10px; white-space: nowrap; text-decoration: none;
+  font-size: 0.9375rem; font-weight: 650; color: var(--ink-3); border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.section-menu a:hover { color: var(--ink); }
+.section-menu a[aria-current="true"] { color: var(--accent-text); border-bottom-color: var(--accent); }
+.section-menu a:focus-visible { outline-offset: -3px; }
+.detail-body--page .detail-section, .detail-body--page .detail-specs { scroll-margin-top: calc(var(--sticky-top, 113px) + 16px); }
+@media (prefers-reduced-motion: no-preference) { html:has(.section-menu) { scroll-behavior: smooth; } }
+@media (max-width: 599px) {
+  .section-menu { margin-inline: calc(-1 * var(--s1)); padding-inline: var(--s1); background: var(--bg); }   /* no card around the page on phones */
+  .section-menu ul { gap: 0; }
 }
