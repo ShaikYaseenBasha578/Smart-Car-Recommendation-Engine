@@ -126,7 +126,11 @@ def project_page(name):
 def recommend_page():
     from services.catalogue import get_catalogue
     # the loading skeleton says "Checking N variants…" with the same catalogue size the landing page shows
-    return render_template("recommend.html", variant_count_raw=len(get_catalogue()))
+    from services.new_car_service import data_as_of
+    meta = data_as_of()
+    # the page keys its saved answers on this, so a catalogue update never shows a stale answer after Back
+    return render_template("recommend.html", variant_count_raw=len(get_catalogue()),
+                           catalogue_stamp=f"{meta['exported']}|{meta['kb_phase']}")
 
 
 COMPARE_SORTS = {"best", "price", "mileage", "safety"}

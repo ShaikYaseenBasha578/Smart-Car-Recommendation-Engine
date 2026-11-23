@@ -417,6 +417,151 @@ def compare_checks(page, base, tag):
         check(f"{tag}: sort (select) writes ?sort=", "sort=price" in page.url)
 
 
+# ---------- PR I: Back keeps your results ----------
+SKELETON_WATCH = """() => {
+  window.__sawSkeleton = false;
+  new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes)
+    if (n.nodeType === 1 && (n.matches('.loading-steps, .skeleton') || n.querySelector('.loading-steps, .skeleton'))) window.__sawSkeleton = true;
+  }).observe(document, { childList: true, subtree: true });
+}"""
+BLOCK_SESSION_STORAGE = "Object.defineProperty(window, 'sessionStorage', { get() { throw new DOMException('blocked', 'SecurityError'); } });"
+BACK_QUERY = "SUV under 15 lakh"
+
+
+def _card_labels(page):
+    return page.locator("article.car").evaluate_all("els => els.map(e => e.getAttribute('aria-label') + '#' + e.dataset.variantId)")
+
+
+def _settle(page):
+    page.wait_for_selector("article.car")
+    page.wait_for_function("!document.querySelector('.detail-body[aria-busy]')", timeout=15_000)
+    page.wait_for_timeout(500)
+
+
+def _prepare_view(page, compare=False):
+    """search, open the second card's panel, scroll to the third card; returns (cards, scrollY)."""
+    predict(page, lambda: page.goto(page._base + "/recommend?q=" + quote(BACK_QUERY)))
+    cards = page.locator("article.car")
+    if compare:
+        page.locator("[data-compare]").nth(0).click()
+        page.locator("[data-compare]").nth(1).click()
+    cards.nth(1).locator("[data-detail]").click()
+    page.wait_for_selector(".detail.open .detail-body:not([aria-busy])")
+    page.evaluate("() => { const c = document.querySelectorAll('article.car')[2]; window.scrollTo(0, c.getBoundingClientRect().top + scrollY - 120); }")
+    page.wait_for_timeout(300)
+    return _card_labels(page), page.evaluate("scrollY")
+
+
+def _back_view_checks(page, tag, what, labels, y, requests):
+    _settle(page)
+    check(f"{tag}: {what}: Back makes no /predict request", not requests, requests[:2])
+    check(f"{tag}: {what}: no skeleton shown on Back", not page.evaluate("window.__sawSkeleton"))
+    check(f"{tag}: {what}: same cards in the same order", _card_labels(page) == labels, _card_labels(page)[:3])
+    now = page.evaluate("scrollY")
+    check(f"{tag}: {what}: scroll within 50px", abs(now - y) <= 50, f"{now} vs {y}")
+    check(f"{tag}: {what}: the second card's panel is still open", page.locator("article.car").nth(1).locator("[data-detail][aria-expanded=true]").count() == 1
+          and page.locator(".detail.open").count() == 1)
+
+
+def backcache_checks(browser, base):
+    """Back keeps your results: a saved answer is drawn at once (no /predict, no skeleton), with the thread, open panels and scroll."""
+    for tag, (w, h) in (("1280", (1280, 800)), ("375", (375, 812))):
+        def new_page(block=False):
+            ctx = browser.new_context(viewport={"width": w, "height": h}, reduced_motion="reduce", color_scheme="light")
+            ctx.set_default_timeout(int(os.environ.get("CARREC_GATE_TIMEOUT_MS", "60000")))
+            if block:
+                ctx.add_init_script(BLOCK_SESSION_STORAGE)
+            ctx.add_init_script(f"({SKELETON_WATCH})()")
+            page = ctx.new_page()
+            page._base = base
+            page._errors = []
+            page.on("pageerror", lambda e: page._errors.append(str(e)))
+            page._requests = []
+            page.on("request", lambda r: page._requests.append(r.url) if r.url.endswith("/predict") else None)
+            return ctx, page
+
+        # car page -> Back
+        ctx, page = new_page()
+        labels, y = _prepare_view(page)
+        page.locator("article.car").nth(2).locator(".car-title a").first.click()
+        page.wait_for_url("**/car/**")
+        page._requests.clear()
+        page.go_back()
+        _back_view_checks(page, tag, "car page", labels, y, page._requests)
+        # "Back to search" on the car page: no /predict, same cards (scroll not required)
+        page.locator("article.car").nth(2).locator(".car-title a").first.click()
+        page.wait_for_url("**/car/**")
+        page._requests.clear()
+        page.locator(".back-link a").click()
+        page.wait_for_selector("article.car")
+        page.wait_for_timeout(600)
+        check(f"{tag}: Back to search link: no /predict request", not page._requests, page._requests[:2])
+        check(f"{tag}: Back to search link: no skeleton shown", not page.evaluate("window.__sawSkeleton"))
+        check(f"{tag}: Back to search link: same cards in the same order", _card_labels(page) == labels)
+        ctx.close()
+
+        # compare -> Back
+        ctx, page = new_page()
+        labels, y = _prepare_view(page, compare=True)
+        page.locator("#compare-tray a.btn-primary").click()
+        page.wait_for_selector("table.compare-table")
+        page._requests.clear()
+        page.go_back()
+        _back_view_checks(page, tag, "compare", labels, y, page._requests)
+        check(f"{tag}: compare: tray still shows the selection", page.locator("#compare-tray").is_visible()
+              and page.locator("[data-compare][aria-pressed=true]").count() == 2)
+        ctx.close()
+
+        # two turns -> car page -> Back keeps both turns
+        ctx, page = new_page()
+        predict(page, lambda: page.goto(base + "/recommend?q=" + quote(BACK_QUERY)))
+        page.fill("#followupQuery", "automatic")
+        predict(page, lambda: page.click("#followup button[type=submit]"))
+        queries = page.locator("[data-turn]").evaluate_all("els => els.map(e => e.dataset.q)")
+        turn_cards = page.locator("[data-turn]").evaluate_all("els => els.map(e => [...e.querySelectorAll('article.car')].map(c => c.dataset.variantId))")
+        page.locator("[data-turn]").last.locator("article.car .car-title a").first.click()
+        page.wait_for_url("**/car/**")
+        page._requests.clear()
+        page.go_back()
+        _settle(page)
+        back_turn_cards = page.locator("[data-turn]").evaluate_all("els => els.map(e => [...e.querySelectorAll('article.car')].map(c => c.dataset.variantId))")
+        check(f"{tag}: two-turn thread: both turns come back", page.locator("[data-turn]").evaluate_all("els => els.map(e => e.dataset.q)") == queries and len(queries) == 2, queries)
+        check(f"{tag}: two-turn thread: same cards in both turns", back_turn_cards == turn_cards)
+        check(f"{tag}: two-turn thread: no /predict request", not page._requests, page._requests[:2])
+        ctx.close()
+
+        # sessionStorage that throws: search and Back still work (they search again)
+        ctx, page = new_page(block=True)
+        predict(page, lambda: page.goto(base + "/recommend?q=" + quote(BACK_QUERY)))
+        labels = _card_labels(page)
+        check(f"{tag}: storage blocked: search shows cars", len(labels) > 1)
+        page.locator("article.car").nth(1).locator(".car-title a").first.click()
+        page.wait_for_url("**/car/**")
+        page._requests.clear()
+        with page.expect_response(lambda r: r.url.endswith("/predict"), timeout=60_000):
+            page.go_back()
+        _settle(page)
+        check(f"{tag}: storage blocked: Back searches again and shows the same cars", _card_labels(page) == labels)
+        check(f"{tag}: storage blocked: no script errors", not page._errors, page._errors[:2])
+        ctx.close()
+
+        # an entry older than 30 minutes, or one for another data date, is not used
+        for what, tamper in (("older than 30 minutes", "e.t -= 31 * 60 * 1000"),
+                             ("different data date", "e.k = JSON.stringify(['1999-01-01|old', ...JSON.parse(e.k).slice(1)])")):
+            ctx, page = new_page()
+            predict(page, lambda: page.goto(base + "/recommend?q=" + quote(BACK_QUERY)))
+            labels = _card_labels(page)
+            changed = page.evaluate("""() => { const l = JSON.parse(sessionStorage.getItem('carrec.results') || '[]');
+                l.forEach(e => { %s; }); sessionStorage.setItem('carrec.results', JSON.stringify(l)); return l.length; }""" % tamper)
+            page.locator("article.car").nth(1).locator(".car-title a").first.click()
+            page.wait_for_url("**/car/**")
+            with page.expect_response(lambda r: r.url.endswith("/predict"), timeout=60_000):
+                page.go_back()
+            _settle(page)
+            check(f"{tag}: entry {what} is not used", changed >= 1 and _card_labels(page) == labels, changed)
+            ctx.close()
+
+
 def run(base, shots):
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=CHROMIUM)
@@ -616,6 +761,7 @@ def run(base, shots):
 
             check(f"{tag}: zero console errors", not errors, errors[:3])
             ctx.close()
+        backcache_checks(browser, base)
         browser.close()
 
 
