@@ -360,3 +360,15 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 - **23 Nov:** #56 merged. The follow-up plan (PR G and PR H) is complete.
 - **23 Nov:** the owner asked for the five open follow-ups in one go. The plan is `knowledge_base/reports/plans/PLAN_FIVE_FOLLOWUPS_2026-11-23.md` (six PRs: gates, /project overflow, faster vague searches, parser fixes, Back cache, car page), **awaiting approval**.
 - **23 Nov:** the five-follow-ups plan was approved. The owner changed two decisions: "under 4 metres" becomes a real hard length filter, and "high ground clearance" becomes a ranking preference (both in PR 4). PRs 1–3 started in parallel.
+- **23 Nov:** PRs 1–3 of the five-follow-ups plan are open. They touch no common file, so they can be merged in any order.
+  - **#58, the UI gates (606/606):**
+    - It runs desktop, laptop and mobile, each light and dark. The browser path is set by `CARREC_CHROMIUM` and the wait by `CARREC_GATE_TIMEOUT_MS`.
+    - The fix the gates found: the phone EV facts line hides "(single-speed EV)", taking the EV median from 646 to 621 px.
+  - **#57, the /project overflow:**
+    - It is CSS in the generator (kb/kbpipe d5c2228), regenerated from the read-only copy b15b7dcb; there are no text changes.
+    - Engine went 367 → 320 px and KB 332 → 320 px.
+  - **#59, vague-search speed:**
+    - "good car" went from 0.67 to 0.17 s locally.
+    - Full responses for 329 queries are byte-identical, with exact floats, on Python 3.12 (production pins) as well as 3.9.
+    - `tests/test_criteria_cache.py` was added. Per-row criteria *detail* may list empty extra fuel fields; no response uses it.
+  - Next is PR 4 (the parser, with the length filter and the clearance preference), from main after these merge. Then PR I and PR J.
