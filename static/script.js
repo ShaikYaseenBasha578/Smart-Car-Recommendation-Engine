@@ -277,7 +277,12 @@ function buildFacts(car) {
         ["Fuel", car.Fuel_Type || "Not verified"],
         [eff.label, eff.text || "Not verified"]
     ];
-    return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${escapeHtml(v)}</span></li>`).join("") + `</ul>`;
+    // "(single-speed EV)" repeats what "Electric" says; on a phone it is hidden so the facts line stays on one or two lines
+    const value = v => {
+        const m = /^(.*?)( \(single-speed EV\))$/.exec(v);
+        return m ? `${escapeHtml(m[1])}<span class="fact-more">${escapeHtml(m[2])}</span>` : escapeHtml(v);
+    };
+    return `<ul class="facts">` + facts.map(([k, v]) => `<li><span class="fact-k">${k}:</span> <span class="fact-v">${value(v)}</span></li>`).join("") + `</ul>`;
 }
 
 // the external CarDekho link is a quiet text link under the price; "View details" is the primary action
