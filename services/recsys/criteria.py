@@ -188,6 +188,9 @@ class Reference:
     Built once from the full catalogue and reused for every query; see the module docstring."""
 
     def __init__(self, df: pd.DataFrame):
+        self.source = df          # the catalogue this reference was built from (see cached_criteria)
+        self._criteria_cache: Dict[bool, "CriteriaResult"] = {}
+        self._value_fields: Optional[List[Field]] = None
         models = df["make"].astype(str) + " " + df["model"].astype(str)
         self.pops: Dict[str, Dict[str, Dict[Any, _Pop]]] = {}
         for slot, (raw, seg, fb) in _slot_inputs(df).items():
@@ -196,6 +199,16 @@ class Reference:
         seg, allc = df["body_type"].astype(str), pd.Series("all", index=df.index)
         fpr = _fpr(df, self)
         self.pops["fpr"] = {"seg": _make_pops(fpr, seg, models), "fb": _make_pops(fpr, allc, models)}
+
+    def covers(self, df: pd.DataFrame) -> bool:
+        """True when every row of `df` is, label for label and value for value, a row of the catalogue this reference
+        was built from (a filtered candidate frame). Only then may criteria computed once for the whole catalogue be
+        reused: a hand-built or edited frame takes the ordinary path."""
+        src = self.source
+        if len(df) == 0 or not df.index.is_unique or not df.index.isin(src.index).all():
+            return False
+        cols = [c for c in df.columns if c in src.columns]
+        return bool(df[cols].equals(src.loc[df.index, cols]))
 
     def percentile(self, slot: str, values: pd.Series, groups: pd.Series, fallback: pd.Series) -> pd.Series:
         """Percentile of each known value in its segment population (fallback population when the segment has
@@ -488,20 +501,15 @@ def _price(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference, wh
              f"1 - {basis} percentile of price (lower is better)", None, None, None)]
 
 
-def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
-                     reference: Optional[Reference] = None, price_whole_catalogue: bool = False) -> CriteriaResult:
-    """Spec criteria for every row of `df`. Percentiles come from `reference` (the full-catalogue populations;
-    api.py always passes it). Without one, the populations are built from `df` itself (hand-built frames)."""
+def _build(df: pd.DataFrame, budget: Optional[dict], ref: Reference, price_whole_catalogue: bool,
+           value_fields: Optional[List[Field]] = None) -> CriteriaResult:
+    """The criteria of every row of `df` (the work of compute_criteria). `value_fields`, when given, replaces the
+    value_for_budget builder (compute_criteria passes the cached budget-free fields, see there)."""
     index = df.index
-    if len(df) == 0:
-        empty = pd.DataFrame(columns=SPEC_CRITERIA, dtype=float)
-        return CriteriaResult(empty, {}, empty.copy(), empty.copy())
     seg = df["body_type"].astype(str)
     allc = pd.Series("all", index=index)
-    ref = reference if reference is not None else Reference(df)
-
     builders: Dict[str, List[Field]] = {
-        "value_for_budget": _value(df, seg, allc, budget, ref),
+        "value_for_budget": value_fields if value_fields is not None else _value(df, seg, allc, budget, ref),
         "safety": _safety(df, seg, allc, ref),
         "running_cost": _running_cost(df, ref),
         "comfort_features": _comfort(df, seg, allc, ref),
@@ -510,6 +518,10 @@ def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
         "tech_assist": _tech(df, seg, allc, ref),
         "price": _price(df, seg, allc, ref, price_whole_catalogue),
     }
+    return _assemble(index, builders)
+
+
+def _assemble(index: pd.Index, builders: Dict[str, List[Field]]) -> CriteriaResult:
     values = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
     scoring = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
     unknown_frac = pd.DataFrame(index=index, columns=SPEC_CRITERIA, dtype=float)
@@ -521,3 +533,61 @@ def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
         unknown_frac[crit] = ufrac
         makers[crit] = per_row
     return CriteriaResult(values, LazyDetail(index, makers), unknown_frac, scoring)
+
+
+def _slice(res: CriteriaResult, index: pd.Index) -> CriteriaResult:
+    """The rows `index` of a whole-catalogue result. Every number is computed row by row from that row's own fields
+    and the catalogue-wide reference populations, so a row's value does not depend on which other rows are in the frame."""
+    return CriteriaResult(res.values.loc[index], LazyDetail(index, res.detail._makers),
+                          res.unknown_frac.loc[index], res.scoring.loc[index])
+
+
+def _cached_criteria(df: pd.DataFrame, budget: Optional[dict], ref: Reference,
+                     price_whole_catalogue: bool) -> Optional[CriteriaResult]:
+    """compute_criteria for a candidate subset of the reference's catalogue from criteria computed ONCE for the whole
+    catalogue (per Reference, i.e. per catalogue load, and per price_whole_catalogue) instead of per query: the
+    per-row field scores, blank priors and weighted means are what cost 0.5 s on a broad query and none of them
+    depends on the query. Only the budget does: it enters through the price_vs_budget field of value_for_budget,
+    so that one criterion is rebuilt for the subset (budget field first, then the cached features-per-lakh field,
+    the same field order as _value) and everything else is sliced. None when `df` is not such a subset."""
+    if not ref.covers(df):
+        return None
+    full = ref._criteria_cache.get(price_whole_catalogue)
+    if full is None:
+        src = ref.source
+        if ref._value_fields is None:   # budget-free value_for_budget fields (features per lakh), shared by both keys
+            ref._value_fields = _value(src, src["body_type"].astype(str), pd.Series("all", index=src.index), None, ref)
+        full = _build(src, None, ref, price_whole_catalogue, ref._value_fields)
+        ref._criteria_cache[price_whole_catalogue] = full
+    res = _slice(full, df.index)
+    bmax = (budget or {}).get("max")
+    if bmax is None:
+        return res
+    price = df["price_ex_showroom"].map(num)
+    fit = price.map(lambda p: np.nan if is_unknown(p) else budget_fit(p, bmax))
+    fpr_field = tuple(x.loc[df.index] if isinstance(x, pd.Series) else x for x in ref._value_fields[0])
+    fields: List[Field] = [("price_vs_budget", price, fit.astype(float), 1.0, "price / stated maximum budget",
+                            None, None, None), fpr_field]
+    value, scored, ufrac, per_row = _weighted_mean(fields, df.index)
+    crit = "value_for_budget"
+    res.values[crit] = value
+    res.scoring[crit] = scored
+    res.unknown_frac[crit] = ufrac
+    res.detail._makers = dict(res.detail._makers, **{crit: per_row})
+    return res
+
+
+def compute_criteria(df: pd.DataFrame, budget: Optional[dict] = None,
+                     reference: Optional[Reference] = None, price_whole_catalogue: bool = False) -> CriteriaResult:
+    """Spec criteria for every row of `df`. Percentiles come from `reference` (the full-catalogue populations;
+    api.py always passes it). Without one, the populations are built from `df` itself (hand-built frames)."""
+    index = df.index
+    if len(df) == 0:
+        empty = pd.DataFrame(columns=SPEC_CRITERIA, dtype=float)
+        return CriteriaResult(empty, {}, empty.copy(), empty.copy())
+    if reference is not None:
+        hit = _cached_criteria(df, budget, reference, price_whole_catalogue)
+        if hit is not None:
+            return hit
+    ref = reference if reference is not None else Reference(df)
+    return _build(df, budget, ref, price_whole_catalogue)

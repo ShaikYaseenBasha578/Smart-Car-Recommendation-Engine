@@ -28,6 +28,7 @@ from __future__ import annotations
 import math
 from typing import Any, List, Optional
 
+import numpy as np
 import pandas as pd
 
 from services.recsys import config
@@ -69,16 +70,37 @@ def displayed_variant_per_model(scored: pd.DataFrame) -> pd.DataFrame:
     df = scored.assign(_o=scored["overall"].astype(float).fillna(-1.0), _ok=ok.to_numpy(),
                        _price=scored["price_ex_showroom"].astype(float).fillna(float("inf")),
                        _t=tier_of(scored).to_numpy())
-    rows, alt = [], {}
-    for key, g in df.groupby(["make", "model"], sort=False):
-        gt = g[g["_t"] == g["_t"].min()]           # the variants with the fewest unverified requirements
-        top = gt["_o"].max()
-        near = gt[gt["_o"] >= top - TIE_BAND].sort_values(["_price", "variant_id"])
-        rows.append(near.index[0])
-        q = g[g["_ok"] & g["_price"].lt(float("inf"))].sort_values(["_price", "variant_id"])
-        alt[near.index[0]] = float(q["variant_id"].iloc[0]) if len(q) else float("nan")
-    best = df.loc[rows].drop(columns=["_o", "_ok", "_price"])
-    best["cheapest_variant_id"] = pd.Series(alt)
+    # One pass over arrays instead of a sort and a slice per model (that loop cost ~0.15 s on a broad query).
+    # Per (make, model) group, groups numbered in order of first appearance (what groupby(sort=False) iterates):
+    #   shown variant = among the group's variants with the lowest tier, those with _o >= best _o - TIE_BAND, the one
+    #                   with the lowest (price, variant_id);
+    #   cheapest_variant_id = the lowest (price, variant_id) variant that has every requested feature and a price.
+    # (price, variant_id) is a total order (variant_id is unique), so "first in that order" is what sort_values gave.
+    gid = df.groupby(["make", "model"], sort=False).ngroup().to_numpy()
+    n_groups = int(gid.max()) + 1
+    o, t, price = df["_o"].to_numpy(), df["_t"].to_numpy(), df["_price"].to_numpy()
+    vid = df["variant_id"].to_numpy(dtype=float)
+    tmin = np.full(n_groups, np.iinfo(np.int64).max, dtype=np.int64)
+    np.minimum.at(tmin, gid, t.astype(np.int64))
+    in_tier = t == tmin[gid]                       # the variants with the fewest unverified requirements
+    top = np.full(n_groups, -np.inf)
+    np.maximum.at(top, gid, np.where(in_tier, o, -np.inf))
+    near = in_tier & (o >= top[gid] - TIE_BAND)
+    order = np.lexsort((vid, price))               # ascending (price, variant_id)
+    shown = np.full(n_groups, -1, dtype=np.int64)
+    cheapest = np.full(n_groups, np.nan)
+    for pos in order[::-1]:                        # walk from dearest to cheapest, so the last write is the first in order
+        if near[pos]:
+            shown[gid[pos]] = pos
+    ok_arr = df["_ok"].to_numpy(dtype=bool)
+    cheap_pos = np.full(n_groups, -1, dtype=np.int64)
+    for pos in order[::-1]:
+        if ok_arr[pos] and price[pos] < float("inf"):
+            cheap_pos[gid[pos]] = pos
+    has = cheap_pos >= 0
+    cheapest[has] = vid[cheap_pos[has]]
+    best = df.iloc[shown].drop(columns=["_o", "_ok", "_price"])
+    best["cheapest_variant_id"] = cheapest
     best = best.assign(_o=best["overall"].astype(float).fillna(-1.0))
     return best.sort_values(["_t", "_o", "variant_id"], ascending=[True, False, True]).drop(columns=["_o", "_t"])
 

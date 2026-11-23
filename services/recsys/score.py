@@ -51,33 +51,45 @@ def _intent_get(intent: Any, key: str, default: Any = None) -> Any:
     return default if v is None else v
 
 
-def required_items(row: pd.Series, intent: Any) -> Dict[str, str]:
-    """{item: "met" | "unknown" | "missing"} for every required feature / minimum in the intent."""
+def _required_plan(intent: Any) -> Tuple[List[str], List[Tuple[str, str, float]], Any]:
+    """What `intent` requires, read once per query: ([feature names that have a column], [(key, column, threshold)] for
+    the minimums that are set, min_safety_stars or None). required_items applies it to a row."""
+    feats = [f for f in _intent_get(intent, "required_features", []) if f in FEATURE_COLUMNS]
+    mins = []
+    for key, (col, _) in MIN_COLUMNS.items():
+        threshold = _intent_get(intent, key)
+        if threshold is not None:
+            mins.append((key, col, threshold))
+    return feats, mins, _intent_get(intent, "min_safety_stars")
+
+
+def _items_for(plan: Tuple[List[str], List[Tuple[str, str, float]], Any], val: Any, unverified_fields: Any) -> Dict[str, str]:
+    """{item: "met" | "unknown" | "missing"} for one row, `val(column)` giving the row's cell."""
+    feats, mins, stars = plan
     items: Dict[str, str] = {}
-    unverified_fields = row.get("unverified_fields") if hasattr(row, "get") else None
-    unverified_fields = unverified_fields if isinstance(unverified_fields, (set, frozenset)) else frozenset()
-    for feature in _intent_get(intent, "required_features", []):
-        if feature not in FEATURE_COLUMNS:
-            continue
+    for feature in feats:
         col = FEATURE_COLUMNS[feature][0]
-        v = row[col]
+        v = val(col)
         if is_unknown(v) or col in unverified_fields:
             items[f"feature:{feature}"] = "unknown"
         else:
             items[f"feature:{feature}"] = "met" if v is True else "missing"
-    for key, (col, _) in MIN_COLUMNS.items():
-        threshold = _intent_get(intent, key)
-        if threshold is None:
-            continue
-        v = num(row[col])
-        if key == "min_mileage_kmpl" and row["fuel_type"] in KMPL_UNTRUSTED_FUELS:
+    for key, col, threshold in mins:
+        v = num(val(col))
+        if key == "min_mileage_kmpl" and val("fuel_type") in KMPL_UNTRUSTED_FUELS:
             v = None
         items[key] = "unknown" if v is None else ("met" if v >= threshold else "missing")
-    stars = _intent_get(intent, "min_safety_stars")
     if stars is not None:
-        v = num(row["safety_stars_adult"])
+        v = num(val("safety_stars_adult"))
         items["min_safety_stars"] = "unknown" if v is None else ("met" if v >= stars else "missing")
     return items
+
+
+def required_items(row: pd.Series, intent: Any) -> Dict[str, str]:
+    """{item: "met" | "unknown" | "missing"} for every required feature / minimum in the intent."""
+    unverified_fields = row.get("unverified_fields") if hasattr(row, "get") else None
+    unverified_fields = unverified_fields if isinstance(unverified_fields, (set, frozenset)) else frozenset()
+    return _items_for(_required_plan(intent), row.__getitem__, unverified_fields)
 
 
 def active_classes(values: pd.DataFrame, norm_w: Dict[str, float]) -> List[str]:
@@ -136,45 +148,80 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
             memo[key] = fn()
         return memo[key]
 
-    values_by_row = values.to_dict("index")
-    scoring_by_row = scoring.to_dict("index")
-    unknown_frac_by_row = criteria.unknown_frac.to_dict("index") if criteria.unknown_frac is not None else None
+    # The per-row loop below ran on iterrows() and dict-of-dicts (a Series built per row, ~0.3 s for the whole catalogue).
+    # It now reads plain lists / arrays taken from the frame once; every per-row number is computed by the same
+    # operations in the same order.
+    n = len(cands)
+    nan_mat = values[ALL_CRITERIA].to_numpy(dtype=float)
+    scoring_mat = scoring[ALL_CRITERIA].to_numpy(dtype=float)
+    col_pos = {c: j for j, c in enumerate(ALL_CRITERIA)}
+
+    def class_subs(cls: str) -> List[Optional[float]]:
+        """sub-score of one class for every row: sum(w x value) / sum(w) over the criteria of the class with a value.
+        Accumulated column by column in ALL_CRITERIA order (adding 0.0 where a criterion is NaN changes nothing), which is
+        the order and the float arithmetic of the sequential sum() it replaces."""
+        mat = scoring_mat if cls in active else nan_mat
+        num_acc = np.zeros(n)
+        w_acc = np.zeros(n)
+        any_cs = np.zeros(n, dtype=bool)
+        for c in ALL_CRITERIA:
+            if CRITERION_CLASS[c] == cls and norm_w[c] > 0:
+                x = mat[:, col_pos[c]]
+                known = ~np.isnan(x)
+                num_acc += np.where(known, norm_w[c] * np.where(known, x, 0.0), 0.0)
+                w_acc += np.where(known, norm_w[c], 0.0)
+                any_cs |= known
+        ok = any_cs & (w_acc > 0)
+        out = np.divide(num_acc, w_acc, out=np.zeros(n), where=ok)
+        return [float(v) if k else None for v, k in zip(out.tolist(), ok.tolist())]
+
+    class_sub_rows = {cls: class_subs(cls) for cls in CLASSES}
+    makes, models = cands["make"].tolist(), cands["model"].tolist()
+    body_types = cands["body_type"].tolist()
+    stars_col = cands["safety_stars_adult"].tolist()
+    plan = _required_plan(intent)
+    plan_cols = {c: cands[c].to_numpy(dtype=object) for c in
+                 ([FEATURE_COLUMNS[f][0] for f in plan[0]] + [col for _, col, _ in plan[1]]
+                  + (["fuel_type"] if any(k == "min_mileage_kmpl" for k, _, _ in plan[1]) else [])
+                  + (["safety_stars_adult"] if plan[2] is not None else []))}
+    unverified_col = cands["unverified_fields"].tolist() if "unverified_fields" in cands.columns else None
+    nan_rows = np.isnan(nan_mat).tolist()
+    value_rows = nan_mat.tolist()
+    unknown_cols = [c for c in ALL_CRITERIA if global_w[c] > 0]
+    spec_pos = [(c, col_pos[c]) for c in SPEC_CRITERIA if global_w[c] > 0]
+    unknown_frac_mat = (criteria.unknown_frac[SPEC_CRITERIA].to_numpy(dtype=float).tolist()
+                        if criteria.unknown_frac is not None else None)
+    spec_col = {c: j for j, c in enumerate(SPEC_CRITERIA)}
     records = []
-    for idx, row in cands.iterrows():
-        v = values_by_row[idx]
-        sv = scoring_by_row[idx]
-        subs: Dict[str, Optional[float]] = {}
-        for cls in CLASSES:
-            vals = sv if cls in active else v
-            cs = [c for c in ALL_CRITERIA if CRITERION_CLASS[c] == cls and norm_w[c] > 0 and not np.isnan(vals[c])]
-            wsum = sum(norm_w[c] for c in cs)
-            subs[cls] = sum(norm_w[c] * vals[c] for c in cs) / wsum if cs and wsum > 0 else None
+    for k in range(n):
+        subs: Dict[str, Optional[float]] = {cls: class_sub_rows[cls][k] for cls in CLASSES}
+        make, model = makes[k], models[k]
         # expert / owner sub-scores come from the evidence directly: aspects weighted by the query, one source label
         # counted once, and a model with no row in the class takes the segment mean of the reviewed models
         scale_override: Dict[str, float] = {}
         for cls in ("expert", "owner"):
             if cls not in active:
                 continue
-            sub = once(("sub", cls, row["make"], row["model"]),
-                       lambda: evidence.class_sub(cls, row["make"], row["model"], aw[cls]))
+            sub = once(("sub", cls, make, model),
+                       lambda: evidence.class_sub(cls, make, model, aw[cls]))
             if sub is None:
-                neutral = once(("neutral", cls, str(row["body_type"])),
-                               lambda: evidence.neutral_class(cls, str(row["body_type"]), aw[cls],
+                neutral = once(("neutral", cls, str(body_types[k])),
+                               lambda: evidence.neutral_class(cls, str(body_types[k]), aw[cls],
                                                               relevant_aspects if cls == "expert" else []))
                 sub, scale_override[cls] = neutral if neutral is not None else (None, None)
             if cls == "owner" and sub is not None:   # themes: a capped adjustment, 0 for a model with none
-                sub = min(1.0, max(0.0, sub + once(("theme", row["model"]),
-                                                   lambda: evidence.theme_adjustment(row["model"], aw["owner"]))))
+                sub = min(1.0, max(0.0, sub + once(("theme", model),
+                                                   lambda: evidence.theme_adjustment(model, aw["owner"]))))
             subs[cls] = sub
         used = {c: config.CLASS_WEIGHTS[c] for c in CLASSES if subs[c] is not None}
         cw = {c: used[c] / sum(used.values()) for c in used}
         if subs["spec"] is not None and len(used) > 1:
             scale = {"expert": scale_override["expert"] if "expert" in scale_override
-                     else once(("escale", row["make"], row["model"]),
-                               lambda: evidence.expert_scale(row["make"], row["model"], relevant_aspects)),
+                     else once(("escale", make, model),
+                               lambda: evidence.expert_scale(make, model, relevant_aspects)),
                      "owner": scale_override["owner"] if "owner" in scale_override
-                     else once(("oscale", row["make"], row["model"]),
-                               lambda: evidence.owner_scale(row["make"], row["model"]))}
+                     else once(("oscale", make, model),
+                               lambda: evidence.owner_scale(make, model))}
             for c in ("expert", "owner"):
                 if c in cw:
                     cw[c] *= 1.0 if scale[c] is None else scale[c]
@@ -184,16 +231,20 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         else:
             raw = sum(cw[c] * subs[c] for c in cw) if used else None
 
-        unknown_crit = [c for c in ALL_CRITERIA if global_w[c] > 0 and np.isnan(v[c])]
+        nan_k = nan_rows[k]
+        unknown_crit = [c for c in unknown_cols if nan_k[col_pos[c]]]
         # partly unknown criteria: {criterion: unknown fraction of its field weight}, only where a value exists
         partial = {}
-        if unknown_frac_by_row is not None:
-            for c in SPEC_CRITERIA:
-                f = unknown_frac_by_row[idx][c]
-                if global_w[c] > 0 and not np.isnan(v[c]) and f > 1e-12:
+        if unknown_frac_mat is not None:
+            uf = unknown_frac_mat[k]
+            for c, j in spec_pos:
+                f = uf[spec_col[c]]
+                if not nan_k[j] and f > 1e-12:
                     partial[c] = float(f)
         unknown_w = sum(global_w[c] for c in unknown_crit) + sum(global_w[c] * f for c, f in partial.items())
-        items = required_items(row, intent)
+        uf_fields = unverified_col[k] if unverified_col is not None else None
+        items = _items_for(plan, (lambda col, k=k: plan_cols[col][k]),
+                           uf_fields if isinstance(uf_fields, (set, frozenset)) else frozenset())
         item_unknown = sum(1.0 if s == "unknown" else config.MISSING_MULTIPLIER if s == "missing" else 0.0
                            for s in items.values())
         r = config.REQUIRED_ITEM_WEIGHT
@@ -201,14 +252,15 @@ def score_candidates(cands: pd.DataFrame, intent: Any, weights: Optional[Dict[st
         unknown_share = min(1.0, unknown_share)
         overall = None if raw is None else raw * (1.0 - config.COVERAGE_PENALTY * unknown_share)
 
-        flags = [f"unknown_required:{k}" for k, s in items.items() if s == "unknown"]
-        flags += [f"missing_required:{k}" for k, s in items.items() if s == "missing"]
-        if is_unknown(row["safety_stars_adult"]):
+        flags = [f"unknown_required:{key}" for key, s in items.items() if s == "unknown"]
+        flags += [f"missing_required:{key}" for key, s in items.items() if s == "missing"]
+        if is_unknown(stars_col[k]):
             flags.append("unrated_safety")
+        vals_k = value_rows[k]
         records.append({
             "overall": overall, **{c: subs[c] for c in CLASSES},
             "coverage": 1.0 - unknown_share, "unknown_share": unknown_share,
-            "values": {c: (None if np.isnan(v[c]) else float(v[c])) for c in ALL_CRITERIA},
+            "values": {c: (None if nan_k[j] else float(vals_k[j])) for c, j in col_pos.items()},
             "weights": dict(global_w), "required": items, "flags": flags, "unknown_criteria": unknown_crit,
             "partial_unknown": partial, "class_weights": cw, "neutral_classes": sorted(scale_override),
         })
