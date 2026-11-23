@@ -1811,23 +1811,228 @@ function errorState(message) {
     return `<div class="state state--error" role="alert"><h3>Something went wrong</h3><p>${escapeHtml(message)} Please try again.</p></div>`;
 }
 
+// --- keeping the results across Back, forward and "Back to search" ---
+// Each good /predict answer is kept in sessionStorage for 30 minutes (12 answers at most), keyed by the catalogue's data date,
+// the query and the dropped constraints. The thread (every turn's query, drops and sort) and the view (scroll, open panels, open
+// reviews and reasons, the example chips) live in history.state. Back then draws the answers at once: no skeleton, no request.
+// Every storage call is in try/catch; without storage the page searches again, as it always did.
+const RESULT_CACHE_KEY = "carrec.results";
+const RESULT_CACHE_TTL = 30 * 60 * 1000;
+const RESULT_CACHE_MAX = 12;
+
+function catalogueStamp() {
+    const main = document.querySelector("[data-catalogue]");
+    return main ? main.dataset.catalogue || "" : "";
+}
+
+// "<data date>|<kb run>" is part of the key, so a catalogue update never shows an old answer
+function resultCacheKey(query, drop) {
+    return JSON.stringify([catalogueStamp(), query, drop]);
+}
+
+function readResultCache() {
+    try {
+        const list = JSON.parse(sessionStorage.getItem(RESULT_CACHE_KEY) || "[]");
+        if (!Array.isArray(list)) return [];
+        const now = Date.now();
+        return list.filter(e => e && typeof e.k === "string" && typeof e.t === "number" && e.d && typeof e.d === "object"
+            && now - e.t < RESULT_CACHE_TTL && e.t <= now + 60000);
+    } catch (error) { return []; }
+}
+
+function writeResultCache(list) {
+    let keep = list.slice(-RESULT_CACHE_MAX);
+    while (keep.length) {
+        try { sessionStorage.setItem(RESULT_CACHE_KEY, JSON.stringify(keep)); return; }
+        catch (error) { keep = keep.slice(1); }   // full or blocked: drop the oldest and try again
+    }
+    try { sessionStorage.removeItem(RESULT_CACHE_KEY); } catch (error) { /* nothing to keep it in */ }
+}
+
+function cacheGet(query, drop) {
+    if (!catalogueStamp()) return null;
+    const key = resultCacheKey(query, drop);
+    const hit = readResultCache().find(e => e.k === key);
+    return hit ? hit.d : null;
+}
+
+function cachePut(query, drop, data) {
+    if (!catalogueStamp() || !data || typeof data !== "object") return;
+    const key = resultCacheKey(query, drop);
+    writeResultCache(readResultCache().filter(e => e.k !== key).concat({ k: key, t: Date.now(), d: data }));
+}
+
+function navigationType() {
+    try { const e = performance.getEntriesByType("navigation")[0]; return e ? e.type : ""; } catch (error) { return ""; }
+}
+
+// the car page's and the compare page's "Back to search" links are plain links to /recommend?q=...
+function cameFromCarOrCompare() {
+    try {
+        const ref = new URL(document.referrer);
+        return ref.origin === location.origin && /^\/(car|compare)(\/|$)/.test(ref.pathname);
+    } catch (error) { return false; }
+}
+
+function turnSort(turn) {
+    const cards = turn.querySelector(".cards");
+    const key = cards ? cards.dataset.sort : "";
+    return SORT_KEYS.includes(key) && key !== "best" ? key : "";
+}
+
+function threadSnapshot() {
+    return [...document.querySelectorAll("[data-turn]")].map(t => ({
+        id: Number(t.dataset.turn) || 0, q: t.dataset.q || "", drop: t.dataset.drop ? t.dataset.drop.split(",") : [], sort: turnSort(t)
+    }));
+}
+
+// the thread as history.state kept it, or null when it is missing or not shaped like one
+function validThread(thread) {
+    if (!Array.isArray(thread) || !thread.length || thread.length > MAX_TURNS) return null;
+    const out = [];
+    for (const t of thread) {
+        if (!t || typeof t.q !== "string" || !t.q.trim() || !Array.isArray(t.drop) || !t.drop.every(d => typeof d === "string")) return null;
+        out.push({ id: Number(t.id) > 0 ? Number(t.id) : out.length + 1, q: t.q, drop: t.drop, sort: SORT_KEYS.includes(t.sort) ? t.sort : "" });
+    }
+    return out;
+}
+
+function viewSnapshot() {
+    const turns = [...document.querySelectorAll("[data-turn]")];
+    const view = { y: Math.round(window.scrollY), panels: [], reviews: [], reasons: [], chips: [] };
+    turns.forEach((turn, t) => {
+        turn.querySelectorAll("article.car").forEach(card => {
+            const v = card.dataset.variantId;
+            if (!v) return;
+            const next = card.nextElementSibling;
+            if (next && next.matches(".detail")) view.panels.push([t, v]);
+            if (card.dataset.reviews === "expanded") view.reviews.push([t, v]);
+            if (card.querySelector("[data-reasons-toggle][aria-expanded=true]")) view.reasons.push([t, v]);
+        });
+    });
+    view.chips = [...document.querySelectorAll("[data-suggestions]")].map(box => [...box.querySelectorAll("[data-suggestion]")].map(b => b.dataset.suggestion));
+    return view;
+}
+
+// writes the thread (and, when `withView`, the view) into the current history entry; the URL does not change
+function saveThreadState(withView) {
+    try {
+        if (!document.querySelector("[data-turn]")) return;
+        const state = Object.assign({}, window.history.state, { thread: threadSnapshot() });
+        if (withView) state.view = viewSnapshot();
+        window.history.replaceState(state, "");
+    } catch (error) { /* the page still works; Back just searches again */ }
+}
+
+let userMovedPage = false;
+
+// opens what was open and scrolls back. Panels load their detail from /api/car, so the position is set once at once and again
+// when the last of them has loaded, unless the person has scrolled meanwhile.
+function restoreView(view) {
+    if (!view || typeof view !== "object") return;
+    const turns = [...document.querySelectorAll("[data-turn]")];
+    const cardOf = pair => {
+        const turn = Array.isArray(pair) && turns[pair[0]];
+        return turn ? turn.querySelector(`article.car[data-variant-id="${CSS.escape(String(pair[1]))}"]`) : null;
+    };
+    const each = (list, fn) => (Array.isArray(list) ? list : []).forEach(pair => { const card = cardOf(pair); if (card) fn(card); });
+    each(view.reviews, card => { const b = card.querySelector("[data-reviews-toggle]"); if (b && b.getAttribute("aria-expanded") !== "true") toggleReviews(b); });
+    each(view.reasons, card => { const b = card.querySelector("[data-reasons-toggle]"); if (b && b.getAttribute("aria-expanded") !== "true") toggleReasons(b); });
+    const panels = [];
+    each(view.panels, card => {
+        const b = card.querySelector("[data-detail]");
+        if (!b) return;
+        toggleDetail(b);
+        const panel = card.nextElementSibling;
+        if (panel && panel.matches(".detail")) {
+            panel.style.transition = "none";   // already open, as it was: no slide that would move the page under the saved position
+            panel.classList.add("open");
+            requestAnimationFrame(() => { panel.style.transition = ""; });
+            panels.push(panel);
+        }
+    });
+    const y = Number(view.y) || 0;
+    userMovedPage = false;
+    const back = () => { if (!userMovedPage) window.scrollTo({ top: y, left: 0, behavior: "instant" }); };
+    requestAnimationFrame(back);
+    if (!panels.length) return;
+    const started = Date.now();
+    const wait = () => {
+        const busy = panels.some(p => p.isConnected && p.querySelector(".detail-body[aria-busy]"));
+        if (busy && Date.now() - started < 8000) setTimeout(wait, 60);
+        else requestAnimationFrame(back);
+    };
+    setTimeout(wait, 60);
+}
+
+// every turn of a saved thread, each from the cache when `useCache` (a turn not in the cache is fetched as usual), then the view
+async function restoreThread(thread, view, useCache) {
+    const saved = turnCount;
+    for (const t of thread) {
+        turnCount = t.id - 1;   // the same turn numbers as before, so older history entries still find their turns
+        await runSearch(t.q, t.drop, false, t.sort, { cache: useCache, restore: true });
+    }
+    turnCount = Math.max(saved, turnCount);
+    restoreView(view);
+    saveThreadState(false);
+}
+
+function initBackCache() {
+    const mark = () => { userMovedPage = true; };
+    ["wheel", "touchstart", "keydown", "pointerdown"].forEach(type => window.addEventListener(type, mark, { passive: true }));
+    window.addEventListener("pagehide", () => saveThreadState(true));
+    // a car link, "Full details" and the compare link leave the page: keep the view first
+    document.addEventListener("click", e => {
+        if (e.target.closest && e.target.closest(".results-page a[href^='/car/'], .results-page a[href^='/compare']")) saveThreadState(true);
+    }, true);
+    // the page came back from the back/forward cache with its DOM as it was; only the compare selection may have changed meanwhile
+    window.addEventListener("pageshow", e => { if (e.persisted) refreshCompare(); });
+}
+
 // push: add a history entry (a new search) or replace the current one (page load, back/forward)
-async function runSearch(query, drop = [], push = true, sort = "") {
+// opts.cache: draw a saved answer at once when there is one; opts.restore: part of a thread coming back (no history change, no scrolling)
+async function runSearch(query, drop = [], push = true, sort = "", opts = {}) {
     if (!query.trim()) return;
 
     const turn = appendTurn(query, drop);
     const url = searchUrl(query, drop, sort);
-    const state = { q: query, drop, turn: turn.dataset.turn };
-    if (push && url !== location.pathname + location.search) window.history.pushState(state, "", url);
-    else window.history.replaceState(state, "", url);
+    if (!opts.restore) {
+        const state = { q: query, drop, turn: turn.dataset.turn };
+        if (push && url !== location.pathname + location.search) window.history.pushState(state, "", url);
+        else window.history.replaceState(state, "", url);
+    }
     // the first turn sits right under the top box; later turns are scrolled into view, again once
     // their results are in (the page may be too short to bring the heading up before that)
-    const scroll = Boolean(turn.previousElementSibling);
+    const scroll = Boolean(turn.previousElementSibling) && !opts.restore;
     // on a phone the first search also brings its heading up under the header once the results are in, unless the user scrolled meanwhile
     const phone = window.matchMedia("(max-width: 767px)").matches;
     const startY = window.scrollY;
 
     const box = turn.querySelector("[data-turn-body]");
+    const show = (data, ok) => {
+        renderResults(box, data, ok, location.origin + url);
+        linkCarTitles(box, query, drop);
+        if (sort && sort !== "best") applySort(turn, sort);
+        syncCompareButtons(box);
+        trayPref = "";
+        renderCompareTray();   // the tray's link follows the latest search, and it folds to a pill when none of its cars is in these results
+        setSearchStatus(searchStatusText(data, ok, query));
+        if (opts.restore) return;
+        if (scroll) {
+            scrollToTurn(turn);
+            turn.querySelector("[data-turn-heading]").focus({ preventScroll: true });  // later searches: keyboard and screen-reader users land on the new results
+        } else if (phone && ok && Math.abs(window.scrollY - startY) < 8) {
+            scrollToTurn(turn);
+        }
+    };
+
+    const saved = opts.cache ? cacheGet(query, drop) : null;
+    if (saved) {   // Back, forward, "Back to search": the answer is already here
+        show(saved, true);
+        saveThreadState(false);
+        return;
+    }
+
     setSearchStatus("Searching…");
     const stopLoading = showSearchLoading(box);
     if (scroll) scrollToTurn(turn);
@@ -1842,25 +2047,15 @@ async function runSearch(query, drop = [], push = true, sort = "") {
         const data = await response.json();
         stopLoading();
         if (!turn.isConnected) return;  // thread was cleared meanwhile
-        renderResults(box, data, response.ok, location.origin + url);
-        linkCarTitles(box, query, drop);
-        if (sort && sort !== "best") applySort(turn, sort);
-        syncCompareButtons(box);
-        trayPref = "";
-        renderCompareTray();   // the tray's link follows the latest search, and it folds to a pill when none of its cars is in these results
-        setSearchStatus(searchStatusText(data, response.ok, query));
-        if (scroll) {
-            scrollToTurn(turn);
-            turn.querySelector("[data-turn-heading]").focus({ preventScroll: true });  // later searches: keyboard and screen-reader users land on the new results
-        } else if (phone && response.ok && Math.abs(window.scrollY - startY) < 8) {
-            scrollToTurn(turn);
-        }
+        show(data, response.ok);
+        if (response.ok) cachePut(query, drop, data);   // an error answer is never kept
     } catch (error) {
         stopLoading();
         if (!turn.isConnected) return;
         box.innerHTML = errorState("We couldn't reach the server.");
         setSearchStatus("We couldn't reach the server.");
     }
+    saveThreadState(false);
 }
 
 function renderResults(box, data, ok, link) {
@@ -1934,8 +2129,13 @@ function pickSuggestions(all, previous = [], count = SUGGESTION_COUNT) {
     return shuffled(picked);
 }
 
+// a saved chip set if it is a short list of strings, else null (the chips are picked at random)
+function chipSet(list, count) {
+    return Array.isArray(list) && list.length && list.length <= count && list.every(q => typeof q === "string" && q) ? list : null;
+}
+
 // box: the <div data-suggestions> under a query input; onPick(query) runs the search
-async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
+async function initSuggestions(box, onPick, count = SUGGESTION_COUNT, initial = null) {
     let all;
     try {
         all = await (await fetch("/static/suggested_queries.json")).json();
@@ -1948,7 +2148,9 @@ async function initSuggestions(box, onPick, count = SUGGESTION_COUNT) {
     if (phone && short.length >= count) all = short;
     let shown = [];
     const render = () => {
-        shown = pickSuggestions(all, shown, count).map(s => s.query);
+        const kept = initial;   // the set this search showed before Back: shown again once
+        initial = null;
+        shown = kept ? kept : pickSuggestions(all, shown, count).map(s => s.query);
         box.innerHTML = shown.map(q => `<button type="button" data-suggestion="${escapeHtml(q)}" title="${escapeHtml(q)}" class="chip-btn">${escapeHtml(q)}</button>`).join("")
             + `<button type="button" data-more-ideas class="chip-btn chip-more">More ideas ↻</button>`;
     };
@@ -2016,14 +2218,19 @@ function initNewCarPage() {
     refreshCompare();
     window.addEventListener("resize", () => syncTrayPadding(document.getElementById("compare-tray")));
 
-    document.querySelectorAll("[data-suggestions]").forEach(box => {
+    // the chips the person saw come back as they were (history.state keeps them with the view)
+    const nav = navigationType();
+    const state = window.history.state;
+    const restoring = (nav === "back_forward" || nav === "reload") && state && validThread(state.thread);
+    const savedChips = restoring && state.view && Array.isArray(state.view.chips) ? state.view.chips : [];
+    document.querySelectorAll("[data-suggestions]").forEach((box, i) => {
         const input = box.closest("form").querySelector("input, textarea");
         initSuggestions(box, q => {
             input.value = q;
             fitSearchBox(input);
             runSearch(q, []);
             if (input.id === "followupQuery") { input.value = ""; input.style.height = ""; fitSearchBox(input); }
-        }, Number(box.dataset.count) || SUGGESTION_COUNT);
+        }, Number(box.dataset.count) || SUGGESTION_COUNT, chipSet(savedChips[i], Number(box.dataset.count) || SUGGESTION_COUNT));
     });
 
     document.querySelector("[data-new-search]").addEventListener("click", () => {
@@ -2037,7 +2244,7 @@ function initNewCarPage() {
         input.focus();
     });
 
-    // back/forward: scroll to that search's turn if it is still in the thread, else start over with it
+    // back/forward: scroll to that search's turn if it is still in the thread, else bring the saved thread back (from the saved answers)
     window.addEventListener("popstate", e => {
         const { q, drop, sort } = searchFromUrl();
         const turn = e.state && e.state.turn && thread.querySelector(`[data-turn="${e.state.turn}"]`);
@@ -2048,17 +2255,26 @@ function initNewCarPage() {
             return;
         }
         clearThread();
-        if (q) runSearch(q, drop, false, sort);
+        const saved = e.state && validThread(e.state.thread);
+        if (saved) restoreThread(saved, e.state.view, true);
+        else if (q) runSearch(q, drop, false, sort, { cache: true });
     });
+    initBackCache();
 
     const fromUrl = searchFromUrl();
-    const saved = localStorage.getItem("userQuery");  // handed over by older landing-page links
-    if (saved) localStorage.removeItem("userQuery");
+    let saved = null;
+    try {
+        saved = localStorage.getItem("userQuery");  // handed over by older landing-page links
+        if (saved) localStorage.removeItem("userQuery");
+    } catch (error) { /* storage blocked: nothing was handed over */ }
     const first = fromUrl.q ? fromUrl : (saved ? { q: saved, drop: [] } : null);
     if (first) {
         document.getElementById("userQuery").value = first.q;
         fitSearchBox(document.getElementById("userQuery"));
-        runSearch(first.q, first.drop, false, first.sort);
+        // Back/forward and a link back from a car or compare page draw saved answers; a reload or a typed address searches again
+        const useCache = nav === "back_forward" || (nav === "navigate" && cameFromCarOrCompare());
+        if (restoring) restoreThread(validThread(state.thread), state.view, useCache);
+        else runSearch(first.q, first.drop, false, first.sort, { cache: useCache });
     }
 }
 

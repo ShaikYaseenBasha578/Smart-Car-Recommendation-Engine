@@ -10,7 +10,7 @@
 <body>
     <a class="skip-link" href="#results">Skip to results</a>
     {% set active = 'search' %}{% include "_header.html" %}
-    <main class="results-page">
+    <main class="results-page" data-catalogue="{{ catalogue_stamp }}">
         <div class="wrap">
             <form onsubmit="sendQuery(event)" class="search-form" role="search">
                 <h1 class="page-title">What are you looking for?</h1>
