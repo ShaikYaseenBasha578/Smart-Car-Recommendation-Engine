@@ -183,3 +183,10 @@ def test_init_theme_works_without_storage():
 def test_init_theme_restores_a_saved_choice():
     r = _run_theme("saved")
     assert r["out"][0] == ["Dark", "dark"]
+
+
+@pytest.mark.parametrize("name", ["index", "pipeline", "kb", "engine"])
+def test_project_pages_wrap_long_tokens_on_phones(name):
+    html = (ROOT / "project_pages" / ("%s.html" % name)).read_text(encoding="utf-8")
+    assert ".plain,.note,.src,.limits li,.notice li{overflow-wrap:anywhere}" in html
+    assert ".notice ul{list-style:disc;" in html and "grid-template-columns:minmax(0,1fr)" in html.split(".notice ul{", 1)[1].split("}", 1)[0]
