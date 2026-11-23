@@ -399,3 +399,6 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - Results: gates 750/750 (new `carpage_checks`); pytest 1291 passed; eval unchanged.
   - **Combined:** the two branches merge without conflicts, and the combined tree passes pytest (1291) and gates (794/794). Whichever merges second gets main merged into its branch (no force-push).
   - **Next:** nothing planned. Small follow-ups from #60 and the owner items stay on the agenda.
+- **23 Nov, end:** the owner merged #61 and #62. Main (71d5a65) has the same tree as the combined tree tested before the merge (794/794 gates).
+  - Live on Render: `/car/kia/sonet` has reviews with no query. On a phone, Back from a car page made 0 `/predict` calls and returned to the same scroll position.
+  - **Nothing in progress.**
