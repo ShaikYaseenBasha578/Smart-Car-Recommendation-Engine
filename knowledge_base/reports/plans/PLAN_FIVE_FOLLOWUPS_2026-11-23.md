@@ -136,3 +136,22 @@ PRs 4, 5 and 6 then follow **one at a time**, each from `main` after the previou
 - All the work is local: no paid API calls.
 - PR 4 may need one blind agent.
 - The owner merges six PRs. The PR 3 Render timing is measured after its merge.
+
+## Owner decision (23 Nov)
+
+- **Decisions 3, 4 and 5:** approved as the defaults:
+  - PR 3 may edit the scoring files under the byte-identical proof;
+  - PRs 1–3 are built in parallel;
+  - the gate limits are 460 px (desktop card) and 640 px (mobile median).
+- **Decision 1, changed: add a real length filter.** In PR 4:
+  - "under 4 metres", "sub 4 metre" and "less than 4 m long" become a hard requirement, `max_length_mm` (4000 for those phrases), checked against `length_mm` the way the other numeric filters are: a blank length passes as "not verified", as the existing rule does.
+  - "garage is only 4 metres long" gives the same 4000 limit.
+  - These phrases no longer show a "Didn't use: size" chip.
+- **Decision 2, changed: a ranking preference for higher clearance.** In PR 4:
+  - "high ground clearance", "good ground clearance", "zyada ground clearance" and similar phrases without a number add a soft preference that raises the weight of the existing ground-clearance value in ranking. It is never a filter.
+  - With a number ("200 mm ground clearance") it stays the existing hard minimum.
+  - The "Didn't use: ground clearance" chip no longer appears for these phrases.
+- **What this changes for PR 4:**
+  - It may now also edit `services/filter_v2.py` (the length filter) and the soft-preference weighting in `services/recsys/criteria.py` and `config.py`.
+  - Ranking may change only for eval queries that contain these phrases, and every such change is listed.
+  - The zero-violation and verified counts must not drop.

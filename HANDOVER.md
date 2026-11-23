@@ -359,3 +359,4 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 - **23 Nov:** the owner chose to merge #56 as is. No further phone-density pass for now. PR I (Back cache) and PR J (car page) stay unplanned until asked.
 - **23 Nov:** #56 merged. The follow-up plan (PR G and PR H) is complete.
 - **23 Nov:** the owner asked for the five open follow-ups in one go. The plan is `knowledge_base/reports/plans/PLAN_FIVE_FOLLOWUPS_2026-11-23.md` (six PRs: gates, /project overflow, faster vague searches, parser fixes, Back cache, car page), **awaiting approval**.
+- **23 Nov:** the five-follow-ups plan was approved. The owner changed two decisions: "under 4 metres" becomes a real hard length filter, and "high ground clearance" becomes a ranking preference (both in PR 4). PRs 1–3 started in parallel.
