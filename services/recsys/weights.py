@@ -69,7 +69,13 @@ SOFT_PREFERENCE_PROFILES: Dict[str, Dict[str, float]] = {
                 "owner_comfort": 2},
     "safety": {"safety": 2.5},
     "features": {"tech_assist": 2, "comfort_features": 1.5, "expert_features_tech": 2, "owner_features": 2},
+    # rule-parser only ("high ground clearance", no number). Raises the weight of the car's ground-clearance value and
+    # nothing else: the single-field ground_clearance criterion (base 1.0 x 2 = 2.0, the same strength as the mileage,
+    # space, performance and comfort preferences); space_practicality is untouched.
+    "ground_clearance": {"ground_clearance": 2},
 }
+# criteria that exist only when the query asks for them: weight 0 and left out of the API weights payload otherwise
+CONDITIONAL_CRITERIA = ("ground_clearance",)
 COMFORT_FEATURES = {"sunroof", "ventilated_seats", "cruise_control"}
 TECH_FEATURES = {"adas", "camera_360", "wireless_charging", "heads_up_display", "android_auto", "apple_carplay"}
 
@@ -160,13 +166,15 @@ def build_weights(intent: Any, weight_overrides: Optional[Dict[str, Any]] = None
     Returns {"profile": name, "drivers": [reason, ...], "raw": {crit: multiplier x base},
              "criteria": {crit: {"class", "label", "multiplier", "weight", "active", "why": [...]}}}
     where "weight" is normalised to sum 1 within the criterion's class (0 for all if the class is off)."""
-    mult = {c: 1.0 for c in ALL_CRITERIA}
+    # a conditional criterion starts at multiplier 0: with no signal behind it its raw weight is 0, so every other
+    # query's weights and scores are exactly what they were before the criterion existed
+    mult = {c: (0.0 if c in CONDITIONAL_CRITERIA else 1.0) for c in ALL_CRITERIA}
     why: Dict[str, List[str]] = {c: [] for c in ALL_CRITERIA}
     drivers: List[str] = []
     for reason, boosts in _signals(intent):
         drivers.append(reason)
         for crit, m in boosts.items():
-            mult[crit] = min(MAX_MULTIPLIER, mult[crit] * m)
+            mult[crit] = min(MAX_MULTIPLIER, (mult[crit] or 1.0) * m)
             why[crit].append(reason)
     pshare = price_share(intent)
     if _get(intent, "cheap_intent", False):

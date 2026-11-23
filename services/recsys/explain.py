@@ -21,6 +21,7 @@ from services.recsys.criteria import COMFORT_BOOLS, SPEC_LABELS, TECH_BOOLS
 from services.recsys.evidence import ASPECTS, THEMES, Evidence, criterion_label
 from services.recsys.relax import format_rupees
 from services.recsys.weights import review_aspect_weights
+from services.summary import BODY_WORDS
 
 BOOL_LABELS = {
     "esc": "ESC", "abs": "ABS", "tpms": "tyre-pressure monitoring", "hill_assist": "hill assist",
@@ -38,6 +39,7 @@ UNKNOWN_TEXT = {
     "performance": "Performance: power and torque not on record",
     "safety": "Safety equipment: not on record",
     "value_for_budget": "Value for money: not enough feature data to compare",
+    "ground_clearance": "Ground clearance: not on record",
 }
 
 
@@ -128,6 +130,14 @@ def _spec_reason(crit: str, row: pd.Series, value: float, intent: Any) -> Option
                 parts.append(fmt.format(v))
                 fields.append(col)
         return {"text": "Space: " + ", ".join(parts), "fields": fields} if parts else None
+    if crit == "ground_clearance":
+        v = num(row["ground_clearance_mm"])
+        if v is None:
+            return None
+        pct = int(round(value * 100))
+        body = BODY_WORDS.get(row["body_type"], row["body_type"])
+        return {"text": f"Ground clearance: {v:g} mm, higher than about {pct}% of similar {body} cars here",
+                "fields": ["ground_clearance_mm", "body_type"]}
     if crit == "performance":
         parts, fields = [], []
         for col, fmt in (("power_bhp", "{:g} bhp"), ("torque_nm", "{:g} Nm")):

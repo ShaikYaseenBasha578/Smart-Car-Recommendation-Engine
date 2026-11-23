@@ -20,7 +20,7 @@ def terms(q):
     ("limo", ["limousine"]),
     ("caravan style camping car", ["camper"]),
     ("white hatchback under 8 lakh", ["colour"]),
-    ("garage is small, car under 4 m long", ["size"]),
+    ("garage is small, tight parking space at home", ["size"]),   # "car under 4 m long" is now a length filter (PR 4)
     ("easy entry car for my parents", ["easy entry"]),
 ])
 def test_lexicon_hits(q, expected):

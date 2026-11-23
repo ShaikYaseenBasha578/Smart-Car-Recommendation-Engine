@@ -8,7 +8,7 @@ Tri-state (required_features, exclude_features and every min_* / max_* constrain
   null / unverified         -> kept, labelled "Unverified: <label>"
   known false / below       -> excluded
 For exclude_features the roles are swapped: known absent meets, known present is excluded, unknown is kept
-and labelled "Unverified: no <feature>". max_* are upper bounds (known value above the bound is excluded).
+and labelled "Unverified: no <feature>". max_* are upper bounds (known value above the bound is excluded; max_length_mm is the car's overall length).
 A blank in a field that does not apply to the fuel type (e.g. ev_range_km on a petrol car,
 mileage on an EV) is "not applicable", not unverified: such a row cannot meet that bound
 and is excluded.
@@ -68,7 +68,10 @@ MAX_COLUMNS = {
     "max_ev_range_km": ("ev_range_km", "EV range"),
     "max_mileage_kmpl": ("mileage_kmpl", "mileage"),
     "max_mileage_km_per_kg": ("mileage_km_per_kg", "CNG mileage"),
+    "max_length_mm": ("length_mm", "length"),    # "sub 4 metre", "under 4 m": a blank length passes as not verified
 }
+# unit shown after a bound in plain-words lines (requirement list, relaxation text); the other bounds print bare
+MAX_UNITS = {"max_length_mm": " mm"}
 UNRATED_SAFETY_LABEL = "No crash-test rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
 REFERENCE_LENGTH_TOLERANCE = 0.08

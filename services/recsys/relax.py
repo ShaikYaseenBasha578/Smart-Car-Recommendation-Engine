@@ -28,7 +28,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 import pandas as pd
 
-from services.filter_v2 import AUTOMATIC_TYPES, FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, filter_candidates
+from services.filter_v2 import AUTOMATIC_TYPES, FEATURE_COLUMNS, MAX_COLUMNS, MAX_UNITS, MIN_COLUMNS, filter_candidates
 from services.recsys import config
 from services.recsys.common import is_unknown, num
 
@@ -282,7 +282,8 @@ def violations_for(row: pd.Series, original: dict, keys: List[str]) -> List[Dict
             col, label = MAX_COLUMNS[key]
             v, t = num(row[col]), original.get(key)
             if v is not None and t is not None and v > t and not (col == "mileage_kmpl" and row["fuel_type"] == "cng"):
-                add(key, f"{label} {v:g} vs at most {t:g} wanted", v - t, col)
+                unit = MAX_UNITS.get(key, "")
+                add(key, f"{label} {v:g}{unit} vs at most {t:g}{unit} wanted", v - t, col)
         elif key == "exclude_makes" and row["make"] in (original.get("exclude_makes") or []):
             add(key, f"{row['make']}, which you excluded")
         elif key == "seats" and original.get("seats_min") is not None:

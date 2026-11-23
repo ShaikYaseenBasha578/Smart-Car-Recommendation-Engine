@@ -372,6 +372,10 @@ const MIN_LABELS = {
     min_mileage_kmpl: v => `${v}+ kmpl`, min_mileage_km_per_kg: v => `${v}+ km/kg`,
     min_safety_stars: v => `${v}+ star safety`
 };
+// upper bounds shown in "What we understood"; length is asked in metres ("sub 4 metre"), so it is echoed in metres
+const MAX_LABELS = {
+    max_length_mm: v => `Under ${Number((v / 1000).toFixed(2))} m long`
+};
 function safeUrl(url) {
     try {
         const u = new URL(String(url));
@@ -434,6 +438,7 @@ function understoodChips(data) {
     (it.models || []).forEach(x => need(x));
     (it.required_features || []).forEach(x => need(FEATURE_LABELS[x] || x.replace(/_/g, " ")));
     Object.keys(MIN_LABELS).forEach(k => { if (it[k] != null) need(MIN_LABELS[k](it[k])); });
+    Object.keys(MAX_LABELS).forEach(k => { if (it[k] != null) need(MAX_LABELS[k](it[k])); });
     (it.exclude_makes || []).forEach(x => need(`No ${x}`));
     (it.exclude_features || []).forEach(x => need(`No ${String(FEATURE_LABELS[x] || x.replace(/_/g, " ")).toLowerCase()}`));
     (it.exclude_body_types || []).forEach(x => need(`not ${x}`));
