@@ -372,3 +372,16 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - Full responses for 329 queries are byte-identical, with exact floats, on Python 3.12 (production pins) as well as 3.9.
     - `tests/test_criteria_cache.py` was added. Per-row criteria *detail* may list empty extra fuel fields; no response uses it.
   - Next is PR 4 (the parser, with the length filter and the clearance preference), from main after these merge. Then PR I and PR J.
+- **23 Nov, later:** the owner merged #57, #58 and #59.
+  - **Render timing:** "good car" now takes 2.57 s warm (median of 5), down from 9.6 s. "SUV under 15 lakh" takes about 1.6 s.
+  - **#60, PR 4 (parser):** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/60, branch `fix/parser-misreadings`, worktree `~/carrec_worktrees/app-parser`. It contains:
+    - the misreading fixes;
+    - `max_length_mm` (shown as "Under 4 m long");
+    - the `ground_clearance` rule-only soft preference (conditional criterion, weight 0 and hidden unless asked);
+    - the typo guard (`typos.ENGLISH_WORDS`).
+  - **#60 results:**
+    - 22/391 parses changed, all intended, 6 of them eval queries, so no blind review was needed;
+    - main eval identical; held-out only h-060 changed (precision up);
+    - pytest 1289 passed; gates 606/606.
+  - **#60 not done:** the other `max_*` bounds have no echo chip; "CVT nahi" still sets the automatic family; with the LLM parser on, `llm_parse.py:731` would drop the rule-only preference.
+  - **Next:** PR I (Back cache) from main after #60 merges, then PR J.
