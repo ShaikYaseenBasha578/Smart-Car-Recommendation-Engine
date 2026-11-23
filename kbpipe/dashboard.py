@@ -1330,7 +1330,9 @@ table{border-collapse:collapse;width:100%}
 .evrow .d{display:block;margin-top:2px;color:var(--ink-2);font-size:var(--text-sm);max-width:52em}
 .evrow .n{text-align:right;font-weight:720;font-size:1.125rem;white-space:nowrap}
 .evrow .n small{display:block;color:var(--ink-2);font-weight:550;font-size:var(--text-sm)}
-.notice ul{list-style:disc;padding-left:1.25rem;margin-top:var(--s0);display:grid;gap:6px}
+.notice ul{list-style:disc;padding-left:1.25rem;margin-top:var(--s0);display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+/* long unbroken tokens (run ids, file names) wrap instead of widening the page on phones */
+.plain,.note,.src,.limits li,.notice li{overflow-wrap:anywhere}
 .notice p+p,.notice p+ul{margin-top:var(--s0)}
 .facts.sm dt{max-width:34em}
 .facts.sm dd{width:auto;min-width:10.5ch}
