@@ -1,11 +1,58 @@
 """Browser gates for the UI (not collected by pytest; needs Playwright + Chromium).
 
-    python tests/ui_gates.py http://127.0.0.1:5077 [--shots DIR]
+    python tests/ui_gates.py http://127.0.0.1:5201 [--shots DIR]
 
-Runs every user flow at 1440x900, 1366x860 and 390x844 and prints one PASS/FAIL line per check.
-Exit status 1 if any check fails.
+Runs every user flow at 1440x900, 1366x860 and 375x812, each in light and dark colour scheme (6 runs), and prints one
+PASS/FAIL line per check. Exit status 1 if any check fails. Prints a PASS/FAIL count per run at the end.
+
+How to run (any free port; the server must not use the LLM parser or the RAG explainer, so unset them):
+
+    cd <worktree> && env -u RAG_EXPLAIN -u LLM_PARSER python -c "import app; app.app.run(port=5201)"
+    python tests/ui_gates.py http://127.0.0.1:5201
+
+CARREC_CHROMIUM=<path to a chromium / chrome-headless-shell executable> overrides Playwright's own browser.
+Restart the server after a template change.
+
+Updated for the design after PR C (inline panel + car page), E (compare), G (budget reason), H (phone card, count line).
+Old check -> new check (checks not listed are unchanged):
+  desktop "match labels" (Great/Good/Fair match)  -> "All N meet every requirement" once above the cards, or per-card
+                                                    "Meets k of n requirements" / "Closest match" (the Great/Good/Fair badge is gone)
+  every card <= 340px (desktop only)              -> desktop every card <= 460px; mobile median <= 640px and every card <= 760px
+  [ev] 'Range: <n> km' on every card              -> desktop 'Range: <n> km' or 'Range: Not verified'; phone (labels hidden) '<n> km' or
+                                                    'Not verified'; plus a range is shown wherever the response has one
+  [cng] card <= 340px                             -> covered by the new card-height limits
+  laptop ">= 2 full cards after scrolling the first to the top"
+                                                  -> same rule, but the first card is placed just under the header (scrollIntoView stops 168px
+                                                    down because of the card's scroll-margin plus the page's scroll-padding)
+  "More ideas rotates chips" in the top box       -> on phones the top box hides its chips once a thread exists (PR H), so the follow-up box's
+                                                    More ideas is used there
+  [sunroof] no reason mentions SUV or sunroof     -> REMOVED: the design now says "Has sunroof, as you asked" on purpose (PR H);
+                                                    replaced by "the sunroof is shown once, as a reason or a tag" (already present)
+  [sunroof] budget reasons are headroom           -> with a budget, a budget reason ("Priced at Rs X lakh, N% of your budget") is among the
+                                                    shown reasons of every card (PR G); the old "Rs N L under your budget" wording is gone
+  [sunroof] no bare 'Fits your budget'            -> kept (still true)
+  [sunroof] 'N airbags' only when highest; no standout label on 3+ cards; 'Lowest price here' within Rs 10k
+                                                  -> REMOVED: these tested buyerReasons(), the legacy v1 card; v3 cards show the server's
+                                                    reasons, so the checks passed with nothing to test. Replaced by "no reason repeated within a
+                                                    card" (PR H de-duplication)
+  [detail] panel shows all 5 section headings     -> inline panel has Summary + Key specs + 'Full details ->' link (PR C); the car page has
+                                                    Summary, Specifications, Safety, Warranty, Variants (reviews section optional)
+  [detail] data stamp + external on-road price in panel
+                                                  -> data stamp in the panel; the external on-road link now lives on the card and the car page
+  [detail] >= 1 'Matches your search' row         -> same check on the car page opened from the search
+  [detail] variant click changes specs (in panel) -> same check on the car page (variants are not in the panel any more)
+  [detail] phone variants                         -> NEW: stacked rows (not table rows), no inner vertical scroll (PR H)
+  [cng] panel table never shows kmpl for CNG      -> same rule on the car page's variants table
+  [slavia] panel lists DCT variants as matches    -> same rule on the car page reached through the panel's 'Full details' link
+  "5 star safety sedan" shows a .tag--unverified chip -> an unverified requirement now reads "Confirmed on k of n requirements" with a
+                                                    "Not verified: ..." line; the .tag--unverified chip is checked on the relaxed search
+  "CVT automatic hatchback" gives an empty state + hints -> the catalogue now has a match, and a no-match search shows relaxed closest cars
+                                                    instead of an empty state: query "CVT automatic hatchback under 5 lakh" -> notice, drop hints,
+                                                    "Closest match" badge, per-card "Meets k of n requirements", "Not met:" lines, "N closest cars"
+  mobile run never reached (crash on .spec-groups in panel) -> fixed, the run now goes to the end
 """
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -13,10 +60,15 @@ from urllib.parse import parse_qs, quote, urlparse
 
 from playwright.sync_api import sync_playwright
 
-VIEWPORTS = {"desktop": (1440, 900), "laptop": (1366, 860), "mobile": (390, 844)}
-MAX_CARD_HEIGHT = 340
+VIEWPORTS = {"desktop": (1440, 900), "laptop": (1366, 860), "mobile": (375, 812)}
+SCHEMES = ("light", "dark")
+CHROMIUM = os.environ.get("CARREC_CHROMIUM") or None
+# card height limits (owner-approved 23 Nov): desktop every card; phone median and every card
+MAX_CARD_HEIGHT_DESKTOP = 460
+MAX_CARD_HEIGHT_MOBILE_MEDIAN = 640
+MAX_CARD_HEIGHT_MOBILE = 760
 CARD_QUERIES = {"sunroof": "sunroof wali SUV 12 lakh ke andar", "cng": "CNG gaadi under 8 lakh", "ev": "EV under 15 lakh"}
-BUDGET_REASON = re.compile(r"₹[\d.]+L under your budget|Right at your budget")
+BUDGET_REASON = re.compile(r"Priced at ₹[\d.,]+ (lakh|crore), \d+% of your ₹[\d.,]+ (lakh|crore) budget|Right at your budget|₹[\d.]+L under your budget", re.I)
 BANNED = ["ML Intent", "Latency", "Regex", "Execute", "/new_cars", "Ranking logic", "confidence"]
 MAX_HOME_BYTES = 3 * 1024 * 1024
 
@@ -99,7 +151,10 @@ CARD_INFO_JS = """() => [...document.querySelectorAll('article.car')].map(c => {
         name: c.getAttribute('aria-label'), height: Math.round(r.height),
         photoAbove: photo.bottom <= body.top + 1, photoLeft: photo.right <= body.left + 1,
         facts: c.querySelector('.facts').innerText.replace(/\\s+/g, ' '),
-        reasons: [...c.querySelectorAll('.reasons li')].map(li => li.innerText.trim()),
+        reasons: [...c.querySelectorAll('.reasons li')].map(li => li.textContent.trim()),
+        shown: [...c.querySelectorAll('.reasons li:not([hidden])')].map(li => li.innerText.trim()),
+        fit: (c.querySelector('.fit-label') || {}).innerText || '',
+        rank: (c.querySelector('.rank') || {}).innerText || '',
         chips: [...c.querySelectorAll('.tag')].map(t => t.innerText.trim()),
     };
 })"""
@@ -110,19 +165,29 @@ def card_checks(page, base, tag, w, shots):
         predict(page, lambda: page.goto(base + "/recommend?q=" + quote(q)))
         cards = page.evaluate(CARD_INFO_JS)
         check(f"{tag} [{key}]: has cards", cards, len(cards))
+        heights = [c["height"] for c in cards]
         if w >= 1024:
-            heights = [c["height"] for c in cards]
-            check(f"{tag} [{key}]: every card <= {MAX_CARD_HEIGHT}px tall", all(h <= MAX_CARD_HEIGHT for h in heights), heights)
+            check(f"{tag} [{key}]: every card <= {MAX_CARD_HEIGHT_DESKTOP}px tall", all(h <= MAX_CARD_HEIGHT_DESKTOP for h in heights), heights)
             check(f"{tag} [{key}]: photo left of content", all(c["photoLeft"] for c in cards))
         else:
+            median = sorted(heights)[len(heights) // 2]
+            check(f"{tag} [{key}]: median card <= {MAX_CARD_HEIGHT_MOBILE_MEDIAN}px, every card <= {MAX_CARD_HEIGHT_MOBILE}px",
+                  median <= MAX_CARD_HEIGHT_MOBILE_MEDIAN and max(heights) <= MAX_CARD_HEIGHT_MOBILE, f"median {median}, max {max(heights)}")
             check(f"{tag} [{key}]: photo above content", all(c["photoAbove"] for c in cards))
         sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
         check(f"{tag} [{key}]: no horizontal overflow", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
         dupes = [(c["name"], r, ch) for c in cards for r in c["reasons"] for ch in c["chips"]
                  if r.lower() in ch.lower() or ch.lower() in r.lower()]
         check(f"{tag} [{key}]: no reason duplicates a chip", not dupes, dupes[:3])
+        repeated = [c["name"] for c in cards if len({r.lower() for r in c["reasons"]}) != len(c["reasons"])]
+        check(f"{tag} [{key}]: no reason repeated within a card", not repeated, repeated[:3])
         if w == 1366:
-            page.locator("article.car").first.evaluate("el => el.scrollIntoView({ block: 'start' })")
+            # put the first card just under the sticky header (scrollIntoView adds the card's scroll-margin and the page's
+            # scroll-padding, 168px in all, which is not where a reader stops)
+            page.evaluate("""() => {
+                const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
+                scrollTo({ top: scrollY + document.querySelector('article.car').getBoundingClientRect().top - top - 8, behavior: 'instant' });
+            }""")
             page.wait_for_timeout(300)
             full = page.evaluate("""() => {
                 const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
@@ -130,7 +195,7 @@ def card_checks(page, base, tag, w, shots):
                     const r = c.getBoundingClientRect(); return r.top >= top - 1 && r.bottom <= innerHeight + 1;
                 }).length;
             }""")
-            check(f"{tag} [{key}]: >= 2 full cards visible after scrolling the first to the top", full >= 2, full)
+            check(f"{tag} [{key}]: >= 2 full cards visible with the first just under the header", full >= 2, full)
         if key == "cng":
             kmkg = [c for c in cards if "km/kg" in c["facts"]]
             check(f"{tag} [cng]: a card shows km/kg", kmkg, len(kmkg))
@@ -140,22 +205,30 @@ def card_checks(page, base, tag, w, shots):
             bad = [c["name"] for c in cards if c["name"] in have and ("Not verified" in c["facts"] or "km/kg" not in c["facts"])]
             check(f"{tag} [cng]: km/kg shown wherever it exists", have and not bad, bad or f"{len(have)} with km/kg")
         if key == "ev":
-            bad = [c["facts"] for c in cards if not re.search(r"Range: \d+ km", c["facts"])]
-            check(f"{tag} [ev]: every card shows 'Range: <n> km'", not bad, bad[:2])
+            # desktop prints "Range: 465 km"; on phones the facts line has no visible labels (PR H), so only the value is checked.
+            # An unknown range reads "Not verified", never blank or 0.
+            pattern = r"Range: (\d+ km|Not verified)" if w >= 1024 else r"(\d+ km|Not verified)$"
+            bad = [c["facts"] for c in cards if not re.search(pattern, c["facts"])]
+            check(f"{tag} [ev]: every card shows its range ('Range: <n> km') or 'Not verified'", not bad, bad[:2])
+            data = page.evaluate("q => fetch('/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({query: q})}).then(r => r.json())", q)
+            have = {f"{r['Make']} {r['Model']}" for r in data["recommendations"] if r.get("ev_range_km")}
+            bad = [c["name"] for c in cards if c["name"] in have and not re.search(r"\d+ km", c["facts"])]
+            check(f"{tag} [ev]: range shown wherever it exists", have and not bad, bad or f"{len(have)} with a range")
         if key == "sunroof":
-            echo = [r for c in cards for r in c["reasons"] if re.search("suv|sunroof", r, re.I)]
-            check(f"{tag} [sunroof]: no reason mentions SUV or sunroof", not echo, echo[:3])
-            budget = [r for c in cards for r in c["reasons"] if "budget" in r.lower()]
-            check(f"{tag} [sunroof]: budget reasons are headroom", budget and all(BUDGET_REASON.fullmatch(r) for r in budget), budget[:3])
+            # PR H: the sunroof is asked for, so the card says so ("Has sunroof, as you asked"); no check that reasons avoid it
+            nobudget = [c["name"] for c in cards if not any(BUDGET_REASON.fullmatch(r) for r in c["shown"])]
+            check(f"{tag} [sunroof]: a budget reason is among the shown reasons of every card (PR G)", not nobudget, nobudget[:3])
+            budget = [r for c in cards for r in c["shown"] if "budget" in r.lower()]
+            check(f"{tag} [sunroof]: budget reasons read as headroom or '% of your budget'", budget and all(BUDGET_REASON.fullmatch(r) for r in budget), budget[:3])
             check(f"{tag} [sunroof]: no bare 'Fits your budget'", not any("fits your" in r.lower() for c in cards for r in c["reasons"]))
             print(f"INFO  {tag} [sunroof] reasons: " + " | ".join(f"{c['name']}: {c['reasons']}" for c in cards))
-        if shots and w in (1366, 390):
-            full_shot(page, f"{shots}/{tag}-{key}.png")
+        if shots and w in (1366, 375):
+            full_shot(page, f"{shots}/{tag.replace("/", "-")}-{key}.png")
 
 
-DETAIL_HEADINGS = ["Summary", "Variants", "Specifications", "Safety", "Warranty"]
-STANDOUTS = ["Lowest price here", "Best mileage here", "Longest range here", "Most powerful here",
-             "Biggest boot here", "Most airbags here"]
+PANEL_HEADINGS = ["Summary", "Key specs"]                                   # the inline panel (PR C)
+PAGE_HEADINGS = ["Summary", "Specifications", "Safety", "Warranty", "Variants"]  # the car page; a reviews section may sit after Summary
+REVIEWS_HEADING = "What reviewers and owners say"
 
 
 def open_panel(page, card_index=0):
@@ -169,56 +242,86 @@ def open_panel(page, card_index=0):
     return panel
 
 
+def car_page(page, url, tag, w, errors=None):
+    """Open a /car/<make>/<model> page and wait for its sections."""
+    resp = page.goto(url)
+    page.locator("#car-detail .detail-section > h2").first.wait_for(timeout=30_000)
+    return resp
+
+
+def variants_checks(perm, tag, w):
+    """Variants table on the car page: stacked rows with no inner vertical scroll on phones."""
+    wrap = perm.locator("#variants-table")
+    if w < 640:
+        info = perm.evaluate("""() => {
+            const wrap = document.querySelector('#variants-table'), tr = wrap.querySelector('tbody tr:not([hidden])');
+            return { rowDisplay: getComputedStyle(tr).display, wrapOverflowY: getComputedStyle(wrap).overflowY,
+                     scrolls: wrap.scrollHeight > wrap.clientHeight + 1, maxHeight: getComputedStyle(wrap).maxHeight };
+        }""")
+        check(f"{tag} [variants]: stacked rows (not table rows), no inner vertical scroll on phones",
+              info["rowDisplay"] != "table-row" and not info["scrolls"] and info["maxHeight"] == "none", info)
+    else:
+        check(f"{tag} [variants]: table keeps its own bounded scroll on desktop", wrap.count() == 1)
+
+
 def detail_checks(page, base, tag, w, shots):
-    # sunroof: headings, matching rows, variant switching, reason rules
+    # sunroof: reason rules, the inline panel and the car page behind it
     q = CARD_QUERIES["sunroof"]
-    data = page.evaluate("q => fetch('/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({query: q})}).then(r => r.json())", q)
     predict(page, lambda: page.goto(base + "/recommend?q=" + quote(q)))
-    cards = page.evaluate(CARD_INFO_JS)
-    recs = {f"{r['Make']} {r['Model']}": r for r in data["recommendations"]}
-    bags = [r["airbags"] or 0 for r in recs.values()]
-    most, n = max(bags), len(bags)
-    bad_bags = [(c["name"], r) for c in cards for r in c["reasons"]
-                if re.fullmatch(r"\d+ airbags", r) and not (recs[c["name"]]["airbags"] == most and bags.count(most) < n / 2)]
-    check(f"{tag} [sunroof]: 'N airbags' only when highest and shared by < half", not bad_bags, bad_bags[:3])
-    holders = {label: [c["name"] for c in cards if any(r.startswith(label) for r in c["reasons"])] for label in STANDOUTS}
-    check(f"{tag} [sunroof]: no standout label on 3+ cards", all(len(v) <= 2 for v in holders.values()),
-          {k: v for k, v in holders.items() if v})
-    cheapest = min(r["Ex-Showroom_Price"] for r in recs.values())
-    check(f"{tag} [sunroof]: 'Lowest price here' within Rs 10k of the minimum",
-          all(recs[name]["Ex-Showroom_Price"] - cheapest <= 10_000 for name in holders["Lowest price here"]))
 
     panel = open_panel(page, 0)
     headings = panel.locator(".detail-section h3").all_inner_texts()
-    check(f"{tag} [detail]: panel shows all section headings", headings == DETAIL_HEADINGS, headings)
+    check(f"{tag} [detail]: inline panel has Summary and Key specs", headings == PANEL_HEADINGS, headings)
     check(f"{tag} [detail]: panel sits directly under its card",
           page.evaluate("() => document.querySelector('.cards > .detail').previousElementSibling.matches('article.car')"))
-    matches = panel.locator("tr.is-match", has_text="Matches your search").count()
-    check(f"{tag} [detail]: >= 1 'Matches your search' row", matches >= 1, matches)
-    check(f"{tag} [detail]: data stamp + external on-road price in panel",
-          panel.locator(".data-stamp").count() == 1 and panel.locator(".detail-actions a[target=_blank]").count() == 1)
-    before = panel.locator(".spec-groups").inner_text()
-    selected = panel.locator("tr.is-selected").get_attribute("data-variant-id")
-    rows = panel.locator("tbody tr")
-    target = None
-    sel_gear = panel.locator("tr.is-selected td").nth(2).inner_text()
-    for i in range(rows.count()):  # prefer a variant with a different gearbox, so specs must change
-        if rows.nth(i).get_attribute("data-variant-id") != selected and rows.nth(i).locator("td").nth(2).inner_text() != sel_gear:
-            target = rows.nth(i); break
-    target = target or rows.nth(1 if rows.nth(0).get_attribute("data-variant-id") == selected else 0)
-    target_name = target.locator(".variant-pick").inner_text()
-    with page.expect_response(lambda r: "/api/car/" in r.url and "variant_id=" in r.url):
-        target.click()
-    page.wait_for_function("name => document.querySelector('.cards > .detail .detail-section:nth-of-type(3) .detail-note').innerText.includes(name)", arg=target_name)
-    after = panel.locator(".spec-groups").inner_text()
-    check(f"{tag} [detail]: clicking a variant row changes the spec values", before != after and
-          panel.locator("tr.is-selected .variant-pick").inner_text() == target_name, target_name)
+    check(f"{tag} [detail]: panel has key specs and no variants table",
+          panel.locator(".spec-list dt").count() >= 3 and panel.locator("table.variants").count() == 0, panel.locator(".spec-list dt").count())
+    check(f"{tag} [detail]: data stamp in the panel", panel.locator(".data-stamp").count() == 1)
+    full = panel.locator("a.detail-full")
+    href = full.get_attribute("href") if full.count() == 1 else None
+    check(f"{tag} [detail]: 'Full details ->' link carries the search", href and full.inner_text().startswith("Full details")
+          and href.startswith("/car/") and "q=" in href, href)
     sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
     check(f"{tag} [detail]: no horizontal page overflow with a panel open", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
     panel_btn = page.locator("article.car").first.locator("[data-detail]")
     panel_btn.click()
     page.wait_for_timeout(450)
     check(f"{tag} [detail]: panel collapses", page.locator(".cards > .detail").count() == 0 and panel_btn.inner_text() == "Specs & variants")
+
+    # the car page, opened from that search through the panel's link
+    errors = []
+    perm = page.context.new_page()
+    perm.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+    perm.on("pageerror", lambda e: errors.append(str(e)))
+    resp = car_page(perm, base + href, tag, w)
+    heads = perm.locator("#car-detail .detail-section > h2").all_inner_texts()
+    core = [h for h in heads if h != REVIEWS_HEADING]
+    check(f"{tag} [detail]: car page has every section", resp.status == 200 and core == PAGE_HEADINGS, heads)
+    matches = perm.locator("tr.is-match", has_text="Matches your search").count()
+    check(f"{tag} [detail]: >= 1 'Matches your search' row on the car page", matches >= 1, matches)
+    check(f"{tag} [detail]: car page has the data stamp and the external on-road price link",
+          perm.locator(".data-stamp").count() == 1 and perm.locator(".detail-actions a[target=_blank]").count() == 1)
+    variants_checks(perm, tag, w)
+    # picking another variant redraws the specs
+    before = perm.locator(".spec-groups").inner_text()
+    selected = perm.locator("tr.is-selected").get_attribute("data-variant-id")
+    rows = perm.locator("tbody tr:not([hidden])")
+    target = None
+    sel_gear = perm.locator("tr.is-selected td").nth(2).inner_text()
+    for i in range(rows.count()):  # prefer a variant with a different gearbox, so specs must change
+        if rows.nth(i).get_attribute("data-variant-id") != selected and rows.nth(i).locator("td").nth(2).inner_text() != sel_gear:
+            target = rows.nth(i); break
+    target = target or rows.nth(1 if rows.nth(0).get_attribute("data-variant-id") == selected else 0)
+    target_name = target.locator(".variant-pick").inner_text()
+    with perm.expect_response(lambda r: "/api/car/" in r.url and "variant_id=" in r.url):
+        target.click()
+    perm.wait_for_function("name => document.querySelector('#pick-status').innerText.includes(name)", arg=target_name)
+    after = perm.locator(".spec-groups").inner_text()
+    check(f"{tag} [detail]: clicking a variant row changes the spec values", before != after and
+          perm.locator("tr.is-selected .variant-pick").inner_text() == target_name, target_name)
+    sw, vw = perm.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+    check(f"{tag} [detail]: car page has no horizontal overflow", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
+    perm.close()
 
     # CNG: no kmpl presented as CNG mileage; km/kg always labelled (CNG)
     predict(page, lambda: page.goto(base + "/recommend?q=" + quote(CARD_QUERIES["cng"])))
@@ -227,24 +330,34 @@ def detail_checks(page, base, tag, w, shots):
            or ("Fuel: CNG" in f and "kmpl" in f)]
     check(f"{tag} [cng]: cards never show kmpl as CNG mileage; km/kg labelled (CNG)", not bad, bad[:2])
     panel = open_panel(page, 0)
-    table = panel.locator("tbody tr").evaluate_all("rows => rows.map(r => [...r.cells].map(c => c.innerText.trim()))")
+    spec = panel.locator(".spec-list").first.inner_text() if panel.locator(".spec-list").count() else ""
+    check(f"{tag} [cng]: panel key specs never show kmpl for a CNG variant", "CNG" in spec and "kmpl" not in spec, spec[:120])
+    cng_href = panel.locator("a.detail-full").get_attribute("href")
+    perm = page.context.new_page()
+    car_page(perm, base + cng_href, tag, w)
+    table = perm.locator("tbody tr").evaluate_all("rows => rows.map(r => [...r.cells].map(c => c.innerText.trim()))")
     bad = [r for r in table if (r[3] == "CNG" and "kmpl" in r[4]) or ("km/kg" in r[4] and "(CNG)" not in r[4])]
-    check(f"{tag} [cng]: panel never shows kmpl for CNG variants; km/kg labelled (CNG)", table and not bad, bad[:2])
-    if shots and w in (1366, 390):
-        page.locator("article.car").first.evaluate("el => el.scrollIntoView({ block: 'start' })")
+    check(f"{tag} [cng]: car page never shows kmpl for CNG variants; km/kg labelled (CNG)", table and not bad, bad[:2])
+    perm.close()
+    if shots and w in (1366, 375):
+        page.locator("article.car").first.evaluate("el => el.scrollIntoView({ block: 'start', behavior: 'instant' })")
         page.wait_for_timeout(300)
-        page.screenshot(path=f"{shots}/{tag}-cng-card-panel.png")
+        page.screenshot(path=f"{shots}/{tag.replace("/", "-")}-cng-card-panel.png")
 
-    # Skoda Slavia panel from a search it appears in
+    # Skoda Slavia: the car page reached from a search it appears in lists DCT variants as matches
     predict(page, lambda: page.goto(base + "/recommend?q=" + quote("Skoda Slavia DCT")))
     names = [c["name"] for c in page.evaluate(CARD_INFO_JS)]
     if "Skoda Slavia" in names:
         panel = open_panel(page, names.index("Skoda Slavia"))
-        check(f"{tag} [slavia]: panel lists DCT variants as matches", panel.locator("tr.is-match", has_text="DCT").count() >= 1)
-        if shots and w in (1366, 390):
-            page.locator("article.car").nth(names.index("Skoda Slavia")).evaluate("el => el.scrollIntoView({ block: 'start' })")
+        slavia_href = panel.locator("a.detail-full").get_attribute("href")
+        if shots and w in (1366, 375):
+            page.locator("article.car").nth(names.index("Skoda Slavia")).evaluate("el => el.scrollIntoView({ block: 'start', behavior: 'instant' })")
             page.wait_for_timeout(300)
-            full_shot(page, f"{shots}/{tag}-slavia-panel.png")
+            full_shot(page, f"{shots}/{tag.replace("/", "-")}-slavia-panel.png")
+        perm = page.context.new_page()
+        car_page(perm, base + slavia_href, tag, w)
+        check(f"{tag} [slavia]: car page lists DCT variants as matches", perm.locator("tr.is-match", has_text="DCT").count() >= 1)
+        perm.close()
     else:
         check(f"{tag} [slavia]: Slavia card present for 'Skoda Slavia DCT'", False, names)
 
@@ -254,19 +367,18 @@ def detail_checks(page, base, tag, w, shots):
     perm.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
     perm.on("pageerror", lambda e: errors.append(str(e)))
     url = base + "/car/skoda/slavia?q=" + quote("DCT petrol under 15 lakh")
-    resp = perm.goto(url)
-    perm.locator("#car-detail .detail-section h3").first.wait_for(timeout=30_000)
-    heads = perm.locator("#car-detail .detail-section h3").all_inner_texts()
-    check(f"{tag} [permalink]: renders standalone with every section", resp.status == 200 and heads == DETAIL_HEADINGS
+    resp = car_page(perm, url, tag, w)
+    heads = [h for h in perm.locator("#car-detail .detail-section > h2").all_inner_texts() if h != REVIEWS_HEADING]
+    check(f"{tag} [permalink]: renders standalone with every section", resp.status == 200 and heads == PAGE_HEADINGS
           and perm.locator("h1").inner_text() == "Skoda Slavia", heads)
     sw, vw = perm.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
     check(f"{tag} [permalink]: no horizontal overflow", sw <= vw, f"{sw} > {vw}" if sw > vw else "")
     check(f"{tag} [permalink]: unknown car is a 404", perm.goto(base + "/car/bmw/x5").status == 404)
     check(f"{tag} [permalink]: zero JS errors", not [e for e in errors if "404" not in e], errors[:3])
-    if shots and w in (1366, 390):
+    if shots and w in (1366, 375):
         perm.goto(url)
-        perm.locator("#car-detail .detail-section h3").first.wait_for()
-        full_shot(perm, f"{shots}/{tag}-slavia-permalink.png")
+        perm.locator("#car-detail .detail-section h2").first.wait_for()
+        full_shot(perm, f"{shots}/{tag.replace("/", "-")}-slavia-permalink.png")
     perm.close()
 
 
@@ -307,14 +419,17 @@ def compare_checks(page, base, tag):
 
 def run(base, shots):
     with sync_playwright() as p:
-        browser = p.chromium.launch()
-        for vp_name, (w, h) in VIEWPORTS.items():
-            ctx = browser.new_context(viewport={"width": w, "height": h}, reduced_motion="no-preference")
+        browser = p.chromium.launch(executable_path=CHROMIUM)
+        for (vp_name, (w, h)), scheme in [(v, c) for v in VIEWPORTS.items() for c in SCHEMES]:
+            ctx = browser.new_context(viewport={"width": w, "height": h}, reduced_motion="no-preference", color_scheme=scheme)
+            # every action in this context (pages opened later included) waits this long; a loaded machine can starve the
+            # browser past Playwright's 30 s default on a plain click. CARREC_GATE_TIMEOUT_MS overrides it.
+            ctx.set_default_timeout(int(os.environ.get("CARREC_GATE_TIMEOUT_MS", "60000")))
             page = ctx.new_page()
             errors = []
             page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
             page.on("pageerror", lambda e: errors.append(str(e)))
-            tag = vp_name
+            tag = f"{vp_name}/{scheme}"
 
             # ---------- homepage ----------
             sizes, hero_status = [], {}
@@ -339,14 +454,14 @@ def run(base, shots):
             bad_status = {u: s for u, s in hero_status.items() if s != 200}
             check(f"{tag}: hero image responses all 200", hero_status and not bad_status, bad_status or f"{len(hero_status)} fetched")
             if shots:
-                page.screenshot(path=f"{shots}/{tag}-home-top.png")
+                page.screenshot(path=f"{shots}/{tag.replace("/", "-")}-home-top.png")
             page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
             page.wait_for_load_state("networkidle")
             page_checks(page, f"{tag} home")
             total = sum(sizes)
             check(f"{tag}: homepage transfer < 3 MB", total < MAX_HOME_BYTES, f"{total / 1024:.0f} KB")
             if shots:
-                page.locator("#how-it-works").screenshot(path=f"{shots}/{tag}-home-how-it-works.png")
+                page.locator("#how-it-works").screenshot(path=f"{shots}/{tag.replace("/", "-")}-home-how-it-works.png")
             page.remove_listener("requestfinished", on_finished)
 
             # homepage search box -> results page
@@ -370,8 +485,19 @@ def run(base, shots):
             check(f"{tag}: /recommend?q= loads results", cards.count() > 0, cards.count())
             first = cards.first
             check(f"{tag}: card has photo + caption", first.locator(".car-photo img").count() == 1 and "Image:" in first.locator("figcaption").inner_text())
-            labels = page.locator(".match").all_inner_texts()
-            check(f"{tag}: match labels", labels and all(l in ("Great match", "Good match", "Fair match") for l in labels), labels[:3])
+            # PR H: when every card meets every requirement the turn says so once above the cards; otherwise each card has its own label
+            allmeet = page.locator(".all-meet")
+            fits = page.locator(".fit-label").all_inner_texts()
+            if allmeet.count():
+                check(f"{tag}: match label, 'All N meet every requirement' once above the cards",
+                      allmeet.count() == 1 and re.fullmatch(r"All \d+ meet every requirement", allmeet.inner_text().strip())
+                      and int(re.search(r"\d+", allmeet.inner_text()).group()) == cards.count() and not fits
+                      and page.evaluate("() => document.querySelector('.all-meet').compareDocumentPosition(document.querySelector('.cards')) & Node.DOCUMENT_POSITION_FOLLOWING") > 0,
+                      allmeet.all_inner_texts())
+            else:
+                check(f"{tag}: match label, per-card 'Meets k of n requirements' / 'Closest match'",
+                      len(fits) == cards.count() and all(re.fullmatch(r"(Meets \d+ of \d+ requirements|Confirmed on \d+ of \d+ requirements|Meets (all )?your requirements?|Ranked on your preferences|Near match|Requirements not confirmed|General pick, not personalised)", f) for f in fits),
+                      fits[:3])
             reasons = [c.locator(".reasons li").count() for c in cards.all()]
             check(f"{tag}: at most 4 reasons per card", all(n <= 4 for n in reasons), reasons)
             # a feature tag that repeats a shown reason is dropped, so the sunroof is a reason ("Has sunroof, as you asked") or a tag
@@ -395,7 +521,7 @@ def run(base, shots):
             check(f"{tag}: copy link button", page.locator("[data-copy-link]").count() == 1)
             page_checks(page, f"{tag} results")
             if shots:
-                full_shot(page, f"{shots}/{tag}-results-sunroof.png")
+                full_shot(page, f"{shots}/{tag.replace("/", "-")}-results-sunroof.png")
 
             card_checks(page, base, tag, w, shots)
             detail_checks(page, base, tag, w, shots)
@@ -405,16 +531,26 @@ def run(base, shots):
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("DCT petrol under 15 lakh")))
             check(f"{tag}: transmission label 'Automatic (DCT)'", page.locator(".facts", has_text="Automatic (DCT)").count() > 0)
 
-            # unverified chips somewhere in a broad result set
+            # an unverified requirement is named on the card and the label says so ("Confirmed on 1 of 2 requirements")
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("5 star safety sedan")))
-            check(f"{tag}: unverified chip style", page.locator(".tag--unverified").count() > 0)
+            confirmed = [c for c in page.evaluate(CARD_INFO_JS) if re.fullmatch(r"Confirmed on \d+ of \d+ requirements", c["fit"])]
+            check(f"{tag}: unverified requirement -> 'Confirmed on k of n' label + 'Not verified: ...' line",
+                  confirmed and page.locator(".unmet li", has_text="Not verified:").count() > 0, len(confirmed))
             check(f"{tag}: Bharat NCAP safety chip", page.locator(".tag--safety", has_text="Bharat NCAP").count() > 0)
 
-            # empty state + hint click -> results + banner
-            predict(page, lambda: page.goto(base + "/recommend?q=" + quote("CVT automatic hatchback")))
-            check(f"{tag}: empty state with hints", page.locator(".state h3").count() == 1 and page.locator("[data-drop-key]").count() > 0)
+            # nothing matches everything: closest cars, per-card 'Meets k of n', 'Closest match' badge, drop hints
+            predict(page, lambda: page.goto(base + "/recommend?q=" + quote("CVT automatic hatchback under 5 lakh")))
+            rc = page.evaluate(CARD_INFO_JS)
+            check(f"{tag}: unverified chip style", page.locator(".tag--unverified").count() > 0)
+            check(f"{tag}: relaxed search -> notice, hints, 'Closest match' badge, 'Meets k of n requirements', 'Not met' lines",
+                  "No car matches everything" in page.locator(".notice").inner_text() and page.locator("[data-drop-key]").count() > 0
+                  and rc[0]["rank"] == "Closest match" and all(re.fullmatch(r"Meets \d+ of \d+ requirements", c["fit"]) for c in rc)
+                  and page.locator(".unmet li", has_text="Not met:").count() > 0 and not page.locator(".all-meet").count(),
+                  [(c["rank"], c["fit"]) for c in rc[:2]])
+            check(f"{tag}: count line says 'closest cars' for a relaxed search",
+                  re.fullmatch(r"\d+ closest cars?( · sorted by .+)?", page.locator("[data-turn-count]").first.inner_text()) is not None)
             if shots:
-                page.screenshot(path=f"{shots}/{tag}-empty-cvt.png", full_page=True)
+                page.screenshot(path=f"{shots}/{tag.replace('/', '-')}-relaxed-cvt.png", full_page=True)
             predict(page, lambda: page.locator("[data-drop-key]").first.click())
             lt = last_turn(page)
             check(f"{tag}: hint click -> results + 'Showing results without' banner",
@@ -425,7 +561,7 @@ def run(base, shots):
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("BMW SUV")))
             check(f"{tag}: unsupported-brand banner", "We don't cover BMW" in page.locator(".notice").inner_text())
             if shots:
-                page.screenshot(path=f"{shots}/{tag}-bmw-banner.png")
+                page.screenshot(path=f"{shots}/{tag.replace("/", "-")}-bmw-banner.png")
 
             # thread: 3 queries -> 3 turns, back/forward, New search, chips in the follow-up box
             page.goto(base + "/recommend")
@@ -435,7 +571,7 @@ def run(base, shots):
             page.fill("#followupQuery", "EV under 15 lakh")
             predict(page, lambda: page.click("#followup button[type=submit]"))
             if shots:
-                full_shot(page, f"{shots}/{tag}-thread-2-turns.png")
+                full_shot(page, f"{shots}/{tag.replace("/", "-")}-thread-2-turns.png")
             page.wait_for_selector("#followup [data-suggestion]")
             # a chip that repeats the current search replaces the history entry instead of adding one
             chip = page.locator("#followup [data-suggestion]:not([data-suggestion='EV under 15 lakh'])").first
@@ -458,9 +594,12 @@ def run(base, shots):
                 page.fill("#followupQuery", f"automatic under {10 + i} lakh")
                 predict(page, lambda: page.click("#followup button[type=submit]"))
             check(f"{tag}: 10-turn cap", page.locator("[data-turn]").count() == 10)
-            before = page.locator(".search-form:not(#followup) [data-suggestion]").all_inner_texts()
-            page.locator(".search-form:not(#followup) [data-more-ideas]").click()
-            after = page.locator(".search-form:not(#followup) [data-suggestion]").all_inner_texts()
+            # on phones the top box hides its chips once there are turns (PR H); the follow-up box keeps its own More ideas
+            top = page.locator(".search-form:not(#followup)")
+            scope = top if top.locator("[data-more-ideas]").is_visible() else page.locator("#followup")
+            before = scope.locator("[data-suggestion]").all_inner_texts()
+            scope.locator("[data-more-ideas]").click()
+            after = scope.locator("[data-suggestion]").all_inner_texts()
             check(f"{tag}: More ideas rotates chips", before != after)
 
             # body-type placeholder (a model with no brochure image)
@@ -488,5 +627,8 @@ if __name__ == "__main__":
         Path(shots).mkdir(parents=True, exist_ok=True)
     run(base, shots)
     failed = [n for n, ok in results if not ok]
+    for t in dict.fromkeys(n.split(":")[0].split(" ")[0] for n, _ in results):
+        mine = [ok for n, ok in results if n.split(":")[0].split(" ")[0] == t]
+        print(f"{t}: {sum(mine)} PASS, {len(mine) - sum(mine)} FAIL")
     print(f"\n{len(results) - len(failed)}/{len(results)} checks passed")
     sys.exit(1 if failed else 0)

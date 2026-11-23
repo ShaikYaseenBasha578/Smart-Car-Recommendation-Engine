@@ -1113,3 +1113,15 @@ def test_car_page_variant_rows_carry_their_meta_cells_for_the_stacked_phone_layo
     assert ".variants td:first-child { flex: 0 0 100%" in phone
     assert "max-height: 420px" in css                                          # desktop keeps the scroll box
     assert ".detail-body--page { margin-top: var(--s1); padding: 0; border: 0; border-radius: 0;" in phone
+
+
+def test_ev_gearbox_detail_is_hidden_on_phones_only():
+    """'(single-speed EV)' repeats 'Electric': it sits in a span the phone CSS hides, so the facts line does not wrap to three lines."""
+    html = render(response([car(Fuel_Type="Electric", transmission_label="Automatic (single-speed EV)", ev_range_km=468,
+                                ARAI_Certified_Mileage=None)]))
+    assert 'Automatic<span class="fact-more"> (single-speed EV)</span>' in html
+    css = (ROOT / "static" / "style.css").read_text()
+    assert ".facts .fact-more { display: none; }" in css
+    # other gearbox labels are left whole
+    html = render(response([car(transmission_label="Automatic (AMT)")]))
+    assert "Automatic (AMT)</span>" in html and "fact-more" not in html
