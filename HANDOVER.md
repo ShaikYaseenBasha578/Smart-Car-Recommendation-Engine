@@ -385,3 +385,17 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - pytest 1289 passed; gates 606/606.
   - **#60 not done:** the other `max_*` bounds have no echo chip; "CVT nahi" still sets the automatic family; with the LLM parser on, `llm_parse.py:731` would drop the rule-only preference.
   - **Next:** PR I (Back cache) from main after #60 merges, then PR J.
+- **23 Nov, later:** the owner merged #60 and asked for PR I and PR J together. Both were built in parallel, each from main 1b556ba (Sonnet builders, Opus review and reruns).
+  - **#61, PR I (Back cache):** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/61, branch `feat/back-cache`, worktree `~/carrec_worktrees/app-backcache`.
+    - `/predict` answers are kept in `sessionStorage` (`carrec.results`) for 30 minutes, at most 12, keyed by `[data_as_of stamp, query, drops]`. The stamp reaches the page as `data-catalogue` on `<main>`.
+    - Back, forward and "Back to search" draw the saved answers with no `/predict` call. The whole thread, scroll position, open panels, reasons, reviews, sorts and chips are restored from `history.state`.
+    - A reload or a typed address still fetches.
+    - Results: gates 650/650 (new `backcache_checks`); pytest 1289 passed.
+  - **#62, PR J (car page):** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/62, branch `feat/car-page`, worktree `~/carrec_worktrees/app-carpage`.
+    - All matching variants are shown, with a "Tinted rows match your search" legend.
+    - `/api/car` gives reviews with no query, via `car_detail._model_reviews` (the cards' explain functions with no query weights). With a query nothing changes: 20 pairs are identical to main.
+    - A sticky "On this page" menu, and "Add to compare" on the car page.
+    - A header tightening at widths under 360 px (it overflowed by 37 px at 320 on every page).
+    - Results: gates 750/750 (new `carpage_checks`); pytest 1291 passed; eval unchanged.
+  - **Combined:** the two branches merge without conflicts, and the combined tree passes pytest (1291) and gates (794/794). Whichever merges second gets main merged into its branch (no force-push).
+  - **Next:** nothing planned. Small follow-ups from #60 and the owner items stay on the agenda.
