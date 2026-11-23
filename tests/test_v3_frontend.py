@@ -640,20 +640,22 @@ def test_variant_table_without_a_query_shows_the_first_eight_and_a_show_all_togg
     assert len(visible_ids(few)) == 6 and "variants-toggle" not in few
 
 
-def test_variant_table_with_a_query_shows_only_matching_variants_up_to_eight():
+def test_variant_table_with_a_query_shows_every_matching_variant():   # PR J: was "up to eight"
     opts = {"make": "tata", "model": "nexon", "q": "suv", "standalone": True}
     html = render_detail(detail_data(n=20, matching=3), opts)
-    assert visible_ids(html) == ["1", "2", "3"] and "Show all 20 variants" in html
+    assert visible_ids(html) == ["1", "2", "3"] and "Show the other 17 variants" in html
     assert 'data-match-mode="true"' in html and "3 of 20 variants match your search." in html
     many = render_detail(detail_data(n=30, matching=15), opts)
-    assert len(visible_ids(many)) == 8 and all(int(i) <= 15 for i in visible_ids(many))
+    assert len(visible_ids(many)) == 15 and all(int(i) <= 15 for i in visible_ids(many)) and "Show the other 15 variants" in many
+    assert "Tinted rows match your search" in many and "match-badge" not in many and "(matches your search)" in many
+    assert "Show the other 1 variant<" in render_detail(detail_data(n=4, matching=3), opts)
     none = render_detail(detail_data(n=12, matching=0), opts)                  # nothing matches: the first eight of all, said plainly
     assert len(visible_ids(none)) == 8 and "None of the 12 variants match your search." in none and 'data-match-mode="false"' in none
 
 
 def test_selected_variant_stays_visible_when_it_is_outside_the_first_rows():
     html = render_detail(detail_data(n=20, matching=3, selected=17), {"make": "tata", "model": "nexon", "q": "suv", "standalone": True})
-    assert len(visible_ids(html)) <= 8 and "17" in visible_ids(html)
+    assert visible_ids(html) == ["1", "2", "3", "17"]
 
 
 def test_show_all_toggle_expands_in_place_and_goes_back_to_matching_only():
@@ -669,7 +671,7 @@ def test_show_all_toggle_expands_in_place_and_goes_back_to_matching_only():
       return log; })()"""
     first, second = run_detail(code)
     assert first == ["Show matching only", "true", [False, False]]
-    assert second == ["Show all 20 variants", "false", [True, True], 0]
+    assert second == ["Show the other 2 variants", "false", [True, True], 0]
 
 
 def test_table_wrap_scrolls_on_its_own_so_the_sticky_header_works():
@@ -718,7 +720,7 @@ def test_picking_a_variant_marks_the_row_busy_then_redraws_only_the_spec_section
     assert a["status"] == 'Showing specs for Var 2 <a href="#detail-specs" data-jump-specs>Jump to specs ↓</a>'
     assert a["focused"] == 2 and a["preventScroll"] is True                                          # focus is on the row's control
     assert str(a["selected"]) == "2" and a["cur"] == [None, "true"] and a["pressed"] == ["false", "true"]
-    assert a["region"].startswith('<section class="detail-section"><h2>Specifications</h2>') and a["regionHasVariants"] is False
+    assert a["region"].startswith('<section class="detail-section" id="detail-specifications"><h2>Spec') and a["regionHasVariants"] is False
     assert a["urls"] == ["/car/tata/nexon?q=suv&variant_id=2"]                                      # replaceState keeps q and gains variant_id
     assert r["log"][0] == ["fetch", "/api/car/tata/nexon?variant_id=2"]                    # no q: the server does not re-rank for a spec swap
 
@@ -736,7 +738,7 @@ def test_variant_spinner_is_16px_and_static_under_reduced_motion_and_the_status_
     assert "width: 16px; height: 16px" in css.split(".spinner--sm {")[1].split("}")[0]
     assert re.search(r"@media \(prefers-reduced-motion: reduce\) \{ \.spinner--sm \{ animation: none; \} \}", css)
     html = render_detail(detail_data(), {"make": "tata", "model": "nexon", "q": "", "standalone": True})
-    assert html.count('role="status"') == 1 and 'id="pick-status"' in html
+    assert html.count('role="status"') == 2 and 'id="pick-status"' in html and 'id="search-status"' in html   # the second is the compare button's (PR J)
 
 
 def test_car_page_with_a_search_shows_reviewer_owner_and_caveat_blocks_under_summary():
@@ -747,7 +749,8 @@ def test_car_page_with_a_search_shows_reviewer_owner_and_caveat_blocks_under_sum
     assert html.index("<h2>Summary</h2>") < html.index("What reviewers say") < html.index("What owners say") < html.index("Caveats") < html.index("<h2>Specifications</h2>")
     assert "Soaks up rough roads." in html and "Owners are happy." in html and "Slow service." in html
     assert "<h4>" not in html                                                                       # headings step h2 to h3
-    assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {**opts, "q": ""})  # no search, no blocks
+    assert "What reviewers say" in render_detail(detail_data(reviews=reviews), {**opts, "q": ""})   # PR J: the model's notes show with no search too
+    assert "reviewers and owners say" not in render_detail(detail_data(reviews=None), {**opts, "q": ""})  # no review data: no empty section
     assert "What reviewers say" not in render_detail(detail_data(reviews=None), opts)                # model not on the card list
     assert "What reviewers say" not in render_detail(detail_data(reviews=reviews), {"make": "tata", "model": "nexon", "q": "suv"})  # inline panel
 

@@ -7,6 +7,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 import pytest
+from services.car_detail import _reviews, _v3_card
 
 from services.car_detail import SPEC_GROUPS, get_car_detail
 from services.catalogue import get_catalogue
@@ -230,10 +231,29 @@ def test_reviews_are_added_only_with_a_query_and_are_read_only_card_data(client)
     card = next(c for c in predict(client, q)["recommendations"] if c["Model"] == "Nexon")
     for key in rv:                                     # the very data the result card was drawn from
         assert rv[key] == card[key], key
-    assert get(client, "/api/car/tata/nexon").get_json()["reviews"] is None
     assert get(client, "/api/car/tata/not-a-car?q=suv").status_code == 404
 
 
 def test_reviews_are_none_when_the_model_is_not_in_the_search_results(client):
     d = get(client, "/api/car/tata/punch-ev?q=" + quote("petrol manual hatchback under 6 lakh")).get_json()
     assert d["reviews"] is None
+
+
+# ------------------------------------------------------------------ PR J: reviews on every car page
+def test_reviews_without_a_query_are_the_models_stored_notes(client):
+    # replaces the old "no query, no reviews" assertion: the notes are the model's own, ranked by strength, not by a search
+    rv = get(client, "/api/car/kia/sonet").get_json()["reviews"]
+    assert rv is not None
+    assert set(rv) == {"expert_notes", "owner_notes", "caveats", "expert_standing", "owner_standing", "scores"}
+    assert rv["expert_notes"] or rv["owner_notes"] or rv["caveats"] or rv["expert_standing"] or rv["owner_standing"]
+    # standing words are segment-wide (never query-relative): the same figures a query card carries
+    q = "SUV under 15 lakh"
+    card = _v3_card(q, [], "Sonet")
+    if card is not None:
+        assert rv["expert_standing"] == card["expert_standing"] and rv["owner_standing"] == card["owner_standing"]
+    assert get(client, "/api/car/kia/sonet?q=" + quote(q)).get_json()["reviews"] == (_reviews(card) if card else None)
+
+
+def test_reviews_are_none_for_a_model_with_no_review_data(client):
+    from services.car_detail import _model_reviews
+    assert _model_reviews("No Such Model") is None

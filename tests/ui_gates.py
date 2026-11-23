@@ -297,8 +297,8 @@ def detail_checks(page, base, tag, w, shots):
     heads = perm.locator("#car-detail .detail-section > h2").all_inner_texts()
     core = [h for h in heads if h != REVIEWS_HEADING]
     check(f"{tag} [detail]: car page has every section", resp.status == 200 and core == PAGE_HEADINGS, heads)
-    matches = perm.locator("tr.is-match", has_text="Matches your search").count()
-    check(f"{tag} [detail]: >= 1 'Matches your search' row on the car page", matches >= 1, matches)
+    matches = perm.locator("tr.is-match", has_text="matches your search").count()   # the per-row badge is now a screen-reader-only text (PR J)
+    check(f"{tag} [detail]: >= 1 matching row on the car page", matches >= 1, matches)
     check(f"{tag} [detail]: car page has the data stamp and the external on-road price link",
           perm.locator(".data-stamp").count() == 1 and perm.locator(".detail-actions a[target=_blank]").count() == 1)
     variants_checks(perm, tag, w)
@@ -380,6 +380,115 @@ def detail_checks(page, base, tag, w, shots):
         perm.locator("#car-detail .detail-section h2").first.wait_for()
         full_shot(perm, f"{shots}/{tag.replace("/", "-")}-slavia-permalink.png")
     perm.close()
+
+
+NEXON_MANY_Q = "automatic SUV under 15 lakh with sunroof"   # 22 of the Nexon's 83 variants match
+
+
+def carpage_checks(ctx, base, tag, widths):
+    """PR J: reviews without a search, every matching variant shown, the section menu, Add to compare, no sideways scroll."""
+    page = ctx.new_page()
+    for w in widths:
+        t = f"{tag}@{w}"
+        page.set_viewport_size({"width": w, "height": 812 if w < 600 else 860})
+        # reviews on a car page opened with no search
+        page.goto(base + "/car/kia/sonet")
+        page.locator("#car-detail .detail-section > h2").first.wait_for(timeout=30_000)
+        check(f"{t} [carpage]: /car/kia/sonet with no search shows the reviews section",
+              page.locator("#detail-reviews h2").count() == 1 and page.locator("#detail-reviews .evi").count() >= 1)
+        check(f"{t} [carpage]: no search -> no 'for this search' wording", "for this search" not in page.locator("#detail-reviews").inner_text())
+        sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+        check(f"{t} [carpage]: no horizontal page scroll (Sonet)", sw <= vw, f"{sw} > {vw}")
+
+        # section menu
+        nav = page.locator("nav[aria-label='On this page']")
+        labels = nav.locator("a").all_inner_texts()
+        check(f"{t} [carpage]: section menu lists Summary, Reviews, Specs, Safety, Variants",
+              labels == ["Summary", "Reviews", "Specs", "Safety", "Variants"], labels)
+        check(f"{t} [carpage]: menu links are real #anchors to existing sections",
+              all(page.locator(href).count() == 1 for href in nav.locator("a").evaluate_all("els => els.map(e => e.getAttribute('href'))")))
+        check(f"{t} [carpage]: the first link is current at the top", nav.locator("a[aria-current=true]").inner_text() == "Summary")
+        page.evaluate("window.scrollTo({ top: 1500, behavior: 'instant' })")
+        page.wait_for_timeout(300)
+        gap = page.evaluate("() => document.querySelector('.section-menu').getBoundingClientRect().top - document.querySelector('.site-header').getBoundingClientRect().bottom")
+        check(f"{t} [carpage]: the menu stays stuck under the site header after scrolling", abs(gap) <= 2, gap)
+        nav.locator("a", has_text="Variants").click()
+        page.wait_for_function("() => document.querySelector('.section-menu a[aria-current=true]')?.textContent === 'Variants'")
+        clear = page.evaluate("""() => document.querySelector('#detail-variants h2').getBoundingClientRect().top
+            - document.querySelector('.section-menu').getBoundingClientRect().bottom""")
+        check(f"{t} [carpage]: clicking Variants makes it current and its heading is not under the sticky bars", clear >= 0, clear)
+        sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+        check(f"{t} [carpage]: menu adds no horizontal page scroll", sw <= vw, f"{sw} > {vw}")
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        page.wait_for_function("() => document.querySelector('.section-menu a[aria-current=true]')?.textContent === 'Summary'")
+        check(f"{t} [carpage]: scrolling back to the top makes Summary current again", True)
+
+        # every matching variant shown
+        page.goto(base + "/car/tata/nexon?q=" + quote(NEXON_MANY_Q))
+        page.locator("#variants-table").wait_for(timeout=30_000)
+        n_match = page.locator("tr.is-match").count()
+        shown = page.locator("tr.is-match:not([hidden])").count()
+        check(f"{t} [variants]: all {n_match} matching Nexon rows are visible without a click", n_match >= 20 and shown == n_match, f"{shown}/{n_match}")
+        toggle = page.locator("[data-variants-toggle]")
+        rest = page.locator("tr[data-extra]").count()
+        check(f"{t} [variants]: toggle reads 'Show the other {rest} variants'", toggle.inner_text() == f"Show the other {rest} variants", toggle.inner_text())
+        check(f"{t} [variants]: one legend line, no per-row badge",
+              page.locator(".variants-legend").inner_text() == "Tinted rows match your search" and page.locator(".match-badge").count() == 0)
+        check(f"{t} [variants]: a matching row keeps a screen-reader signal",
+              "matches your search" in page.locator("tr.is-match").first.locator("td").first.text_content())
+        toggle.click()
+        check(f"{t} [variants]: expanding shows every row and reads 'Show matching only'",
+              page.locator("tbody tr[hidden]").count() == 0 and toggle.inner_text() == "Show matching only")
+        tint = page.evaluate("""() => { const bg = s => getComputedStyle(document.querySelector(s)).backgroundColor;
+            return [bg('tr.is-match'), bg('tbody tr:not(.is-match):not(.is-selected)')]; }""")
+        check(f"{t} [variants]: matching rows are tinted differently from the others", tint[0] != tint[1], tint)
+        toggle.click()
+        check(f"{t} [variants]: collapses back to 'Show the other {rest} variants'",
+              page.locator("tr[data-extra]:not([hidden])").count() == 0 and toggle.inner_text() == f"Show the other {rest} variants")
+        sw, vw = page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
+        check(f"{t} [variants]: no horizontal page scroll (Nexon search)", sw <= vw, f"{sw} > {vw}")
+
+        # Add to compare
+        page.goto(base + "/car/kia/sonet")
+        page.evaluate("sessionStorage.clear()")
+        page.goto(base + "/car/kia/sonet")
+        page.locator("#variants-table").wait_for(timeout=30_000)
+        btn = page.locator("[data-compare]")
+        first_id = btn.get_attribute("data-compare")
+        check(f"{t} [compare]: car page has 'Add to compare', not pressed", btn.inner_text() == "Add to compare" and btn.get_attribute("aria-pressed") == "false")
+        btn.click()
+        tray = page.locator("#compare-tray")
+        check(f"{t} [compare]: the tray shows the car", tray.is_visible() and "Sonet" in tray.locator(".compare-pill").first.text_content() and btn.get_attribute("aria-pressed") == "true"
+              and btn.inner_text() == "Added", tray.inner_text()[:80])   # phones list a count; the pills are still in the DOM
+        row = page.locator("tbody tr:not([hidden])").filter(has_not=page.locator("[aria-pressed=true]")).first
+        other_id = row.get_attribute("data-variant-id")
+        other_name = row.locator(".variant-pick").inner_text()
+        with page.expect_response(lambda r: "/api/car/" in r.url and "variant_id=" in r.url):
+            row.click()
+        page.wait_for_function("id => document.querySelector('[data-compare]').dataset.compare === id", arg=other_id)
+        check(f"{t} [compare]: picking another variant moves the button to it (not pressed)",
+              btn.get_attribute("aria-pressed") == "false" and btn.inner_text() == "Add to compare" and other_name in btn.get_attribute("aria-label"),
+              btn.get_attribute("aria-label"))
+        btn.click()
+        link = tray.locator("a.btn-primary")
+        href = link.get_attribute("href") if link.count() else ""
+        check(f"{t} [compare]: two cars -> the tray's Compare link carries both ids", href == f"/compare?ids={first_id},{other_id}", href)
+        link.click()
+        page.wait_for_selector("table.compare-table")
+        check(f"{t} [compare]: /compare opens with both variants", page.url.split("/compare")[1].startswith(f"?ids={first_id},{other_id}")
+              and page.locator("table.compare-table").inner_text().count("Sonet") >= 1)
+        # the 4-car limit: same message, button disabled
+        page.goto(base + "/car/kia/sonet")
+        page.evaluate("""() => sessionStorage.setItem('carrec.compare', JSON.stringify([1, 2, 3, 4].map(i => ({ variant_id: i + 1000, name: 'X', model: 'X' + i, variant: 'v' }))))""")
+        page.goto(base + "/car/kia/sonet")
+        page.locator("#variants-table").wait_for(timeout=30_000)
+        page.locator("[data-compare]").click(force=True)  # aria-disabled, not disabled
+        page.wait_for_function("() => document.getElementById('search-status').textContent.includes('up to 4 cars')")
+        check(f"{t} [compare]: a fifth car is refused with the same message",
+              page.locator("[data-compare]").get_attribute("aria-disabled") == "true"
+              and page.locator("#search-status").inner_text() == "You can compare up to 4 cars. Remove one first.")
+        page.evaluate("sessionStorage.clear()")
+    page.close()
 
 
 def last_turn(page):
@@ -526,6 +635,8 @@ def run(base, shots):
             card_checks(page, base, tag, w, shots)
             detail_checks(page, base, tag, w, shots)
             compare_checks(page, base, tag)
+            if vp_name != "desktop":   # PR J: 1280 (from the laptop run), 375 and 320 (from the phone run)
+                carpage_checks(ctx, base, tag, [1280] if w >= 1000 else [375, 320])
 
             # transmission label
             predict(page, lambda: page.goto(base + "/recommend?q=" + quote("DCT petrol under 15 lakh")))

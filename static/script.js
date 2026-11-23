@@ -1047,8 +1047,9 @@ function syncTrayPadding(tray) {
 
 function renderCompareTray() {
     if (typeof document === "undefined") return;
-    const page = document.querySelector(".results-page");
+    const page = document.querySelector(".results-page, .car-page");
     if (!page) return;
+    const onCarPage = page.classList.contains("car-page");
     let tray = document.getElementById("compare-tray");
     if (!tray) {
         tray = document.createElement("div");
@@ -1082,7 +1083,8 @@ function renderCompareTray() {
     }
     const list = compareState();
     const ctx = compareContext();
-    const collapsed = trayCollapsed(list, latestResultIds(), trayPref);
+    // on the car page there are no result cards, so the bar stays open unless it was folded by hand
+    const collapsed = trayCollapsed(list, onCarPage ? list.map(x => x.variant_id) : latestResultIds(), trayPref);
     tray.innerHTML = buildCompareTray(list, ctx.q, ctx.drop, ctx.sort, collapsed);
     tray.hidden = list.length === 0;
     tray.classList.toggle("compare-tray--collapsed", collapsed);
@@ -1099,7 +1101,7 @@ function syncCompareButtons(root) {
         btn.setAttribute("aria-pressed", on ? "true" : "false");
         btn.classList.toggle("is-added", on);
         const text = btn.querySelector(".compare-text");
-        if (text) text.textContent = on ? "Added" : "Compare";
+        if (text) text.textContent = on ? "Added" : (btn.dataset.compareLabel || "Compare");
         const icon = btn.querySelector("svg");
         if (on && !icon) btn.insertAdjacentHTML("afterbegin", ICONS.check);
         if (!on && icon) icon.remove();
@@ -1309,32 +1311,39 @@ function variantMileage(v) {
 
 const VARIANT_ROWS_SHOWN = 8;
 
-// With a search, the table opens on the variants the server says match it (matches_query: the same filter /predict used for
-// the card's "N matching variants"); without one, on the first rows by price. Either way at most VARIANT_ROWS_SHOWN rows, the
-// selected variant always among them, and a button shows or hides the rest in place. All rows are in the HTML; the extra ones are hidden.
+function plural(n, word) {
+    return `${n} ${word}${n === 1 ? "" : "s"}`;
+}
+
+// With a search that matches some variants, every matching row is shown (plus the selected variant, if it is not one of them) and
+// one button reveals the others; a legend line says what the tint means. Without a search, the table opens on the first
+// VARIANT_ROWS_SHOWN rows by price, the selected variant always among them. All rows are in the HTML; the extra ones are hidden.
 function buildVariantsTable(data, hasQuery) {
     const rows = [...data.variants].sort((a, b) =>
         (b.matches_query - a.matches_query) || ((a.price || 0) - (b.price || 0)) || (a.variant_id - b.variant_id));
     const matching = rows.filter(v => v.matches_query).length;
     const matchMode = hasQuery && matching > 0;
-    let visible = (matchMode ? rows.filter(v => v.matches_query) : rows).slice(0, VARIANT_ROWS_SHOWN);
     const selectedRow = rows.find(v => v.variant_id === data.selected_variant_id);
-    if (selectedRow && !visible.includes(selectedRow)) visible = [...visible.slice(0, VARIANT_ROWS_SHOWN - 1), selectedRow];
+    let visible = matchMode ? rows.filter(v => v.matches_query) : rows.slice(0, VARIANT_ROWS_SHOWN);
+    if (selectedRow && !visible.includes(selectedRow)) visible = matchMode ? [...visible, selectedRow] : [...visible.slice(0, VARIANT_ROWS_SHOWN - 1), selectedRow];
+    const hiddenCount = rows.length - visible.length;
     const note = hasQuery
         ? (matching ? `${matching} of ${rows.length} variants match your search.` : `None of the ${rows.length} variants match your search.`)
         : `${rows.length} variants.`;
-    const toggle = rows.length > visible.length
-        ? `<button type="button" class="btn btn-quiet variants-toggle" data-variants-toggle data-total="${rows.length}" data-match-mode="${matchMode}" aria-expanded="false" aria-controls="variants-table">Show all ${rows.length} variants</button>` : "";
+    const showOthers = `Show the other ${plural(hiddenCount, "variant")}`;
+    const toggle = hiddenCount > 0
+        ? `<button type="button" class="btn btn-quiet variants-toggle" data-variants-toggle data-total="${rows.length}" data-match-mode="${matchMode}" aria-expanded="false" aria-controls="variants-table">${matchMode ? showOthers : `Show all ${rows.length} variants`}</button>` : "";
+    const legend = matchMode ? '<p class="variants-legend"><span class="legend-swatch" aria-hidden="true"></span>Tinted rows match your search</p>' : "";
     return `<p class="detail-note">${note} Select a variant to see its specifications.</p>
+        ${legend}
         <p class="pick-status" id="pick-status" role="status"></p>
-        <div class="table-wrap" id="variants-table" tabindex="0" role="region" aria-label="Variants">
+        <div class="table-wrap${matchMode ? " table-wrap--all" : ""}" id="variants-table" tabindex="0" role="region" aria-label="Variants">
         <table class="variants">
             <thead><tr><th scope="col">Variant</th><th scope="col">Price</th><th scope="col">Gearbox</th><th scope="col">Fuel</th><th scope="col">Mileage</th></tr></thead>
             <tbody>${rows.map(v => {
                 const selected = v.variant_id === data.selected_variant_id;
                 return `<tr data-variant-id="${v.variant_id}" class="${v.matches_query ? "is-match" : ""}${selected ? " is-selected" : ""}"${selected ? ' aria-current="true"' : ""}${visible.includes(v) ? "" : " data-extra hidden"}>
-                    <td><button type="button" class="variant-pick" data-variant-id="${v.variant_id}" aria-pressed="${selected}">${escapeHtml(v.variant)}</button>
-                        ${v.matches_query ? '<span class="match-badge">Matches your search</span>' : ""}</td>
+                    <td><button type="button" class="variant-pick" data-variant-id="${v.variant_id}" aria-pressed="${selected}">${escapeHtml(v.variant)}</button>${v.matches_query ? '<span class="sr-only"> (matches your search)</span>' : ""}</td>
                     <td class="variant-meta" data-label="Price">${formatPrice(v.price)}</td>
                     <td class="variant-meta" data-label="Gearbox">${escapeHtml(v.transmission_label)}</td>
                     <td class="variant-meta" data-label="Fuel">${escapeHtml(v.fuel_label)}</td>
@@ -1347,10 +1356,12 @@ function buildVariantsTable(data, hasQuery) {
 function toggleVariants(button) {
     const expand = button.getAttribute("aria-expanded") !== "true";
     const wrap = button.parentElement.querySelector(".table-wrap");
+    const matchMode = button.dataset.matchMode === "true";
+    const extra = wrap.querySelectorAll("tr[data-extra]");
     button.setAttribute("aria-expanded", String(expand));
-    wrap.querySelectorAll("tr[data-extra]").forEach(tr => { tr.hidden = !expand; });
-    button.textContent = expand ? (button.dataset.matchMode === "true" ? "Show matching only" : `Show first ${VARIANT_ROWS_SHOWN}`)
-        : `Show all ${button.dataset.total} variants`;
+    extra.forEach(tr => { tr.hidden = !expand; });
+    button.textContent = expand ? (matchMode ? "Show matching only" : `Show first ${VARIANT_ROWS_SHOWN}`)
+        : (matchMode ? `Show the other ${plural(extra.length, "variant")}` : `Show all ${button.dataset.total} variants`);
     if (!expand) wrap.scrollTop = 0;
 }
 
@@ -1386,10 +1397,10 @@ function buildSpecRegion(data, sh, sub) {
         .map(g => { const list = specList(g.items); return list ? `<div class="spec-group"><${sub}>${escapeHtml(g.group)}</${sub}>${list}</div>` : ""; })
         .join("");
     const warranty = data.specs.find(g => g.group === "Warranty");
-    return `<section class="detail-section"><${sh}>Specifications</${sh}>
+    return `<section class="detail-section" id="detail-specifications"><${sh}>Specifications</${sh}>
             <p class="detail-note">${selectedNote(data)} · <a class="detail-jump" href="#detail-variants">Change variant ↓</a></p>
             <div class="spec-groups">${specGroups}</div></section>
-        <section class="detail-section"><${sh}>Safety</${sh}>${buildSafetySection(data)}</section>
+        <section class="detail-section" id="detail-safety"><${sh}>Safety</${sh}>${buildSafetySection(data)}</section>
         <section class="detail-section"><${sh}>Warranty</${sh}>${warranty ? specList(warranty.items) : ""}
             <p class="detail-note">${warranty && warranty.items.some(i => i.status === "ok")
                 ? "From the manufacturer's brochure. Confirm the terms with the dealer."
@@ -1397,10 +1408,11 @@ function buildSpecRegion(data, sh, sub) {
 }
 
 // the same blocks as a result card's expanded panel, for a car page opened from a search; its headings sit under the page's h2
-function buildReviewsSection(reviews) {
+function buildReviewsSection(reviews, hasQuery = true) {
     if (!reviews) return "";
-    const h3 = html => html.replace(/<h4>/g, "<h3>").replace(/<\/h4>/g, "</h3>");
-    return `<section class="detail-section detail-reviews"><h2>What reviewers and owners say</h2>
+    // without a search the "for this search" in the empty-state lines would be wrong
+    const h3 = html => html.replace(/<h4>/g, "<h3>").replace(/<\/h4>/g, "</h3>").replace(hasQuery ? /$^/ : / for this search\./g, ".");
+    return `<section class="detail-section detail-reviews" id="detail-reviews"><h2>What reviewers and owners say</h2>
         ${buildRatingsLine(reviews)}
         <div class="evi-grid">${h3(buildExpertBlock(reviews))}${h3(buildOwnerBlock(reviews))}</div>
         ${h3(buildCaveats(reviews))}</section>`;
@@ -1410,7 +1422,7 @@ function renderDetail(data, opts) {
     const hasQuery = Boolean(opts.q);
     const selectedId = data.selected_variant_id;
     const permalink = location.origin + detailUrl("/car", { ...opts, variantId: selectedId });
-    const summary = `<section class="detail-section"><${opts.standalone ? "h2" : "h3"}>Summary</${opts.standalone ? "h2" : "h3"}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>`;
+    const summary = `<section class="detail-section"${opts.standalone ? ' id="detail-summary"' : ""}><${opts.standalone ? "h2" : "h3"}>Summary</${opts.standalone ? "h2" : "h3"}><p class="detail-summary">${escapeHtml(data.summary)}</p></section>`;
     if (!opts.standalone) {
         // the inline panel: Summary, Key specs and the way to the whole page, carrying this search and variant
         // selectedId is the variant the panel is showing: the card's own (asked for in opts), or one the user picked
@@ -1434,11 +1446,14 @@ function renderDetail(data, opts) {
                 <h1>${escapeHtml(data.make)} ${escapeHtml(data.model)}</h1>
                 ${range ? `<p class="detail-range">${range} <span>ex-showroom</span></p>` : ""}
                 ${hasQuery ? `<p class="detail-note">For your search “${escapeHtml(opts.q)}”</p>` : ""}
+                <div class="detail-compare">${buildCarCompareButton(data)}<p class="compare-status" id="search-status" role="status"></p></div>
             </div>
         </header>`;
+    const reviews = buildReviewsSection(data.reviews, hasQuery);
     return `${head}
+        ${buildSectionMenu(Boolean(reviews))}
         ${summary}
-        ${hasQuery ? buildReviewsSection(data.reviews) : ""}
+        ${reviews}
         <div class="detail-specs" id="detail-specs" tabindex="-1">${buildSpecRegion(data, "h2", "h3")}</div>
         <section class="detail-section variants-block" id="detail-variants"><h2>Variants</h2>${buildVariantsTable(data, hasQuery)}</section>
         <footer class="detail-foot">
@@ -1448,6 +1463,76 @@ function renderDetail(data, opts) {
                 <a class="btn btn-primary" href="${escapeHtml(data.cardekho_link)}" target="_blank" rel="noopener noreferrer">Check on-road price ${ICONS.external}<span class="sr-only">(opens CarDekho in a new tab)</span></a>
             </div>
         </footer>`;
+}
+
+// "Add to compare" for the selected variant: the results page's own button (same data attributes, state and tray), with its own words
+function carCompareAttrs(data) {
+    const v = data.variants.find(x => x.variant_id === data.selected_variant_id);
+    if (!v) return null;
+    const name = `${data.make} ${data.model}`;
+    return { id: v.variant_id, name, model: data.model, variant: v.variant, label: `Compare ${name} ${v.variant}`.trim() };
+}
+
+function buildCarCompareButton(data) {
+    const a = carCompareAttrs(data);
+    if (!a) return "";
+    return `<button type="button" class="btn btn-quiet btn-compare" data-compare="${escapeHtml(a.id)}" data-compare-name="${escapeHtml(a.name)}" data-compare-model="${escapeHtml(a.model)}" data-compare-variant="${escapeHtml(a.variant)}" data-compare-label="Add to compare" aria-label="${escapeHtml(a.label)}" aria-pressed="false"><span class="compare-text">Add to compare</span></button>`;
+}
+
+// the button follows the variant picker
+function updateCarCompareButton(body, data) {
+    const btn = body.querySelector("[data-compare]");
+    const a = carCompareAttrs(data);
+    if (!btn || !a) return;
+    btn.dataset.compare = a.id;
+    btn.dataset.compareVariant = a.variant;
+    btn.setAttribute("aria-label", a.label);
+    syncCompareButtons(body);
+}
+
+// --- section menu: Summary · Reviews · Specs · Safety · Variants (only the sections the page has) ---
+function buildSectionMenu(hasReviews) {
+    const items = [["detail-summary", "Summary"], ...(hasReviews ? [["detail-reviews", "Reviews"]] : []),
+        ["detail-specifications", "Specs"], ["detail-safety", "Safety"], ["detail-variants", "Variants"]];
+    return `<nav class="section-menu" aria-label="On this page"><ul>${items.map(([id, label]) =>
+        `<li><a href="#${id}" data-section-link="${id}">${label}</a></li>`).join("")}</ul></nav>`;
+}
+
+let sectionObserver = null;
+
+// Highlights the link of the section in the reading band under the sticky bars. Called again whenever the spec sections are redrawn.
+function initSectionMenu(body) {
+    const nav = body.querySelector(".section-menu");
+    if (sectionObserver) { sectionObserver.disconnect(); sectionObserver = null; }
+    if (!nav) return;
+    const header = document.querySelector(".site-header");
+    const headerH = header ? header.offsetHeight : 64;
+    const top = headerH + nav.offsetHeight;
+    document.documentElement.style.setProperty("--site-header-h", `${headerH}px`);
+    document.documentElement.style.setProperty("--sticky-top", `${top}px`);
+    const links = [...nav.querySelectorAll("[data-section-link]")];
+    const sections = links.map(a => document.getElementById(a.dataset.sectionLink)).filter(Boolean);
+    const inBand = new Set();
+    const setActive = id => {
+        links.forEach(a => {
+            const on = a.dataset.sectionLink === id;
+            if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        });
+        const cur = links.find(a => a.dataset.sectionLink === id);
+        if (cur && nav.scrollWidth > nav.clientWidth) {   // the strip scrolls sideways on phones: keep the current link in view, without moving the page
+            nav.scrollTo({ left: cur.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+        }
+    };
+    nav.onclick = e => { const a = e.target.closest("[data-section-link]"); if (a) setActive(a.dataset.sectionLink); };
+    if (typeof IntersectionObserver === "undefined") return setActive(links[0].dataset.sectionLink);
+    sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) inBand.add(en.target.id); else inBand.delete(en.target.id); });
+        const last = sections.filter(el => inBand.has(el.id)).pop();
+        if (last) setActive(last.id);
+        else if (sections[0] && sections[0].getBoundingClientRect().top > top) setActive(sections[0].id);   // above the first section: Summary
+    }, { rootMargin: `-${top + 8}px 0px -55% 0px`, threshold: 0 });
+    sections.forEach(el => sectionObserver.observe(el));
+    setActive(links[0].dataset.sectionLink);
 }
 
 // an unknown make/model: retrying cannot help, so say so and offer a search
@@ -1472,7 +1557,11 @@ async function loadDetail(body, opts) {
         if (!response.ok) throw new Error(data.error || "not found");
         body.innerHTML = renderDetail(data, opts);
         body.dataset.selected = data.selected_variant_id;
-        if (opts.standalone) document.title = `${data.make} ${data.model} | CarRec`;
+        if (opts.standalone) {
+            document.title = `${data.make} ${data.model} | CarRec`;
+            initSectionMenu(body);
+            refreshCompare();
+        }
     } catch (error) {
         body.innerHTML = errorState("We couldn't load the details for this car.");
     }
@@ -1514,6 +1603,8 @@ async function pickVariant(body, opts, row) {
         if (!response.ok) throw new Error(data.error || "not found");
         region.innerHTML = buildSpecRegion(data, "h2", "h3");
         body.dataset.selected = data.selected_variant_id;
+        updateCarCompareButton(body, data);
+        initSectionMenu(body);
         body.querySelectorAll("tr[data-variant-id]").forEach(tr => {
             const on = Number(tr.dataset.variantId) === data.selected_variant_id;
             tr.classList.toggle("is-selected", on);
@@ -1600,6 +1691,8 @@ function initCarPage() {
     body.addEventListener("click", e => {
         const copy = e.target.closest("[data-copy-link]");
         if (copy) copyLink(copy);
+        const compare = e.target.closest("[data-compare]");
+        if (compare) onCompareButton(compare);
     });
     bindVariantPicks(body, opts);
     loadDetail(body, opts);
