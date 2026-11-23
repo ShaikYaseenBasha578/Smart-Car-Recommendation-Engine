@@ -129,10 +129,20 @@ SOFT_PREFERENCE_PATTERNS = [
                 r"|mileage\s*(?:achha|acha|achhi|achi|good|wali|wala)|fuel[- ]efficient|fuel\s*economy|economical|kifayati"),
     ("space", r"spacious|roomy|big\s*family|large\s*family|joint\s*family|lots\s*of\s*space|big\s*boot|more\s*space"
               r"|space\s*wali|badi\s*gaadi"),
-    ("performance", r"powerful|fun\s*to\s*drive|sporty|performance|fast|quick|peppy|punchy|torquey|zippy"),
+    ("performance", r"powerful|fun\s*to\s*drive|sporty|performance|(?:fast|quick)(?![\s-]*charg)|peppy|punchy|torquey|zippy"),
     ("comfort", r"comfortable|comfort|smooth\s*ride|plush|comfy|aaramdayak"),
     ("safety", r"safe|safer|safest|safety|secure"),
     ("features", r"(?:fully\s*)?loaded|feature[- ]?(?:rich|packed|loaded)|lots\s*of\s*features|top[- ]end|tech[- ]?(?:savvy|loaded)"),
+]
+
+# Soft preferences only the RULE parser knows. Kept apart from SOFT_PREFERENCES on purpose: services/recsys/llm_parse.py
+# builds its prompt from that list, and the prompt must not change. "high ground clearance" (no number) raises the weight
+# of the car's ground-clearance value in ranking (weights.py); with a number it is the hard minimum parsed above.
+RULE_SOFT_PREFERENCES = ["ground_clearance"]
+_GC_ADJ = (r"(?:high(?:er|est)?|good|better|best|more|great|decent|excellent|zyada|jyada|zyaada|"
+           r"acch[ai]|ach[ai]|achh[ai])")
+RULE_SOFT_PATTERNS = [
+    ("ground_clearance", rf"{_GC_ADJ}\s*(?:ground\s*)?clearance|ground\s*clearance\s*{_GC_ADJ}"),
 ]
 
 # A model after one of these is a reference point ("something like Creta"), not a hard filter.
@@ -220,9 +230,11 @@ SHORT_STOP_AFTER = {"the", "a", "an", "my", "home", "night", "least", "most", "a
                     "first", "last", "any", "that", "this", "times", "max", "best", "par"}
 
 NEGATION_BEFORE = {"no", "not", "avoid", "without", "except", "excluding", "dont", "don't", "never", "nor",
-                   "hate", "na", "bina"}
+                   "hate", "na", "bina", "can't", "cant", "can’t", "cannot"}
 NEGATION_FILLER = {"a", "an", "the", "want", "wanna", "need", "like", "any", "prefer", "please", "really", "to",
                    "have", "do", "i", "an", "using", "with",
+                   # "I can't drive a manual", "can't do manual"
+                   "drive", "operate", "handle", "ride", "use", "manage",
                    # coordination: "avoid diesel and CNG" negates both (earlier terms are already blanked)
                    "and", "or", "nor", "ya", "aur", "&", "/"}
 COORDINATORS = {"and", "or", "nor", "ya", "aur", "&", "/"}
@@ -292,7 +304,7 @@ def _is_negated(text: str, start: int, end: int, original: str | None = None) ->
                 break
             return True
         after_coordinator = use_original and word in COORDINATORS
-        if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please"} and not after_coordinator:
+        if word not in {"chahiye", "chaiye", "wali", "wala", "hona", "chalega", "please", "bilkul"} and not after_coordinator:
             break
     return False
 
@@ -339,6 +351,46 @@ UPPER_BOUND_SPECS = [
 ]
 
 
+# Car length ("sub 4 metre SUV", "under 4 m", "my garage is only 4 metres long"): always an upper bound, in mm. A number
+# with no length unit is never a length, except the established Indian "sub 4 / sub-4 / sub four" (4 metres).
+_LEN_UNIT = r"(?:mm|metres?|meters?|mtrs?|m)"
+_LEN_NUM = rf"(?:{NUM}|three|four|five)"
+_LEN_UPPER = (r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|at\s*most|not\s*more\s*than|no\s*more\s*than"
+              r"|shorter\s*than|smaller\s*than|only|just|<)")
+_LEN_LONG = r"(?:\s*(?:long|length|in\s*length|lambi|lamba|lambai))?"
+LENGTH_PATTERNS = [
+    # "sub 4", "sub-4m", "sub 4 metre", "sub four metre"
+    rf"sub[\s-]*(?P<n1>{_LEN_NUM})(?:\s*(?P<u1>{_LEN_UNIT}))?",
+    # "under 4 metres", "less than 4 m long", "length under 4m", "only 4 metres long", "within 4000 mm"
+    rf"(?:(?:car\s*)?length\s*(?:of\s*)?)?{_LEN_UPPER}\s*(?P<n2>{_LEN_NUM})\s*(?P<u2>{_LEN_UNIT}){_LEN_LONG}",
+    # "4 metre se kam", "4m tak", "4 m or less"
+    rf"(?P<n3>{_LEN_NUM})\s*(?P<u3>{_LEN_UNIT})\s*(?:se\s*(?:kam|chh?ot[aie])|ke\s*andar|tak|or\s*less|or\s*below|and\s*below|max)",
+]
+_LEN_WORDS = {"three": 3.0, "four": 4.0, "five": 5.0}
+_MONEY_AFTER = re.compile(r"\s*(?:lakhs?|lacs?|lac|lkh|l|k|crores?|cr|thousand)(?![a-z])")
+
+
+def _parse_length(text: str, out: dict, trace: list) -> str:
+    """max_length_mm from the length phrases above. Metres are converted to mm; a figure outside a plausible car
+    length (2.5 to 6.5 m) is left alone."""
+    for m in _find("|".join(f"(?:{p})" for p in LENGTH_PATTERNS), text):
+        g = m.groupdict()
+        n, u = next((g[f"n{i}"], g[f"u{i}"]) for i in (1, 2, 3) if g.get(f"n{i}"))
+        value = _LEN_WORDS[n] if n in _LEN_WORDS else float(n.replace(",", ""))
+        if u is None:
+            # bare "sub 4" / "sub four": only the established 4 metres, and never "sub 4 lakh"
+            if value != 4.0 or _MONEY_AFTER.match(text, m.end()):
+                continue
+        mm = value if u == "mm" else value * 1000.0
+        if not 2500.0 <= mm <= 6500.0:
+            continue
+        if out["max_length_mm"] is None:
+            out["max_length_mm"] = mm
+            trace.append(f"max_length_mm={mm:g} <- rule '{m.group(0).strip()}'")
+        text = _mask(text, m)
+    return text
+
+
 def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
     specs = [
         ("seats_min", int, r"(\d+)\s*-?\s*(?:seater|seats?|seat)|(?:seating\s*(?:for|capacity\s*(?:of)?)|family\s*of)\s*(\d+)"
@@ -373,6 +425,8 @@ def _parse_numeric_specs(text: str, out: dict, trace: list) -> str:
                 out[field] = value
                 trace.append(f"{field}={value} <- rule '{m.group(0).strip()}'")
             text = _mask(text, m)
+
+    text = _parse_length(text, out, trace)
 
     # mileage ranges and upper bounds ("18 to 22 kmpl", "under 30 km/kg"), CNG (km/kg) and petrol/diesel (kmpl)
     # kept apart: a km/kg threshold is never compared with kmpl
@@ -415,7 +469,8 @@ def _parse_budget(text: str, out: dict, trace: list) -> str:
     # "can't go above 8 lakh", "cannot exceed", "won't spend more than": a stated ceiling, never a floor
     cant = (r"(?:can'?t|cannot|can\s*not|won'?t|wont|will\s*not|don'?t|dont|do\s*not)\s*"
             r"(?:go|spend|pay|stretch|exceed|afford|cross)?\s*(?:above|over|beyond|past|more\s*than)?")
-    max_pre = (r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than|<|budget\s*(?:is|of)?"
+    max_pre = (r"(?:under|below|less\s*than|within|upto|up\s*to|max(?:imum)?|not\s*more\s*than|no\s*more\s*than"
+               r"|(?:nothing|not|no|never)\s*(?:above|over|beyond|past)|<|budget\s*(?:is|of)?"
                + "|exceed(?:ing)?|" + cant + ")")
     # "8 lakh se upar nahi ja sakta": Hindi ceiling
     max_post = (r"(?:tak|ke\s*andar|ke\s*under|se\s*kam|ke\s*neeche|or\s*less|or\s*below|and\s*below|max(?:imum)?"
@@ -571,23 +626,67 @@ def _load_model_vocab() -> list[tuple[str, str | None, list[str]]]:
     return _model_vocab
 
 
+_MODEL_JOIN = r"(?:or|ya|aur|and|&|/|,)"
+
+
+def _neighbour_span(original: str, text: str, m: re.Match) -> tuple[int, int] | None:
+    """"nexon or punch", "punch ya nexon": the span of the already-blanked word the model match `m` is joined to by a
+    coordinator, or None. `original` is the unmasked text, `text` the text with every model found so far blanked."""
+    before = re.search(rf"(?<![a-z0-9]){_MODEL_JOIN}\s*$", text[:m.start()])
+    if before:
+        prev = re.search(r"(\S+)\s*$", original[:before.start()])
+        if prev and not text[prev.start(1):prev.end(1)].strip():
+            return prev.start(1), prev.end(1)
+    after = re.match(rf"\s*{_MODEL_JOIN}", text[m.end():])
+    if after:
+        pos = m.end() + after.end()
+        nxt = re.match(r"\s*(\S+)", original[pos:])
+        if nxt and not text[pos + nxt.start(1):pos + nxt.end(1)].strip():
+            return pos + nxt.start(1), pos + nxt.end(1)
+    return None
+
+
 def _parse_models(text: str, out: dict, trace: list) -> tuple[list[str], str]:
     """Hard model filters into out["models"]; returns (reference models, masked text)."""
     any_make = "|".join(p for _, p in MAKE_PATTERNS)
+    original = text
     references = []
+    kinds: list[tuple[int, int, str]] = []   # (start, end, "model" | "reference") of every blanked model span
+    deferred = []                  # ambiguous models seen without their make: retried next to a recognised model
+
+    def take(models: list[str], m: re.Match, reference: bool, trace_text: str):
+        nonlocal text
+        if reference:
+            references.extend(x for x in models if x not in references)
+            trace.append(f"reference model {models} <- '{trace_text}' (similar-to, not a filter)")
+        else:
+            out["models"] += [x for x in models if x not in out["models"]]
+            trace.append(f"models+={models} <- rule '{trace_text}'")
+        kinds.append((m.start(), m.end(), "reference" if reference else "model"))
+        text = _mask(text, m)
+
     for pattern, needs_make, models in _load_model_vocab():
         for m in _find(pattern, text):
             before = text[:m.start()]
             if needs_make and not re.search(rf"(?<![a-z0-9])(?:{needs_make})\s*$", before):
+                if models != ["City"]:     # "city" is too common a word ("nexon or city driving") to read as a model
+                    deferred.append((pattern, models))
                 continue
             before = re.sub(rf"(?<![a-z0-9])(?:{any_make})\s*$", "", before)
-            if re.search(REFERENCE_BEFORE, before) or re.match(REFERENCE_AFTER, text[m.end():]):
-                references += [x for x in models if x not in references]
-                trace.append(f"reference model {models} <- '{m.group(0).strip()}' (similar-to, not a filter)")
-            else:
-                out["models"] += [x for x in models if x not in out["models"]]
-                trace.append(f"models+={models} <- rule '{m.group(0).strip()}'")
-            text = _mask(text, m)
+            take(models, m, bool(re.search(REFERENCE_BEFORE, before) or re.match(REFERENCE_AFTER, text[m.end():])),
+                 m.group(0).strip())
+    # "nexon or punch", "punch ya nexon": a model that is also a common word counts when it is listed next to a model
+    for _ in range(3):
+        progressed = False
+        for pattern, models in deferred:
+            for m in _find(pattern, text):
+                span = _neighbour_span(original, text, m)
+                kind = next((k for s0, e0, k in kinds if span and s0 <= span[0] and span[1] <= e0), None)
+                if kind:
+                    take(models, m, kind == "reference", m.group(0).strip())
+                    progressed = True
+        if not progressed:
+            break
     return references, text
 
 
@@ -624,8 +723,8 @@ def _parse_transmission(text: str, out: dict, trace: list, original: str | None 
             continue
         if negated:
             exclude.extend(t for t in types if t not in exclude)
-            if any(t in AUTOMATIC_TYPES for t in types):
-                families.add("automatic")  # "no AMT" -> some other automatic
+            if label != "amt" and any(t in AUTOMATIC_TYPES for t in types):
+                families.add("automatic")  # "no CVT" -> some other automatic; "no AMT" only drops AMT (manuals stay)
         else:
             include.extend(t for t in types if t not in include)
             families.add("manual" if types == ["imt"] else "automatic")
@@ -711,7 +810,7 @@ _CONTENT_LIST_FIELDS = ["body_types", "fuel_types", "makes", "models", "referenc
 _CONTENT_SCALAR_FIELDS = ["seats_min", "min_airbags", "min_safety_stars", "min_boot_space_litres",
                           "min_ground_clearance_mm", "min_ev_range_km", "min_mileage_kmpl", "min_mileage_km_per_kg",
                           "max_ev_range_km", "max_ground_clearance_mm", "max_boot_space_litres", "max_mileage_kmpl",
-                          "max_mileage_km_per_kg", "use_case"]
+                          "max_mileage_km_per_kg", "max_length_mm", "use_case"]
 
 
 def _classify_content(out: dict) -> tuple[bool, bool]:
@@ -758,6 +857,7 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
         "max_boot_space_litres": None,
         "max_mileage_kmpl": None,
         "max_mileage_km_per_kg": None,
+        "max_length_mm": None,
         "use_case": None,
         "cheap_intent": False,
         "price_order": False,
@@ -805,6 +905,11 @@ def parse_intent_ex(text: str, use_ml: bool = True) -> tuple[dict, str]:
     ml_text = work
     soft, _, _, _ = _parse_vocab(SOFT_PREFERENCE_PATTERNS, work, "soft", trace, original)
     out["soft_preferences"] = [s for s in SOFT_PREFERENCES if s in soft]
+    # rule-parser-only preferences ("high ground clearance"); the phrase is consumed so it is not "Didn't use"
+    rule_soft, _, _, rule_soft_text = _parse_vocab(RULE_SOFT_PATTERNS, work, "soft", trace, original)
+    if rule_soft:
+        out["soft_preferences"] += [s for s in RULE_SOFT_PREFERENCES if s in rule_soft]
+        work = rule_soft_text
     work = _parse_transmission(work, out, trace, original)
 
     fuels, no_fuels, fuel_mentioned, work = _parse_vocab(FUEL_PATTERNS, work, "fuel", trace, original)

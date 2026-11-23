@@ -48,6 +48,7 @@ from services.recsys.common import is_unknown, num, pct_rank
 SPEC_CRITERIA = [
     "value_for_budget", "safety", "running_cost", "comfort_features",
     "space_practicality", "performance", "tech_assist", "price",
+    "ground_clearance",   # weight 0 (and hidden from the weights payload) unless the query asks for it, see weights.py
 ]
 SPEC_LABELS = {
     "value_for_budget": "Value for money",
@@ -58,6 +59,7 @@ SPEC_LABELS = {
     "performance": "Performance",
     "tech_assist": "Tech & driver assist",
     "price": "Price (lower is better)",
+    "ground_clearance": "Ground clearance",
 }
 
 # boolean columns (catalogue name -> weight inside the criterion)
@@ -442,6 +444,15 @@ def _space(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) ->
     return fields
 
 
+def _ground_clearance(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
+    """The car's ground clearance on its own: segment percentile, the same blank prior as the field inside
+    space_practicality. Weighted only when the query says "high ground clearance" (weights.py); at weight 0 it changes
+    no score."""
+    raw = df["ground_clearance_mm"].map(num)
+    return [("ground_clearance_mm", raw, ref.percentile("ground_clearance_mm", raw, seg, allc), 1.0, "segment percentile",
+             None, None, ref.blank_prior("ground_clearance_mm", "pct", seg, allc))]
+
+
 def _performance(df: pd.DataFrame, seg: pd.Series, allc: pd.Series, ref: Reference) -> List[Field]:
     power, p2w, power_only = _p2w(df)
     p2w_score = ref.percentile("p2w", p2w, seg, allc)
@@ -517,6 +528,7 @@ def _build(df: pd.DataFrame, budget: Optional[dict], ref: Reference, price_whole
         "performance": _performance(df, seg, allc, ref),
         "tech_assist": _tech(df, seg, allc, ref),
         "price": _price(df, seg, allc, ref, price_whole_catalogue),
+        "ground_clearance": _ground_clearance(df, seg, allc, ref),
     }
     return _assemble(index, builders)
 

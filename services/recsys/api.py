@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 
 from services.catalogue import get_catalogue, get_meta
-from services.filter_v2 import FEATURE_COLUMNS, MAX_COLUMNS, MIN_COLUMNS, filter_candidates
+from services.filter_v2 import FEATURE_COLUMNS, MAX_COLUMNS, MAX_UNITS, MIN_COLUMNS, filter_candidates
 from services.images import find_car_image, image_attribution
 from services.intent_v2 import parse_intent_ex
 from services.recsys import config, llm_parse, rag_explain
@@ -27,7 +27,7 @@ from services.recsys.explain import explain, not_verified_labels
 from services.recsys.ignored import ignored_terms
 from services.recsys.relax import find_relaxation, format_rupees, violations_for
 from services.recsys.score import score_candidates
-from services.recsys.weights import build_weights
+from services.recsys.weights import CONDITIONAL_CRITERIA, build_weights
 
 APP_ROOT = Path(__file__).resolve().parents[2]
 UNRATED_SAFETY_LABEL = "No crash-test rating on record"
@@ -187,7 +187,8 @@ def requirement_phrases(intent: dict) -> List[str]:
     out += [FEATURE_COLUMNS[f][1] for f in intent.get("required_features") or []]
     out += [f"no {FEATURE_COLUMNS[f][1]}" for f in intent.get("exclude_features") or []]
     out += [f"{label} of at least {intent[k]:g}" for k, (_, label) in MIN_COLUMNS.items() if intent.get(k) is not None]
-    out += [f"{label} of at most {intent[k]:g}" for k, (_, label) in MAX_COLUMNS.items() if intent.get(k) is not None]
+    out += [f"{label} of at most {intent[k]:g}{MAX_UNITS.get(k, '')}" for k, (_, label) in MAX_COLUMNS.items()
+            if intent.get(k) is not None]
     if intent.get("min_safety_stars") is not None:
         out.append(f"{intent['min_safety_stars']}-star crash rating")
     return out
@@ -200,9 +201,10 @@ def _filters_summary(intent: dict) -> dict:
 
 
 def _weights_payload(weights: dict) -> dict:
+    # a conditional criterion (ground clearance) is listed only when the query switched it on
     return {c: {"weight": round(v["weight"], 6), "label": v["label"], "class": v["class"],
                 "active": v["active"], "multiplier": v["multiplier"], "why": v["why"]}
-            for c, v in weights["criteria"].items()}
+            for c, v in weights["criteria"].items() if not (c in CONDITIONAL_CRITERIA and v["multiplier"] == 0)}
 
 
 def _round(value: Optional[float]) -> Optional[float]:
@@ -266,7 +268,8 @@ def _card(car: pd.Series, srow: pd.Series, ex: dict, variant_counts: pd.Series, 
                    "owner": None if "owner" in srow["neutral_classes"] else _round(srow["owner"]),
                    "coverage": _round(srow["coverage"])},
         "class_weights": {c: _round(v) for c, v in srow["class_weights"].items()},
-        "criteria": {c: _round(v) for c, v in srow["values"].items() if v is not None},
+        "criteria": {c: _round(v) for c, v in srow["values"].items()
+                     if v is not None and not (c in CONDITIONAL_CRITERIA and srow["weights"].get(c, 0.0) <= 0)},
         "reasons": ex["reasons"],
         # stored Autocar notes (quote marked as a quotation, source_url to link) and owner theme lines; caveats = negative
         # themes and reported faults, for the UI to show apart

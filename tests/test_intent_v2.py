@@ -35,6 +35,7 @@ def expected(**fields):
         "max_boot_space_litres": None,
         "max_mileage_kmpl": None,
         "max_mileage_km_per_kg": None,
+        "max_length_mm": None,
         "use_case": None,
         "cheap_intent": False,
         "price_order": False,
@@ -80,8 +81,8 @@ CASES = [
     ("manual diesel", expected(transmission=MANUAL, fuel_types=["diesel"])),
     ("stick shift please", expected(transmission=MANUAL)),
     ("MT variant", expected(transmission=MANUAL)),
-    ("no AMT please", expected(transmission=trans("automatic", exclude=["amt"]))),
-    ("avoid AMT", expected(transmission=trans("automatic", exclude=["amt"]))),
+    ("no AMT please", expected(transmission=trans(None, exclude=["amt"]))),   # PR 4: "no AMT" drops AMT only
+    ("avoid AMT", expected(transmission=trans(None, exclude=["amt"]))),
     ("automatic but not AMT", expected(transmission=trans("automatic", exclude=["amt"]))),
     ("electric SUV", expected(fuel_types=["electric"], body_types=["suv"])),
     ("I need a car to drive at the office", expected(use_case="commute")),

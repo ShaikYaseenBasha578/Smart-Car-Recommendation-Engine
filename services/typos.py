@@ -7,6 +7,9 @@ when ALL of these hold:
 * Damerau-Levenshtein (optimal string alignment) distance is at most 1 for 5-6 letters, 2 for 7 or more;
 * the first letter is unchanged (typos rarely hit the first letter; this removes many look-alike words);
 * it is not itself a vocabulary word, and not a protected everyday word (never turn one valid word into another);
+* a plain English word (ENGLISH_WORDS below) is never read as a model, make or brand name, and is read as any other
+  vocabulary word only at distance 1 with the same first two letters ("trailer" is not "Triber", "tailor" is not
+  "Taisor");
 * exactly one vocabulary MEANING is closest. Two words of different meaning at the same distance leave the token
   alone. Spelling variants of one meaning ("seats" / "seater") are not ambiguous: the first-listed wins.
 
@@ -42,6 +45,28 @@ PROTECTED = {
     "batao", "bataiye", "dikhao", "mujhe", "hamare", "humare", "apna", "apni", "wala", "wali", "wale", "kitna",
     "kitni", "zyada", "jyada", "thoda", "thodi", "bahut", "accha", "achha", "achhi", "sasta", "sasti", "paisa",
     "paise", "andar", "neeche", "upar", "aaspaas", "liye", "sirf", "bilkul", "suggest", "recommend", "please",
+}
+
+# Plain English words that sit within a typo's reach of a model, make or brand name ("trailer" -> Triber, "tailor" ->
+# Taisor, "trigger" -> Triber, "carry" -> Camry). A shopper who types one means the word. Found by scanning a dictionary
+# against the vocabulary built from the catalogue; a name that is also a common misspelling of a car ("curve" for Curvv,
+# "sonnet" for Sonet, "jimmy" for Jimny, "crystal" for Crysta) is deliberately NOT here.
+ENGLISH_WORDS = {
+    "trailer", "trailers", "tailor", "tailors", "trainer", "trainers", "tractor", "tractors", "terrain", "terrains",
+    "trigger", "trimmer", "tripper", "tricker", "trifler", "cruiser", "cruisers", "carry", "carries", "caress",
+    "carless", "carpent", "citizen", "citizens", "classes", "classed", "classical", "chassis", "courser", "crusher",
+    "crisper", "crosser", "elevator", "elevated", "enervate", "exciter", "exacter", "extern", "externe", "forge",
+    "forte", "forced", "forcer", "forceps", "fourche", "frond", "gravity", "graphite", "granite", "gradate", "grant",
+    "grind", "grained", "grandma", "grandpa", "grandee", "grandly", "garland", "gland", "hectare", "hurried", "hurrier",
+    "innovate", "innovant", "jugular", "legendary", "magnate", "magnetic", "magneto", "magnify", "magnitude",
+    "maestro", "majestic", "majesty", "margin", "marking", "marlin", "martial", "marten", "matting", "masting",
+    "malting", "pinch", "paunch", "press", "presser", "pressor", "presto", "puncher", "punchy", "recover",
+    "river", "roger", "roper", "rower", "runover", "slavish",
+    "swifter", "swifty", "venture", "venule", "veranda", "verbena", "vernal", "victory", "virtual",
+    "virtue", "virtuoso", "virtuous", "virus", "wagoner", "urbane",
+    "actor", "acton", "astir", "astound", "bacon", "baron", "baton", "bayonet", "bayou", "bendlet", "citron",
+    "citrine", "creaser", "crucifer", "dabster", "doubter", "farce",
+    "locus", "lavender", "remover", "reunion", "ruption", "ruction", "tension", "teston", "trainee",
 }
 
 
@@ -90,7 +115,12 @@ def closest_word(token: str, vocabulary: Dict[str, str]) -> Optional[str]:
         return None
     if len({vocabulary[w] for _, w in best}) > 1:
         return None  # two different meanings equally close
-    return best[0][1]
+    found = best[0][1]
+    if token in ENGLISH_WORDS:
+        # a plain word is never a name; for any other vocabulary word it must be one edit and share the first two letters
+        if vocabulary[found].startswith("name:") or best_d != 1 or token[:2] != found[:2]:
+            return None
+    return found
 
 
 _TOKEN = re.compile(r"(?<![a-z0-9])[a-z]+(?![a-z0-9])")
