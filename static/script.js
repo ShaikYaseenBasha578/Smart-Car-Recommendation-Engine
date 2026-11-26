@@ -374,7 +374,10 @@ const MIN_LABELS = {
 };
 // upper bounds shown in "What we understood"; length is asked in metres ("sub 4 metre"), so it is echoed in metres
 const MAX_LABELS = {
-    max_length_mm: v => `Under ${Number((v / 1000).toFixed(2))} m long`
+    max_length_mm: v => `Under ${Number((v / 1000).toFixed(2))} m long`,
+    max_boot_space_litres: v => `boot up to ${Number(v)} L`, max_ground_clearance_mm: v => `ground clearance up to ${Number(v)} mm`,
+    max_ev_range_km: v => `up to ${Number(v)} km range`, max_mileage_kmpl: v => `up to ${Number(v)} kmpl`,
+    max_mileage_km_per_kg: v => `up to ${Number(v)} km/kg`
 };
 function safeUrl(url) {
     try {

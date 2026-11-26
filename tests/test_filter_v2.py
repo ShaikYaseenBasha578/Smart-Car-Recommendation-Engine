@@ -218,3 +218,9 @@ def test_like_x_without_reference_length_falls_back():
     assert ids(out) == [2, 3] and not out["length_unknown"].any()
     ranked, _ = rank_candidates(it, out)
     assert all(r[0] == "Similar body type and price to M1" for r in ranked["match_reasons"])
+
+
+def test_max_units_cover_every_upper_limit_that_prints():
+    from services.filter_v2 import MAX_COLUMNS, MAX_UNITS
+    assert set(MAX_UNITS) == set(MAX_COLUMNS)
+    assert MAX_UNITS["max_boot_space_litres"] == " L" and MAX_UNITS["max_mileage_km_per_kg"] == " km/kg"

@@ -723,8 +723,7 @@ def _parse_transmission(text: str, out: dict, trace: list, original: str | None 
             continue
         if negated:
             exclude.extend(t for t in types if t not in exclude)
-            if label != "amt" and any(t in AUTOMATIC_TYPES for t in types):
-                families.add("automatic")  # "no CVT" -> some other automatic; "no AMT" only drops AMT (manuals stay)
+            # a negated gearbox type only drops that type; the family comes from "automatic"/"manual" words
         else:
             include.extend(t for t in types if t not in include)
             families.add("manual" if types == ["imt"] else "automatic")

@@ -420,3 +420,20 @@ def test_api_response_has_llm_block_and_never_fails(monkeypatch):
     assert r["llm"]["used"] and r["llm"]["accepted"] == ["min_boot_space_litres=500"]
     assert r["intent"]["min_boot_space_litres"] == 500
     assert all((car["boot_space_litres"] or 500) >= 500 for car in r["recommendations"])
+
+
+# ------------------------------------------------------------------ PR K: rule-only soft preferences survive the merge
+
+def test_llm_merge_keeps_rule_only_soft_preference():
+    q = "high ground clearance suv, xyzzy comfortable"
+    intent, residual = rules(q)
+    assert "ground_clearance" in intent["soft_preferences"]
+    out, info = L.refine(q, intent, residual, client=Fake({"constraints": [], "soft_preferences": ["comfort"]}))
+    assert "ground_clearance" in out["soft_preferences"] and "comfort" in out["soft_preferences"]
+
+
+def test_prompt_is_byte_identical_to_main():
+    import hashlib
+    # SHA-256 of build_system_prompt() computed on main (71d5a65) before PR K
+    assert hashlib.sha256(L.build_system_prompt().encode()).hexdigest() == \
+        "7fb48e5effb45254abe70ccf98d13591b72ee2d833590e6d5b634049deb03475"
