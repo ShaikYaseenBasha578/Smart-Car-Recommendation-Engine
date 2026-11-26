@@ -402,3 +402,14 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
 - **23 Nov, end:** the owner merged #61 and #62. Main (71d5a65) has the same tree as the combined tree tested before the merge (794/794 gates).
   - Live on Render: `/car/kia/sonet` has reviews with no query. On a phone, Back from a car page made 0 `/predict` calls and returned to the same scroll position.
   - **Nothing in progress.**
+- **26 Nov:** the owner approved the plan for the three #60 follow-ups (`knowledge_base/reports/plans/PLAN_PR60_FOLLOWUPS_2026-11-26.md`).
+  - **#63, PR K:** https://github.com/ShaikYaseenBasha578/Smart-Car-Recommendation-Engine/pull/63, branch `fix/pr60-followups`, worktree `~/carrec_worktrees/app-followups`.
+    - Chips and units for the other five upper limits (`MAX_LABELS`, `MAX_UNITS`).
+    - A negated gearbox type only excludes that type, with no family (`_parse_transmission`).
+    - The `llm_parse.merge` rebuild keeps `RULE_SOFT_PREFERENCES`. The prompt's SHA-256 is pinned in a test.
+  - **Results:**
+    - only hq-020 changed of 391 parses;
+    - main and held-out eval identical;
+    - hard counts unchanged (transmission-family agreement 86.7% → 92.9%);
+    - pytest 1300 passed; gates 794/794.
+  - **Next:** nothing planned. Owner items and the KB backlog remain.
