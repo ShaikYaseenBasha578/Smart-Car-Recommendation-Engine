@@ -71,7 +71,8 @@ MAX_COLUMNS = {
     "max_length_mm": ("length_mm", "length"),    # "sub 4 metre", "under 4 m": a blank length passes as not verified
 }
 # unit shown after a bound in plain-words lines (requirement list, relaxation text); the other bounds print bare
-MAX_UNITS = {"max_length_mm": " mm"}
+MAX_UNITS = {"max_length_mm": " mm", "max_boot_space_litres": " L", "max_ground_clearance_mm": " mm", "max_ev_range_km": " km",
+             "max_mileage_kmpl": " kmpl", "max_mileage_km_per_kg": " km/kg"}
 UNRATED_SAFETY_LABEL = "No crash-test rating on record"
 REFERENCE_PRICE_BAND = (0.8, 1.2)
 REFERENCE_LENGTH_TOLERANCE = 0.08

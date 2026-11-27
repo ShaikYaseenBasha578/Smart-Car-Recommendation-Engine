@@ -359,3 +359,27 @@ def test_postfix_nahi_after_a_later_term_negates_only_that_term(query, make):
 def test_postfix_nahi_still_reaches_coordinated_terms(query, fuels):
     assert sorted(parse_intent(query)["exclude_fuel_types"]) == fuels
     assert parse_intent(query)["fuel_types"] == []
+
+
+# ------------------------------------------------------------------ PR K: a negated gearbox type never adds a family
+
+import pytest as _pytest_k
+from services.intent_v2 import parse_intent_ex as _pk_parse
+
+
+@_pytest_k.mark.parametrize("q,family,exclude", [
+    ("kuch bhi chalega bas CVT nahi, 12 lakh tak", None, ["cvt", "e_cvt"]),
+    ("no DCT please", None, ["dct"]),
+    ("automatic but no CVT", "automatic", ["cvt", "e_cvt"]),
+    ("no manual", "automatic", []),
+    ("AMT nahi", None, ["amt"]),
+])
+def test_negated_gearbox_type_keeps_family_open(q, family, exclude):
+    t = _pk_parse(q, use_ml=False)[0]["transmission"]
+    assert t["family"] == family
+    assert t["exclude_types"] == exclude
+
+
+def test_cvt_nahi_budget_and_positive_dct_family():
+    assert _pk_parse("kuch bhi chalega bas CVT nahi, 12 lakh tak", use_ml=False)[0]["budget"]["max"] == 1200000
+    assert _pk_parse("DCT car", use_ml=False)[0]["transmission"]["family"] == "automatic"

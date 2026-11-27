@@ -730,7 +730,8 @@ def merge(rules: dict, verdict: dict) -> dict:
         trace.append(f"llm: {field}={value} <- evidence '{c['evidence']}'")
     for label in verdict["soft_preferences"]:
         if label not in out["soft_preferences"]:
-            out["soft_preferences"] = [s for s in iv.SOFT_PREFERENCES if s in set(out["soft_preferences"]) | {label}]
+            out["soft_preferences"] = [s for s in iv.SOFT_PREFERENCES + iv.RULE_SOFT_PREFERENCES  # rule-only ones (ground_clearance) survive the rebuild
+                                       if s in set(out["soft_preferences"]) | {label}]
             trace.append(f"llm: soft preference {label}")
     for kind, values in verdict["assumed"].items():
         if values and not out["assumed"].get(kind):
