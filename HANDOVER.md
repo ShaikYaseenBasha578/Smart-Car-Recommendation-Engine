@@ -421,3 +421,7 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - `app-rag` (an untracked `eval/results/rag_cache.json`, 109 cached RAG answers; awaiting the owner);
     - `kb-enrich-claude` (unmerged, no PR; pushed and clean; awaiting the owner).
   - #63 (PR K) was merged by the owner.
+  - **Later, 28 Nov:** at the owner's request, `app-rag` and `kb-enrich-claude` were removed too.
+    - The RAG cache from `app-rag` is saved at `~/carrec_saved/rag_cache_2026-11-22.json` (byte-identical copy, 109 answers).
+    - Branch `kb/enrich-claude` is still on GitHub, unmerged.
+    - Worktrees left: the main checkout, `kb-kbpipe` and `recsys-v3`.
