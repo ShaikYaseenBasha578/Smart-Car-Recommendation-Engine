@@ -425,3 +425,12 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - The RAG cache from `app-rag` is saved at `~/carrec_saved/rag_cache_2026-11-22.json` (byte-identical copy, 109 answers).
     - Branch `kb/enrich-claude` is still on GitHub, unmerged.
     - Worktrees left: the main checkout, `kb-kbpipe` and `recsys-v3`.
+- **28 Nov, old KB backups (owner: "Mac only"):** 82 files from `knowledge_base/backups/` and 3 old scratch copies were moved to `~/.Trash/CarRec_old_backups_2026-11-28/` (2.8 GB). Those were:
+  - the KB backups from Sep 9 to Nov 22 and their -wal/-shm side files;
+  - `scratch/carrec_kb_phase6_final_preproduction_backup.db`, `carrec_kb_pre_restore_forensic_snapshot.db` and `carrec_kb_production_backup.db`.
+  - **Kept:**
+    - the newest backup, `knowledge_base/backups/pre_update_ev_range_update_2026-11-22_20261122T072159Z.db` (the rollback point before the current prod state);
+    - the frozen paper snapshot `~/carrec_kb_snapshots/carrec_kb_paper_v0_8592508.db`;
+    - `scratch/carrec_kb_idemp.db`;
+    - the Google Drive copy `~/My Drive/CarRec_backups/` (owner chose to keep it).
+  - The backup names listed in CLAUDE.md now refer to files in the Trash. Once the Trash is emptied they are gone. Each phase's report and `KB_CHANGELOG.md` still describe what changed.
