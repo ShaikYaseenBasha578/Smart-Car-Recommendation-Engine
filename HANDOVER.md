@@ -413,3 +413,11 @@ Done on 17 Nov and no longer open: `kb/kbpipe` pushed (plan decision U1); `KB_CH
     - hard counts unchanged (transmission-family agreement 86.7% → 92.9%);
     - pytest 1300 passed; gates 794/794.
   - **Next:** nothing planned. Owner items and the KB backlog remain.
+- **28 Nov, worktree clean-up (owner rule: remove a worktree once it is no longer used).**
+  - **Removed** (each merged, clean, nothing unpushed; branches remain on GitHub): app-backcache, app-carpage, app-followups, app-llm-parser, app-negation, app-parser, app-perf, app-projfix, app-uiux, kb-near-rule, kb-10i, and `~/Car_recommender_app/carrec-deploy`. The stale `main_before` entry was pruned.
+  - **Kept:**
+    - `kb-kbpipe` (this handover; others' uncommitted edits);
+    - `recsys-v3` (its `.venv` is the Python for everything);
+    - `app-rag` (an untracked `eval/results/rag_cache.json`, 109 cached RAG answers; awaiting the owner);
+    - `kb-enrich-claude` (unmerged, no PR; pushed and clean; awaiting the owner).
+  - #63 (PR K) was merged by the owner.
